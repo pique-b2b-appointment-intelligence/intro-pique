@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Backbone Customer Service -- Eindbaas Apparel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--bg:#F6F5F2;--paper:#fff;--ink:#161614;--body:#383834;--muted:#888880;--faint:#AEADA6;--line:rgba(0,0,0,.07);--line2:rgba(0,0,0,.12);--sans:'Inter',system-ui,sans-serif;--serif:'Lora',Georgia,serif;--r:8px}html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.wrap{max-width:680px;margin:0 auto;padding:0 28px}.topbar{background:var(--ink);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:20}.tb-brand{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9)}.tb-label{font-size:.68rem;color:rgba(255,255,255,.35)}.sec{padding:80px 0;border-bottom:1px solid var(--line)}.sec:last-of-type{border-bottom:none}h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3rem);font-weight:500;color:var(--ink);line-height:1.12;letter-spacing:-.03em;margin-bottom:24px}h2{font-family:var(--serif);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:500;color:var(--ink);line-height:1.2;letter-spacing:-.025em;margin-bottom:20px}p{font-size:.96rem;line-height:1.82;color:var(--body);margin-bottom:18px}p:last-child{margin-bottom:0}p strong{color:var(--ink);font-weight:600}.lbl{display:inline-flex;align-items:center;gap:8px;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}.lbl::before{content:'';width:18px;height:1px;background:var(--faint);flex-shrink:0}.opening-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:40px}.opening-to{font-size:.82rem;color:var(--muted)}.opening-to strong{color:var(--ink);font-weight:600}.opening-date{font-size:.78rem;color:var(--muted)}.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.18rem,2.5vw,1.45rem);color:var(--ink);line-height:1.55;border-left:2px solid var(--ink);padding:4px 0 4px 22px;margin:36px 0}.pivot{padding:52px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:48px 0;text-align:center}.pivot-pre{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}.pivot h2{text-align:center;max-width:480px;margin:0 auto}.evidence{margin:36px 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line2);box-shadow:0 3px 16px rgba(0,0,0,.08)}.evidence img{width:100%;display:block}.bb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2);border-radius:var(--r);overflow:hidden;margin-top:32px}.bb-item{background:var(--paper);padding:24px 22px}.bb-tag{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1F3D35;margin-bottom:8px}.bb-title{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:6px}.bb-desc{font-size:.82rem;color:var(--muted);line-height:1.6}.team-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--paper);border:1px solid var(--line2);border-radius:14px;overflow:hidden;margin-top:32px}.tc-photo{position:relative;overflow:hidden;background:#2A2A27;min-height:320px}.tc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%}.tc-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,20,.6) 0%,transparent 50%)}.tc-photo-names{position:absolute;bottom:18px;left:20px;color:#fff}.tc-photo-names strong{display:block;font-size:1rem;font-weight:600;margin-bottom:3px}.tc-photo-names span{font-size:.66rem;color:rgba(255,255,255,.55);letter-spacing:.05em;text-transform:uppercase}.tc-body{padding:28px 26px;display:flex;flex-direction:column;gap:20px}.tc-bio{font-size:.86rem;color:var(--body);line-height:1.75}.tc-facts{display:flex;flex-direction:column;gap:14px}.tf-item{border-left:2px solid var(--line2);padding-left:12px}.tf-val{font-size:.86rem;font-weight:600;color:var(--ink);margin-bottom:1px}.tf-lbl{font-size:.68rem;color:var(--muted)}.cta-sec{background:var(--ink);border-radius:14px;padding:44px 40px;margin:48px 0;color:#fff}.cta-eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}.cta-sec h2{color:#fff;margin-bottom:14px}.cta-sec>p{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:0}.cta-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;align-items:start}.cta-col-label{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px}.cf{display:flex;flex-direction:column;gap:9px}.cf input,.cf textarea{width:100%;padding:11px 13px;border-radius:7px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-family:var(--sans);font-size:.84rem;outline:none}.cf input::placeholder,.cf textarea::placeholder{color:rgba(255,255,255,.28)}.cf textarea{height:100px;resize:none}.cf-btn{width:100%;padding:12px;border-radius:7px;background:#fff;color:var(--ink);font-family:var(--sans);font-size:.84rem;font-weight:700;border:none;cursor:pointer}.cal-wrap{border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.1);min-height:420px;background:rgba(255,255,255,.04)}#my-cal-inline-30min{width:100%;min-height:420px}.footer{padding:28px 0 44px;text-align:center}.footer p{font-size:.68rem;color:var(--faint);margin:0}.r{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}.r.v{opacity:1;transform:translateY(0)}.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}@media(max-width:600px){.wrap{padding:0 20px}.sec{padding:56px 0}.bb-grid{grid-template-columns:1fr}.team-card{grid-template-columns:1fr}.cta-sec{padding:32px 22px}.cta-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="tb-brand">Backbone Customer Service</span>
+  <span class="tb-label">Persoonlijk bericht aan Eindbaas Apparel</span>
+</div>
+
+<div class="wrap">
+
+  <!-- OPENING -->
+  <section class="sec">
+    <div class="opening-head r">
+      <div class="opening-to">Aan <strong>het team van Eindbaas Apparel</strong></div>
+      <div class="opening-date">Juni 2026</div>
+    </div>
+
+    <div class="lbl r">Een persoonlijk bericht</div>
+
+    <h1 class="r">Waarom je<br>mijn brief hebt ontvangen.</h1>
+
+    <p class="r">Ik keek naar Eindbaas Apparel. Opgericht in 2021, met een helder doel: mindset-gedreven activewear voor mensen die serieus zijn over hun training en hun uitstraling. De groei loopt via social en influencers. Dat is een slimme strategie. Maar het heeft ook een keerzijde die ik herken bij elk merk dat op die manier groeit.</p>
+
+    <p class="r">Bij activewear is de CS-uitdaging specifiek. Sportkleding past anders dan casual kleding. Klanten die normaal een M dragen, bestellen bij activewear een S en een L om te vergelijken. Het retourpercentage is structureel hoger dan bij andere kledingcategorieën. En de vragen die daarbij horen, zijn inhoudelijk: over pasvorm, stretch, prestatiekenmerken, wasadvies.</p>
+
+    <p class="r">Daarbij komt de influencer-dynamiek. Een post van de juiste persoon betekent in korte tijd een grote instroom van nieuwe klanten. Die klanten kennen het merk nog nauwelijks. Ze hebben vragen. En ze stellen die op het moment dat de operationele druk al op zijn hoogst is.</p>
+
+    <div class="pull r">"De piek in CS-vragen komt precies op het moment dat marketing en logistiek ook op volle toeren draaien. Dat is het moment waarop klantenservice het verschil maakt of averechts werkt."</div>
+
+    <p class="r">Mijn naam is Jeffrey. Samen met Dylan run ik Backbone Customer Service. Wij ontzorgen Shopify D2C-merken volledig op het gebied van klantenservice. Professioneel, schaalbaar, en zo dat het voelt als jullie eigen team.</p>
+  </section>
+
+  <!-- OBSERVATIONS -->
+  <section class="sec">
+    <div class="lbl r">Wat ik zie bij Eindbaas</div>
+    <h2 class="r">Drie kwetsbaarheden die ik herken</h2>
+
+    <p class="r">Dit zijn observaties op basis van wat publiekelijk zichtbaar is, en patronen die ik herken bij activewear-merken die groeien via social en influencer-campagnes.</p>
+
+    <div class="evidence r">
+      <img src="screenshots/eindbaas-home.png" alt="Eindbaas Apparel website">
+    </div>
+
+    <p class="r"><strong>Activewear heeft structureel een hoog retourpercentage door maatproblemen.</strong> Sportkleding zit strakker, strekt anders, en klanten weten dat. Ze bestellen meerdere maten tegelijk om te passen. Elke retour genereert CS-contact: retourverzoeken, ruilaanvragen, vragen over de juiste maat bij een volgend item. Dat volume loopt snel op bij een groeiend merk, en het vraagt om een CS-team dat het productassortiment echt kent.</p>
+
+    <div class="evidence r">
+      <img src="screenshots/eindbaas-tp.png" alt="Eindbaas reviews">
+    </div>
+
+    <p class="r"><strong>Influencer-gedreven groei creëert plotselinge CS-pieken.</strong> Een samenwerking met een grote creator kan het ordervolume in één dag verveelvoudigen. Nieuwe klanten die via een influencer komen, kennen het merk minder goed dan loyale klanten. Ze stellen meer vragen, sneller, en met hogere verwachtingen op het gebied van responstijd. Als de CS-capaciteit op die momenten niet meeschaalt, lopen slechte ervaringen direct de reviews in.</p>
+
+    <p class="r"><strong>Een onduidelijke Trustpilot-aanwezigheid is een kwetsbaarheid bij twijfelende nieuwe klanten.</strong> Iedere potentiële klant die Eindbaas opzoekt op een reviewplatform, treft ofwel weinig aan ofwel iets wat het merk niet actief beheert. Voor een groeiend merk dat nieuwe klanten wil winnen, is dat een drempel. CS-kwaliteit en reviewbeheer zijn twee kanten van dezelfde medaille.</p>
+  </section>
+
+  <!-- PIVOT -->
+  <div class="pivot r">
+    <div class="pivot-pre">Waarom dit ertoe doet</div>
+    <h2>Schaalbaarheid in CS is niet iets wat je regelt als het al mis is. Je regelt het voordat de volgende drop live gaat.</h2>
+  </div>
+
+  <!-- BACKBONE PILLARS -->
+  <section class="sec">
+    <div class="lbl r">Hoe Backbone werkt</div>
+    <h2 class="r">Wat wij voor Eindbaas zouden doen</h2>
+    <p class="r">Wij nemen de klantenservice volledig over. Met productkennis over maatvoering en pasvorm, schaalbaarheid bij drops, en een aanpak die de merkbeleving van Eindbaas versterkt in plaats van verwatert.</p>
+
+    <div class="bb-grid r">
+      <div class="bb-item">
+        <div class="bb-tag">Maatadvies</div>
+        <div class="bb-title">Inhoudelijke antwoorden over pasvorm</div>
+        <div class="bb-desc">Wij leren het assortiment kennen. Vragen over stretch, maatvoering en pasvorm krijgen een specifiek antwoord, geen standaardreply.</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-tag">Schaalbaarheid</div>
+        <div class="bb-title">Meeschalen bij drops en campagnes</div>
+        <div class="bb-desc">Op het moment dat een influencer-post live gaat, is de CS-capaciteit er al. Wij schalen mee, zonder dat jullie daarvoor iets hoeven te regelen.</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-tag">Retouren</div>
+        <div class="bb-title">Retourafhandeling die klanten terugbrengt</div>
+        <div class="bb-desc">Een retour hoeft geen verlies te zijn. Wij zetten retourcontact in als kans op een ruil of een volgende aankoop.</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-tag">Reputatie</div>
+        <div class="bb-title">Reviewbeheer en publieke reputatie</div>
+        <div class="bb-desc">Tevreden klanten vragen wij actief om een review. Klachten worden opgelost voordat ze publiek worden. Zo bouw je aan een trackrecord dat werkt als vertrouwenssignaal.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="sec">
+    <div class="lbl r">Wie wij zijn</div>
+    <h2 class="r">Backbone Customer Service</h2>
+    <p class="r">Ik ben Jeffrey, co-founder van Backbone. Samen met Dylan run ik een CS-bureau dat is gebouwd voor Shopify D2C-merken. Merken die groeien, pieken kennen, en klantenservice willen die daarin meebeweegt.</p>
+
+    <div class="team-card r">
+      <div class="tc-photo">
+        <img src="../jeff-dylan.jpg" alt="Jeffrey en Dylan van Backbone Customer Service">
+        <div class="tc-photo-overlay"></div>
+        <div class="tc-photo-names">
+          <strong>Jeffrey &amp; Dylan</strong>
+          <span>Co-founders, Backbone CS</span>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="tc-bio">Backbone is opgericht vanuit een eenvoudige observatie: groeiende D2C-merken hebben professionele klantenservice nodig die meebeweegt met hun operatie. Wij doen dat volledig, van eerste klantvraag tot retourafhandeling en reviewbeheer.</div>
+        <div class="tc-facts">
+          <div class="tf-item">
+            <div class="tf-val">100% Shopify D2C</div>
+            <div class="tf-lbl">Onze focus, altijd</div>
+          </div>
+          <div class="tf-item">
+            <div class="tf-val">Volledig ontzorgd</div>
+            <div class="tf-lbl">Van inbox tot retour en review</div>
+          </div>
+          <div class="tf-item">
+            <div class="tf-val">Schaalbaar</div>
+            <div class="tf-lbl">Meegroeien bij drops en pieken</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec">
+    <div class="cta-sec r">
+      <div class="cta-eyebrow">Volgende stap</div>
+      <h2>Plan een kennismaking van 30 minuten</h2>
+      <p>Ik leg uit hoe wij werken, wat het kost, en wat het Eindbaas oplevert. Concreet, zonder omwegen.</p>
+
+      <div class="cta-cols">
+        <div>
+          <div class="cta-col-label">Stuur een bericht</div>
+          <form class="cf" action="https://formspree.io/f/mykayldz" method="POST">
+            <input type="text" name="naam" placeholder="Naam" required>
+            <input type="email" name="email" placeholder="E-mailadres" required>
+            <textarea name="bericht" placeholder="Waar loop je nu tegenaan op het gebied van CS?"></textarea>
+            <button type="submit" class="cf-btn">Verstuur bericht</button>
+          </form>
+        </div>
+        <div>
+          <div class="cta-col-label">Plan direct in</div>
+          <div class="cal-wrap">
+            <div id="my-cal-inline-30min"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Backbone Customer Service · Klantenservice voor Shopify D2C-merken</p>
+  </div>
+</footer>
+
+<script>
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");Cal("init","30min",{origin:"https://app.cal.com"});Cal.ns["30min"]("inline",{elementOrSelector:"#my-cal-inline-30min",config:{"layout":"month_view","useSlotsViewOnSmallScreen":"true"},calLink:"jeffrey-backbone-cs/30min"});Cal.ns["30min"]("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<script>
+(function(){var els=document.querySelectorAll('.r');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('v')});return}var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{rootMargin:'0px 0px -32px 0px',threshold:.04});els.forEach(function(el){io.observe(el)})})();
+</script>
+</body>
+</html>
