@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backbone CS - Voorbereid voor Mr. Marvis</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F6F5F2;--paper:#fff;--ink:#161614;--body:#383834;--muted:#888880;--faint:#AEADA6;--line:rgba(0,0,0,.07);--line2:rgba(0,0,0,.12);--sans:'Inter',system-ui,sans-serif;--serif:'Lora',Georgia,serif;--r:8px}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 28px}
+.topbar{background:var(--ink);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:20}
+.tb-brand{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9)}
+.tb-label{font-size:.68rem;color:rgba(255,255,255,.35)}
+.sec{padding:80px 0;border-bottom:1px solid var(--line)}
+.sec:last-of-type{border-bottom:none}
+h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3rem);font-weight:500;color:var(--ink);line-height:1.12;letter-spacing:-.03em;margin-bottom:24px}
+h2{font-family:var(--serif);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:500;color:var(--ink);line-height:1.2;letter-spacing:-.025em;margin-bottom:20px}
+p{font-size:.96rem;line-height:1.82;color:var(--body);margin-bottom:18px}
+p:last-child{margin-bottom:0}
+p strong{color:var(--ink);font-weight:600}
+.lbl{display:inline-flex;align-items:center;gap:8px;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.lbl::before{content:'';width:18px;height:1px;background:var(--faint);flex-shrink:0}
+.opening-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.opening-to{font-size:.82rem;color:var(--muted)}
+.opening-to strong{color:var(--ink);font-weight:600}
+.opening-date{font-size:.78rem;color:var(--muted)}
+.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.18rem,2.5vw,1.45rem);color:var(--ink);line-height:1.55;border-left:2px solid var(--ink);padding:4px 0 4px 22px;margin:36px 0}
+.pivot{padding:52px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:48px 0;text-align:center}
+.pivot-pre{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.pivot h2{text-align:center;max-width:480px;margin:0 auto}
+.evidence{margin:36px 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line2);box-shadow:0 3px 16px rgba(0,0,0,.08)}
+.evidence img{width:100%;display:block}
+.bb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2);border-radius:var(--r);overflow:hidden;margin-top:32px}
+.bb-item{background:var(--paper);padding:24px 22px}
+.bb-tag{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1F3D35;margin-bottom:8px}
+.bb-title{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.bb-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+.team-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--paper);border:1px solid var(--line2);border-radius:14px;overflow:hidden;margin-top:32px}
+.tc-photo{position:relative;overflow:hidden;background:#2A2A27;min-height:320px}
+.tc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%}
+.tc-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,20,.6) 0%,transparent 50%)}
+.tc-photo-names{position:absolute;bottom:18px;left:20px;color:#fff}
+.tc-photo-names strong{display:block;font-size:1rem;font-weight:600;margin-bottom:3px}
+.tc-photo-names span{font-size:.66rem;color:rgba(255,255,255,.55);letter-spacing:.05em;text-transform:uppercase}
+.tc-body{padding:28px 26px;display:flex;flex-direction:column;gap:20px}
+.tc-bio{font-size:.86rem;color:var(--body);line-height:1.75}
+.tc-facts{display:flex;flex-direction:column;gap:14px}
+.tf-item{border-left:2px solid var(--line2);padding-left:12px}
+.tf-val{font-size:.86rem;font-weight:600;color:var(--ink);margin-bottom:1px}
+.tf-lbl{font-size:.68rem;color:var(--muted)}
+.cta-sec{background:var(--ink);border-radius:14px;padding:44px 40px;margin:48px 0;color:#fff}
+.cta-eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}
+.cta-sec h2{color:#fff;margin-bottom:14px}
+.cta-sec>p{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:0}
+.cta-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;align-items:start}
+.cta-col-label{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px}
+.cf{display:flex;flex-direction:column;gap:9px}
+.cf input,.cf textarea{width:100%;padding:11px 13px;border-radius:7px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-family:var(--sans);font-size:.84rem;outline:none}
+.cf input::placeholder,.cf textarea::placeholder{color:rgba(255,255,255,.28)}
+.cf textarea{height:100px;resize:none}
+.cf-btn{width:100%;padding:12px;border-radius:7px;background:#fff;color:var(--ink);font-family:var(--sans);font-size:.84rem;font-weight:700;border:none;cursor:pointer}
+.cal-wrap{border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.1);min-height:420px;background:rgba(255,255,255,.04)}
+#my-cal-inline-30min{width:100%;min-height:420px}
+.footer{padding:28px 0 44px;text-align:center}
+.footer p{font-size:.68rem;color:var(--faint);margin:0}
+.r{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.r.v{opacity:1;transform:translateY(0)}
+.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}
+@media(max-width:600px){.wrap{padding:0 20px}.sec{padding:56px 0}.bb-grid{grid-template-columns:1fr}.team-card{grid-template-columns:1fr}.cta-sec{padding:32px 22px}.cta-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar"><span class="tb-brand">Backbone Customer Service</span><span class="tb-label">Vertrouwelijk - voorbereid voor Mr. Marvis</span></div>
+<div class="wrap">
+
+<section class="sec">
+  <div class="opening-head"><div class="opening-to">Aan: <strong>Mr. Marvis, Amsterdam</strong></div><div class="opening-date">Juni 2026</div></div>
+  <h1 class="r">Waarom je<br>mijn brief hebt ontvangen.</h1>
+  <p class="r d1" style="margin-top:24px">Mr. Marvis is indrukwekkend. &euro;83 miljoen omzet, 4.7 op Trustpilot, 19.000 reviews. Maar op dit niveau gaat het niet meer over of je klantenservice goed is. Het gaat over of je het kunt blijven waarmaken terwijl je internationaal groeit.</p>
+  <p class="r d2">95% van de negatieve reviews wordt beantwoord. Dat kost op deze schaal enorm veel intern mankracht, en het legt druk op een team dat tegelijkertijd vijf markten bedient. Ik zie de signalen dat die druk zijn sporen achterlaat.</p>
+  <p class="r d3">Ik ben Jeffrey, co-founder van Backbone Customer Service. Wij verzorgen klantenservice voor Shopify D2C merken. Ik schrijf je omdat ik denk dat er iets te bespreken valt op het niveau waar Mr. Marvis nu staat.</p>
+</section>
+
+<section class="sec">
+  <div class="lbl r">Wat ik zag bij Mr. Marvis</div>
+
+  <p class="r">Ik begon bij Trustpilot. <strong>4.7 met 19.000 reviews is een prestatie die je niet negeert.</strong> Maar bij die schaal betekent 95% response rate op negatieve reviews honderden uren per maand aan intern CS-werk. Dat is een fulltime operatie, en het groeit mee met elk nieuw land dat jullie betreden.</p>
+  <div class="evidence r d1"><img src="screenshots/mrmarvis-tp.png" alt="Trustpilot Mr. Marvis"></div>
+
+  <p class="r">Daarna keek ik naar vacatures. CS-posities bij Mr. Marvis verlopen of worden langdurig opengelaten. Op het niveau van &euro;83M omzet en vijf internationale markten is dat een kwetsbare positie. Eén uitval, één piekmoment, en de response rate die jullie zo zorgvuldig hebben opgebouwd komt onder druk te staan.</p>
+  <div class="evidence r d2"><img src="screenshots/mrmarvis-contact.png" alt="Mr. Marvis contact"></div>
+
+  <p class="r">En dan de internationale aanwezigheid. NL, UK, US, DE, FR. Elk van die markten heeft eigen verwachtingen rondom retourbeleid, responstijden en tone of voice. <strong>Een centraal intern CS-team dat dat voor vijf markten consistent waarmaakt is structureel zwaar.</strong></p>
+
+  <div class="pull r">'Een 4.7 op Trustpilot is het resultaat van jaren investeren in klantcontact. Op dit schaalniveau verdient die investering een structuur die meeschaalt.'</div>
+</section>
+
+<div class="pivot r"><div class="pivot-pre">Waar het op uitkomt</div><h2>Op &euro;83M omzet is klantenservice niet langer een operationeel detail. Het is een strategische functie die structuur verdient.</h2></div>
+
+<section class="sec" style="padding-top:0;border-top:none">
+  <div class="lbl r">Wat we denken dat hierachter zit</div>
+  <p class="r">Merken die snel internationaal groeien lopen op een gegeven moment tegen de grens van intern CS aan. De kwaliteit is hoog, de wil is er, maar de capaciteit houdt het tempo niet bij. Vacatures die moeilijk in te vullen zijn bij deze schaal zijn een symptoom van dat probleem, en een voorbode van wat er kan misgaan als het volume verder stijgt.</p>
+  <p class="r">De negatieve reviews bij Mr. Marvis gaan over trage responses en maatproblemen bij retouren, beide klassieke symptomen van een CS-team dat op zijn maximale capaciteit zit. <strong>Op dit niveau is de vraag niet meer of je moet opschalen, maar hoe je dat doet zonder in te leveren op kwaliteit.</strong></p>
+</section>
+
+<section class="sec">
+  <div class="lbl r">Wat Backbone doet</div>
+  <h2 class="r">Wij verzorgen klantenservice voor Shopify D2C merken.</h2>
+  <p class="r" style="margin-top:14px">Volledig uitbesteed, zo ingericht dat het klinkt alsof het intern bij jou zit. Jouw toon. Jouw naam. Altijd bereikbaar.</p>
+  <div class="bb-grid r d1">
+    <div class="bb-item"><div class="bb-tag">Internationale schaal</div><div class="bb-title">Vijf markten, één kwaliteit</div><div class="bb-desc">NL, UK, US, DE, FR. Meertalige agents die per markt de juiste toon en verwachtingen kennen. Consistent over alle kanalen.</div></div>
+    <div class="bb-item"><div class="bb-tag">Capaciteit</div><div class="bb-title">Schaal zonder vacatures</div><div class="bb-desc">Wij lossen het wervingsprobleem op. Geen openstaande posities, geen tijdelijke gaten in responstijden bij piekmomenten.</div></div>
+    <div class="bb-item"><div class="bb-tag">Review management</div><div class="bb-title">95% zonder interne druk</div><div class="bb-desc">Die response rate wordt geborgd door ons team. Jullie interne capaciteit gaat terug naar waar het strategisch meer waarde heeft.</div></div>
+    <div class="bb-item"><div class="bb-tag">Merkidentiteit</div><div class="bb-title">Mr. Marvis in elk ticket</div><div class="bb-desc">We leren het merk kennen voor het eerste ticket. Klanten merken geen verschil met een intern team.</div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="lbl r">Over Backbone</div>
+  <div class="team-card r d1">
+    <div class="tc-photo"><img src="jeff-dylan.jpg" alt="Jeff en Dylan"><div class="tc-photo-overlay"></div><div class="tc-photo-names"><strong>Jeff &amp; Dylan</strong><span>Co-founders Backbone CS</span></div></div>
+    <div class="tc-body"><div class="tc-bio">Dylan en ik bouwden Backbone CS voor één type klant: Shopify D2C merken die te groot zijn voor intern CS, maar te zorgvuldig voor een generieke oplossing. Wij borgen merkidentiteit in elk ticket.</div><div class="tc-facts"><div class="tf-item"><div class="tf-val">1M+ tickets</div><div class="tf-lbl">afgehandeld</div></div><div class="tf-item"><div class="tf-val">20+ agents</div><div class="tf-lbl">EU-based, meerdere talen</div></div><div class="tf-item"><div class="tf-val">40+ merken</div><div class="tf-lbl">Shopify D2C portfolio</div></div></div></div>
+  </div>
+</section>
+
+<section class="sec" style="border-bottom:none;padding-bottom:0">
+  <div class="cta-sec r">
+    <div class="cta-eyebrow">Volgende stap</div>
+    <h2>Plan een kennismaking in.</h2>
+    <p>Ik leg je precies uit wat ik zag bij Mr. Marvis en wat dat concreet kan opleveren. In 30 minuten weet je of dit iets voor jullie is.</p>
+    <div class="cta-cols">
+      <div><div class="cta-col-label">Stuur een bericht</div><form class="cf" action="https://formspree.io/f/mykayldz" method="POST" enctype="application/x-www-form-urlencoded"><input type="text" name="naam" placeholder="Naam" required><input type="email" name="email" placeholder="E-mailadres" required><input type="text" name="bedrijf" placeholder="Bedrijf"><textarea name="bericht" placeholder="Vraag of opmerking"></textarea><button class="cf-btn" type="submit">Verstuur</button></form></div>
+      <div><div class="cta-col-label">Plan direct een gesprek</div><div class="cal-wrap"><div id="my-cal-inline-30min"></div></div></div>
+    </div>
+  </div>
+</section>
+</div>
+<footer class="footer"><p>Backbone Customer Service &middot; Voorbereid voor Mr. Marvis &middot; Vertrouwelijk</p></footer>
+<script>
+(function(){var els=document.querySelectorAll('.r');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('v')});return}var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{rootMargin:'0px 0px -32px 0px',threshold:.04});els.forEach(function(el){io.observe(el)})})();
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
+Cal("init","30min",{origin:"https://app.cal.com"});
+Cal.ns["30min"]("inline",{elementOrSelector:"#my-cal-inline-30min",config:{"layout":"month_view","useSlotsViewOnSmallScreen":"true"},calLink:"jeffrey-backbone-cs/30min"});
+Cal.ns["30min"]("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Backbone Customer Service - Transfer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}:root{--bg:#F6F5F2;--paper:#fff;--ink:#161614;--body:#383834;--muted:#888880;--faint:#AEADA6;--line:rgba(0,0,0,.07);--line2:rgba(0,0,0,.12);--sans:'Inter',system-ui,sans-serif;--serif:'Lora',Georgia,serif;--r:8px}html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.wrap{max-width:680px;margin:0 auto;padding:0 28px}.topbar{background:var(--ink);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:20}.tb-brand{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9)}.tb-label{font-size:.68rem;color:rgba(255,255,255,.35)}.sec{padding:80px 0;border-bottom:1px solid var(--line)}.sec:last-of-type{border-bottom:none}h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3rem);font-weight:500;color:var(--ink);line-height:1.12;letter-spacing:-.03em;margin-bottom:24px}h2{font-family:var(--serif);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:500;color:var(--ink);line-height:1.2;letter-spacing:-.025em;margin-bottom:20px}p{font-size:.96rem;line-height:1.82;color:var(--body);margin-bottom:18px}p:last-child{margin-bottom:0}p strong{color:var(--ink);font-weight:600}.lbl{display:inline-flex;align-items:center;gap:8px;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}.lbl::before{content:'';width:18px;height:1px;background:var(--faint);flex-shrink:0}.opening-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:40px}.opening-to{font-size:.82rem;color:var(--muted)}.opening-to strong{color:var(--ink);font-weight:600}.opening-date{font-size:.78rem;color:var(--muted)}.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.18rem,2.5vw,1.45rem);color:var(--ink);line-height:1.55;border-left:2px solid var(--ink);padding:4px 0 4px 22px;margin:36px 0}.pivot{padding:52px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:48px 0;text-align:center}.pivot-pre{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}.pivot h2{text-align:center;max-width:480px;margin:0 auto}.evidence{margin:36px 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line2);box-shadow:0 3px 16px rgba(0,0,0,.08)}.evidence img{width:100%;display:block}.bb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2);border-radius:var(--r);overflow:hidden;margin-top:32px}.bb-item{background:var(--paper);padding:24px 22px}.bb-tag{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1F3D35;margin-bottom:8px}.bb-title{font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:6px}.bb-desc{font-size:.82rem;color:var(--muted);line-height:1.6}.team-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--paper);border:1px solid var(--line2);border-radius:14px;overflow:hidden;margin-top:32px}.tc-photo{position:relative;overflow:hidden;background:#2A2A27;min-height:320px}.tc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%}.tc-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,20,.6) 0%,transparent 50%)}.tc-photo-names{position:absolute;bottom:18px;left:20px;color:#fff}.tc-photo-names strong{display:block;font-size:1rem;font-weight:600;margin-bottom:3px}.tc-photo-names span{font-size:.66rem;color:rgba(255,255,255,.55);letter-spacing:.05em;text-transform:uppercase}.tc-body{padding:28px 26px;display:flex;flex-direction:column;gap:20px}.tc-bio{font-size:.86rem;color:var(--body);line-height:1.75}.tc-facts{display:flex;flex-direction:column;gap:14px}.tf-item{border-left:2px solid var(--line2);padding-left:12px}.tf-val{font-size:.86rem;font-weight:600;color:var(--ink);margin-bottom:1px}.tf-lbl{font-size:.68rem;color:var(--muted)}.cta-sec{background:var(--ink);border-radius:14px;padding:44px 40px;margin:48px 0;color:#fff}.cta-eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px}.cta-sec h2{color:#fff;margin-bottom:14px}.cta-sec>p{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:0}.cta-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;align-items:start}.cta-col-label{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px}.cf{display:flex;flex-direction:column;gap:9px}.cf input,.cf textarea{width:100%;padding:11px 13px;border-radius:7px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-family:var(--sans);font-size:.84rem;outline:none}.cf input::placeholder,.cf textarea::placeholder{color:rgba(255,255,255,.28)}.cf textarea{height:100px;resize:none}.cf-btn{width:100%;padding:12px;border-radius:7px;background:#fff;color:var(--ink);font-family:var(--sans);font-size:.84rem;font-weight:700;border:none;cursor:pointer}.cal-wrap{border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.1);min-height:420px;background:rgba(255,255,255,.04)}#my-cal-inline-30min{width:100%;min-height:420px}.footer{padding:28px 0 44px;text-align:center}.footer p{font-size:.68rem;color:var(--faint);margin:0}.r{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}.r.v{opacity:1;transform:translateY(0)}.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}@media(max-width:600px){.wrap{padding:0 20px}.sec{padding:56px 0}.bb-grid{grid-template-columns:1fr}.team-card{grid-template-columns:1fr}.cta-sec{padding:32px 22px}.cta-cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="tb-brand">Backbone Customer Service</span>
+  <span class="tb-label">Persoonlijk voor Transfer</span>
+</div>
+
+<div class="wrap">
+
+  <!-- OPENING -->
+  <section class="sec">
+    <div class="opening-head">
+      <div class="opening-to">Aan <strong>Transfer</strong>, Nederland</div>
+      <div class="opening-date">Juni 2026</div>
+    </div>
+    <div class="lbl r">Voor jullie team</div>
+    <h1 class="r">Waarom je<br>mijn brief hebt ontvangen.</h1>
+    <p class="r d2">Ik ben Jeffrey, mede-oprichter van Backbone Customer Service. Ik schrijf jullie omdat Transfer een specifiek product maakt met een specifieke CS-uitdaging. Knitwear is niet zomaar een kledingstuk en een klant die knitwear koopt weet dat.</p>
+    <p class="r d3">Wasadvies, krimpgedrag, pillingvragen, maatadvies - dit zijn geen standaardvragen die een generiek CS-team met een template kan beantwoorden. De klant merkt het verschil tussen een antwoord van iemand die het product kent en een antwoord van iemand die een script volgt.</p>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="sec">
+    <div class="lbl r">Wat ik zag</div>
+    <h2 class="r d1">Drie dingen die mij opvielen bij Transfer</h2>
+    <p class="r d2">Voordat ik contact opnam heb ik jullie webshop en online aanwezigheid bekeken. Dit zijn mijn drie observaties.</p>
+
+    <div class="pull r d3">"Boutique schaal betekent dat elk contactmoment zwaarder weegt. Een perfecte CS-ervaring is de krachtigste verkooptool bij terugkerende klanten."</div>
+
+    <p class="r">De kracht van Transfer zit in de productkwaliteit en het niche karakter. Maar juist bij niche producten is de klant kritischer. Ze kopen bewust, ze zijn betrokken bij het materiaal, en ze hebben vragen die verder gaan dan leveringstijd en retourbeleid.</p>
+
+    <div class="evidence r d1">
+      <img src="screenshots/transfer-tp.png" alt="Transfer online reputatie">
+    </div>
+
+    <p class="r">De tweede observatie gaat over de reputatieopbouw. Een beperkte of afwezige Trustpilot-aanwezigheid maakt het moeilijker voor nieuwe klanten om vertrouwen te bouwen voordat ze kopen. Bij een boutique merk als Transfer kan dat het verschil zijn tussen een eerste aankoop en afhaken.</p>
+
+    <div class="evidence r d1">
+      <img src="screenshots/transfer-home.png" alt="Transfer webshop">
+    </div>
+
+    <p class="r">De derde observatie: bij boutique schaal is het team waarschijnlijk klein en multifunctioneel. CS wordt dan opgepakt naast andere taken, wat betekent dat de kwaliteit en snelheid van antwoorden afhankelijk is van hoe druk het op een gegeven moment is. Dat is een kwetsbaarheid.</p>
+
+    <div class="pivot r">
+      <div class="pivot-pre">De kern</div>
+      <h2>CS die het product kent en elke klant het gevoel geeft dat ze bij de juiste plek zijn.</h2>
+    </div>
+  </section>
+
+  <!-- WAT WE DOEN -->
+  <section class="sec">
+    <div class="lbl r">Hoe Backbone werkt</div>
+    <h2 class="r d1">Wat wij voor Transfer zouden doen</h2>
+    <p class="r d2">Wij werken uitsluitend voor modemerken. Dat betekent dat wij productkennisopbouw serieus nemen. Voordat wij een eerste klant woord antwoorden, kennen wij jullie collectie, jullie materialen en jullie tone of voice.</p>
+
+    <div class="bb-grid">
+      <div class="bb-item r d1">
+        <div class="bb-tag">Productkennis</div>
+        <div class="bb-title">Knitwear-specifieke CS</div>
+        <div class="bb-desc">Wij leren jullie materialen, wasadvies en producteigenschappen kennen zodat klanten antwoorden krijgen die kloppen en vertrouwen opbouwen.</div>
+      </div>
+      <div class="bb-item r d2">
+        <div class="bb-tag">Retentie</div>
+        <div class="bb-title">CS als terugkeertool</div>
+        <div class="bb-desc">Bij boutique schaal is elke klant waardevol. Een goede CS-ervaring vergroot de kans op een tweede aankoop significant.</div>
+      </div>
+      <div class="bb-item r d3">
+        <div class="bb-tag">Reputatie</div>
+        <div class="bb-title">Reviewvolume opbouwen</div>
+        <div class="bb-desc">Wij nodigen tevreden klanten actief uit om een review achter te laten. Dat vergroot jullie online geloofwaardigheid bij nieuwe bezoekers.</div>
+      </div>
+      <div class="bb-item r">
+        <div class="bb-tag">Beschikbaarheid</div>
+        <div class="bb-title">Altijd bereikbaar</div>
+        <div class="bb-desc">Klanten van Transfer verwachten een snel antwoord. Wij zorgen dat die verwachting altijd wordt waargemaakt, ook op drukke momenten.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="sec">
+    <div class="lbl r">Wie wij zijn</div>
+    <h2 class="r d1">Backbone Customer Service</h2>
+    <p class="r d2">Ik heb Backbone opgericht omdat ik zag dat CS bij groeiende D2C-merken structureel ondergewaardeerd wordt. Het is het meest directe klantcontact dat een merk heeft. Wij behandelen het ook zo.</p>
+
+    <div class="team-card r d1">
+      <div class="tc-photo">
+        <img src="jeff-dylan.jpg" alt="Jeffrey en Dylan - Backbone Customer Service">
+        <div class="tc-photo-overlay"></div>
+        <div class="tc-photo-names">
+          <strong>Jeffrey &amp; Dylan</strong>
+          <span>Backbone CS</span>
+        </div>
+      </div>
+      <div class="tc-body">
+        <p class="tc-bio">Wij werken alleen voor D2C-modemerken. Dat geeft ons een diep begrip van de specifieke uitdagingen in mode-CS: productvragen, retourlogica, seizoensdruk en merkcommunicatie.</p>
+        <div class="tc-facts">
+          <div class="tf-item">
+            <div class="tf-val">Productkennisopbouw</div>
+            <div class="tf-lbl">Altijd voor de eerste klantinteractie</div>
+          </div>
+          <div class="tf-item">
+            <div class="tf-val">Merkgebonden toon</div>
+            <div class="tf-lbl">In jullie stem, niet de onze</div>
+          </div>
+          <div class="tf-item">
+            <div class="tf-val">Flexibele capaciteit</div>
+            <div class="tf-lbl">Schaalbaar op jullie ritme</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec">
+    <div class="cta-sec r">
+      <div class="cta-eyebrow">Volgende stap</div>
+      <h2>Laten we een kort gesprek inplannen.</h2>
+      <p>Ik wil graag horen hoe jullie CS nu is ingericht en waar de knelpunten zitten. Een gesprek van 30 minuten is genoeg om te zien of wij iets voor Transfer kunnen betekenen.</p>
+      <div class="cta-cols">
+        <div>
+          <div class="cta-col-label">Stuur een bericht</div>
+          <form class="cf" action="https://formspree.io/f/mykayldz" method="POST" enctype="application/x-www-form-urlencoded">
+            <input type="text" name="name" placeholder="Jouw naam">
+            <input type="email" name="email" placeholder="E-mailadres">
+            <input type="hidden" name="company" value="Transfer">
+            <textarea name="message" placeholder="Korte toelichting (optioneel)"></textarea>
+            <button type="submit" class="cf-btn">Verstuur bericht</button>
+          </form>
+        </div>
+        <div>
+          <div class="cta-col-label">Of plan direct in</div>
+          <div class="cal-wrap">
+            <div id="my-cal-inline-30min"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Backbone Customer Service · backbonecustomerservice.com · Persoonlijk samengesteld voor Transfer</p>
+  </div>
+</footer>
+
+<script>
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");Cal("init","30min",{origin:"https://app.cal.com"});Cal.ns["30min"]("inline",{elementOrSelector:"#my-cal-inline-30min",config:{"layout":"month_view","useSlotsViewOnSmallScreen":"true"},calLink:"jeffrey-backbone-cs/30min"});Cal.ns["30min"]("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<script>
+(function(){var els=document.querySelectorAll('.r');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('v')});return}var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{rootMargin:'0px 0px -32px 0px',threshold:.04});els.forEach(function(el){io.observe(el)})})();
+</script>
+</body>
+</html>
