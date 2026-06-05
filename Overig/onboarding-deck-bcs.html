@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pique × Backbone CS — Onboarding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8F6F2;--navy:#0F172A;--navy2:#162035;--navy3:#1E2D4A;
+  --amber:#D4943A;--ambers:#E8B06A;--white:#FFFFFF;--text:#1E2433;
+  --muted:rgba(30,36,51,.45);--border:rgba(15,23,42,.09);
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;--ease:cubic-bezier(.25,.46,.45,.94);
+}
+html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;cursor:none}
+
+#cur{position:fixed;width:9px;height:9px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s}
+#cur-r{position:fixed;width:36px;height:36px;border:1px solid rgba(212,148,58,.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .4s}
+body:has(button:hover,a:hover) #cur{width:5px;height:5px}
+body:has(button:hover,a:hover) #cur-r{width:52px;height:52px;border-color:rgba(212,148,58,.65)}
+
+.prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--amber),var(--ambers));transition:width .5s var(--ease);z-index:200;border-radius:0 2px 2px 0}
+.logo-f{position:fixed;top:22px;left:36px;z-index:200;display:flex;align-items:center}
+.logo-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);margin-bottom:6px;animation:pulse 2.5s ease-in-out infinite}
+.ctr{position:fixed;top:32px;right:44px;z-index:200;font-family:var(--mono);font-size:.65rem;color:var(--muted);letter-spacing:.1em}
+.nav{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:8px}
+.nb{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border);background:var(--white);color:var(--muted);font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;box-shadow:0 2px 12px rgba(15,23,42,.06)}
+.nb:hover{border-color:var(--amber);color:var(--amber)}
+.pip{width:6px;height:6px;border-radius:50%;background:var(--border);transition:all .3s;cursor:pointer}
+.pip.on{background:var(--amber);width:18px;border-radius:3px}
+
+.deck{width:100vw;height:100vh;position:relative}
+.slide{position:absolute;inset:0;opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none;display:flex;align-items:center;justify-content:center;padding:72px 56px 72px}
+.slide.active{opacity:1;transform:translateY(0);pointer-events:all}
+.slide.out{opacity:0;transform:translateY(-18px);transition:opacity .3s,transform .3s}
+.inner{width:100%;max-width:1080px}
+
+/* TYPOGRAPHY */
+.ey{font-family:var(--mono);font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.ey::before{content:'';width:14px;height:1px;background:var(--amber);opacity:.7}
+.h1{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.6rem);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:var(--navy)}
+.h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;line-height:1.1;letter-spacing:-.025em;color:var(--navy)}
+.h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;line-height:1.25;color:var(--navy)}
+.a{color:var(--amber)}.d{color:rgba(15,23,42,.22)}
+.body{font-size:.93rem;line-height:1.78;color:var(--muted)}
+.body strong{color:var(--navy);font-weight:600}
+.div{width:36px;height:2px;background:var(--amber);border-radius:2px;margin:1.1rem 0;opacity:.7}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.badge{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .75rem;border-radius:100px}
+.b-am{background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.22);color:var(--amber)}
+.b-nv{background:rgba(15,23,42,.07);border:1px solid rgba(15,23,42,.1);color:rgba(15,23,42,.5)}
+.b-gn{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#16a34a}
+.b-rd{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.15);color:#dc2626}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+
+/* CARD */
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:1.75rem 2rem;transition:all .4s var(--ease)}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 50px rgba(15,23,42,.07);border-color:rgba(212,148,58,.22)}
+
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.6)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ══ S1 COVER ══ */
+.s1-wrap{display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center;width:100%;max-width:1080px;position:relative}
+.s1-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(15,23,42,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(15,23,42,.03) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 80% 80% at 65% 40%,black,transparent);pointer-events:none}
+.s1-kicker{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:1.6rem;display:flex;align-items:center;gap:.75rem;opacity:0;animation:fadeUp .7s .15s forwards}
+.s1-kline{width:18px;height:1px;background:var(--amber)}
+.s1-h{font-family:var(--serif);font-size:clamp(2.8rem,4.5vw,4rem);font-weight:600;line-height:1.08;letter-spacing:-.035em;color:var(--navy);margin-bottom:1.4rem;opacity:0;animation:fadeUp .8s .25s forwards}
+.s1-sub{font-size:.93rem;color:var(--muted);line-height:1.75;max-width:400px;margin-bottom:2.25rem;opacity:0;animation:fadeUp .8s .38s forwards}
+.s1-meta{display:flex;align-items:center;gap:1.1rem;opacity:0;animation:fadeUp .7s .52s forwards}
+.s1-mi{font-family:var(--mono);font-size:.62rem;color:var(--muted);letter-spacing:.07em}
+.s1-ms{width:1px;height:12px;background:var(--border)}
+.s1-card{background:var(--navy);border-radius:22px;overflow:hidden;box-shadow:0 32px 80px rgba(15,23,42,.22);opacity:0;animation:fadeIn .9s .4s forwards;position:relative}
+.s1-ch{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.s1-ds{display:flex;gap:.32rem}
+.s1-dd{width:8px;height:8px;border-radius:50%}
+.s1-dd:nth-child(1){background:rgba(255,82,82,.4)}
+.s1-dd:nth-child(2){background:rgba(255,189,68,.4)}
+.s1-dd:nth-child(3){background:rgba(52,199,89,.4)}
+.s1-dt{font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.25);letter-spacing:.08em}
+.s1-lv{display:flex;align-items:center;gap:.32rem;font-family:var(--mono);font-size:.58rem;color:rgba(34,197,94,.7)}
+.s1-ld{width:5px;height:5px;border-radius:50%;background:#22C55E;animation:blink 2s infinite}
+.s1-row{display:flex;align-items:center;justify-content:space-between;padding:.82rem 1.4rem;border-bottom:1px solid rgba(255,255,255,.04)}
+.s1-rl{display:flex;align-items:center;gap:.65rem}
+.s1-av{width:29px;height:29px;border-radius:50%;background:linear-gradient(135deg,rgba(212,148,58,.3),rgba(212,148,58,.1));display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--amber)}
+.s1-rn{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.75)}
+.s1-rc{font-size:.63rem;color:rgba(255,255,255,.28);margin-top:.07rem}
+.s1-tag{font-size:.6rem;font-weight:600;padding:.2rem .6rem;border-radius:100px;letter-spacing:.04em}
+.s1-tag.gn{background:rgba(34,197,94,.12);color:#4ADE80}
+.s1-tag.am{background:rgba(212,148,58,.14);color:var(--amber)}
+.s1-tag.gr{background:rgba(255,255,255,.06);color:rgba(255,255,255,.35)}
+.s1-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05)}
+.s1-st{background:rgba(255,255,255,.025);padding:.85rem .7rem;text-align:center}
+.s1-sn{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--white)}
+.s1-sn .a{color:var(--amber)}
+.s1-sl{font-size:.58rem;color:rgba(255,255,255,.25);margin-top:.2rem}
+.s1-float{position:absolute;background:rgba(15,23,42,.92);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:.8rem 1rem;pointer-events:none}
+.s1-f1{bottom:-1.1rem;left:-1.4rem;animation:floatA 6s ease-in-out infinite}
+.s1-f2{top:-1.1rem;right:-.9rem;animation:floatB 7s ease-in-out infinite .9s}
+.sf-r{display:flex;align-items:center;gap:.5rem}
+.sf-i{width:22px;height:22px;border-radius:6px;background:rgba(212,148,58,.2);display:flex;align-items:center;justify-content:center}
+.sf-i svg{width:11px;height:11px;fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sf-t{font-size:.7rem;font-weight:600;color:rgba(255,255,255,.7)}
+.sf-s{font-size:.6rem;color:rgba(255,255,255,.28);margin-top:.1rem}
+
+/* ══ S2 WAT DIT IS ══ */
+.s2-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:2.25rem}
+.s2-hd{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.65rem;padding:.3rem .8rem;border-radius:100px;display:inline-flex;align-items:center;gap:.4rem}
+.s2-hd.not{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.12);color:#dc2626}
+.s2-hd.yes{background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.22);color:var(--amber)}
+.s2-it{padding:.8rem 1rem;border-radius:11px;font-size:.86rem;line-height:1.5;display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.45rem;transition:all .3s}
+.s2-it.not{background:rgba(220,38,38,.04);border:1px solid rgba(220,38,38,.07);color:rgba(30,36,51,.48)}
+.s2-it.yes{background:var(--white);border:1px solid var(--border);color:rgba(30,36,51,.72)}
+.s2-it.yes:hover{border-color:rgba(212,148,58,.28);transform:translateX(3px)}
+.s2-ic{width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.s2-ic.not{background:rgba(220,38,38,.1)}.s2-ic.yes{background:rgba(212,148,58,.12)}
+.s2-ic svg{width:9px;height:9px;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.s2-ic.not svg{stroke:#dc2626}.s2-ic.yes svg{stroke:var(--amber)}
+.s2-q{background:var(--navy);border-radius:18px;padding:1.75rem 2.25rem;margin-top:1.25rem;grid-column:1/-1;position:relative;overflow:hidden}
+.s2-q::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.s2-qt{font-family:var(--serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,.68);line-height:1.65}
+.s2-qt .a{color:var(--amber);font-style:normal}
+
+/* ══ S3 ICP ══ */
+.icp-r{display:flex;flex-direction:column;gap:.65rem;margin-top:1.4rem}
+.icp-row{display:grid;grid-template-columns:140px 1fr;align-items:center;gap:1rem;padding:.7rem 1rem;border-radius:11px;background:var(--white);border:1.5px solid var(--border);transition:all .3s}
+.icp-row:hover{border-color:rgba(212,148,58,.28);transform:translateX(4px)}
+.icp-l{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.icp-v{font-size:.84rem;font-weight:500;color:var(--navy)}
+.brand-card{background:var(--white);border:1.5px solid var(--border);border-radius:15px;padding:1.1rem 1.4rem;display:flex;align-items:center;gap:.9rem;position:relative;overflow:hidden;margin-bottom:.65rem;transition:all .3s}
+.brand-card:hover{transform:translateX(4px)}
+.brand-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.brand-card.pos::before{background:var(--amber)}
+.brand-card.neg::before{background:rgba(220,38,38,.4)}
+.brand-ic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.brand-ic.pos{background:rgba(212,148,58,.1)}.brand-ic.neg{background:rgba(220,38,38,.06)}
+.brand-n{font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:.12rem}
+.brand-d{font-size:.72rem;color:var(--muted)}
+.brand-t{margin-left:auto;font-family:var(--mono);font-size:.56rem;letter-spacing:.07em;padding:.22rem .65rem;border-radius:100px}
+.brand-t.pos{background:rgba(212,148,58,.1);color:var(--amber);border:1px solid rgba(212,148,58,.2)}
+.brand-t.neg{background:rgba(220,38,38,.06);color:#dc2626;border:1px solid rgba(220,38,38,.12)}
+.s3-note{background:rgba(212,148,58,.05);border:1.5px solid rgba(212,148,58,.18);border-radius:14px;padding:1.1rem 1.4rem;margin-top:.5rem}
+.s3-nl{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem;display:block}
+.s3-note p{font-size:.8rem;color:rgba(30,36,51,.6);line-height:1.6}
+
+/* ══ S4 SUCCES ══ */
+.s4-met{display:flex;flex-direction:column;gap:1.25rem;margin-top:1.75rem}
+.s4-m{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:1.25rem 1.75rem;display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:center;transition:all .4s}
+.s4-m:hover{border-color:rgba(212,148,58,.28);transform:translateX(5px);box-shadow:0 8px 28px rgba(15,23,42,.06)}
+.s4-mn{font-family:var(--serif);font-size:2.8rem;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-.04em}
+.s4-mn .a{color:var(--amber)}
+.s4-ml{font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
+.s4-ms{font-size:.74rem;color:var(--muted);line-height:1.5}
+.s4-path{position:relative;padding-left:2rem}
+.s4-path::before{content:'';position:absolute;left:0;top:18px;bottom:18px;width:1px;background:linear-gradient(to bottom,var(--amber),rgba(212,148,58,.15))}
+.s4-step{display:flex;gap:1.1rem;padding:.8rem 0;position:relative}
+.s4-step::before{content:'';position:absolute;left:-2rem;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:var(--amber);border:2px solid var(--bg)}
+.s4-step:first-child::before{width:11px;height:11px;box-shadow:0 0 0 4px rgba(212,148,58,.14)}
+.s4-sm{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;color:var(--amber);white-space:nowrap;min-width:55px;padding-top:2px}
+.s4-st{font-size:.83rem;color:rgba(30,36,51,.62);line-height:1.55}
+.s4-st strong{color:var(--navy);font-weight:600}
+.s4-warn{background:var(--navy);border-radius:14px;padding:1.25rem 1.6rem;margin-top:1.25rem;position:relative;overflow:hidden}
+.s4-warn::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.s4-wl{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(212,148,58,.7);margin-bottom:.45rem;display:block}
+.s4-warn p{font-size:.8rem;color:rgba(255,255,255,.52);line-height:1.6}
+.s4-warn p strong{color:rgba(255,255,255,.82);font-weight:500}
+
+/* ══ S5 FASE OVERZICHT ══ */
+.phases-track{display:grid;grid-template-columns:repeat(7,1fr);gap:0;margin-top:2rem;border-radius:16px;overflow:hidden;border:1.5px solid var(--border)}
+.ph{border-right:1px solid var(--border);last-child{border-right:none};padding:0;display:flex;flex-direction:column;position:relative;background:var(--white);transition:all .35s}
+.ph:last-child{border-right:none}
+.ph:hover{background:rgba(212,148,58,.03)}
+.ph-head{padding:1rem 1rem .75rem;border-bottom:1px solid var(--border)}
+.ph-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:rgba(15,23,42,.07);line-height:1;margin-bottom:.35rem}
+.ph-week{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.3rem;display:block}
+.ph-title{font-size:.78rem;font-weight:600;color:var(--navy);line-height:1.25}
+.ph-body{padding:.75rem 1rem 1rem;flex:1}
+.ph-goal{font-size:.73rem;color:var(--muted);line-height:1.5;margin-bottom:.65rem}
+.ph-dels{display:flex;flex-wrap:wrap;gap:.3rem}
+.ph-del{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;padding:.2rem .55rem;border-radius:100px;background:rgba(212,148,58,.08);border:1px solid rgba(212,148,58,.15);color:rgba(212,148,58,.85)}
+.ph.featured{background:var(--navy)}
+.ph.featured .ph-head{border-color:rgba(255,255,255,.07)}
+.ph.featured .ph-num{color:rgba(255,255,255,.07)}
+.ph.featured .ph-week{color:rgba(212,148,58,.7)}
+.ph.featured .ph-title{color:var(--white)}
+.ph.featured .ph-goal{color:rgba(255,255,255,.42)}
+.ph.featured .ph-del{background:rgba(212,148,58,.12);border-color:rgba(212,148,58,.22);color:rgba(212,148,58,.9)}
+.ph.featured:hover{background:var(--navy2)}
+.phases-note{margin-top:1.1rem;display:flex;align-items:center;gap:2rem;justify-content:center}
+.pn-item{display:flex;align-items:center;gap:.55rem;font-size:.78rem;color:var(--muted)}
+.pn-item svg{width:13px;height:13px;fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ══ S6 FASE 1-4 DETAIL ══ */
+.phase-cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+.pc{border-radius:16px;overflow:hidden;background:var(--white);border:1.5px solid var(--border);display:flex;flex-direction:column}
+.pc-head{padding:1.1rem 1.25rem .9rem}
+.pc-week{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem;display:block}
+.pc-name{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.25;margin-bottom:.3rem}
+.pc-goal{font-size:.74rem;color:var(--muted);line-height:1.5;font-style:italic}
+.pc-body{padding:.6rem 1.25rem 1.1rem;border-top:1px solid var(--border);flex:1}
+.pc-items{list-style:none;display:flex;flex-direction:column;gap:.35rem;margin-bottom:.75rem}
+.pc-items li{display:flex;align-items:flex-start;gap:.5rem;font-size:.75rem;color:rgba(30,36,51,.6);line-height:1.45}
+.pc-items li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:5px;opacity:.7}
+.pc-dels{display:flex;flex-wrap:wrap;gap:.3rem}
+.pc-del{font-family:var(--mono);font-size:.52rem;letter-spacing:.05em;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.07);border:1px solid rgba(212,148,58,.15);color:rgba(212,148,58,.9)}
+.pc.dark{background:var(--navy);border-color:rgba(255,255,255,.06)}
+.pc.dark .pc-head{background:rgba(255,255,255,.02)}
+.pc.dark .pc-week{color:rgba(212,148,58,.7)}
+.pc.dark .pc-name{color:var(--white)}
+.pc.dark .pc-goal{color:rgba(255,255,255,.38)}
+.pc.dark .pc-body{border-color:rgba(255,255,255,.06)}
+.pc.dark .pc-items li{color:rgba(255,255,255,.5)}
+.pc.dark .pc-del{background:rgba(212,148,58,.1);border-color:rgba(212,148,58,.2);color:rgba(212,148,58,.9)}
+.pc-imp{background:rgba(212,148,58,.06);border:1px solid rgba(212,148,58,.15);border-radius:8px;padding:.55rem .75rem;margin-bottom:.65rem}
+.pc-imp-l{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.2rem;display:block}
+.pc-imp p{font-size:.72rem;color:rgba(30,36,51,.55);line-height:1.5}
+.pc.dark .pc-imp{background:rgba(212,148,58,.06);border-color:rgba(212,148,58,.15)}
+.pc.dark .pc-imp p{color:rgba(255,255,255,.42)}
+
+/* ══ S7 FASE 5-7 DETAIL ══ */
+.phase-cards-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem}
+
+/* ══ S8 RESEARCH ══ */
+.tiers-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.5rem}
+.tier{border-radius:18px;overflow:hidden;border:1.5px solid var(--border);background:var(--white);display:flex;flex-direction:column}
+.tier-head{padding:1.35rem 1.6rem 1.1rem}
+.tier-badge{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .75rem;border-radius:100px;margin-bottom:.9rem}
+.t1 .tier-badge{background:rgba(15,23,42,.9);color:var(--amber);border:1px solid rgba(212,148,58,.3)}
+.t2 .tier-badge{background:rgba(212,148,58,.1);color:var(--amber);border:1px solid rgba(212,148,58,.2)}
+.t3 .tier-badge{background:var(--bg);color:rgba(30,36,51,.45);border:1px solid var(--border)}
+.tier-title{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--navy)}
+.tier-sub{font-size:.76rem;color:var(--muted);margin-top:.25rem}
+.t1{border-color:rgba(15,23,42,.18)}
+.t1 .tier-head{background:var(--navy)}
+.t1 .tier-title{color:var(--white)}
+.t1 .tier-sub{color:rgba(255,255,255,.38)}
+.tier-body{padding:.65rem 1.6rem 1.35rem;border-top:1px solid var(--border);flex:1}
+.t1 .tier-body{border-color:rgba(255,255,255,.06);background:var(--navy)}
+.tier-item{display:flex;align-items:flex-start;gap:.55rem;padding:.48rem 0;border-bottom:1px solid var(--border);font-size:.78rem;color:rgba(30,36,51,.6);line-height:1.4}
+.t1 .tier-item{border-color:rgba(255,255,255,.05);color:rgba(255,255,255,.5)}
+.tier-item:last-child{border-bottom:none}
+.t-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.t1 .t-dot{background:var(--amber)}.t2 .t-dot{background:rgba(212,148,58,.6)}.t3 .t-dot{background:rgba(30,36,51,.2)}
+.process-strip{margin-top:1.35rem;background:var(--navy);border-radius:14px;padding:1.25rem 2rem;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.ps-step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
+.ps-step:not(:last-child)::after{content:'→';position:absolute;right:-.85rem;top:48%;transform:translateY(-60%);color:rgba(255,255,255,.18);font-size:.7rem}
+.ps-icon{width:34px;height:34px;border-radius:9px;background:rgba(212,148,58,.12);border:1px solid rgba(212,148,58,.2);display:flex;align-items:center;justify-content:center;margin-bottom:.55rem}
+.ps-icon svg{width:13px;height:13px;fill:none;stroke:var(--amber);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ps-label{font-family:var(--mono);font-size:.56rem;color:rgba(255,255,255,.32);letter-spacing:.05em;line-height:1.4;text-transform:uppercase}
+
+/* ══ S9 OUTREACH ══ */
+.s9-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.s9-prin{display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem}
+.s9-p{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1.35rem;display:grid;grid-template-columns:32px 1fr;gap:.9rem;align-items:start;transition:all .35s}
+.s9-p:hover{border-color:rgba(212,148,58,.28);transform:translateX(5px)}
+.s9-pn{width:32px;height:32px;border-radius:50%;background:rgba(15,23,42,.05);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.9rem;font-weight:600;color:var(--navy);flex-shrink:0}
+.s9-p.hl .s9-pn{background:var(--navy);color:var(--amber)}
+.s9-pt{font-size:.85rem;font-weight:600;color:var(--navy);margin-bottom:.25rem}
+.s9-pb{font-size:.78rem;color:var(--muted);line-height:1.55}
+.s9-chs{display:flex;flex-direction:column;gap:.65rem;margin-top:1.35rem}
+.s9-ch{background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.9rem;transition:all .35s}
+.s9-ch:hover{border-color:rgba(212,148,58,.22);box-shadow:0 4px 14px rgba(15,23,42,.05)}
+.s9-ci{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
+.s9-ci.li{background:#0A66C2}.s9-ci.ml{background:rgba(212,148,58,.12)}.s9-ci.vd{background:rgba(220,38,38,.1)}.s9-ci.br{background:rgba(15,23,42,.06)}
+.s9-cn{font-size:.82rem;font-weight:600;color:var(--navy)}
+.s9-cd{font-size:.72rem;color:var(--muted);margin-top:.08rem}
+.s9-filter{background:var(--navy);border-radius:14px;padding:1.1rem 1.35rem;position:relative;overflow:hidden;margin-top:.75rem}
+.s9-filter::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.s9-fl{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(212,148,58,.7);margin-bottom:.65rem;display:block}
+.s9-fit{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.s9-fi{display:flex;align-items:center;gap:.45rem;font-size:.76rem;color:rgba(255,255,255,.52)}
+.s9-fi svg{width:11px;height:11px;fill:none;stroke:var(--amber);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ══ S10 SAMENWERKING + DASH ══ */
+.s10-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.s10-cad{display:flex;flex-direction:column;gap:.65rem;margin-top:1.5rem}
+.s10-ci{display:grid;grid-template-columns:88px 1fr;gap:1.1rem;align-items:start;padding:.9rem 1.1rem;background:var(--white);border:1.5px solid var(--border);border-radius:13px;transition:all .3s}
+.s10-ci:hover{border-color:rgba(212,148,58,.22)}
+.s10-cf{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding-top:2px}
+.s10-ct{font-size:.83rem;font-weight:600;color:var(--navy);margin-bottom:.18rem}
+.s10-cd{font-size:.76rem;color:var(--muted);line-height:1.5}
+.dash{background:var(--navy);border-radius:18px;overflow:hidden;box-shadow:0 18px 55px rgba(15,23,42,.2)}
+.dash-h{padding:.95rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.d-dots{display:flex;gap:.28rem}
+.d-dot{width:8px;height:8px;border-radius:50%}
+.d-dot:nth-child(1){background:rgba(255,82,82,.4)}
+.d-dot:nth-child(2){background:rgba(255,189,68,.4)}
+.d-dot:nth-child(3){background:rgba(52,199,89,.4)}
+.d-tit{font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.24);letter-spacing:.08em}
+.d-lv{display:flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.56rem;color:rgba(34,197,94,.7)}
+.d-ld{width:4px;height:4px;border-radius:50%;background:#22C55E;animation:blink 2s infinite}
+.dash-sts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.05)}
+.d-s{background:rgba(255,255,255,.02);padding:.7rem .7rem;text-align:center}
+.d-sn{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--white);line-height:1}
+.d-sn .a{color:var(--amber)}
+.d-sl{font-size:.55rem;color:rgba(255,255,255,.24);margin-top:.15rem}
+.dash-rows{padding:.4rem 0}
+.d-row{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.04)}
+.d-rn{font-size:.76rem;font-weight:600;color:rgba(255,255,255,.7)}
+.d-rw{font-size:.62rem;color:rgba(255,255,255,.25)}
+.d-rs{font-size:.6rem;font-weight:600;padding:.18rem .6rem;border-radius:100px;letter-spacing:.04em}
+.d-rs.bk{background:rgba(34,197,94,.12);color:#4ADE80}
+.d-rs.ac{background:rgba(212,148,58,.12);color:var(--amber)}
+.d-rs.rs{background:rgba(255,255,255,.06);color:rgba(255,255,255,.35)}
+.dash-seg{padding:.9rem 1.2rem;border-top:1px solid rgba(255,255,255,.06)}
+.d-sl2{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:.55rem;display:block}
+.d-bars{display:flex;flex-direction:column;gap:.38rem}
+.d-bar{display:grid;grid-template-columns:88px 1fr auto;align-items:center;gap:.65rem}
+.d-bn{font-size:.7rem;color:rgba(255,255,255,.42)}
+.d-bt{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.d-bf{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--amber),var(--ambers))}
+.d-bp{font-family:var(--mono);font-size:.62rem;color:var(--amber)}
+
+/* ══ S11 CLIENT RESP ══ */
+.s11-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.s11-list{display:flex;flex-direction:column;gap:.65rem;margin-top:1.5rem}
+.s11-item{display:flex;align-items:flex-start;gap:.9rem;padding:.9rem 1.1rem;background:var(--white);border:1.5px solid var(--border);border-radius:13px;transition:all .35s}
+.s11-item:hover{border-color:rgba(212,148,58,.22);transform:translateX(4px)}
+.s11-ico{width:30px;height:30px;border-radius:8px;background:rgba(212,148,58,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.s11-ico svg{width:13px;height:13px;fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s11-it{font-size:.83rem;font-weight:600;color:var(--navy);margin-bottom:.18rem}
+.s11-id{font-size:.75rem;color:var(--muted);line-height:1.5}
+.s11-close{background:var(--navy);border-radius:18px;padding:1.75rem 1.9rem;position:relative;overflow:hidden}
+.s11-close::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.s11-cl{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,148,58,.7);margin-bottom:.65rem;display:block}
+.s11-ct{font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--white);margin-bottom:.6rem;line-height:1.25}
+.s11-cb{font-size:.8rem;color:rgba(255,255,255,.47);line-height:1.7}
+.s11-cb strong{color:rgba(255,255,255,.8);font-weight:500}
+.s11-opts{display:flex;flex-direction:column;gap:.5rem;margin-top:1.1rem}
+.s11-opt{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:9px;padding:.68rem .95rem;display:flex;align-items:center;gap:.6rem;font-size:.76rem;color:rgba(255,255,255,.48)}
+.s11-opt svg{width:11px;height:11px;fill:none;stroke:var(--amber);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ══ S12 VERWACHTINGEN ══ */
+.s12-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.s12-mb{display:flex;flex-direction:column;gap:1px;margin-top:1.5rem;border-radius:14px;overflow:hidden;border:1.5px solid var(--border)}
+.s12-m{padding:1.1rem 1.35rem;display:grid;grid-template-columns:76px 1fr auto;align-items:start;gap:.9rem;background:var(--white);border-bottom:1px solid var(--border);transition:all .3s}
+.s12-m:last-child{border-bottom:none}
+.s12-m:hover{background:rgba(212,148,58,.03)}
+.s12-ml{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding-top:2px}
+.s12-mt{font-size:.83rem;font-weight:600;color:var(--navy);margin-bottom:.25rem}
+.s12-md{font-size:.75rem;color:var(--muted);line-height:1.5}
+.s12-mn{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--navy);text-align:right;white-space:nowrap}
+.s12-mn .a{color:var(--amber)}
+.s12-mls{font-family:var(--mono);font-size:.55rem;color:var(--muted);text-align:right}
+.s12-intel{background:var(--bg);border:1.5px solid rgba(212,148,58,.2);border-radius:18px;padding:1.6rem 1.8rem;margin-top:1.25rem}
+.s12-il{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:.85rem;display:block}
+.s12-it{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.65rem}
+.s12-items{display:flex;flex-direction:column;gap:.48rem}
+.s12-ii{display:flex;align-items:flex-start;gap:.6rem;font-size:.78rem;color:rgba(30,36,51,.58);line-height:1.45}
+.s12-ii svg{width:12px;height:12px;fill:none;stroke:var(--amber);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
+
+/* ══ S13 CLOSING ══ */
+.s13-c{text-align:center;display:flex;flex-direction:column;align-items:center;max-width:680px}
+.s13-big{display:flex;gap:3rem;justify-content:center;margin-top:2.25rem}
+.s13-st{text-align:center}
+.s13-sn{font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-.04em}
+.s13-sn .a{color:var(--amber)}
+.s13-sl{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.45rem}
+.s13-sep{width:1px;background:var(--border);align-self:stretch}
+.s13-next{margin-top:2.5rem;background:var(--navy);border-radius:18px;padding:1.75rem 2.5rem;width:100%;position:relative;overflow:hidden}
+.s13-next::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.s13-nl{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(212,148,58,.7);margin-bottom:.65rem;display:block}
+.s13-nt{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--white);margin-bottom:.4rem}
+.s13-nb{font-size:.83rem;color:rgba(255,255,255,.42);line-height:1.6}
+.s13-steps{display:flex;justify-content:center;gap:1px;margin-top:1.1rem}
+.s13-step{flex:1;padding:.7rem;background:rgba(255,255,255,.04);text-align:center;font-size:.72rem;color:rgba(255,255,255,.42);border-radius:8px;border:1px solid rgba(255,255,255,.06)}
+.s13-step span{display:block;font-family:var(--serif);font-size:1rem;color:var(--white);font-weight:600;margin-bottom:.2rem}
+</style>
+</head>
+<body>
+
+<div id="cur"></div><div id="cur-r"></div>
+<div class="prog" id="prog"></div>
+<div class="logo-f"><img src="Logo 1-01.jpg" alt="Pique" style="height:32px;width:auto;display:block"></div>
+<div class="ctr" id="ctr">01 / 13</div>
+<!-- slides: 13 total -->
+<div class="deck" id="deck">
+
+<!-- ═══════════ S1 — COVER ═══════════ -->
+<div class="slide active" data-n="1">
+  <div class="s1-grid"></div>
+  <div class="orb" style="width:500px;height:500px;top:-15%;right:-5%;background:rgba(212,148,58,.1);filter:blur(100px);animation:floatA 14s ease-in-out infinite"></div>
+  <div class="s1-wrap">
+    <div>
+      <div class="s1-kicker"><div class="s1-kline"></div>Strategisch Onboarding Document</div>
+      <h1 class="h1 s1-h" style="font-size:clamp(2.6rem,4.2vw,3.8rem)">Zo bouwen we samen aan <span class="a">een volle agenda.</span></h1>
+      <p class="body s1-sub">Dit document legt de basis voor onze samenwerking. Je leest wat we doen, hoe we dat doen, en wat we van jou nodig hebben om het te laten werken.</p>
+      <div class="s1-meta">
+        <span class="s1-mi">Pique × Backbone CS</span><div class="s1-ms"></div>
+        <span class="s1-mi">Mei 2026</span><div class="s1-ms"></div>
+        <span class="s1-mi">Vertrouwelijk</span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div class="s1-card">
+        <div class="s1-ch"><div style="display:flex;align-items:center;gap:.65rem"><div class="s1-ds"><div class="s1-dd"></div><div class="s1-dd"></div><div class="s1-dd"></div></div><span class="s1-dt">Pique Dashboard — Week 4</span></div><div class="s1-lv"><div class="s1-ld"></div>Live</div></div>
+        <div class="s1-row"><div class="s1-rl"><div class="s1-av">SL</div><div><div class="s1-rn">Sophie Lemmens</div><div class="s1-rc">SOLIT Socks · Founder</div></div></div><div class="s1-tag gn">Meeting gepland</div></div>
+        <div class="s1-row"><div class="s1-rl"><div class="s1-av">MH</div><div><div class="s1-rn">Marc Hornstra</div><div class="s1-rc">Hornbad · DGA</div></div></div><div class="s1-tag am">In gesprek</div></div>
+        <div class="s1-row"><div class="s1-rl"><div class="s1-av">JB</div><div><div class="s1-rn">Joris Bakker</div><div class="s1-rc">Nootens · CMO</div></div></div><div class="s1-tag gr">Research</div></div>
+        <div class="s1-stats"><div class="s1-st"><div class="s1-sn"><span class="a">38</span></div><div class="s1-sl">Benaderd</div></div><div class="s1-st"><div class="s1-sn">3</div><div class="s1-sl">Meetings</div></div><div class="s1-st"><div class="s1-sn"><span class="a">2</span></div><div class="s1-sl">Pipeline</div></div></div>
+      </div>
+      <div class="s1-float s1-f1"><div class="sf-r"><div class="sf-i"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><div><div class="sf-t">NL fashion brands</div><div class="sf-s">Sterkste segment</div></div></div></div>
+      <div class="s1-float s1-f2"><div class="sf-r"><div class="sf-i"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div><div><div class="sf-t">+2 reacties</div><div class="sf-s">Deze week</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S2 — JULLIE SITUATIE ═══════════ -->
+<div class="slide" data-n="2">
+  <div class="inner">
+    <div class="ey">01 — Startpunt</div>
+    <h2 class="h2">Waar BCS nu staat.</h2>
+    <div style="display:flex;gap:2.5rem;margin-top:1.75rem;align-items:flex-start">
+
+      <!-- LEFT: situation cards -->
+      <div style="flex:1;min-width:0">
+        <p style="font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem">Nu — de situatie</p>
+        <div style="display:flex;flex-direction:column;gap:.65rem">
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:.85rem 1.1rem;display:flex;align-items:flex-start;gap:.85rem">
+            <div style="width:28px;height:28px;border-radius:8px;background:rgba(220,38,38,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+            <div><div style="font-size:.83rem;font-weight:600;color:var(--navy);margin-bottom:.15rem">100% via referrals</div><div style="font-size:.75rem;color:var(--muted);line-height:1.5">Totaal onvoorspelbaar — je ziet nieuwe klanten nooit aankomen</div></div>
+          </div>
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:.85rem 1.1rem;display:flex;align-items:flex-start;gap:.85rem">
+            <div style="width:28px;height:28px;border-radius:8px;background:rgba(220,38,38,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+            <div><div style="font-size:.83rem;font-weight:600;color:var(--navy);margin-bottom:.15rem">Geen strategie, 0 leadgen</div><div style="font-size:.75rem;color:var(--muted);line-height:1.5">Als het zo blijft, moet je hopen dat de ideale klant vanzelf aanklopt</div></div>
+          </div>
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:.85rem 1.1rem;display:flex;align-items:flex-start;gap:.85rem">
+            <div style="width:28px;height:28px;border-radius:8px;background:rgba(212,148,58,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#D4943A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><div style="font-size:.83rem;font-weight:600;color:var(--navy);margin-bottom:.15rem">Beste klanten: SOLIT Socks & Hornbad</div><div style="font-size:.75rem;color:var(--muted);line-height:1.5">NL eigen merk, Shopify, hoge marge — dit is het type dat we willen opschalen</div></div>
+          </div>
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:.85rem 1.1rem;display:flex;align-items:flex-start;gap:.85rem">
+            <div style="width:28px;height:28px;border-radius:8px;background:rgba(212,148,58,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#D4943A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><div style="font-size:.83rem;font-weight:600;color:var(--navy);margin-bottom:.15rem">Dropshippers: cashcow, niet de focus</div><div style="font-size:.75rem;color:var(--muted);line-height:1.5">Lopen via communities binnen — prima, maar bouwen geen duurzame toekomst</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: insight block -->
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1.1rem">
+        <!-- Pull quote -->
+        <div style="background:var(--navy);border-radius:16px;padding:1.6rem 1.8rem;position:relative;overflow:hidden">
+          <div style="position:absolute;top:-18px;left:14px;font-size:6rem;font-family:Georgia,serif;color:rgba(255,255,255,.06);line-height:1;pointer-events:none">&ldquo;</div>
+          <p style="font-family:'Playfair Display',serif;font-size:1.05rem;color:#fff;line-height:1.65;position:relative;z-index:1;margin-bottom:.9rem">"Als ik blijf groeien zoals nu, moet ik hopen dat de ideale klant vanzelf aanwaait."</p>
+          <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)">Jeffrey — intake gesprek</div>
+        </div>
+        <!-- Three signal stats -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:1rem 1.1rem;text-align:center">
+            <div style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--navy)">100%</div>
+            <div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;line-height:1.4">inkomend via<br>mond-tot-mond</div>
+          </div>
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:1rem 1.1rem;text-align:center">
+            <div style="font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--navy)">0</div>
+            <div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;line-height:1.4">actieve<br>prospecting</div>
+          </div>
+          <div style="background:var(--amber);border-radius:13px;padding:1rem 1.1rem;text-align:center;grid-column:span 2">
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff">Goed product. Geen pijplijn.</div>
+            <div style="font-size:.7rem;color:rgba(255,255,255,.8);margin-top:.25rem">Dat los je niet op met harder werken — wel met een systeem.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S3 — IDEALE KLANT ═══════════ -->
+<div class="slide" data-n="3">
+  <div class="inner">
+    <div class="ey">02 — Jullie ICP</div>
+    <h2 class="h2">Jullie ideale klant: <span class="a">dit is het profiel.</span></h2>
+    <div class="g2" style="margin-top:1.6rem">
+      <div>
+        <p class="body" style="margin-bottom:1.1rem">Op basis van jullie beste klanten - SOLIT Socks en Hornbad - leggen we in week 1 dit profiel vast in concrete criteria. Alles daarna is hierop gebaseerd.</p>
+        <div class="icp-r">
+          <div class="icp-row"><span class="icp-l">Type merk</span><span class="icp-v">Eigen merk, niet doorverkoper. Lifestyle, fashion of home.</span></div>
+          <div class="icp-row"><span class="icp-l">Platform</span><span class="icp-v">Shopify of Shopify Plus</span></div>
+          <div class="icp-row"><span class="icp-l">Omzet</span><span class="icp-v">€500K – €5M per jaar</span></div>
+          <div class="icp-row"><span class="icp-l">Ticketvolume</span><span class="icp-v">Voldoende volume om customer service pijn te voelen</span></div>
+          <div class="icp-row"><span class="icp-l">Complexiteit</span><span class="icp-v">Groeiend team, meerdere kanalen, snelheid nodig</span></div>
+          <div class="icp-row"><span class="icp-l">Geografie</span><span class="icp-v">Primair NL - kleine, hechte markt</span></div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div class="brand-card pos"><div class="brand-ic pos">🧦</div><div><div class="brand-n">SOLIT Socks</div><div class="brand-d">Eigen merk · Shopify · NL · Hoge marge</div></div><div class="brand-t pos">Ideaal</div></div>
+          <div class="brand-card pos"><div class="brand-ic pos">🛁</div><div><div class="brand-n">Hornbad</div><div class="brand-d">Eigen merk · Shopify · NL · Groeiend</div></div><div class="brand-t pos">Ideaal</div></div>
+          <div class="brand-card neg"><div class="brand-ic neg">📦</div><div><div class="brand-n">Dropshippers</div><div class="brand-d">Korte relaties · Lage marge · Geen toekomst</div></div><div class="brand-t neg">Cashcow, geen focus</div></div>
+        </div>
+        <div class="s3-note">
+          <span class="s3-nl">Deliverable Week 1</span>
+          <p>ICP-document met minimaal 8 concrete criteria + segmentatie-overzicht + eerste hypotheses voor messaging. Dit stuurt alles wat daarna komt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S4 — SUCCES ═══════════ -->
+<div class="slide" data-n="4">
+  <div class="inner">
+    <div class="ey">03 — Doelstelling</div>
+    <h2 class="h2">De doelen die we <span class="a">in 6 maanden halen.</span></h2>
+    <div class="g2" style="margin-top:1.6rem">
+      <div>
+        <div class="s4-met">
+          <div class="s4-m"><div class="s4-mn">2<span style="font-size:1.5rem">–</span>3</div><div><div class="s4-ml">Relevante afspraken per maand</div><div class="s4-ms">Met mensen die écht beslissen bij het juiste type bedrijf</div></div></div>
+          <div class="s4-m"><div class="s4-mn"><span class="a">10</span></div><div><div class="s4-ml">Ideale klanten onboarded in 6 maanden</div><div class="s4-ms">SOLIT/Hornbad-type — niet dropshippers als primaire focus</div></div></div>
+          <div class="s4-m"><div class="s4-mn">€<span class="a">30K</span></div><div><div class="s4-ml">MRR doelstelling</div><div class="s4-ms">10 ideale klanten à €5K-15K/jaar + bestaand portfolio</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="s4-path">
+          <div class="s4-step"><div class="s4-sm">Maand 1</div><div class="s4-st"><strong>Kalibratie</strong> — ICP vastleggen, eerste berichten testen, markt leren kennen. Mogelijk 1-2 vroege gesprekken.</div></div>
+          <div class="s4-step"><div class="s4-sm">Maand 2</div><div class="s4-st"><strong>Momentum</strong> — Messaging aangescherpt, beste segmenten opschalen. 2–4 gesprekken verwacht.</div></div>
+          <div class="s4-step"><div class="s4-sm">Maand 3</div><div class="s4-st"><strong>Voorspelbaar</strong> — Herhaalbare structuur, 2–3 kwalitatieve afspraken per maand als standaard.</div></div>
+        </div>
+        <div class="s4-warn">
+          <span class="s4-wl">Zo bereid je je voor op elke afspraak</span>
+          <p>Pique boekt de afspraken. <strong>Jij sluit de deals.</strong> Voor elke afspraak bereiden we je voor — je krijgt een briefing met alles wat je nodig hebt: achtergrond van het bedrijf, contactpersoon, relevante context en de best mogelijke insteek voor dat gesprek.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S5 — 7 FASES OVERZICHT ═══════════ -->
+<div class="slide" data-n="5">
+  <div class="inner">
+    <div class="ey">04 — Het plan</div>
+    <h2 class="h2">Jullie 3-maandenplan. <span class="d">Zeven fases.</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-top:1.75rem">
+
+      <!-- MAAND 1 -->
+      <div style="background:var(--navy);border-radius:20px;overflow:hidden">
+        <div style="padding:1.25rem 1.5rem 1rem;border-bottom:1px solid rgba(255,255,255,.07)">
+          <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,148,58,.7);margin-bottom:.3rem">Maand 1 — Fundament</div>
+          <div style="font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--white);line-height:1.2">Kalibratie &amp; Activatie</div>
+        </div>
+        <div style="padding:1rem 1.5rem 1.5rem;display:flex;flex-direction:column;gap:.65rem">
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:.85rem 1rem">
+            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem"><div style="width:20px;height:20px;border-radius:50%;background:rgba(212,148,58,.2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;color:var(--amber);font-weight:600;flex-shrink:0">1</div><div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.8)">Strategie &amp; ICP</div></div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.5">ICP criteria · positionering · eerste marktvalidatie</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem"><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:rgba(212,148,58,.9)">ICP-document</span><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:rgba(212,148,58,.9)">Segmentatie</span></div>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:.85rem 1rem">
+            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem"><div style="width:20px;height:20px;border-radius:50%;background:rgba(212,148,58,.2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;color:var(--amber);font-weight:600;flex-shrink:0">2</div><div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.8)">Marktmapping &amp; Messaging</div></div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.5">50–100 prospects · segmentatie · messaging framework · hooks per segment</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem"><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:rgba(212,148,58,.9)">Prospectdatabase</span><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:rgba(212,148,58,.9)">Messaging</span></div>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:.85rem 1rem">
+            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem"><div style="width:20px;height:20px;border-radius:50%;background:rgba(212,148,58,.2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;color:var(--amber);font-weight:600;flex-shrink:0">3</div><div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.8)">Research &amp; Asset Creatie</div></div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.5">Dossiers per prospect · outreach assets · follow-up sequences · dashboard live</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem"><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:rgba(212,148,58,.9)">Outreach assets</span><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:rgba(212,148,58,.9)">Dashboard</span></div>
+          </div>
+          <div style="background:rgba(212,148,58,.08);border:1px solid rgba(212,148,58,.2);border-radius:12px;padding:.85rem 1rem">
+            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem"><div style="width:20px;height:20px;border-radius:50%;background:rgba(212,148,58,.25);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;color:var(--amber);font-weight:600;flex-shrink:0">4</div><div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85)">Gecontroleerde Activatie</div></div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.5">Eerste campagnes live · reacties monitoren · eerste gekwalificeerde gesprekken</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem"><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);color:var(--amber)">Live campagnes</span><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);color:var(--amber)">Eerste gesprekken</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAAND 2 -->
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:20px;overflow:hidden">
+        <div style="padding:1.25rem 1.5rem 1rem;border-bottom:1px solid var(--border)">
+          <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:.3rem">Maand 2 — Momentum</div>
+          <div style="font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--navy);line-height:1.2">Optimalisatie &amp; Opbouw</div>
+        </div>
+        <div style="padding:1rem 1.5rem 1.5rem;display:flex;flex-direction:column;gap:.65rem">
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:.85rem 1rem">
+            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem"><div style="width:20px;height:20px;border-radius:50%;background:rgba(212,148,58,.15);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;color:var(--amber);font-weight:600;flex-shrink:0">5</div><div style="font-size:.78rem;font-weight:600;color:var(--navy)">Optimalisatie</div></div>
+            <div style="font-size:.72rem;color:var(--muted);line-height:1.5">Signaalanalyse · zwakke hooks stoppen · sterke hooks verdiepen · batch 2 voorbereiden</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem"><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.08);border:1px solid rgba(212,148,58,.15);color:rgba(212,148,58,.9)">Marktinzichten</span><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.08);border:1px solid rgba(212,148,58,.15);color:rgba(212,148,58,.9)">Messaging v2</span></div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:.85rem 1rem">
+            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem"><div style="width:20px;height:20px;border-radius:50%;background:rgba(212,148,58,.15);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;color:var(--amber);font-weight:600;flex-shrink:0">6</div><div style="font-size:.78rem;font-weight:600;color:var(--navy)">Pipeline Opbouw</div></div>
+            <div style="font-size:.72rem;color:var(--muted);line-height:1.5">Tweede batch live · best presterende segmenten opschalen · salesfeedback verwerken</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem"><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.08);border:1px solid rgba(212,148,58,.15);color:rgba(212,148,58,.9)">Pipeline-opbouw</span><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.08);border:1px solid rgba(212,148,58,.15);color:rgba(212,148,58,.9)">Schaalrichting</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAAND 3 -->
+      <div style="background:var(--bg);border:1.5px solid rgba(212,148,58,.3);border-radius:20px;overflow:hidden">
+        <div style="padding:1.25rem 1.5rem 1rem;border-bottom:1px solid rgba(212,148,58,.15)">
+          <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:.3rem">Maand 3 — Systeem</div>
+          <div style="font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--navy);line-height:1.2">Schalen wat werkt</div>
+        </div>
+        <div style="padding:1rem 1.5rem 1.5rem">
+          <div style="background:rgba(212,148,58,.06);border:1px solid rgba(212,148,58,.15);border-radius:12px;padding:.85rem 1rem;margin-bottom:.65rem">
+            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem"><div style="width:20px;height:20px;border-radius:50%;background:rgba(212,148,58,.2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;color:var(--amber);font-weight:600;flex-shrink:0">7</div><div style="font-size:.78rem;font-weight:600;color:var(--navy)">Voorspelbare Pipeline</div></div>
+            <div style="font-size:.72rem;color:rgba(30,36,51,.6);line-height:1.5">Slecht presterende segmenten stoppen · best converterende hooks verdubbelen · nieuwe groepen toevoegen · positionering aanscherpen</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.55rem"><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:var(--amber)">Outbound machine</span><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:var(--amber)">Voorspelbaar</span><span style="font-family:var(--mono);font-size:.52rem;padding:.18rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:var(--amber)">Marktinzichten</span></div>
+          </div>
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:1rem 1.1rem">
+            <div style="font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem">Verschuiving in focus</div>
+            <p style="font-family:var(--serif);font-size:.88rem;font-style:italic;color:rgba(30,36,51,.65);line-height:1.55">"Testen wat werkt" wordt "herhaalbaar bouwen op bewezen signalen."</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="phases-note">
+      <div class="pn-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 maanden looptijd</div>
+      <div class="pn-item"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Wekelijkse async updates</div>
+      <div class="pn-item"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Maandelijkse strategy call</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S6 — FASE 1-4 DETAIL ═══════════ -->
+<div class="slide" data-n="6">
+  <div class="inner">
+    <div class="ey">05 — Fases 1 t/m 4</div>
+    <h2 class="h2">Maand 1 voor BCS: <span class="a">van nul naar live.</span></h2>
+    <div class="phase-cards-grid" style="margin-top:1.5rem">
+      <!-- F1 -->
+      <div class="pc dark">
+        <div class="pc-head"><span class="pc-week">Fase 1 · Week 1</span><div class="pc-name">Strategie &amp; ICP</div><div class="pc-goal">Commerciële scherpte creëren vóór activatie start.</div></div>
+        <div class="pc-body">
+          <div class="pc-imp"><span class="pc-imp-l">Direct al live</span><p>We starten week 1 al met kleine gecontroleerde validatiemomenten — niet om volume te draaien, maar om de markt te toetsen.</p></div>
+          <ul class="pc-items"><li>Analyse huidig klantenbestand</li><li>ICP criteria vastleggen</li><li>Concurrentieanalyse + positionering</li></ul>
+          <div class="pc-dels"><span class="pc-del">ICP-document</span><span class="pc-del">Segmentatie</span><span class="pc-del">Positionering</span><span class="pc-del">Eerste marktfeedback</span></div>
+        </div>
+      </div>
+      <!-- F2 -->
+      <div class="pc">
+        <div class="pc-head"><span class="pc-week">Fase 2 · Week 2</span><div class="pc-name">Marktmapping &amp; Messaging</div><div class="pc-goal">Markt structureren, per segment bepalen wat aanslaat.</div></div>
+        <div class="pc-body">
+          <ul class="pc-items"><li>Prospectlijst opbouwen (50–100 bedrijven)</li><li>Scoring op ICP-fit, timing, potentie</li><li>Per segment: pijn, trigger, hook, kanaalstrategie</li><li>Eerste outreach frameworks</li><li>Analyse validatieresultaten week 1</li></ul>
+          <div class="pc-imp"><span class="pc-imp-l">Messaging-validatie</span><p>Welke hooks lokken reacties uit? Welke taal gebruiken prospects zelf? Waar ontstaat weerstand?</p></div>
+          <div class="pc-dels"><span class="pc-del">Prospectdatabase</span><span class="pc-del">Marktsegmentatie</span><span class="pc-del">Messaging framework</span></div>
+        </div>
+      </div>
+      <!-- F3 -->
+      <div class="pc">
+        <div class="pc-head"><span class="pc-week">Fase 3 · Week 3</span><div class="pc-name">Research &amp; Asset Creatie</div><div class="pc-goal">Outbound infrastructuur bouwen die voelt als maatwerk.</div></div>
+        <div class="pc-body">
+          <ul class="pc-items"><li>Diepgaande research top prospects</li><li>Tier 1 / 2 / 3 indeling</li><li>LinkedIn messaging per persoon</li><li>E-mailsequenties + video scripts</li><li>Handgeschreven brieven waar relevant</li><li>Follow-up architectuur ontwerpen</li><li>Dashboard live zetten</li></ul>
+          <div class="pc-dels"><span class="pc-del">Intelligence dossiers</span><span class="pc-del">Outreach assets</span><span class="pc-del">Follow-up sequences</span><span class="pc-del">Dashboard</span></div>
+        </div>
+      </div>
+      <!-- F4 -->
+      <div class="pc dark">
+        <div class="pc-head"><span class="pc-week">Fase 4 · Week 4</span><div class="pc-name">Gecontroleerde Activatie</div><div class="pc-goal">Eerste campagnes live — kwaliteit boven volume.</div></div>
+        <div class="pc-body">
+          <ul class="pc-items"><li>Eerste prospects activeren</li><li>Multi-channel outreach starten</li><li>Reacties monitoren + kwalificeren</li><li>Messaging performance analyseren</li><li>Eerste afspraken inplannen</li></ul>
+          <div class="pc-imp"><span class="pc-imp-l">Kwaliteitscontrole</span><p>Niet elke reactie wordt een afspraak. We plannen alleen als de fit klopt, de timing goed is en de persoon ook echt kan beslissen.</p></div>
+          <div class="pc-dels"><span class="pc-del">Live campagnes</span><span class="pc-del">Responsdata</span><span class="pc-del">Eerste gesprekken</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S7 — FASE 5-7 DETAIL ═══════════ -->
+<div class="slide" data-n="7">
+  <div class="inner">
+    <div class="ey">06 — Fases 5 t/m 7</div>
+    <h2 class="h2">Maanden 2 & 3 voor BCS: <span class="a">opschalen wat werkt.</span></h2>
+    <div class="phase-cards-grid3" style="margin-top:1.5rem">
+      <!-- F5 -->
+      <div class="pc">
+        <div class="pc-head"><span class="pc-week">Fase 5 · Week 5–6</span><div class="pc-name">Optimalisatie &amp; Signaalanalyse</div><div class="pc-goal">Patronen herkennen en verfijnen op echte marktdata.</div></div>
+        <div class="pc-body">
+          <ul class="pc-items"><li>Analyse van reactiekwaliteit, segment- en kanaalperformance</li><li>Bezwaren en timing analyseren</li><li>Zwakke hooks verwijderen</li><li>Sterke hooks verdiepen</li><li>Nieuwe prospectbatches voorbereiden</li><li>Strategische learnings verzamelen</li></ul>
+          <div class="pc-imp"><span class="pc-imp-l">Meer dan alleen afspraken</span><p>Pique verzamelt ook commerciële marktintelligentie: waar urgentie zit, welke positionering werkt, wat weerstand oproept.</p></div>
+          <div class="pc-dels"><span class="pc-del">Geoptimaliseerde messaging</span><span class="pc-del">Marktinzichten</span><span class="pc-del">Batch 2</span></div>
+        </div>
+      </div>
+      <!-- F6 -->
+      <div class="pc dark">
+        <div class="pc-head"><span class="pc-week">Fase 6 · Week 7–8</span><div class="pc-name">Pipeline Opbouw</div><div class="pc-goal">Van losse gesprekken naar een voorspelbare structuur.</div></div>
+        <div class="pc-body">
+          <ul class="pc-items"><li>Tweede prospectbatch live</li><li>Best presterende segmenten opschalen</li><li>Salesfeedback verwerken: kwaliteit, ICP-fit, potentie</li><li>Nieuwe strategische hooks testen</li><li>Consistentie in pipeline verhogen</li></ul>
+          <div class="pc-dels"><span class="pc-del">Pipeline-opbouw</span><span class="pc-del">Betere meetingkwaliteit</span><span class="pc-del">Schaalbare richtingen</span><span class="pc-del">Sales learnings</span></div>
+        </div>
+      </div>
+      <!-- F7 -->
+      <div class="pc" style="border-color:rgba(212,148,58,.3);background:rgba(212,148,58,.03)">
+        <div class="pc-head"><span class="pc-week">Fase 7 · Maand 3</span><div class="pc-name">Schalen wat werkt</div><div class="pc-goal">De elementen die aantoonbaar werken systematisch opschalen.</div></div>
+        <div class="pc-body">
+          <ul class="pc-items"><li>Slecht presterende segmenten stoppen</li><li>Best converterende hooks verdubbelen</li><li>Nieuwe prospectgroepen toevoegen</li><li>Outreach processen verfijnen</li><li>Positionering aanscherpen op marktrespons</li><li>Strategische groeirichting bepalen</li></ul>
+          <div class="pc-imp" style="border-color:rgba(212,148,58,.2)"><span class="pc-imp-l">Verschuiving in focus</span><p>"Testen wat werkt" → "Herhaalbaar bouwen op bewezen signalen."</p></div>
+          <div class="pc-dels"><span class="pc-del">Outbound machine</span><span class="pc-del">Voorspelbare pipeline</span><span class="pc-del">Marktinzichten</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S8 — RESEARCH ═══════════ -->
+<div class="slide" data-n="8">
+  <div class="inner">
+    <div class="ey">07 — Research</div>
+    <h2 class="h2">Hoe we jullie prospects <span class="a">in kaart brengen.</span></h2>
+    <div class="tiers-g" style="margin-top:1.5rem">
+      <div class="tier t1">
+        <div class="tier-head"><div class="tier-badge">Tier 1 — Prioriteit</div><div class="tier-title">Diepste aanpak</div><div class="tier-sub">High-value prospects</div></div>
+        <div class="tier-body"><div class="tier-item"><div class="t-dot"></div>Volledige bedrijfsresearch</div><div class="tier-item"><div class="t-dot"></div>Commerciële trigger identificeren</div><div class="tier-item"><div class="t-dot"></div>Pijnpunt hypothese formuleren</div><div class="tier-item"><div class="t-dot"></div>Persoonlijke haak bepalen</div><div class="tier-item"><div class="t-dot"></div>Custom bericht per kanaal</div></div>
+      </div>
+      <div class="tier t2">
+        <div class="tier-head"><div class="tier-badge">Tier 2 — Standaard</div><div class="tier-title">Segment-gerichte aanpak</div><div class="tier-sub">Brede ICP-fit</div></div>
+        <div class="tier-body"><div class="tier-item"><div class="t-dot"></div>Segment-relevante messaging</div><div class="tier-item"><div class="t-dot"></div>Aangepaste haak per bedrijf</div><div class="tier-item"><div class="t-dot"></div>Gerichte follow-up reeks</div></div>
+      </div>
+      <div class="tier t3">
+        <div class="tier-head"><div class="tier-badge">Tier 3 — Licht</div><div class="tier-title">Schaalbaar</div><div class="tier-sub">Lagere prioriteit</div></div>
+        <div class="tier-body"><div class="tier-item"><div class="t-dot"></div>Scherp gesegmenteerd</div><div class="tier-item"><div class="t-dot"></div>Lichtere tijdsinvestering</div><div class="tier-item"><div class="t-dot"></div>Wel relevant, minder urgent</div></div>
+      </div>
+    </div>
+    <div class="process-strip">
+      <div class="ps-step"><div class="ps-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="ps-label">Bedrijf<br>vinden</div></div>
+      <div class="ps-step"><div class="ps-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="ps-label">Research<br>dossier</div></div>
+      <div class="ps-step"><div class="ps-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="ps-label">Bericht<br>schrijven</div></div>
+      <div class="ps-step"><div class="ps-icon"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div><div class="ps-label">Versturen<br>+ opvolgen</div></div>
+      <div class="ps-step"><div class="ps-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><div class="ps-label">Analyseren<br>+ leren</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S9 — OUTREACH ═══════════ -->
+<div class="slide" data-n="9">
+  <div class="inner">
+    <div class="ey">08 — Outreach</div>
+    <h2 class="h2">Hoe we NL e-com founders <span class="a">voor jullie benaderen.</span></h2>
+    <div class="s9-grid" style="margin-top:1.6rem">
+      <div>
+        <div class="s9-prin">
+          <div class="s9-p hl"><div class="s9-pn">1</div><div><div class="s9-pt">Per persoon, per moment</div><div class="s9-pb">Elk bericht is gebaseerd op een echte observatie bij dat bedrijf. Niet vanuit een template — vanuit context.</div></div></div>
+          <div class="s9-p"><div class="s9-pn">2</div><div><div class="s9-pt">Kanaal volgt de persoon</div><div class="s9-pb">LinkedIn, e-mail, persoonlijke video of handgeschreven brief — afhankelijk van wie het is en wat werkt.</div></div></div>
+          <div class="s9-p"><div class="s9-pn">3</div><div><div class="s9-pt">Kwaliteitsfilter op elke afspraak</div><div class="s9-pb">We plannen alleen als de fit klopt. Geen agenda vol lege gesprekken — alleen relevante ontmoetingen.</div></div></div>
+          <div class="s9-p"><div class="s9-pn">4</div><div><div class="s9-pt">NL markt vereist precisie</div><div class="s9-pb">De NL D2C community is klein. Eén verkeerde benadering circuleert snel — we werken daarom altijd met zorgvuldig geselecteerde lijsten.</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="s9-chs">
+          <div class="s9-ch"><div class="s9-ci li">💼</div><div><div class="s9-cn">LinkedIn DM</div><div class="s9-cd">Primair kanaal voor NL founders</div></div><span class="badge b-am" style="margin-left:auto">Primair</span></div>
+          <div class="s9-ch"><div class="s9-ci ml">✉️</div><div><div class="s9-cn">E-mail</div><div class="s9-cd">Persoonlijk, research-gestuurd</div></div><span class="badge b-nv" style="margin-left:auto">Aanvullend</span></div>
+          <div class="s9-ch"><div class="s9-ci vd">🎥</div><div><div class="s9-cn">Persoonlijke video</div><div class="s9-cd">Voor Tier 1 prospects</div></div><span class="badge b-nv" style="margin-left:auto">Selectief</span></div>
+          <div class="s9-ch"><div class="s9-ci br">✍️</div><div><div class="s9-cn">Handgeschreven brief</div><div class="s9-cd">Hoge-prioriteit accounts</div></div><span class="badge b-am" style="margin-left:auto">Premium</span></div>
+          <div class="s9-ch"><div class="s9-ci" style="background:rgba(99,102,241,.12)">🌐</div><div><div class="s9-cn">Persoonlijke landingspagina</div><div class="s9-cd">Op naam van de prospect — voelt als gemaakt voor hen</div></div><span class="badge b-am" style="margin-left:auto">Premium</span></div>
+          <div class="s9-ch"><div class="s9-ci" style="background:rgba(15,23,42,.08)">📦</div><div><div class="s9-cn">Persoonlijk object</div><div class="s9-cd">Tastbaar en onverwacht — opent deuren die digitaal niet opengaan</div></div><span class="badge b-am" style="margin-left:auto">Premium</span></div>
+        </div>
+        <div class="s9-filter">
+          <span class="s9-fl">We plannen alleen als:</span>
+          <div class="s9-fit">
+            <div class="s9-fi"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Past bij jullie klantprofiel</div>
+            <div class="s9-fi"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>De juiste persoon is betrokken</div>
+            <div class="s9-fi"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Timing klopt commercieel</div>
+            <div class="s9-fi"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Gesprek heeft waarde voor beiden</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S10 — SAMENWERKING + DASHBOARD ═══════════ -->
+<div class="slide" data-n="10">
+  <div class="inner">
+    <div class="ey">09 — Samenwerking</div>
+    <h2 class="h2">Hoe we samenwerken. <span class="a">Altijd inzicht.</span></h2>
+    <div class="s10-grid" style="margin-top:1.6rem">
+      <div>
+        <div class="s10-cad">
+          <div class="s10-ci"><div class="s10-cf">Wekelijks</div><div><div class="s10-ct">Async update</div><div class="s10-cd">Outreach status, reacties en marktfeedback — altijd inzichtelijk in het dashboard.</div></div></div>
+          <div class="s10-ci"><div class="s10-cf">Maandelijks</div><div><div class="s10-ct">Strategy call</div><div class="s10-cd">60 minuten. Wat werkt, wat niet, wat verandert. Besluiten op basis van data.</div></div></div>
+          <div class="s10-ci"><div class="s10-cf">Doorlopend</div><div><div class="s10-ct">Direct contact</div><div class="s10-cd">Voor warme leads, urgente vragen of strategische keuzes. Geen bureaucratie.</div></div></div>
+          <div class="s10-ci"><div class="s10-cf">Na elk gesprek</div><div><div class="s10-ct">Salesfeedback loop</div><div class="s10-cd">Wat ging goed, wat niet — die input maakt onze targeting scherper.</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="dash">
+          <div class="dash-h"><div style="display:flex;align-items:center;gap:.6rem"><div class="d-dots"><div class="d-dot"></div><div class="d-dot"></div><div class="d-dot"></div></div><span class="d-tit">Pique × BCS — Week 6</span></div><div class="d-lv"><div class="d-ld"></div>Live</div></div>
+          <div class="dash-sts"><div class="d-s"><div class="d-sn"><span class="a">52</span></div><div class="d-sl">Benaderd</div></div><div class="d-s"><div class="d-sn">9</div><div class="d-sl">Reacties</div></div><div class="d-s"><div class="d-sn"><span class="a">4</span></div><div class="d-sl">Meetings</div></div><div class="d-s"><div class="d-sn">2</div><div class="d-sl">Pipeline</div></div></div>
+          <div class="dash-rows">
+            <div class="d-row"><div><div class="d-rn">SOLIT Socks</div><div class="d-rw">Week 4</div></div><div class="d-rs bk">Meeting gepland</div></div>
+            <div class="d-row"><div><div class="d-rn">Hornbad</div><div class="d-rw">Week 5</div></div><div class="d-rs ac">In gesprek</div></div>
+            <div class="d-row"><div><div class="d-rn">Nootens Lifestyle</div><div class="d-rw">Week 6</div></div><div class="d-rs rs">Research</div></div>
+          </div>
+          <div class="dash-seg">
+            <span class="d-sl2">Segment prestatie</span>
+            <div class="d-bars">
+              <div class="d-bar"><span class="d-bn">NL fashion</span><div class="d-bt"><div class="d-bf" style="width:78%"></div></div><span class="d-bp">78%</span></div>
+              <div class="d-bar"><span class="d-bn">NL home</span><div class="d-bt"><div class="d-bf" style="width:54%"></div></div><span class="d-bp">54%</span></div>
+              <div class="d-bar"><span class="d-bn">Overig</span><div class="d-bt"><div class="d-bf" style="width:22%"></div></div><span class="d-bp">22%</span></div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.7rem;color:var(--muted);margin-top:.5rem">Dashboard gaat live zodra de eerste prospects benaderd worden. Je ziet per bedrijf wie we hebben aangeschreven, wat de status is en wat er is gebeurd.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S11 — JOUW KANT ═══════════ -->
+<div class="slide" data-n="11">
+  <div class="inner">
+    <div class="ey">10 — Jouw kant</div>
+    <h2 class="h2">Wat Pique nodig heeft <span class="a">van BCS.</span></h2>
+    <div class="s11-grid" style="margin-top:1.6rem">
+      <div>
+        <div class="s11-list">
+          <div class="s11-item"><div class="s11-ico"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="s11-it">Feedback binnen 48 uur</div><div class="s11-id">Op berichtenconcepten, ICP-feedback en campagne-richtingen.</div></div></div>
+          <div class="s11-item"><div class="s11-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><div class="s11-it">Beschikbaar voor updates en calls</div><div class="s11-id">Wekelijkse async + maandelijks een uurtje voor strategie.</div></div></div>
+          <div class="s11-item"><div class="s11-ico"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg></div><div><div class="s11-it">Warme leads snel opvolgen</div><div class="s11-id">Wij doen eerst een korte kwalificatiecall met de lead. Daarna geef je je alle informatie die we hebben — zodat jij het gesprek goed voorbereid ingaat.</div></div></div>
+          <div class="s11-item"><div class="s11-ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><div class="s11-it">Eerlijk zijn over gesprekken</div><div class="s11-id">Wat ging goed, wat niet. Die input maakt onze targeting beter.</div></div></div>
+          <div class="s11-item"><div class="s11-ico"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><div><div class="s11-it">Toegang tot relevante informatie</div><div class="s11-id">Cases, bestaande klantdata, pricing — alles wat onze personalisatie sterker maakt.</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="s11-close">
+          <span class="s11-cl">Jouw rol in het gesprek</span>
+          <div class="s11-ct">Jij sluit de deal.<br><span style="font-size:1rem;font-weight:400;color:rgba(255,255,255,.5)">Wij bereiden je voor.</span></div>
+          <p class="s11-cb">Voordat jij een gesprek ingaat, geef je we alle context die we hebben over het bedrijf — wat hen triggert, waar ze mee worstelen en waar je het beste op kunt sturen. Zodat jij goed voorbereid aan tafel zit.</p>
+          <div class="s11-opts">
+            <div class="s11-opt"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Briefing per lead: bedrijfscontext, pijnpunt, tips voor het gesprek</div>
+            <div class="s11-opt"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Kwalificatiecall door Pique vóórdat jij aan tafel gaat</div>
+            <div class="s11-opt"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Salesfeedback bespreken zodat we steeds beter targeten</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S12 — VERWACHTINGEN ═══════════ -->
+<div class="slide" data-n="12">
+  <div class="inner">
+    <div class="ey">11 — Verwachtingen</div>
+    <h2 class="h2">Wat jullie <span class="a">per maand mogen verwachten.</span></h2>
+    <div class="s12-grid" style="margin-top:1.6rem">
+      <div>
+        <div class="s12-mb">
+          <div class="s12-m"><div class="s12-ml">Maand 1</div><div><div class="s12-mt">Kalibratie</div><div class="s12-md">ICP vastleggen, eerste berichten testen, markt leren kennen. Geen druk op resultaat — dit is het fundament.</div></div><div><div class="s12-mn"><span class="d">1–2</span></div><div class="s12-mls">gesprekken</div></div></div>
+          <div class="s12-m"><div class="s12-ml">Maand 2</div><div><div class="s12-mt">Momentum</div><div class="s12-md">Wat werkt wordt opgeschaald. Messaging is scherper. Pipeline groeit zichtbaar.</div></div><div><div class="s12-mn"><span class="a">2–4</span></div><div class="s12-mls">gesprekken</div></div></div>
+          <div class="s12-m"><div class="s12-ml">Maand 3</div><div><div class="s12-mt">Voorspelbaar</div><div class="s12-md">Herhaalbare structuur. 2–3 kwalitatieve afspraken per maand als standaard.</div></div><div><div class="s12-mn"><span class="a">2–3</span></div><div class="s12-mls">per maand</div></div></div>
+        </div>
+        <div class="s4-warn" style="margin-top:1.1rem">
+          <span class="s4-wl">Goed om te weten</span>
+          <p>Maand 1 is geen resultaatmaand — het is kalibratiewerk. De operatie wordt sterker naarmate we meer marktdata verzamelen. <strong>Elk signaal dat we ophalen maakt het scherper.</strong></p>
+        </div>
+      </div>
+      <div>
+        <div class="s12-intel">
+          <span class="s12-il">Wanneer krijg je wat?</span>
+          <div class="s12-it">Concrete deliverables per fase</div>
+          <div class="s12-items">
+            <div class="s12-ii"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Week 1</strong> — ICP-document, segmentatie, positionering, eerste messaging hypotheses</div></div>
+            <div class="s12-ii"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Week 2</strong> — Prospectdatabase (50–100), marktsegmentatie, messaging framework</div></div>
+            <div class="s12-ii"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Week 3</strong> — Intelligence dossiers, outreach assets, follow-up sequences, dashboard live</div></div>
+            <div class="s12-ii"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Week 4</strong> — Live campagnes, responsdata, eerste gesprekken</div></div>
+            <div class="s12-ii"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Week 5–8</strong> — Geoptimaliseerde messaging, marktinzichten, tweede batch</div></div>
+            <div class="s12-ii"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Maand 3</strong> — Voorspelbare outbound machine, 2–3 afspraken/maand als standaard</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S13 — AFSLUITING ═══════════ -->
+<div class="slide" data-n="13">
+  <div class="orb" style="width:600px;height:350px;top:25%;left:50%;transform:translateX(-50%);background:rgba(212,148,58,.1);filter:blur(120px);opacity:.5"></div>
+  <div class="s13-c">
+    <div class="ey" style="justify-content:center">12 — We zijn al gestart</div>
+    <h2 class="h2" style="font-size:clamp(2rem,3.8vw,3rem)">De kickoff staat gepland.<br><span class="a">Zo lopen we hem in.</span></h2>
+    <div class="div" style="margin:1.1rem auto"></div>
+    <p class="body" style="text-align:center;max-width:500px">Vóór de call sturen we je een eerste opzet van het ICP. Dat check jij, geef je feedback op, en in de kickoff scherpen we het samen aan. Zo beginnen we de call al met een basis — geen blanco vel.</p>
+    <div class="s13-big">
+      <div class="s13-st"><div class="s13-sn" style="font-size:2.2rem">Vóór</div><div class="s13-sl">ICP-opzet ontvangen<br>+ feedback geven</div></div>
+      <div class="s13-sep"></div>
+      <div class="s13-st"><div class="s13-sn" style="font-size:2.2rem">Tijdens</div><div class="s13-sl">ICP bijschaven<br>+ plan doorlopen</div></div>
+      <div class="s13-sep"></div>
+      <div class="s13-st"><div class="s13-sn" style="font-size:2.2rem"><span class="a">Na</span></div><div class="s13-sl">Direct starten<br>met week 1</div></div>
+    </div>
+    <div class="s13-next">
+      <span class="s13-nl">Kickoff agenda — 60–90 minuten</span>
+      <div class="s13-nt">Wat we samen doorlopen</div>
+      <p class="s13-nb">ICP definitief maken · Segmentatie bespreken · Positionering aanscherpen · Eerste validatiestappen live</p>
+      <div class="s13-steps">
+        <div class="s13-step"><span>Voor</span>ICP-opzet checken</div>
+        <div class="s13-step"><span>In call</span>Bijschaven + afstemmen</div>
+        <div class="s13-step"><span>Direct</span>Week 1 live</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<div class="nav" id="nav"></div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+
+function buildNav(){
+  const nav = document.getElementById('nav');
+  const prev = document.createElement('button');
+  prev.className = 'nb'; prev.textContent = '←'; prev.id = 'prev';
+  prev.onclick = () => go(cur - 1);
+  nav.appendChild(prev);
+  for(let i = 0; i < total; i++){
+    const p = document.createElement('div');
+    p.className = 'pip' + (i === 0 ? ' on' : '');
+    p.onclick = () => go(i);
+    nav.appendChild(p);
+  }
+  const next = document.createElement('button');
+  next.className = 'nb'; next.textContent = '→'; next.id = 'next';
+  next.onclick = () => go(cur + 1);
+  nav.appendChild(next);
+}
+
+function go(n){
+  if(n < 0 || n >= total) return;
+  slides[cur].classList.remove('active');
+  slides[cur].classList.add('out');
+  setTimeout(() => slides[cur].classList.remove('out'), 320);
+  cur = n;
+  slides[cur].classList.add('active');
+  document.getElementById('ctr').textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+  document.getElementById('prog').style.width = ((cur + 1) / total * 100) + '%';
+  document.querySelectorAll('.pip').forEach((p, i) => p.classList.toggle('on', i === cur));
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' '){ e.preventDefault(); go(cur + 1); }
+  if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){ e.preventDefault(); go(cur - 1); }
+});
+
+const c = document.getElementById('cur'), r = document.getElementById('cur-r');
+document.addEventListener('mousemove', e => {
+  c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px';
+  r.style.left = e.clientX + 'px'; r.style.top = e.clientY + 'px';
+});
+
+buildNav();
+document.getElementById('prog').style.width = (1 / total * 100) + '%';
+</script>
+</body>
+</html>

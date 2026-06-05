@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICP Document - Backbone CS × Pique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8F6F2;--navy:#0F172A;--navy2:#162035;
+  --amber:#D4943A;--ambers:#E8B06A;--white:#FFFFFF;--text:#1E2433;
+  --muted:rgba(30,36,51,.48);--border:rgba(15,23,42,.09);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--navy);padding:.7rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-l{display:flex;align-items:center;gap:1rem}
+.topbar-logo{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--white);letter-spacing:-.02em}
+.topbar-sep{width:1px;height:12px;background:rgba(255,255,255,.12)}
+.topbar-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.topbar-r{display:flex;align-items:center;gap:.75rem}
+.topbar-meta{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.22)}
+.topbar-badge{background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);border-radius:100px;padding:.22rem .65rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.phase-badge{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.22rem .65rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1060px;margin:0 auto;padding:0 2.5rem}
+.sec{padding:3.5rem 0;border-bottom:1px solid var(--border)}
+.sec:last-child{border-bottom:none;padding-bottom:5rem}
+
+/* ── TYPOGRAPHY ── */
+.ey{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.ey::before{content:'';width:10px;height:1px;background:var(--amber);opacity:.7}
+h1{font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;color:var(--navy)}
+h2{font-family:var(--serif);font-size:clamp(1.5rem,2.2vw,2rem);font-weight:600;line-height:1.15;letter-spacing:-.025em;color:var(--navy)}
+.sub{font-size:.88rem;color:var(--muted);line-height:1.7;margin-top:.6rem}
+.sub strong{color:var(--navy)}
+.a{color:var(--amber)}
+.div{width:28px;height:2px;background:var(--amber);border-radius:2px;margin:.9rem 0;opacity:.7}
+
+/* ── HERO ── */
+.hero{padding:3.5rem 0 3rem;border-bottom:1px solid var(--border)}
+.hero-g{display:grid;grid-template-columns:1fr 300px;gap:3.5rem;align-items:start}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+.chip{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .7rem;border-radius:100px;background:var(--white);border:1.5px solid var(--border);color:var(--muted)}
+.chip .dot{width:4px;height:4px;border-radius:50%;background:var(--amber)}
+
+/* hero card */
+.hcard{background:var(--navy);border-radius:16px;padding:1.5rem;border:1px solid rgba(255,255,255,.06)}
+.hcard-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,148,58,.6);margin-bottom:1rem;display:block}
+.hcard-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:1.1rem}
+.hs{background:rgba(255,255,255,.03);padding:.85rem;text-align:center}
+.hs-n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);line-height:1}
+.hs-n .a{color:var(--amber)}
+.hs-l{font-size:.6rem;color:rgba(255,255,255,.25);margin-top:.25rem}
+.hcard-note{font-size:.75rem;color:rgba(255,255,255,.35);line-height:1.55;border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem}
+.hcard-note strong{color:rgba(255,255,255,.65)}
+
+/* ── FASE CONTEXT ── */
+.fase-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:14px;overflow:hidden;border:1.5px solid var(--border);margin-top:2rem}
+.fase{background:var(--white);border-right:1px solid var(--border);padding:1rem 1.25rem}
+.fase:last-child{border-right:none}
+.fase.now{background:var(--navy)}
+.fase-week{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:.3rem}
+.fase.now .fase-week{color:rgba(212,148,58,.7)}
+.fase-name{font-size:.8rem;font-weight:600;color:var(--navy);line-height:1.25}
+.fase.now .fase-name{color:var(--white)}
+.fase-del{font-size:.7rem;color:var(--muted);margin-top:.25rem;line-height:1.4}
+.fase.now .fase-del{color:rgba(255,255,255,.38)}
+.fase-tag{font-family:var(--mono);font-size:.52rem;padding:.16rem .5rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.2);color:rgba(212,148,58,.85);display:inline-block;margin-top:.5rem}
+.fase.now .fase-tag{background:rgba(212,148,58,.15);border-color:rgba(212,148,58,.3);color:var(--amber)}
+
+/* ── ICP CRITERIA ── */
+.icp-grid{display:grid;grid-template-columns:1fr;gap:.5rem;margin-top:2rem}
+.icp-row{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1.5rem;display:grid;grid-template-columns:32px 160px 1fr;align-items:start;gap:1rem;transition:all .3s}
+.icp-row:hover{border-color:rgba(212,148,58,.35);box-shadow:0 4px 24px rgba(15,23,42,.07)}
+.icp-n{font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;color:rgba(212,148,58,.45);padding-top:3px}
+.icp-l{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding-top:3px;font-weight:500}
+.icp-v{font-size:.9rem;font-weight:500;color:var(--navy);line-height:1.4}
+.icp-v small{font-weight:400;color:var(--muted);font-size:.76rem;display:block;margin-top:.2rem;line-height:1.55}
+
+/* ── TIER CARDS ── */
+.tier-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.tier{border-radius:14px;overflow:hidden;border:1.5px solid var(--border)}
+.tier-head{padding:1rem 1.25rem .85rem}
+.tier-badge{display:inline-flex;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;padding:.24rem .7rem;border-radius:100px;margin-bottom:.65rem}
+.t1 .tier-badge{background:rgba(15,23,42,.9);color:var(--amber);border:1px solid rgba(212,148,58,.35)}
+.t2 .tier-badge{background:rgba(212,148,58,.1);color:var(--amber);border:1px solid rgba(212,148,58,.22)}
+.t3 .tier-badge{background:var(--bg);color:rgba(30,36,51,.4);border:1px solid var(--border)}
+.tier-name{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--navy)}
+.tier-sub{font-size:.72rem;color:var(--muted);margin-top:.15rem}
+.t1 .tier-head{background:var(--navy)}
+.t1 .tier-name{color:var(--white)}
+.t1 .tier-sub{color:rgba(255,255,255,.35)}
+.tier-body{padding:.6rem 1.25rem 1.1rem;border-top:1px solid var(--border);background:var(--white)}
+.t1 .tier-body{border-color:rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
+.ti{display:flex;align-items:flex-start;gap:.55rem;padding:.38rem 0;font-size:.78rem;color:rgba(30,36,51,.6);border-bottom:1px solid rgba(15,23,42,.05);line-height:1.4}
+.t1 .ti{color:rgba(255,255,255,.55);border-color:rgba(255,255,255,.06)}
+.ti:last-child{border-bottom:none}
+.td{flex-shrink:0;font-size:.75rem;line-height:1.4;margin-top:1px}
+.t1 .td{color:var(--amber)}.t2 .td{color:rgba(212,148,58,.6)}.t3 .td{color:rgba(30,36,51,.28)}
+
+/* ── SEGMENTATIE ── */
+.seg-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+.seg{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem;transition:all .35s}
+.seg:hover{border-color:rgba(212,148,58,.28);transform:translateY(-2px);box-shadow:0 8px 30px rgba(15,23,42,.06)}
+.seg-num{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,148,58,.5);margin-bottom:.6rem}
+.seg-name{font-size:.9rem;font-weight:600;color:var(--navy);margin-bottom:.35rem}
+.seg-why{font-size:.76rem;color:var(--muted);line-height:1.55;margin-bottom:.85rem}
+.seg-pain{background:rgba(212,148,58,.06);border:1px solid rgba(212,148,58,.15);border-radius:8px;padding:.6rem .8rem;font-size:.73rem;color:rgba(30,36,51,.6);line-height:1.45}
+.seg-pain strong{color:var(--navy)}
+
+/* ── NEGATIEVE ICP ── */
+.neg-g{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1.25rem}
+.neg{background:var(--white);border:1.5px solid rgba(220,38,38,.1);border-radius:12px;padding:.9rem 1.1rem}
+.neg-t{font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
+.neg-d{font-size:.74rem;color:var(--muted);line-height:1.4}
+
+/* ── POSITIONERING ── */
+.pos-g{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem}
+.pos-card{border-radius:14px;padding:1.25rem 1.4rem}
+.pos-card.yes{background:var(--white);border:1.5px solid rgba(212,148,58,.2)}
+.pos-card.no{background:var(--white);border:1.5px solid rgba(220,38,38,.1)}
+.pos-head{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.85rem;display:flex;align-items:center;gap:.4rem}
+.pos-head.yes{color:var(--amber)}
+.pos-head.no{color:#dc2626}
+.pos-item{display:flex;align-items:flex-start;gap:.6rem;padding:.6rem 0;border-bottom:1px solid rgba(15,23,42,.06);font-size:.82rem;color:rgba(30,36,51,.65);line-height:1.4}
+.pos-item:last-child{border-bottom:none}
+
+/* ── PREVIEW PROSPECT TABLE ── */
+.preview-intro{background:var(--navy);border-radius:14px;padding:1.25rem 1.5rem;margin-top:1.5rem;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.pi-text{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.55}
+.pi-text strong{color:var(--white)}
+.pi-badge{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border-radius:100px;background:rgba(212,148,58,.1);border:1px solid rgba(212,148,58,.25);color:var(--amber);white-space:nowrap;flex-shrink:0}
+
+.pr-header{background:transparent;padding:.45rem 1.1rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 120px;gap:.75rem;margin-bottom:.25rem}
+.pr{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:.85rem 1.1rem;display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 120px;align-items:center;gap:.75rem;transition:all .3s;margin-bottom:.4rem}
+.pr:hover{border-color:rgba(212,148,58,.25);box-shadow:0 4px 20px rgba(15,23,42,.06)}
+.pr:last-child{margin-bottom:0}
+.pr-name{font-size:.85rem;font-weight:600;color:var(--navy)}
+.pr-sub{font-size:.7rem;color:var(--muted);margin-top:.08rem}
+.pr-vert{font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:rgba(30,36,51,.38)}
+.pr-rev{font-size:.78rem;color:var(--muted)}
+.pr-cs{font-size:.76rem;font-weight:500}
+.pr-cs.geen{color:rgba(220,38,38,.7)}
+.pr-cs.basic{color:rgba(234,179,8,.8)}
+.pr-cs.groeit{color:rgba(212,148,58,1)}
+.pr-cs.inhouse{color:rgba(30,36,51,.38)}
+.pr-tier{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .7rem;border-radius:100px}
+.pr-tier.t1{background:rgba(15,23,42,.9);color:var(--amber);border:1px solid rgba(212,148,58,.3)}
+.pr-tier.t2{background:rgba(212,148,58,.1);color:var(--amber);border:1px solid rgba(212,148,58,.22)}
+.pr-tier.t3{background:var(--bg);color:rgba(30,36,51,.38);border:1px solid var(--border)}
+
+.preview-note{display:flex;align-items:center;gap:.65rem;margin-top:1rem;padding:.85rem 1.1rem;background:rgba(212,148,58,.05);border:1px solid rgba(212,148,58,.15);border-radius:10px;font-size:.78rem;color:rgba(30,36,51,.6)}
+.preview-note strong{color:var(--navy)}
+
+/* ── INTAKE PREP ── */
+.intake-g{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.25rem}
+.iq{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;transition:all .3s}
+.iq:hover{border-color:rgba(212,148,58,.28)}
+.iq-num{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,148,58,.55);margin-bottom:.35rem}
+.iq-q{font-size:.8rem;font-weight:600;color:var(--navy);line-height:1.3;margin-bottom:.5rem}
+.iq-ans{font-size:.8rem;color:var(--text);line-height:1.6;margin-bottom:.5rem}
+.iq-flag{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:100px;background:rgba(212,148,58,.08);border:1px solid rgba(212,148,58,.18);color:rgba(212,148,58,.8)}
+
+/* ── FOOTER ── */
+.doc-footer{background:var(--navy);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;margin-top:4rem}
+.df-l{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.06em}
+.df-r{font-family:var(--mono);font-size:.56rem;color:rgba(255,255,255,.18);letter-spacing:.06em;text-align:right}
+
+@media(max-width:860px){
+  .hero-g,.tier-g,.pos-g,.neg-g,.intake-g{grid-template-columns:1fr}
+  .icp-row{grid-template-columns:24px 120px 1fr}
+  .seg-g{grid-template-columns:repeat(2,1fr)}
+  .fase-strip{grid-template-columns:1fr 1fr}
+  .pr,.pr-header{grid-template-columns:1fr auto}
+  .pr-vert,.pr-rev,.pr-cs{display:none}
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-l">
+    <div class="topbar-logo">Pique</div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-title">ICP Document - Backbone CS</div>
+  </div>
+  <div class="topbar-r">
+    <span class="phase-badge">Fase 1 · Week 1</span>
+    <span class="topbar-meta">Mei 2026</span>
+    <span class="topbar-badge">Vertrouwelijk</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-g">
+    <div>
+      <div class="ey">ICP Document · Fase 1 van 7</div>
+      <h1>Jullie ideale klant.<br><span class="a">Vastgelegd.</span></h1>
+      <div class="div"></div>
+      <p class="sub">Dit document legt vast wie jullie ideale klant is. Wie we benaderen, op welke pijn we aanspreken, en wie we bewust overslaan. Alles daarna - de prospectlijst, de messaging, de outreach - bouwt hierop voort.</p>
+      <div class="hero-chips" style="margin-top:1.25rem">
+        <div class="chip"><div class="dot"></div>NL eigen merk D2C</div>
+        <div class="chip"><div class="dot"></div>Shopify / Plus</div>
+        <div class="chip"><div class="dot"></div>€500K – €5M</div>
+        <div class="chip"><div class="dot"></div>Fashion · Home · Lifestyle</div>
+      </div>
+    </div>
+    <div class="hcard">
+      <span class="hcard-label">Fase 1 deliverables</span>
+      <div class="hcard-stats">
+        <div class="hs"><div class="hs-n"><span class="a">8</span></div><div class="hs-l">ICP criteria</div></div>
+        <div class="hs"><div class="hs-n"><span class="a">4</span></div><div class="hs-l">Segmenten</div></div>
+        <div class="hs"><div class="hs-n"><span class="a">3</span></div><div class="hs-l">Tier niveaus</div></div>
+        <div class="hs"><div class="hs-n">6</div><div class="hs-l">Uitsluitingen</div></div>
+      </div>
+      <div class="hcard-note">
+        <strong>Fase 2 (week 2):</strong> Prospectlijst met 50–100 bedrijven, scoring, pijn/trigger/hook per segment.
+      </div>
+    </div>
+  </div>
+
+  <!-- Fase overzicht -->
+  <div class="fase-strip">
+    <div class="fase now">
+      <div class="fase-week">Week 1 · Nu</div>
+      <div class="fase-name">Strategie & ICP</div>
+      <div class="fase-del">Criteria · segmentatie · positionering</div>
+      <div class="fase-tag">← Dit document</div>
+    </div>
+    <div class="fase">
+      <div class="fase-week">Week 2</div>
+      <div class="fase-name">Marktmapping & Messaging</div>
+      <div class="fase-del">Prospectlijst · scoring · hook per segment</div>
+    </div>
+    <div class="fase">
+      <div class="fase-week">Week 3</div>
+      <div class="fase-name">Research & Asset Creatie</div>
+      <div class="fase-del">Dossier per prospect · outreach assets</div>
+    </div>
+    <div class="fase">
+      <div class="fase-week">Week 4</div>
+      <div class="fase-name">Gecontroleerde Activatie</div>
+      <div class="fase-del">Eerste campagnes live</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ICP CRITERIA ══ -->
+<div class="sec">
+  <div class="ey">01 - ICP Criteria</div>
+  <h2>Acht criteria. <span class="a">Allemaal nodig.</span></h2>
+  <p class="sub">Elk bedrijf moet door alle acht. Valt er een af? Dan gaan we niet verder. Zo houden we de prospectlijst strak en de outreach-investering zinvol.</p>
+  <div class="icp-grid">
+    <div class="icp-row">
+      <span class="icp-n">01</span>
+      <span class="icp-l">Merktype</span>
+      <span class="icp-v">Eigen merk, verkoopt direct aan de consument.
+        <small>Geen resellers, geen doorverkopers. Het product draagt hun naam - ze hebben er belang bij dat elke klantervaring klopt.</small>
+      </span>
+    </div>
+    <div class="icp-row">
+      <span class="icp-n">02</span>
+      <span class="icp-l">Platform</span>
+      <span class="icp-v">Shopify of Shopify Plus.
+        <small>Verificatie via BuiltWith of Wappalyzer. WooCommerce telt als Tier 3 maximaal - de integraties van BCS zijn gebouwd op Shopify.</small>
+      </span>
+    </div>
+    <div class="icp-row">
+      <span class="icp-n">03</span>
+      <span class="icp-l">Omzet</span>
+      <span class="icp-v">Tussen de €500K en €5M per jaar.
+        <small>Onder €500K is het volume te laag om er iets mee te doen. Boven €5M heeft een merk doorgaans al een eigen CS-team staan.</small>
+      </span>
+    </div>
+    <div class="icp-row">
+      <span class="icp-n">04</span>
+      <span class="icp-l">Verticaal</span>
+      <span class="icp-v">Alle D2C-verticals, zolang er voldoende CS-volume is.
+        <small>Fashion, home, lifestyle, supplementen, beauty, food, pet - de niche maakt weinig uit. Het volume aan klantvragen is wat telt.</small>
+      </span>
+    </div>
+    <div class="icp-row">
+      <span class="icp-n">05</span>
+      <span class="icp-l">Geografie</span>
+      <span class="icp-v">Nederland eerst. Belgie als tweede markt.
+        <small>NL is klein en hecht - een goede referentie werkt als vliegwiel. Belgische merken gaan als Tier 2 de lijst in.</small>
+      </span>
+    </div>
+    <div class="icp-row">
+      <span class="icp-n">06</span>
+      <span class="icp-l">CS-situatie</span>
+      <span class="icp-v">Geen structuur, een basic tool, of ze groeien eruit.
+        <small>Dit bepaalt zowel het tier-niveau als de invalshoek van de outreach. Een inhouse CS-team van drie of meer fte = Tier 3.</small>
+      </span>
+    </div>
+    <div class="icp-row">
+      <span class="icp-n">07</span>
+      <span class="icp-l">Beslisser</span>
+      <span class="icp-v">Founder, DGA of CMO vindbaar op LinkedIn.
+        <small>Geen beslisser te vinden? Dan benaderen we ze niet. BCS gaat altijd direct - nooit via een tussenlaag.</small>
+      </span>
+    </div>
+    <div class="icp-row">
+      <span class="icp-n">08</span>
+      <span class="icp-l">Momentum</span>
+      <span class="icp-v">Aantoonbare activiteit in de afgelopen zes maanden.
+        <small>Nieuwe collectie, een vacature, een persartikel, een actieve founder op LinkedIn. Stilstaande merken pakken we niet op.</small>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SEGMENTATIE ══ -->
+<div class="sec">
+  <div class="ey">02 - Segmentatie</div>
+  <h2>Vier segmenten. <span class="a">Elk met eigen pijn.</span></h2>
+  <p class="sub">Binnen de ICP zitten vier segmenten met elk een andere pijn en een andere invalshoek. De messaging sluit aan op het segment, niet op een generiek profiel.</p>
+  <div class="seg-g">
+
+    <div class="seg">
+      <div class="seg-num">Segment 01</div>
+      <div class="seg-name">Fashion & kleding</div>
+      <div class="seg-why">Retourpercentages van 25 tot 40%, CS-pieken bij elke drop en rondom Q4, maatadvies dat structureel volume trekt. Klanten verwachten snel en goed antwoord op sizing- en retourvragen.</div>
+      <div class="seg-pain"><strong>De pijn:</strong> Bij elke lancering loopt de CS vast. Te weinig mensen op het verkeerde moment.</div>
+    </div>
+
+    <div class="seg">
+      <div class="seg-num">Segment 02</div>
+      <div class="seg-name">Home & interieur</div>
+      <div class="seg-why">Hogere orderwaarden, ingewikkeldere vragen over maat, kleur en beschadiging, en een klant die premium heeft betaald en dat ook verwacht. Gifting vergroot de Q4-druk verder.</div>
+      <div class="seg-pain"><strong>De pijn:</strong> De CS-kwaliteit raakt direct de merkbeleving. Een slechte ervaring beschadigt het premium gevoel dat ze jarenlang hebben opgebouwd.</div>
+    </div>
+
+    <div class="seg">
+      <div class="seg-num">Segment 03</div>
+      <div class="seg-name">Lifestyle & accessories</div>
+      <div class="seg-why">Founder-gedreven merken waarbij CS nog niet echt geregeld is. Subscription of gifting zorgt voor terugkerende vragen. Vaak geen systeem, of een tool die ze allang zijn ontgroeid.</div>
+      <div class="seg-pain"><strong>De pijn:</strong> De founder doet het erbij, of een generalist pakt het op. Ze weten dat het niet goed gaat, maar hebben geen tijd om het te fixen.</div>
+    </div>
+
+    <div class="seg">
+      <div class="seg-num">Segment 04</div>
+      <div class="seg-name">Supplementen, beauty & food</div>
+      <div class="seg-why">Hoge herhalingsaankoop, subscription-logica en klanten die productvragen stellen die inhoudelijke kennis vereisen. CS is hier onderdeel van de klantrelatie, niet alleen support.</div>
+      <div class="seg-pain"><strong>De pijn:</strong> Vragen over dosering, ingredienten en compatibiliteit lopen via CS, maar het team heeft geen structuur om dat op te vangen. Het volume groeit sneller dan de opzet.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ TIER SYSTEEM ══ -->
+<div class="sec">
+  <div class="ey">03 - Prioritering</div>
+  <h2>Drie niveaus. <span class="a">Investering volgt fit.</span></h2>
+  <p class="sub">Niet elk bedrijf rechtvaardigt dezelfde investering. Het tier-systeem bepaalt hoeveel research een prospect waard is en welke kanalen we inzetten. Tier 1 gaat altijd als eerste.</p>
+  <div class="tier-g">
+
+    <div class="tier t1">
+      <div class="tier-head">
+        <div class="tier-badge">Tier 1 - Prioriteit</div>
+        <div class="tier-name">Perfecte fit</div>
+        <div class="tier-sub">Maximale investering per prospect</div>
+      </div>
+      <div class="tier-body">
+        <div class="ti"><span class="td">✓</span>Alle 8 ICP-criteria aantoonbaar aanwezig</div>
+        <div class="ti"><span class="td">✓</span>CS-situatie: geen systeem of groeit eruit</div>
+        <div class="ti"><span class="td">✓</span>Platform Shopify geverifieerd</div>
+        <div class="ti"><span class="td">✓</span>Beslisser vindbaar op LinkedIn</div>
+        <div class="ti"><span class="td">✓</span>Zichtbare trigger aanwezig - vacature, reviews, of recente groei</div>
+        <p style="margin-top:.85rem;font-size:.73rem;color:rgba(255,255,255,.32);line-height:1.5">Diepgaand dossier - meerdere kanalen - handgeschreven brief of video mogelijk</p>
+      </div>
+    </div>
+
+    <div class="tier t2">
+      <div class="tier-head">
+        <div class="tier-badge">Tier 2 - Sterk</div>
+        <div class="tier-name">Goede fit, iets mist</div>
+        <div class="tier-sub">Standaard investering</div>
+      </div>
+      <div class="tier-body" style="background:var(--white)">
+        <div class="ti"><span class="td">-</span>5 tot 7 van de 8 ICP-criteria aanwezig</div>
+        <div class="ti"><span class="td">-</span>Platform onzeker of omzet net buiten de range</div>
+        <div class="ti"><span class="td">-</span>Belgisch merk met duidelijk NL-bereik</div>
+        <div class="ti"><span class="td">-</span>CS-situatie onduidelijk of basic tool aanwezig</div>
+        <div class="ti"><span class="td">-</span>Weinig zichtbare trigger, maar de fit klopt</div>
+        <p style="margin-top:.85rem;font-size:.73rem;color:var(--muted);line-height:1.5">Research-based bericht - LinkedIn primair - één gerichte follow-up</p>
+      </div>
+    </div>
+
+    <div class="tier t3">
+      <div class="tier-head">
+        <div class="tier-badge">Tier 3 - Potentie</div>
+        <div class="tier-name">Nu nog te vroeg</div>
+        <div class="tier-sub">Licht contact, monitoren</div>
+      </div>
+      <div class="tier-body" style="background:var(--white)">
+        <div class="ti"><span class="td">·</span>Groeit richting de ICP, maar is er nog niet</div>
+        <div class="ti"><span class="td">·</span>Inhouse CS-team al aanwezig</div>
+        <div class="ti"><span class="td">·</span>Omzet onder €300K of boven €10M</div>
+        <div class="ti"><span class="td">·</span>Platform is niet Shopify</div>
+        <div class="ti"><span class="td">·</span>Geen vindbare trigger of beslisser</div>
+        <p style="margin-top:.85rem;font-size:.73rem;color:var(--muted);line-height:1.5">Kort bericht - één contactmoment - heractiveren na 90 dagen</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ POSITIONERING ══ -->
+<div class="sec">
+  <div class="ey">04 - Positionering</div>
+  <h2>Hoe BCS klinkt. <span class="a">En hoe niet.</span></h2>
+  <p class="sub">Dit is niet het volledige verhaal - het is de opening. Wat in het eerste contactmoment de juiste toon zet en wat we beter niet zeggen.</p>
+  <div class="pos-g">
+    <div class="pos-card yes">
+      <div class="pos-head yes">Zo positioneren we BCS</div>
+      <div class="pos-item">AI-gedreven CS die aanvoelt als een echte medewerker - geen chatbot die je doorverwijst.</div>
+      <div class="pos-item">BCS regelt de implementatie volledig zelf. Geen intern IT-traject dat maanden duurt.</div>
+      <div class="pos-item">Vaste ticketprijs - transparant, voorspelbaar, geen verrassingen op de factuur.</div>
+      <div class="pos-item">Menselijke fallback is standaard ingebouwd. Als het nodig is, escaleert de AI naar een medewerker.</div>
+      <div class="pos-item">Maandelijkse meetings op basis van data, geen activiteitsrapport.</div>
+    </div>
+    <div class="pos-card no">
+      <div class="pos-head no">Dit vermijden we</div>
+      <div class="pos-item">"Wij zijn goedkoper dan een medewerker." Te transactioneel - het raakt niet de echte pijn.</div>
+      <div class="pos-item">"AI vervangt je CS-team." Dat wekt weerstand bij merken die trots zijn op hun service.</div>
+      <div class="pos-item">Technische termen in het eerste bericht. Eerst de pijn benoemen, dan de oplossing.</div>
+      <div class="pos-item">"We werken voor alle e-commerce." Te breed - de positionering verliest dan alle kracht.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NEGATIEVE ICP ══ -->
+<div class="sec">
+  <div class="ey">05 - Uitsluiting</div>
+  <h2>Wie we <span class="a">niet</span> benaderen.</h2>
+  <p class="sub">Grenzen zijn even belangrijk als criteria. Deze bedrijven gaan nooit de lijst in, ook niet als ze er op het eerste gezicht aantrekkelijk uitzien.</p>
+  <div class="neg-g">
+    <div class="neg">
+      <div class="neg-t">Dropshippers</div>
+      <div class="neg-d">Geen eigen merk, geen klantrelatie om te beschermen. Lage marge, korte levensduur.</div>
+    </div>
+    <div class="neg">
+      <div class="neg-t">Pure resellers</div>
+      <div class="neg-d">CS-vragen gaan over producten die ze zelf niet maken of kennen. Geen goede fit.</div>
+    </div>
+    <div class="neg">
+      <div class="neg-t">Omzet onder €150K</div>
+      <div class="neg-d">Het ticketvolume is te laag om iets zinnigs mee te doen. De unit economics kloppen niet.</div>
+    </div>
+    <div class="neg">
+      <div class="neg-t">Omzet boven €15M</div>
+      <div class="neg-d">Op dit niveau is er vrijwel altijd al een inhouse CS-team. Te groot voor de huidige BCS-capaciteit.</div>
+    </div>
+    <div class="neg">
+      <div class="neg-t">Puur B2B</div>
+      <div class="neg-d">De aard van de vragen is fundamenteel anders. BCS is gebouwd voor consumer-volumes en -vragen.</div>
+    </div>
+    <div class="neg">
+      <div class="neg-t">CS-team van 3+ fte</div>
+      <div class="neg-d">Ze hebben al een oplossing staan. Augmentatie is pas een relevant gesprek op enterprise-niveau.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PREVIEW PROSPECTLIJST ══ -->
+<div class="sec">
+  <div class="ey">06 - Preview Fase 2</div>
+  <h2>Zo werkt de prospectlijst <span class="a">in week 2.</span></h2>
+  <p class="sub">Dit is nog geen definitieve lijst - die volgt na de intake call van vrijdag. Dit laat zien hoe we per bedrijf scoren, welke informatie we ophalen, en hoe de CS-situatie het tier-niveau bepaalt.</p>
+
+  <div class="preview-intro">
+    <div class="pi-text"><strong>Fase 2 deliverable:</strong> 50–100 prospects. Per bedrijf: ICP-score, CS-situatie, beslisser, Tier-niveau en segment. Basis voor alle outreach die daarna volgt.</div>
+    <div class="pi-badge">Week 2 · Na intake call vrijdag</div>
+  </div>
+
+  <div class="pr-header">
+    <div>Bedrijf</div>
+    <div>Verticaal</div>
+    <div>Omzet (est.)</div>
+    <div>CS-situatie</div>
+    <div>Tier</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">A-dam Underwear</div><div class="pr-sub">Amsterdam · DTC basics, Shopify, actieve founder op LinkedIn</div></div>
+    <div class="pr-vert">Fashion</div>
+    <div class="pr-rev">€2M–5M</div>
+    <div class="pr-cs groeit">Groeit eruit</div>
+    <div class="pr-tier t1">Tier 1</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Zusss</div><div class="pr-sub">Goes · Lifestyle & home, Shopify, groot assortiment</div></div>
+    <div class="pr-vert">Home</div>
+    <div class="pr-rev">€2M–5M</div>
+    <div class="pr-cs basic">Basic tool</div>
+    <div class="pr-tier t1">Tier 1</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Your Wishes</div><div class="pr-sub">NL · Gepersonaliseerde gifts, Shopify, Q4-piek extreem</div></div>
+    <div class="pr-vert">Lifestyle</div>
+    <div class="pr-rev">€1M–3M</div>
+    <div class="pr-cs geen">Geen systeem</div>
+    <div class="pr-tier t1">Tier 1</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Fabienne Chapot</div><div class="pr-sub">Amsterdam · Fashion & accessories, Shopify, community-sterk</div></div>
+    <div class="pr-vert">Fashion</div>
+    <div class="pr-rev">€3M–8M</div>
+    <div class="pr-cs groeit">Groeit eruit</div>
+    <div class="pr-tier t1">Tier 1</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Kings of Indigo</div><div class="pr-sub">Amsterdam · Premium denim, Shopify - CS-situatie verificeren</div></div>
+    <div class="pr-vert">Fashion</div>
+    <div class="pr-rev">€3M–8M</div>
+    <div class="pr-cs inhouse">Verificeren</div>
+    <div class="pr-tier t2">Tier 2</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">By-Boo</div><div class="pr-sub">NL · Interieur, Shopify, hogere orderwaarden</div></div>
+    <div class="pr-vert">Home</div>
+    <div class="pr-rev">€1M–3M</div>
+    <div class="pr-cs basic">Basic tool</div>
+    <div class="pr-tier t2">Tier 2</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Denham The Jeanmaker</div><div class="pr-sub">Amsterdam · Premium denim, groter - CS-team waarschijnlijk aanwezig</div></div>
+    <div class="pr-vert">Fashion</div>
+    <div class="pr-rev">€5M–15M</div>
+    <div class="pr-cs inhouse">Inhouse team</div>
+    <div class="pr-tier t3">Tier 3</div>
+  </div>
+
+  <div class="preview-note">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--amber);flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    De CS-situatie per prospect wordt handmatig geverifieerd: LinkedIn (CS-medewerkers vindbaar?), BuiltWith (Gorgias/Tidio/Zendesk geïnstalleerd?), Trustpilot (service-klachten zichtbaar?). Dit bepaalt mede het tier-niveau en de outreach-angle. <strong>Volledig zichtbaar in de prospectlijst van week 2.</strong>
+  </div>
+</div>
+
+<!-- ══ INTAKE VOORBEREIDING ══ -->
+<div class="sec">
+  <div class="ey">07 - Vrijdag: intake call</div>
+  <h2>Onze interpretatie. <span class="a">Ter bevestiging vrijdag.</span></h2>
+  <p class="sub">Op basis van de intake hebben we zes posities ingenomen. Vrijdag gaan we die langs - klopt de richting, of sturen we bij? Zo kunnen we direct na het gesprek de prospectlijst bouwen.</p>
+  <div class="intake-g">
+
+    <div class="iq">
+      <div class="iq-num">Profiel beste klant</div>
+      <div class="iq-q">SOLIT en Hornbad als referentie</div>
+      <div class="iq-ans">Eigen merk, D2C, Shopify, tussen de €500K en €3M. CS wordt gedaan door een of twee mensen zonder systeem, of via een tool die ze ontgroeid zijn. Founder is bereikbaar en betrokken.</div>
+      <span class="iq-flag">Bevestig of corrigeer</span>
+    </div>
+
+    <div class="iq">
+      <div class="iq-num">Onderscheid BCS</div>
+      <div class="iq-q">Niet goedkoper - beter geregeld</div>
+      <div class="iq-ans">AI-gedreven CS die aanvoelt als een echte medewerker, volledige implementatie door BCS, vaste ticketprijs. Het sterkste argument is dat de klant er niets voor hoeft te doen - BCS regelt het.</div>
+      <span class="iq-flag">Klopt dit als opening?</span>
+    </div>
+
+    <div class="iq">
+      <div class="iq-num">Segment prioritering</div>
+      <div class="iq-q">Fashion en lifestyle als eerste, dan supplementen</div>
+      <div class="iq-ans">Op basis van bestaande klanten lijkt fashion en lifestyle het sterkste segment. Supplementen en beauty zijn de tweede golf - Jeffrey: je noemde Kosso Nutrition als een type dat ook goed past. Klopt die volgorde?</div>
+      <span class="iq-flag">Bijsturen indien nodig</span>
+    </div>
+
+    <div class="iq">
+      <div class="iq-num">Typisch bezwaar</div>
+      <div class="iq-q">"We lossen het zelf wel op"</div>
+      <div class="iq-ans">De meest waarschijnlijke weerstand is dat een prospect denkt dat ze het zelf kunnen regelen - een extra medewerker, of "we kijken er volgend kwartaal naar." Klopt dat? Of hoort er een ander bezwaar op de lijst?</div>
+      <span class="iq-flag">Aanvullen met echte gevallen</span>
+    </div>
+
+    <div class="iq">
+      <div class="iq-num">Gewenste klantgrootte</div>
+      <div class="iq-q">Liever meer kleinere dan een paar grote</div>
+      <div class="iq-ans">De omzetrange van €500K-€5M suggereert een voorkeur voor meerdere kleinere klanten boven twee of drie grote. Daarmee is het risico gespreid en de pipeline makkelijker te vullen. Klopt dit met de huidige capaciteit?</div>
+      <span class="iq-flag">Bevestig of scherp aan</span>
+    </div>
+
+    <div class="iq">
+      <div class="iq-num">Warme namen</div>
+      <div class="iq-q">Merken in het netwerk die nog niet benaderd zijn</div>
+      <div class="iq-ans">Zijn er merken die je al in je hoofd hebt? Namen die direct op de Tier 1 lijst horen? Warme context geeft de outreach een heel ander startpunt dan koud onderzoek.</div>
+      <span class="iq-flag">Lijst meenemen naar call</span>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="doc-footer">
+  <div class="df-l">Pique × Backbone CS · ICP Document · Fase 1 · Mei 2026 · Vertrouwelijk</div>
+  <div class="df-r">pique.agency · Fase 2 volgt na intake call vrijdag</div>
+</div>
+
+</body>
+</html>
