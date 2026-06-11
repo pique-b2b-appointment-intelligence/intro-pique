@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backbone CS — Voorbereid voor A-dam Underwear</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/images/favicon-bcs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!--
+===========================================
+  TEMPLATE — pas per prospect aan:
+  PROSPECT_NAAM  A-dam Underwear
+  PROSPECT_STAD  Amsterdam
+  PROSPECT_KEY   bcs_lp_adam  (JS onderaan)
+
+  SWAP: S1 opening, S2 observaties
+  FIXED: S3 backbone, S4 mensen, S5 CTA
+===========================================
+-->
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:    #F6F5F2;
+  --paper: #FFFFFF;
+  --ink:   #161614;
+  --body:  #383834;
+  --muted: #888880;
+  --faint: #AEADA6;
+  --line:  rgba(0,0,0,0.07);
+  --line2: rgba(0,0,0,0.12);
+  --accent:#1F3D35;
+  --sans:  'Inter', system-ui, sans-serif;
+  --serif: 'Lora', Georgia, serif;
+  --r: 8px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ── Layout ──────────────────────────────── */
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ── Topbar ──────────────────────────────── */
+.topbar {
+  background: var(--ink);
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.tb-brand {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.01em;
+}
+.tb-label {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.04em;
+}
+
+/* ── Typography ──────────────────────────── */
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+h3 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+p {
+  font-size: 0.96rem;
+  line-height: 1.82;
+  color: var(--body);
+  margin-bottom: 18px;
+}
+p:last-child { margin-bottom: 0; }
+p strong { color: var(--ink); font-weight: 600; }
+
+/* ── Section ─────────────────────────────── */
+.sec {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--line);
+}
+.sec:last-of-type { border-bottom: none; }
+
+/* ── Label ───────────────────────────────── */
+.lbl {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.lbl::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--faint);
+  flex-shrink: 0;
+}
+
+/* ── Pull quote ──────────────────────────── */
+.pull {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.18rem, 2.5vw, 1.45rem);
+  color: var(--ink);
+  line-height: 1.55;
+  border-left: 2px solid var(--ink);
+  padding: 4px 0 4px 22px;
+  margin: 36px 0;
+}
+
+/* ── Callout ─────────────────────────────── */
+.callout {
+  background: var(--paper);
+  border: 1px solid var(--line2);
+  border-radius: var(--r);
+  padding: 22px 26px;
+  margin: 28px 0;
+}
+.callout p { font-size: 0.88rem; color: var(--body); }
+
+/* ── Logo mark (prospect) ────────────────── */
+.prospect-mark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 40px;
+}
+.pm-logo {
+  width: 44px;
+  height: 44px;
+  background: var(--paper);
+  border: 1px solid var(--line2);
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pm-logo img { width: 36px; height: 36px; object-fit: contain; }
+.pm-name { font-size: 0.78rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 1px; }
+.pm-meta { font-size: 0.68rem; color: var(--muted); }
+
+/* ── Browser frame (screenshot placeholder) */
+.screen {
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--line2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  margin: 24px 0;
+  background: var(--paper);
+}
+.screen-bar {
+  background: #ECEAE6;
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 1px solid var(--line2);
+}
+.sd { width: 9px; height: 9px; border-radius: 50%; }
+.sd1 { background: #E06C5A; }
+.sd2 { background: #E0C05A; }
+.sd3 { background: #5ABE6E; }
+.screen-url {
+  flex: 1;
+  margin-left: 10px;
+  background: rgba(0,0,0,0.07);
+  border-radius: 4px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 0.62rem;
+  color: var(--muted);
+  font-family: var(--sans);
+  letter-spacing: 0.01em;
+}
+.screen-body { padding: 20px 22px; }
+
+/* Trustpilot placeholder style */
+.tp-score-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.tp-num {
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+}
+.tp-right { display: flex; flex-direction: column; gap: 3px; }
+.tp-stars { font-size: 1rem; color: #D4A017; letter-spacing: 0.05em; }
+.tp-label { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.tp-count { font-size: 0.72rem; color: var(--faint); }
+.tp-bar-wrap { display: flex; flex-direction: column; gap: 4px; }
+.tp-bar-row { display: flex; align-items: center; gap: 7px; font-size: 0.62rem; color: var(--muted); }
+.tp-bar-track { flex: 1; height: 5px; background: rgba(0,0,0,0.08); border-radius: 3px; overflow: hidden; }
+.tp-bar-fill { height: 100%; border-radius: 3px; background: #00B67A; }
+.tp-bar-fill.red { background: #E06C5A; }
+.tp-bar-fill.orange { background: #E08C5A; }
+.tp-notice {
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: rgba(224,108,90,0.07);
+  border-radius: 5px;
+  border-left: 2px solid rgba(224,108,90,0.4);
+  font-size: 0.72rem;
+  color: var(--body);
+  line-height: 1.5;
+}
+
+/* Review placeholder */
+.review-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.review-item:last-child { border-bottom: none; padding-bottom: 0; }
+.rev-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.rev-name { font-size: 0.72rem; font-weight: 600; color: var(--ink); }
+.rev-stars { font-size: 0.72rem; color: #D4A017; }
+.rev-stars.low { color: #E06C5A; }
+.rev-text { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+.rev-no-reply { font-size: 0.66rem; color: var(--faint); font-style: italic; margin-top: 5px; }
+
+/* Contact page placeholder */
+.contact-ph {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cph-title { font-family: var(--serif); font-size: 1.3rem; color: var(--ink); margin-bottom: 4px; }
+.cph-sub { font-size: 0.76rem; color: var(--muted); margin-bottom: 8px; }
+.cph-field {
+  height: 38px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 5px;
+  border: 1px solid var(--line2);
+}
+.cph-textarea {
+  height: 80px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 5px;
+  border: 1px solid var(--line2);
+}
+.cph-btn {
+  align-self: flex-start;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 5px;
+  display: inline-block;
+}
+.cph-notice {
+  font-size: 0.68rem;
+  color: var(--faint);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ── Stat chips ──────────────────────────── */
+.stat-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.chip {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 14px 18px;
+  background: var(--paper);
+  border: 1px solid var(--line2);
+  border-radius: var(--r);
+}
+.chip-val {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.chip-lbl { font-size: 0.65rem; color: var(--muted); line-height: 1.35; max-width: 100px; }
+
+/* ── Pivot / divider ─────────────────────── */
+.pivot {
+  padding: 52px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 48px 0;
+  text-align: center;
+}
+.pivot-pre {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.pivot h2 { text-align: center; max-width: 480px; margin: 0 auto; }
+
+/* ── Backbone pillars ────────────────────── */
+.bb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line2);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-top: 32px;
+}
+.bb-item {
+  background: var(--paper);
+  padding: 24px 22px;
+}
+.bb-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.bb-title { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.bb-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+/* ── Team card ───────────────────────────── */
+.team-card {
+  background: var(--paper);
+  border: 1px solid var(--line2);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 32px;
+}
+.team-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--paper);
+  border: 1px solid var(--line2);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 32px;
+}
+.tc-photo {
+  position: relative;
+  overflow: hidden;
+  background: #2A2A27;
+  min-height: 340px;
+}
+.tc-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+.tc-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(22,22,20,0.6) 0%, transparent 50%);
+}
+.tc-photo-names {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  color: #fff;
+}
+.tc-photo-names strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 3px;
+}
+.tc-photo-names span {
+  font-size: 0.66rem;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.tc-body {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+.tc-bio { font-size: 0.86rem; color: var(--body); line-height: 1.75; }
+.tc-facts { display: flex; flex-direction: column; gap: 14px; margin-top: auto; }
+.tf-item { border-left: 2px solid var(--line2); padding-left: 12px; }
+.tf-val { font-size: 0.86rem; font-weight: 600; color: var(--ink); margin-bottom: 1px; }
+.tf-lbl { font-size: 0.68rem; color: var(--muted); }
+@media (max-width: 600px) {
+  .team-card { grid-template-columns: 1fr; }
+  .tc-photo { min-height: 240px; }
+}
+
+/* ── CTA section ─────────────────────────── */
+.cta-sec {
+  background: var(--ink);
+  border-radius: 14px;
+  padding: 44px 40px;
+  margin: 48px 0;
+  color: #fff;
+}
+.cta-eyebrow {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 14px;
+}
+.cta-sec h2 { color: #fff; margin-bottom: 14px; }
+.cta-sec > p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 0; }
+.cta-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+  align-items: start;
+}
+.cta-col-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 14px;
+}
+/* Contact form */
+.cf { display: flex; flex-direction: column; gap: 9px; }
+.cf input, .cf textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 7px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.cf input::placeholder, .cf textarea::placeholder { color: rgba(255,255,255,0.28); }
+.cf input:focus, .cf textarea:focus { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.09); }
+.cf textarea { height: 100px; resize: none; }
+.cf-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 7px;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.18s;
+}
+.cf-btn:hover { opacity: 0.9; }
+/* Cal col */
+.cal-wrap {
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  min-height: 420px;
+  background: rgba(255,255,255,0.04);
+}
+#my-cal-inline-kennismaking-bcs { width: 100%; min-height: 420px; }
+@media (max-width: 600px) {
+  .cta-cols { grid-template-columns: 1fr; }
+  .cta-sec { padding: 32px 22px; }
+}
+
+/* ── Evidence ────────────────────────────── */
+.evidence {
+  margin: 36px 0;
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--line2);
+  box-shadow: 0 3px 16px rgba(0,0,0,0.08);
+}
+.evidence img { width: 100%; display: block; }
+
+/* ── Footer ──────────────────────────────── */
+.footer {
+  padding: 28px 0 44px;
+  text-align: center;
+}
+.footer p { font-size: 0.68rem; color: var(--faint); margin: 0; }
+
+/* ── Reveal ──────────────────────────────── */
+.r { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.r.v { opacity: 1; transform: translateY(0); }
+.r.d1 { transition-delay: 0.08s; }
+.r.d2 { transition-delay: 0.16s; }
+.r.d3 { transition-delay: 0.24s; }
+
+/* ── Responsive ──────────────────────────── */
+@media (max-width: 600px) {
+  .wrap { padding: 0 20px; }
+  .sec { padding: 56px 0; }
+  .bb-grid { grid-template-columns: 1fr; }
+  .tc-body { grid-template-columns: 1fr; }
+  .cta-sec { padding: 32px 24px; }
+  .topbar { padding: 12px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <span class="tb-brand">Backbone Customer Service</span>
+  <span class="tb-label">Vertrouwelijk &middot; Voorbereid voor A-dam Underwear</span>
+</div>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════
+  S1: OPENING — SWAP per prospect
+══════════════════════════════════════ -->
+<section class="sec">
+
+  <div class="prospect-mark r">
+    <div class="pm-logo">
+      <img src="images.png" alt="A-dam Underwear">
+    </div>
+    <div>
+      <span class="pm-name">A-dam Underwear</span>
+      <span class="pm-meta">Amsterdam &middot; Shopify D2C &middot; Mei 2026</span>
+    </div>
+  </div>
+
+  <h1 class="r">Waarom je<br>deze brief hebt ontvangen.</h1>
+
+  <p class="r d1" style="margin-top: 24px;">
+    De meeste Shopify-merken hebben in het begin <strong>geen klantenserviceprobleem</strong>.
+  </p>
+  <p class="r d2">
+    Er komen vragen binnen. Iemand beantwoordt ze. Het werkt.
+  </p>
+  <p class="r d2">
+    Tot het moment waarop het bedrijf groeit.
+  </p>
+  <p class="r d3">
+    Toen we naar A-dam keken, kregen we het gevoel dat jullie dicht tegen dat punt aan zitten. Jullie bouwen iets echts. Meerdere merken, internationale klanten, een community die verwachtingen heeft. <strong>Dat maakt klantenservice belangrijker dan het op het eerste gezicht lijkt.</strong>
+  </p>
+  <p class="r d3">
+    Daarom namen we de tijd om te kijken waar die verwachting en de huidige inrichting elkaar mogelijk gaan raken.
+  </p>
+
+</section>
+
+<!-- ══════════════════════════════════════
+  S2: OBSERVATIES — SWAP per prospect
+══════════════════════════════════════ -->
+<section class="sec">
+  <div class="lbl r">Hoe we naar A-dam keken</div>
+
+  <!-- Observatie 1: Trustpilot -->
+  <p class="r">Wanneer we een merk onderzoeken, kijken we als eerste naar de plekken waar klanten zelf aan het woord zijn. De meest zichtbare: <strong>Trustpilot.</strong></p>
+
+  <div class="evidence r d1">
+    <img src="adam-tp-score.png" alt="Trustpilot A-dam Underwear - 4.0, 3 reviews">
+    
+  </div>
+
+  <p class="r">Trustpilot. 3 reviews. Score 4.0.</p>
+  <p class="r">Dat is niet waar we op bleven hangen. <strong>De reacties wel. Of beter gezegd: het ontbreken ervan.</strong></p>
+  <p class="r">Iedere review is een publiek gesprek. Iedere toekomstige klant leest mee. Sommige merken behandelen dat als marketing. Wij zien het als klantcontact. En klantcontact stopt niet nadat iemand een bestelling heeft geplaatst.</p>
+
+  <div class="evidence r d1">
+    <img src="adam-tp-reviews.png" alt="Trustpilot reviews A-dam - geen bedrijfsreacties">
+    
+  </div>
+
+  <!-- Observatie 2: Luxor / vier merken -->
+  <p class="r">Daarna kwamen we uit bij <strong>Luxor Fashion Group.</strong></p>
+  <p class="r">A-dam is niet het enige merk binnen de groep. Ook Shiwi, Baku en Suite Seven Seven vallen onder dezelfde organisatie. Zelfde adres. Vier merken, vier identiteiten.</p>
+  <p class="r">Op de website bepaalt marketing hoe een merk klinkt. <strong>In een supportticket bepaalt klantenservice dat.</strong> En hoe meer merken je toevoegt, hoe lastiger het wordt om die stemmen uit elkaar te houden.</p>
+
+  <!-- Observatie 3: Contactpagina -->
+  <p class="r" style="margin-top: 32px;">Als laatste keken we naar de <strong>contactpagina.</strong></p>
+
+  <div class="evidence r d1">
+    <img src="adam-contact.png" alt="A-dam contactpagina - alleen een formulier">
+    
+  </div>
+
+  <p class="r">Een formulier. Verder niets. 'Our team will reach back as soon as possible.' Wie er aan de andere kant zit is onduidelijk. Klantvragen belanden ergens intern, bij iemand die het erbij doet.</p>
+
+</section>
+
+<!-- ══════════════════════════════════════
+  PIVOT — het inzicht
+══════════════════════════════════════ -->
+<div class="pivot r">
+  <div class="pivot-pre">Waar het op uitkomt</div>
+  <h2>A-dam is inmiddels groot genoeg dat klantenservice niet langer iets is dat er 'ernaast' gedaan kan worden.</h2>
+</div>
+
+<!-- ══════════════════════════════════════
+  S3: WAT WE DENKEN — SWAP per prospect
+══════════════════════════════════════ -->
+<section class="sec" style="padding-top: 0; border-top: none;">
+  <div class="lbl r">Wat we denken dat hierachter zit</div>
+  <p class="r">Bij vrijwel ieder groeiend D2C merk zien we hetzelfde patroon. Het gaat er zelden om dat klantenservice slecht wordt. <strong>Het wordt juist belangrijker.</strong></p>
+  <p class="r">Meer merken. Meer klanten. Meer verwachtingen. Op een gegeven moment is de vraag hoe je klantenservice inricht die past bij de omvang van het merk, en bij de toon die je wilt voeren.</p>
+
+  <div class="pull r">
+    'Dat is het moment waarop founders zich afvragen: houden we dit intern? Of besteden we het uit?'
+  </div>
+
+  <p class="r">Dat is precies het vraagstuk waar <strong>Backbone dagelijks mee bezig is.</strong></p>
+</section>
+
+<!-- ══════════════════════════════════════
+  S4: BACKBONE — FIXED
+══════════════════════════════════════ -->
+<section class="sec">
+  <div class="lbl r">Backbone Customer Service</div>
+  <h2 class="r">Wat wij doen.</h2>
+  <p class="r" style="margin-top: 14px;">Wij verzorgen klantenservice voor Shopify D2C merken. Volledig uitbesteed, zo ingericht dat het klinkt alsof het intern bij jou zit. <strong>Jouw toon. Jouw naam. Jouw tempo.</strong></p>
+
+  <div class="bb-grid r d1">
+    <div class="bb-item">
+      <div class="bb-tag">Merkidentiteit</div>
+      <div class="bb-title">Jouw toon, altijd</div>
+      <div class="bb-desc">We leren het merk kennen voor het eerste ticket. Klanten merken het verschil niet met een intern team.</div>
+    </div>
+    <div class="bb-item">
+      <div class="bb-tag">Tone of voice</div>
+      <div class="bb-title">Per merk apart</div>
+      <div class="bb-desc">Voor A-dam klinkt het als A-dam. Voor Shiwi als Shiwi. Voor elk merk een eigen stem.</div>
+    </div>
+    <div class="bb-item">
+      <div class="bb-tag">Inzicht</div>
+      <div class="bb-title">Live portals</div>
+      <div class="bb-desc">Tickets, disputes, refunds, CSAT. Altijd zichtbaar. Jij bepaalt hoe diep je erin duikt.</div>
+    </div>
+    <div class="bb-item">
+      <div class="bb-tag">Team</div>
+      <div class="bb-title">EU agents</div>
+      <div class="bb-desc">Vaste mensen, meerdere talen, Zendesk. Ze kennen de merken waarvoor ze werken.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  S5: MENSEN — FIXED
+══════════════════════════════════════ -->
+<section class="sec">
+  <div class="lbl r">De mensen achter Backbone</div>
+  <p class="r">Jeff en Dylan richtten Backbone op vanuit hun achtergrond als Zendesk-specialisten. Ze werken uitsluitend met Shopify D2C merken en houden het team bewust klein genoeg om kwaliteit te garanderen.</p>
+
+  <div class="team-card r d1">
+    <div class="tc-photo">
+      <img src="jeff-dylan.jpg" alt="Jeff en Dylan, co-founders Backbone Customer Service">
+      <div class="tc-photo-overlay"></div>
+      <div class="tc-photo-names">
+        <strong>Jeff &amp; Dylan</strong>
+        <span>Co-founders &middot; Backbone CS &middot; Woerden</span>
+      </div>
+    </div>
+    <div class="tc-body">
+      <div class="tc-bio">
+        Twee Zendesk-professionals die hun e-commerce expertise omzetten in de sterkste Shopify CS-operatie van Nederland. Snelheid waar het kan, mensen waar het telt.
+      </div>
+      <div class="tc-facts">
+        <div class="tf-item">
+          <div class="tf-val">1M+ tickets</div>
+          <div class="tf-lbl">afgehandeld</div>
+        </div>
+        <div class="tf-item">
+          <div class="tf-val">20+ agents</div>
+          <div class="tf-lbl">EU-based, meerdere talen</div>
+        </div>
+        <div class="tf-item">
+          <div class="tf-val">40+ merken</div>
+          <div class="tf-lbl">Shopify D2C portfolio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  S6: CTA — FIXED
+══════════════════════════════════════ -->
+<section class="sec" style="border-bottom: none; padding-bottom: 0;">
+  <div class="cta-sec r">
+    <div class="cta-eyebrow">Volgende stap</div>
+    <h2>Plan een kennismaking in.</h2>
+    <p>Als je benieuwd bent hoe wij hiernaar kijken: stuur een bericht of kies direct een moment dat past.</p>
+
+    <div class="cta-cols">
+
+      <div>
+        <div class="cta-col-label">Stuur een bericht</div>
+        <form class="cf" action="https://formspree.io/f/jeff@backbonecustomerservice.com" method="POST">
+          <input type="text" name="naam" placeholder="Naam" required>
+          <input type="email" name="email" placeholder="E-mailadres" required>
+          <input type="text" name="bedrijf" placeholder="Bedrijf">
+          <textarea name="bericht" placeholder="Korte vraag of opmerking"></textarea>
+          <button class="cf-btn" type="submit">Verstuur bericht</button>
+        </form>
+      </div>
+
+      <div>
+        <div class="cta-col-label">Plan direct een kennismaking</div>
+        <div class="cal-wrap">
+          <div id="my-cal-inline-kennismaking-bcs"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer class="footer">
+  <p>Backbone Customer Service &middot; Voorbereid voor A-dam Underwear &middot; Vertrouwelijk</p>
+</footer>
+
+<script>
+// PROSPECT CONFIG
+var P = { key: 'bcs_lp_adam' };
+
+// Reveal
+(function() {
+  var els = document.querySelectorAll('.r');
+  if (!('IntersectionObserver' in window)) { els.forEach(function(e) { e.classList.add('v'); }); return; }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('v'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -32px 0px', threshold: 0.04 });
+  els.forEach(function(el) { io.observe(el); });
+})();
+
+// Cal embed
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
+Cal("init","kennismaking-bcs",{origin:"https://app.cal.com"});
+Cal.ns["kennismaking-bcs"]("inline",{
+  elementOrSelector:"#my-cal-inline-kennismaking-bcs",
+  config:{"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+  calLink:"simon-kempers/kennismaking-bcs"
+});
+Cal.ns["kennismaking-bcs"]("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</body>
+</html>
