@@ -1,0 +1,16 @@
+.DS_Store
+.git
+node_modules
+*.mov
+*.mp4
+!pique/video.mp4
+!textinc/simon-video.mp4
+*.csv
+*.md
+*.mjs
+*.pdf
+*.docx
+*.xlsx
+*.ai
+*.psd
+*.eps
