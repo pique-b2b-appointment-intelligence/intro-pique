@@ -53,24 +53,31 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .jp-base{fill:none;stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11;animation:march 40s linear infinite}
 @keyframes march{to{stroke-dashoffset:-92}}
 .jp-prog{fill:none;stroke:var(--amber);stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(198,137,60,.4))}
-.chapter{position:relative;z-index:1;display:flex;padding:clamp(6vh,9vh,11vh) 0}
+.chapter{position:relative;z-index:1;display:flex;padding:clamp(5.5vh,8vh,10vh) 0}
 .chapter.left{justify-content:flex-start}
 .chapter.right{justify-content:flex-end}
 .chapter.center{justify-content:center}
-.ch-inner{position:relative;width:min(440px,86%)}
-.chapter.center .ch-inner{width:min(600px,92%);text-align:center}
-.ch-dot{position:absolute;top:-2rem;left:50%;transform:translateX(-50%);width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--line);z-index:2;transition:border-color .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+.ch-inner{position:relative;width:min(400px,40%)}
+.chapter.center .ch-inner{width:min(560px,78%);text-align:center}
+.ch-dot{position:absolute;top:-1.7rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--line);z-index:2;transition:border-color .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+.chapter.left .ch-dot{right:-1.7rem}
+.chapter.right .ch-dot{left:-1.7rem}
+.chapter.center .ch-dot{left:50%;transform:translateX(-50%)}
 .chapter.reached .ch-dot{border-color:var(--amber);background:var(--amber);box-shadow:0 0 0 6px rgba(198,137,60,.12)}
 .ch-body{opacity:0;transform:translateY(30px);filter:blur(5px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
 .chapter.in .ch-body{opacity:1;transform:none;filter:blur(0)}
 .ch-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
 .ch-num{font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--ink3);margin-bottom:.9rem;font-variant-numeric:tabular-nums}
 .ch-kop{font-family:var(--serif);font-weight:500;font-size:var(--fs-h);line-height:1.16;letter-spacing:-.015em;color:var(--ink);margin-bottom:.9rem}
-.ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.72;font-weight:400}
+.ch-head{font-size:clamp(2.1rem,3.6vw,3rem);margin-bottom:0}
+.ch-sub{font-size:1.06rem;color:var(--ink2);line-height:1.7;margin-top:1rem;font-weight:300;max-width:34ch;margin-left:auto;margin-right:auto}
+.ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.75;font-weight:400}
 .ch-extra{font-size:.96rem;color:var(--ink3);line-height:1.65;margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line)}
-.chapter.pivot{padding:clamp(9vh,13vh,16vh) 0}
+.chapter.pivot{padding:clamp(8vh,12vh,15vh) 0}
 .ch-pivot{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
-.chapter.pivot .ch-dot{width:16px;height:16px;top:-2.4rem}
+.chapter.pivot .ch-dot{width:16px;height:16px;top:-2.1rem}
+.chapter.phase{padding-top:clamp(7vh,10vh,13vh)}
+.chapter.phase .ch-dot{width:15px;height:15px;top:-2.1rem}
 
 /* FOUNDER */
 .founder{max-width:760px;margin:0 auto;padding:clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,2rem) clamp(4rem,8vh,6rem);display:grid;grid-template-columns:auto 1fr;gap:clamp(1.75rem,4vw,3rem);align-items:center}
@@ -111,11 +118,11 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .ft-meta a{color:var(--ink2);text-decoration:none}
 
 @media(max-width:800px){
-  .chapter{justify-content:flex-start;padding:6.5vh 0 6.5vh 2.4rem}
+  .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
   .chapter.center{justify-content:flex-start}
   .ch-inner,.chapter.center .ch-inner{width:100%;text-align:left}
-  .ch-dot{left:-2.4rem;top:.3rem;transform:none}
-  .chapter.pivot .ch-dot{left:-2.4rem}
+  .ch-sub{margin-left:0;margin-right:0}
+  .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot,.chapter.center .ch-dot{left:-2.4rem;right:auto;top:.3rem;transform:none}
 }
 </style>
 </head>
@@ -147,28 +154,34 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
         <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><div class="ch-num">01</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Witzand is diep verankerd in Twente en de Achterhoek, met bouwshop en afhaalcenter per vestiging. Wat me opviel is dat nieuwe klanten vooral binnenlopen. Voor een bedrijf met zo'n sterke naam per regio is daar denk ik veel meer uit te halen.</p><p class="ch-extra">Bij deze brief zit een timmerpotlood. Een klein voorbeeld van hoe we werken: iets persoonlijks en tastbaars, dat opvalt.</p></div>
       </div>
     </section>
-    <section class="chapter right">
+    <section class="chapter center phase">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Zo gaat het nu</div><div class="ch-num">02</div><h2 class="ch-kop">De leads komen van bovenaf.</h2><p class="ch-text">Vanuit het hoofdkantoor of een bureau valt er een lijst binnen. Generiek, niet door jou gekozen, en niet gericht op de klanten die Witzand Bouwmaterialen echt wil.</p></div>
-      </div>
-    </section>
-    <section class="chapter left">
-      <div class="ch-inner">
-        <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">En je deelt ze met de concurrent.</h2><p class="ch-text">Dezelfde lijst ligt ook bij andere bedrijven. Je belt dezelfde ondernemers als de partij verderop, vaak op hetzelfde moment.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">De situatie</div><h2 class="ch-kop ch-head">Hoe het nu gaat.</h2><p class="ch-sub">Bij de meeste franchises en netwerken loopt lokale groei op dezelfde paar dingen vast.</p></div>
       </div>
     </section>
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">04</div><h2 class="ch-kop">Elke regio is anders, de aanpak niet.</h2><p class="ch-text">Wat in Groningen werkt, werkt niet in Limburg. En de beslisser die daar ja zegt, is een ander dan hier. Toch gaat overal dezelfde boodschap de deur uit.</p></div>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">De leads komen van bovenaf.</h2><p class="ch-text">De meeste netwerken kopen leads centraal in, of krijgen ze van een bureau. Er valt een lijst binnen die voor iedereen hetzelfde is, niet gekozen op jouw merk en niet op de klanten die je echt wilt. Je vestigingen bellen af wat er toevallig binnenkomt.</p></div>
       </div>
     </section>
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">05</div><h2 class="ch-kop">De uitkomst blijft giswerk.</h2><p class="ch-text">Komt er een afspraak uit, dan hoor je dat achteraf. Met wie, waarover en hoe goed die past: dat weet je vooraf niet.</p></div>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Je deelt ze met de concurrent.</h2><p class="ch-text">Die lijst is zelden exclusief. Hij ligt ook bij andere partijen, die dezelfde ondernemers bellen. Zo betaal je voor aandacht die je deelt, en hoort de prospect binnen een week hetzelfde verhaal van drie kanten.</p></div>
+      </div>
+    </section>
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">04</div><h2 class="ch-kop">Elke regio is anders, de aanpak niet.</h2><p class="ch-text">Een beslisser in Groningen kijkt anders dan een beslisser in Limburg, en wat in de stad werkt, werkt niet op het platteland. Toch gaat overal dezelfde boodschap de deur uit. De lokale nuance die een gesprek opent, ontbreekt.</p></div>
+      </div>
+    </section>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">05</div><h2 class="ch-kop">De uitkomst blijft giswerk.</h2><p class="ch-text">Komt er een afspraak uit, dan hoor je dat meestal pas achteraf. Met wie het gesprek is, waar het over ging en of het bij je past, daar heb je vooraf geen zicht op. Sturen op kwaliteit wordt zo bijna onmogelijk.</p></div>
       </div>
     </section>
     <section class="chapter center pivot">
@@ -177,28 +190,34 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
         <div class="ch-body"><p class="ch-pivot">Dit nemen wij volledig uit handen.</p></div>
       </div>
     </section>
-    <section class="chapter right">
+    <section class="chapter center phase">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Zo pakken wij het aan</div><div class="ch-num">06</div><h2 class="ch-kop">Een eigen aanpak, per regio.</h2><p class="ch-text">We bouwen voor elke regio een eigen campagne, gericht op droomklanten die alleen van jou zijn. Exclusief, dus je deelt ze met niemand.</p></div>
-      </div>
-    </section>
-    <section class="chapter left">
-      <div class="ch-inner">
-        <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">07</div><h2 class="ch-kop">Passend bij je merk.</h2><p class="ch-text">Persoonlijk en imagebewust. We benaderen bedrijven op naam en met een reden, op een manier die bij Witzand Bouwmaterialen past, zonder massamail of bulk.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">De aanpak</div><h2 class="ch-kop ch-head">Zo doen wij het.</h2><p class="ch-sub">Eén marketingmachine, opgezet per regio en volledig op jouw merk.</p></div>
       </div>
     </section>
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">08</div><h2 class="ch-kop">Iets tastbaars, geen mailtje.</h2><p class="ch-text">Zoals een timmerpotlood bij deze brief, sturen we ook jouw droomklanten iets persoonlijks. Dat valt op en opent het gesprek, precies waar bij Witzand Bouwmaterialen de groei zit.</p></div>
+        <div class="ch-body"><div class="ch-num">06</div><h2 class="ch-kop">Een eigen aanpak, per regio.</h2><p class="ch-text">We bouwen voor elke regio een eigen campagne, gericht op de droomklanten die daar zitten. Wat wij voor jouw regio vinden, gaat alleen naar jou. Exclusief, dus je deelt het met niemand.</p></div>
       </div>
     </section>
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">09</div><h2 class="ch-kop">Jij houdt de regie.</h2><p class="ch-text">Jij kiest de regio's en de klanten die je wilt. Wij regelen de afspraken, en je ziet per regio precies wat er loopt.</p></div>
+        <div class="ch-body"><div class="ch-num">07</div><h2 class="ch-kop">Passend bij je merk.</h2><p class="ch-text">Alles wat de deur uitgaat past bij hoe Witzand Bouwmaterialen wil overkomen. Persoonlijk en imagebewust, op naam en met een reden om te reageren. We benaderen bedrijven zoals jij het zelf zou doen met genoeg tijd, zonder massamail of bulk.</p></div>
+      </div>
+    </section>
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">08</div><h2 class="ch-kop">Iets tastbaars, geen mailtje.</h2><p class="ch-text">Net als een timmerpotlood bij deze brief, sturen we ook jouw droomklanten iets persoonlijks en fysieks. Een klein gebaar dat opvalt tussen alle mail, en dat het gesprek op een natuurlijke manier opent.</p></div>
+      </div>
+    </section>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">09</div><h2 class="ch-kop">Jij houdt de regie.</h2><p class="ch-text">Jij bepaalt welke regio's als eerste aan de beurt zijn en welke klanten je wilt. Wij regelen de afspraken en leveren ze compleet aan, zodat je per regio precies ziet wat er loopt en wat het oplevert.</p></div>
       </div>
     </section>
 </main>

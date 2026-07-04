@@ -15,36 +15,45 @@ function render(p){
   const ctaSub = p.ctaSub || `We kiezen samen één regio en de droomklanten die daar zitten. Werkt het, dan rollen we het uit over ${p.structuur}.`;
   const org = esc(p.org);
 
-  // Journey-hoofdstukken (alternerend links/rechts), chronologisch.
-  const chapters = [
+  // Journey-hoofdstukken (alternerend links/rechts), chronologisch, met fase-koppen.
+  const C = [
     { side:'left', num:'01', eyebrow:'Voor jou', kop:'Waarom je dit ziet.',
       body:`${p.persoonlijkeNoot}`, extra:`Bij deze brief zit ${esc(objLower)}. Een klein voorbeeld van hoe we werken: iets persoonlijks en tastbaars, dat opvalt.` },
-    { side:'right', num:'02', eyebrow:'Zo gaat het nu', kop:'De leads komen van bovenaf.',
-      body:`Vanuit het hoofdkantoor of een bureau valt er een lijst binnen. Generiek, niet door jou gekozen, en niet gericht op de klanten die ${org} echt wil.` },
-    { side:'left', num:'03', kop:'En je deelt ze met de concurrent.',
-      body:`Dezelfde lijst ligt ook bij andere bedrijven. Je belt dezelfde ondernemers als de partij verderop, vaak op hetzelfde moment.` },
+    { side:'center', header:true, eyebrow:'De situatie', kop:'Hoe het nu gaat.',
+      sub:`Bij de meeste franchises en netwerken loopt lokale groei op dezelfde paar dingen vast.` },
+    { side:'right', num:'02', kop:'De leads komen van bovenaf.',
+      body:`De meeste netwerken kopen leads centraal in, of krijgen ze van een bureau. Er valt een lijst binnen die voor iedereen hetzelfde is, niet gekozen op jouw merk en niet op de klanten die je echt wilt. Je vestigingen bellen af wat er toevallig binnenkomt.` },
+    { side:'left', num:'03', kop:'Je deelt ze met de concurrent.',
+      body:`Die lijst is zelden exclusief. Hij ligt ook bij andere partijen, die dezelfde ondernemers bellen. Zo betaal je voor aandacht die je deelt, en hoort de prospect binnen een week hetzelfde verhaal van drie kanten.` },
     { side:'right', num:'04', kop:'Elke regio is anders, de aanpak niet.',
-      body:`Wat in Groningen werkt, werkt niet in Limburg. En de beslisser die daar ja zegt, is een ander dan hier. Toch gaat overal dezelfde boodschap de deur uit.` },
+      body:`Een beslisser in Groningen kijkt anders dan een beslisser in Limburg, en wat in de stad werkt, werkt niet op het platteland. Toch gaat overal dezelfde boodschap de deur uit. De lokale nuance die een gesprek opent, ontbreekt.` },
     { side:'left', num:'05', kop:'De uitkomst blijft giswerk.',
-      body:`Komt er een afspraak uit, dan hoor je dat achteraf. Met wie, waarover en hoe goed die past: dat weet je vooraf niet.` },
+      body:`Komt er een afspraak uit, dan hoor je dat meestal pas achteraf. Met wie het gesprek is, waar het over ging en of het bij je past, daar heb je vooraf geen zicht op. Sturen op kwaliteit wordt zo bijna onmogelijk.` },
     { side:'center', pivot:true, kop:'Dit nemen wij volledig uit handen.' },
-    { side:'right', num:'06', eyebrow:'Zo pakken wij het aan', kop:'Een eigen aanpak, per regio.',
-      body:`We bouwen voor elke regio een eigen campagne, gericht op droomklanten die alleen van jou zijn. Exclusief, dus je deelt ze met niemand.` },
+    { side:'center', header:true, eyebrow:'De aanpak', kop:'Zo doen wij het.',
+      sub:`Eén marketingmachine, opgezet per regio en volledig op jouw merk.` },
+    { side:'right', num:'06', kop:'Een eigen aanpak, per regio.',
+      body:`We bouwen voor elke regio een eigen campagne, gericht op de droomklanten die daar zitten. Wat wij voor jouw regio vinden, gaat alleen naar jou. Exclusief, dus je deelt het met niemand.` },
     { side:'left', num:'07', kop:'Passend bij je merk.',
-      body:`Persoonlijk en imagebewust. We benaderen bedrijven op naam en met een reden, op een manier die bij ${org} past, zonder massamail of bulk.` },
+      body:`Alles wat de deur uitgaat past bij hoe ${org} wil overkomen. Persoonlijk en imagebewust, op naam en met een reden om te reageren. We benaderen bedrijven zoals jij het zelf zou doen met genoeg tijd, zonder massamail of bulk.` },
     { side:'right', num:'08', kop:'Iets tastbaars, geen mailtje.',
-      body:`Zoals ${esc(objLower)} bij deze brief, sturen we ook jouw droomklanten iets persoonlijks. Dat valt op en opent het gesprek, precies waar bij ${org} de groei zit.` },
+      body:`Net als ${esc(objLower)} bij deze brief, sturen we ook jouw droomklanten iets persoonlijks en fysieks. Een klein gebaar dat opvalt tussen alle mail, en dat het gesprek op een natuurlijke manier opent.` },
     { side:'left', num:'09', kop:'Jij houdt de regie.',
-      body:`Jij kiest de regio's en de klanten die je wilt. Wij regelen de afspraken, en je ziet per regio precies wat er loopt.` },
+      body:`Jij bepaalt welke regio's als eerste aan de beurt zijn en welke klanten je wilt. Wij regelen de afspraken en leveren ze compleet aan, zodat je per regio precies ziet wat er loopt en wat het oplevert.` },
   ];
 
-  const chapterHTML = chapters.map(c => `    <section class="chapter ${c.side}${c.pivot?' pivot':''}">
+  const chapterHTML = C.map(c => {
+    let inner;
+    if(c.pivot){ inner = `<p class="ch-pivot">${c.kop}</p>`; }
+    else if(c.header){ inner = `<div class="ch-eyebrow">${c.eyebrow}</div><h2 class="ch-kop ch-head">${c.kop}</h2>${c.sub?`<p class="ch-sub">${c.sub}</p>`:''}`; }
+    else { inner = `${c.eyebrow?`<div class="ch-eyebrow">${c.eyebrow}</div>`:''}${c.num?`<div class="ch-num">${c.num}</div>`:''}<h2 class="ch-kop">${c.kop}</h2><p class="ch-text">${c.body}</p>${c.extra?`<p class="ch-extra">${c.extra}</p>`:''}`; }
+    return `    <section class="chapter ${c.side}${c.pivot?' pivot':''}${c.header?' phase':''}">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body">${c.pivot ? `<p class="ch-pivot">${c.kop}</p>` :
-          `${c.eyebrow?`<div class="ch-eyebrow">${c.eyebrow}</div>`:''}${c.num?`<div class="ch-num">${c.num}</div>`:''}<h2 class="ch-kop">${c.kop}</h2><p class="ch-text">${c.body}</p>${c.extra?`<p class="ch-extra">${c.extra}</p>`:''}`}</div>
+        <div class="ch-body">${inner}</div>
       </div>
-    </section>`).join('\n');
+    </section>`;
+  }).join('\n');
 
   return `<!DOCTYPE html>
 <html lang="nl">
@@ -101,24 +110,31 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .jp-base{fill:none;stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11;animation:march 40s linear infinite}
 @keyframes march{to{stroke-dashoffset:-92}}
 .jp-prog{fill:none;stroke:var(--amber);stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(198,137,60,.4))}
-.chapter{position:relative;z-index:1;display:flex;padding:clamp(6vh,9vh,11vh) 0}
+.chapter{position:relative;z-index:1;display:flex;padding:clamp(5.5vh,8vh,10vh) 0}
 .chapter.left{justify-content:flex-start}
 .chapter.right{justify-content:flex-end}
 .chapter.center{justify-content:center}
-.ch-inner{position:relative;width:min(440px,86%)}
-.chapter.center .ch-inner{width:min(600px,92%);text-align:center}
-.ch-dot{position:absolute;top:-2rem;left:50%;transform:translateX(-50%);width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--line);z-index:2;transition:border-color .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+.ch-inner{position:relative;width:min(400px,40%)}
+.chapter.center .ch-inner{width:min(560px,78%);text-align:center}
+.ch-dot{position:absolute;top:-1.7rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--line);z-index:2;transition:border-color .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+.chapter.left .ch-dot{right:-1.7rem}
+.chapter.right .ch-dot{left:-1.7rem}
+.chapter.center .ch-dot{left:50%;transform:translateX(-50%)}
 .chapter.reached .ch-dot{border-color:var(--amber);background:var(--amber);box-shadow:0 0 0 6px rgba(198,137,60,.12)}
 .ch-body{opacity:0;transform:translateY(30px);filter:blur(5px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
 .chapter.in .ch-body{opacity:1;transform:none;filter:blur(0)}
 .ch-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
 .ch-num{font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--ink3);margin-bottom:.9rem;font-variant-numeric:tabular-nums}
 .ch-kop{font-family:var(--serif);font-weight:500;font-size:var(--fs-h);line-height:1.16;letter-spacing:-.015em;color:var(--ink);margin-bottom:.9rem}
-.ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.72;font-weight:400}
+.ch-head{font-size:clamp(2.1rem,3.6vw,3rem);margin-bottom:0}
+.ch-sub{font-size:1.06rem;color:var(--ink2);line-height:1.7;margin-top:1rem;font-weight:300;max-width:34ch;margin-left:auto;margin-right:auto}
+.ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.75;font-weight:400}
 .ch-extra{font-size:.96rem;color:var(--ink3);line-height:1.65;margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line)}
-.chapter.pivot{padding:clamp(9vh,13vh,16vh) 0}
+.chapter.pivot{padding:clamp(8vh,12vh,15vh) 0}
 .ch-pivot{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
-.chapter.pivot .ch-dot{width:16px;height:16px;top:-2.4rem}
+.chapter.pivot .ch-dot{width:16px;height:16px;top:-2.1rem}
+.chapter.phase{padding-top:clamp(7vh,10vh,13vh)}
+.chapter.phase .ch-dot{width:15px;height:15px;top:-2.1rem}
 
 /* FOUNDER */
 .founder{max-width:760px;margin:0 auto;padding:clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,2rem) clamp(4rem,8vh,6rem);display:grid;grid-template-columns:auto 1fr;gap:clamp(1.75rem,4vw,3rem);align-items:center}
@@ -159,11 +175,11 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .ft-meta a{color:var(--ink2);text-decoration:none}
 
 @media(max-width:800px){
-  .chapter{justify-content:flex-start;padding:6.5vh 0 6.5vh 2.4rem}
+  .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
   .chapter.center{justify-content:flex-start}
   .ch-inner,.chapter.center .ch-inner{width:100%;text-align:left}
-  .ch-dot{left:-2.4rem;top:.3rem;transform:none}
-  .chapter.pivot .ch-dot{left:-2.4rem}
+  .ch-sub{margin-left:0;margin-right:0}
+  .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot,.chapter.center .ch-dot{left:-2.4rem;right:auto;top:.3rem;transform:none}
 }
 </style>
 </head>
