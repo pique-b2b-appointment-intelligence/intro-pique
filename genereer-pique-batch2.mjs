@@ -25,6 +25,7 @@ function render(p){
 }
 
 function renderHTML(p, eenheidMv){
+  const objLower = p.object.charAt(0).toLowerCase()+p.object.slice(1);
   return `<!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -55,7 +56,7 @@ body:has(a:hover,button:hover) #cursor-ring{width:60px;height:60px;border-color:
 .scarcity-pip.filled{background:var(--amber)}.scarcity-pip.empty{background:rgba(255,255,255,.15)}
 .scarcity-div{width:1px;height:14px;background:rgba(255,255,255,.12)}
 @media(max-width:600px){.scarcity-div,.scarcity-pips{display:none}}
-nav{position:fixed;top:36px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;transition:background .5s,backdrop-filter .5s;gap:2rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;transition:background .5s,backdrop-filter .5s;gap:2rem}
 nav.solid{background:rgba(248,246,242,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(15,23,42,.08)}
 .logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--white);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:6px;transition:color .4s}
 nav.solid .logo{color:var(--navy)}
@@ -80,7 +81,7 @@ nav.solid .nav-btn:hover{background:var(--amber);border-color:var(--amber);color
 .sr-d1{transition-delay:.1s}.sr-d2{transition-delay:.22s}.sr-d3{transition-delay:.34s}.sr-d4{transition-delay:.46s}
 @keyframes fadeUp{from{opacity:0;transform:translateY(38px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
 /* HERO */
-.videotop{position:relative;background:var(--navy);overflow:hidden;padding:calc(36px + 5rem) clamp(1.5rem,4vw,4rem) clamp(2.5rem,5vh,4rem)}
+.videotop{position:relative;background:var(--navy);overflow:hidden;padding:clamp(5rem,9vh,6.5rem) clamp(1.5rem,4vw,4rem) clamp(2.5rem,5vh,4rem)}
 .vt-inner{position:relative;z-index:2;max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
 .vt-frame{width:100%;border-radius:22px;overflow:hidden;border:1px solid rgba(212,148,58,.18);box-shadow:0 40px 120px rgba(0,0,0,.5);background:#000;aspect-ratio:16/9;opacity:0;animation:fadeUp 1.1s var(--ease) .15s forwards}
 .vt-frame video{width:100%;height:100%;display:block;object-fit:cover}
@@ -121,6 +122,7 @@ nav.solid .nav-btn:hover{background:var(--amber);border-color:var(--amber);color
 .noot-object-kop{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:.25rem}
 .noot-object-sub{font-size:.92rem;color:rgba(15,23,42,.7);line-height:1.5}
 .noot-object-sub strong{color:var(--navy);font-weight:600}
+.noot-object-txt{font-size:.95rem;color:rgba(15,23,42,.72);line-height:1.55}
 /* PIJN / aannames */
 .pijn{background:var(--navy);padding:clamp(6rem,12vh,9rem) 2rem;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.05)}
 .pijn::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,148,58,.3),transparent)}
@@ -199,21 +201,23 @@ nav.solid .nav-btn:hover{background:var(--amber);border-color:var(--amber);color
 /* STORY */
 .story{background:var(--bg);padding:clamp(5rem,10vh,8rem) 2rem;position:relative}
 .story::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(15,23,42,.1),transparent)}
-.story-head{max-width:680px;margin:0 auto 3.25rem;text-align:center}
-.story-inner{max-width:640px;margin:0 auto;position:relative;padding-left:2.6rem}
-.story-spine{position:absolute;left:6px;top:.9rem;bottom:1.2rem;width:2px;background:rgba(15,23,42,.1);border-radius:2px;overflow:hidden}
+.story-head{max-width:680px;margin:0 auto 3.5rem;text-align:center}
+.story-inner{max-width:640px;margin:0 auto;position:relative;padding-left:2.8rem}
+.story-spine{position:absolute;left:6px;top:.6rem;bottom:1.2rem;width:2px;background:rgba(15,23,42,.1);border-radius:2px;overflow:hidden}
 .story-spine-fill{position:absolute;left:0;top:0;width:100%;height:0;background:linear-gradient(180deg,var(--ambers),var(--amber));box-shadow:0 0 12px rgba(212,148,58,.45)}
-.story-node{position:relative;padding-bottom:1.9rem;opacity:.32;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.story-node:last-child{padding-bottom:0}
-.story-node.lit{opacity:1;transform:none}
-.story-dot{position:absolute;left:-2.6rem;top:.35rem;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid rgba(15,23,42,.22);transition:all .45s var(--ease);z-index:1}
-.story-node.lit .story-dot{border-color:var(--amber);background:var(--amber);box-shadow:0 0 0 5px rgba(212,148,58,.14)}
-.story-tekst{font-size:var(--fs-lead);color:rgba(15,23,42,.55);line-height:1.6;font-weight:400;transition:color .45s}
-.story-node.lit .story-tekst{color:rgba(15,23,42,.82)}
+.story-step{position:relative;padding-bottom:2.7rem}
+.story-step:last-child{padding-bottom:0}
+.story-dot{position:absolute;left:-2.8rem;top:.35rem;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid rgba(15,23,42,.2);transition:all .5s var(--ease);z-index:1}
+.story-step.lit .story-dot{border-color:var(--amber);background:var(--amber);box-shadow:0 0 0 5px rgba(212,148,58,.14)}
+.story-body{opacity:0;transform:translateY(26px);filter:blur(3px);transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
+.story-step.lit .story-body{opacity:1;transform:none;filter:blur(0)}
+.story-fase{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+.story-kop{font-family:var(--serif);font-size:var(--fs-statement);font-weight:600;color:var(--navy);letter-spacing:-.01em;line-height:1.25;margin-bottom:.55rem}
+.story-alinea{font-size:var(--fs-lead);color:rgba(15,23,42,.62);line-height:1.7}
+.story-step.pivot{padding:.5rem 0 2.9rem}
 .story-pivot{font-family:var(--serif);font-size:var(--fs-statement);font-weight:600;color:var(--navy);letter-spacing:-.01em}
-.story-node.pivot{padding-top:.4rem;padding-bottom:2.2rem}
-.story-node.pivot .story-dot{width:17px;height:17px;left:calc(-2.6rem - 1px)}
-@media(max-width:600px){.story-inner{padding-left:2rem}.story-dot{left:-2rem}.story-node.pivot .story-dot{left:calc(-2rem - 1px)}}
+.story-step.pivot .story-dot{width:17px;height:17px;left:calc(-2.8rem - 1px);border-color:var(--amber)}
+@media(max-width:600px){.story-inner{padding-left:2.2rem}.story-dot{left:-2.2rem}.story-step.pivot .story-dot{left:calc(-2.2rem - 1px)}}
 /* FOUNDER */
 .founder{background:var(--bg);padding:clamp(6rem,12vh,9rem) 2rem;position:relative}
 .founder::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(15,23,42,.1),transparent)}
@@ -254,6 +258,8 @@ nav.solid .nav-btn:hover{background:var(--amber);border-color:var(--amber);color
 .cta-or::before{left:0}.cta-or::after{right:0}
 .cta-cal{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--amber);padding-bottom:2px;transition:opacity .2s}
 .cta-cal:hover{opacity:.65}
+.cta-embed{margin-top:2.5rem;background:var(--white);border:1px solid rgba(15,23,42,.08);border-radius:20px;box-shadow:0 20px 60px rgba(15,23,42,.08);overflow:hidden;min-height:620px}
+#cal-embed{width:100%;min-height:620px}
 /* FOOTER */
 footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
 .ft-logo{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:#fff;display:inline-flex;align-items:center;gap:6px;margin-bottom:.9rem}
@@ -264,16 +270,8 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
 <body>
 <div id="cursor"></div><div id="cursor-ring"></div>
 
-<div class="scarcity-bar">
-  <span class="scarcity-text"><strong>Maximaal 8 netwerken</strong> tegelijk</span>
-  <span class="scarcity-div"></span>
-  <span class="scarcity-pips"><i class="scarcity-pip filled"></i><i class="scarcity-pip filled"></i><i class="scarcity-pip filled"></i><i class="scarcity-pip filled"></i><i class="scarcity-pip filled"></i><i class="scarcity-pip filled"></i><i class="scarcity-pip empty"></i><i class="scarcity-pip empty"></i></span>
-  <span class="scarcity-text">Eén per marktsegment</span>
-</div>
-
 <nav id="nav">
   <a href="#top" class="logo">Pique<span class="logo-dot"></span></a>
-  <a href="${CAL}" class="nav-btn" target="_blank" rel="noopener">Plan een intake</a>
 </nav>
 
 <section class="videotop" id="top">
@@ -293,14 +291,6 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
   <div class="hero-inner">
     <span class="hero-label">Persoonlijk voor ${esc(p.org)}</span>
     <h1 class="hero-h1">Hé ${esc(p.voornaam)}, dit is waarom je mijn brief hebt ontvangen.</h1>
-    <div class="hero-ctas">
-      <a href="${CAL}" class="btn btn-amber" target="_blank" rel="noopener">Plan een intake</a>
-      <a href="#uitleg" class="btn btn-outline">Bekijk hoe het werkt</a>
-    </div>
-    <div class="hero-stars">
-      <span class="hero-stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <span class="hero-stars-label"><strong>5.0</strong> gemiddeld, beoordeeld door klanten als David en Jeffrey</span>
-    </div>
   </div>
 </section>
 
@@ -308,10 +298,10 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
   <div class="noot-inner sr">
     <div class="noot-mark">&ldquo;</div>
     <p class="noot-text">${p.persoonlijkeNoot}</p>
-    <p class="noot-sign">Deze pagina is met de hand voor <strong>${esc(p.org)}</strong> gemaakt. Zo werkt precies wat wij voor je ${eenheidMv} doen.</p>
+    <p class="noot-sign">Deze pagina heb ik met de hand voor <strong>${esc(p.org)}</strong> gemaakt.</p>
     <div class="noot-object">
       <div class="noot-object-ic"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
-      <div class="noot-object-txt"><div class="noot-object-kop">${esc(p.object)}</div><div class="noot-object-sub">${p.objectNoot}</div></div>
+      <div class="noot-object-txt">Bij deze brief zit ${esc(objLower)}. Een klein voorbeeld van hoe we werken: iets persoonlijks en tastbaars, dat opvalt.</div>
     </div>
   </div>
 </section>
@@ -319,19 +309,46 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
 <section class="story" id="uitleg">
   <div class="story-head sr">
     <div class="sec-label">Zo gaat het nu</div>
-    <h2 class="sec-title">Lokale groei loopt vast op <span class="a">vijf dingen</span>.</h2>
+    <h2 class="sec-title">Waar lokale groei nu <span class="a">op vastloopt</span>.</h2>
   </div>
   <div class="story-inner">
     <div class="story-spine"><div class="story-spine-fill"></div></div>
-    <div class="story-node"><div class="story-dot"></div><div class="story-card"><p class="story-tekst">Je leads komen binnen vanuit het hoofdkantoor. Generiek, en niet echt van ${esc(p.org)}.</p></div></div>
-    <div class="story-node"><div class="story-dot"></div><div class="story-card"><p class="story-tekst">Diezelfde leads deel je met je concurrent. Die belt dezelfde bedrijven, van dezelfde lijst.</p></div></div>
-    <div class="story-node"><div class="story-dot"></div><div class="story-card"><p class="story-tekst">Er is geen aanpak per regio. Overal dezelfde boodschap, terwijl elke regio anders reageert.</p></div></div>
-    <div class="story-node"><div class="story-dot"></div><div class="story-card"><p class="story-tekst">En elke regio heeft een andere beslisser. Wie in Groningen ja zegt, beslist niet in Limburg.</p></div></div>
-    <div class="story-node"><div class="story-dot"></div><div class="story-card"><p class="story-tekst">Komt er een afspraak uit, dan heb je geen grip op wélke. Je hoort het pas achteraf.</p></div></div>
-    <div class="story-node pivot"><div class="story-dot"></div><div class="story-card"><p class="story-pivot">Dit nemen wij uit handen.</p></div></div>
-    <div class="story-node sol"><div class="story-dot"></div><div class="story-card"><p class="story-tekst">Wij bouwen een marketingmachine zoals je 'm zelf zou willen. Per regio, en exclusief voor ${esc(p.org)}.</p></div></div>
-    <div class="story-node sol"><div class="story-dot"></div><div class="story-card"><p class="story-tekst">Passend bij je merk. Persoonlijk en imagebewust, op naam en met een reden. Bulk komt er niet in.</p></div></div>
-    <div class="story-node sol"><div class="story-dot"></div><div class="story-card"><p class="story-tekst">Jij kiest de regio's en de droomklanten. Wij regelen de afspraken, jij houdt de regie.</p></div></div>
+    <div class="story-step"><div class="story-dot"></div><div class="story-body">
+      <h3 class="story-kop">De leads komen van bovenaf.</h3>
+      <p class="story-alinea">Vanuit het hoofdkantoor of een bureau valt er een lijst binnen. Generiek, niet door jou gekozen, en niet gericht op de klanten die ${esc(p.org)} echt wil.</p>
+    </div></div>
+    <div class="story-step"><div class="story-dot"></div><div class="story-body">
+      <h3 class="story-kop">En je deelt ze met de concurrent.</h3>
+      <p class="story-alinea">Dezelfde lijst ligt ook bij andere bedrijven. Je belt dezelfde ondernemers als de partij verderop, vaak op hetzelfde moment.</p>
+    </div></div>
+    <div class="story-step"><div class="story-dot"></div><div class="story-body">
+      <h3 class="story-kop">Elke regio is anders, de aanpak niet.</h3>
+      <p class="story-alinea">Wat in Groningen werkt, werkt niet in Limburg. En de beslisser die daar ja zegt, is een ander dan hier. Toch gaat overal dezelfde boodschap de deur uit.</p>
+    </div></div>
+    <div class="story-step"><div class="story-dot"></div><div class="story-body">
+      <h3 class="story-kop">En je hebt geen grip op de uitkomst.</h3>
+      <p class="story-alinea">Komt er een afspraak uit, dan hoor je dat achteraf. Met wie, waarover en hoe goed die past: dat weet je vooraf niet.</p>
+    </div></div>
+    <div class="story-step pivot"><div class="story-dot"></div><div class="story-body">
+      <p class="story-pivot">Dit nemen wij volledig uit handen.</p>
+    </div></div>
+    <div class="story-step"><div class="story-dot"></div><div class="story-body">
+      <div class="story-fase">Zo pakken wij het aan</div>
+      <h3 class="story-kop">Een eigen aanpak, per regio.</h3>
+      <p class="story-alinea">We bouwen voor elke regio een eigen campagne, gericht op droomklanten die alleen van jou zijn. Exclusief, dus je deelt ze met niemand.</p>
+    </div></div>
+    <div class="story-step"><div class="story-dot"></div><div class="story-body">
+      <h3 class="story-kop">Passend bij je merk.</h3>
+      <p class="story-alinea">Persoonlijk en imagebewust. We benaderen bedrijven op naam en met een reden, op een manier die bij ${esc(p.org)} past, zonder massamail of bulk.</p>
+    </div></div>
+    <div class="story-step"><div class="story-dot"></div><div class="story-body">
+      <h3 class="story-kop">Iets tastbaars, geen standaard mailtje.</h3>
+      <p class="story-alinea">Zoals ${esc(objLower)} bij deze brief, sturen we ook jouw droomklanten iets persoonlijks. Dat valt op en opent het gesprek, precies waar bij ${esc(p.org)} de groei zit.</p>
+    </div></div>
+    <div class="story-step"><div class="story-dot"></div><div class="story-body">
+      <h3 class="story-kop">Jij houdt de regie.</h3>
+      <p class="story-alinea">Jij kiest de regio's en de klanten die je wilt. Wij regelen de afspraken, en je ziet per regio precies wat er loopt.</p>
+    </div></div>
   </div>
 </section>
 
@@ -346,35 +363,22 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
   </div>
 </section>
 
+
+<section class="cta" id="intake">
+  <div class="cta-inner sr">
+    <div class="sec-label">De eerste stap</div>
+    <h2 class="sec-title">Zullen we <span class="a">kennismaken</span>?</h2>
+    <p class="sec-sub">${p.ctaSub}</p>
+    <div class="cta-embed"><div id="cal-embed"></div></div>
+  </div>
+</section>
+
 <section class="tst">
   <div class="tst-inner">
     <div class="tst-eyebrow sr">Wat klanten zeggen</div>
     <div class="tst-grid">
       <figure class="tq sr sr-d1"><div class="tq-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="tq-text">&ldquo;Had oprecht niet gedacht dat de service zo uitgebreid was.&rdquo;</blockquote><figcaption class="tq-auth"><span class="tq-bar"></span><span><span class="tq-name">David Meeusen</span><br><span class="tq-role">Azora Studio</span></span></figcaption></figure>
       <figure class="tq sr sr-d2"><div class="tq-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="tq-text">&ldquo;Professioneel, afspraken nagekomen en goede communicatie.&rdquo;</blockquote><figcaption class="tq-auth"><span class="tq-bar"></span><span><span class="tq-name">Jeffrey Roelands</span><br><span class="tq-role">Backbone Customer Service</span></span></figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<section class="cta" id="intake">
-  <div class="cta-inner sr">
-    <div class="sec-label">De eerste stap</div>
-    <h2 class="sec-title">Zullen we met <span class="a">één regio</span> beginnen?</h2>
-    <p class="sec-sub">${p.ctaSub}</p>
-    <div class="cta-card">
-      <form class="cta-form" action="${FORM}" method="POST">
-        <input type="hidden" name="_subject" value="Pique intake-aanvraag: ${esc(p.org)}">
-        <input type="hidden" name="organisatie" value="${esc(p.org)}">
-        <label for="naam">Naam</label>
-        <input id="naam" type="text" name="naam" value="${esc(p.voornaam)}" required>
-        <label for="email">E-mailadres</label>
-        <input id="email" type="email" name="email" placeholder="jij@${esc(p.domein)}" required>
-        <label for="bericht">Waar wil je mee beginnen?</label>
-        <textarea id="bericht" name="bericht" placeholder="Bijvoorbeeld: welke regio als eerste, en welke droomklanten daar."></textarea>
-        <button type="submit" class="btn btn-amber">Verstuur en plan de intake</button>
-      </form>
-      <div class="cta-or">of direct</div>
-      <div style="text-align:center"><a href="${CAL}" class="cta-cal" target="_blank" rel="noopener">Kies zelf een moment in mijn agenda</a></div>
     </div>
   </div>
 </section>
@@ -400,7 +404,7 @@ document.querySelectorAll('.sr').forEach(el=>io.observe(el));
 
 (function(){
   const fill=document.querySelector('.story-spine-fill'), track=document.querySelector('.story-spine');
-  const nodes=[...document.querySelectorAll('.story-node')];
+  const nodes=[...document.querySelectorAll('.story-step')];
   if(!fill||!track) return;
   function upd(){
     const tr=track.getBoundingClientRect(), trig=innerHeight*0.58;
@@ -409,6 +413,10 @@ document.querySelectorAll('.sr').forEach(el=>io.observe(el));
   }
   addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
 })();
+
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "belafspraak-pique", {origin:"https://cal.com"});
+Cal.ns["belafspraak-pique"]("inline", {elementOrSelector:"#cal-embed", config: {"layout":"month_view"}, calLink: "simon-kempers/belafspraak-pique"});
 </script>
 </body>
 </html>`;
