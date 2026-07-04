@@ -1,10 +1,37 @@
-<!DOCTYPE html>
+// Genereert 25 persoonlijke franchise-LP's (batch 2) in ./pique/[slug].html
+// Batch 2 = lichter onderzoek, marketing-forward: problem-aware op aannames + sterke solution-pitch.
+// Messaging gebaseerd op Website/regional-growth.html. Schrijfregels: geen em-dashes, geen 'Geen'-openingen,
+// geen 'niet x maar y', geen emojis, grote tekst, verticaal gecentreerd.
+import { writeFileSync } from 'node:fs';
+
+const CAL = 'https://cal.com/simon-kempers/belafspraak-pique';
+const FORM = 'https://formspree.io/f/xrewllqb';
+
+// ---- DATA: per prospect handgeschreven copy ----
+import { PROSPECTS } from './pique-batch2-data.mjs';
+
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function render(p){
+  const eenheidMv = p.eenheidMv || (p.eenheid + 's');
+  // Gedeelde copy met slimme defaults (per prospect te overriden waar het persoonlijker moet).
+  const pijnSub = p.pijnSub || `Ik heb ${p.org} niet tot op de bodem doorgespit. Dit zijn aannames, gebaseerd op hoe netwerken zoals dat van jullie meestal werken. Herken je ze, dan weet je meteen waarom ik je schreef.`;
+  const pijnClose = p.pijnClose || `De vraag is niet of er in elke regio klanten zitten. Ze zitten er. De vraag is <strong>wie ze het eerst spreekt</strong>.`;
+  const pillarSub = p.pillarSub || `Eén strategie vanuit ${p.hqPlaats}, lokaal uitgevoerd per ${p.eenheid}. Exclusief, meetbaar en uitrolbaar zodra het in de eerste regio werkt.`;
+  const founderText = p.founderText || `Ik bouw voor een handvol netwerken tegelijk een regionale acquisitiemachine. ${p.org} paste precies in dat beeld, dus nam ik de tijd om dit voorstel met de hand voor je uit te werken.`;
+  const ctaSub = p.ctaSub || `We kiezen samen één regio en de droomklanten die daar zitten. Werkt het, dan rollen we het uit over ${p.structuur}.`;
+  const P = { ...p, pijnSub, pijnClose, pillarSub, founderText, ctaSub };
+  return renderHTML(P, eenheidMv);
+}
+
+function renderHTML(p, eenheidMv){
+  return `<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pique voor Witzand Bouwmaterialen</title>
-<meta name="description" content="Een persoonlijk voorstel voor Witzand Bouwmaterialen: elke vestiging zijn eigen regio, met klanten die alleen van hem zijn. Centraal aangestuurd, lokaal uitgevoerd.">
+<title>Pique voor ${esc(p.org)}</title>
+<meta name="description" content="Een persoonlijk voorstel voor ${esc(p.org)}: elke ${esc(p.eenheid)} zijn eigen regio, met klanten die alleen van hem zijn. Centraal aangestuurd, lokaal uitgevoerd.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -228,7 +255,7 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
 
 <nav id="nav">
   <a href="#top" class="logo">Pique<span class="logo-dot"></span></a>
-  <a href="https://cal.com/simon-kempers/belafspraak-pique" class="nav-btn" target="_blank" rel="noopener">Plan een intake</a>
+  <a href="${CAL}" class="nav-btn" target="_blank" rel="noopener">Plan een intake</a>
 </nav>
 
 <section class="videotop" id="top">
@@ -238,7 +265,7 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
     <div class="vt-frame">
       <video src="video.mp4" controls preload="metadata" playsinline></video>
     </div>
-    <div class="vt-hint">Bekijk de korte video. Daaronder zie je wat ik voor Witzand Bouwmaterialen zie.</div>
+    <div class="vt-hint">Bekijk de korte video. Daaronder zie je wat ik voor ${esc(p.org)} zie.</div>
   </div>
 </section>
 
@@ -246,12 +273,12 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
   <div class="grid-bg"></div>
   <div class="orb orb-2"></div>
   <div class="hero-inner">
-    <span class="hero-label">Persoonlijk voorstel voor Witzand Bouwmaterialen</span>
-    <div class="hero-hi">Hé Herwin,</div>
-    <h1 class="hero-h1">Honderddertig jaar sterk in de regio. En nog altijd <span class="a">wachten</span> tot de vakman binnenloopt.</h1>
-    <p class="hero-sub">Zes vestigingen die elk hun eigen aannemers en timmermannen bedienen. De omzet leunt op lokale relaties, maar de nieuwe zzp'er in het verzorgingsgebied komt vooral via-via, of helemaal niet.</p>
+    <span class="hero-label">Persoonlijk voorstel voor ${esc(p.org)}</span>
+    <div class="hero-hi">Hé ${esc(p.voornaam)},</div>
+    <h1 class="hero-h1">${p.heroH1}</h1>
+    <p class="hero-sub">${p.heroSub}</p>
     <div class="hero-ctas">
-      <a href="https://cal.com/simon-kempers/belafspraak-pique" class="btn btn-amber" target="_blank" rel="noopener">Plan een intake</a>
+      <a href="${CAL}" class="btn btn-amber" target="_blank" rel="noopener">Plan een intake</a>
       <a href="#uitleg" class="btn btn-outline">Bekijk hoe het werkt</a>
     </div>
     <div class="hero-stars">
@@ -264,11 +291,11 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
 <section class="noot" id="noot">
   <div class="noot-inner sr">
     <div class="noot-mark">&ldquo;</div>
-    <p class="noot-text">Witzand is diep verankerd in Twente en de Achterhoek, met bouwshop en afhaalcenter per vestiging. Wat me opviel is dat nieuwe klanten vooral binnenlopen. Voor een bedrijf met zo'n sterke naam per regio is daar denk ik veel meer uit te halen.</p>
-    <p class="noot-sign">Deze pagina is met de hand voor <strong>Witzand Bouwmaterialen</strong> gemaakt. Zo werkt precies wat wij voor je vestigingen doen.</p>
+    <p class="noot-text">${p.persoonlijkeNoot}</p>
+    <p class="noot-sign">Deze pagina is met de hand voor <strong>${esc(p.org)}</strong> gemaakt. Zo werkt precies wat wij voor je ${eenheidMv} doen.</p>
     <div class="noot-object">
       <div class="noot-object-ic"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
-      <div class="noot-object-txt"><div class="noot-object-kop">Een timmerpotlood</div><div class="noot-object-sub">Voor de vakman die jullie nog niet kent. Wij tekenen <strong>per vestiging</strong> uit welke aannemers binnen te halen zijn.</div></div>
+      <div class="noot-object-txt"><div class="noot-object-kop">${esc(p.object)}</div><div class="noot-object-sub">${p.objectNoot}</div></div>
     </div>
   </div>
 </section>
@@ -276,14 +303,12 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
 <section class="pijn" id="uitleg">
   <div class="pijn-inner">
     <div class="sr"><div class="sec-label">Wat er waarschijnlijk speelt</div>
-    <h2 class="sec-title">Landelijk staat het goed. <span class="a">Lokaal</span> begint elke vestiging opnieuw.</h2>
-    <p class="sec-sub">Ik heb Witzand Bouwmaterialen niet tot op de bodem doorgespit. Dit zijn aannames, gebaseerd op hoe netwerken zoals dat van jullie meestal werken. Herken je ze, dan weet je meteen waarom ik je schreef.</p></div>
+    <h2 class="sec-title">Landelijk staat het goed. <span class="a">Lokaal</span> begint elke ${esc(p.eenheid)} opnieuw.</h2>
+    <p class="sec-sub">${p.pijnSub}</p></div>
     <div class="aann">
-      <div class="aann-card sr sr-d1"><div class="aann-n">01</div><div class="aann-kop">Elke vestiging, een eigen verzorgingsgebied</div><div class="aann-tekst">Almelo, Enschede, Ruurlo, Eibergen, Lichtenvoorde en Vriezenveen. Elk gebied heeft aannemers en zzp’ers die jullie nog niet kennen.</div></div>
-      <div class="aann-card sr sr-d2"><div class="aann-n">02</div><div class="aann-kop">Binnenlopen is geen strategie</div><div class="aann-tekst">Wie al klant is weet jullie te vinden. De nieuwe aannemer die net begint kiest zijn leverancier in de eerste maanden. Dan wil je op zijn radar staan.</div></div>
-      <div class="aann-card sr sr-d3"><div class="aann-n">03</div><div class="aann-kop">Renovatie en prefab vragen om projecten</div><div class="aann-tekst">Jullie concepten mikken op grotere klussen. Die opdrachtgevers benader je gericht, in plaats van te wachten tot ze langs de balie komen.</div></div>
+      ${p.aannames.map((a,i)=>`<div class="aann-card sr sr-d${i+1}"><div class="aann-n">0${i+1}</div><div class="aann-kop">${a.kop}</div><div class="aann-tekst">${a.tekst}</div></div>`).join('\n      ')}
     </div>
-    <p class="pijn-close sr">De vraag is niet of er in elke regio klanten zitten. Ze zitten er. De vraag is <strong>wie ze het eerst spreekt</strong>.</p>
+    <p class="pijn-close sr">${p.pijnClose}</p>
   </div>
 </section>
 
@@ -299,7 +324,7 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
         <div class="vs-list">
           <div class="vs-item"><span class="vs-ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span>Gedeelde leads, <strong>ook aan je concurrent</strong></span></div>
           <div class="vs-item"><span class="vs-ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span>Volume in plaats van relevantie</span></div>
-          <div class="vs-item"><span class="vs-ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span>Losse campagnes per vestiging</span></div>
+          <div class="vs-item"><span class="vs-ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span>Losse campagnes per ${esc(p.eenheid)}</span></div>
           <div class="vs-item"><span class="vs-ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span>Op het hoofdkantoor: versnipperd beeld</span></div>
         </div>
       </div>
@@ -320,14 +345,14 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
 
 <section class="pillars">
   <div class="pil-inner">
-    <div class="sr"><div class="sec-label">Wat wij voor Witzand Bouwmaterialen doen</div>
-    <h2 class="sec-title">Elke vestiging zijn eigen regio <span class="a">terug</span>.</h2>
-    <p class="sec-sub">Eén strategie vanuit Almelo, lokaal uitgevoerd per vestiging. Exclusief, meetbaar en uitrolbaar zodra het in de eerste regio werkt.</p></div>
+    <div class="sr"><div class="sec-label">Wat wij voor ${esc(p.org)} doen</div>
+    <h2 class="sec-title">Elke ${esc(p.eenheid)} zijn eigen regio <span class="a">terug</span>.</h2>
+    <p class="sec-sub">${p.pillarSub}</p></div>
     <div class="pil-grid">
-      <div class="pil-card sr sr-d1"><div class="pil-ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="pil-h">Hyperpersoonlijk per regio</div><div class="pil-t">Voor elke vestiging benaderen we de lokale droomklanten alsof jullie ze persoonlijk kennen. Op naam, op context, op het juiste moment.</div></div>
-      <div class="pil-card sr sr-d2"><div class="pil-ic"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div class="pil-h">Exclusief, nooit doorverkocht</div><div class="pil-t">Wat wij voor een regio vinden gaat naar die ene vestiging, nooit ook naar de concurrent verderop. Dat is het verschil met een leadbureau.</div></div>
-      <div class="pil-card sr sr-d3"><div class="pil-ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><div class="pil-h">Centrale regie, lokale uitvoering</div><div class="pil-t">Eén strategie en één ICP vanuit het hoofdkantoor, lokaal uitgevoerd per vestiging. Op één scherm zie je waar het loopt en waar het achterblijft.</div></div>
-      <div class="pil-card sr sr-d4"><div class="pil-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div><div class="pil-h">Bewezen in één regio, dan uitrollen</div><div class="pil-t">Je begint klein. Werkt het in de eerste regio, dan rollen we hetzelfde systeem uit over zes vestigingen in Twente en de Achterhoek, in jouw tempo.</div></div>
+      <div class="pil-card sr sr-d1"><div class="pil-ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="pil-h">Hyperpersoonlijk per regio</div><div class="pil-t">Voor elke ${esc(p.eenheid)} benaderen we de lokale droomklanten alsof jullie ze persoonlijk kennen. Op naam, op context, op het juiste moment.</div></div>
+      <div class="pil-card sr sr-d2"><div class="pil-ic"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div class="pil-h">Exclusief, nooit doorverkocht</div><div class="pil-t">Wat wij voor een regio vinden gaat naar die ene ${esc(p.eenheid)}, nooit ook naar de concurrent verderop. Dat is het verschil met een leadbureau.</div></div>
+      <div class="pil-card sr sr-d3"><div class="pil-ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><div class="pil-h">Centrale regie, lokale uitvoering</div><div class="pil-t">Eén strategie en één ICP vanuit het hoofdkantoor, lokaal uitgevoerd per ${esc(p.eenheid)}. Op één scherm zie je waar het loopt en waar het achterblijft.</div></div>
+      <div class="pil-card sr sr-d4"><div class="pil-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div><div class="pil-h">Bewezen in één regio, dan uitrollen</div><div class="pil-t">Je begint klein. Werkt het in de eerste regio, dan rollen we hetzelfde systeem uit over ${esc(p.structuur)}, in jouw tempo.</div></div>
     </div>
   </div>
 </section>
@@ -341,7 +366,7 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
       <div class="sc-step sr sr-d1"><div class="sc-n">1</div><div class="sc-h">Pilot</div><div class="sc-t">Eén regio, volledig door ons bewezen binnen een kwartaal.</div></div>
       <div class="sc-step sr sr-d2"><div class="sc-n">3</div><div class="sc-h">Bevestigd</div><div class="sc-t">Het model herhaald over drie regio's, met eigen lokale toon.</div></div>
       <div class="sc-step sr sr-d3"><div class="sc-n">12</div><div class="sc-h">Netwerk</div><div class="sc-t">Regio's parallel live, met één dashboard voor de directie.</div></div>
-      <div class="sc-step final sr sr-d4"><div class="sc-n">NL</div><div class="sc-h">Landelijk</div><div class="sc-t">Het volledige netwerk, centraal aangestuurd vanuit Almelo.</div></div>
+      <div class="sc-step final sr sr-d4"><div class="sc-n">NL</div><div class="sc-h">Landelijk</div><div class="sc-t">Het volledige netwerk, centraal aangestuurd vanuit ${esc(p.hqPlaats)}.</div></div>
     </div>
   </div>
 </section>
@@ -351,7 +376,7 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
     <img class="fo-photo" src="simon.png" alt="Simon Kempers, oprichter Pique">
     <div>
       <div class="fo-label">De persoon achter dit voorstel</div>
-      <p class="fo-text">Ik bouw voor een handvol netwerken tegelijk een regionale acquisitiemachine. Witzand Bouwmaterialen paste precies in dat beeld, dus nam ik de tijd om dit voorstel met de hand voor je uit te werken.</p>
+      <p class="fo-text">${p.founderText}</p>
       <p class="fo-name"><strong>Simon Kempers</strong>, oprichter Pique</p>
     </div>
   </div>
@@ -371,21 +396,21 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
   <div class="cta-inner sr">
     <div class="sec-label">De eerste stap</div>
     <h2 class="sec-title">Zullen we <span class="a">één regio</span> bewijzen?</h2>
-    <p class="sec-sub">We kiezen samen één regio en de droomklanten die daar zitten. Werkt het, dan rollen we het uit over zes vestigingen in Twente en de Achterhoek.</p>
+    <p class="sec-sub">${p.ctaSub}</p>
     <div class="cta-card">
-      <form class="cta-form" action="https://formspree.io/f/xrewllqb" method="POST">
-        <input type="hidden" name="_subject" value="Pique intake-aanvraag: Witzand Bouwmaterialen">
-        <input type="hidden" name="organisatie" value="Witzand Bouwmaterialen">
+      <form class="cta-form" action="${FORM}" method="POST">
+        <input type="hidden" name="_subject" value="Pique intake-aanvraag: ${esc(p.org)}">
+        <input type="hidden" name="organisatie" value="${esc(p.org)}">
         <label for="naam">Naam</label>
-        <input id="naam" type="text" name="naam" value="Herwin" required>
+        <input id="naam" type="text" name="naam" value="${esc(p.voornaam)}" required>
         <label for="email">E-mailadres</label>
-        <input id="email" type="email" name="email" placeholder="jij@witzand.nl" required>
+        <input id="email" type="email" name="email" placeholder="jij@${esc(p.domein)}" required>
         <label for="bericht">Waar wil je mee beginnen?</label>
         <textarea id="bericht" name="bericht" placeholder="Bijvoorbeeld: welke regio als eerste, en welke droomklanten daar."></textarea>
         <button type="submit" class="btn btn-amber">Verstuur en plan de intake</button>
       </form>
       <div class="cta-or">of direct</div>
-      <div style="text-align:center"><a href="https://cal.com/simon-kempers/belafspraak-pique" class="cta-cal" target="_blank" rel="noopener">Kies zelf een moment in mijn agenda</a></div>
+      <div style="text-align:center"><a href="${CAL}" class="cta-cal" target="_blank" rel="noopener">Kies zelf een moment in mijn agenda</a></div>
     </div>
   </div>
 </section>
@@ -410,4 +435,18 @@ const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.t
 document.querySelectorAll('.sr').forEach(el=>io.observe(el));
 </script>
 </body>
-</html>
+</html>`;
+}
+
+import { mkdirSync } from 'node:fs';
+const outDir = `${import.meta.dirname}/pique`;
+mkdirSync(outDir, { recursive: true });
+let n=0;
+const slugs=new Set();
+for(const p of PROSPECTS){
+  if(slugs.has(p.slug)) throw new Error(`Dubbele slug: ${p.slug}`);
+  slugs.add(p.slug);
+  writeFileSync(`${outDir}/${p.slug}.html`, render(p));
+  n++;
+}
+console.log(`Gegenereerd: ${n} LP's in ${outDir}`);

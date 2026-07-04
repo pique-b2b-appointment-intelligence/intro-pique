@@ -52,7 +52,12 @@ nav.solid .nav-btn:hover{background:var(--amber);border-color:var(--amber);color
 .sr-d1{transition-delay:.1s}.sr-d2{transition-delay:.22s}.sr-d3{transition-delay:.34s}.sr-d4{transition-delay:.46s}
 @keyframes fadeUp{from{opacity:0;transform:translateY(38px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
 /* HERO */
-.hero{position:relative;background:var(--navy);overflow:hidden;padding:calc(36px + 7rem) clamp(1.5rem,4vw,4rem) clamp(3rem,6vh,5rem);min-height:100svh;display:flex;align-items:center}
+.videotop{position:relative;background:var(--navy);overflow:hidden;padding:calc(36px + 5rem) clamp(1.5rem,4vw,4rem) clamp(2.5rem,5vh,4rem)}
+.vt-inner{position:relative;z-index:2;max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+.vt-frame{width:100%;border-radius:22px;overflow:hidden;border:1px solid rgba(212,148,58,.18);box-shadow:0 40px 120px rgba(0,0,0,.5);background:#000;aspect-ratio:16/9;opacity:0;animation:fadeUp 1.1s var(--ease) .15s forwards}
+.vt-frame video{width:100%;height:100%;display:block;object-fit:cover}
+.vt-hint{margin-top:1.4rem;font-size:.78rem;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.42);text-align:center;opacity:0;animation:fadeUp 1s var(--ease) .35s forwards}
+.hero{position:relative;background:var(--navy);overflow:hidden;padding:clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,4rem) clamp(3.5rem,7vh,5.5rem);border-top:1px solid rgba(255,255,255,.04)}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 80% at 50% 30%,black 20%,transparent 100%)}
 .orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none}
 .orb-1{width:680px;height:680px;background:rgba(212,148,58,.09);top:-25%;left:-5%;animation:drift 18s ease-in-out infinite}
@@ -226,9 +231,20 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
   <a href="https://cal.com/simon-kempers/belafspraak-pique" class="nav-btn" target="_blank" rel="noopener">Plan een intake</a>
 </nav>
 
-<section class="hero" id="top">
+<section class="videotop" id="top">
   <div class="grid-bg"></div>
-  <div class="orb orb-1"></div><div class="orb orb-2"></div>
+  <div class="orb orb-1"></div>
+  <div class="vt-inner">
+    <div class="vt-frame">
+      <video src="video.mp4" controls preload="metadata" playsinline></video>
+    </div>
+    <div class="vt-hint">Bekijk de korte video. Daaronder zie je wat ik voor Abel Installatie zie.</div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="orb orb-2"></div>
   <div class="hero-inner">
     <span class="hero-label">Persoonlijk voorstel voor Abel Installatie</span>
     <div class="hero-hi">Hé Albert,</div>
@@ -243,7 +259,6 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
       <span class="hero-stars-label"><strong>5.0</strong> gemiddeld, beoordeeld door klanten als David en Jeffrey</span>
     </div>
   </div>
-  <a href="#noot" class="hero-scroll"><span>Waarom je dit ziet</span><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12l7 7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </section>
 
 <section class="noot" id="noot">
@@ -327,16 +342,6 @@ footer{background:var(--navy);padding:3rem 2rem;text-align:center;border-top:1px
       <div class="sc-step sr sr-d2"><div class="sc-n">3</div><div class="sc-h">Bevestigd</div><div class="sc-t">Het model herhaald over drie regio's, met eigen lokale toon.</div></div>
       <div class="sc-step sr sr-d3"><div class="sc-n">12</div><div class="sc-h">Netwerk</div><div class="sc-t">Regio's parallel live, met één dashboard voor de directie.</div></div>
       <div class="sc-step final sr sr-d4"><div class="sc-n">NL</div><div class="sc-h">Landelijk</div><div class="sc-t">Het volledige netwerk, centraal aangestuurd vanuit Tilburg.</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="video">
-  <div class="vid-inner">
-    <div class="sr"><div class="sec-label">Even persoonlijk</div>
-    <h2 class="sec-title">Ik nam een korte video voor je op.</h2></div>
-    <div class="vid-frame sr sr-d1">
-      <video src="video.mp4" controls preload="metadata" playsinline poster=""></video>
     </div>
   </div>
 </section>
