@@ -172,7 +172,8 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .gr-card{max-width:720px;margin:0 auto;background:var(--white);border:1px solid rgba(198,137,60,.3);border-radius:20px;padding:clamp(2rem,4vw,3rem);box-shadow:0 24px 60px rgba(20,28,51,.07);position:relative}
 .gr-card::before{content:'';position:absolute;top:0;left:clamp(2rem,4vw,3rem);right:clamp(2rem,4vw,3rem);height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
 .gr-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
-.gr-text{font-family:var(--serif);font-weight:400;font-size:clamp(1.12rem,1.8vw,1.38rem);line-height:1.55;color:var(--ink);letter-spacing:-.01em}
+.gr-head{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.22;letter-spacing:-.02em;color:var(--ink);margin-bottom:1rem}
+.gr-text{font-size:1.02rem;color:var(--ink2);line-height:1.72;font-weight:400}
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .ft-logo{font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:6px;margin-bottom:.8rem}
@@ -225,7 +226,8 @@ ${chapterHTML}
 <section class="guarantee">
   <div class="gr-card reveal">
     <div class="gr-eyebrow">Onze garantie</div>
-    <p class="gr-text">Je draait break-even op de waarde van één gewonnen klant. Is dat na drie maanden nog niet gelukt, dan gaan we gratis door totdat het wel lukt. Alleen wanneer je al in de eerste maand break-even draait, vervalt de garantie.</p>
+    <p class="gr-head">Binnen drie maanden heb je je investering terugverdiend.</p>
+    <p class="gr-text">Zo zeker zijn we van onze zaak. We rekenen met de gemiddelde waarde van één klant over de hele samenwerking, en garanderen dat je daarop break-even draait. Is dat na drie maanden nog niet gelukt, dan werken we gratis door tot het wel zo is. Alleen wanneer je al in de eerste maand break-even draait, vervalt de garantie.</p>
   </div>
 </section>
 
