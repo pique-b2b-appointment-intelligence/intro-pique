@@ -1,0 +1,197 @@
+/* ============================================================
+   PIQUE — persoonlijke landingspagina (franchise/regio-HQ)
+   Navy + Cream, amber accent. Playfair / Inter / DM Mono.
+   Ingetogen. Precies. Duur.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #F8F6F2;
+  --bg2:      #F4F1EB;
+  --paper:    #FFFFFF;
+  --ink:      #0F172A;
+  --body:     #1E2433;
+  --muted:    #6B7280;
+  --faint:    #A6A9B0;
+  --line:     rgba(15,23,42,0.09);
+  --line2:    rgba(15,23,42,0.14);
+  --accent:   #D4943A;
+  --accent-soft: rgba(212,148,58,0.14);
+  --navy:     #0F172A;
+  --midnight: #0B1220;
+  --sans:  'Inter', system-ui, sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+  --mono:  'DM Mono', ui-monospace, monospace;
+  --r: 10px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--body);
+  font-size: 16px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.wrap { max-width: 700px; margin: 0 auto; padding: 0 28px; }
+
+/* ── Topbar ──────────────────────────────── */
+.topbar {
+  background: var(--midnight);
+  padding: 13px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  position: sticky; top: 0; z-index: 20;
+}
+.tb-brand { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: #fff; }
+.tb-brand .dot { color: var(--accent); }
+.tb-label { font-family: var(--mono); font-size: 0.62rem; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; text-align: right; }
+
+/* ── Hero band (subtiele amber gloed) ────── */
+.hero {
+  position: relative;
+  background:
+    radial-gradient(120% 90% at 88% -10%, rgba(212,148,58,0.10), transparent 60%),
+    var(--bg);
+  overflow: hidden;
+}
+
+/* ── Typografie ──────────────────────────── */
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 6vw, 3.5rem);
+  font-weight: 600; color: var(--ink); line-height: 1.06; letter-spacing: -0.02em;
+}
+h1 .dot { color: var(--accent); }
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600; color: var(--ink); line-height: 1.2; letter-spacing: -0.015em;
+}
+p { font-size: 0.98rem; line-height: 1.8; color: var(--body); margin-bottom: 17px; }
+p:last-child { margin-bottom: 0; }
+p strong { color: var(--ink); font-weight: 600; }
+.lead { font-family: var(--serif); font-size: clamp(1.15rem,2.2vw,1.4rem); color: var(--ink); font-weight: 500; line-height: 1.4; }
+
+/* ── Section ─────────────────────────────── */
+.sec { padding: 78px 0; border-bottom: 1px solid var(--line); }
+.sec:last-of-type { border-bottom: none; }
+
+/* ── Label ───────────────────────────────── */
+.lbl {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--mono); font-size: 0.64rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 26px;
+}
+.lbl::before { content: ''; width: 22px; height: 2px; background: var(--accent); flex-shrink: 0; }
+
+/* ── Prospect mark ───────────────────────── */
+.prospect-mark { display: flex; align-items: center; gap: 14px; padding-bottom: 24px; border-bottom: 1px solid var(--line); margin-bottom: 38px; }
+.pm-logo {
+  width: 48px; height: 48px; background: var(--navy); border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-weight: 600; font-size: 1.15rem; color: #fff;
+}
+.pm-name { font-size: 0.82rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 1px; }
+.pm-meta { font-family: var(--mono); font-size: 0.64rem; color: var(--muted); letter-spacing: 0.02em; }
+
+/* ── Signature ───────────────────────────── */
+.sign { margin-top: 26px; }
+.sign-name { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: var(--ink); }
+.sign-role { font-family: var(--mono); font-size: 0.64rem; color: var(--muted); letter-spacing: 0.04em; margin-top: 2px; }
+
+/* ── Persoonlijke video ──────────────────── */
+.lp-video { margin: 28px 0 4px; }
+.lp-video-label { display: flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.lp-video-label::before { content: ''; width: 20px; height: 2px; background: var(--accent); }
+.lp-video-el { width: 100%; border-radius: 12px; border: 1px solid var(--line2); box-shadow: 0 10px 34px rgba(15,23,42,0.12); background: #000; display: block; }
+
+/* ── Finding (genummerd, met titel) ──────── */
+.find {
+  display: grid; grid-template-columns: 54px 1fr; gap: 20px;
+  background: var(--paper); border: 1px solid var(--line2); border-radius: var(--r);
+  padding: 26px 28px; margin: 16px 0;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.find:hover { box-shadow: 0 8px 30px rgba(15,23,42,0.07); transform: translateY(-2px); }
+.find-n { font-family: var(--serif); font-size: 2.3rem; font-weight: 600; color: var(--accent); line-height: 0.85; }
+.find-h { font-family: var(--serif); font-size: 1.18rem; font-weight: 600; color: var(--ink); margin-bottom: 9px; line-height: 1.25; }
+.find-c p { font-size: 0.94rem; margin-bottom: 11px; }
+.find-src { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 11px; }
+@media (max-width: 560px) { .find { grid-template-columns: 1fr; gap: 6px; } .find-n { font-size: 1.7rem; } }
+
+/* ── Pull quote ──────────────────────────── */
+.pull {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  color: var(--ink); line-height: 1.4;
+  border-left: 3px solid var(--accent);
+  padding: 8px 0 8px 26px; margin: 38px 0;
+}
+
+/* ── Pivot ───────────────────────────────── */
+.pivot { padding: 58px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 50px 0; text-align: center; }
+.pivot-pre { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.pivot h2 { max-width: 600px; margin: 0 auto; font-size: clamp(1.5rem, 3.2vw, 2rem); }
+
+/* ── Pijlers ─────────────────────────────── */
+.bb-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--line2); border-radius: var(--r); overflow: hidden; margin-top: 32px; }
+.bb-item { background: var(--paper); padding: 28px 24px; }
+.bb-num { font-family: var(--mono); font-size: 0.66rem; color: var(--accent); margin-bottom: 14px; }
+.bb-title { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; color: var(--ink); margin-bottom: 9px; line-height: 1.25; }
+.bb-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
+@media (max-width: 600px) { .bb-grid { grid-template-columns: 1fr; } }
+
+/* ── Founder ─────────────────────────────── */
+.founder { display: grid; grid-template-columns: 116px 1fr; gap: 26px; align-items: center; background: var(--paper); border: 1px solid var(--line2); border-radius: 16px; padding: 28px; }
+.f-photo { width: 116px; height: 138px; border-radius: 12px; object-fit: cover; object-position: center 18%; background: var(--bg2); }
+.f-name { font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+.f-role { font-family: var(--mono); font-size: 0.64rem; color: var(--muted); letter-spacing: 0.03em; margin-bottom: 14px; }
+.f-bio p { font-size: 0.9rem; line-height: 1.75; margin-bottom: 10px; }
+@media (max-width: 560px) { .founder { grid-template-columns: 1fr; gap: 18px; } .f-photo { width: 104px; height: 124px; } }
+
+/* ── CTA ─────────────────────────────────── */
+.cta-sec {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(212,148,58,0.16), transparent 55%),
+    var(--navy);
+  border-radius: 18px; padding: 48px 44px; margin: 52px 0; color: #fff;
+}
+.cta-eyebrow { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.cta-sec h2 { color: #fff; margin-bottom: 14px; }
+.cta-sec > p { color: rgba(255,255,255,0.66); font-size: 0.94rem; margin-bottom: 0; }
+.cta-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 38px; align-items: start; }
+.cta-col-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-bottom: 14px; }
+.cf { display: flex; flex-direction: column; gap: 9px; }
+.cf input, .cf textarea {
+  width: 100%; padding: 12px 14px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.06); color: #fff;
+  font-family: var(--sans); font-size: 0.85rem; outline: none; transition: border-color 0.2s, background 0.2s;
+}
+.cf input::placeholder, .cf textarea::placeholder { color: rgba(255,255,255,0.3); }
+.cf input:focus, .cf textarea:focus { border-color: rgba(212,148,58,0.6); background: rgba(255,255,255,0.09); }
+.cf textarea { height: 104px; resize: none; }
+.cf-btn { width: 100%; padding: 13px; border-radius: 8px; background: var(--accent); color: var(--navy); font-family: var(--sans); font-size: 0.85rem; font-weight: 700; border: none; cursor: pointer; transition: opacity 0.18s; }
+.cf-btn:hover { opacity: 0.92; }
+.cal-wrap { border-radius: var(--r); overflow: hidden; border: 1px solid rgba(255,255,255,0.12); min-height: 440px; background: rgba(255,255,255,0.04); }
+.cal-inline { width: 100%; min-height: 440px; overflow: auto; }
+@media (max-width: 600px) { .cta-cols { grid-template-columns: 1fr; } .cta-sec { padding: 34px 24px; } }
+
+/* ── Footer ──────────────────────────────── */
+.footer { padding: 30px 0 46px; text-align: center; }
+.footer p { font-family: var(--mono); font-size: 0.64rem; color: var(--faint); margin: 0; letter-spacing: 0.02em; }
+
+/* ── Reveal ──────────────────────────────── */
+.r { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.r.v { opacity: 1; transform: translateY(0); }
+.r.d1 { transition-delay: 0.08s; } .r.d2 { transition-delay: 0.16s; } .r.d3 { transition-delay: 0.24s; }
+
+@media (max-width: 600px) {
+  .wrap { padding: 0 20px; }
+  .sec { padding: 54px 0; }
+  .topbar { padding: 12px 20px; }
+}
