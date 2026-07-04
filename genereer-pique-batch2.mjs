@@ -18,7 +18,7 @@ function render(p){
   // Journey-hoofdstukken (alternerend links/rechts), chronologisch, met fase-koppen.
   const C = [
     { side:'left', num:'01', eyebrow:'Voor jou', kop:'Waarom je dit ziet.',
-      body:`${p.persoonlijkeNoot}`, extra:`Bij deze brief zit ${esc(objLower)}. Een klein voorbeeld van hoe we werken: iets persoonlijks en tastbaars, dat opvalt.` },
+      body:`${p.persoonlijkeNoot}` },
     { side:'center', header:true, eyebrow:'De situatie', kop:'Hoe het nu gaat.',
       sub:`Bij de meeste franchises en netwerken loopt lokale groei op dezelfde paar dingen vast.` },
     { side:'right', num:'02', kop:'De leads komen van bovenaf.',
@@ -37,7 +37,7 @@ function render(p){
     { side:'left', num:'07', kop:'Passend bij je merk.',
       body:`Alles wat de deur uitgaat past bij hoe ${org} wil overkomen. Persoonlijk en imagebewust, op naam en met een reden om te reageren. We benaderen bedrijven zoals jij het zelf zou doen met genoeg tijd, zonder massamail of bulk.` },
     { side:'right', num:'08', kop:'Iets tastbaars, geen mailtje.',
-      body:`Net als ${esc(objLower)} bij deze brief, sturen we ook jouw droomklanten iets persoonlijks en fysieks. Een klein gebaar dat opvalt tussen alle mail, en dat het gesprek op een natuurlijke manier opent.` },
+      body:`Jouw droomklanten kunnen we bijvoorbeeld benaderen met ${esc(objLower)}. Een klein, persoonlijk gebaar dat opvalt tussen alle mail, en het gesprek op een natuurlijke manier opent.` },
     { side:'left', num:'09', kop:'Jij houdt de regie.',
       body:`Jij bepaalt welke regio's als eerste aan de beurt zijn en welke klanten je wilt. Wij regelen de afspraken en leveren ze compleet aan, zodat je per regio precies ziet wat er loopt en wat het oplevert.` },
   ];
@@ -168,6 +168,11 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .rv-who{font-size:.85rem;color:var(--ink2)}.rv-who strong{color:var(--ink);font-weight:600}
 @media(max-width:680px){.rv-grid{grid-template-columns:1fr}}
 
+.guarantee{padding:clamp(2rem,5vh,4rem) clamp(1.5rem,4vw,2rem) clamp(3rem,6vh,5rem)}
+.gr-card{max-width:720px;margin:0 auto;background:var(--white);border:1px solid rgba(198,137,60,.3);border-radius:20px;padding:clamp(2rem,4vw,3rem);box-shadow:0 24px 60px rgba(20,28,51,.07);position:relative}
+.gr-card::before{content:'';position:absolute;top:0;left:clamp(2rem,4vw,3rem);right:clamp(2rem,4vw,3rem);height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.gr-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+.gr-text{font-family:var(--serif);font-weight:400;font-size:clamp(1.12rem,1.8vw,1.38rem);line-height:1.55;color:var(--ink);letter-spacing:-.01em}
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .ft-logo{font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:6px;margin-bottom:.8rem}
@@ -214,6 +219,13 @@ ${chapterHTML}
     <div class="fo-eyebrow">De persoon achter dit voorstel</div>
     <p class="fo-text">${founderText}</p>
     <p class="fo-name"><strong>Simon Kempers</strong>, oprichter Pique</p>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="gr-card reveal">
+    <div class="gr-eyebrow">Onze garantie</div>
+    <p class="gr-text">Je draait break-even op de waarde van één gewonnen klant. Is dat na drie maanden nog niet gelukt, dan gaan we gratis door totdat het wel lukt. Alleen wanneer je al in de eerste maand break-even draait, vervalt de garantie.</p>
   </div>
 </section>
 
@@ -279,6 +291,7 @@ addEventListener('load',build);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
 const v=document.querySelector('.vframe video');if(v)v.addEventListener('loadedmetadata',build);
 setTimeout(build,400);setTimeout(build,1200);
+if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
 
 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 Cal("init","belafspraak-pique",{origin:"https://cal.com"});
