@@ -118,6 +118,7 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .chapter.center{justify-content:center}
 .ch-inner{position:relative;width:min(400px,40%)}
 .chapter.center .ch-inner{width:min(560px,78%);text-align:center}
+.chapter.center .ch-body{background:var(--bg);padding:1.5rem 1.75rem;border-radius:16px;position:relative;z-index:1}
 .ch-dot{position:absolute;top:-1.7rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--line);z-index:2;transition:border-color .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
 .chapter.left .ch-dot{right:-1.7rem}
 .chapter.right .ch-dot{left:-1.7rem}
@@ -176,6 +177,9 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .gr-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
 .gr-head{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.22;letter-spacing:-.02em;color:var(--ink);margin-bottom:1rem}
 .gr-text{font-size:1.02rem;color:var(--ink2);line-height:1.72;font-weight:400}
+.gr-text sup{color:var(--amber);font-weight:700;font-size:.7em}
+.gr-note{font-size:.82rem;color:var(--ink3);line-height:1.6;margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line)}
+.gr-star{color:var(--amber);font-weight:700}
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .ft-logo{color:var(--ink);display:inline-flex;align-items:center;margin-bottom:.8rem}
@@ -232,8 +236,9 @@ ${chapterHTML}
 <section class="guarantee">
   <div class="gr-card reveal">
     <div class="gr-eyebrow">Onze garantie</div>
-    <p class="gr-head">Binnen drie maanden heb je je investering terugverdiend.</p>
-    <p class="gr-text">Zo zeker zijn we van onze zaak. We rekenen met de gemiddelde waarde van één klant over de hele samenwerking, en garanderen dat je daarop break-even draait. Is dat na drie maanden nog niet gelukt, dan werken we gratis door tot het wel zo is. Alleen wanneer je al in de eerste maand break-even draait, vervalt de garantie.</p>
+    <p class="gr-head">Break-even binnen drie maanden, of we werken kosteloos door.</p>
+    <p class="gr-text">We rekenen met de gemiddelde waarde van één klant over de volledige looptijd. Heb je na drie maanden je investering nog niet terugverdiend, dan zetten we de samenwerking kosteloos voort tot je dat punt bereikt.<sup>*</sup></p>
+    <p class="gr-note"><span class="gr-star">*</span> De garantie vervalt wanneer je al in de eerste maand break-even draait.</p>
   </div>
 </section>
 
