@@ -17,37 +17,26 @@ function render(p){
   const org = esc(p.org);
 
   // Journey-hoofdstukken (alternerend links/rechts), chronologisch, met fase-koppen.
+  const F = p.aannames;
   const C = [
-    { side:'left', num:'01', eyebrow:'Voor jou', kop:'Waarom je dit ziet.',
-      body:`${p.persoonlijkeNoot}` },
-    { side:'center', header:true, eyebrow:'De situatie', kop:'Hoe het nu gaat.',
-      sub:`Bij de meeste franchises en netwerken loopt lokale groei op dezelfde paar dingen vast.` },
-    { side:'right', num:'02', kop:'De leads komen van bovenaf.',
-      body:`De meeste netwerken kopen leads centraal in, of krijgen ze van een bureau. Er valt een lijst binnen die voor iedereen hetzelfde is, niet gekozen op jouw merk en niet op de klanten die je echt wilt. Je vestigingen bellen af wat er toevallig binnenkomt.` },
-    { side:'left', num:'03', kop:'Je deelt ze met de concurrent.',
-      body:`Die lijst is zelden exclusief. Hij ligt ook bij andere partijen, die dezelfde ondernemers bellen. Zo betaal je voor aandacht die je deelt, en hoort de prospect binnen een week hetzelfde verhaal van drie kanten.` },
-    { side:'right', num:'04', kop:'Elke regio is anders, de aanpak niet.',
-      body:`Een beslisser in Groningen kijkt anders dan een beslisser in Limburg, en wat in de stad werkt, werkt niet op het platteland. Toch gaat overal dezelfde boodschap de deur uit. De lokale nuance die een gesprek opent, ontbreekt.` },
-    { side:'left', num:'05', kop:'De uitkomst blijft giswerk.',
-      body:`Komt er een afspraak uit, dan hoor je dat meestal pas achteraf. Met wie het gesprek is, waar het over ging en of het bij je past, daar heb je vooraf geen zicht op. Sturen op kwaliteit wordt zo bijna onmogelijk.` },
-    { side:'center', pivot:true, kop:'Dit nemen wij volledig uit handen.' },
-    { side:'center', header:true, eyebrow:'De aanpak', kop:'Zo doen wij het.',
-      sub:`Eén marketingmachine, opgezet per regio en volledig op jouw merk.` },
-    { side:'right', num:'06', kop:'Een eigen aanpak, per regio.',
-      body:`We bouwen voor elke regio een eigen campagne, gericht op de droomklanten die daar zitten. Wat wij voor jouw regio vinden, gaat alleen naar jou. Exclusief, dus je deelt het met niemand.` },
-    { side:'left', num:'07', kop:'Passend bij je merk.',
-      body:`Alles wat de deur uitgaat past bij hoe ${org} wil overkomen. Persoonlijk en imagebewust, op naam en met een reden om te reageren. We benaderen bedrijven zoals jij het zelf zou doen met genoeg tijd, zonder massamail of bulk.` },
-    { side:'right', num:'08', kop:'Iets tastbaars, geen mailtje.',
-      body:`Jouw droomklanten kunnen we bijvoorbeeld benaderen met ${esc(objLower)}. Een klein, persoonlijk gebaar dat opvalt tussen alle mail, en het gesprek op een natuurlijke manier opent.` },
-    { side:'left', num:'09', kop:'Jij houdt de regie.',
-      body:`Jij bepaalt welke regio's als eerste aan de beurt zijn en welke klanten je wilt. Wij regelen de afspraken en leveren ze compleet aan, zodat je per regio precies ziet wat er loopt en wat het oplevert.` },
+    { side:'left', eyebrow:'Voor jou', kop:'Waarom je dit ziet.', body:`${p.persoonlijkeNoot}`, sign:true },
+    { side:'center', header:true, eyebrow:'Wat ik zag', kop:`Bij ${org}.`, sub:`Drie dingen die me opvielen. Ze horen bij elkaar.` },
+    { side:'right', num:'01', kop:F[0].kop, body:F[0].tekst },
+    { side:'left', num:'02', kop:F[1].kop, body:F[1].tekst },
+    { side:'right', num:'03', kop:F[2].kop, body:F[2].tekst },
+    { side:'center', pivot:true, pre:'Waar het op uitkomt', kop:p.tension },
+    { side:'left', eyebrow:'Wat dit betekent', kop:'De prijs van stilzitten.', body:p.consequence },
+    { side:'center', header:true, eyebrow:'Wat ik doe', kop:'Pique, in het kort.', sub:`Ik regel gesprekken met de beslissers die je normaal niet warm te pakken krijgt. Eén strategie, per regio uitgevoerd, op naam en met een reden. Soms met iets tastbaars, zoals ${esc(objLower)} voor jouw droomklanten.` },
+    { side:'right', num:'01', kop:'Eén strategie, lokaal uitgevoerd', body:`Jij bepaalt de lijn centraal. Ik voer 'm per regio uit, met beslissers en een toon die daar passen.` },
+    { side:'left', num:'02', kop:'Exclusief, nooit je concurrent', body:`Wat ik voor een regio vind, is van ${org}. Nooit gedeeld, nooit doorverkocht.` },
+    { side:'right', num:'03', kop:'Bewijs één regio, dan uitrollen', body:`We beginnen met één regio. Werkt het, dan rollen we uit over de rest.` },
   ];
 
   const chapterHTML = C.map(c => {
     let inner;
-    if(c.pivot){ inner = `<p class="ch-pivot">${c.kop}</p>`; }
+    if(c.pivot){ inner = `${c.pre?`<div class="ch-eyebrow">${c.pre}</div>`:``}<p class="ch-pivot">${c.kop}</p>`; }
     else if(c.header){ inner = `<div class="ch-eyebrow">${c.eyebrow}</div><h2 class="ch-kop ch-head">${c.kop}</h2>${c.sub?`<p class="ch-sub">${c.sub}</p>`:''}`; }
-    else { inner = `${c.eyebrow?`<div class="ch-eyebrow">${c.eyebrow}</div>`:''}${c.num?`<div class="ch-num">${c.num}</div>`:''}<h2 class="ch-kop">${c.kop}</h2><p class="ch-text">${c.body}</p>${c.extra?`<p class="ch-extra">${c.extra}</p>`:''}`; }
+    else { inner = `${c.eyebrow?`<div class="ch-eyebrow">${c.eyebrow}</div>`:''}${c.num?`<div class="ch-num">${c.num}</div>`:''}<h2 class="ch-kop">${c.kop}</h2><p class="ch-text">${c.body}</p>${c.bron?`<div class="ch-bron">Bron: ${c.bron}</div>`:''}${c.sign?`<div class="ch-sign">Simon, oprichter Pique</div>`:''}`; }
     return `    <section class="chapter ${c.side}${c.pivot?' pivot':''}${c.header?' phase':''}">
       <div class="ch-inner">
         <span class="ch-dot"></span>
@@ -98,6 +87,7 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .intro-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(224,172,102,.9);margin-bottom:2.25rem;opacity:0;animation:up 1s var(--ease) .15s forwards}
 .vframe{width:100%;max-width:820px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 50px 130px rgba(0,0,0,.5);background:#000;aspect-ratio:16/9;opacity:0;animation:up 1.1s var(--ease) .3s forwards}
 .vframe video{width:100%;height:100%;display:block;object-fit:cover}
+.vlabel{font-size:.78rem;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.42);margin-top:1rem;opacity:0;animation:up 1s var(--ease) .42s forwards}
 .intro-h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.12;letter-spacing:-.02em;margin-top:clamp(2.5rem,5vh,3.5rem);max-width:20ch;opacity:0;animation:up 1.1s var(--ease) .5s forwards}
 .intro-sub{color:rgba(255,255,255,.55);font-size:1.05rem;font-weight:300;margin-top:1.25rem;max-width:44ch;opacity:0;animation:up 1s var(--ease) .68s forwards}
 .scrollcue{margin-top:clamp(2.5rem,6vh,4rem);display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:up 1s var(--ease) .9s forwards}
@@ -133,6 +123,8 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .ch-sub{font-size:1.06rem;color:var(--ink2);line-height:1.7;margin-top:1rem;font-weight:300;max-width:34ch;margin-left:auto;margin-right:auto}
 .ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.75;font-weight:400}
 .ch-extra{font-size:.96rem;color:var(--ink3);line-height:1.65;margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line)}
+.ch-bron{font-size:.72rem;color:var(--ink3);margin-top:.95rem;letter-spacing:.02em}
+.ch-sign{font-size:.85rem;color:var(--ink3);margin-top:1.4rem;font-weight:500}
 .chapter.pivot{padding:clamp(8vh,12vh,15vh) 0}
 .ch-pivot{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
 .chapter.pivot .ch-dot{width:16px;height:16px;top:-2.1rem}
@@ -145,7 +137,9 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .founder.in .fr{opacity:1;transform:none;filter:blur(0)}
 .fo-photo{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:50%;object-fit:cover;box-shadow:0 20px 50px rgba(20,28,51,.15)}
 .fo-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
-.fo-text{font-family:var(--serif);font-weight:400;font-size:clamp(1.15rem,1.9vw,1.4rem);line-height:1.5;color:var(--ink);margin-bottom:1.1rem;letter-spacing:-.01em}
+.fo-text{font-family:var(--sans);font-weight:400;font-size:1.02rem;line-height:1.72;color:var(--ink2);margin-bottom:1.1rem}
+.fo-text p{margin-bottom:.7rem}
+.fo-text p:last-child{margin-bottom:0}
 .fo-name{font-size:.92rem;color:var(--ink2)}.fo-name strong{color:var(--ink);font-weight:600}
 @media(max-width:600px){.founder{grid-template-columns:1fr;text-align:center;justify-items:center}}
 
@@ -210,6 +204,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <div class="intro-inner">
     <div class="intro-eyebrow">Persoonlijk voor ${org}</div>
     <div class="vframe"><video src="video.mp4" controls preload="metadata" playsinline></video></div>
+    <div class="vlabel">Kort woord vooraf van Simon</div>
     <h1 class="intro-h1">Hé ${esc(p.voornaam)}, dit is waarom je mijn brief hebt ontvangen.</h1>
     <p class="intro-sub">Neem even de tijd. Ik neem je stap voor stap mee.</p>
     <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
@@ -228,7 +223,11 @@ ${chapterHTML}
   <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique">
   <div class="fr">
     <div class="fo-eyebrow">De persoon achter dit voorstel</div>
-    <p class="fo-text">${founderText}</p>
+    <div class="fo-text">
+      <p>Ik ben Simon. Ik begon Pique omdat de inbox van elke beslisser vol zit met dezelfde geautomatiseerde berichten. Daar val je niet meer tussen op.</p>
+      <p>Dus doe ik het omgekeerd. Een klein aantal bedrijven, per stuk het onderzoek dat je hierboven zag, en een kaart plus pagina die echt alleen over hen gaan.</p>
+      <p>Volume is het doel niet. Aandacht wel.</p>
+    </div>
     <p class="fo-name"><strong>Simon Kempers</strong>, oprichter Pique</p>
   </div>
 </section>
@@ -245,8 +244,8 @@ ${chapterHTML}
 <section class="cta" id="gesprek">
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">De volgende stap</div>
-    <h2 class="cta-h reveal">Zullen we kennismaken?</h2>
-    <p class="cta-sub reveal">${ctaSub}</p>
+    <h2 class="cta-h reveal">Even kennismaken?</h2>
+    <p class="cta-sub reveal">Dit wordt geen verkoopgesprek. Gewoon kijken of dit bij ${org} past, en of dat koude stuk warmer kan.</p>
     <div class="cta-embed reveal"><div id="cal-embed"></div></div>
   </div>
 </section>
