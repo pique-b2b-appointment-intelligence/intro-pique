@@ -138,7 +138,7 @@ export const PROSPECTS = [
   objectNoot:`In jullie vak moet alles waterpas. In het onze ook: per regio de juiste <strong>vastgoedbeheerders</strong> recht voor je aan tafel.`,
 },
 {
-  slug:'oranjedak', voornaam:'Wim', org:'Oranjedak',
+  slug:'oranjedak', voornaam:'Lisanne', org:'Oranjedak',
   eenheid:'vestiging', eenheidMv:'vestigingen', structuur:'vijf vestigingen', hqPlaats:'Zwijndrecht', domein:'oranjedak.nl',
   heroH1:`Elk dak gaat een keer open. De vraag is <span class="a">wie</span> de opdrachtgever dan belt.`,
   heroSub:`Vijf vestigingen die elk grote B2B-opdrachtgevers bedienen: aannemers, corporaties, vastgoedbeheer. Onderhoud is terugkerend, maar de acquisitie per vestiging is versnipperd.`,
@@ -170,7 +170,7 @@ export const PROSPECTS = [
   objectNoot:`Waar jullie de camera insteken, schijnen wij het licht op de <strong>zakelijke klanten</strong> die je nu pas na een storing spreekt.`,
 },
 {
-  slug:'kemkens', voornaam:'Bart', org:'Kemkens',
+  slug:'kemkens', voornaam:'Peet', org:'Kemkens',
   eenheid:'vestiging', eenheidMv:'vestigingen', structuur:'jullie vestigingen in Midden- en Zuid-Nederland', hqPlaats:'Oss', domein:'kemkens.nl',
   heroH1:`Sterk in wat je al hebt. <span class="a">Nieuw</span> zakelijk werk vraagt om meer.`,
   heroSub:`Een grote onderhouds- en leasebase, vooral particulier. Maar de VvE's, corporaties en utiliteitsklanten in elk rayon benader je nu nauwelijks proactief.`,
@@ -186,7 +186,7 @@ export const PROSPECTS = [
   objectNoot:`Om de temperatuur te meten. Wij meten de commerciële temperatuur: hoeveel <strong>zakelijk werk</strong> laat elke vestiging nu liggen.`,
 },
 {
-  slug:'sanitiem', voornaam:'Bertil', org:'Sanitiem',
+  slug:'sanitiem', voornaam:'Jochem', org:'Sanitiem',
   eenheid:'installateur', eenheidMv:'installateurs', structuur:'de aangesloten installatiebedrijven', hqPlaats:'Twello', domein:'sanitiem.nl',
   heroH1:`De formule geeft inkoop en merk. De <span class="a">klant</span> haalt ieder lid zelf binnen.`,
   heroSub:`Ruim twintig aangesloten badkamerspecialisten profiteren van collectieve inkoop en bekendheid. Maar de particuliere en projectmatige klant in de eigen regio winnen, dat blijft aan ieder bedrijf apart.`,
@@ -398,7 +398,7 @@ export const PROSPECTS = [
   objectNoot:`Het bordje dat elke opdracht markeert. Wij zorgen dat de <strong>eigenaren en beleggers per regio</strong> jullie bellen voordat ze zelf een bordje nodig hebben.`,
 },
 {
-  slug:'coolworld-rentals', voornaam:'Mark', org:'Coolworld Rentals',
+  slug:'coolworld-rentals', voornaam:'Erwin', org:'Coolworld Rentals',
   eenheid:'vestiging', eenheidMv:'vestigingen', structuur:'jullie vestigingen en servicepunten', hqPlaats:'Waalwijk', domein:'coolworld-rentals.com',
   heroH1:`Als de koeling uitvalt bellen ze jullie. <span class="a">Daarvoor</span> nog niet.`,
   heroSub:`Elke vestiging speelt razendsnel in op urgente huurvraag: uitval, piekseizoen, een storing. Sterk. Maar de vaste accounts bij industrie, food en logistiek bouw je daarmee niet structureel op.`,
