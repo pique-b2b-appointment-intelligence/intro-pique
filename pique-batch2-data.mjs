@@ -56,7 +56,7 @@ export const PROSPECTS = [
   objectNoot:`Voor de vakman die jullie nog niet kent. Wij tekenen <strong>per vestiging</strong> uit welke aannemers binnen te halen zijn.`,
 },
 {
-  slug:'carxpert', voornaam:'Erik', org:'CarXpert',
+  slug:'carxpert', voornaam:'Kees', org:'CarXpert',
   eenheid:'garage', eenheidMv:'garages', structuur:'ruim vijftig aangesloten garages', hqPlaats:'Eemnes', domein:'carxpert.nl',
   heroH1:`De dealer krijgt het wagenpark. Jullie garages <span class="a">verdienen</span> het.`,
   heroSub:`Elke aangesloten CarXpert-garage moet lokaal zelf onderhoud, APK en wagenparkcontracten binnenhalen, terwijl merkdealers en grote ketens de zichtbaarheid opeisen.`,
@@ -106,7 +106,7 @@ export const PROSPECTS = [
 
 // ── INSTALLATIE & TECHNIEK ────────────────────────────────────────────
 {
-  slug:'abel-installatie', voornaam:'Albert', org:'Abel Installatie',
+  slug:'abel-installatie', voornaam:'Paul', org:'Abel Installatie',
   eenheid:'installateur', eenheidMv:'installateurs', structuur:'de aangesloten installateurs', hqPlaats:'Tilburg', domein:'abelinstallatie.nl',
   heroH1:`Jullie regelen de inkoop. De <span class="a">klanten</span> vindt elk lid nog zelf.`,
   heroSub:`Ruim tweehonderd installateurs kopen via Abel scherp in. Maar de zakelijke opdrachtgever in hun eigen regio binnenhalen, dat doet ieder lid nog op eigen houtje.`,
