@@ -3,10 +3,11 @@
 // door de echte hoofdstuk-ankers getekend) verbindt asymmetrische, alternerende hoofdstukken.
 // Het pad inkt amber terwijl je scrolt; hoofdstukken onthullen zich subtiel. Chronologisch verhaal.
 // Schrijfregels: geen em-dashes, geen 'Geen'-zinstart, geen 'niet x maar y', geen emojis, geen cursief.
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { PROSPECTS } from './pique-batch2-data.mjs';
 
 const CAL = 'https://cal.com/simon-kempers/belafspraak-pique';
+const LOGO = readFileSync(new URL('../../Marketing/Logo Pique/SVG/Logo 1-01.svg', import.meta.url),'utf8').replace(/<defs>[\s\S]*?<\/defs>/,'').replace(/class=\"cls-1\"/g,'fill=\"currentColor\"').replace(/class=\"cls-2\"/g,'fill=\"#D4943A\"').replace(/\s+/g,' ');
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
 function render(p){
@@ -81,7 +82,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hi
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.5rem clamp(1.5rem,4vw,3rem);transition:background .5s var(--ease),backdrop-filter .5s,padding .4s}
 nav.solid{background:rgba(251,250,248,.72);backdrop-filter:blur(16px) saturate(1.4);padding-top:1rem;padding-bottom:1rem}
-.logo{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--white);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:6px;transition:color .5s}
+.logo{color:var(--white);text-decoration:none;display:flex;align-items:center;transition:color .5s}
+.logo svg{height:26px;width:auto;display:block}
 nav.solid .logo{color:var(--ink)}
 .logo-dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
 .nav-cta{font-size:.78rem;font-weight:500;letter-spacing:.01em;color:rgba(255,255,255,.7);text-decoration:none;padding:.5rem .95rem;border-radius:100px;border:1px solid rgba(255,255,255,.16);transition:all .4s}
@@ -176,9 +178,13 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .gr-text{font-size:1.02rem;color:var(--ink2);line-height:1.72;font-weight:400}
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
-.ft-logo{font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:6px;margin-bottom:.8rem}
+.ft-logo{color:var(--ink);display:inline-flex;align-items:center;margin-bottom:.8rem}
+.ft-logo svg{height:24px;width:auto}
 .ft-meta{font-size:.74rem;color:var(--ink3);line-height:1.9}
 .ft-meta a{color:var(--ink2);text-decoration:none}
+.ft-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--amber);padding-bottom:3px;margin-bottom:2.25rem;transition:gap .3s var(--ease)}
+.ft-cta:hover{gap:.85rem}
+.ft-cta svg{width:15px;height:15px;stroke:var(--amber);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 @media(max-width:800px){
   .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
@@ -191,7 +197,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 </head>
 <body>
 <nav id="nav">
-  <a href="#top" class="logo">Pique<span class="logo-dot"></span></a>
+  <a href="#top" class="logo" aria-label="Pique">${LOGO}</a>
   <a href="#gesprek" class="nav-cta">Plan een gesprek</a>
 </nav>
 
@@ -249,9 +255,10 @@ ${chapterHTML}
 </section>
 
 <footer>
-  <div class="ft-logo">Pique<span class="logo-dot"></span></div>
+  <a href="https://www.pique.agency/regional-growth" class="ft-cta">Meer weten over Regional Growth <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <div class="ft-logo">${LOGO}</div>
   <div class="ft-meta">
-    Onderdeel van TextInc B2B Copywriting &nbsp;&middot;&nbsp; <a href="mailto:simon@pique.agency">simon@pique.agency</a><br>
+    Onderdeel van TextInc B2B Copywriting &nbsp;&middot;&nbsp; <a href="mailto:info@pique.agency">info@pique.agency</a><br>
     &copy; 2026 Pique
   </div>
 </footer>
