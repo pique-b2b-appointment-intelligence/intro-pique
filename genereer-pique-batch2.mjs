@@ -126,8 +126,9 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .ch-bron{font-size:.72rem;color:var(--ink3);margin-top:.95rem;letter-spacing:.02em}
 .ch-sign{font-size:.85rem;color:var(--ink3);margin-top:1.4rem;font-weight:500}
 .chapter.pivot{padding:clamp(8vh,12vh,15vh) 0}
-.ch-pivot{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.2;letter-spacing:-.02em;color:var(--ink)}
+.ch-pivot{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.1vw,1.75rem);line-height:1.42;letter-spacing:-.015em;color:var(--ink)}
 .chapter.pivot .ch-dot{width:16px;height:16px;top:-2.1rem}
+.chapter.pivot .ch-inner{width:min(680px,88%)}
 .chapter.phase{padding-top:clamp(7vh,10vh,13vh)}
 .chapter.phase .ch-dot{width:15px;height:15px;top:-2.1rem}
 
