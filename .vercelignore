@@ -3,8 +3,11 @@
 node_modules
 *.mov
 *.mp4
-!pique/video.mp4
+!pique/*.mp4
 !textinc/simon-video.mp4
+!textincb/simon-video.mp4
+!bcs2/video.mp4
+!bcs3/video.mp4
 *.csv
 *.md
 *.mjs
@@ -14,3 +17,4 @@ node_modules
 *.ai
 *.psd
 *.eps
+!textinc-a/video.mp4
