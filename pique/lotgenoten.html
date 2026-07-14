@@ -70,6 +70,14 @@ h2.blk-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.6vw,2
 .card h3{font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--ink);line-height:1.25;margin-bottom:.55rem;letter-spacing:-.01em}
 .card p{font-size:.92rem;line-height:1.6;color:var(--ink2);margin:0}
 
+/* plan steps */
+.steps{margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
+.step{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.3rem 1.5rem;box-shadow:0 10px 28px rgba(20,28,51,.04)}
+.step .sn{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums;padding-top:.1rem}
+.step h3{font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--ink);margin-bottom:.35rem;letter-spacing:-.01em;line-height:1.25}
+.step p{font-size:.94rem;line-height:1.62;color:var(--ink2);margin:0;max-width:none}
+.step p .g{color:var(--amber);font-weight:600}
+
 /* pull */
 .pull{margin-top:2rem;font-family:var(--serif);font-weight:500;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.35;color:var(--ink);border-left:3px solid var(--amber);padding-left:1.2rem;letter-spacing:-.01em}
 
@@ -120,9 +128,9 @@ footer{padding:2.5rem 2rem;text-align:center}
     <a href="#top" class="logo" aria-label="Pique"><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 929.98 302.23"><path fill="currentColor" d="M0,268v-3.83l7.66-2.68q7.65-2.29,10.14-6.89t2.49-12.26V41.73q0-7.65-2.68-12.25T7.27,22.21L0,19.14V15.32H93q57,0,82.51,20.86t25.46,55a78.41,78.41,0,0,1-10.53,40Q180,149.32,155.83,160T90.74,170.77h-13v70.45q0,14.92,14.93,19.52l11.48,3.45V268ZM77.73,163.11H92.27q18.77,0,30.64-6.13t17.61-21.44q5.74-15.31,5.74-42.5,0-27.57-6.32-42.88T121.37,28.91Q109.12,23,90.74,23h-13Z"/><path fill="currentColor" d="M216.32,268v-3.83l5.36-1.53c5.11-1.54,8.62-3.83,10.53-6.9s2.88-7.14,2.88-12.25V123.67q0-8-2.88-12.06t-10.53-5.55l-5.36-1.15v-3.83l70.07-22.59,3.83,3.83-1.15,54.37V243.9q0,7.65,2.87,12.25T302.09,263l3.83,1.15V268ZM261.5,58.2q-13,0-22-8.23a27.06,27.06,0,0,1-9-20.87q0-13,9-21.06t22-8q13,0,21.83,8t8.8,21.06q0,12.63-8.8,20.87T261.5,58.2Z"/><path fill="currentColor" d="M503.21,119.57a87.17,87.17,0,0,0-33.76-35.13q-21.76-12.69-50.16-12.68T369.4,84.44a90,90,0,0,0-33.8,35.13q-12.27,22.45-12.24,52t12.24,52a90.24,90.24,0,0,0,33.8,35.16q21.5,12.68,49.89,12.66c3.83,0,7.54-.2,11.18-.53,2.21-.22,4.4-.48,6.53-.83-2-4.41-4.22-9.33-6.59-14.54a28.4,28.4,0,0,1-11.08,2.17c-.83,0-1.64,0-2.43-.1q-11.26-.92-19.81-10.52-9.51-10.64-14.72-29.79t-5.17-45.7q0-26.55,5.17-45.71t14.72-29.58c6.3-7,13.72-10.41,22.24-10.41,8.75,0,16.29,3.45,22.53,10.41S453,113,456.44,125.77s5.21,28,5.21,45.71q0,24.09-4.28,42.05c10.39,11.85,21.09,23.82,29.21,32.21a89,89,0,0,0,16.63-22.24q12-22.49,12-52T503.21,119.57Z"/><path fill="currentColor" d="M608.74,273.76A64.49,64.49,0,0,1,581.37,268a42.21,42.21,0,0,1-19.53-18.57q-7.1-12.82-6.7-33.89l1.15-98.4q0-8.8-3.06-12.63t-9.58-5.36l-4.59-1.53V93.81l68.54-13.4,3.82,3.82-1.91,54.37v92.28q0,12.26,7.08,18t17.81,5.75a55.62,55.62,0,0,0,19.14-3.07,68.65,68.65,0,0,0,16.85-9.19l1.53-124.82q0-8.79-2.68-12.44t-10-5.17l-3.82-1.15V95l67-14.54,3.83,3.82-1.15,54.37V242.36q0,8.43,2.3,13t9.95,7.66l3.83,1.15V268l-67,3.83-3.45-22.59a136.35,136.35,0,0,1-27.37,17.42Q628.66,273.76,608.74,273.76Z"/><path fill="currentColor" d="M851.11,78.11q24.89,0,42.5,10.14a69.39,69.39,0,0,1,27,27.57Q930,133.25,930,155.45q0,4.22-.38,8.62a34.71,34.71,0,0,1-1.53,7.84H814q.38,41.35,14.74,59.54t42.69,18.19q19.14,0,31-6.13a75.81,75.81,0,0,0,22.21-18l3.83,3.44a88.14,88.14,0,0,1-31.59,32.93q-19.73,11.87-47.29,11.87-27.18,0-48.24-11.68a82.38,82.38,0,0,1-32.93-33.5q-11.86-21.83-11.87-52.07,0-31.39,13.79-53.41t35.41-33.51A95.54,95.54,0,0,1,851.11,78.11ZM850,85.77a28.2,28.2,0,0,0-19,6.7q-7.85,6.7-12.25,23.73T814,164.26h65.47q3.82-41.73-3.06-60.12T850,85.77Z"/><path fill="#D4943A" d="M400.7,166s35.83,78.88,49.46,109c13.39,29.63,51.1,46.89,84.54-12.47a1,1,0,0,0-1.35-1.37c-7.45,4.12-26.71,12.89-41.07,3.1C474.11,251.94,395,153.48,400.7,166Z"/></svg></a>
     <div class="chips">
       <a href="#wie" class="chip"><span class="n">01</span>Wie ik ben</a>
-      <a href="#zag" class="chip"><span class="n">02</span>Wat ik zag</a>
+      <a href="#zag" class="chip"><span class="n">02</span>Wat ik zie</a>
       <a href="#kost" class="chip"><span class="n">03</span>Wat het kost</a>
-      <a href="#voorstel" class="chip"><span class="n">04</span>Mijn voorstel</a>
+      <a href="#voorstel" class="chip"><span class="n">04</span>Het plan</a>
       <a href="#deal" class="chip"><span class="n">05</span>De deal</a>
     </div>
     <a href="#gesprek" class="nav-cta">Plan een gesprek</a>
@@ -133,7 +141,7 @@ footer{padding:2.5rem 2rem;text-align:center}
   <div class="wrap">
     <div class="hero-eyebrow">Persoonlijk voor Koen &middot; van Simon</div>
     <h1>Je bent een landelijk mediabedrijf geworden. Je verkoopt nog als een podcast <span class="a">uit een kelder.</span></h1>
-    <p>Via Alvinho en Mustafa ken je m'n naam. Geef me twee minuten, dan laat ik je precies zien wat ik bedoel, en wat ik eraan zou doen.</p>
+    <p>Ik werk met de halve gastenlijst van jullie show. Geef me twee minuten, dan laat ik zien wat ik zie, en wat ik eraan zou bouwen.</p>
     <a href="#wie" class="hero-cue"><i>&darr;</i> Lees het verhaal</a>
   </div>
 </header>
@@ -141,10 +149,11 @@ footer{padding:2.5rem 2rem;text-align:center}
 <section class="blk" id="wie">
   <div class="wrap">
     <div class="kicker rv"><span class="kn">01</span> Wie dit stuurt</div>
-    <h2 class="blk-h rv">Eerst even wie ik ben.</h2>
-    <p class="rv">Ik ben Simon. Ik ken Alvinho en Mustafa goed en spreek ze geregeld, dus m'n naam is vast wel eens gevallen. Ik bouw marketing voor merken die vechten om precies de ondernemer die elke dinsdag en donderdag naar jou luistert. Ik ken die luisteraar dus goed, van de andere kant van het scherm.</p>
+    <h2 class="blk-h rv">Ik zit middenin jullie wereld.</h2>
+    <p class="rv">Ik ben Simon. Ik werk met de mensen waar jullie je gasten uit halen. Ik doe de marketing voor Aquila, waar ik zelf ook lid ben, en Alvinho is een goede vriend. Bij Spectrum Performance coördineer ik een stuk van de marketing en schakel ik veel met Jamar en Stephan. Met Mustafa Aziz spreek ik geregeld.</p>
+    <p class="rv">Kortom, ik werk met de halve gastenlijst van jullie eigen podcast. Ik ken jullie luisteraar en jullie wereld van binnenuit. En juist daarom valt me iets op wat ik graag met je deel.</p>
     <div class="brands rv">
-      <span class="brand">Aquila</span>
+      <span class="brand">Aquila &middot; lid</span>
       <span class="brand">Spectrum Performance</span>
       <span class="brand">XXL Nutrition</span>
     </div>
@@ -176,31 +185,37 @@ footer{padding:2.5rem 2rem;text-align:center}
 
 <section class="blk" id="voorstel">
   <div class="wrap">
-    <div class="kicker rv"><span class="kn">04</span> Mijn voorstel</div>
-    <h2 class="blk-h rv">Ik bouw de machine die onder dat bereik hoort.</h2>
-    <p class="rv">Twee tot drie maanden werk ik als jullie Senior Marketeer. Ik pak de website, de propositie en de funnels op de schop. Eén helder pad voor de luisteraar, één voor het lid, één voor de sponsor. Zodat het bereik dat je al hebt eindelijk omzet wordt, in plaats van in een DM te blijven hangen.</p>
-    <p class="rv">En daar bovenop zet ik de Pique-methode in. Persoonlijke items, handgeschreven brieven, en een pagina die alleen over dat ene bedrijf gaat. Precies zoals deze brief bij jou binnenkwam. Zo haal ik de grote sponsors actief binnen, in plaats van te wachten tot ze het formulier vinden.</p>
+    <div class="kicker rv"><span class="kn">04</span> Het plan</div>
+    <h2 class="blk-h rv">Zo maak ik van bereik omzet.</h2>
+    <p class="rv">Je hebt het moeilijkste al gedaan, het bereik opbouwen. De rest is de machine eronder bouwen. Dat zou ik in vier stappen doen.</p>
+    <div class="steps">
+      <div class="step rv"><div class="sn">01</div><div><h3>Eén funnel per doelgroep</h3><p>De luisteraar wordt lid, het lid komt in de community, de bezoeker wordt sponsor. Elk pad met een eigen pagina en eigen opvolging, in plaats van één DM voor alles.</p></div></div>
+      <div class="step rv"><div class="sn">02</div><div><h3>Een echte mediakit met pakketten en prijzen</h3><p>Van een leeg formulier naar een tarievenkaart die een mediabuyer intern kan doorrekenen. Zodat de grote adverteerder in één keer ziet wat hij krijgt en wat het kost.</p></div></div>
+      <div class="step rv"><div class="sn">03</div><div><h3>Eén set cijfers die overal klopt</h3><p>Je bereik in één verhaal, onderbouwd. Dat haalt de twijfel weg bij precies de koper die zijn huiswerk doet, voordat hij zijn bod verlaagt.</p></div></div>
+      <div class="step rv"><div class="sn">04</div><div><h3>Een sponsor-pipeline die zichzelf vult</h3><p>In plaats van wachten tot een merk het formulier vindt, benader je de A-merken proactief. <span class="g">Hier komt de Pique-methode binnen, en dit is ook het deel dat we op commissie kunnen doen.</span></p></div></div>
+    </div>
   </div>
 </section>
 
 <section class="blk" id="deal">
   <div class="wrap">
     <div class="kicker rv"><span class="kn">05</span> De deal</div>
-    <h2 class="blk-h rv">En wat ik ervoor vraag.</h2>
+    <h2 class="blk-h rv">En hoe we het doen.</h2>
     <div class="offer rv">
-      <p><strong>Eén podcastaflevering.</strong> Normaal is dat 10 tot 15k, en wat ik in die maanden teruggeef is meer waard. Voor mij klopt de ruil, want ik zou m'n eigen verhaal graag een keer bij jullie aan tafel vertellen.</p>
+      <p><strong>De ruil.</strong> Ik zet dit plan neer en trek de basis recht. Voor jullie is een aflevering 10 tot 15k aan inventory en een dinsdag. Wat ik in die weken bouw is meer waard. Dus dit is een eerlijke ruil tussen mensen die weten wat alles waard is.</p>
+      <p><strong>De upside.</strong> Spreekt de Pique-aanpak jullie aan, het proactief binnenhalen van grote sponsors, dan doen we dat op commissie. Ik verdien pas als jij verdient. Voor jullie zit er dus geen risico aan.</p>
     </div>
     <div class="gate rv">
       <div class="gate-inner" aria-hidden="true">
-        <div class="grow"><h4>Het volledige plan van aanpak</h4><p>Week voor week, van de eerste quick wins tot de nieuwe sponsorfunnel en de tarievenkaart.</p></div>
-        <div class="grow"><h4>De sponsors die ik als eerste zou benaderen</h4><p>Een shortlist A-merken uit jullie eigen luisterwereld, met per merk de ingang.</p></div>
-        <div class="grow"><h4>De rest van wat ik vond</h4><p>Nog drie punten in de funnel die nu omzet kosten, met de oplossing erbij.</p></div>
+        <div class="grow"><h4>Het plan, week voor week</h4><p>Van de eerste quick wins tot de nieuwe sponsorfunnel en de mediakit met tarieven.</p></div>
+        <div class="grow"><h4>De A-merken die ik als eerste zou benaderen</h4><p>Een shortlist uit jullie eigen luisterwereld, met per merk de ingang die ik zou gebruiken.</p></div>
+        <div class="grow"><h4>De commissie-afspraak, concreet</h4><p>Wat een gesloten sponsor oplevert, en wat mijn deel is. Zwart-op-wit, zonder verrassingen.</p></div>
       </div>
       <div class="gate-overlay">
         <div class="gate-card">
-          <h3>Dit is niet alles wat ik voor je heb.</h3>
-          <p>Het hele plan, de sponsor-shortlist en de rest van m'n bevindingen loop ik met je door. Plan even een gesprek.</p>
-          <a href="#gesprek" class="gate-btn">Open het volledige plan <span>&rarr;</span></a>
+          <h3>Dit is de korte versie.</h3>
+          <p>Het hele plan, de sponsor-shortlist en de commissie-afspraak loop ik met je door. Vraag Alvinho of Mustafa gerust naar me, en plan even een gesprek.</p>
+          <a href="#gesprek" class="gate-btn">Plan een gesprek <span>&rarr;</span></a>
         </div>
       </div>
     </div>
