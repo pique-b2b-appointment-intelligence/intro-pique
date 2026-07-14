@@ -114,6 +114,40 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
+/* PROPO teaser */
+.propo{max-width:720px;margin:0 auto;padding:clamp(1rem,3vh,2rem) clamp(1.5rem,4vw,2rem) clamp(3rem,6vh,4.5rem)}
+.propo-inner{border:1px solid var(--line);border-radius:20px;background:var(--white);padding:clamp(1.75rem,4vw,2.5rem);box-shadow:0 24px 60px rgba(20,28,51,.06)}
+.propo-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.propo-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.2;letter-spacing:-.02em;color:var(--ink);margin-bottom:1rem}
+.propo-text{font-size:1rem;color:var(--ink2);line-height:1.72;margin-bottom:1.5rem}
+.propo-points{display:flex;flex-direction:column;gap:.85rem;margin-bottom:1.75rem}
+.pp{display:flex;gap:.9rem;align-items:flex-start}
+.pp-n{font-family:var(--serif);font-size:.8rem;color:var(--amber);font-weight:600;flex-shrink:0;padding-top:.15rem;font-variant-numeric:tabular-nums}
+.pp p{margin:0;font-size:.95rem;color:var(--ink2);line-height:1.6}
+.propo-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-size:.9rem;font-weight:600;color:#fff;background:var(--navy);border:none;border-radius:100px;padding:.8rem 1.5rem;cursor:pointer;transition:gap .3s var(--ease),transform .3s var(--ease)}
+.propo-btn:hover{gap:.85rem;transform:translateY(-2px)}
+.propo-btn span{color:var(--ambers)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.modal.open{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(14,21,38,.55);backdrop-filter:blur(4px);animation:mfade .3s ease}
+.modal-card{position:relative;z-index:1;max-width:420px;width:100%;background:var(--navy);color:#fff;border-radius:20px;padding:2.5rem 2.25rem 2.25rem;box-shadow:0 40px 100px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08);animation:mrise .4s var(--ease)}
+.modal-x{position:absolute;top:1rem;right:1.1rem;background:none;border:none;color:rgba(255,255,255,.5);font-size:1.5rem;line-height:1;cursor:pointer;transition:color .2s}
+.modal-x:hover{color:#fff}
+.modal-eyebrow{font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ambers);margin-bottom:1rem}
+.modal-h{font-family:var(--serif);font-weight:500;font-size:1.5rem;line-height:1.2;letter-spacing:-.02em;color:#fff;margin-bottom:.85rem}
+.modal-p{font-size:.92rem;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:1.75rem}
+.modal-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:600;color:var(--navy);background:#fff;border-radius:100px;padding:.75rem 1.5rem;transition:gap .3s var(--ease)}
+.modal-btn:hover{gap:.85rem}
+.modal-btn span{color:var(--amber)}
+@keyframes mfade{from{opacity:0}to{opacity:1}}
+@keyframes mrise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* review feature */
+.rv-feature{margin-bottom:1.5rem}
+.rv-feature .rv-q{font-size:clamp(1.3rem,2.2vw,1.55rem)}
+
 /* REVIEWS */
 .reviews{max-width:1000px;margin:0 auto;padding:clamp(4.5rem,9vh,7rem) clamp(1.5rem,4vw,2rem)}
 .rv-eyebrow{text-align:center;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:2.75rem}
@@ -168,7 +202,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="bt-logo">L</div>
       <div class="bt-text"><span class="bt-name">Lightr</span><span class="bt-meta">Barneveld &middot; Handgeschreven kaarten</span></div>
     </div>
-    <h1 class="intro-h1">Hé Maas, ik verstuur mijn post via jullie. En dat bracht me op een idee.</h1>
+    <h1 class="intro-h1">Hé Maas, ik verstuur mijn brieven via jullie. En dat bracht me op een idee.</h1>
     <p class="intro-sub">Neem even de tijd. Ik vertel je in volgorde wat ik zag, en wat ik denk dat we samen kunnen doen.</p>
     <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
   </div>
@@ -182,7 +216,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Even voorstellen</div><h2 class="ch-kop">Eerst wie dit stuurt.</h2><p class="ch-text">Ik ben Simon. Ik verstuur mijn eigen post via Lightr, elke week. Voor mij zijn jullie kaarten geen leuk extraatje, ze zijn een vast onderdeel van hoe ik nieuwe klanten benader.</p><p class="ch-text">Dus ik kijk er met andere ogen naar dan de meeste klanten. En juist daardoor viel me iets op dat ik je graag wil laten zien.</p><div class="ch-sign"><strong>Simon</strong>, oprichter Pique</div></div>
+        <div class="ch-body"><div class="ch-eyebrow">Even voorstellen</div><h2 class="ch-kop">Eerst wie dit stuurt.</h2><p class="ch-text">Ik ben Simon. Ik verstuur mijn eigen brieven via Lightr, elke week. Voor mij zijn jullie kaarten geen leuk extraatje, ze zijn een vast onderdeel van hoe ik nieuwe klanten benader.</p><p class="ch-text">Dus ik kijk er met andere ogen naar dan de meeste klanten. En juist daardoor viel me iets op dat ik je graag wil laten zien.</p><div class="ch-sign"><strong>Simon</strong>, oprichter Pique</div></div>
       </div>
     </section>
     <section class="chapter center phase">
@@ -212,34 +246,47 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Waarom ik erover begin</div><h2 class="ch-kop">Ik zie het aan mijn eigen post.</h2><p class="ch-text">Stuur ik een kaart met een algemene tekst, dan blijft het stil. Staat er één rake, persoonlijke observatie op, dan gaat de telefoon. Zelfde kaart, zelfde pen, een heel ander resultaat.</p><p class="ch-text">Dat bracht me op een idee, waar volgens mij zowel Lightr als jullie klanten iets aan hebben.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Waarom ik erover begin</div><h2 class="ch-kop">Ik zie het aan mijn eigen brieven.</h2><p class="ch-text">Stuur ik een brief met een algemene tekst, dan blijft het stil. Staat er één rake, persoonlijke observatie op, dan gaat de telefoon. Zelfde brief, zelfde pen, een heel ander resultaat.</p><p class="ch-text">En toen dacht ik: dit is niet alleen mijn probleem. Dit is precies waar jullie klanten tegenaan lopen. En daar zit een kans voor Lightr.</p></div>
       </div>
     </section>
     <section class="chapter center phase">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Mijn idee</div><h2 class="ch-kop ch-head">In twee stappen.</h2><p class="ch-sub">Eerst zorgen we dat de basis klopt. Dan zorgen we dat die basis bij de juiste persoon terechtkomt.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Mijn voorstel</div><h2 class="ch-kop ch-head">Bied het je klanten aan.</h2><p class="ch-sub">De laag die de kaart laat werken, als dienst die via Lightr loopt. Jij verdient mee, je klanten scoren beter.</p></div>
       </div>
     </section>
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">Stap 1 &middot; TextInc</div><h2 class="ch-kop">Eerst de basis goed.</h2><p class="ch-text">Met TextInc scherpen we je propositie, je copy en je messaging aan. Wat je zegt, en tegen wie. Zodat wat er op de kaart en op je site staat, klopt en raakt in plaats van opgaat in de ruis. Dit is de fundering, en zonder die fundering werkt de rest maar half.</p></div>
+        <div class="ch-body"><div class="ch-num">Zo werkt het</div><h2 class="ch-kop">Pique maakt van de kaart een gesprek.</h2><p class="ch-text">Pique is mijn bureau voor afspraken met beslissers. Ik zoek per ontvanger één echte reden om contact te leggen, die reden schrijven we op de kaart, en de warme reactie zet ik om in een afspraak. Dat bied je jouw klanten aan als een dienst boven op de kaart.</p></div>
       </div>
     </section>
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">Stap 2 &middot; Pique</div><h2 class="ch-kop">Dan dragen we het uit.</h2><p class="ch-text">Met Pique brengen we die basis naar buiten. Naar de juiste beslisser, op naam, met een reden die hij herkent. En de warme reactie die daaruit komt, zetten we om in een afspraak in je agenda. De basis is dan goed, en hij landt precies waar het telt.</p></div>
+        <div class="ch-body"><div class="ch-num">Wat het jou oplevert</div><h2 class="ch-kop">Kaarten die converteren, en commissie.</h2><p class="ch-text">Klanten die met jullie kaarten echte afspraken boeken, blijven langer en bestellen meer. Op elk traject dat via Lightr loopt, pak je commissie. En dan verkopen jullie het resultaat van de kaart, iets wat niemand anders in jullie markt kan zeggen.</p></div>
       </div>
     </section>
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">En het mooie</div><h2 class="ch-kop">We gebruiken elkaar al.</h2><p class="ch-text">Ik verstuur mijn post via Lightr. Jullie kanaal en mijn aanpak vullen elkaar precies aan. Daarom denk ik aan een samenwerking waarin we allebei beter worden, ook in wat het kost. Meer een ruil dan een factuur.</p></div>
+        <div class="ch-body"><div class="ch-num">En voor mij</div><h2 class="ch-kop">We gebruiken elkaar al.</h2><p class="ch-text">Ik verstuur mijn brieven al via Lightr. Jullie kanaal en mijn aanpak vullen elkaar precies aan. Een partnertarief op de brieven maakt het voor mij rond. Meer een ruil dan een factuur.</p></div>
       </div>
     </section>
 </main>
+
+<section class="propo" id="propositie">
+  <div class="propo-inner reveal">
+    <div class="propo-eyebrow">Nog iets anders</div>
+    <h2 class="propo-h">En ik keek ook naar jullie eigen site.</h2>
+    <p class="propo-text">Los van de samenwerking viel me nog iets op. Jullie verkopen persoonlijke communicatie, en toch praat elke pagina van de site tegen iedereen tegelijk. En de cijfers die je noemt, verschillen per pagina. Precies het soort dingen die TextInc, het bureau waar Pique uit voortkomt, voor je rechttrekt.</p>
+    <div class="propo-points">
+      <div class="pp"><span class="pp-n">01</span><p>Elke pagina praat tegen iedereen. Webshops, de autobranche, recruiters en HR lezen dezelfde tekst.</p></div>
+      <div class="pp"><span class="pp-n">02</span><p>De ene pagina zegt dat 99% de kaart leest, de andere 95%. En geen enkel cijfer heeft een bron.</p></div>
+    </div>
+    <button class="propo-btn" id="openPropo">Bekijk wat ik vond <span>&rarr;</span></button>
+  </div>
+</section>
 
 <section class="founder" id="founder">
   <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique">
@@ -265,6 +312,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 
 <section class="reviews">
   <div class="rv-eyebrow reveal">Wat klanten zeggen</div>
+  <figure class="rv rv-feature reveal"><div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="rv-q">&ldquo;Wat mij vooral opviel, is hoe snel Simon de kern van ons bedrijf wist te pakken. Een aanrader als je iemand zoekt die verder kijkt dan marketing en echt meedenkt over je groei.&rdquo;</blockquote><figcaption class="rv-who"><strong>Bas Nagel</strong><br>Volle Gym</figcaption></figure>
   <div class="rv-grid">
     <figure class="rv reveal"><div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="rv-q">&ldquo;Had oprecht niet gedacht dat de service zo uitgebreid was.&rdquo;</blockquote><figcaption class="rv-who"><strong>David Meeusen</strong><br>Azora Studio</figcaption></figure>
     <figure class="rv reveal"><div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="rv-q">&ldquo;Professioneel, afspraken nagekomen en goede communicatie.&rdquo;</blockquote><figcaption class="rv-who"><strong>Jeffrey Roelands</strong><br>Backbone Customer Service</figcaption></figure>
@@ -280,8 +328,23 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   </div>
 </footer>
 
+<div class="modal" id="propoModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-x" data-close aria-label="Sluiten">&times;</button>
+    <div class="modal-eyebrow">TextInc &middot; Propositie-analyse</div>
+    <h3 id="modalTitle" class="modal-h">Ik zette het op een aparte pagina.</h3>
+    <p class="modal-p">Twee dingen zie je daar meteen. De rest, en wat het aan gemiste conversie kost, loop ik met je door in een gesprek.</p>
+    <a href="/textincb/lightr" class="modal-btn">Naar de analyse <span>&rarr;</span></a>
+  </div>
+</div>
+
 <script>
 const nav=document.getElementById('nav');
+const pm=document.getElementById('propoModal');
+document.getElementById('openPropo').addEventListener('click',()=>pm.classList.add('open'));
+pm.addEventListener('click',e=>{if(e.target.hasAttribute('data-close'))pm.classList.remove('open')});
+addEventListener('keydown',e=>{if(e.key==='Escape')pm.classList.remove('open')});
 addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>window.innerHeight*.6),{passive:true});
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
