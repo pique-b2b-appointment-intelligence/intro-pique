@@ -47,26 +47,39 @@ body>*{position:relative;z-index:2}
 .poster:hover .play{transform:scale(1.07);box-shadow:0 0 0 10px rgba(201,169,106,.12)}
 .poster .plabel{font-size:.8rem;font-weight:500;letter-spacing:.03em;color:rgba(255,255,255,.66)}
 
-/* thread */
-.thread{position:relative;max-width:720px;margin:clamp(2rem,5vh,3.5rem) auto 0;padding:1rem 0}
-.rail{position:absolute;left:7px;top:1.5rem;bottom:1.5rem;width:2px;background:rgba(255,255,255,.11);border-radius:2px}
-.rail-fill{position:absolute;left:7px;top:1.5rem;width:2px;height:0;border-radius:2px;background:linear-gradient(180deg,var(--golds),var(--gold));box-shadow:0 0 16px 1px rgba(201,169,106,.55)}
-.beat{position:relative;padding:2.4rem 0 2.4rem 2.9rem}
-.beat .node{position:absolute;left:-1px;top:2.75rem;width:18px;height:18px;border-radius:50%;background:var(--bg);border:2px solid rgba(255,255,255,.28);transition:border-color .45s var(--ease),background .45s,box-shadow .45s;z-index:2}
-.beat .node.on{border-color:var(--gold);background:var(--gold);box-shadow:0 0 0 5px rgba(201,169,106,.14),0 0 20px 2px rgba(201,169,106,.55)}
-.beat .k{font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem}
-.beat .k .kn{font-family:var(--disp);font-weight:800;font-size:.9rem;color:var(--text3)}
-.beat h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.12;letter-spacing:-.02em;color:var(--text);margin-bottom:.85rem}
-.beat p{font-size:1.06rem;line-height:1.72;color:var(--text2)}
-.beat p+p{margin-top:.9rem}
-.beat p strong{color:var(--text);font-weight:600}
-.beat .body{opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity .7s var(--ease),transform .7s var(--ease),filter .7s var(--ease)}
-.beat.in .body{opacity:1;transform:none;filter:blur(0)}
+/* journey */
+.journey{position:relative;max-width:1000px;margin:clamp(1.5rem,4vh,3rem) auto 0;padding:clamp(2rem,5vh,4rem) clamp(1.25rem,3vw,2rem) clamp(1rem,3vh,2rem)}
+.journey-path{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.jp-base{fill:none;stroke:rgba(255,255,255,.1);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11;animation:march 40s linear infinite}
+@keyframes march{to{stroke-dashoffset:-92}}
+.jp-prog{fill:none;stroke:var(--gold);stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 7px rgba(201,169,106,.6))}
+.chapter{position:relative;z-index:1;display:flex;padding:clamp(5vh,7vh,9vh) 0}
+.chapter.left{justify-content:flex-start}
+.chapter.right{justify-content:flex-end}
+.ch-inner{position:relative;width:min(410px,44%)}
+.ch-dot{position:absolute;top:.2rem;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid rgba(255,255,255,.28);z-index:2;transition:border-color .5s var(--ease),background .5s,box-shadow .5s}
+.chapter.left .ch-dot{right:-1.9rem}
+.chapter.right .ch-dot{left:-1.9rem}
+.chapter.reached .ch-dot{border-color:var(--gold);background:var(--gold);box-shadow:0 0 0 5px rgba(201,169,106,.14),0 0 20px 2px rgba(201,169,106,.55)}
+.ch-body{opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity .8s var(--ease),transform .8s var(--ease),filter .8s var(--ease)}
+.chapter.in .ch-body{opacity:1;transform:none;filter:blur(0)}
+.ch-k{font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem;display:flex;align-items:center;gap:.6rem}
+.ch-k .kn{font-family:var(--disp);font-weight:800;font-size:.9rem;color:var(--text3)}
+.ch-body h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.35rem,2.6vw,1.8rem);line-height:1.14;letter-spacing:-.02em;color:var(--text);margin-bottom:.8rem}
+.ch-body p{font-size:1.05rem;line-height:1.72;color:var(--text2)}
+.ch-body p+p{margin-top:.85rem}
+.ch-body p strong{color:var(--text);font-weight:600}
+.chapter.key .ch-inner{width:min(460px,52%)}
+.chapter.key .ch-body{border:1px solid rgba(201,169,106,.32);border-radius:16px;padding:1.6rem 1.75rem;background:linear-gradient(160deg,rgba(201,169,106,.1),rgba(255,255,255,.015))}
+.chapter.key h2{font-size:clamp(1.5rem,3vw,2rem)}
+.chapter.key .fine{font-size:.98rem;color:var(--text2);margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1)}
+.chapter.key .ch-dot{width:18px;height:18px}
 
-/* key beat (het voorstel) */
-.beat.key .inner{border:1px solid rgba(201,169,106,.32);border-radius:16px;padding:1.6rem 1.75rem;background:linear-gradient(160deg,rgba(201,169,106,.09),rgba(255,255,255,.015))}
-.beat.key h2{font-size:clamp(1.6rem,3.4vw,2.15rem)}
-.beat.key .fine{font-size:.98rem;color:var(--text2);margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1)}
+@media(max-width:820px){
+  .chapter{justify-content:flex-start;padding:4.5vh 0 4.5vh 2.5rem}
+  .ch-inner,.chapter.key .ch-inner{width:100%}
+  .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot{left:-2.5rem;right:auto;top:.35rem}
+}
 
 /* founder */
 .founder{display:flex;align-items:center;gap:1.4rem;max-width:720px;margin:clamp(1rem,3vh,2rem) auto 0;padding:2.4rem clamp(1.5rem,5vw,2rem);border-top:1px solid var(--line)}
@@ -100,7 +113,7 @@ footer{padding:2.4rem 2rem 3.2rem;text-align:center;border-top:1px solid var(--l
 #cal-embed{width:100%;min-height:600px}
 
 @media(max-width:520px){.founder{flex-direction:column;text-align:center}}
-@media(prefers-reduced-motion:reduce){.beat .body{opacity:1;transform:none;filter:none}.hero .eyebrow,.hero h1,.hero .sub,.videobox{animation:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.ch-body{opacity:1;transform:none;filter:none}.hero .eyebrow,.hero h1,.hero .sub,.videobox{animation:none;opacity:1}}
 </style>
 </head>
 <body>
@@ -127,57 +140,67 @@ footer{padding:2.4rem 2rem 3.2rem;text-align:center;border-top:1px solid var(--l
     </div>
   </section>
 
-  <div class="thread col" id="thread">
-    <div class="rail"></div>
-    <div class="rail-fill" id="railfill"></div>
+  <section class="journey" id="journey">
+    <svg class="journey-path" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+      <path class="jp-base" id="jp-base"></path>
+      <path class="jp-prog" id="jp-prog"></path>
+    </svg>
 
-    <div class="beat">
-      <span class="node"></span>
-      <div class="body">
-        <div class="k"><span class="kn">01</span> Wie ik ben</div>
-        <p>We kennen elkaar nog niet, maar onze wereld overlapt flink. Alvinho is een goede vriend, ik zit zelf in Aquila, en m'n kantoor staat in het pand van Mustafa. Grote kans dat we elkaar toch wel een keer waren tegengekomen.</p>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body">
+          <div class="ch-k"><span class="kn">01</span> Wie ik ben</div>
+          <p>We kennen elkaar nog niet, maar onze wereld overlapt flink. Alvinho is een goede vriend, ik zit zelf in Aquila, en m'n kantoor staat in het pand van Mustafa. Grote kans dat we elkaar toch wel een keer waren tegengekomen.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="beat">
-      <span class="node"></span>
-      <div class="body">
-        <div class="k"><span class="kn">02</span> Waarom deze brief</div>
-        <p>Ik ben net begonnen met een nieuw bedrijf, Pique. Eigenlijk een idee van Alvinho dat ik nu aan het uitvoeren ben. In deze eerste fase wil ik vooral één ding: bereik.</p>
-        <p>En een aflevering bij jullie kopen zit er nu nog niet in. Dus ik draai het om en stel iets anders voor.</p>
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body">
+          <div class="ch-k"><span class="kn">02</span> Waarom deze brief</div>
+          <p>Ik ben net begonnen met een nieuw bedrijf, Pique. Eigenlijk een idee van Alvinho dat ik nu aan het uitvoeren ben. In deze eerste fase wil ik vooral één ding: bereik.</p>
+          <p>En een aflevering bij jullie kopen zit er nu nog niet in. Dus ik draai het om en stel iets anders voor.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="beat">
-      <span class="node"></span>
-      <div class="body">
-        <div class="k"><span class="kn">03</span> Wat me opviel</div>
-        <p>Ik heb eens goed naar jullie marketing gekeken. De funnels, de site, de opvolging en de strategie eromheen. Daar vielen me een paar dingen op waar echt wat te winnen valt.</p>
-        <p>Het is geen kritiek. Het zijn punten waar ik dagelijks mee bezig ben, en die ik jullie graag laat zien.</p>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body">
+          <div class="ch-k"><span class="kn">03</span> Wat me opviel</div>
+          <p>Ik heb eens goed naar jullie marketing gekeken. De funnels, de site, de opvolging en de strategie eromheen. Daar vielen me een paar dingen op waar echt wat te winnen valt.</p>
+          <p>Het is geen kritiek. Het zijn punten waar ik dagelijks mee bezig ben, en die ik jullie graag laat zien.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="beat key">
-      <span class="node"></span>
-      <div class="body">
-        <div class="inner">
-          <div class="k"><span class="kn">04</span> Het voorstel</div>
+    <section class="chapter right key">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body">
+          <div class="ch-k"><span class="kn">04</span> Het voorstel</div>
           <h2>Ik kom het liefst gewoon langs.</h2>
           <p>In plaats van alles hier op te schrijven, laat ik het je op kantoor zien. Klinkt het interessant, dan neem ik de regie, en ben ik voor een afgesproken periode jullie senior inhouse marketeer.</p>
           <p class="fine">In ruil vraag ik wat bereik, via een aflevering. Meer een ruil dan een factuur, tussen mensen uit dezelfde wereld.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="beat">
-      <span class="node"></span>
-      <div class="body">
-        <div class="k"><span class="kn">05</span> En misschien meer</div>
-        <p>En dan is er nog leadgen. Met Pique halen we onze beste resultaten uit handgeschreven brieven, en ik denk dat dat ook voor Lotgenoten interessant kan zijn. We doen het al voor Aquila, en voor Jamar en Stephan van Spectrum Performance.</p>
-        <p>Maar dat is voor later. Eerst even kennismaken.</p>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body">
+          <div class="ch-k"><span class="kn">05</span> En misschien meer</div>
+          <p>En dan is er nog leadgen. Met Pique halen we onze beste resultaten uit handgeschreven brieven, en ik denk dat dat ook voor Lotgenoten interessant kan zijn. We doen het al voor Aquila, en voor Jamar en Stephan van Spectrum Performance.</p>
+          <p>Maar dat is voor later. Eerst even kennismaken.</p>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </section>
 
   <section class="founder">
     <img src="simon.png" alt="Simon Kempers">
@@ -217,22 +240,40 @@ footer{padding:2.4rem 2rem 3.2rem;text-align:center;border-top:1px solid var(--l
 const poster=document.getElementById('poster'),vid=document.getElementById('vid');
 poster.addEventListener('click',()=>{vid.src='lotgenoten-video.mp4';vid.setAttribute('controls','');poster.style.display='none';vid.play().catch(()=>{})});
 
-/* thread line + nodes */
-const thread=document.getElementById('thread'),fill=document.getElementById('railfill');
-const nodes=[...thread.querySelectorAll('.node')];
-function onScroll(){
-  const r=thread.getBoundingClientRect(),trig=innerHeight*.5;
-  const h=Math.max(0,Math.min(thread.offsetHeight-24,trig-r.top-24));
-  fill.style.height=h+'px';
-  nodes.forEach(n=>{const nr=n.getBoundingClientRect();n.classList.toggle('on',nr.top+8<trig)});
-}
-addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();
-
 /* reveal */
-if('IntersectionObserver'in window){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2,rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.beat').forEach(e=>io.observe(e));
-}else{document.querySelectorAll('.beat').forEach(e=>e.classList.add('in'))}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.25});
+document.querySelectorAll('.chapter').forEach(el=>io.observe(el));
+
+/* journey line */
+const journey=document.getElementById('journey'),svg=document.getElementById('jpath');
+const base=document.getElementById('jp-base'),prog=document.getElementById('jp-prog');
+const dots=[...journey.querySelectorAll('.ch-dot')];
+let total=0;
+function build(){
+  const W=journey.clientWidth,H=journey.clientHeight,jr=journey.getBoundingClientRect();
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  const pts=dots.map(d=>{const r=d.getBoundingClientRect();return{x:r.left+r.width/2-jr.left,y:r.top+r.height/2-jr.top};});
+  if(pts.length<2)return;
+  let d='M '+pts[0].x.toFixed(1)+' '+pts[0].y.toFixed(1);
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],my=((a.y+b.y)/2).toFixed(1);
+    d+=' C '+a.x.toFixed(1)+' '+my+', '+b.x.toFixed(1)+' '+my+', '+b.x.toFixed(1)+' '+b.y.toFixed(1);}
+  base.setAttribute('d',d);prog.setAttribute('d',d);
+  total=prog.getTotalLength();prog.style.strokeDasharray=total;
+  onScroll();
+}
+function onScroll(){
+  if(!total)return;
+  const jr=journey.getBoundingClientRect(),trig=innerHeight*.52;
+  const frac=Math.max(0,Math.min(1,(trig-jr.top)/journey.clientHeight));
+  prog.style.strokeDashoffset=total*(1-frac);
+  dots.forEach(d=>{const r=d.getBoundingClientRect();d.parentElement.parentElement.classList.toggle('reached',r.top+r.height/2<trig);});
+}
+addEventListener('scroll',onScroll,{passive:true});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(build,120);});
+build();addEventListener('load',build);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
+setTimeout(build,400);setTimeout(build,1200);
+if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
 
 /* cal modal */
 const modal=document.getElementById('calModal');let calLoaded=false;
