@@ -4,261 +4,207 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Pique voor Lotgenoten</title>
-<meta name="description" content="Een persoonlijk voorstel voor Koen Stam. Van iemand uit jullie eigen wereld.">
+<meta name="description" content="Een persoonlijk voorstel voor Koen Stam.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#FBFAF8;--ink:#141C33;--ink2:rgba(20,28,51,.66);--ink3:rgba(20,28,51,.42);
-  --navy:#0E1526;--amber:#C6893C;--ambers:#E0AC66;--line:rgba(20,28,51,.12);--white:#fff;
-  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);
+  --bg:#FBFAF8;--ink:#141C33;--ink2:rgba(20,28,51,.68);--ink3:rgba(20,28,51,.44);
+  --navy:#0E1526;--amber:#BE8433;--ambers:#E0AC66;--line:rgba(20,28,51,.11);--white:#fff;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
-::selection{background:rgba(198,137,60,.2)}
-.wrap{max-width:760px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2rem)}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+::selection{background:rgba(190,132,51,.18)}
+.col{max-width:640px;margin:0 auto;padding:0 clamp(1.5rem,5vw,2rem)}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:50;background:rgba(251,250,248,.82);backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid var(--line)}
-.nav-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem clamp(1.25rem,4vw,2rem)}
-.logo{color:var(--ink);display:flex;align-items:center}
-.logo svg{height:22px;width:auto;display:block}
-.chips{display:flex;gap:.35rem;overflow-x:auto;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex-shrink:0;font-size:.76rem;font-weight:500;color:var(--ink2);text-decoration:none;padding:.4rem .7rem;border-radius:100px;transition:.2s;white-space:nowrap}
-.chip:hover{color:var(--ink);background:rgba(20,28,51,.05)}
-.chip.on{color:var(--navy);background:rgba(198,137,60,.13);font-weight:600}
-.chip .n{color:var(--amber);font-weight:700;margin-right:.3rem;font-variant-numeric:tabular-nums}
-.nav-cta{flex-shrink:0;font-size:.78rem;font-weight:600;color:#fff;background:var(--navy);text-decoration:none;padding:.5rem 1rem;border-radius:100px;transition:.3s}
-.nav-cta:hover{background:#1a2540}
-@media(max-width:820px){.chips{display:none}}
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;padding:1.5rem clamp(1.5rem,5vw,2.5rem);max-width:1000px;margin:0 auto}
+.top .logo svg{height:20px;width:auto;display:block}
+.top .lbl{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
 
-/* HERO */
-.hero{position:relative;background:var(--navy);color:#fff;padding:clamp(4.5rem,11vh,7rem) 0 clamp(4rem,9vh,6rem);overflow:hidden}
-.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% -10%,rgba(198,137,60,.14),transparent 55%);pointer-events:none}
-.hero .wrap{position:relative}
-.hero-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ambers);margin-bottom:1.6rem;opacity:0;animation:up .9s var(--ease) .1s forwards}
-.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,5.2vw,3.4rem);line-height:1.1;letter-spacing:-.02em;max-width:15ch;opacity:0;animation:up 1s var(--ease) .28s forwards}
-.hero h1 .a{color:var(--ambers)}
-.hero p{color:rgba(255,255,255,.6);font-size:1.08rem;font-weight:300;margin-top:1.4rem;max-width:42ch;line-height:1.6;opacity:0;animation:up 1s var(--ease) .5s forwards}
-.hero-cue{margin-top:2.5rem;display:inline-flex;align-items:center;gap:.55rem;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;opacity:0;animation:up 1s var(--ease) .7s forwards}
-.hero-cue i{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;color:var(--ambers)}
-@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+/* hero */
+.hero{padding:clamp(2rem,5vh,3.5rem) 0 clamp(2.5rem,5vh,3.5rem)}
+.hero .eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.4rem}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,5vw,2.9rem);line-height:1.12;letter-spacing:-.02em;color:var(--ink)}
+.hero .sub{font-size:1.1rem;color:var(--ink2);margin-top:1.15rem;font-weight:300;line-height:1.6;max-width:34ch}
 
-/* SECTION */
-section.blk{padding:clamp(3.5rem,8vh,6rem) 0;border-bottom:1px solid var(--line)}
-.kicker{display:flex;align-items:center;gap:.7rem;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem}
-.kicker .kn{font-family:var(--serif);font-size:1rem;font-weight:600}
-.kicker::after{content:'';flex:1;height:1px;background:var(--line);max-width:60px}
-h2.blk-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.13;letter-spacing:-.02em;color:var(--ink)}
-.blk p{font-size:1.08rem;line-height:1.75;color:var(--ink2);margin-top:1.2rem;max-width:56ch}
-.blk p strong{color:var(--ink);font-weight:600}
+/* video */
+.videobox{position:relative;margin-top:2.2rem;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0b1220;box-shadow:0 30px 70px -30px rgba(14,21,38,.5);border:1px solid rgba(20,28,51,.08)}
+.videobox video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;background:#0b1220}
+.poster{position:absolute;inset:0;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;color:#fff;background:radial-gradient(120% 120% at 50% 0,#1a2740,#0b1220)}
+.poster .play{width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center;transition:transform .3s var(--ease),background .3s}
+.poster .play::after{content:'';border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent var(--navy);margin-left:4px}
+.poster:hover .play{transform:scale(1.06);background:#fff}
+.poster .plabel{font-size:.82rem;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.72)}
 
-/* brand chips */
-.brands{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem}
-.brand{font-size:.86rem;font-weight:600;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:100px;padding:.5rem 1.1rem;box-shadow:0 6px 18px rgba(20,28,51,.04)}
+/* sections */
+.piece{padding:clamp(2.2rem,5vh,3rem) 0;border-top:1px solid var(--line)}
+.piece .k{display:flex;align-items:center;gap:.6rem;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.piece .k .kn{font-family:var(--serif);font-size:.92rem;font-weight:600;color:var(--ink3)}
+.piece p{font-size:1.09rem;line-height:1.72;color:var(--ink2)}
+.piece p+p{margin-top:1rem}
+.piece p strong{color:var(--ink);font-weight:600}
+.piece.lead p{font-size:1.16rem;color:var(--ink);font-weight:400}
 
-/* finding cards */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
-@media(max-width:700px){.cards{grid-template-columns:1fr}}
-.card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:1.5rem 1.4rem;box-shadow:0 14px 34px rgba(20,28,51,.05);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
-.card:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(20,28,51,.09)}
-.card .cn{font-family:var(--serif);font-size:1.1rem;color:var(--amber);font-weight:600;margin-bottom:.7rem}
-.card h3{font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--ink);line-height:1.25;margin-bottom:.55rem;letter-spacing:-.01em}
-.card p{font-size:.92rem;line-height:1.6;color:var(--ink2);margin:0}
+/* offer */
+.offer{border-left:2px solid var(--amber);padding:.2rem 0 .2rem 1.4rem;margin-top:.4rem}
+.offer p{font-family:var(--serif);font-weight:400;font-size:clamp(1.2rem,2.3vw,1.5rem);line-height:1.42;color:var(--ink);letter-spacing:-.01em}
+.offer .fine{font-family:var(--sans);font-size:.95rem;color:var(--ink2);margin-top:.9rem;line-height:1.6;font-weight:400}
 
-/* plan steps */
-.steps{margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
-.step{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:start;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.3rem 1.5rem;box-shadow:0 10px 28px rgba(20,28,51,.04)}
-.step .sn{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums;padding-top:.1rem}
-.step h3{font-family:var(--serif);font-weight:500;font-size:1.12rem;color:var(--ink);margin-bottom:.35rem;letter-spacing:-.01em;line-height:1.25}
-.step p{font-size:.94rem;line-height:1.62;color:var(--ink2);margin:0;max-width:none}
-.step p .g{color:var(--amber);font-weight:600}
+/* founder */
+.founder{display:flex;align-items:center;gap:1.3rem;padding:clamp(2.2rem,5vh,3rem) 0;border-top:1px solid var(--line)}
+.founder img{width:76px;height:76px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 12px 30px rgba(20,28,51,.14)}
+.founder .ft{font-size:1rem;line-height:1.6;color:var(--ink2)}
+.founder .ft strong{color:var(--ink);font-weight:600}
+.founder .ft .role{display:block;font-size:.8rem;color:var(--ink3);margin-top:.3rem;letter-spacing:.02em}
 
-/* pull */
-.pull{margin-top:2rem;font-family:var(--serif);font-weight:500;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.35;color:var(--ink);border-left:3px solid var(--amber);padding-left:1.2rem;letter-spacing:-.01em}
+/* cta */
+.cta{padding:clamp(3rem,7vh,5rem) 0 clamp(3.5rem,8vh,5.5rem);border-top:1px solid var(--line);text-align:center}
+.cta .eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+.cta h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3.4vw,2.2rem);line-height:1.18;letter-spacing:-.02em;color:var(--ink)}
+.cta .btn{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.8rem;font-size:.95rem;font-weight:600;color:#fff;background:var(--navy);border:none;border-radius:100px;padding:.95rem 1.9rem;cursor:pointer;transition:transform .3s var(--ease),background .3s}
+.cta .btn:hover{transform:translateY(-2px);background:#1a2540}
+.cta .btn span{color:var(--ambers)}
+.cta .lighter{display:block;margin-top:1.1rem;font-size:.9rem;color:var(--ink3);text-decoration:none;border-bottom:1px solid transparent;transition:.2s;width:max-content;margin-left:auto;margin-right:auto}
+.cta .lighter:hover{color:var(--ink2);border-bottom-color:var(--line)}
 
-/* offer highlight */
-.offer{margin-top:2rem;background:linear-gradient(160deg,rgba(198,137,60,.1),rgba(255,255,255,.4));border:1px solid rgba(198,137,60,.3);border-radius:18px;padding:1.75rem 1.85rem}
-.offer p{margin-top:0;color:var(--ink);font-size:1.06rem}
-.offer p+p{margin-top:.9rem}
+/* footer */
+footer{padding:2.2rem 2rem 3rem;text-align:center;border-top:1px solid var(--line)}
+.footer-meta{font-size:.72rem;color:var(--ink3);line-height:1.9}
+.footer-meta a{color:var(--ink2);text-decoration:none}
 
-/* gate */
-.gate{position:relative;overflow:hidden;max-height:340px;margin-top:2rem;border-radius:16px}
-.gate-inner{filter:blur(7px);-webkit-filter:blur(7px);pointer-events:none;user-select:none;opacity:.85}
-.gate-inner .grow{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:.8rem}
-.gate-inner .grow h4{font-family:var(--serif);font-weight:500;font-size:1.05rem;color:var(--ink);margin-bottom:.35rem}
-.gate-inner .grow p{font-size:.9rem;color:var(--ink2);margin:0;max-width:none}
-.gate-overlay{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 1rem 1rem}
-.gate-overlay::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(251,250,248,.6) 26%,rgba(251,250,248,.99) 60%)}
-.gate-card{position:relative;z-index:4;background:var(--navy);color:#fff;border-radius:18px;padding:1.9rem 1.9rem 1.7rem;text-align:center;max-width:440px;width:100%;box-shadow:0 30px 70px rgba(14,21,38,.32)}
-.gate-card h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:.55rem;line-height:1.25}
-.gate-card p{font-size:.9rem;color:rgba(255,255,255,.6);margin:0 0 1.4rem;line-height:1.55}
-.gate-btn{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--navy);font-weight:700;font-size:.9rem;padding:.8rem 1.6rem;border-radius:100px;text-decoration:none;transition:gap .3s var(--ease)}
-.gate-btn:hover{gap:.85rem}
-.gate-btn span{color:var(--amber)}
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.modal.open{display:flex}
+.modal-bd{position:absolute;inset:0;background:rgba(14,21,38,.55);backdrop-filter:blur(4px)}
+.modal-card{position:relative;z-index:1;background:#fff;border-radius:20px;max-width:760px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 40px 100px rgba(0,0,0,.4)}
+.modal-x{position:absolute;top:.7rem;right:.9rem;z-index:2;background:none;border:none;font-size:1.6rem;line-height:1;color:var(--ink3);cursor:pointer}
+.modal-x:hover{color:var(--ink)}
+#cal-embed{width:100%;min-height:600px}
 
-/* CTA */
-.cta{background:var(--navy);color:#fff;padding:clamp(4rem,9vh,6.5rem) 0;text-align:center}
-.cta .wrap{max-width:720px}
-.cta-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ambers);margin-bottom:1.1rem}
-.cta h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.15;letter-spacing:-.02em}
-.cta .csub{color:rgba(255,255,255,.6);font-size:1.05rem;font-weight:300;margin:1.15rem auto 0;max-width:46ch}
-.cta-embed{margin-top:2.5rem;background:#fff;border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden;min-height:640px}
-#cal-embed{width:100%;min-height:640px}
-
-/* FOOTER */
-footer{padding:2.5rem 2rem;text-align:center}
-.ft-logo svg{height:22px;width:auto;margin-bottom:.7rem}
-.ft-meta{font-size:.74rem;color:var(--ink3);line-height:1.9}
-.ft-meta a{color:var(--ink2);text-decoration:none}
-
-.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero-eyebrow,.hero h1,.hero p,.hero-cue{animation:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+@media(max-width:520px){.founder{flex-direction:column;text-align:center}}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-in">
-    <a href="#top" class="logo" aria-label="Pique"><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 929.98 302.23"><path fill="currentColor" d="M0,268v-3.83l7.66-2.68q7.65-2.29,10.14-6.89t2.49-12.26V41.73q0-7.65-2.68-12.25T7.27,22.21L0,19.14V15.32H93q57,0,82.51,20.86t25.46,55a78.41,78.41,0,0,1-10.53,40Q180,149.32,155.83,160T90.74,170.77h-13v70.45q0,14.92,14.93,19.52l11.48,3.45V268ZM77.73,163.11H92.27q18.77,0,30.64-6.13t17.61-21.44q5.74-15.31,5.74-42.5,0-27.57-6.32-42.88T121.37,28.91Q109.12,23,90.74,23h-13Z"/><path fill="currentColor" d="M216.32,268v-3.83l5.36-1.53c5.11-1.54,8.62-3.83,10.53-6.9s2.88-7.14,2.88-12.25V123.67q0-8-2.88-12.06t-10.53-5.55l-5.36-1.15v-3.83l70.07-22.59,3.83,3.83-1.15,54.37V243.9q0,7.65,2.87,12.25T302.09,263l3.83,1.15V268ZM261.5,58.2q-13,0-22-8.23a27.06,27.06,0,0,1-9-20.87q0-13,9-21.06t22-8q13,0,21.83,8t8.8,21.06q0,12.63-8.8,20.87T261.5,58.2Z"/><path fill="currentColor" d="M503.21,119.57a87.17,87.17,0,0,0-33.76-35.13q-21.76-12.69-50.16-12.68T369.4,84.44a90,90,0,0,0-33.8,35.13q-12.27,22.45-12.24,52t12.24,52a90.24,90.24,0,0,0,33.8,35.16q21.5,12.68,49.89,12.66c3.83,0,7.54-.2,11.18-.53,2.21-.22,4.4-.48,6.53-.83-2-4.41-4.22-9.33-6.59-14.54a28.4,28.4,0,0,1-11.08,2.17c-.83,0-1.64,0-2.43-.1q-11.26-.92-19.81-10.52-9.51-10.64-14.72-29.79t-5.17-45.7q0-26.55,5.17-45.71t14.72-29.58c6.3-7,13.72-10.41,22.24-10.41,8.75,0,16.29,3.45,22.53,10.41S453,113,456.44,125.77s5.21,28,5.21,45.71q0,24.09-4.28,42.05c10.39,11.85,21.09,23.82,29.21,32.21a89,89,0,0,0,16.63-22.24q12-22.49,12-52T503.21,119.57Z"/><path fill="currentColor" d="M608.74,273.76A64.49,64.49,0,0,1,581.37,268a42.21,42.21,0,0,1-19.53-18.57q-7.1-12.82-6.7-33.89l1.15-98.4q0-8.8-3.06-12.63t-9.58-5.36l-4.59-1.53V93.81l68.54-13.4,3.82,3.82-1.91,54.37v92.28q0,12.26,7.08,18t17.81,5.75a55.62,55.62,0,0,0,19.14-3.07,68.65,68.65,0,0,0,16.85-9.19l1.53-124.82q0-8.79-2.68-12.44t-10-5.17l-3.82-1.15V95l67-14.54,3.83,3.82-1.15,54.37V242.36q0,8.43,2.3,13t9.95,7.66l3.83,1.15V268l-67,3.83-3.45-22.59a136.35,136.35,0,0,1-27.37,17.42Q628.66,273.76,608.74,273.76Z"/><path fill="currentColor" d="M851.11,78.11q24.89,0,42.5,10.14a69.39,69.39,0,0,1,27,27.57Q930,133.25,930,155.45q0,4.22-.38,8.62a34.71,34.71,0,0,1-1.53,7.84H814q.38,41.35,14.74,59.54t42.69,18.19q19.14,0,31-6.13a75.81,75.81,0,0,0,22.21-18l3.83,3.44a88.14,88.14,0,0,1-31.59,32.93q-19.73,11.87-47.29,11.87-27.18,0-48.24-11.68a82.38,82.38,0,0,1-32.93-33.5q-11.86-21.83-11.87-52.07,0-31.39,13.79-53.41t35.41-33.51A95.54,95.54,0,0,1,851.11,78.11ZM850,85.77a28.2,28.2,0,0,0-19,6.7q-7.85,6.7-12.25,23.73T814,164.26h65.47q3.82-41.73-3.06-60.12T850,85.77Z"/><path fill="#D4943A" d="M400.7,166s35.83,78.88,49.46,109c13.39,29.63,51.1,46.89,84.54-12.47a1,1,0,0,0-1.35-1.37c-7.45,4.12-26.71,12.89-41.07,3.1C474.11,251.94,395,153.48,400.7,166Z"/></svg></a>
-    <div class="chips">
-      <a href="#wie" class="chip"><span class="n">01</span>Wie ik ben</a>
-      <a href="#zag" class="chip"><span class="n">02</span>Wat ik zie</a>
-      <a href="#kost" class="chip"><span class="n">03</span>Wat het kost</a>
-      <a href="#voorstel" class="chip"><span class="n">04</span>Het plan</a>
-      <a href="#deal" class="chip"><span class="n">05</span>De deal</a>
-    </div>
-    <a href="#gesprek" class="nav-cta">Plan een gesprek</a>
-  </div>
-</nav>
-
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="hero-eyebrow">Persoonlijk voor Koen &middot; van Simon</div>
-    <h1>Je bent een landelijk mediabedrijf geworden. Je verkoopt nog als een podcast <span class="a">uit een kelder.</span></h1>
-    <p>Ik werk met de halve gastenlijst van jullie show. Geef me twee minuten, dan laat ik zien wat ik zie, en wat ik eraan zou bouwen.</p>
-    <a href="#wie" class="hero-cue"><i>&darr;</i> Lees het verhaal</a>
-  </div>
+<header class="top">
+  <a href="#top" class="logo" aria-label="Pique"><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 929.98 302.23"><path fill="#141C33" d="M0,268v-3.83l7.66-2.68q7.65-2.29,10.14-6.89t2.49-12.26V41.73q0-7.65-2.68-12.25T7.27,22.21L0,19.14V15.32H93q57,0,82.51,20.86t25.46,55a78.41,78.41,0,0,1-10.53,40Q180,149.32,155.83,160T90.74,170.77h-13v70.45q0,14.92,14.93,19.52l11.48,3.45V268ZM77.73,163.11H92.27q18.77,0,30.64-6.13t17.61-21.44q5.74-15.31,5.74-42.5,0-27.57-6.32-42.88T121.37,28.91Q109.12,23,90.74,23h-13Z"/><path fill="#141C33" d="M216.32,268v-3.83l5.36-1.53c5.11-1.54,8.62-3.83,10.53-6.9s2.88-7.14,2.88-12.25V123.67q0-8-2.88-12.06t-10.53-5.55l-5.36-1.15v-3.83l70.07-22.59,3.83,3.83-1.15,54.37V243.9q0,7.65,2.87,12.25T302.09,263l3.83,1.15V268ZM261.5,58.2q-13,0-22-8.23a27.06,27.06,0,0,1-9-20.87q0-13,9-21.06t22-8q13,0,21.83,8t8.8,21.06q0,12.63-8.8,20.87T261.5,58.2Z"/><path fill="#141C33" d="M503.21,119.57a87.17,87.17,0,0,0-33.76-35.13q-21.76-12.69-50.16-12.68T369.4,84.44a90,90,0,0,0-33.8,35.13q-12.27,22.45-12.24,52t12.24,52a90.24,90.24,0,0,0,33.8,35.16q21.5,12.68,49.89,12.66c3.83,0,7.54-.2,11.18-.53,2.21-.22,4.4-.48,6.53-.83-2-4.41-4.22-9.33-6.59-14.54a28.4,28.4,0,0,1-11.08,2.17c-.83,0-1.64,0-2.43-.1q-11.26-.92-19.81-10.52-9.51-10.64-14.72-29.79t-5.17-45.7q0-26.55,5.17-45.71t14.72-29.58c6.3-7,13.72-10.41,22.24-10.41,8.75,0,16.29,3.45,22.53,10.41S453,113,456.44,125.77s5.21,28,5.21,45.71q0,24.09-4.28,42.05c10.39,11.85,21.09,23.82,29.21,32.21a89,89,0,0,0,16.63-22.24q12-22.49,12-52T503.21,119.57Z"/><path fill="#141C33" d="M608.74,273.76A64.49,64.49,0,0,1,581.37,268a42.21,42.21,0,0,1-19.53-18.57q-7.1-12.82-6.7-33.89l1.15-98.4q0-8.8-3.06-12.63t-9.58-5.36l-4.59-1.53V93.81l68.54-13.4,3.82,3.82-1.91,54.37v92.28q0,12.26,7.08,18t17.81,5.75a55.62,55.62,0,0,0,19.14-3.07,68.65,68.65,0,0,0,16.85-9.19l1.53-124.82q0-8.79-2.68-12.44t-10-5.17l-3.82-1.15V95l67-14.54,3.83,3.82-1.15,54.37V242.36q0,8.43,2.3,13t9.95,7.66l3.83,1.15V268l-67,3.83-3.45-22.59a136.35,136.35,0,0,1-27.37,17.42Q628.66,273.76,608.74,273.76Z"/><path fill="#141C33" d="M851.11,78.11q24.89,0,42.5,10.14a69.39,69.39,0,0,1,27,27.57Q930,133.25,930,155.45q0,4.22-.38,8.62a34.71,34.71,0,0,1-1.53,7.84H814q.38,41.35,14.74,59.54t42.69,18.19q19.14,0,31-6.13a75.81,75.81,0,0,0,22.21-18l3.83,3.44a88.14,88.14,0,0,1-31.59,32.93q-19.73,11.87-47.29,11.87-27.18,0-48.24-11.68a82.38,82.38,0,0,1-32.93-33.5q-11.86-21.83-11.87-52.07,0-31.39,13.79-53.41t35.41-33.51A95.54,95.54,0,0,1,851.11,78.11ZM850,85.77a28.2,28.2,0,0,0-19,6.7q-7.85,6.7-12.25,23.73T814,164.26h65.47q3.82-41.73-3.06-60.12T850,85.77Z"/><path fill="#BE8433" d="M400.7,166s35.83,78.88,49.46,109c13.39,29.63,51.1,46.89,84.54-12.47a1,1,0,0,0-1.35-1.37c-7.45,4.12-26.71,12.89-41.07,3.1C474.11,251.94,395,153.48,400.7,166Z"/></svg></a>
+  <span class="lbl">Persoonlijk voor Koen</span>
 </header>
 
-<section class="blk" id="wie">
-  <div class="wrap">
-    <div class="kicker rv"><span class="kn">01</span> Wie dit stuurt</div>
-    <h2 class="blk-h rv">Ik zit middenin jullie wereld.</h2>
-    <p class="rv">Ik ben Simon. Ik werk met de mensen waar jullie je gasten uit halen. Ik doe de marketing voor Aquila, waar ik zelf ook lid ben, en Alvinho is een goede vriend. Bij Spectrum Performance coördineer ik een stuk van de marketing en schakel ik veel met Jamar en Stephan. Met Mustafa Aziz spreek ik geregeld.</p>
-    <p class="rv">Kortom, ik werk met de halve gastenlijst van jullie eigen podcast. Ik ken jullie luisteraar en jullie wereld van binnenuit. En juist daarom valt me iets op wat ik graag met je deel.</p>
-    <div class="brands rv">
-      <span class="brand">Aquila &middot; lid</span>
-      <span class="brand">Spectrum Performance</span>
-      <span class="brand">XXL Nutrition</span>
-    </div>
-  </div>
-</section>
+<main class="col" id="top">
 
-<section class="blk" id="zag">
-  <div class="wrap">
-    <div class="kicker rv"><span class="kn">02</span> Wat ik zag</div>
-    <h2 class="blk-h rv">Alles groeide mee. Op één ding na.</h2>
-    <p class="rv">Jullie zijn uit de kelder naar een echt kantoor verhuisd. Een team, meerdere shows, de ambitie groter dan RTL. <strong>Maar de manier waarop je dat bereik verkoopt, staat nog waar hij in 2020 stond.</strong> Elke ingang loopt via een handdruk.</p>
-    <div class="cards">
-      <div class="card rv"><div class="cn">01</div><h3>De community is een DM</h3><p>Een miljoen mensen per maand, en de ingang hangt aan een handmatig Instagram-bericht. Er is geen aanmeldpagina en geen opvolging.</p></div>
-      <div class="card rv"><div class="cn">02</div><h3>De sponsor is een formulier</h3><p>Een leeg contactformulier zonder pakketten en zonder prijzen. De grote adverteerder moet zelf puzzelen, en haakt af.</p></div>
-      <div class="card rv"><div class="cn">03</div><h3>De cijfers wringen</h3><p>Je homepage zegt tien miljoen luisteraars, je partnerpagina 650.000 per maand. Twee verhalen over je eigen bereik.</p></div>
+  <section class="hero">
+    <div class="eyebrow rv">Persoonlijk voor Koen</div>
+    <h1 class="rv">Hé Koen. Ik stuurde je een brief, en dit is het hele verhaal erachter.</h1>
+    <p class="sub rv">Kort: wie ik ben, wat me opviel aan jullie marketing, en een ruil in plaats van een factuur.</p>
+    <div class="videobox rv">
+      <video id="vid" playsinline preload="none"></video>
+      <button class="poster" id="poster" aria-label="Speel de video af">
+        <span class="play"></span>
+        <span class="plabel">Een kort woord van Simon &middot; 1 min</span>
+      </button>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="blk" id="kost">
-  <div class="wrap">
-    <div class="kicker rv"><span class="kn">03</span> Wat het kost</div>
-    <h2 class="blk-h rv">Dat filter werkt de verkeerde kant op.</h2>
-    <p class="rv">Een leeg formulier haalt lokale bouw- en interieurbedrijven binnen, en houdt de A-merken buiten. Die zien geen manier naar binnen en klikken stil weer weg. Daar blijft geen spoor van achter, en precies daar zit het geld dat je nu misloopt.</p>
-    <p class="rv">En de koper die zijn huiswerk doet, ziet die twee verschillende luistercijfers en verlaagt zijn bod nog voor het gesprek begint. Een landelijke adverteerder steekt geen hand op in een DM. Die koopt van een tarievenkaart.</p>
-    <p class="pull rv">'Het bereik van een landelijk mediabedrijf, verkocht als een lokale zaak.'</p>
-  </div>
-</section>
+  <section class="piece lead rv">
+    <div class="k"><span class="kn">01</span> Wie ik ben</div>
+    <p>We kennen elkaar nog niet, maar onze wereld overlapt flink. Alvinho is een goede vriend, ik zit zelf in Aquila, en m'n kantoor staat in het pand van Mustafa. Grote kans dat we elkaar toch wel een keer waren tegengekomen.</p>
+  </section>
 
-<section class="blk" id="voorstel">
-  <div class="wrap">
-    <div class="kicker rv"><span class="kn">04</span> Het plan</div>
-    <h2 class="blk-h rv">Zo maak ik van bereik omzet.</h2>
-    <p class="rv">Je hebt het moeilijkste al gedaan, het bereik opbouwen. De rest is de machine eronder bouwen. Dat zou ik in vier stappen doen.</p>
-    <div class="steps">
-      <div class="step rv"><div class="sn">01</div><div><h3>Eén funnel per doelgroep</h3><p>De luisteraar wordt lid, het lid komt in de community, de bezoeker wordt sponsor. Elk pad met een eigen pagina en eigen opvolging, in plaats van één DM voor alles.</p></div></div>
-      <div class="step rv"><div class="sn">02</div><div><h3>Een echte mediakit met pakketten en prijzen</h3><p>Van een leeg formulier naar een tarievenkaart die een mediabuyer intern kan doorrekenen. Zodat de grote adverteerder in één keer ziet wat hij krijgt en wat het kost.</p></div></div>
-      <div class="step rv"><div class="sn">03</div><div><h3>Eén set cijfers die overal klopt</h3><p>Je bereik in één verhaal, onderbouwd. Dat haalt de twijfel weg bij precies de koper die zijn huiswerk doet, voordat hij zijn bod verlaagt.</p></div></div>
-      <div class="step rv"><div class="sn">04</div><div><h3>Een sponsor-pipeline die zichzelf vult</h3><p>In plaats van wachten tot een merk het formulier vindt, benader je de A-merken proactief. <span class="g">Hier komt de Pique-methode binnen, en dit is ook het deel dat we op commissie kunnen doen.</span></p></div></div>
+  <section class="piece rv">
+    <div class="k"><span class="kn">02</span> Waarom deze brief</div>
+    <p>Ik ben net begonnen met een nieuw bedrijf, Pique. Eigenlijk een idee van Alvinho dat ik nu aan het uitvoeren ben. In deze eerste fase wil ik vooral één ding: bereik.</p>
+    <p>En een aflevering bij jullie kopen zit er nu nog niet in. Dus ik draai het om en stel iets anders voor.</p>
+  </section>
+
+  <section class="piece rv">
+    <div class="k"><span class="kn">03</span> Wat me opviel</div>
+    <p>Ik heb eens goed naar jullie marketing gekeken. De funnels, de site, de opvolging en de strategie eromheen. Daar vielen me een paar dingen op waar echt wat te winnen valt.</p>
+    <p>Het is geen kritiek. Het zijn punten waar ik dagelijks mee bezig ben, en die ik jullie graag laat zien.</p>
+  </section>
+
+  <section class="piece rv">
+    <div class="k"><span class="kn">04</span> Het voorstel</div>
+    <div class="offer">
+      <p>In plaats van ze hier op te schrijven, kom ik het liefst gewoon een keer langs op kantoor om ze te laten zien. Klinkt het interessant, dan neem ik de regie, en ben ik voor een afgesproken periode jullie senior inhouse marketeer.</p>
+      <p class="fine">In ruil vraag ik wat bereik, via een aflevering. Meer een ruil dan een factuur, tussen mensen uit dezelfde wereld.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="blk" id="deal">
-  <div class="wrap">
-    <div class="kicker rv"><span class="kn">05</span> De deal</div>
-    <h2 class="blk-h rv">En hoe we het doen.</h2>
-    <div class="offer rv">
-      <p><strong>De ruil.</strong> Ik zet dit plan neer en trek de basis recht. Voor jullie is een aflevering 10 tot 15k aan inventory en een dinsdag. Wat ik in die weken bouw is meer waard. Dus dit is een eerlijke ruil tussen mensen die weten wat alles waard is.</p>
-      <p><strong>De upside.</strong> Spreekt de Pique-aanpak jullie aan, het proactief binnenhalen van grote sponsors, dan doen we dat op commissie. Ik verdien pas als jij verdient. Voor jullie zit er dus geen risico aan.</p>
-    </div>
-    <div class="gate rv">
-      <div class="gate-inner" aria-hidden="true">
-        <div class="grow"><h4>Het plan, week voor week</h4><p>Van de eerste quick wins tot de nieuwe sponsorfunnel en de mediakit met tarieven.</p></div>
-        <div class="grow"><h4>De A-merken die ik als eerste zou benaderen</h4><p>Een shortlist uit jullie eigen luisterwereld, met per merk de ingang die ik zou gebruiken.</p></div>
-        <div class="grow"><h4>De commissie-afspraak, concreet</h4><p>Wat een gesloten sponsor oplevert, en wat mijn deel is. Zwart-op-wit, zonder verrassingen.</p></div>
-      </div>
-      <div class="gate-overlay">
-        <div class="gate-card">
-          <h3>Dit is de korte versie.</h3>
-          <p>Het hele plan, de sponsor-shortlist en de commissie-afspraak loop ik met je door. Vraag Alvinho of Mustafa gerust naar me, en plan even een gesprek.</p>
-          <a href="#gesprek" class="gate-btn">Plan een gesprek <span>&rarr;</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="piece rv">
+    <div class="k"><span class="kn">05</span> En misschien meer</div>
+    <p>En dan is er nog leadgen. Met Pique halen we onze beste resultaten uit handgeschreven brieven, en ik denk dat dat ook voor Lotgenoten interessant kan zijn. We doen het al voor Aquila, en voor Jamar en Stephan van Spectrum Performance.</p>
+    <p>Maar dat is voor later. Eerst even kennismaken.</p>
+  </section>
 
-<section class="cta" id="gesprek">
-  <div class="wrap">
-    <div class="cta-eyebrow rv">De volgende stap</div>
-    <h2 class="rv">Even sparren, Koen?</h2>
-    <p class="csub rv">Dit wordt geen verkoopgesprek. Ik laat je zien wat ik precies zou aanpakken, en dan kijken we of het klikt. Vraag Alvinho of Mustafa gerust of ik te vertrouwen ben.</p>
-    <div class="cta-embed rv"><div id="cal-embed"></div></div>
-  </div>
-</section>
+  <section class="founder rv">
+    <img src="simon.png" alt="Simon Kempers">
+    <div class="ft">
+      Ik ben Simon. Ik help merken uit jullie eigen wereld groeien, en met Pique bouw ik iets nieuws. Dit is precies het soort samenwerking waar ik enthousiast van word.
+      <span class="role">Simon Kempers &middot; Pique</span>
+    </div>
+  </section>
+
+  <section class="cta rv" id="gesprek">
+    <div class="eyebrow">De volgende stap</div>
+    <h2>Zullen we een keer bellen, of kom ik langs?</h2>
+    <button class="btn" id="openCal">Prik een moment <span>&rarr;</span></button>
+    <a class="lighter" href="mailto:info@pique.agency?subject=Even%20sparren%20-%20Pique%20x%20Lotgenoten">of mail me gewoon even terug</a>
+  </section>
+
+</main>
 
 <footer>
-  <div class="ft-logo"><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 929.98 302.23"><path fill="#141C33" d="M0,268v-3.83l7.66-2.68q7.65-2.29,10.14-6.89t2.49-12.26V41.73q0-7.65-2.68-12.25T7.27,22.21L0,19.14V15.32H93q57,0,82.51,20.86t25.46,55a78.41,78.41,0,0,1-10.53,40Q180,149.32,155.83,160T90.74,170.77h-13v70.45q0,14.92,14.93,19.52l11.48,3.45V268ZM77.73,163.11H92.27q18.77,0,30.64-6.13t17.61-21.44q5.74-15.31,5.74-42.5,0-27.57-6.32-42.88T121.37,28.91Q109.12,23,90.74,23h-13Z"/><path fill="#141C33" d="M216.32,268v-3.83l5.36-1.53c5.11-1.54,8.62-3.83,10.53-6.9s2.88-7.14,2.88-12.25V123.67q0-8-2.88-12.06t-10.53-5.55l-5.36-1.15v-3.83l70.07-22.59,3.83,3.83-1.15,54.37V243.9q0,7.65,2.87,12.25T302.09,263l3.83,1.15V268ZM261.5,58.2q-13,0-22-8.23a27.06,27.06,0,0,1-9-20.87q0-13,9-21.06t22-8q13,0,21.83,8t8.8,21.06q0,12.63-8.8,20.87T261.5,58.2Z"/><path fill="#141C33" d="M503.21,119.57a87.17,87.17,0,0,0-33.76-35.13q-21.76-12.69-50.16-12.68T369.4,84.44a90,90,0,0,0-33.8,35.13q-12.27,22.45-12.24,52t12.24,52a90.24,90.24,0,0,0,33.8,35.16q21.5,12.68,49.89,12.66c3.83,0,7.54-.2,11.18-.53,2.21-.22,4.4-.48,6.53-.83-2-4.41-4.22-9.33-6.59-14.54a28.4,28.4,0,0,1-11.08,2.17c-.83,0-1.64,0-2.43-.1q-11.26-.92-19.81-10.52-9.51-10.64-14.72-29.79t-5.17-45.7q0-26.55,5.17-45.71t14.72-29.58c6.3-7,13.72-10.41,22.24-10.41,8.75,0,16.29,3.45,22.53,10.41S453,113,456.44,125.77s5.21,28,5.21,45.71q0,24.09-4.28,42.05c10.39,11.85,21.09,23.82,29.21,32.21a89,89,0,0,0,16.63-22.24q12-22.49,12-52T503.21,119.57Z"/><path fill="#141C33" d="M608.74,273.76A64.49,64.49,0,0,1,581.37,268a42.21,42.21,0,0,1-19.53-18.57q-7.1-12.82-6.7-33.89l1.15-98.4q0-8.8-3.06-12.63t-9.58-5.36l-4.59-1.53V93.81l68.54-13.4,3.82,3.82-1.91,54.37v92.28q0,12.26,7.08,18t17.81,5.75a55.62,55.62,0,0,0,19.14-3.07,68.65,68.65,0,0,0,16.85-9.19l1.53-124.82q0-8.79-2.68-12.44t-10-5.17l-3.82-1.15V95l67-14.54,3.83,3.82-1.15,54.37V242.36q0,8.43,2.3,13t9.95,7.66l3.83,1.15V268l-67,3.83-3.45-22.59a136.35,136.35,0,0,1-27.37,17.42Q628.66,273.76,608.74,273.76Z"/><path fill="#141C33" d="M851.11,78.11q24.89,0,42.5,10.14a69.39,69.39,0,0,1,27,27.57Q930,133.25,930,155.45q0,4.22-.38,8.62a34.71,34.71,0,0,1-1.53,7.84H814q.38,41.35,14.74,59.54t42.69,18.19q19.14,0,31-6.13a75.81,75.81,0,0,0,22.21-18l3.83,3.44a88.14,88.14,0,0,1-31.59,32.93q-19.73,11.87-47.29,11.87-27.18,0-48.24-11.68a82.38,82.38,0,0,1-32.93-33.5q-11.86-21.83-11.87-52.07,0-31.39,13.79-53.41t35.41-33.51A95.54,95.54,0,0,1,851.11,78.11ZM850,85.77a28.2,28.2,0,0,0-19,6.7q-7.85,6.7-12.25,23.73T814,164.26h65.47q3.82-41.73-3.06-60.12T850,85.77Z"/><path fill="#D4943A" d="M400.7,166s35.83,78.88,49.46,109c13.39,29.63,51.1,46.89,84.54-12.47a1,1,0,0,0-1.35-1.37c-7.45,4.12-26.71,12.89-41.07,3.1C474.11,251.94,395,153.48,400.7,166Z"/></svg></div>
-  <div class="ft-meta">
+  <div class="footer-meta">
     Onderdeel van TextInc B2B Copywriting &nbsp;&middot;&nbsp; <a href="mailto:info@pique.agency">info@pique.agency</a><br>
     &copy; 2026 Pique
   </div>
 </footer>
 
+<div class="modal" id="calModal" aria-hidden="true">
+  <div class="modal-bd" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-label="Plan een moment">
+    <button class="modal-x" data-close aria-label="Sluiten">&times;</button>
+    <div id="cal-embed"></div>
+  </div>
+</div>
+
 <script>
-/* scrollspy chips */
-const chips=[...document.querySelectorAll('.chip')];
-const secs=chips.map(c=>document.querySelector(c.getAttribute('href')));
-addEventListener('scroll',()=>{
-  let idx=-1;
-  secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<=160)idx=i});
-  chips.forEach((c,i)=>c.classList.toggle('on',i===idx));
-},{passive:true});
+/* video */
+const poster=document.getElementById('poster'),vid=document.getElementById('vid');
+poster.addEventListener('click',()=>{
+  vid.src='lotgenoten-video.mp4';
+  vid.setAttribute('controls','');
+  poster.style.display='none';
+  vid.play().catch(()=>{});
+});
 
 /* reveal */
 if('IntersectionObserver'in window){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.rv').forEach(e=>io.observe(e));
 }else{document.querySelectorAll('.rv').forEach(e=>e.classList.add('in'))}
 
-/* cal */
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init","belafspraak-pique",{origin:"https://cal.com"});
-Cal.ns["belafspraak-pique"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"simon-kempers/belafspraak-pique"});
+/* cal modal, brand-owned, loads on intent */
+const modal=document.getElementById('calModal');let calLoaded=false;
+document.getElementById('openCal').addEventListener('click',()=>{
+  modal.classList.add('open');
+  if(!calLoaded){calLoaded=true;
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init","belafspraak-pique",{origin:"https://cal.com"});
+    Cal.ns["belafspraak-pique"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"simon-kempers/belafspraak-pique"});
+  }
+});
+modal.addEventListener('click',e=>{if(e.target.hasAttribute('data-close'))modal.classList.remove('open')});
+addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
 </script>
 </body>
 </html>
