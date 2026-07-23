@@ -4,6 +4,7 @@ node_modules
 *.mov
 *.mp4
 !pique/*.mp4
+!pique5/*.mp4
 !textinc/simon-video.mp4
 !textincb/simon-video.mp4
 !bcs2/video.mp4
