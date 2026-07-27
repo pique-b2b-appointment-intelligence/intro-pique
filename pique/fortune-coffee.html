@@ -14,9 +14,9 @@
 :root{
   --bg:#FBFAF8;--ink:#141C33;--ink2:rgba(20,28,51,.66);--ink3:rgba(20,28,51,.42);
   --navy:#0E1526;--amber:#C6893C;--ambers:#E0AC66;--line:rgba(20,28,51,.13);--white:#fff;
+  --red:#C94040;--green:#2A7A50;
   --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);
   --fs-h:clamp(1.9rem,3vw,2.7rem);--fs-body:clamp(1.02rem,1.25vw,1.16rem);
-  --red:#D94040;--green:#2E8B57;
 }
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
@@ -35,13 +35,11 @@ img{display:block;max-width:100%}
 .intro-inner{position:relative;max-width:940px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
 .intro-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(224,172,102,.9);margin-bottom:1.75rem;opacity:0;animation:up 1s var(--ease) .15s forwards}
 .brand-tile{display:inline-flex;align-items:center;gap:.7rem;padding:.5rem .9rem .5rem .5rem;border-radius:100px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);margin-bottom:2.25rem;opacity:0;animation:up 1s var(--ease) .25s forwards}
-.bt-logo{width:34px;height:34px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
+.bt-logo{width:34px;height:34px;border-radius:9px;flex-shrink:0;background:#fff;overflow:hidden}
 .bt-logo img{width:100%;height:100%;object-fit:contain}
 .bt-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1.25}
 .bt-name{font-size:.82rem;font-weight:600;color:#fff}
 .bt-meta{font-size:.66rem;color:rgba(255,255,255,.5)}
-
-/* browser frame */
 .sframe{width:100%;max-width:820px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 50px 130px rgba(0,0,0,.5);background:#1A1A1E;opacity:0;animation:up 1.1s var(--ease) .3s forwards}
 .sf-bar{display:flex;align-items:center;gap:.7rem;padding:.65rem 1rem;background:#1E1E22;border-bottom:1px solid rgba(255,255,255,.08)}
 .sf-dots{display:flex;gap:.38rem}
@@ -51,7 +49,6 @@ img{display:block;max-width:100%}
 .sf-dots span:nth-child(3){background:#28C840}
 .sf-url{flex:1;background:rgba(255,255,255,.06);border-radius:5px;padding:.26rem .7rem;font-size:.68rem;color:rgba(255,255,255,.35);font-family:monospace}
 .sf-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top}
-
 .intro-h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.12;letter-spacing:-.02em;margin-top:clamp(2.5rem,5vh,3.5rem);max-width:22ch;opacity:0;animation:up 1.1s var(--ease) .5s forwards}
 .intro-sub{color:rgba(255,255,255,.55);font-size:1.05rem;font-weight:300;margin-top:1.25rem;max-width:46ch;opacity:0;animation:up 1s var(--ease) .68s forwards}
 .scrollcue{margin-top:clamp(2.5rem,6vh,4rem);display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:up 1s var(--ease) .9s forwards}
@@ -71,6 +68,7 @@ img{display:block;max-width:100%}
 .chapter.right{justify-content:flex-end}
 .chapter.center{justify-content:center}
 .ch-inner{position:relative;width:min(400px,40%)}
+.chapter.wide .ch-inner{width:min(480px,52%)}
 .chapter.center .ch-inner{width:min(560px,78%);text-align:center}
 .chapter.center .ch-body{background:var(--bg);padding:1.5rem 1.75rem;border-radius:16px;position:relative;z-index:1}
 .ch-dot{position:absolute;top:-1.7rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--line);z-index:2;transition:border-color .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
@@ -81,14 +79,14 @@ img{display:block;max-width:100%}
 .ch-body{opacity:0;transform:translateY(30px);filter:blur(5px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
 .chapter.in .ch-body{opacity:1;transform:none;filter:blur(0)}
 .ch-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
-.ch-num{font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--ink3);margin-bottom:.9rem;font-variant-numeric:tabular-nums}
+.ch-num{font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--ink3);margin-bottom:.9rem}
 .ch-kop{font-family:var(--serif);font-weight:500;font-size:var(--fs-h);line-height:1.16;letter-spacing:-.015em;color:var(--ink);margin-bottom:.9rem}
 .ch-head{font-size:clamp(2.1rem,3.6vw,3rem);margin-bottom:0}
 .ch-sub{font-size:1.06rem;color:var(--ink2);line-height:1.7;margin-top:1rem;font-weight:300;max-width:40ch;margin-left:auto;margin-right:auto}
-.ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.75;font-weight:400}
+.ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.75}
 .ch-text strong{color:var(--ink);font-weight:600}
 .ch-text+.ch-text{margin-top:1rem}
-.ch-bron{font-size:.72rem;color:var(--ink3);margin-top:.95rem;letter-spacing:.02em}
+.ch-pull{font-family:var(--serif);font-weight:500;font-size:clamp(1.1rem,1.6vw,1.35rem);line-height:1.42;color:var(--ink);border-left:3px solid var(--amber);padding-left:1.1rem;margin-top:1.4rem}
 .ch-sign{font-size:.85rem;color:var(--ink3);margin-top:1.4rem;font-weight:500}
 .ch-sign strong{color:var(--ink);font-weight:600}
 .chapter.pivot{padding:clamp(8vh,12vh,15vh) 0}
@@ -97,53 +95,60 @@ img{display:block;max-width:100%}
 .chapter.pivot .ch-inner{width:min(680px,88%)}
 .chapter.phase{padding-top:clamp(7vh,10vh,13vh)}
 .chapter.phase .ch-dot{width:15px;height:15px;top:-2.1rem}
-.ch-pull{font-family:var(--serif);font-weight:500;font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.4;color:var(--ink);border-left:3px solid var(--amber);padding-left:1.1rem;margin-top:1.4rem}
-.chapter.wide .ch-inner{width:min(470px,52%)}
 
-/* Dashboard mocks */
-.ch-dash{background:var(--navy);border-radius:14px;padding:1.4rem 1.5rem;margin-top:1.4rem;border:1px solid rgba(255,255,255,.1);overflow:hidden}
-.dash-head{font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:1.1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.08)}
-.dash-rows{display:flex;flex-direction:column;gap:.7rem}
-.dash-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:.6rem}
-.dr-label{font-size:.78rem;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dr-track{height:5px;background:rgba(255,255,255,.08);border-radius:3px;flex:1;min-width:0}
-.dr-fill{height:100%;border-radius:3px;background:var(--red);opacity:.7}
-.dr-stat{font-size:.72rem;font-weight:600;white-space:nowrap}
-.dr-stat.down{color:#E87070}
-.dr-stat.up{color:#6DC98A}
-.dash-divider{height:1px;background:rgba(255,255,255,.08);margin:.85rem 0}
-.dash-foot{font-size:.7rem;color:rgba(255,255,255,.28);letter-spacing:.02em}
+/* Lead-volume dashboard (probleem) */
+.ch-dash{background:var(--navy);border-radius:14px;padding:1.35rem 1.5rem;margin-top:1.4rem;border:1px solid rgba(255,255,255,.09)}
+.dash-head{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.dash-kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.1rem}
+.dash-kpi{background:rgba(255,255,255,.04);border-radius:9px;padding:.75rem .8rem}
+.dash-kpi-val{font-size:1.35rem;font-weight:700;color:#E87070;line-height:1}
+.dash-kpi-lbl{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.25rem;line-height:1.3}
+.dash-rows{display:flex;flex-direction:column;gap:.55rem}
+.dash-row{display:grid;grid-template-columns:1fr 1fr auto;align-items:center;gap:.7rem}
+.dr-label{font-size:.74rem;color:rgba(255,255,255,.5)}
+.dr-track{height:4px;background:rgba(255,255,255,.07);border-radius:3px}
+.dr-fill{height:100%;border-radius:3px;background:var(--red);opacity:.65}
+.dr-stat{font-size:.7rem;font-weight:600;color:#E87070;white-space:nowrap}
+.dash-foot{font-size:.64rem;color:rgba(255,255,255,.22);margin-top:.9rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.07)}
 
-/* Solution dashboard */
-.ch-dash-sol{background:var(--white);border-radius:14px;padding:1.4rem 1.5rem;margin-top:1.4rem;border:1px solid var(--line);box-shadow:0 12px 32px rgba(20,28,51,.06);overflow:hidden}
-.dash-sol-head{font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:1.1rem;padding-bottom:.75rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
-.dash-sol-status{display:inline-flex;align-items:center;gap:.35rem;font-size:.6rem;font-weight:600;color:var(--green);letter-spacing:.06em}
-.dash-sol-status::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.sol-rows{display:flex;flex-direction:column;gap:.65rem}
-.sol-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.7rem;padding:.55rem .6rem;border-radius:8px;background:rgba(20,28,51,.03)}
-.sol-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);flex-shrink:0}
-.sol-label{font-size:.8rem;color:var(--ink);font-weight:500}
-.sol-val{font-size:.75rem;font-weight:600;color:var(--amber)}
-.sol-divider{height:1px;background:var(--line);margin:.75rem 0}
-.sol-metrics{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
-.sol-metric{background:rgba(198,137,60,.05);border:1px solid rgba(198,137,60,.15);border-radius:8px;padding:.6rem .75rem}
-.sol-metric-val{font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1}
-.sol-metric-lbl{font-size:.62rem;color:var(--ink3);margin-top:.3rem}
+/* Pipeline dashboard (oplossing) */
+.pipe-wrap{background:var(--white);border:1px solid var(--line);border-radius:16px;margin-top:1.5rem;overflow:hidden;box-shadow:0 16px 40px rgba(20,28,51,.07)}
+.pipe-header{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.25rem;border-bottom:1px solid var(--line);background:#FAFAF8}
+.pipe-title{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.pipe-live{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;font-weight:600;color:var(--green);letter-spacing:.06em}
+.pipe-live::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.pipe-stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.pipe-stat{padding:.7rem .5rem;text-align:center;border-right:1px solid var(--line)}
+.pipe-stat:last-child{border-right:none}
+.ps-val{font-size:1.25rem;font-weight:700;color:var(--ink);line-height:1}
+.ps-lbl{font-size:.6rem;color:var(--ink3);margin-top:.2rem;letter-spacing:.04em;text-transform:uppercase}
+.pipe-table{width:100%;border-collapse:collapse;font-size:.78rem}
+.pipe-table th{padding:.55rem .9rem;text-align:left;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line);background:#FAFAF8}
+.pipe-table td{padding:.6rem .9rem;color:var(--ink2);border-bottom:1px solid rgba(20,28,51,.06)}
+.pipe-table tr:last-child td{border-bottom:none}
+.pipe-table .td-name{color:var(--ink);font-weight:500}
+.pipe-table .td-regio{font-size:.68rem;color:var(--ink3)}
+.badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.64rem;font-weight:600;border-radius:100px;padding:.22rem .6rem;white-space:nowrap}
+.badge.afspraak{background:rgba(42,122,80,.1);color:var(--green)}
+.badge.geopend{background:rgba(198,137,60,.12);color:var(--amber)}
+.badge.verstuurd{background:rgba(20,28,51,.07);color:var(--ink3)}
+.badge.gereageerd{background:rgba(42,122,80,.07);color:var(--green)}
+.badge::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
 
-/* Proof */
+/* Bewijs / proof */
 .proof{max-width:900px;margin:0 auto;padding:clamp(2.5rem,6vh,4.5rem) clamp(1.5rem,4vw,2rem) clamp(2rem,4vh,3rem)}
 .proof-eyebrow{text-align:center;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
 .proof-head{text-align:center;font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.22;letter-spacing:-.02em;color:var(--ink);margin-bottom:1rem;max-width:24ch;margin-left:auto;margin-right:auto}
 .proof-sub{text-align:center;font-size:1rem;color:var(--ink2);line-height:1.7;font-weight:300;max-width:52ch;margin:0 auto 2.5rem}
-.team-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--white);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(20,28,51,.07)}
+.team-card{display:grid;grid-template-columns:1fr 1fr;background:var(--white);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(20,28,51,.07)}
 .tc-photo{position:relative;overflow:hidden;background:#141C33;min-height:360px}
 .tc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%}
 .tc-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,21,38,.62) 0%,transparent 52%)}
 .tc-photo-names{position:absolute;bottom:20px;left:22px;color:#fff}
 .tc-photo-names strong{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:500;margin-bottom:4px}
 .tc-photo-names span{font-size:.66rem;color:rgba(255,255,255,.6);letter-spacing:.05em;text-transform:uppercase}
-.tc-body{padding:2.25rem 2rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem}
+.tc-body{padding:2.25rem 2rem;display:flex;flex-direction:column;gap:1.5rem}
 .tc-bio{font-size:.96rem;color:var(--ink2);line-height:1.75}
 .tc-facts{display:flex;flex-direction:column;gap:1rem;margin-top:auto}
 .tf-item{border-left:2px solid var(--amber);padding-left:.85rem}
@@ -158,7 +163,7 @@ img{display:block;max-width:100%}
 .cta-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.15;letter-spacing:-.02em}
 .cta-sub{color:rgba(255,255,255,.6);font-size:1.05rem;font-weight:300;margin:1.25rem auto 0;max-width:50ch}
 .cta-actions{margin-top:clamp(2rem,4vh,3rem);display:flex;flex-direction:column;align-items:center;gap:1rem}
-.btn-primary{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:1rem;font-weight:600;color:#0a0a0c;background:#F5F3EF;border:none;border-radius:100px;padding:1rem 2.2rem;cursor:pointer;text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s;box-shadow:0 12px 40px -10px rgba(245,243,239,.3)}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;font-size:1rem;font-weight:600;color:#0a0a0c;background:#F5F3EF;border-radius:100px;padding:1rem 2.2rem;text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s;box-shadow:0 12px 40px -10px rgba(245,243,239,.3)}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 50px -12px rgba(245,243,239,.4)}
 .btn-primary span{transition:transform .3s var(--ease)}
 .btn-primary:hover span{transform:translateX(4px)}
@@ -167,8 +172,6 @@ img{display:block;max-width:100%}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
-
-/* Footer */
 footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .ft-meta{font-size:.72rem;color:var(--ink3);line-height:1.9}
 .ft-meta a{color:var(--ink2)}
@@ -176,12 +179,14 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 @media(max-width:800px){
   .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
   .chapter.center{justify-content:flex-start}
-  .ch-inner,.chapter.center .ch-inner,.chapter.wide .ch-inner{width:100%;text-align:left}
+  .ch-inner,.chapter.wide .ch-inner,.chapter.center .ch-inner{width:100%;text-align:left}
   .chapter.center .ch-body{padding:0}
   .ch-sub{margin-left:0;margin-right:0}
   .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot,.chapter.center .ch-dot{left:-2.4rem;right:auto;top:.3rem;transform:none}
-  .dash-row{grid-template-columns:auto 1fr auto}
-  .sol-metrics{grid-template-columns:1fr 1fr}
+  .dash-kpi-row{grid-template-columns:repeat(3,1fr)}
+  .pipe-stats{grid-template-columns:repeat(2,1fr)}
+  .pipe-stat:nth-child(2){border-right:none}
+  .pipe-stat:nth-child(3){border-right:1px solid var(--line)}
 }
 </style>
 </head>
@@ -207,8 +212,8 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       </div>
       <img class="sf-img" src="fortune-coffee-screenshot.jpg" alt="Fortune Coffee website">
     </div>
-    <h1 class="intro-h1">Hé Edwin. We hebben Fortune Coffee bekeken. Hier is wat ons opviel.</h1>
-    <p class="intro-sub">Over de leadstroom, de kwaliteit, en hoe je 29 regio's van afspraken voorziet zonder op de tweede plek te bellen.</p>
+    <h1 class="intro-h1">Hé Edwin. We hebben Fortune Coffee goed bekeken. Dit viel ons op.</h1>
+    <p class="intro-sub">Over het leadvolume, de kwaliteit, en hoe advertenties dat probleem niet oplossen.</p>
     <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
   </div>
 </header>
@@ -231,30 +236,21 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-num">01</div>
-        <h2 class="ch-kop">Het leadvolume loopt achter</h2>
-        <p class="ch-text">Niet alleen extern. <strong>Via chat, via de website, via alle kanalen.</strong> April was rustig, maar het bleef rustig. En dat is nog steeds zo.</p>
-        <p class="ch-text">Fortune Coffee heeft één partij die exclusief voor jullie werkt. Die doet het goed. Maar ook die loopt achter op wat jullie nodig hebben.</p>
-        <div class="ch-dash" aria-label="Lead-aanvoer overzicht">
+        <h2 class="ch-kop">Het leadvolume loopt achter. Overal.</h2>
+        <p class="ch-text">April was rustig. Dan komt mei. Dan juni. <strong>Extern, via de chat, via de eigen website: het blijft achter.</strong> Fortune Coffee heeft één partij die exclusief voor jullie werkt en dat goed doet. Maar ook die loopt achter op wat 29 regio's nodig hebben.</p>
+        <div class="ch-dash" aria-label="Lead-aanvoer alle kanalen Q2 2026">
           <div class="dash-head">Lead-aanvoer Fortune Coffee &middot; alle kanalen &middot; Q2 2026</div>
-          <div class="dash-rows">
-            <div class="dash-row">
-              <div class="dr-label">Externe partijen</div>
-              <div class="dr-track"><div class="dr-fill" style="width:32%"></div></div>
-              <div class="dr-stat down">&#8595; 38%</div>
-            </div>
-            <div class="dash-row">
-              <div class="dr-label">Chat &amp; eigen website</div>
-              <div class="dr-track"><div class="dr-fill" style="width:24%"></div></div>
-              <div class="dr-stat down">&#8595; 51%</div>
-            </div>
-            <div class="dash-row">
-              <div class="dr-label">Exclusieve partner</div>
-              <div class="dr-track"><div class="dr-fill" style="width:44%"></div></div>
-              <div class="dr-stat down">&#8595; 22%</div>
-            </div>
+          <div class="dash-kpi-row">
+            <div class="dash-kpi"><div class="dash-kpi-val">&#8595; 38%</div><div class="dash-kpi-lbl">Extern leads</div></div>
+            <div class="dash-kpi"><div class="dash-kpi-val">&#8595; 51%</div><div class="dash-kpi-lbl">Chat &amp; website</div></div>
+            <div class="dash-kpi"><div class="dash-kpi-val">&#8595; 22%</div><div class="dash-kpi-lbl">Exclusieve partner</div></div>
           </div>
-          <div class="dash-divider"></div>
-          <div class="dash-foot">Kwalitatieve conversie gedaald door leadkwaliteit &amp; concurrentie</div>
+          <div class="dash-rows">
+            <div class="dash-row"><div class="dr-label">Externe partijen</div><div class="dr-track"><div class="dr-fill" style="width:31%"></div></div><div class="dr-stat">&#8595; 38%</div></div>
+            <div class="dash-row"><div class="dr-label">Chat &amp; website</div><div class="dr-track"><div class="dr-fill" style="width:23%"></div></div><div class="dr-stat">&#8595; 51%</div></div>
+            <div class="dash-row"><div class="dr-label">Exclusieve partner</div><div class="dr-track"><div class="dr-fill" style="width:44%"></div></div><div class="dr-stat">&#8595; 22%</div></div>
+          </div>
+          <div class="dash-foot">Conversie gedaald door leadkwaliteit en concurrentie op dezelfde prospects</div>
         </div>
         <div class="ch-sign"><strong>Simon</strong>, oprichter Pique</div>
       </div>
@@ -266,9 +262,9 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-num">02</div>
-        <h2 class="ch-kop">De meeste leads komen bij de concurrent ook binnen</h2>
-        <p class="ch-text">De meeste partijen die jullie leads aanleveren, verkopen dezelfde lead ook aan jullie concurrenten. Dezelfde ondernemer krijgt mailtjes en telefoontjes van Fortune Coffee én van meerdere andere koffieleveranciers.</p>
-        <p class="ch-text"><strong>En dan bel jij hem. En hij is al geïrriteerd voordat het gesprek begint.</strong> Zelfs als je hem à la minute opbelt, zijn ze al bestookt door de anderen.</p>
+        <h2 class="ch-kop">De meeste leadpartijen verkopen dezelfde lead ook aan de concurrent</h2>
+        <p class="ch-text">De ondernemer in Gouda krijgt een belletje van Fortune Coffee. En een dag eerder al een mailtje van twee andere koffieleveranciers die dezelfde lead hebben gekocht. <strong>Hij is geïrriteerd voordat jullie hallo hebben gezegd.</strong></p>
+        <p class="ch-text">Advertenties draaien harder zet de prijs verder onder druk en lost dit niet op. Je werft in dezelfde vijver als iedereen, op hetzelfde moment.</p>
         <div class="ch-pull">'Zelfs als je hem als eerste belt, heeft hij al twee berichten van de concurrent.'</div>
       </div>
     </div>
@@ -277,14 +273,14 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <section class="chapter center pivot">
     <div class="ch-inner">
       <span class="ch-dot"></span>
-      <div class="ch-body"><div class="ch-eyebrow">Waar het op uitkomt</div><p class="ch-pivot">Op het moment dat jullie team belt, is de prospect al benaderd door twee of drie partijen. Je speelt op achterstand voordat het gesprek begonnen is. Dat lost meer volume niet op.</p></div>
+      <div class="ch-body"><div class="ch-eyebrow">Waar het op uitkomt</div><p class="ch-pivot">Meer volume in hetzelfde kanaal geeft meer van hetzelfde resultaat. De oplossing zit in een ander kanaal, op een ander moment, met een ander bericht.</p></div>
     </div>
   </section>
 
   <section class="chapter center phase">
     <div class="ch-inner">
       <span class="ch-dot"></span>
-      <div class="ch-body"><div class="ch-eyebrow">Wat Pique doet</div><h2 class="ch-kop ch-head">Eén bericht voor één ondernemer.</h2><p class="ch-sub">Handgeschreven, met een echte aanleiding, op het juiste moment. En per regio anders.</p></div>
+      <div class="ch-body"><div class="ch-eyebrow">Wat Pique doet</div><h2 class="ch-kop ch-head">Concreet.</h2><p class="ch-sub">Wat we doen, wat je krijgt, wat we garanderen.</p></div>
     </div>
   </section>
 
@@ -293,10 +289,11 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-num">03</div>
-        <h2 class="ch-kop">Hyperpersoonlijk, met een echte aanleiding</h2>
-        <p class="ch-text">Wij besteden 45 minuten per prospect. We kijken naar recente aanwervingen, aflopende contracten, groeiplannen. <strong>Als er geen aanleiding is, sturen we geen bericht.</strong> Dan gaan we verder naar de volgende prospect.</p>
-        <p class="ch-text">Als er wel een aanleiding is, sturen we een handgeschreven brief. Soms met een zakje Fortune Coffee erbij. Geen bulk, geen standaardtekst, geen voornaam die erin geplakt is.</p>
-        <p class="ch-text">Na de brief volgt een persoonlijke landingspagina met een video. Wij houden bij wie op de pagina zit en hoe lang. En als er interesse is, bellen wij, met alles wat we weten al in de hand.</p>
+        <h2 class="ch-kop">300 handgeschreven brieven per maand, met een echte aanleiding</h2>
+        <p class="ch-text">Per prospect besteden we 45 minuten research. We kijken naar recente aanwervingen, vestigingsuitbreidingen, aflopende contracten bij een concurrent. <strong>Vinden we die aanleiding niet, sturen we geen brief.</strong> Dan gaan we naar de volgende.</p>
+        <p class="ch-text">Als er wel een aanleiding is, sturen we een handgeschreven brief op naam van de beslisser van die regio. Soms met een zakje Fortune Coffee erbij. Daarna volgt een persoonlijke landingspagina met een korte video. We houden bij wie de pagina opent en hoe lang ze blijven. Pas dan bellen we, met alles wat we over hen weten al in de hand.</p>
+        <p class="ch-text">Voordat de afspraak in de agenda staat, voeren we een kwalificatiegesprek van 5 tot 10 minuten. De franchisepartner krijgt een voorgekwalificeerde afspraak, geen koude lead.</p>
+        <p class="ch-text"><strong>Wat we beloven: 25 tot 30 gekwalificeerde afspraken per maand.</strong> Halen we dat niet in kwartaal 1, werken we gratis door totdat het wel zover is.</p>
       </div>
     </div>
   </section>
@@ -306,26 +303,57 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-num">04</div>
-        <h2 class="ch-kop">Per regio, per beslisser, een eigen aanpak</h2>
-        <p class="ch-text">Fortune Coffee werkt met 29 regio's. Iemand in Friesland besluit anders dan iemand in Limburg. Jullie eigen klantdata wijst dat ook uit: het type beslisser verschilt per gebied.</p>
-        <p class="ch-text">Wij passen de ICP, de messaging en het moment van benaderen aan per regio. En vanuit de headquarters zie je precies hoe elke regio presteert.</p>
-        <div class="ch-dash-sol" aria-label="Pique dashboard voorbeeld">
-          <div class="dash-sol-head">
-            <span>Pique Dashboard &middot; Fortune Coffee &middot; Regio's</span>
-            <span class="dash-sol-status">Live</span>
+        <h2 class="ch-kop">Per regio zie je live wie benaderd is en wat de reactie is</h2>
+        <p class="ch-text">Je hoeft het niet op te vragen. In het dashboard zie je per regio welke prospects benaderd zijn, wie de pagina heeft bezocht, wie heeft gereageerd en welke afspraken er al in de agenda staan.</p>
+        <div class="pipe-wrap" aria-label="Pique pipeline dashboard Fortune Coffee">
+          <div class="pipe-header">
+            <span class="pipe-title">Pique Pipeline &middot; Fortune Coffee &middot; Regio's</span>
+            <span class="pipe-live">Live</span>
           </div>
-          <div class="sol-rows">
-            <div class="sol-row"><div class="sol-dot"></div><div class="sol-label">Regio Utrecht</div><div class="sol-val">14 afspraken</div></div>
-            <div class="sol-row"><div class="sol-dot"></div><div class="sol-label">Regio Zuid-Holland</div><div class="sol-val">11 afspraken</div></div>
-            <div class="sol-row"><div class="sol-dot"></div><div class="sol-label">Regio Groningen</div><div class="sol-val">9 afspraken</div></div>
-            <div class="sol-row"><div class="sol-dot"></div><div class="sol-label">Regio Friesland</div><div class="sol-val">8 afspraken</div></div>
+          <div class="pipe-stats">
+            <div class="pipe-stat"><div class="ps-val">47</div><div class="ps-lbl">Benaderd</div></div>
+            <div class="pipe-stat"><div class="ps-val">19</div><div class="ps-lbl">Pagina geopend</div></div>
+            <div class="pipe-stat"><div class="ps-val">8</div><div class="ps-lbl">Gereageerd</div></div>
+            <div class="pipe-stat"><div class="ps-val">5</div><div class="ps-lbl">Afspraken</div></div>
           </div>
-          <div class="sol-divider"></div>
-          <div class="sol-metrics">
-            <div class="sol-metric"><div class="sol-metric-val">23%</div><div class="sol-metric-lbl">Response rate</div></div>
-            <div class="sol-metric"><div class="sol-metric-val">100%</div><div class="sol-metric-lbl">Fortune Coffee exclusief</div></div>
-          </div>
+          <table class="pipe-table" aria-label="Prospects per regio">
+            <thead>
+              <tr>
+                <th>Bedrijf</th>
+                <th>Regio</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-name">Bouwbedrijf Janssen &amp; Zn</td>
+                <td class="td-regio">Utrecht</td>
+                <td><span class="badge afspraak">Afspraak 12 aug</span></td>
+              </tr>
+              <tr>
+                <td class="td-name">Kantoorcomplex Berghem</td>
+                <td class="td-regio">Zuid-Holland</td>
+                <td><span class="badge gereageerd">Gereageerd</span></td>
+              </tr>
+              <tr>
+                <td class="td-name">Scholengemeenschap De Meent</td>
+                <td class="td-regio">Groningen</td>
+                <td><span class="badge geopend">Pagina bekeken</span></td>
+              </tr>
+              <tr>
+                <td class="td-name">FDB Architecten</td>
+                <td class="td-regio">Friesland</td>
+                <td><span class="badge verstuurd">Brief verstuurd</span></td>
+              </tr>
+              <tr>
+                <td class="td-name">Kapperszaak Deluxe Weerd</td>
+                <td class="td-regio">Limburg</td>
+                <td><span class="badge afspraak">Afspraak 19 aug</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+        <p class="ch-text" style="margin-top:1.1rem">Fortune Coffee is het enige koffiebedrijf waarvoor we werken. Dezelfde beslisser komt niet bij een concurrent via hetzelfde kanaal terecht.</p>
       </div>
     </div>
   </section>
@@ -335,7 +363,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Het voorstel</div>
-        <p class="ch-pivot">We stellen voor: één regio, een afgesproken termijn, meetbare resultaten. Zodat jullie zien hoe het werkt voordat we de overige 28 regio's oppakken.</p>
+        <p class="ch-pivot">Eén regio. Acht weken. Meetbaar resultaat. Dan beslissen jullie of de andere 28 volgen.</p>
       </div>
     </div>
   </section>
@@ -344,8 +372,8 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 
 <section class="proof" id="founders">
   <div class="proof-eyebrow reveal">De mensen achter Pique</div>
-  <h2 class="proof-head reveal">Opgericht vanuit één overtuiging.</h2>
-  <p class="proof-sub reveal">Beslissers bereik je niet met meer volume. Je bereikt ze met het bericht dat ze niet hadden verwacht van iemand die echt zijn huiswerk heeft gedaan.</p>
+  <h2 class="proof-head reveal">Opgericht vanuit één idee.</h2>
+  <p class="proof-sub reveal">Advertenties worden duurder, inboxen voller, adverteerders meer. Een handgeschreven brief op het bureau valt op. Dat werkt alleen als je weet wie je schrijft en waarom nu.</p>
   <div class="team-card reveal">
     <div class="tc-photo">
       <img src="simon.png" alt="Simon Kempers, oprichter Pique">
@@ -356,11 +384,11 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       </div>
     </div>
     <div class="tc-body">
-      <div class="tc-bio">Ik help franchise-organisaties de gesprekken voeren die ze normaal niet bereiken. Via handgeschreven brieven, persoonlijke video's en landingspagina's die gebouwd zijn rond één specifieke persoon. Pique werkt uitsluitend voor organisaties waar één nieuwe klantrelatie een significante klantwaarde heeft en waar volume van leads het werkelijke probleem niet oplost.</div>
+      <div class="tc-bio">Ik help franchise-organisaties de gesprekken voeren die ze normaal niet bereiken. Wij werken voor organisaties waar één nieuwe klantrelatie een significante klantwaarde heeft en waar de standaard kanalen te weinig opleveren om te rechtvaardigen wat ze kosten.</div>
       <div class="tc-facts">
-        <div class="tf-item"><div class="tf-val">7 tot 60+ vestigingen</div><div class="tf-lbl">franchise-expertise</div></div>
-        <div class="tf-item"><div class="tf-val">Fortune Coffee exclusief</div><div class="tf-lbl">geen gedeelde leads, nooit een tweede koffiebedrijf</div></div>
-        <div class="tf-item"><div class="tf-val">Vrijblijvende pilot</div><div class="tf-lbl">één regio, meetbaar resultaat, break-even garantie</div></div>
+        <div class="tf-item"><div class="tf-val">7 tot 60+ vestigingen</div><div class="tf-lbl">franchise-organisaties die we eerder hielpen</div></div>
+        <div class="tf-item"><div class="tf-val">Fortune Coffee exclusief</div><div class="tf-lbl">geen tweede koffiebedrijf, geen gedeelde leads</div></div>
+        <div class="tf-item"><div class="tf-val">Break-even garantie Q1</div><div class="tf-lbl">halen we het niet, werken we gratis door</div></div>
       </div>
     </div>
   </div>
@@ -370,7 +398,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">Volgende stap</div>
     <h2 class="cta-h reveal">Zullen we even bellen?</h2>
-    <p class="cta-sub reveal">Dit wordt geen verkoopgesprek. Ik laat je zien hoe wij naar de groeikansen van Fortune Coffee per regio kijken. En hoe een pilot er concreet uitziet. Tien minuten is genoeg.</p>
+    <p class="cta-sub reveal">Ik laat je zien hoe het dashboard eruitziet voor jullie specifieke regio's en wat een pilot concreet oplevert. Tien minuten.</p>
     <div class="cta-actions reveal">
       <a class="btn-primary" href="https://wa.me/31631511002">Stuur me een appje <span>&rarr;</span></a>
       <a class="link-lighter" href="mailto:info@pique.agency?subject=Fortune%20Coffee%20x%20Pique">of mail me op info@pique.agency</a>
