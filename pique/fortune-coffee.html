@@ -163,6 +163,8 @@ img{display:block;max-width:100%}
 .btn-primary:hover span{transform:translateX(4px)}
 .link-lighter{display:inline-block;font-size:.9rem;color:rgba(255,255,255,.4);border-bottom:1px solid transparent;transition:.2s}
 .link-lighter:hover{color:rgba(255,255,255,.65);border-bottom-color:rgba(255,255,255,.2)}
+.cta-cal{margin-top:clamp(2rem,4vh,3rem);background:#fff;border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden;min-height:560px}
+#cal-embed{width:100%;min-height:560px}
 
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -255,7 +257,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
         <div class="ch-num">02</div>
         <h2 class="ch-kop">De meeste leadpartijen verkopen dezelfde lead ook aan de concurrent</h2>
         <p class="ch-text">De ondernemer in Gouda krijgt een belletje van Fortune Coffee. En een dag eerder al een mailtje van twee andere koffieleveranciers die dezelfde lead hebben gekocht. <strong>Hij is geïrriteerd voordat jullie hallo hebben gezegd.</strong></p>
-        <p class="ch-text">Advertenties draaien harder zet de prijs verder onder druk en lost dit niet op. Je werft in dezelfde vijver als iedereen, op hetzelfde moment.</p>
+        <p class="ch-text">Advertenties harder draaien zet de prijs verder onder druk en lost dit niet op. Je werft in dezelfde vijver als iedereen, op hetzelfde moment.</p>
         <div class="ch-pull">'Zelfs als je hem als eerste belt, heeft hij al twee berichten van de concurrent.'</div>
       </div>
     </div>
@@ -390,6 +392,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <div class="cta-eyebrow reveal">Volgende stap</div>
     <h2 class="cta-h reveal">Zullen we even bellen?</h2>
     <p class="cta-sub reveal">Ik laat je zien hoe het dashboard eruitziet voor jullie specifieke regio's en wat een pilot concreet oplevert. Tien minuten.</p>
+    <div class="cta-cal reveal"><div id="cal-embed"></div></div>
     <div class="cta-actions reveal">
       <a class="btn-primary" href="https://wa.me/31631511002">Stuur me een appje <span>&rarr;</span></a>
       <a class="link-lighter" href="mailto:info@pique.agency?subject=Fortune%20Coffee%20x%20Pique">of mail me op info@pique.agency</a>
@@ -405,6 +408,10 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 </footer>
 
 <script>
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
+Cal("init","belafspraak-pique",{origin:"https://cal.com"});
+Cal.ns["belafspraak-pique"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"simon-kempers/belafspraak-pique"});
+Cal.ns["belafspraak-pique"]("ui",{hideEventTypeDetails:false,layout:"month_view"});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.18});
 document.querySelectorAll('.chapter,.reveal').forEach(el=>io.observe(el));
 const journey=document.getElementById('journey'),svg=document.getElementById('jpath');
