@@ -133,32 +133,14 @@ nav.solid{background:rgba(8,11,18,.72);backdrop-filter:blur(16px) saturate(1.3);
 .cta-eyebrow{font-family:var(--disp);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mints);margin-bottom:1.25rem}
 .cta-h{font-family:var(--disp);font-weight:600;font-size:clamp(1.9rem,3.2vw,2.6rem);line-height:1.15;letter-spacing:-.02em}
 .cta-sub{color:rgba(255,255,255,.62);font-size:1.05rem;font-weight:400;margin:1.25rem auto 0;max-width:48ch}
-.cta-embed{margin-top:clamp(2.5rem,5vh,3.5rem);background:#fff;border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden}
-/* Cal.com PLACEHOLDER */
-.cal-ph{background:#fff;color:#141c26;text-align:left;font-family:var(--sans)}
-.cal-ph-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.35rem 1.6rem;border-bottom:1px solid #eef0f2}
-.cal-ph-title{font-family:var(--disp);font-weight:600;font-size:1.02rem;color:#141c26}
-.cal-ph-meta{font-size:.8rem;color:#7a828c;margin-top:2px}
-.cal-ph-brand img{height:20px;display:block;opacity:.9}
-.cal-ph-body{display:grid;grid-template-columns:1.55fr 1fr;gap:0}
-.cal-ph-cal{padding:1.4rem 1.6rem;border-right:1px solid #eef0f2}
-.cal-ph-month{display:flex;align-items:center;justify-content:space-between;font-family:var(--disp);font-weight:600;font-size:.92rem;color:#141c26;margin-bottom:1rem}
-.cal-ph-nav{color:#b6bcc4;letter-spacing:.1em}
-.cal-ph-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:.5rem}
-.cal-ph-dow span{text-align:center;font-size:.62rem;font-weight:600;letter-spacing:.02em;color:#aeb4bc;text-transform:lowercase}
-.cal-ph-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.cal-ph-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:500;border-radius:50%;color:#3a424c}
-.cal-ph-day.mut{color:#d3d7dc}
-.cal-ph-day.free{color:#0e7a4e;background:rgba(28,214,136,.12);cursor:pointer}
-.cal-ph-day.free:hover{background:rgba(28,214,136,.22)}
-.cal-ph-day.sel{background:#1cd688;color:#052a1c;font-weight:700}
-.cal-ph-slots{padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.55rem}
-.cal-ph-slots-label{font-family:var(--disp);font-weight:600;font-size:.82rem;color:#141c26;margin-bottom:.35rem}
-.cal-ph-slot{width:100%;padding:.7rem;border:1px solid #d7f2e5;background:#fff;color:#0e7a4e;font-family:var(--sans);font-weight:600;font-size:.86rem;border-radius:9px;cursor:pointer;transition:border-color .2s,background .2s}
-.cal-ph-slot:hover{border-color:#1cd688;background:rgba(28,214,136,.06)}
-.cal-ph-slot.is-active{background:#1cd688;border-color:#1cd688;color:#052a1c}
-.cal-ph-note{margin-top:.4rem;font-size:.66rem;color:#aeb4bc;text-align:center;letter-spacing:.02em}
-@media(max-width:560px){.cal-ph-body{grid-template-columns:1fr}.cal-ph-cal{border-right:none;border-bottom:1px solid #eef0f2}}
+.cta-embed{margin-top:clamp(2.5rem,5vh,3.5rem);background:#fff;border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden;min-height:640px}
+.cta-embed>div{width:100%;min-height:640px}
+.cta-alt{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1.4rem}
+.cta-wa,.cta-bel{display:inline-flex;align-items:center;font-family:var(--disp);font-weight:600;font-size:.9rem;padding:.75rem 1.3rem;border-radius:100px;transition:transform .2s,border-color .2s,color .2s}
+.cta-wa{background:#25d366;color:#053015}
+.cta-wa:hover{transform:translateY(-2px)}
+.cta-bel{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)}
+.cta-bel:hover{border-color:var(--mint);color:var(--mint)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
@@ -286,7 +268,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-eyebrow">Wat wij doen</div>
         <h2 class="ch-kop ch-head">In het kort.</h2>
-        <p class="ch-sub">Je neemt een boekingssysteem af en krijgt daar een topwebsite bij, helemaal in jouw stijl. Eén vast bedrag per maand. En je eigen marketingteam zit er gratis bij. Jij behandelt, wij zorgen dat er te behandelen valt.</p>
+        <p class="ch-sub">Alles in één systeem: je agenda, je boekingen en je klanten op één plek, voor één vast bedrag per maand. Daar kun je meteen je website bij laten maken, in jouw stijl. En je krijgt er een gratis marketingteam bij dat je agenda vult. Jij behandelt, wij regelen de rest.</p>
       </div>
     </div>
   </section>
@@ -295,8 +277,9 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <div class="ch-inner"><span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-num">01</div>
-        <h2 class="ch-kop">Een boekingssysteem dat werkt</h2>
-        <p class="ch-text">Klanten boeken zichzelf in, dag en nacht, in een paar tikken. Automatische herinneringen halen je no-shows eruit.</p>
+        <h2 class="ch-kop">Alles in één systeem</h2>
+        <p class="ch-text">Je agenda, je boekingen, je klanten en je reviews op één plek. Klanten boeken zichzelf in, dag en nacht, met automatische herinneringen tegen no-shows. <strong>Eén vast bedrag per maand, geen losse rekeningen bij Treatwell of Salonized.</strong></p>
+        <span class="ch-tag">Vast bedrag per maand</span>
       </div>
     </div>
   </section>
@@ -305,9 +288,9 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <div class="ch-inner"><span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-num">02</div>
-        <h2 class="ch-kop">Een topwebsite in jouw stijl</h2>
-        <p class="ch-text">Een professionele website, helemaal in je eigen branding, die je klanten vertrouwen. Die krijg je bij het boekingssysteem. <strong>Eén vast bedrag per maand, geen groot bedrag vooraf.</strong></p>
-        <span class="ch-tag">Vast bedrag per maand</span>
+        <h2 class="ch-kop">Je website erbij</h2>
+        <p class="ch-text">Een professionele website in je eigen stijl, gewoon onderdeel van hetzelfde systeem. Die je klanten vertrouwen en die je terugvindt op Google. <strong>Geen groot bedrag vooraf.</strong></p>
+        <span class="ch-tag">Inbegrepen</span>
       </div>
     </div>
   </section>
@@ -341,36 +324,11 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <div class="cta-eyebrow reveal">De volgende stap</div>
     <h2 class="cta-h reveal">Even kennismaken?</h2>
     <p class="cta-sub reveal">Dit wordt geen verkooppraatje. Gewoon kijken of dit bij Puur Huid past, en of dat boeken en die vindbaarheid makkelijker kunnen.</p>
-    <!-- [SWAP] Placeholder-agenda. Vervang <div class="cal-ph"> door de echte Cal.com-embed:
-         <div class="cta-embed reveal"><div id="cal-embed"></div></div> + Cal-init script -->
-    <div class="cta-embed reveal">
-      <div class="cal-ph">
-        <div class="cal-ph-head">
-          <div>
-            <div class="cal-ph-title">Kennismaken met Murphy</div>
-            <div class="cal-ph-meta">15 min &middot; videocall</div>
-          </div>
-          <div class="cal-ph-brand"><img src="logo-lockup.png" alt="Online Goed Gevonden"></div>
-        </div>
-        <div class="cal-ph-body">
-          <div class="cal-ph-cal">
-            <div class="cal-ph-month">
-              <span>Juli 2026</span>
-              <span class="cal-ph-nav">&#8249;&nbsp;&nbsp;&#8250;</span>
-            </div>
-            <div class="cal-ph-dow"><span>ma</span><span>di</span><span>wo</span><span>do</span><span>vr</span><span>za</span><span>zo</span></div>
-            <div class="cal-ph-grid" id="calph-grid"></div>
-          </div>
-          <div class="cal-ph-slots">
-            <div class="cal-ph-slots-label">Dinsdag 28 juli</div>
-            <button class="cal-ph-slot">09:30</button>
-            <button class="cal-ph-slot is-active">11:00</button>
-            <button class="cal-ph-slot">13:30</button>
-            <button class="cal-ph-slot">16:00</button>
-            <div class="cal-ph-note">Placeholder &middot; hier komt de Cal.com-agenda</div>
-          </div>
-        </div>
-      </div>
+    <!-- Cal.com inline embed — Murphy van Online Goed Gevonden -->
+    <div class="cta-embed reveal"><div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-online-meeting-met-murphy-von-schukkmann-brief"></div></div>
+    <div class="cta-alt reveal">
+      <a class="cta-wa" href="https://wa.me/31644753567?text=Hoi%20Murphy,%20ik%20zag%20mijn%20pagina%20en%20wil%20graag%20meer%20weten." target="_blank" rel="noopener">&#128172;&nbsp; WhatsApp Murphy</a>
+      <a class="cta-bel" href="tel:+31644753567">&#9742;&nbsp; Of bel Murphy direct</a>
     </div>
   </div>
 </section>
@@ -378,8 +336,9 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 <footer>
   <div class="ft-logo"><span class="pill"><img src="logo-lockup.png" alt="Online Goed Gevonden"></span></div>
   <div class="ft-meta">
-    <a href="https://onlinegoedgevonden.nl">onlinegoedgevonden.nl</a><br>
-    &copy; 2026 Online Goed Gevonden
+    Online Goed Gevonden &middot; Landdrostlaan 51, 7327 GM Apeldoorn<br>
+    <a href="tel:+31552340118">055 234 0118</a> &middot; <a href="tel:+31644753567">06 44753567</a> &middot; <a href="mailto:info@onlinegoedgevonden.nl">info@onlinegoedgevonden.nl</a><br>
+    <a href="https://onlinegoedgevonden.nl">onlinegoedgevonden.nl</a> &middot; &copy; 2026
   </div>
 </footer>
 
@@ -421,20 +380,17 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
 setTimeout(build,400);setTimeout(build,1200);
 if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
 
-// Cal.com PLACEHOLDER — statische agenda, geen echte integratie.
-// Vervang dit blok + de .cal-ph markup door de echte Cal.com-embed wanneer je live gaat.
-(function(){
-  var grid=document.getElementById('calph-grid');if(!grid)return;
-  var start=1;                       // 1 juli 2026 = dinsdag -> begint op kolom 2 (ma=1)
-  var offset=1, days=31, free=[3,8,10,15,17,22,24,29,31], sel=28;
-  for(var i=0;i<offset;i++){var e=document.createElement('span');e.className='cal-ph-day mut';grid.appendChild(e);}
-  for(var d=1;d<=days;d++){
-    var c=document.createElement('span');c.className='cal-ph-day';c.textContent=d;
-    if(free.indexOf(d)>-1)c.className+=' free';
-    if(d===sel)c.className='cal-ph-day sel';
-    grid.appendChild(c);
-  }
-})();
+// Cal.com inline embed — Murphy van Online Goed Gevonden
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "online-meeting-met-murphy-von-schukkmann-brief", {origin:"https://app.cal.com"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+Cal.ns["online-meeting-met-murphy-von-schukkmann-brief"]("inline", {
+  elementOrSelector:"#my-cal-inline-online-meeting-met-murphy-von-schukkmann-brief",
+  config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+  calLink: "murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief",
+});
+Cal.ns["online-meeting-met-murphy-von-schukkmann-brief"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
 </body>
 </html>
