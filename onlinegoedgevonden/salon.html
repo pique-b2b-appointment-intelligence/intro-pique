@@ -200,6 +200,8 @@ details .a{padding:0 1.3rem 1.2rem;color:var(--ink2);font-size:.94rem;line-heigh
 .host .who{text-align:left}
 .host b{font-family:var(--disp);font-size:.9rem}
 .host span{display:block;font-size:.76rem;color:var(--ink3)}
+.cal-embed{margin:1.9rem auto 0;max-width:900px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.45);min-height:640px}
+.cal-embed>div{width:100%;min-height:640px}
 .final .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1.8rem}
 .final .note{margin-top:1rem;color:var(--ink3);font-size:.84rem}
 .wa-line{margin-top:1.6rem;color:var(--ink2);font-size:.92rem}
@@ -475,9 +477,12 @@ footer{border-top:1px solid var(--line);padding:2.4rem 0 3rem;text-align:center}
     <h2 class="r">Klaar, [voornaam]? Zie wat dit voor<br>jouw salon in [stad] kan betekenen.</h2>
     <p class="sec-intro r" style="margin-inline:auto">Je hoeft zelf niets uit te rekenen. In een gratis gesprek van 20 minuten laten we precies zien wat dit voor jouw salon verandert.</p>
 
+    <!-- Cal.com inline embed — Murphy van Online Goed Gevonden -->
+    <div class="cal-embed r"><div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-online-meeting-met-murphy-von-schukkmann-brief"></div></div>
+
     <div class="cta-row r">
-      <a class="btn btn-primary" href="tel:+31644753567">&#10003;&nbsp; Plan een gratis strategiegesprek</a>
       <a class="btn btn-wa" href="https://wa.me/31644753567?text=Hoi%20Murphy,%20ik%20zag%20jullie%20pagina%20en%20wil%20graag%20meer%20weten." target="_blank" rel="noopener">&#128172;&nbsp; WhatsApp Murphy</a>
+      <a class="btn btn-ghost" href="tel:+31644753567">&#9742;&nbsp; Of bel Murphy direct</a>
     </div>
     <div class="note r">20 minuten &middot; Vrijblijvend &middot; Geen verplichtingen</div>
     <div class="wa-line r">Nog niet klaar voor een gesprek? <a href="https://wa.me/31644753567" target="_blank" rel="noopener">Stuur ons even een WhatsApp-bericht &rarr;</a><br>Persoonlijk, transparant, en altijd bereikbaar.</div>
@@ -500,6 +505,18 @@ footer{border-top:1px solid var(--line);padding:2.4rem 0 3rem;text-align:center}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{rootMargin:'0px 0px -40px 0px',threshold:.05});
   els.forEach(function(e){io.observe(e)});
 })();
+
+// Cal.com inline embed — Murphy van Online Goed Gevonden
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "online-meeting-met-murphy-von-schukkmann-brief", {origin:"https://app.cal.com"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+Cal.ns["online-meeting-met-murphy-von-schukkmann-brief"]("inline", {
+  elementOrSelector:"#my-cal-inline-online-meeting-met-murphy-von-schukkmann-brief",
+  config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+  calLink: "murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief",
+});
+Cal.ns["online-meeting-met-murphy-von-schukkmann-brief"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
 </body>
 </html>
