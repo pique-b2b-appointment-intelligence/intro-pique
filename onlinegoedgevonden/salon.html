@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<!--
+============================================================
+  ONLINE GOED GEVONDEN — salon salespage (schoonheidssalons Gelderland)
+  Volledige conversiepagina. Merk: mint op donker navy.
+  Typografie: Poppins (koppen) + Switzer (body).
+  PERSONALISEREN: [voornaam], [stad], reviews, video, Cal.
+  Contact: Murphy WhatsApp/bel +31 6 44753567 · 055 234 0118
+============================================================
+-->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Online Goed Gevonden — voor jouw salon</title>
+<meta name="description" content="Een marketingteam dat ook je software regelt. Meer klanten, minder kosten, één vaste fee.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080b12;--panel:#05070c;--panel2:#0a0f1a;
+  --ink:#fff;--ink2:rgba(255,255,255,.70);--ink3:rgba(255,255,255,.46);
+  --mint:#1cd688;--mints:#49d69b;--mintd:#0e7a4e;--navy:#0b1a17;
+  --red:#ff7a7a;--gold:#ffc94d;
+  --line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.16);
+  --card:rgba(255,255,255,.035);--card2:rgba(255,255,255,.06);
+  --grad:linear-gradient(135deg,#49d69b,#1cd688);
+  --disp:'Poppins',system-ui,sans-serif;--sans:'Switzer','Poppins',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);color:var(--ink);line-height:1.65;overflow-x:hidden;
+  background:
+    radial-gradient(80% 45% at 85% 2%,rgba(28,214,136,.13),transparent 55%),
+    radial-gradient(70% 40% at 5% 22%,rgba(28,214,136,.06),transparent 55%),
+    var(--bg);
+  background-attachment:fixed}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:rgba(28,214,136,.25)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--sans);font-weight:600;font-size:.98rem;padding:.95rem 1.6rem;border-radius:100px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-primary{background:var(--grad);color:#052a1c;box-shadow:0 12px 34px rgba(28,214,136,.34)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(28,214,136,.5)}
+.btn-wa{background:#25d366;color:#053015}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
+.btn-sm{padding:.6rem 1.1rem;font-size:.85rem}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem clamp(1rem,4vw,2.5rem);background:rgba(8,11,18,.72);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-logo .pill{background:#fff;border-radius:9px;padding:6px 11px;display:inline-flex}
+.nav-logo .pill img{height:22px;display:block}
+.nav-r{display:flex;align-items:center;gap:.7rem}
+.nav-phone{font-size:.85rem;font-weight:600;color:var(--ink2);display:flex;align-items:center;gap:.4rem}
+.nav-phone:hover{color:var(--mint)}
+@media(max-width:640px){.nav-phone span{display:none}}
+
+/* eyebrow + section */
+section{padding:clamp(3.5rem,7vh,5.5rem) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--disp);font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mints);margin-bottom:1rem}
+.eyebrow::before{content:'';width:20px;height:2px;background:var(--grad)}
+h1{font-family:var(--disp);font-weight:600;font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.08;letter-spacing:-.02em}
+h2{font-family:var(--disp);font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.16;letter-spacing:-.02em}
+h3{font-family:var(--disp);font-weight:600;font-size:1.12rem;line-height:1.3}
+.sec-intro{max-width:640px;color:var(--ink2);font-size:1.05rem;margin-top:.8rem}
+.center{text-align:center}
+.center .eyebrow::before{display:none}
+.mint{color:var(--mint)}
+
+/* HERO */
+.hero{padding-top:clamp(2.5rem,5vh,4rem);position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle at 50% -10%,rgba(28,214,136,.14),transparent 55%);pointer-events:none}
+.hero-inner{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hello{font-family:var(--disp);font-weight:500;color:var(--ink2);font-size:1rem;margin-bottom:.5rem}
+.city{display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;color:var(--mints);background:rgba(28,214,136,.1);border:1px solid rgba(28,214,136,.24);border-radius:100px;padding:.3rem .8rem;margin-bottom:1.4rem}
+.hero-sub{color:var(--ink2);font-size:1.1rem;max-width:44ch;margin:1.1rem auto 0}
+.rating{display:inline-flex;align-items:center;gap:.6rem;margin:1.6rem 0 .4rem}
+.stars{color:var(--gold);letter-spacing:.1em;font-size:1rem}
+.rating b{font-family:var(--disp);font-size:1rem}
+.rating span{color:var(--ink3);font-size:.85rem}
+.vframe{width:100%;max-width:780px;aspect-ratio:16/9;border-radius:20px;overflow:hidden;border:1px solid var(--line2);margin:1.6rem auto 0;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.5);
+  background:radial-gradient(90% 90% at 50% 38%,rgba(28,214,136,.24),transparent 62%),linear-gradient(160deg,#0f2320,#0a0f18);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.vplay{width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;transition:transform .25s}
+.vframe:hover .vplay{transform:scale(1.07)}
+.vplay::after{content:'';margin-left:5px;border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent #fff}
+.vdur{position:absolute;bottom:12px;right:14px;font-family:var(--disp);font-size:.72rem;font-weight:600;background:rgba(0,0,0,.5);padding:.2rem .5rem;border-radius:6px;color:#fff}
+.vcap{color:var(--ink3);font-size:.86rem;max-width:52ch;margin:1rem auto 0}
+.hero-cta{margin-top:1.8rem}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.4rem;margin-top:1.7rem;color:var(--ink2);font-size:.86rem}
+.trust span{display:inline-flex;align-items:center;gap:.4rem}
+.trust .ck{color:var(--mint);font-weight:700}
+
+/* found-on */
+.found{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+.found-lbl{text-align:center;font-family:var(--disp);font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:1.3rem}
+.found-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem}
+.found-chip{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--disp);font-weight:500;font-size:.9rem;color:var(--ink2);background:var(--card);border:1px solid var(--line);border-radius:100px;padding:.55rem 1.1rem}
+
+/* generic grids */
+.grid{display:grid;gap:1rem}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.7rem}
+.card .ic{font-size:1.7rem;margin-bottom:.9rem;display:block}
+.card p{color:var(--ink2);font-size:.94rem;margin-top:.5rem}
+@media(max-width:800px){.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
+
+/* reviews */
+.rev{background:var(--card);border:1px solid var(--line);border-top:2px solid rgba(28,214,136,.4);border-radius:16px;padding:1.7rem;display:flex;flex-direction:column}
+.rev .stars{margin-bottom:.8rem;font-size:.9rem}
+.rev-q{font-family:var(--disp);font-weight:500;font-size:1.02rem;line-height:1.5;color:#fff;flex:1}
+.rev-foot{display:flex;align-items:center;gap:.7rem;margin-top:1.3rem;padding-top:1rem;border-top:1px solid var(--line)}
+.rev-av{width:42px;height:42px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:600;color:#052a1c}
+.rev-name{font-size:.86rem;font-weight:600}
+.rev-co{font-size:.75rem;color:var(--ink3)}
+
+/* salon types */
+.types{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:1.6rem}
+.type{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--disp);font-weight:500;font-size:.92rem;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.7rem 1.1rem;transition:border-color .25s,transform .25s}
+.type:hover{border-color:var(--mint);transform:translateY(-2px)}
+
+/* callout */
+.callout{margin-top:1.4rem;background:rgba(28,214,136,.06);border:1px solid rgba(28,214,136,.22);border-radius:14px;padding:1.1rem 1.4rem;color:var(--ink2);font-size:.92rem}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:16px;overflow:hidden}
+.stat{background:var(--panel2);padding:1.6rem 1rem;text-align:center}
+.stat b{font-family:var(--disp);font-weight:700;font-size:1.9rem;color:var(--mint);display:block}
+.stat span{color:var(--ink3);font-size:.82rem}
+@media(max-width:640px){.stats{grid-template-columns:1fr 1fr}}
+
+/* before/after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ba-col{border-radius:16px;padding:1.7rem;border:1px solid var(--line)}
+.ba-before{background:rgba(255,122,122,.05);border-color:rgba(255,122,122,.2)}
+.ba-after{background:rgba(28,214,136,.06);border-color:rgba(28,214,136,.24)}
+.ba-col h3{margin-bottom:1rem;font-size:1rem}
+.ba-li{display:flex;align-items:flex-start;gap:.65rem;padding:.55rem 0;color:var(--ink2);font-size:.94rem}
+.ba-before .mk{color:var(--red)}.ba-after .mk{color:var(--mint)}
+.mk{font-weight:700;flex-shrink:0}
+@media(max-width:800px){.ba{grid-template-columns:1fr}}
+
+/* offer */
+.offer{display:grid;gap:1rem}
+.ob{display:grid;grid-template-columns:56px 1fr;gap:1.3rem;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.8rem}
+.ob-n{width:44px;height:44px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:1.2rem;color:#052a1c}
+.ob h3{margin-bottom:.5rem}
+.ob>div>p{color:var(--ink2);font-size:.96rem}
+.ob-li{list-style:none;margin-top:1rem;display:flex;flex-direction:column;gap:.5rem}
+.ob-li li{display:flex;align-items:center;gap:.6rem;font-size:.92rem;color:var(--ink2)}
+.ob-li .ck{color:var(--mint);font-weight:700}
+@media(max-width:560px){.ob{grid-template-columns:1fr}}
+
+/* scarcity */
+.scarce{background:linear-gradient(135deg,rgba(28,214,136,.12),rgba(37,99,235,.06));border:1px solid rgba(28,214,136,.28);border-radius:18px;padding:1.8rem;text-align:center}
+.scarce .tag{font-family:var(--disp);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.scarce h3{font-size:1.4rem;margin-bottom:.4rem}
+.scarce p{color:var(--ink2);font-size:.92rem;max-width:48ch;margin:.6rem auto 1.1rem}
+.bar{height:9px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden;max-width:340px;margin:0 auto .6rem}
+.bar i{display:block;height:100%;width:70%;background:var(--grad);border-radius:100px}
+.scarce .cnt{font-family:var(--disp);font-weight:600;font-size:.85rem;color:var(--mint)}
+
+/* FAQ */
+.faq{max-width:760px;margin:1.6rem auto 0;display:flex;flex-direction:column;gap:.7rem}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:1.1rem 1.3rem;font-family:var(--disp);font-weight:600;font-size:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';color:var(--mint);font-size:1.3rem;font-weight:400;flex-shrink:0;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details .a{padding:0 1.3rem 1.2rem;color:var(--ink2);font-size:.94rem;line-height:1.7}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.7rem}
+.step .n{width:38px;height:38px;border-radius:10px;background:rgba(28,214,136,.12);border:1px solid rgba(28,214,136,.28);color:var(--mint);font-family:var(--disp);font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.step p{color:var(--ink2);font-size:.92rem;margin-top:.5rem}
+@media(max-width:800px){.steps{grid-template-columns:1fr}}
+
+/* benefits */
+.bens{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.ben{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.6rem}
+.ben .ic{font-size:1.5rem;display:block;margin-bottom:.8rem}
+.ben h3{font-size:1rem;margin-bottom:.4rem}
+.ben p{color:var(--ink2);font-size:.88rem}
+@media(max-width:800px){.bens{grid-template-columns:1fr}}
+
+/* final CTA */
+.final{background:radial-gradient(80% 60% at 50% 0,rgba(28,214,136,.16),transparent 60%),var(--panel);border-top:1px solid var(--line)}
+.host{display:flex;align-items:center;gap:.8rem;justify-content:center;margin-bottom:1.4rem}
+.host .av{width:52px;height:52px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:600;font-size:1.3rem;color:#052a1c}
+.host .who{text-align:left}
+.host b{font-family:var(--disp);font-size:.9rem}
+.host span{display:block;font-size:.76rem;color:var(--ink3)}
+.final .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1.8rem}
+.final .note{margin-top:1rem;color:var(--ink3);font-size:.84rem}
+.wa-line{margin-top:1.6rem;color:var(--ink2);font-size:.92rem}
+.wa-line a{color:var(--mint);font-weight:600}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:2.4rem 0 3rem;text-align:center}
+.ft-logo .pill{background:#fff;border-radius:9px;padding:7px 12px;display:inline-flex;margin-bottom:1rem}
+.ft-logo .pill img{height:22px}
+.ft-meta{font-size:.8rem;color:var(--ink3);line-height:1.9}
+.ft-meta a{color:var(--ink2)}
+
+/* reveal */
+.r{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.r.v{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="nav-logo"><span class="pill"><img src="logo-lockup.png" alt="Online Goed Gevonden"></span></a>
+  <div class="nav-r">
+    <a class="nav-phone" href="tel:+31552340118"><span>055 234 0118</span>&#9742;</a>
+    <a class="btn btn-primary btn-sm" href="#plan">Plan een gesprek</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div class="hello r">Beste [voornaam],</div>
+    <div class="city r">&#128205; [stad]</div>
+    <h1 class="r">We hebben iets ontdekt<br>voor jouw salon<span class="mint">.</span></h1>
+    <p class="hero-sub r">De grootste kans voor saloneigenaren in 2026. Iets wat de meeste nog niet kennen, dat je kosten bespaart en meer klanten oplevert. Bekijk de video en zie wat het voor jou betekent.</p>
+
+    <div class="rating r">
+      <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <b>4,9</b><span>&middot; al 200+ ondernemers gingen je voor</span>
+    </div>
+
+    <!-- [SWAP] Vervang de .vframe-inhoud door de echte video -->
+    <div class="vframe r">
+      <div class="vplay"></div>
+      <div class="vdur">3:05</div>
+    </div>
+    <p class="vcap r">Je persoonlijke marketingplan voor jouw salon: wat er nu waarschijnlijk weglekt, en hoe onze aanpak dat oplost.</p>
+
+    <a class="btn btn-primary hero-cta r" href="#plan">&#10003;&nbsp; Plan een gratis strategiegesprek</a>
+
+    <div class="trust r">
+      <span><i class="ck">&#10003;</i> Transparant: bespaar kosten, krijg meer klanten</span>
+      <span><i class="ck">&#10003;</i> Software gratis inbegrepen</span>
+      <span><i class="ck">&#10003;</i> 200+ bedrijven gingen je voor</span>
+      <span><i class="ck">&#10003;</i> 4,9&#9733; &middot; 50+ reviews</span>
+    </div>
+  </div>
+</header>
+
+<!-- FOUND ON -->
+<section class="found">
+  <div class="wrap">
+    <div class="found-lbl">Gevonden op</div>
+    <div class="found-row r">
+      <span class="found-chip">&#128269; Google</span>
+      <span class="found-chip">&#10022; Google AI Overviews</span>
+      <span class="found-chip">&#129302; ChatGPT</span>
+      <span class="found-chip">&#128302; Perplexity</span>
+      <span class="found-chip">&#127760; Bing Copilot</span>
+      <span class="found-chip">&#9728; Claude</span>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <div class="wrap center">
+    <div class="eyebrow" style="margin-inline:auto">Klanten aan het woord</div>
+    <h2 class="r">Hoor het niet van ons, maar van<br>iemand die je voorging &#128071;</h2>
+  </div>
+  <div class="wrap" style="margin-top:2rem">
+    <!-- [SWAP] Echte reviews invullen. Nu placeholder. -->
+    <div class="grid g3 r">
+      <figure class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="rev-q">&ldquo;[Korte review over meer boekingen en minder gedoe.]&rdquo;</blockquote><figcaption class="rev-foot"><div class="rev-av">N</div><div><div class="rev-name">[Naam]</div><div class="rev-co">[Salon, plaats]</div></div></figcaption></figure>
+      <figure class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="rev-q">&ldquo;[Korte review over de gratis software en het overzicht.]&rdquo;</blockquote><figcaption class="rev-foot"><div class="rev-av">N</div><div><div class="rev-name">[Naam]</div><div class="rev-co">[Salon, plaats]</div></div></figcaption></figure>
+      <figure class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="rev-q">&ldquo;[Korte review over de persoonlijke aanpak van het team.]&rdquo;</blockquote><figcaption class="rev-foot"><div class="rev-av">N</div><div><div class="rev-name">[Naam]</div><div class="rev-co">[Salon, plaats]</div></div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- SUITABLE FOR -->
+<section style="background:rgba(255,255,255,.015);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap center">
+    <div class="eyebrow" style="margin-inline:auto">Geschikt voor</div>
+    <h2 class="r">Voor elk type salon</h2>
+    <div class="types r">
+      <span class="type">&#128139; Kapsalons</span>
+      <span class="type">&#10024; Schoonheidssalons</span>
+      <span class="type">&#128133; Nagelstudio's</span>
+      <span class="type">&#129522; Barbershops</span>
+      <span class="type">&#129526; Wellness &amp; spa</span>
+      <span class="type">&#128134; Massagepraktijken</span>
+      <span class="type">&#129321; Huidverbetering</span>
+      <span class="type">&#128064; Wenkbrauw- &amp; wimperstudio's</span>
+      <span class="type">&#127807; Beautysalons</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Het probleem</div>
+    <h2 class="r">Je betaalt waarschijnlijk al te veel,<br>op meerdere plekken tegelijk</h2>
+    <div class="grid g3 r" style="margin-top:2rem">
+      <div class="card"><span class="ic">&#128184;</span><h3>Boekingssoftware kost dubbel</h3><p>Tools zoals Treatwell en Salonized rekenen vaak zowel een vast abonnement áls commissie per boeking. Je betaalt dus twee keer voor hetzelfde.</p></div>
+      <div class="card"><span class="ic">&#128241;</span><h3>Of nog WhatsApp-chaos</h3><p>Geen abonnementskosten, maar wel dubbele boekingen, appjes die door elkaar lopen, en 's avonds alsnog alles handmatig uitzoeken.</p></div>
+      <div class="card"><span class="ic">&#129335;</span><h3>Vage marketingbureaus</h3><p>Een maandfactuur met uitleg over 'zichtbaarheid', zonder dat je ooit precies weet wat je ervoor terugkrijgt.</p></div>
+    </div>
+    <div class="callout r">Boekingstools zoals Salonized kosten al snel &euro;70&ndash;100 per maand met add-ons. Commissieplatforms zoals Treatwell rekenen daarnaast per boeking mee.</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="stats r">
+      <div class="stat"><b>10+</b><span>Jaar online marketing ervaring</span></div>
+      <div class="stat"><b>200+</b><span>Tevreden klanten</span></div>
+      <div class="stat"><b>4,9&#9733;</b><span>Beoordeeld &middot; 50+ reviews</span></div>
+      <div class="stat"><b>24/7</b><span>Live dashboard</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="ba r">
+      <div class="ba-col ba-before">
+        <h3>Voordat je met ons werkt</h3>
+        <div class="ba-li"><span class="mk">&#10005;</span> Avonden achter de laptop met social media</div>
+        <div class="ba-li"><span class="mk">&#10005;</span> Jongleren met WhatsApp-boekingen</div>
+        <div class="ba-li"><span class="mk">&#10005;</span> Losse rekeningen aan software en platforms</div>
+        <div class="ba-li"><span class="mk">&#10005;</span> Geen idee of je marketing iets oplevert</div>
+      </div>
+      <div class="ba-col ba-after">
+        <h3>Nadat je met ons werkt</h3>
+        <div class="ba-li"><span class="mk">&#10003;</span> Eén systeem dat het overzicht houdt</div>
+        <div class="ba-li"><span class="mk">&#10003;</span> Een marketingteam dat het overneemt</div>
+        <div class="ba-li"><span class="mk">&#10003;</span> Eén vaste, voorspelbare fee</div>
+        <div class="ba-li"><span class="mk">&#10003;</span> Precies zien wat je ervoor terugkrijgt</div>
+      </div>
+    </div>
+    <div class="center" style="margin-top:1.6rem"><a class="btn btn-primary" href="#plan">&#10003;&nbsp; Plan een gratis strategiegesprek</a></div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section style="background:rgba(255,255,255,.015);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow">Ons aanbod</div>
+    <h2 class="r">Een marketingbureau dat ook nog eens<br>je software regelt</h2>
+    <p class="sec-intro r">Speciaal opgezet voor jouw salon, op basis van dezelfde bewezen marketingaanpak die we al bij honderden andere bedrijven hebben neergezet.</p>
+    <div class="offer r" style="margin-top:2rem">
+      <div class="ob">
+        <div class="ob-n">1</div>
+        <div>
+          <h3>Een volledig marketingteam</h3>
+          <p>Dit is de kern van wat we doen: wij runnen je zichtbaarheid in Google, in AI-zoekmachines zoals ChatGPT, en op social media, zoals bij 200+ andere bedrijven.</p>
+          <ul class="ob-li">
+            <li><i class="ck">&#10003;</i> Vindbaarheid in Google &amp; AI</li>
+            <li><i class="ck">&#10003;</i> Content en posts, volledig verzorgd</li>
+            <li><i class="ck">&#10003;</i> Maandelijks inzicht, geen verrassingen</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ob">
+        <div class="ob-n">2</div>
+        <div>
+          <h3>Software krijg je erbij, gratis</h3>
+          <p>Agenda, klantbeheer en reviews inbegrepen. Geen aparte rekening zoals bij Treatwell of Salonized.</p>
+          <ul class="ob-li">
+            <li><i class="ck">&#10003;</i> Boekingsagenda incl. herinneringen</li>
+            <li><i class="ck">&#10003;</i> Klantbeheer &amp; behandelgeschiedenis</li>
+            <li><i class="ck">&#10003;</i> Automatische review-verzameling</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ob">
+        <div class="ob-n">3</div>
+        <div>
+          <h3>Simpel en voorspelbaar geprijsd</h3>
+          <p>Geen percentage van je omzet, geen commissie. Dat beloven we je alvast.</p>
+          <ul class="ob-li">
+            <li><i class="ck">&#10003;</i> Geen percentage van je omzet</li>
+            <li><i class="ck">&#10003;</i> Geen verrassingen achteraf</li>
+            <li><i class="ck">&#10003;</i> De rest hoor je in het gesprek</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCARCITY -->
+<section>
+  <div class="wrap narrow">
+    <div class="scarce r">
+      <div class="tag">Beperkte plekken t/m dinsdag 11 augustus</div>
+      <h3>3 / 10 plekken beschikbaar</h3>
+      <div class="bar"><i></i></div>
+      <div class="cnt">Nog 3 plekken deze ronde</div>
+      <p>Niet als trucje. We willen elke salon die instapt goed opzetten, en dat kan niet met honderd tegelijk.</p>
+      <a class="btn btn-primary" href="#plan">&#10003;&nbsp; Plan een gratis strategiegesprek</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="wrap center">
+    <div class="eyebrow" style="margin-inline:auto">Veelgestelde vragen</div>
+    <h2 class="r">Nog vragen?</h2>
+  </div>
+  <div class="faq r">
+    <details><summary>Is de software echt helemaal gratis?</summary><div class="a">Ja. De agenda, het klantbeheer en de reviews zitten bij het maandpakket inbegrepen. Je krijgt er dus geen aparte softwarerekening bij, zoals je die bij Treatwell of Salonized wel zou hebben.</div></details>
+    <details><summary>Ik gebruik nu al Salonized of Treatwell, kan ik gewoon overstappen?</summary><div class="a">Ja. We helpen je met de overstap en zetten je klanten en agenda netjes over, zodat je er zelf geen avond aan kwijt bent. Je hoeft niets dubbel te doen.</div></details>
+    <details><summary>Werk ik nog met WhatsApp, is dit dan ook iets voor mij?</summary><div class="a">Zeker. Juist dan haalt dit de meeste rust op. We brengen je losse appjes en boekingen samen in één systeem, zodat dubbele afspraken en avondwerk verdwijnen.</div></details>
+    <details><summary>Zit ik ergens aan vast?</summary><div class="a">Je zit niet vast aan een lange looptijd. Alles blijft van jou: je site, je klanten en je boekingen. We werken transparant en je weet vooraf precies wat je betaalt.</div></details>
+    <details><summary>Wat kost dit ongeveer?</summary><div class="a">Eén vaste fee per maand, die je vooraf kent. Geen percentage van je omzet en geen commissie per boeking. Wat het precies voor jouw salon is, rekenen we in het gesprek samen door.</div></details>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background:rgba(255,255,255,.015);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow">Zo werkt het</div>
+    <h2 class="r">Drie stappen, geen verrassingen</h2>
+    <div class="steps r" style="margin-top:2rem">
+      <div class="step"><div class="n">1</div><h3>Plan een gesprek</h3><p>20 minuten, gratis en vrijblijvend. Kies zelf een moment dat uitkomt.</p></div>
+      <div class="step"><div class="n">2</div><h3>Wij laten je de kansen zien</h3><p>We bekijken samen waar je nu staat, en wat er mogelijk is voor jouw salon.</p></div>
+      <div class="step"><div class="n">3</div><h3>Jij beslist</h3><p>Zonder druk, zonder verplichtingen. Maar reken erop dat je na dit gesprek anders naar je huidige aanpak kijkt.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Alles inbegrepen</div>
+    <h2 class="r">Dit krijg je allemaal</h2>
+    <div class="bens r" style="margin-top:2rem">
+      <div class="ben"><span class="ic">&#128176;</span><h3>Kosten besparen</h3><p>Geen stapeling meer van commissie, softwareabonnementen en een los bureau.</p></div>
+      <div class="ben"><span class="ic">&#127919;</span><h3>Expertise terug in huis</h3><p>Senior specialisten die het van je overnemen, geen puzzelen met tutorials.</p></div>
+      <div class="ben"><span class="ic">&#128269;</span><h3>Volledige transparantie</h3><p>Je ziet precies wat er gebeurt en wat het oplevert, geen black box.</p></div>
+      <div class="ben"><span class="ic">&#128200;</span><h3>Meer omzet</h3><p>Zichtbaar in Google én AI-zoekmachines betekent meer boekingen binnen.</p></div>
+      <div class="ben"><span class="ic">&#129513;</span><h3>Eén systeem, geen chaos</h3><p>Agenda, klantbeheer en reviews op één plek, gratis inbegrepen.</p></div>
+      <div class="ben"><span class="ic">&#128336;</span><h3>Tijd terug</h3><p>Geen avonden meer achter de laptop met posts en administratie.</p></div>
+    </div>
+    <p class="sec-intro r" style="max-width:640px;margin-top:1.6rem">Al dat voordeel, tegen een vaste fee die je vooraf kent. En het kost je niets om erachter te komen wat het voor jouw salon betekent.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="plan">
+  <div class="wrap narrow center">
+    <div class="host r">
+      <div class="av">M</div>
+      <div class="who"><b>Murphy</b><span>Online Goed Gevonden</span></div>
+    </div>
+    <div class="eyebrow" style="margin-inline:auto">De volgende stap</div>
+    <h2 class="r">Klaar, [voornaam]? Zie wat dit voor<br>jouw salon in [stad] kan betekenen.</h2>
+    <p class="sec-intro r" style="margin-inline:auto">Je hoeft zelf niets uit te rekenen. In een gratis gesprek van 20 minuten laten we precies zien wat dit voor jouw salon verandert.</p>
+
+    <div class="cta-row r">
+      <a class="btn btn-primary" href="tel:+31644753567">&#10003;&nbsp; Plan een gratis strategiegesprek</a>
+      <a class="btn btn-wa" href="https://wa.me/31644753567?text=Hoi%20Murphy,%20ik%20zag%20jullie%20pagina%20en%20wil%20graag%20meer%20weten." target="_blank" rel="noopener">&#128172;&nbsp; WhatsApp Murphy</a>
+    </div>
+    <div class="note r">20 minuten &middot; Vrijblijvend &middot; Geen verplichtingen</div>
+    <div class="wa-line r">Nog niet klaar voor een gesprek? <a href="https://wa.me/31644753567" target="_blank" rel="noopener">Stuur ons even een WhatsApp-bericht &rarr;</a><br>Persoonlijk, transparant, en altijd bereikbaar.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo"><span class="pill"><img src="logo-lockup.png" alt="Online Goed Gevonden"></span></div>
+  <div class="ft-meta">
+    Online Goed Gevonden &middot; Landdrostlaan 51, 7327 GM Apeldoorn<br>
+    <a href="tel:+31552340118">055 234 0118</a> &middot; <a href="tel:+31644753567">06 44753567</a> &middot; <a href="mailto:info@onlinegoedgevonden.nl">info@onlinegoedgevonden.nl</a>
+  </div>
+</footer>
+
+<script>
+// reveal
+(function(){
+  var els=document.querySelectorAll('.r');
+  if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('v')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{rootMargin:'0px 0px -40px 0px',threshold:.05});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
