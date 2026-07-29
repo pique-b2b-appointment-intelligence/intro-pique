@@ -143,6 +143,14 @@ nav.solid{background:rgba(8,11,18,.72);backdrop-filter:blur(16px) saturate(1.3);
 .cta-bel:hover{border-color:var(--mint);color:var(--mint)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
+.vcaption{color:rgba(255,255,255,.52);font-size:.82rem;max-width:46ch;margin:.7rem auto 0;line-height:1.55}
+.intro-teaser{color:rgba(255,255,255,.78);font-size:.98rem;font-weight:500;max-width:48ch;margin:1.1rem auto 0;line-height:1.6}
+.rating-line{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.1rem;font-size:.86rem;color:rgba(255,255,255,.72)}
+.rating-line .stars{color:#ffc94d;letter-spacing:.08em}
+.rating-line b{color:#fff;font-family:var(--disp)}
+.scarce-line{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.3rem;font-family:var(--disp);font-size:.72rem;font-weight:600;letter-spacing:.04em;color:#ffc94d;background:rgba(255,201,77,.1);border:1px solid rgba(255,201,77,.28);border-radius:100px;padding:.4rem .9rem}
+.host-line{display:flex;align-items:center;justify-content:center;gap:.7rem;margin:0 auto 1.4rem;font-size:.86rem;color:var(--ink2)}
+.host-line .av{width:38px;height:38px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:600;color:var(--panel);font-size:.95rem}
 
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
@@ -175,8 +183,11 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="vplaceholder"><div class="vplay"></div><div class="vnote">Video volgt</div></div>
     </div>
     <div class="vlabel">Kort woord vooraf van Murphy</div>
+    <p class="vcaption">Je persoonlijke marketingplan voor jouw salon: wat er nu waarschijnlijk weglekt, en hoe onze aanpak dat oplost.</p>
     <h1 class="intro-h1">Hé Eva, wil je weten waarom ik je een brief heb gestuurd<span class="g">?</span></h1>
     <p class="intro-sub">Scroll dan snel verder of bekijk mijn video!</p>
+    <p class="intro-teaser">De grootste kans voor saloneigenaren in 2026. Iets wat de meeste nog niet kennen, dat je kosten bespaart en meer klanten oplevert.</p>
+    <div class="rating-line"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>4,9</b> &middot; al 200+ ondernemers gingen je voor</div>
     <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
   </div>
 </header>
@@ -262,6 +273,15 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     </div>
   </section>
 
+  <section class="chapter right">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Hoe het ook kan</div>
+        <p class="ch-text">Stel je voor: je klanten boeken zichzelf in terwijl jij behandelt, nieuwe klanten vinden je vanzelf, en je hebt nog maar één rekening in plaats van drie. Dat is precies wat wij regelen.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- AKT 3 — DE BRUG -->
   <section class="chapter center phase">
     <div class="ch-inner"><span class="ch-dot"></span>
@@ -278,7 +298,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-num">01</div>
         <h2 class="ch-kop">Alles in één systeem</h2>
-        <p class="ch-text">Je agenda, je boekingen, je klanten en je reviews op één plek. Klanten boeken zichzelf in, dag en nacht, met automatische herinneringen tegen no-shows. <strong>Eén vast bedrag per maand, geen losse rekeningen bij Treatwell of Salonized.</strong></p>
+        <p class="ch-text">Je agenda, je boekingen, je klanten en je reviews op één plek. Klanten boeken zichzelf in, dag en nacht, met automatische herinneringen tegen no-shows. <strong>Alles op één rekening in plaats van losse abonnementen bij Treatwell of Salonized. Je betaalt nooit een percentage van je omzet, en je weet vooraf precies wat je kwijt bent.</strong></p>
         <span class="ch-tag">Vast bedrag per maand</span>
       </div>
     </div>
@@ -322,8 +342,10 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 <section class="cta" id="gesprek">
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">De volgende stap</div>
+    <div class="scarce-line reveal">&#9203; Beperkte plekken t/m woensdag 12 augustus</div>
     <h2 class="cta-h reveal">Even kennismaken?</h2>
     <p class="cta-sub reveal">Dit wordt geen verkooppraatje. Gewoon kijken of dit bij Schoonheidssalon Mooi bij Eva past, en of dat boeken en die vindbaarheid makkelijker kunnen.</p>
+    <div class="host-line reveal"><span class="av">M</span> 20 minuten met Murphy, video of telefoon, jij kiest.</div>
     <!-- Cal.com inline embed — Murphy van Online Goed Gevonden -->
     <div class="cta-embed reveal"><div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-online-meeting-met-murphy-von-schukkmann-brief"></div></div>
     <div class="cta-alt reveal">
