@@ -119,7 +119,7 @@ nav.solid{background:rgba(8,11,18,.72);backdrop-filter:blur(16px) saturate(1.3);
 .founder{max-width:760px;margin:0 auto;padding:clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,2rem) clamp(4rem,8vh,6rem);display:grid;grid-template-columns:auto 1fr;gap:clamp(1.75rem,4vw,3rem);align-items:center}
 .founder .fr{opacity:0;transform:translateY(24px);filter:blur(4px);transition:all 1s var(--ease)}
 .founder.in .fr{opacity:1;transform:none;filter:blur(0)}
-.fo-avatar{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:600;font-size:clamp(3rem,5vw,3.6rem);color:var(--panel);background:linear-gradient(135deg,#49d69b,#1cd688);box-shadow:0 20px 50px rgba(28,214,136,.25)}
+.fo-avatar{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:50%;object-fit:cover;display:block;background:linear-gradient(135deg,#49d69b,#1cd688);box-shadow:0 20px 50px rgba(28,214,136,.25)}
 .fo-eyebrow{font-family:var(--disp);font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mints);margin-bottom:1rem}
 .fo-text{font-weight:400;font-size:1.02rem;line-height:1.72;color:var(--ink2);margin-bottom:1.1rem}
 .fo-text p{margin-bottom:.7rem}.fo-text p:last-child{margin-bottom:0}
@@ -150,7 +150,7 @@ nav.solid{background:rgba(8,11,18,.72);backdrop-filter:blur(16px) saturate(1.3);
 .rating-line b{color:#fff;font-family:var(--disp)}
 .scarce-line{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.3rem;font-family:var(--disp);font-size:.72rem;font-weight:600;letter-spacing:.04em;color:#ffc94d;background:rgba(255,201,77,.1);border:1px solid rgba(255,201,77,.28);border-radius:100px;padding:.4rem .9rem}
 .host-line{display:flex;align-items:center;justify-content:center;gap:.7rem;margin:0 auto 1.4rem;font-size:.86rem;color:var(--ink2)}
-.host-line .av{width:38px;height:38px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:600;color:var(--panel);font-size:.95rem}
+.host-line .av{width:38px;height:38px;border-radius:50%;object-fit:cover;display:block;background:var(--grad)}
 
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
@@ -183,11 +183,8 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="vplaceholder"><div class="vplay"></div><div class="vnote">Video volgt</div></div>
     </div>
     <div class="vlabel">Kort woord vooraf van Murphy</div>
-    <p class="vcaption">Je persoonlijke marketingplan voor jouw salon: wat er nu waarschijnlijk weglekt, en hoe onze aanpak dat oplost.</p>
     <h1 class="intro-h1">Hé Diana, wil je weten waarom ik je een brief heb gestuurd<span class="g">?</span></h1>
     <p class="intro-sub">Scroll dan snel verder of bekijk mijn video!</p>
-    <p class="intro-teaser">De grootste kans voor saloneigenaren in 2026. Iets wat de meeste nog niet kennen, dat je kosten bespaart en meer klanten oplevert.</p>
-    <div class="rating-line"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>4,9</b> &middot; al 200+ ondernemers gingen je voor</div>
     <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
   </div>
 </header>
@@ -246,7 +243,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-num">03</div>
         <h2 class="ch-kop">Je doet het allemaal zelf</h2>
-        <p class="ch-text">Behandelen overdag, plannen tussendoor, en 's avonds de socials en administratie. <strong>Alles draait op jou al sinds 2020. Dat houdt een tijdje, en dan wordt het je plafond.</strong></p>
+        <p class="ch-text">Behandelen overdag, plannen tussendoor, en 's avonds de socials en administratie. <strong>Alles draait op jou al sinds 2020. Dat werkt een tijdje, maar het wordt ook je plafond.</strong></p>
         <div class="ch-bron">Bron: KVK, eenmanszaak</div>
       </div>
     </div>
@@ -328,7 +325,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 </main>
 
 <section class="founder" id="founder">
-  <div class="fo-avatar fr">M</div>
+  <img class="fo-avatar fr" src="ogg-murphy.png" alt="Murphy, Online Goed Gevonden">
   <div class="fr">
     <div class="fo-eyebrow">De persoon achter dit voorstel</div>
     <div class="fo-text">
@@ -342,15 +339,16 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 <section class="cta" id="gesprek">
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">De volgende stap</div>
-    <div class="scarce-line reveal">&#9203; Beperkte plekken t/m woensdag 12 augustus</div>
+    <div class="scarce-line reveal">Beperkte plekken t/m woensdag 12 augustus</div>
     <h2 class="cta-h reveal">Even kennismaken?</h2>
     <p class="cta-sub reveal">Dit wordt geen verkooppraatje. Gewoon kijken of dit bij Nailed it! by Diana past, en of dat boeken en die vindbaarheid makkelijker kunnen.</p>
-    <div class="host-line reveal"><span class="av">M</span> 20 minuten met Murphy, video of telefoon, jij kiest.</div>
+    <div class="rating-line reveal" style="margin-top:.6rem"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>4,9</b> &middot; al 200+ ondernemers gingen je voor</div>
+    <div class="host-line reveal"><img class="av" src="ogg-murphy.png" alt="Murphy"> 20 minuten met Murphy, video of telefoon, jij kiest.</div>
     <!-- Cal.com inline embed — Murphy van Online Goed Gevonden -->
     <div class="cta-embed reveal"><div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-online-meeting-met-murphy-von-schukkmann-brief"></div></div>
     <div class="cta-alt reveal">
-      <a class="cta-wa" href="https://wa.me/31644753567?text=Hoi%20Murphy,%20ik%20zag%20mijn%20pagina%20en%20wil%20graag%20meer%20weten." target="_blank" rel="noopener">&#128172;&nbsp; WhatsApp Murphy</a>
-      <a class="cta-bel" href="tel:+31644753567">&#9742;&nbsp; Of bel Murphy direct</a>
+      <a class="cta-wa" href="https://wa.me/31644753567?text=Hoi%20Murphy,%20ik%20zag%20mijn%20pagina%20en%20wil%20graag%20meer%20weten." target="_blank" rel="noopener">&#128172;&nbsp; WhatsApp mij direct</a>
+      <a class="cta-bel" href="tel:+31644753567">&#9742;&nbsp; Of bel mij direct</a>
     </div>
   </div>
 </section>
