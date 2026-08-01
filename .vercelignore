@@ -9,6 +9,7 @@ node_modules
 !textincb/simon-video.mp4
 !bcs2/video.mp4
 !bcs3/video.mp4
+!onlinegoedgevonden/*.mp4
 *.csv
 *.md
 *.mjs
