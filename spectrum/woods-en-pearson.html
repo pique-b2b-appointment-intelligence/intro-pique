@@ -4,7 +4,7 @@
   VORM = Pique vier-akten-skelet (journey-lijn, scroll-reveal, cal-embed).
   HUID = Spectrum's eigen merk (bosgroen #0B1F15, emerald #4ade80, Instrument Serif + Plus Jakarta Sans).
   prospect1 = DEMO met fictieve buurman-observaties.
-  Video en cal.com-embed zijn placeholders (zie comments) tot de echte assets er zijn.
+  Video en Calendly-embed zijn placeholders (zie comments) tot de echte assets er zijn.
 -->
 <html lang="nl">
 <head>
@@ -119,7 +119,7 @@ nav.solid{background:rgba(11,31,21,.72);backdrop-filter:blur(16px) saturate(1.3)
 .cta-sub{color:var(--w70);font-size:1.08rem;font-weight:300;margin:1.35rem auto 0;max-width:46ch;line-height:1.7}
 .cta-sub strong{color:var(--w);font-weight:600}
 .cta-embed{margin-top:clamp(2.5rem,5vh,3.5rem);background:#06140d;border:1px solid var(--line);border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.45);overflow:hidden;min-height:420px}
-/* cal.com placeholder */
+/* Calendly placeholder */
 .cal-ph{min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:2.5rem;text-align:center}
 .cal-ph svg{width:40px;height:40px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
 .cal-ph-t{font-family:var(--serif);font-size:1.5rem;color:var(--w)}
@@ -155,12 +155,7 @@ footer{background:var(--bg);border-top:1px solid var(--line2);padding:2.75rem 2r
   <div class="intro-inner">
     <div class="intro-eyebrow">Persoonlijk voor Woods &amp; Pearson</div>
     <!-- Vervang deze .vframe-inhoud door <video src="woods-en-pearson.mp4" controls preload="metadata" playsinline></video> zodra de opname er is. -->
-    <div class="vframe">
-      <div class="vph">
-        <span class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-        <span class="vph-note">Persoonlijke video van Stephan</span>
-      </div>
-    </div>
+    <div class="vframe"><video src="stephan.mp4" controls preload="metadata" playsinline></video></div>
     <div class="vlabel">Kort woord vooraf van Stephan</div>
     <h1 class="intro-h1">Hé Arno, daarom lag die kaart bij je op de mat.</h1>
     <p class="intro-sub">Neem even de tijd. We zitten hier vlakbij, in hetzelfde pand.</p>
@@ -277,13 +272,13 @@ footer{background:var(--bg);border-top:1px solid var(--line2);padding:2.75rem 2r
     <div class="cta-eyebrow reveal">De volgende stap</div>
     <h2 class="cta-h reveal">Even koffie?</h2>
     <p class="cta-sub reveal">Loop gewoon even binnen bij ons, <strong>Europalaan 100 in Utrecht</strong>. Of plan hieronder een korte kennismaking van vijftien minuten. We pitchen je niks, we kijken gewoon even wat er speelt.</p>
-    <!-- Vervang .cal-ph door de cal.com inline embed (Spectrum namespace + calLink) zodra de koppeling live staat. -->
+    <!-- Vervang .cal-ph door de Calendly inline embed (Spectrum namespace + calLink) zodra de koppeling live staat. -->
     <div class="cta-embed reveal">
       <div class="cal-ph">
         <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
         <div class="cal-ph-t">Kennismaking van 15 minuten</div>
-        <div class="cal-ph-s">De agenda verschijnt hier zodra de cal.com-koppeling live staat. Tot die tijd loop je gewoon even binnen.</div>
-        <div class="cal-ph-badge">cal.com embed volgt</div>
+        <div class="cal-ph-s">De agenda verschijnt hier zodra de Calendly-koppeling live staat. Tot die tijd loop je gewoon even binnen.</div>
+        <div class="cal-ph-badge">Calendly embed volgt</div>
       </div>
       <div id="cal-embed"></div>
     </div>

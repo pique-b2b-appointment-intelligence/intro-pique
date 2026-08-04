@@ -20,3 +20,4 @@ node_modules
 *.psd
 *.eps
 !textinc-a/video.mp4
+!spectrum/stephan.mp4
