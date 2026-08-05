@@ -21,3 +21,4 @@ node_modules
 *.eps
 !textinc-a/video.mp4
 !spectrum/stephan.mp4
+!lightr-pique-voorstel.pdf
