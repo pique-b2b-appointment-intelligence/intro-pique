@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voorstel Snapshot - Acendae × Pique</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjI1IC0xOSA1MDggNTA4IiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgc2hhcGUtcmVuZGVyaW5nPSJnZW9tZXRyaWNQcmVjaXNpb24iPgogIDxwYXRoIGQ9Ik00OTUuNTE4IDBMMzQ4LjcxMiA0MTUuODc1TDM5NC40ODUgNDE0Ljc3Nkw0OTUuNTE4IDBaIiBmaWxsPSIjRDdBMTE4Ii8+CiAgPHBhdGggZD0iTTM1MC42NCA0MTUuNzE1TDI4NS4xOTggMjQ0LjgwOUwzMTIuNDE0IDE5Mi4yNzhMMzczLjA4OCAzNTMuMDE5TDM1MC42NCA0MTUuNzE1WiIgZmlsbD0iI0FCN0IyOSIvPgogIDxwYXRoIGQ9Ik0yNjkuMDI0IDE5My4zMzlMNjEuNzg0OSA0NjkuOThMNjEuNDk1NCA0NzAuMjczTDE3MC4yOTEgNDY3LjY1OUwzMTIuMzk5IDE5Mi4yOTdMMjY5LjAyNCAxOTMuMzM5WiIgZmlsbD0iI0Q3QTExOCIvPgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8F6F2;--navy:#0F172A;--amber:#D4943A;--white:#FFFFFF;--text:#1E2433;
+  --muted:rgba(30,36,51,.48);--border:rgba(15,23,42,.09);
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6}
+.topbar{background:var(--navy);padding:.7rem 2.5rem;display:flex;align-items:center;justify-content:space-between}
+.topbar-l{display:flex;align-items:center;gap:1rem}
+.topbar-logo{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--white);letter-spacing:-.02em}
+.topbar-sep{width:1px;height:12px;background:rgba(255,255,255,.12)}
+.topbar-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.topbar-r{display:flex;align-items:center;gap:.75rem}
+.topbar-meta{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.22)}
+.topbar-badge{background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);border-radius:100px;padding:.22rem .65rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 2.5rem}
+.sec{padding:3rem 0;border-bottom:1px solid var(--border)}
+.sec:last-child{border-bottom:none;padding-bottom:3rem}
+.ey{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.ey::before{content:'';width:10px;height:1px;background:var(--amber);opacity:.7}
+h1{font-family:var(--serif);font-size:2.8rem;font-weight:600;line-height:1.1;letter-spacing:-.03em;color:var(--navy)}
+h2{font-family:var(--serif);font-size:1.95rem;font-weight:600;line-height:1.15;letter-spacing:-.025em;color:var(--navy)}
+h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
+.a{color:var(--amber)}
+.sub{font-size:.88rem;color:var(--muted);line-height:1.7;margin-top:.6rem;max-width:64ch}
+.sub strong{color:var(--navy)}
+.div{width:28px;height:2px;background:var(--amber);border-radius:2px;margin:.9rem 0;opacity:.7}
+.body-t{font-size:.87rem;line-height:1.72;color:rgba(30,36,51,.66);margin-top:.9rem;max-width:68ch}
+.body-t strong{color:var(--navy);font-weight:600}
+.hero{padding:3rem 0 2.6rem;border-bottom:1px solid var(--border)}
+.hero-g{display:grid;grid-template-columns:1fr 300px;gap:3.5rem;align-items:start}
+.hcard{background:var(--navy);border-radius:16px;padding:1.5rem;border:1px solid rgba(255,255,255,.06)}
+.hcard-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,148,58,.6);margin-bottom:1rem;display:block}
+.hcard-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:1.1rem}
+.hs{background:rgba(255,255,255,.03);padding:.85rem;text-align:center}
+.hs-n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);line-height:1}
+.hs-n .a{color:var(--amber)}
+.hs-l{font-size:.6rem;color:rgba(255,255,255,.28);margin-top:.25rem}
+.hcard-note{font-size:.75rem;color:rgba(255,255,255,.38);line-height:1.55;border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem}
+.hcard-note strong{color:rgba(255,255,255,.7)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+.chip{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .7rem;border-radius:100px;background:var(--white);border:1.5px solid var(--border);color:var(--muted)}
+.chip .dot{width:4px;height:4px;border-radius:50%;background:var(--amber)}
+.chg{display:grid;grid-template-columns:1fr;gap:.6rem;margin-top:1.6rem}
+.chg-row{background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:1.1rem 1.4rem;display:grid;grid-template-columns:150px 1fr;gap:1.2rem;align-items:start}
+.chg-l{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding-top:2px}
+.chg-t{font-size:.9rem;color:rgba(30,36,51,.72);line-height:1.6}
+.chg-t strong{color:var(--navy);font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.7rem}
+.spoor{border-radius:16px;padding:1.5rem 1.6rem;background:var(--white);border:1.5px solid var(--border)}
+.spoor.lead{background:var(--navy);border-color:rgba(212,148,58,.3)}
+.spoor-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem}
+.spoor-h{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy);line-height:1.1}
+.spoor.lead .spoor-h{color:var(--white)}
+.spoor-d{font-size:.83rem;line-height:1.6;color:var(--muted);margin-top:.7rem}
+.spoor.lead .spoor-d{color:rgba(255,255,255,.5)}
+.spoor-n{font-family:var(--serif);font-size:2.6rem;font-weight:700;color:var(--amber);margin-top:1rem;line-height:1}
+.spoor-nl{font-size:.72rem;color:var(--muted);margin-top:.2rem}
+.spoor.lead .spoor-nl{color:rgba(255,255,255,.4)}
+.tgt-h{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:1.5rem 0 .7rem}
+.tgts{display:flex;flex-wrap:wrap;gap:.45rem}
+.tg{font-size:.78rem;padding:.35rem .7rem;background:var(--white);border:1.5px solid var(--border);border-radius:8px;color:var(--navy)}
+.tg small{color:var(--muted);font-size:.66rem}
+.callout{margin-top:1.5rem;padding:1.05rem 1.3rem;background:rgba(212,148,58,.07);border:1px solid rgba(212,148,58,.2);border-radius:12px;font-size:.85rem;color:rgba(30,36,51,.68);line-height:1.65}
+.callout strong{color:var(--navy)}
+.callout-dark{margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--navy);border-radius:14px;font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.65}
+.callout-dark strong{color:var(--white)}
+.callout-dark .a{color:var(--amber)}
+.doc-footer{background:var(--navy);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;margin-top:2.5rem}
+.df-l{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.28);letter-spacing:.06em}
+.df-r{font-family:var(--mono);font-size:.56rem;color:rgba(255,255,255,.18);letter-spacing:.06em;text-align:right}
+.plist{list-style:none;margin-top:1rem}
+.plist li{font-size:.85rem;line-height:1.6;padding-left:1.3rem;position:relative;color:rgba(30,36,51,.66);margin-bottom:.5rem}
+.plist li::before{content:'';position:absolute;left:0;top:.55rem;width:6px;height:6px;border-radius:50%;background:var(--amber);opacity:.75}
+.plist li strong{color:var(--navy);font-weight:600}
+/* stappen in de funnel */
+.steps{display:grid;grid-template-columns:1fr;gap:.55rem;margin-top:1.6rem}
+.step{background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:1rem 1.35rem;display:grid;grid-template-columns:34px 1fr 128px;gap:1.1rem;align-items:center}
+.step-n{font-family:var(--mono);font-size:.72rem;color:var(--amber);font-weight:500}
+.step-t{font-size:.88rem;color:rgba(30,36,51,.72);line-height:1.55}
+.step-t strong{color:var(--navy);font-weight:600;display:block;font-size:.95rem;margin-bottom:.12rem}
+.step-w{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right}
+.step.mine .step-w{color:var(--amber)}
+.step.yours{border-color:rgba(212,148,58,.4);background:rgba(212,148,58,.05)}
+/* voorbeeldlink */
+.demo{margin-top:1.6rem;background:var(--navy);border-radius:16px;padding:1.6rem 1.8rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.demo-t{font-size:.88rem;color:rgba(255,255,255,.58);line-height:1.65;max-width:52ch}
+.demo-t strong{color:var(--white)}
+.demo-a{display:inline-flex;align-items:center;gap:.5rem;background:var(--amber);color:var(--navy);text-decoration:none;font-size:.82rem;font-weight:600;padding:.7rem 1.2rem;border-radius:10px;white-space:nowrap;transition:transform .3s}
+.demo-a:hover{transform:translateY(-2px)}
+.demo-u{font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.3);margin-top:.6rem;letter-spacing:.04em}
+/* investering */
+.inv{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.7rem}
+.inv-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:1.6rem 1.7rem}
+.inv-card.lead{background:var(--navy);border-color:rgba(212,148,58,.3)}
+.inv-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.7rem}
+.inv-n{font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--white);line-height:1}
+.inv-card:not(.lead) .inv-n{color:var(--navy)}
+.inv-nl{font-size:.74rem;color:rgba(255,255,255,.4);margin-top:.3rem}
+.inv-card:not(.lead) .inv-nl{color:var(--muted)}
+.inv-d{font-size:.84rem;line-height:1.65;color:rgba(255,255,255,.55);margin-top:1rem;border-top:1px solid rgba(255,255,255,.08);padding-top:.95rem}
+.inv-card:not(.lead) .inv-d{color:rgba(30,36,51,.66);border-top-color:var(--border)}
+.inv-d strong{color:var(--white);font-weight:600}
+.inv-card:not(.lead) .inv-d strong{color:var(--navy)}
+@media(max-width:820px){
+  .hero-g,.two,.inv,.demo{grid-template-columns:1fr;gap:1.5rem}
+  .chg-row{grid-template-columns:1fr;gap:.5rem}
+  .step{grid-template-columns:28px 1fr;gap:.8rem}
+  .step-w{display:none}
+  .wrap,.topbar,.doc-footer{padding-left:1.4rem;padding-right:1.4rem}
+  h1{font-size:2.1rem}
+}
+@media print{@page{size:A4;margin:0}
+  .sec{break-inside:auto;padding:2.2rem 0}
+  .chg-row,.spoor,.callout,.callout-dark,.hcard,.step,.inv-card,.demo{break-inside:avoid;page-break-inside:avoid}
+  h2,h1{break-after:avoid}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-l">
+    <div class="topbar-logo">Pique</div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-title">Voorstel Snapshot · Acendae</div>
+  </div>
+  <div class="topbar-r">
+    <span class="topbar-meta">6 augustus 2026</span>
+    <span class="topbar-badge">Vertrouwelijk</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-g">
+    <div>
+      <div class="ey">Voor Pramuka Godakanda</div>
+      <h1>Wat we bespraken,<br>en wat ik <span class="a">voorstel.</span></h1>
+      <div class="div"></div>
+      <p class="sub">Een korte weergave van ons gesprek van vandaag en het traject dat daaruit volgt. Jullie white-label unit groeit al negen jaar op eigen kracht, met één nieuwe klant per kwartaal. Dit voorstel gaat over de vraag die je zelf stelde: hoe maak je daar een voorspelbare stroom van, zonder de reputatie te beschadigen die je in die negen jaar hebt opgebouwd.</p>
+      <div class="chips">
+        <div class="chip"><div class="dot"></div>2 maanden validatie</div>
+        <div class="chip"><div class="dot"></div>±100 kaarten per maand</div>
+        <div class="chip"><div class="dot"></div>KPI-garantie</div>
+      </div>
+    </div>
+    <div class="hcard">
+      <span class="hcard-label">In één oogopslag</span>
+      <div class="hcard-stats">
+        <div class="hs"><div class="hs-n"><span class="a">2</span></div><div class="hs-l">Maanden validatie</div></div>
+        <div class="hs"><div class="hs-n"><span class="a">100</span></div><div class="hs-l">Kaarten per maand</div></div>
+        <div class="hs"><div class="hs-n">1 uur</div><div class="hs-l">Tijd van jou vooraf</div></div>
+        <div class="hs"><div class="hs-n">0</div><div class="hs-l">Stappen die jij regelt</div></div>
+      </div>
+      <div class="hcard-note">Halen we de vooraf afgesproken KPI's binnen die twee maanden niet, dan <strong>werken we kosteloos door tot dat wel zo is</strong>.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 WAAR ACENDAE STAAT -->
+<section class="sec">
+  <div class="ey">01 · Waar Acendae nu staat</div>
+  <h2>Een bewezen dienst, <span class="a">en een lege vijver.</span></h2>
+  <p class="sub">Dit is wat jij vertelde, zodat we vanaf hetzelfde beeld verder praten. Corrigeer me gerust waar ik het scheef heb.</p>
+  <div class="chg">
+    <div class="chg-row">
+      <div class="chg-l">Vier units</div>
+      <div class="chg-t">Experience (UI en UX), Development (white-label voor andere bureaus), Engineering (SaaS en software) en Outsourcing (remote collega's vanuit Sri Lanka). <strong>Dit traject gaat alleen over de white-label development unit.</strong></div>
+    </div>
+    <div class="chg-row">
+      <div class="chg-l">De groei</div>
+      <div class="chg-t"><strong>Eén nieuwe klant per kwartaal, volledig organisch.</strong> Via netwerk, communities, events en doorverwijzingen van bestaande klanten. Je hebt nooit geadverteerd en nooit een leadcampagne gedraaid.</div>
+    </div>
+    <div class="chg-row">
+      <div class="chg-l">De capaciteit</div>
+      <div class="chg-t"><strong>14 collega's in dienst, plus een talentpool om snel op te schalen.</strong> Development en QA blijven in-house, design kan worden uitbesteed. Komen er meer opdrachten binnen, dan kun je vrijwel direct opschakelen.</div>
+    </div>
+    <div class="chg-row">
+      <div class="chg-l">De sales</div>
+      <div class="chg-t"><strong>Jij bent de enige die sales doet.</strong> Bij delivery ben je niet betrokken, dat pakken je collega's op. Vijf gesprekken per week ga je makkelijk aan, zei je zelf.</div>
+    </div>
+    <div class="chg-row">
+      <div class="chg-l">De rem</div>
+      <div class="chg-t">De white-label unit kreeg de afgelopen jaren weinig aandacht, omdat de focus lag op de rebranding en op de andere units. <strong>Het product staat, de aanvoer van gesprekken staat nog niet.</strong></div>
+    </div>
+  </div>
+  <div class="callout">Waar dit op uitkomt: een dienst die zich negen jaar lang heeft bewezen, wordt op dit moment alleen gevonden door bedrijven die toevallig al in jullie netwerk zitten. Die vijver raakt een keer leeg. Dan is de vraag hoe je een tweede vijver opent zonder de eerste te vervuilen.</div>
+</section>
+
+<!-- 02 ICP -->
+<section class="sec">
+  <div class="ey">02 · Wie we benaderen</div>
+  <h2>Bureaus die capaciteit tekortkomen, <span class="a">en blijven.</span></h2>
+  <p class="sub">Zoals jij hem in het gesprek schetste. In de ICP-sessie maken we hem scherper, met jouw ervaring van negen jaar als basis.</p>
+
+  <div class="two">
+    <div class="spoor lead">
+      <div class="spoor-tag">Het type bedrijf</div>
+      <div class="spoor-h">Stabiele scale-up bureaus</div>
+      <div class="spoor-d">Website development bureaus die de vraag niet aankunnen, marketing- en advertentiebureaus die development liever uitbesteden, en softwarebedrijven met dezelfde behoefte. Een niveau vergelijkbaar met dat van jullie zelf, of groter. Startups vallen af.</div>
+      <div class="spoor-n">12+</div>
+      <div class="spoor-nl">opdrachten per jaar, dus minimaal één per maand</div>
+    </div>
+    <div class="spoor">
+      <div class="spoor-tag">Wat ze waard zijn</div>
+      <div class="spoor-h">De winst zit na de oplevering</div>
+      <div class="spoor-d">De eerste build is de ingang. Het rendement komt uit de feature requests en wijzigingsverzoeken daarna. Jullie teamtarief van €60 per uur is laag genoeg dat bureaus terugkomen in plaats van het elders te laten doen.</div>
+      <div class="spoor-n" style="color:#9a6b1f">1 jaar+</div>
+      <div class="spoor-nl">samenwerking als minimum, liever langer</div>
+    </div>
+  </div>
+
+  <div class="tgt-h">Signalen waar we op sturen</div>
+  <div class="tgts">
+    <span class="tg">Openstaande developervacature <small>· capaciteit knelt</small></span>
+    <span class="tg">Groei in het team <small>· meer werk dan handen</small></span>
+    <span class="tg">Maatwerk in het portfolio</span>
+    <span class="tg">Accessibility op de agenda <small>· &gt;€2M en &gt;10 fte</small></span>
+    <span class="tg">Koppelingen en CRM-integraties</span>
+    <span class="tg">Terugkerende landingspagina's <small>· advertentiebureaus</small></span>
+  </div>
+
+  <div class="callout">Wie we bewust overslaan: de bureaus die snel een AI-site genereren en verder niet nadenken over structuur, toegankelijkheid of koppelingen. Die vragen één keer iets, betalen laag en komen nooit terug. En de partij die alleen een gat opvult omdat een collega even weg is. Beide kosten je meer aandacht dan ze opleveren.</div>
+</section>
+
+<!-- 03 WAT PIQUE OVERNEEMT -->
+<section class="sec">
+  <div class="ey">03 · Wat Pique overneemt</div>
+  <h2>Jij voert de gesprekken. <span class="a">Wij doen de rest.</span></h2>
+  <p class="sub">Je vroeg wat het naast geld aan tijd kost. Dat valt mee, en dat is de kern van dit voorstel. Wij nemen het volledige proces over, van de eerste vraag tot de afspraak in je agenda. Jij komt er twee keer aan te pas.</p>
+
+  <div class="steps">
+    <div class="step yours">
+      <div class="step-n">01</div>
+      <div class="step-t"><strong>ICP-sessie</strong>Een uur samen. Welke klanten van de afgelopen negen jaar gaven hoofdpijn, en van welke had je er nog honderd willen hebben. Daar komt het profiel uit.</div>
+      <div class="step-w">Jij · 1 uur</div>
+    </div>
+    <div class="step mine">
+      <div class="step-n">02</div>
+      <div class="step-t"><strong>Prospectlijst en beslissers</strong>Wij bouwen de lijst op basis van dat profiel en zoeken per bureau de beslisser op naam. Nooit een algemeen info-adres.</div>
+      <div class="step-w">Pique</div>
+    </div>
+    <div class="step mine">
+      <div class="step-n">03</div>
+      <div class="step-t"><strong>Research per bedrijf</strong>Per bureau zoeken we uit wat er speelt. Dat is het materiaal waarmee de kaart en de pagina persoonlijk worden.</div>
+      <div class="step-w">Pique</div>
+    </div>
+    <div class="step mine">
+      <div class="step-n">04</div>
+      <div class="step-t"><strong>Handgeschreven kaart met QR-code</strong>Bezorgd op het bureau van de beslisser. Echt met de hand geschreven, met een QR-code die we per ontvanger kunnen volgen.</div>
+      <div class="step-w">Pique</div>
+    </div>
+    <div class="step mine">
+      <div class="step-n">05</div>
+      <div class="step-t"><strong>Persoonlijke landingspagina met video</strong>Achter de QR-code staat een pagina die alleen over hun bureau gaat, in jullie huisstijl, met een videoboodschap bovenaan.</div>
+      <div class="step-w">Pique</div>
+    </div>
+    <div class="step mine">
+      <div class="step-n">06</div>
+      <div class="step-t"><strong>Telefonische opvolging op signaal</strong>Wij zien wie scant en hoe lang iemand op de pagina blijft. Onze bellers pakken precies die signalen op en bellen na.</div>
+      <div class="step-w">Pique</div>
+    </div>
+    <div class="step yours">
+      <div class="step-n">07</div>
+      <div class="step-t"><strong>De afspraak in jouw agenda</strong>Gekwalificeerde gesprekken zetten we rechtstreeks in je agenda, met een bericht erbij over wie je spreekt en waarom.</div>
+      <div class="step-w">Jij · het gesprek</div>
+    </div>
+  </div>
+
+  <div class="callout-dark">Waarom je hier geen kostenopbouw per onderdeel krijgt: <strong>je koopt geen losse onderdelen, je koopt een proces dat van je bureau af is.</strong> Wij nemen het eigenaarschap van kop tot staart. Alleen de brief doen, of alleen het bellen, werkt niet, want de funnel valt uit elkaar zodra er een schakel bij iemand anders ligt. <span class="a">Wat wél kan: jouw collega's denken mee over de landingspagina's.</span> Dat wilde je graag, en dat wil ik ook, want zij kennen jullie merk beter dan ik.</div>
+</section>
+
+<!-- 04 VOORBEELD -->
+<section class="sec">
+  <div class="ey">04 · Hoe het eruitziet</div>
+  <h2>De pagina achter <span class="a">de QR-code.</span></h2>
+  <p class="sub">Je vroeg om een voorbeeld. Dit is een pagina die we voor David van Azora Media bouwden, voor één specifieke prospect. Zo ziet de ontvanger van jullie kaart het straks ook, dan met Acendae erop en met jouw boodschap erin.</p>
+  <div class="demo">
+    <div>
+      <p class="demo-t"><strong>Eén prospect, één pagina.</strong> Persoonlijke video bovenaan, daaronder wat we over hun bedrijf zagen, en onderaan één kleine volgende stap. De ontvanger denkt: hier heeft iemand tijd in gestoken. Dat is precies het tegenovergestelde van een advertentie.</p>
+      <div class="demo-u">intro-pique.agency/azora/abc-clinic</div>
+    </div>
+    <a class="demo-a" href="https://intro-pique.agency/azora/abc-clinic" target="_blank" rel="noopener">Bekijk het voorbeeld →</a>
+  </div>
+  <div class="callout">Dit is ook het reputatie-argument. Negen jaar bouwen aan een naam waar bureaus je om vertrouwen, en dat dan opzetten via duizenden identieke mails, staat niet in verhouding. Deze aanpak levert een ander soort reactie op: wat is dit voor partij, en waarom nam iemand hier de moeite voor.</div>
+</section>
+
+<!-- 05 INVESTERING -->
+<section class="sec">
+  <div class="ey">05 · De investering</div>
+  <h2>Eerst valideren, <span class="a">dan pas opschalen.</span></h2>
+  <p class="sub">Ik stel altijd voor om klein te beginnen. Je doet dan geen grote investering in iets waarvan je de uitkomst nog niet kent, en na twee maanden weet je precies wat een kaart bij jouw doelgroep doet.</p>
+
+  <div class="inv">
+    <div class="inv-card lead">
+      <div class="inv-tag">Validatietraject</div>
+      <div class="inv-n">€4.200</div>
+      <div class="inv-nl">per maand, 2 maanden</div>
+      <div class="inv-d">Circa <strong>100 handgeschreven kaarten per maand</strong>, met de complete funnel eromheen: ICP-sessie, prospectlijst, research, kaart, persoonlijke landingspagina, video en telefonische opvolging. Afspraken komen rechtstreeks in je agenda.</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-tag">De garantie</div>
+      <div class="inv-n">0 risico</div>
+      <div class="inv-nl">op de afgesproken KPI's</div>
+      <div class="inv-d">We leggen vooraf samen vast wat het traject moet opleveren aan afspraken. <strong>Halen we dat binnen de twee maanden niet, dan werken we kosteloos door tot dat wel zo is.</strong> Je weet dus vooraf wat je minimaal terugkrijgt.</div>
+    </div>
+  </div>
+
+  <div class="tgt-h">Waar we mee rekenen</div>
+  <div class="tgts">
+    <span class="tg">100% <small>· wordt bezorgd op het bureau</small></span>
+    <span class="tg">±60% <small>· scant de QR-code</small></span>
+    <span class="tg">±10% <small>· van de bezorgde kaarten plant een gesprek</small></span>
+  </div>
+  <p class="body-t">Dat zijn onze gemiddelden over recente kaartcampagnes. Bij honderd kaarten per maand komt dat neer op een stuk of tien gesprekken. Het uiteindelijke resultaat hangt af van de ICP, het aanbod en de opvolging, en dat is precies wat we in deze twee maanden meten.</p>
+
+  <div class="callout-dark">Daarna gaat het over in een <strong>maandelijkse retainer</strong> voor een afgesproken aantal benaderingen, en die kun je op en af schalen. Zit je pijplijn vol, dan zetten we de machine even uit. Blijkt uit de cijfers dat het werkt, dan is opschalen naar <span class="a">150 of 200 kaarten per maand</span> een rekensom in plaats van een gok.</div>
+</section>
+
+<!-- 06 START -->
+<section class="sec">
+  <div class="ey">06 · Starten en vervolg</div>
+  <h2>Beginnen kan <span class="a">vanaf nu.</span></h2>
+  <ul class="plist">
+    <li><strong>Zodra we akkoord hebben, plannen we de ICP-sessie.</strong> Daarna gaat de eerste batch dezelfde week in productie. Er zit geen wachtrij tussen.</li>
+    <li><strong>Van jou heb ik dat uur nodig, en verder niets om te starten.</strong> De rest van het voorwerk doen wij. Input van je collega's op de landingspagina's halen we op zodra de eerste versies staan.</li>
+    <li><strong>Dinsdag 11 augustus om 11:00 Nederlandse tijd praten we verder</strong>, met je collega erbij. Dan kunnen we het over de scherpe randjes hebben in plaats van over de hoofdlijn.</li>
+    <li><strong>Jij zou mij het procesdocument van Acendae sturen</strong>, plus de AI-notities uit ons gesprek. Dan neem ik dat mee in de voorbereiding.</li>
+  </ul>
+  <div class="callout">Eén ding dat ik in het gesprek al noemde en hier vastleg: door dat gedeelde netwerk met marketingbureaus springen er bij mij meteen een paar bedrijven in gedachten die eigenlijk met jou aan tafel zouden moeten. Die neem ik mee naar dinsdag.</div>
+</section>
+
+</div>
+
+<div class="doc-footer">
+  <div class="df-l">Pique · B2B Appointment Intelligence</div>
+  <div class="df-r">Voorstel Snapshot · Acendae · 6 augustus 2026</div>
+</div>
+
+</body>
+</html>
