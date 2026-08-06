@@ -125,7 +125,12 @@ h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--navy);m
 @media print{@page{size:A4;margin:0}
   .sec{break-inside:auto;padding:2.2rem 0}
   .chg-row,.spoor,.callout,.callout-dark,.hcard,.step,.inv-card,.demo{break-inside:avoid;page-break-inside:avoid}
-  h2,h1{break-after:avoid}}
+  h2,h1{break-after:avoid}
+  /* de eigenaarschapslabels zijn in print juist het punt van sectie 03 */
+  .step{grid-template-columns:34px 1fr 118px}
+  .step-w{display:block}
+  .chg-row{grid-template-columns:140px 1fr}
+  .demo-a{display:none}}
 </style>
 </head>
 <body>
@@ -281,7 +286,7 @@ h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--navy);m
     </div>
   </div>
 
-  <div class="callout-dark">Waarom je hier geen kostenopbouw per onderdeel krijgt: <strong>je koopt geen losse onderdelen, je koopt een proces dat van je bureau af is.</strong> Wij nemen het eigenaarschap van kop tot staart. Alleen de brief doen, of alleen het bellen, werkt niet, want de funnel valt uit elkaar zodra er een schakel bij iemand anders ligt. <span class="a">Wat wél kan: jouw collega's denken mee over de landingspagina's.</span> Dat wilde je graag, en dat wil ik ook, want zij kennen jullie merk beter dan ik.</div>
+  <div class="callout-dark">Waarom je hier geen kostenopbouw per onderdeel krijgt: <strong>wij verkopen een compleet proces dat van jouw bureau af gaat.</strong> Het eigenaarschap ligt van kop tot staart bij ons. Alleen de brief doen, of alleen het bellen, werkt niet, want de funnel valt uit elkaar zodra er één schakel bij iemand anders ligt en is niemand meer aanspreekbaar op het resultaat. <span class="a">Wat wél kan: jouw collega's denken mee over de landingspagina's.</span> Dat wilde je graag, en dat wil ik ook, want zij kennen jullie merk beter dan ik.</div>
 </section>
 
 <!-- 04 VOORBEELD -->
