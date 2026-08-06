@@ -2,7 +2,7 @@
 <!--
 ============================================================
   ONLINE GOED GEVONDEN — persoonlijke landingspagina
-  Doelgroep: schoonheidssalons, regio Gelderland
+  Doelgroep: schoonheidspraktijken, regio Gelderland
   Aanbod: boekingssysteem + topwebsite in eigen stijl (vast bedrag p/m) + gratis marketingteam
 
   Structuur = Pique 'journey'-lijn (zoals bcs3 / pique5):
@@ -10,7 +10,7 @@
   oplichten bij scroll. Kleuren = OGG (mint op donker navy).
   Typografie = Poppins (koppen) + Switzer (body).
 
-  PERSONALISEREN (zoek [SWAP]): voornaam, salonnaam+plaats,
+  PERSONALISEREN (zoek [SWAP]): voornaam, praktijknaam+plaats,
   drie observaties (nu FICTIEF), afzender (Murphy), video, Cal.
 ============================================================
 -->
@@ -31,7 +31,7 @@
 :root{
   --bg:#080b12;--panel:#05070c;
   --ink:#ffffff;--ink2:rgba(255,255,255,.68);--ink3:rgba(255,255,255,.42);
-  --mint:#1cd688;--mints:#49d69b;--navy:#0b1a17;--white:#fff;
+  --mint:#1cd688;--mints:#49d69b;--navy:#0b1a17;--white:#fff;--grad:linear-gradient(135deg,#49d69b,#1cd688);
   --line:rgba(255,255,255,.12);
   --disp:'Poppins',system-ui,sans-serif;--sans:'Switzer','Poppins',system-ui,sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);
@@ -53,8 +53,9 @@ nav.solid{background:rgba(8,11,18,.72);backdrop-filter:blur(16px) saturate(1.3);
 .logo{display:inline-flex;align-items:center}
 .logo .pill{background:#fff;border-radius:9px;padding:6px 11px;display:inline-flex;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 .logo .pill img{height:22px;display:block}
-.nav-cta{font-size:.78rem;font-weight:500;letter-spacing:.01em;color:rgba(255,255,255,.72);text-decoration:none;padding:.5rem .95rem;border-radius:100px;border:1px solid rgba(255,255,255,.18);transition:all .4s}
-.nav-cta:hover{color:#fff;border-color:var(--mint)}
+.nav-cta{font-family:var(--disp);font-size:.8rem;font-weight:700;letter-spacing:.01em;color:#052a1c;text-decoration:none;padding:.6rem 1.2rem;border-radius:100px;border:none;background:var(--grad);transition:transform .25s,box-shadow .25s;animation:navglow 2.6s ease-in-out infinite}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(28,214,136,.75),0 10px 28px rgba(28,214,136,.65)}
+@keyframes navglow{0%,100%{box-shadow:0 0 0 1px rgba(28,214,136,.4),0 4px 16px rgba(28,214,136,.35)}50%{box-shadow:0 0 0 1px rgba(28,214,136,.75),0 6px 26px rgba(28,214,136,.6)}}
 
 /* INTRO / HERO */
 .intro{position:relative;background:var(--panel);color:#fff;padding:clamp(6rem,12vh,8rem) clamp(1.5rem,4vw,3rem) clamp(4rem,9vh,6.5rem);overflow:hidden}
@@ -184,7 +185,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   .ch-sub{margin-left:0;margin-right:0}
   .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot,.chapter.center .ch-dot{left:-2.4rem;right:auto;top:.3rem;transform:none}
 }
-</style>
+.reel-ph{background:radial-gradient(90% 90% at 50% 40%,rgba(28,214,136,.16),transparent 60%),linear-gradient(160deg,#12261f,#0a1017);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.12)}.reel-ph-in{display:flex;flex-direction:column;align-items:center;gap:.7rem}.reel-ph-play{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);position:relative;animation:pulse 1.8s ease-in-out infinite}.reel-ph-play::after{content:'';position:absolute;top:50%;left:52%;transform:translate(-50%,-50%);border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent rgba(255,255,255,.65)}.reel-ph-txt{font-family:var(--disp);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6)}</style>
 </head>
 <body>
 <nav id="nav">
@@ -196,17 +197,12 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <div class="intro-grid"></div>
   <div class="intro-inner">
     <div class="intro-eyebrow">Persoonlijk voor Irina Alshara</div>
-    <div class="vteaser">Ik nam even de tijd voor je. Druk op play.</div>
-    <div class="reel" id="reel">
-      <video id="reelvid" class="reel-video" playsinline preload="metadata" poster="murphy-staand-poster.jpg" src="murphy-staand.mp4"></video>
-      <button class="reel-ov" id="reelov" aria-label="Speel de video van Murphy af">
-        <span class="reel-ring"></span>
-        <span class="reel-play"></span>
-        <span class="reel-badge">even 50 sec &middot; met geluid</span>
-      </button>
+    <div class="vteaser">Er komt hier binnenkort een korte video van mij.</div>
+    <div class="reel reel-ph">
+      <div class="reel-ph-in"><span class="reel-ph-play"></span><span class="reel-ph-txt">Video volgt</span></div>
     </div>
     <h1 class="intro-h1">Wil je weten wat mij opviel aan Irina Alshara<span class="g">?</span></h1>
-    <p class="intro-sub">Scroll dan verder, of bekijk mijn video hierboven.</p>
+    <p class="intro-sub">Scroll dan verder, ik neem je stap voor stap mee.</p>
     <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
   </div>
 </header>
@@ -223,7 +219,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-eyebrow">Voor jou</div>
         <h2 class="ch-kop">Waarom je dit ziet.</h2>
-        <p class="ch-text">Een salon met vaste klanten die terugkomen, mooie reviews, en een agenda die op de meeste dagen aardig vol loopt. Dat werkt, dus keken we wat langer naar Irina Alshara.</p>
+        <p class="ch-text">Een praktijk met vaste patiënten die terugkomen, mooie reviews, en een agenda die op de meeste dagen aardig vol loopt. Dat werkt, dus keken we wat langer naar Irina Alshara.</p>
         <div class="ch-sign">Murphy, Online Goed Gevonden</div>
       </div>
     </div>
@@ -234,7 +230,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-eyebrow">Wat we zagen</div>
         <h2 class="ch-kop ch-head">Bij Irina Alshara.</h2>
-        <p class="ch-sub">Drie dingen die ons opvielen. Ze horen bij elkaar.</p>
+        <p class="ch-sub">Drie dingen die mij opvielen. Ze horen bij elkaar.</p>
       </div>
     </div>
   </section>
@@ -243,7 +239,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-num">01</div>
         <h2 class="ch-kop">Je hebt nog geen eigen website</h2>
-        <p class="ch-text">Wie jou al kent, weet je te vinden. Maar wie in Zutphen zoekt naar een salon, komt eerst een paar anderen tegen. <strong>Je bent goed, alleen weet de buurt het nog niet.</strong></p>
+        <p class="ch-text">Wie jou al kent, weet je te vinden. Maar wie in Zutphen een fysio zoekt, komt eerst een paar anderen tegen. <strong>Je bent goed, alleen weet de buurt het nog niet.</strong></p>
         <div class="ch-bron">Bron: geen eigen website gevonden</div>
       </div>
     </div>
@@ -254,7 +250,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-num">02</div>
         <h2 class="ch-kop">Online ben je lastig te vinden</h2>
-        <p class="ch-text">Zoekt iemand in Zutphen naar een salon, dan verschijnen eerst de partijen met een eigen site. <strong>Daar liggen klanten die je nu misloopt.</strong></p>
+        <p class="ch-text">Zoekt iemand in Zutphen een fysio, dan verschijnen eerst de partijen met een eigen site. <strong>Daar liggen patiënten die je nu misloopt.</strong></p>
         <div class="ch-bron">Bron: Google-zoekopdracht in Zutphen</div>
       </div>
     </div>
@@ -264,9 +260,9 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <div class="ch-inner"><span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-num">03</div>
-        <h2 class="ch-kop">Je doet het allemaal zelf</h2>
-        <p class="ch-text">Behandelen overdag, plannen tussendoor, en 's avonds de socials en de administratie. <strong>Alles draait op jou al sinds 2022. Dat werkt een tijdje, maar het wordt ook je plafond.</strong></p>
-        <div class="ch-bron">Bron: KVK, eenmanszaak</div>
+        <h2 class="ch-kop">Alles komt op jou neer</h2>
+        <p class="ch-text">Je bent goed in je vak. Maar de planning, de administratie en de online kant komen er allemaal bij al sinds 2022. <strong>Dat werkt een tijdje, maar het wordt ook je plafond.</strong></p>
+        <div class="ch-bron">Bron: KVK</div>
       </div>
     </div>
   </section>
@@ -277,7 +273,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <div class="ch-inner"><span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Waar het op uitkomt</div>
-        <p class="ch-pivot">Je bent goed in je vak, je klanten komen terug, en toch loopt je hele zaak via je telefoon. Precies daar loopt het vast.</p>
+        <p class="ch-pivot">Je bent goed in je vak en je patiënten komen terug. Maar je afspraken, je website en je marketing lopen nu los van elkaar. Precies daar zit ruimte.</p>
       </div>
     </div>
   </section>
@@ -287,7 +283,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-eyebrow">Wat dit betekent</div>
         <h2 class="ch-kop">De prijs van stilzitten.</h2>
-        <p class="ch-text">Een gaatje van twee uur op dinsdag verkoop je nooit meer terug. En de klant die 's avonds op de bank een afspraak wil maken, staat voor een dichte telefoon. Die boekt bij de salon die het wél in drie tikken laat doen. Twee lege plekken per week is al snel een paar honderd euro per maand die je laat liggen.</p>
+        <p class="ch-text">Een gaatje van twee uur op dinsdag verkoop je nooit meer terug. En de patiënt die 's avonds op de bank een afspraak wil maken, staat voor een dichte telefoon. Die boekt bij de praktijk die het wél in drie tikken laat doen. Twee lege plekken per week is al snel een paar honderd euro per maand die je laat liggen.</p>
       </div>
     </div>
   </section>
@@ -296,7 +292,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <div class="ch-inner"><span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Hoe het ook kan</div>
-        <p class="ch-text">Stel je voor: je klanten boeken zichzelf in terwijl jij behandelt, nieuwe klanten vinden je vanzelf, en je hebt nog maar één rekening in plaats van drie. Dat is precies wat wij regelen.</p>
+        <p class="ch-text">Stel je voor: je patiënten boeken zichzelf in terwijl jij behandelt, nieuwe patiënten vinden je vanzelf, en je hebt nog maar één rekening in plaats van drie. Dat is precies wat wij regelen.</p>
       </div>
     </div>
   </section>
@@ -307,7 +303,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-eyebrow">Wat wij doen</div>
         <h2 class="ch-kop ch-head">In het kort.</h2>
-        <p class="ch-sub">Alles in één systeem: je agenda, je boekingen en je klanten op één plek, voor één vast bedrag per maand. Daar kun je meteen je website bij laten maken, in jouw stijl. En je krijgt er een gratis marketingteam bij dat je agenda vult. Jij behandelt, wij regelen de rest.</p>
+        <p class="ch-sub">Alles in één systeem: je agenda, je boekingen en je patiënten op één plek, voor één vast bedrag per maand. Daar kun je meteen je website bij laten maken, in jouw stijl. En je krijgt er een gratis marketingteam bij dat je agenda vult. Jij behandelt, wij regelen de rest.</p>
       </div>
     </div>
   </section>
@@ -317,7 +313,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-num">01</div>
         <h2 class="ch-kop">Alles in één systeem</h2>
-        <p class="ch-text">Je agenda, je boekingen, je klanten en je reviews op één plek. Klanten boeken zichzelf in, dag en nacht, met automatische herinneringen tegen no-shows. <strong>Alles op één rekening in plaats van losse abonnementen bij Treatwell of Salonized. Je betaalt nooit een percentage van je omzet, en je weet vooraf precies wat je kwijt bent.</strong></p>
+        <p class="ch-text">Je agenda, je boekingen, je patiënten en je reviews op één plek. Patiënten boeken zichzelf in, dag en nacht, met automatische herinneringen tegen no-shows. <strong>Alles op één rekening in plaats van losse abonnementen bij Treatwell of Praktijkized. Je betaalt nooit een percentage van je omzet, en je weet vooraf precies wat je kwijt bent.</strong></p>
         <span class="ch-tag">Vast bedrag per maand</span>
       </div>
     </div>
@@ -328,7 +324,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-num">02</div>
         <h2 class="ch-kop">Je website erbij</h2>
-        <p class="ch-text">Een professionele website in je eigen stijl, gewoon onderdeel van hetzelfde systeem. Die je klanten vertrouwen en die je terugvindt op Google. <strong>Geen groot bedrag vooraf.</strong></p>
+        <p class="ch-text">Een professionele website in je eigen stijl, gewoon onderdeel van hetzelfde systeem. Die je patiënten vertrouwen en die je terugvindt op Google. <strong>Geen groot bedrag vooraf.</strong></p>
         <span class="ch-tag">Inbegrepen</span>
       </div>
     </div>
@@ -339,7 +335,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       <div class="ch-body">
         <div class="ch-num">03</div>
         <h2 class="ch-kop">Je eigen marketingteam, gratis</h2>
-        <p class="ch-text">Specialisten die je helpen met Google Ads, SEO en je vindbaarheid in AI zoals ChatGPT. Zij halen de klanten binnen, jij doet de behandelingen.</p>
+        <p class="ch-text">Specialisten die je helpen met Google Ads, SEO en je vindbaarheid in AI zoals ChatGPT. Zij halen de patiënten binnen, jij doet de behandelingen.</p>
         <span class="ch-tag">Gratis erbij</span>
       </div>
     </div>
@@ -351,7 +347,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <div class="fr">
     <div class="fo-eyebrow">De persoon achter dit voorstel</div>
     <div class="fo-text">
-      <p>Ik ben Murphy. Wij helpen salons en lokale ondernemers gevonden worden en hun agenda vullen. Senior specialisten, een dashboard waarop je alles ziet, en resultaat dat je kunt nalezen.</p>
+      <p>Ik ben Murphy. Wij helpen ondernemers zoals jij gevonden worden en hun agenda vullen. Senior specialisten, een dashboard waarop je alles ziet, en resultaat dat je kunt nalezen.</p>
       <p>Deze pagina maakten we speciaal voor Irina Alshara. Klopt er iets niet, of wil je iets weten? Zeg het gerust.</p>
     </div>
     <p class="fo-name"><strong>Murphy</strong>, Online Goed Gevonden</p>
