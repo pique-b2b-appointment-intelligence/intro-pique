@@ -103,8 +103,8 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 .cta-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(224,172,102,.9);margin-bottom:1.25rem}
 .cta-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.15;letter-spacing:-.02em}
 .cta-sub{color:rgba(255,255,255,.6);font-size:1.05rem;font-weight:300;margin:1.25rem auto 0;max-width:48ch}
-.cta-btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:clamp(2.2rem,4vh,3rem);background:var(--amber);color:#fff;font-weight:600;font-size:1rem;text-decoration:none;padding:1rem 2rem;border-radius:100px;transition:transform .3s var(--ease),background .3s}
-.cta-btn:hover{transform:translateY(-2px);background:var(--ambers)}
+.cta-embed{margin-top:clamp(2.5rem,5vh,3.5rem);background:#fff;border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden;min-height:640px}
+#cal-embed{width:100%;min-height:640px}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
@@ -254,8 +254,8 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <div class="cta-eyebrow reveal">De volgende stap</div>
     <h2 class="cta-h reveal">Even bijpraten?</h2>
     <p class="cta-sub reveal">Een kwartier, vrijblijvend. Ik pitch je niks, we kijken gewoon even wat er bij je speelt. [Slot: eerste stap uit de brief, zodra bepaald.]</p>
-    <!-- Boekingslink volgt: vervang # door Patricks cal.com-link. -->
-    <a href="#" class="cta-btn reveal">Plan een kennismaking</a>
+    <!-- Cal.com embed (placeholder): vervang calLink onderaan door Patricks eigen cal.com-link. -->
+    <div class="cta-embed reveal"><div id="cal-embed"></div></div>
   </div>
 </section>
 
@@ -301,6 +301,10 @@ build();addEventListener('load',build);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
 setTimeout(build,400);setTimeout(build,1200);
 if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
+// Cal.com inline embed. PLACEHOLDER-calLink: vervang "wegmetexcel/kennismaking" door Patricks eigen cal.com-link.
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d2 = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d2.head.appendChild(d2.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init","kennismaking-wegmetexcel",{origin:"https://cal.com"});
+Cal.ns["kennismaking-wegmetexcel"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"wegmetexcel/kennismaking"});
 </script>
 </body>
 </html>
