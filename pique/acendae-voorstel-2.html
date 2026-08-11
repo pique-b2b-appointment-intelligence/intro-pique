@@ -98,6 +98,39 @@ h2{font-family:var(--serif);font-size:1.95rem;font-weight:600;line-height:1.15;l
 .vs-r{display:grid;grid-template-columns:88px 1fr;gap:.7rem;font-size:.82rem;line-height:1.5;color:rgba(30,36,51,.66);padding:.42rem 0;border-top:1px solid var(--border)}
 .vs-r span{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
 .vs-r strong{color:var(--navy);font-weight:600}
+/* trechter */
+.funnel{margin-top:1.6rem;background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:1.6rem 1.75rem}
+.fn-row{display:grid;grid-template-columns:52px 1fr 1fr;gap:1rem;align-items:center;margin-bottom:.7rem}
+.fn-n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy);line-height:1;text-align:right}
+.fn-track{height:20px;background:rgba(15,23,42,.05);border-radius:5px;overflow:hidden}
+.fn-bar{height:100%;background:var(--navy);border-radius:5px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.fn-bar.amber{background:var(--amber)}
+.fn-row.win .fn-n{color:var(--amber)}
+.fn-lab{font-size:.82rem;line-height:1.45;color:rgba(30,36,51,.66)}
+.fn-lab strong{color:var(--navy);font-weight:600}
+.fn-out{margin-top:1.35rem;padding-top:1.15rem;border-top:1px solid var(--border);display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:center}
+.fn-out-n{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:var(--navy);line-height:1;white-space:nowrap}
+.fn-out-n .a{color:var(--amber)}
+.fn-out-t{font-size:.85rem;line-height:1.6;color:rgba(30,36,51,.66)}
+.fn-out-t strong{color:var(--navy);font-weight:600}
+.fn-note{font-size:.73rem;color:var(--muted);line-height:1.6;margin-top:1rem}
+/* tijdlijn */
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1.6rem}
+.tl-step{background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:1.1rem 1.15rem;position:relative}
+.tl-step::before{content:'';position:absolute;top:0;left:1.15rem;right:1.15rem;height:3px;background:var(--amber);border-radius:0 0 3px 3px;opacity:.85;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tl-w{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:.35rem 0 .5rem}
+.tl-t{font-size:.83rem;line-height:1.5;color:rgba(30,36,51,.68)}
+.tl-t strong{display:block;color:var(--navy);font-weight:600;font-size:.9rem;margin-bottom:.2rem}
+/* waardetabel */
+.val{margin-top:1.6rem;background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden}
+.val-r{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:1rem;padding:.85rem 1.5rem;border-top:1px solid var(--border);align-items:baseline}
+.val-r:first-child{border-top:none;background:rgba(15,23,42,.03);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.val-h{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.val-c{font-size:.92rem;color:rgba(30,36,51,.72)}
+.val-c strong{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--navy)}
+.val-r.hi .val-c strong{color:var(--amber)}
+.val-note{font-size:.73rem;color:var(--muted);line-height:1.6;margin-top:1rem}
+@media(max-width:820px){.tl{grid-template-columns:1fr 1fr}.fn-row{grid-template-columns:44px 1fr}.fn-lab{grid-column:1 / -1;padding-left:calc(44px + 1rem)}}
 /* voorbeeld met qr */
 .demo{margin-top:1.6rem;background:var(--navy);border-radius:16px;padding:1.6rem 1.8rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
 .demo-t{font-size:.88rem;color:rgba(255,255,255,.58);line-height:1.65;max-width:52ch}
@@ -116,12 +149,17 @@ h2{font-family:var(--serif);font-size:1.95rem;font-weight:600;line-height:1.15;l
 }
 @media print{@page{size:A4;margin:0}
   .sec{break-inside:auto;padding:2.2rem 0}
-  .chg-row,.callout,.callout-dark,.hcard,.track,.vs-card,.demo{break-inside:avoid;page-break-inside:avoid}
+  .chg-row,.callout,.callout-dark,.hcard,.track,.vs-card,.demo,.funnel,.val,.tl-step{break-inside:avoid;page-break-inside:avoid}
   h2,h1{break-after:avoid}
   .chg-row{grid-template-columns:140px 1fr}
   .track-top{grid-template-columns:1fr auto}
   .track-price{text-align:right}
-  .track-grid{grid-template-columns:1fr 1fr}}
+  .track-grid{grid-template-columns:1fr 1fr}
+  /* de visuals moeten op A4 hun volle vorm houden */
+  .tl{grid-template-columns:repeat(4,1fr)}
+  .fn-row{grid-template-columns:52px 1fr 1fr}
+  .fn-lab{grid-column:auto;padding-left:0}
+  .val-r{grid-template-columns:1.1fr 1fr 1fr}}
 </style>
 </head>
 <body>
@@ -219,7 +257,42 @@ h2{font-family:var(--serif);font-size:1.95rem;font-weight:600;line-height:1.15;l
     </div>
   </div>
 
+  <div class="funnel">
+    <div class="fn-row">
+      <div class="fn-n">100</div>
+      <div class="fn-track"><div class="fn-bar" style="width:100%"></div></div>
+      <div class="fn-lab"><strong>Kaarten de deur uit</strong>, elk met research over dat ene bureau</div>
+    </div>
+    <div class="fn-row">
+      <div class="fn-n">100</div>
+      <div class="fn-track"><div class="fn-bar" style="width:100%"></div></div>
+      <div class="fn-lab"><strong>Bezorgd</strong> op het bureau van de beslisser, op naam</div>
+    </div>
+    <div class="fn-row">
+      <div class="fn-n">60</div>
+      <div class="fn-track"><div class="fn-bar" style="width:60%"></div></div>
+      <div class="fn-lab"><strong>Scannen de QR-code</strong> en lezen hun eigen pagina</div>
+    </div>
+    <div class="fn-row win">
+      <div class="fn-n">10</div>
+      <div class="fn-track"><div class="fn-bar amber" style="width:10%"></div></div>
+      <div class="fn-lab"><strong>Plannen een gesprek</strong> rechtstreeks in jouw agenda</div>
+    </div>
+    <div class="fn-out">
+      <div class="fn-out-n"><span class="a">€195</span></div>
+      <div class="fn-out-t">Dat is je <strong>kost per gesprek</strong> met een beslisser die jou als enige aan de lijn heeft. Over drie maanden komt dat neer op zo'n dertig gesprekken voor €5.850. Je vroeg naar het kantelpunt, dus hier staat het getal.</div>
+    </div>
+    <p class="fn-note">Gebaseerd op onze gemiddelden over recente kaartcampagnes. De bezorging is hard, de rest beweegt met de ICP, het aanbod en de opvolging. Dat is precies wat we in deze drie maanden meten.</p>
+  </div>
+
   <div class="callout"><strong>Over die tweede duizend euro.</strong> Bij een advertentiecampagne gaat dat geld naar een veiling waar je het tegen andere bidders verliest, en €1.000 per maand koopt in een B2B-niche bijna geen bereik. Bij ons gaat datzelfde bedrag in productie: honderd kaarten die met de hand geschreven en fysiek bezorgd worden, honderd pagina's die blijven staan. Dat verdampt niet aan het eind van de maand.</div>
+
+  <div class="tl">
+    <div class="tl-step"><div class="tl-w">Week 1</div><div class="tl-t"><strong>ICP-sessie</strong>Een uur samen, daarna bouwen wij de prospectlijst met de beslisser op naam.</div></div>
+    <div class="tl-step"><div class="tl-w">Week 2</div><div class="tl-t"><strong>Research en productie</strong>Research per bureau, pagina's gebouwd, kaarten met de hand geschreven.</div></div>
+    <div class="tl-step"><div class="tl-w">Week 3</div><div class="tl-t"><strong>Op het bureau</strong>De kaarten worden bezorgd. Vanaf dat moment zien wij live wie scant.</div></div>
+    <div class="tl-step"><div class="tl-w">Week 3 en 4</div><div class="tl-t"><strong>Bellen en boeken</strong>Onze bellers volgen de scanners op. De eerste afspraken staan in je agenda.</div></div>
+  </div>
 
   <div class="callout-dark">De haak op de kaart wordt <strong>jullie teamtarief van €60 per uur</strong>. Een bureau dat omvalt van het werk en al maanden geen developer kan vinden, rekent dat binnen tien seconden uit. Dat is het scherpste argument dat je hebt, en het staat nergens op je site.</div>
 </section>
@@ -267,6 +340,18 @@ h2{font-family:var(--serif);font-size:1.95rem;font-weight:600;line-height:1.15;l
     </div>
   </div>
 
+  <div class="val">
+    <div class="val-r">
+      <div class="val-h">Uurtarief per engineer</div>
+      <div class="val-h">160 uur per maand</div>
+      <div class="val-h">Over een jaar</div>
+    </div>
+    <div class="val-r"><div class="val-c"><strong>€25</strong></div><div class="val-c"><strong>€4.000</strong></div><div class="val-c"><strong>€48.000</strong></div></div>
+    <div class="val-r"><div class="val-c"><strong>€35</strong></div><div class="val-c"><strong>€5.600</strong></div><div class="val-c"><strong>€67.200</strong></div></div>
+    <div class="val-r hi"><div class="val-c"><strong>€45</strong></div><div class="val-c"><strong>€7.200</strong></div><div class="val-c"><strong>€86.400</strong></div></div>
+  </div>
+  <p class="val-note">Wat jullie werkelijk rekenen weet ik niet, en dat is precies de vraag die ik donderdag aan je heb. Vul je eigen tarief in, de rest van de rekensom staat er. Daar tegenover staat een sprint van €8.400 in totaal, eenmalig, voor vijfentwintig accounts die jij zelf hebt aangewezen.</p>
+
   <div class="callout"><strong>Deze prijs zakt bewust niet mee.</strong> Bij white-label levert een gewonnen bureau je een opdracht op, met de winst in de doorontwikkeling daarna. Bij outsourcing levert één gewonnen klant je 160 uur per maand op, een jaar lang. De prijs volgt wat één klant waard is, niet hoeveel kaarten er de deur uit gaan.</div>
 </section>
 
@@ -304,7 +389,6 @@ h2{font-family:var(--serif);font-size:1.95rem;font-weight:600;line-height:1.15;l
   <ul class="plist">
     <li><strong>We leggen vooraf samen vast wat spoor 1 moet opleveren</strong> aan gesprekken. Halen we dat binnen de drie maanden niet, dan werken we kosteloos door tot dat wel zo is.</li>
     <li><strong>Halen we het wel, dan starten we binnen dertig dagen met spoor 2</strong>, zodra jij zegt dat de outsourcing unit er ruimte voor heeft.</li>
-    <li><strong>Je tekent hier geen contract voor.</strong> Dat zei je zelf, en dat hoeft ook niet. Dit is een afspraak die we allebei opschrijven, meer niet.</li>
     <li><strong>Wat het je aan tijd kost blijft hetzelfde:</strong> een uur voor de ICP-sessie aan de start, en daarna alleen de gesprekken zelf voeren.</li>
   </ul>
   <div class="callout-dark">Waarom ik dit zo voorstel: je hebt in negen jaar een naam opgebouwd waar bureaus je om vertrouwen. <strong>Een gedeelde lead betekent dat je met acht of negen andere bureaus om dezelfde prospect racet</strong>, waarbij snelheid wint van kwaliteit en de prospect vier keer hetzelfde verhaal hoort. <span class="a">Dat is precies het omgekeerde van waar jij op gebouwd hebt.</span> Een kaart bij één beslisser op het bureau doet het andersom.</div>
