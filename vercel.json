@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "comment": "Nette vorm van de klik-link in opvolgmails: /pagina/pique/mollie leest als een adres, /api/t?p=pique%2Fmollie leest als machinerie. Zelfde meting.",
+      "source": "/pagina/:path*",
+      "destination": "/api/t?p=:path*&c=mail"
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "onlinegoedgevonden.intro-pique.agency" }],
       "destination": "/onlinegoedgevonden/:path*"
