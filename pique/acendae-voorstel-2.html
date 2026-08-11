@@ -169,6 +169,13 @@ h2{font-family:var(--serif);font-size:1.95rem;font-weight:600;line-height:1.15;l
   .track,.funnel,.val,.demo{break-inside:auto}
   .track-top,.fn-row,.fn-out,.val-r{break-inside:avoid;page-break-inside:avoid}
   .dash-grid{grid-template-columns:1fr 1fr}
+  /* A4 is smaller dan de mobiele breakpoint, dus die kolommen expliciet terugzetten */
+  .hero-g{grid-template-columns:1fr 270px;gap:2.25rem}
+  .vs{grid-template-columns:1fr 1fr}
+  .vs-r{grid-template-columns:72px 1fr;gap:.5rem}
+  .demo{grid-template-columns:1fr auto;gap:1.75rem}
+  .track{padding:1.4rem 1.5rem}
+  .funnel,.dash{padding:1.3rem 1.5rem}
   h2,h1{break-after:avoid}
   .chg-row{grid-template-columns:140px 1fr}
   .track-top{grid-template-columns:1fr auto}
