@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nieuw voorstel - Acendae × Pique</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjI1IC0xOSA1MDggNTA4IiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgc2hhcGUtcmVuZGVyaW5nPSJnZW9tZXRyaWNQcmVjaXNpb24iPgogIDxwYXRoIGQ9Ik00OTUuNTE4IDBMMzQ4LjcxMiA0MTUuODc1TDM5NC40ODUgNDE0Ljc3Nkw0OTUuNTE4IDBaIiBmaWxsPSIjRDdBMTE4Ii8+CiAgPHBhdGggZD0iTTM1MC42NCA0MTUuNzE1TDI4NS4xOTggMjQ0LjgwOUwzMTIuNDE0IDE5Mi4yNzhMMzczLjA4OCAzNTMuMDE5TDM1MC42NCA0MTUuNzE1WiIgZmlsbD0iI0FCN0IyOSIvPgogIDxwYXRoIGQ9Ik0yNjkuMDI0IDE5My4zMzlMNjEuNzg0OSA0NjkuOThMNjEuNDk1NCA0NzAuMjczTDE3MC4yOTEgNDY3LjY1OUwzMTIuMzk5IDE5Mi4yOTdMMjY5LjAyNCAxOTMuMzM5WiIgZmlsbD0iI0Q3QTExOCIvPgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8F6F2;--navy:#0F172A;--amber:#D4943A;--white:#FFFFFF;--text:#1E2433;
+  --muted:rgba(30,36,51,.48);--border:rgba(15,23,42,.09);
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6}
+.topbar{background:var(--navy);padding:.7rem 2.5rem;display:flex;align-items:center;justify-content:space-between}
+.topbar-l{display:flex;align-items:center;gap:1rem}
+.topbar-logo{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--white);letter-spacing:-.02em}
+.topbar-sep{width:1px;height:12px;background:rgba(255,255,255,.12)}
+.topbar-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.topbar-r{display:flex;align-items:center;gap:.75rem}
+.topbar-meta{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.22)}
+.topbar-badge{background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);border-radius:100px;padding:.22rem .65rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 2.5rem}
+.sec{padding:3rem 0;border-bottom:1px solid var(--border)}
+.sec:last-child{border-bottom:none;padding-bottom:3rem}
+.ey{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.ey::before{content:'';width:10px;height:1px;background:var(--amber);opacity:.7}
+h1{font-family:var(--serif);font-size:2.8rem;font-weight:600;line-height:1.1;letter-spacing:-.03em;color:var(--navy)}
+h2{font-family:var(--serif);font-size:1.95rem;font-weight:600;line-height:1.15;letter-spacing:-.025em;color:var(--navy)}
+.a{color:var(--amber)}
+.sub{font-size:.88rem;color:var(--muted);line-height:1.7;margin-top:.6rem;max-width:64ch}
+.sub strong{color:var(--navy)}
+.div{width:28px;height:2px;background:var(--amber);border-radius:2px;margin:.9rem 0;opacity:.7}
+.body-t{font-size:.87rem;line-height:1.72;color:rgba(30,36,51,.66);margin-top:.9rem;max-width:68ch}
+.body-t strong{color:var(--navy);font-weight:600}
+.hero{padding:3rem 0 2.6rem;border-bottom:1px solid var(--border)}
+.hero-g{display:grid;grid-template-columns:1fr 300px;gap:3.5rem;align-items:start}
+.hcard{background:var(--navy);border-radius:16px;padding:1.5rem;border:1px solid rgba(255,255,255,.06)}
+.hcard-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,148,58,.6);margin-bottom:1rem;display:block}
+.hcard-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:1.1rem}
+.hs{background:rgba(255,255,255,.03);padding:.85rem;text-align:center}
+.hs-n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);line-height:1}
+.hs-n .a{color:var(--amber)}
+.hs-l{font-size:.6rem;color:rgba(255,255,255,.28);margin-top:.25rem}
+.hcard-note{font-size:.75rem;color:rgba(255,255,255,.38);line-height:1.55;border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem}
+.hcard-note strong{color:rgba(255,255,255,.7)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+.chip{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .7rem;border-radius:100px;background:var(--white);border:1.5px solid var(--border);color:var(--muted)}
+.chip .dot{width:4px;height:4px;border-radius:50%;background:var(--amber)}
+.chg{display:grid;grid-template-columns:1fr;gap:.6rem;margin-top:1.6rem}
+.chg-row{background:var(--white);border:1.5px solid var(--border);border-radius:13px;padding:1.1rem 1.4rem;display:grid;grid-template-columns:150px 1fr;gap:1.2rem;align-items:start}
+.chg-l{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding-top:2px}
+.chg-t{font-size:.9rem;color:rgba(30,36,51,.72);line-height:1.6}
+.chg-t strong{color:var(--navy);font-weight:600}
+.callout{margin-top:1.5rem;padding:1.05rem 1.3rem;background:rgba(212,148,58,.07);border:1px solid rgba(212,148,58,.2);border-radius:12px;font-size:.85rem;color:rgba(30,36,51,.68);line-height:1.65}
+.callout strong{color:var(--navy)}
+.callout-dark{margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--navy);border-radius:14px;font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.65}
+.callout-dark strong{color:var(--white)}
+.callout-dark .a{color:var(--amber)}
+.doc-footer{background:var(--navy);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;margin-top:2.5rem}
+.df-l{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.28);letter-spacing:.06em}
+.df-r{font-family:var(--mono);font-size:.56rem;color:rgba(255,255,255,.18);letter-spacing:.06em;text-align:right}
+.plist{list-style:none;margin-top:1rem}
+.plist li{font-size:.85rem;line-height:1.6;padding-left:1.3rem;position:relative;color:rgba(30,36,51,.66);margin-bottom:.5rem}
+.plist li::before{content:'';position:absolute;left:0;top:.55rem;width:6px;height:6px;border-radius:50%;background:var(--amber);opacity:.75}
+.plist li strong{color:var(--navy);font-weight:600}
+/* prijskaart per spoor */
+.track{border-radius:16px;padding:1.75rem 1.85rem;margin-top:1.7rem;background:var(--white);border:1.5px solid var(--border)}
+.track.lead{background:var(--navy);border-color:rgba(212,148,58,.3)}
+.track-top{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end;padding-bottom:1.15rem;border-bottom:1px solid var(--border)}
+.track.lead .track-top{border-bottom-color:rgba(255,255,255,.09)}
+.track-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.55rem}
+.track-h{font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--navy);line-height:1.1}
+.track.lead .track-h{color:var(--white)}
+.track-d{font-size:.85rem;line-height:1.6;color:var(--muted);margin-top:.55rem;max-width:52ch}
+.track.lead .track-d{color:rgba(255,255,255,.52)}
+.track-price{text-align:right;white-space:nowrap}
+.track-n{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:var(--navy);line-height:1}
+.track.lead .track-n{color:var(--amber)}
+.track-nl{font-size:.72rem;color:var(--muted);margin-top:.25rem}
+.track.lead .track-nl{color:rgba(255,255,255,.4)}
+.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.6rem;margin-top:1.15rem}
+.tgi{font-size:.83rem;line-height:1.55;color:rgba(30,36,51,.68);padding-left:1.1rem;position:relative}
+.track.lead .tgi{color:rgba(255,255,255,.58)}
+.tgi::before{content:'';position:absolute;left:0;top:.52rem;width:5px;height:5px;border-radius:50%;background:var(--amber);opacity:.85}
+.tgi strong{color:var(--navy);font-weight:600}
+.track.lead .tgi strong{color:var(--white)}
+/* vergelijking */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.7rem}
+.vs-card{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:1.5rem 1.6rem}
+.vs-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.7rem}
+.vs-h{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:.75rem}
+.vs-r{display:grid;grid-template-columns:88px 1fr;gap:.7rem;font-size:.82rem;line-height:1.5;color:rgba(30,36,51,.66);padding:.42rem 0;border-top:1px solid var(--border)}
+.vs-r span{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.vs-r strong{color:var(--navy);font-weight:600}
+/* voorbeeld met qr */
+.demo{margin-top:1.6rem;background:var(--navy);border-radius:16px;padding:1.6rem 1.8rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.demo-t{font-size:.88rem;color:rgba(255,255,255,.58);line-height:1.65;max-width:52ch}
+.demo-t strong{color:var(--white)}
+.demo-u{font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.3);margin-top:.6rem;letter-spacing:.04em}
+.demo-r{display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.qr-tile{background:var(--white);border-radius:10px;padding:.6rem;line-height:0}
+.qr{width:112px;height:112px;display:block}
+.qr-cap{font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);text-align:center}
+@media(max-width:820px){
+  .hero-g,.vs,.demo,.track-top,.track-grid{grid-template-columns:1fr;gap:1.2rem}
+  .track-price{text-align:left}
+  .chg-row{grid-template-columns:1fr;gap:.5rem}
+  .wrap,.topbar,.doc-footer{padding-left:1.4rem;padding-right:1.4rem}
+  h1{font-size:2.1rem}
+}
+@media print{@page{size:A4;margin:0}
+  .sec{break-inside:auto;padding:2.2rem 0}
+  .chg-row,.callout,.callout-dark,.hcard,.track,.vs-card,.demo{break-inside:avoid;page-break-inside:avoid}
+  h2,h1{break-after:avoid}
+  .chg-row{grid-template-columns:140px 1fr}
+  .track-top{grid-template-columns:1fr auto}
+  .track-price{text-align:right}
+  .track-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-l">
+    <div class="topbar-logo">Pique</div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-title">Nieuw voorstel · Acendae</div>
+  </div>
+  <div class="topbar-r">
+    <span class="topbar-meta">11 augustus 2026</span>
+    <span class="topbar-badge">Vertrouwelijk</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-g">
+    <div>
+      <div class="ey">Voor Pramuka Godakanda</div>
+      <h1>Twee sporen,<br>twee <span class="a">prijzen.</span></h1>
+      <div class="div"></div>
+      <p class="sub">Je zei het vanochtend eerlijk: voor de white-label unit komt de kost per lead niet uit. Dat klopt, en daar heb ik het voorstel op aangepast. <strong>Het product wordt kleiner, de prijs volgt.</strong> Voor de outsourcing unit blijft het traject staan zoals het stond, want daar is één gewonnen klant een jaarcontract. Hieronder allebei, met de afspraak die ze verbindt.</p>
+      <div class="chips">
+        <div class="chip"><div class="dot"></div>Spoor 1 vanaf nu</div>
+        <div class="chip"><div class="dot"></div>Spoor 2 als het werkt</div>
+        <div class="chip"><div class="dot"></div>KPI-garantie op beide</div>
+      </div>
+    </div>
+    <div class="hcard">
+      <span class="hcard-label">In één oogopslag</span>
+      <div class="hcard-stats">
+        <div class="hs"><div class="hs-n"><span class="a">€1.950</span></div><div class="hs-l">Spoor 1, per maand</div></div>
+        <div class="hs"><div class="hs-n"><span class="a">100</span></div><div class="hs-l">Bedrijven per maand</div></div>
+        <div class="hs"><div class="hs-n">3</div><div class="hs-l">Maanden looptijd</div></div>
+        <div class="hs"><div class="hs-n">25</div><div class="hs-l">Key accounts, spoor 2</div></div>
+      </div>
+      <div class="hcard-note">Totaal voor spoor 1: <strong>€5.850 over drie maanden</strong>. Het eerste voorstel stond op €8.400 over twee.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 WAT JE ZEI -->
+<section class="sec">
+  <div class="ey">01 · Wat je zei</div>
+  <h2>Vier dingen, en wat ik <span class="a">ermee doe.</span></h2>
+  <div class="chg">
+    <div class="chg-row">
+      <div class="chg-l">De ROI</div>
+      <div class="chg-t"><strong>Op de white-label unit is de marge dunner, dus de kost per lead moet omlaag.</strong> Een terechte conclusie. Een dienst waar de winst pas in de doorontwikkeling zit, draagt geen €4.200 aan acquisitie per maand.</div>
+    </div>
+    <div class="chg-row">
+      <div class="chg-l">Het budget</div>
+      <div class="chg-t"><strong>Je denkt aan €1.000 agency fee plus €1.000 advertentiebudget.</strong> Daar heb ik spoor 1 exact op gebouwd. Het verschil zit in waar die tweede duizend heen gaat.</div>
+    </div>
+    <div class="chg-row">
+      <div class="chg-l">De outsourcing unit</div>
+      <div class="chg-t"><strong>Daar is één lead al bijna een klant, en zo'n klant blijft een jaar.</strong> 160 uur per maand, fulltime, voor een Nederlands bedrijf. Je zei zelf dat deze aanpak daar een goede match voor is. Dat denk ik ook.</div>
+    </div>
+    <div class="chg-row">
+      <div class="chg-l">De capaciteit</div>
+      <div class="chg-t"><strong>Bij outsourcing kun je er nu één of twee bij hebben, en je wil rustig fine-tunen.</strong> Dat is geen bezwaar tegen deze aanpak. Dat is de beschrijving ervan, want ik lever een handvol gesprekken met bedrijven die jij zelf hebt aangewezen.</div>
+    </div>
+  </div>
+  <div class="callout">Waar dit op uitkomt: <strong>white-label eerst, op jouw eigen budget, om het proces te zien werken met je eigen ogen.</strong> Zodra je bij outsourcing ruimte hebt, staat het tweede spoor klaar. Zo hoef je nergens op te gokken.</div>
+</section>
+
+<!-- 02 SPOOR 1 -->
+<section class="sec">
+  <div class="ey">02 · Spoor 1 · Nu starten</div>
+  <h2>White-label: <span class="a">honderd bureaus per maand.</span></h2>
+
+  <div class="track lead">
+    <div class="track-top">
+      <div>
+        <div class="track-tag">Spoor 1 · Breedte</div>
+        <div class="track-h">White-label development</div>
+        <p class="track-d">Nederlandse en Belgische bureaus die de vraag niet aankunnen. Elk bedrijf krijgt research, een handgeschreven kaart met QR-code, een eigen landingspagina en telefonische opvolging.</p>
+      </div>
+      <div class="track-price">
+        <div class="track-n">€1.950</div>
+        <div class="track-nl">per maand, 3 maanden</div>
+      </div>
+    </div>
+    <div class="track-grid">
+      <div class="tgi"><strong>100 bedrijven per maand</strong>, elk op naam van de beslisser</div>
+      <div class="tgi"><strong>Research per bedrijf</strong>, dat wordt het materiaal voor de kaart</div>
+      <div class="tgi"><strong>Handgeschreven kaart met QR</strong>, bezorgd op het bureau</div>
+      <div class="tgi"><strong>Eigen landingspagina</strong> per bedrijf, in jullie huisstijl</div>
+      <div class="tgi"><strong>Telefonische opvolging</strong> op wie scant en hoe lang</div>
+      <div class="tgi"><strong>Afspraken in jouw agenda</strong>, met wie en waarom erbij</div>
+    </div>
+  </div>
+
+  <div class="callout"><strong>Over die tweede duizend euro.</strong> Bij een advertentiecampagne gaat dat geld naar een veiling waar je het tegen andere bidders verliest, en €1.000 per maand koopt in een B2B-niche bijna geen bereik. Bij ons gaat datzelfde bedrag in productie: honderd kaarten die met de hand geschreven en fysiek bezorgd worden, honderd pagina's die blijven staan. Dat verdampt niet aan het eind van de maand.</div>
+
+  <div class="callout-dark">De haak op de kaart wordt <strong>jullie teamtarief van €60 per uur</strong>. Een bureau dat omvalt van het werk en al maanden geen developer kan vinden, rekent dat binnen tien seconden uit. Dat is het scherpste argument dat je hebt, en het staat nergens op je site.</div>
+</section>
+
+<!-- 03 HET VOORBEELD -->
+<section class="sec">
+  <div class="ey">03 · Hoe het eruitziet</div>
+  <h2>De pagina achter <span class="a">de QR-code.</span></h2>
+  <div class="demo">
+    <div>
+      <p class="demo-t"><strong>Eén prospect, één pagina.</strong> Persoonlijke video bovenaan, daaronder wat we over hun bedrijf zagen, en onderaan één kleine volgende stap. Dit bouwden we voor David van Azora Media. Zo ziet de ontvanger van jullie kaart het straks ook, dan met Acendae erop.</p>
+      <div class="demo-u">intro-pique.agency/azora/abc-clinic</div>
+    </div>
+    <div class="demo-r">
+      <div class="qr-tile"><svg class="qr" viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR-code naar het voorbeeld"><rect width="33" height="33" fill="#fff"/><path d="M0 0h7v1h-7zM8 0h1v1h-1zM10 0h1v1h-1zM12 0h3v1h-3zM17 0h4v1h-4zM23 0h2v1h-2zM26 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h1v1h-1zM11 1h2v1h-2zM14 1h1v1h-1zM16 1h2v1h-2zM20 1h3v1h-3zM26 1h1v1h-1zM32 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM9 2h5v1h-5zM15 2h4v1h-4zM21 2h3v1h-3zM26 2h1v1h-1zM28 2h3v1h-3zM32 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM9 3h2v1h-2zM14 3h1v1h-1zM16 3h1v1h-1zM22 3h3v1h-3zM26 3h1v1h-1zM28 3h3v1h-3zM32 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h7v1h-7zM16 4h1v1h-1zM18 4h1v1h-1zM23 4h2v1h-2zM26 4h1v1h-1zM28 4h3v1h-3zM32 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h7v1h-7zM17 5h1v1h-1zM21 5h2v1h-2zM26 5h1v1h-1zM32 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h7v1h-7zM14 7h3v1h-3zM21 7h4v1h-4zM1 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM16 8h2v1h-2zM22 8h1v1h-1zM24 8h1v1h-1zM27 8h2v1h-2zM32 8h1v1h-1zM2 9h1v1h-1zM4 9h1v1h-1zM8 9h1v1h-1zM10 9h3v1h-3zM14 9h2v1h-2zM18 9h6v1h-6zM26 9h2v1h-2zM29 9h4v1h-4zM3 10h9v1h-9zM16 10h1v1h-1zM18 10h1v1h-1zM24 10h1v1h-1zM28 10h1v1h-1zM30 10h2v1h-2zM0 11h1v1h-1zM2 11h1v1h-1zM4 11h2v1h-2zM7 11h1v1h-1zM11 11h4v1h-4zM19 11h6v1h-6zM26 11h1v1h-1zM28 11h5v1h-5zM1 12h2v1h-2zM5 12h2v1h-2zM10 12h1v1h-1zM14 12h1v1h-1zM18 12h2v1h-2zM22 12h1v1h-1zM24 12h2v1h-2zM28 12h2v1h-2zM0 13h1v1h-1zM3 13h3v1h-3zM8 13h1v1h-1zM14 13h3v1h-3zM21 13h1v1h-1zM23 13h1v1h-1zM26 13h1v1h-1zM31 13h2v1h-2zM4 14h1v1h-1zM6 14h2v1h-2zM9 14h2v1h-2zM15 14h4v1h-4zM20 14h2v1h-2zM24 14h3v1h-3zM28 14h4v1h-4zM1 15h2v1h-2zM4 15h1v1h-1zM7 15h4v1h-4zM12 15h4v1h-4zM19 15h1v1h-1zM21 15h1v1h-1zM23 15h4v1h-4zM28 15h1v1h-1zM30 15h1v1h-1zM0 16h1v1h-1zM2 16h1v1h-1zM5 16h2v1h-2zM9 16h2v1h-2zM12 16h1v1h-1zM15 16h2v1h-2zM22 16h1v1h-1zM25 16h1v1h-1zM27 16h2v1h-2zM32 16h1v1h-1zM1 17h3v1h-3zM5 17h1v1h-1zM8 17h1v1h-1zM11 17h2v1h-2zM14 17h3v1h-3zM18 17h2v1h-2zM23 17h1v1h-1zM26 17h2v1h-2zM29 17h2v1h-2zM32 17h1v1h-1zM0 18h1v1h-1zM2 18h1v1h-1zM4 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM16 18h3v1h-3zM20 18h3v1h-3zM24 18h1v1h-1zM27 18h2v1h-2zM30 18h2v1h-2zM0 19h2v1h-2zM4 19h2v1h-2zM7 19h1v1h-1zM9 19h3v1h-3zM17 19h1v1h-1zM20 19h2v1h-2zM25 19h1v1h-1zM27 19h4v1h-4zM32 19h1v1h-1zM0 20h2v1h-2zM3 20h4v1h-4zM8 20h1v1h-1zM10 20h1v1h-1zM12 20h1v1h-1zM15 20h2v1h-2zM22 20h1v1h-1zM24 20h1v1h-1zM27 20h3v1h-3zM31 20h2v1h-2zM0 21h3v1h-3zM5 21h1v1h-1zM8 21h7v1h-7zM16 21h2v1h-2zM19 21h2v1h-2zM23 21h1v1h-1zM26 21h1v1h-1zM29 21h1v1h-1zM32 21h1v1h-1zM0 22h1v1h-1zM3 22h1v1h-1zM6 22h1v1h-1zM10 22h2v1h-2zM13 22h2v1h-2zM16 22h1v1h-1zM18 22h1v1h-1zM20 22h2v1h-2zM26 22h4v1h-4zM31 22h1v1h-1zM0 23h1v1h-1zM3 23h2v1h-2zM8 23h1v1h-1zM10 23h3v1h-3zM14 23h1v1h-1zM17 23h2v1h-2zM21 23h2v1h-2zM24 23h2v1h-2zM27 23h6v1h-6zM0 24h1v1h-1zM2 24h1v1h-1zM6 24h1v1h-1zM8 24h5v1h-5zM16 24h1v1h-1zM19 24h1v1h-1zM22 24h1v1h-1zM24 24h5v1h-5zM32 24h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM12 25h2v1h-2zM15 25h2v1h-2zM19 25h2v1h-2zM22 25h3v1h-3zM28 25h1v1h-1zM30 25h1v1h-1zM32 25h1v1h-1zM0 26h7v1h-7zM8 26h2v1h-2zM11 26h4v1h-4zM18 26h1v1h-1zM20 26h2v1h-2zM23 26h2v1h-2zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h2v1h-2zM0 27h1v1h-1zM6 27h1v1h-1zM8 27h1v1h-1zM10 27h2v1h-2zM13 27h4v1h-4zM20 27h5v1h-5zM28 27h4v1h-4zM0 28h1v1h-1zM2 28h3v1h-3zM6 28h1v1h-1zM8 28h1v1h-1zM13 28h1v1h-1zM16 28h1v1h-1zM22 28h1v1h-1zM24 28h6v1h-6zM31 28h1v1h-1zM0 29h1v1h-1zM2 29h3v1h-3zM6 29h1v1h-1zM8 29h4v1h-4zM15 29h2v1h-2zM18 29h4v1h-4zM25 29h1v1h-1zM28 29h1v1h-1zM30 29h1v1h-1zM32 29h1v1h-1zM0 30h1v1h-1zM2 30h3v1h-3zM6 30h1v1h-1zM8 30h1v1h-1zM10 30h1v1h-1zM12 30h2v1h-2zM15 30h3v1h-3zM21 30h1v1h-1zM23 30h1v1h-1zM26 30h2v1h-2zM29 30h2v1h-2zM0 31h1v1h-1zM6 31h1v1h-1zM8 31h1v1h-1zM14 31h1v1h-1zM17 31h1v1h-1zM19 31h4v1h-4zM25 31h2v1h-2zM28 31h3v1h-3zM0 32h7v1h-7zM9 32h1v1h-1zM11 32h1v1h-1zM19 32h2v1h-2zM22 32h6v1h-6zM29 32h1v1h-1zM31 32h1v1h-1z" fill="#0F172A"/></svg></div>
+      <div class="qr-cap">Scan of klik</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 SPOOR 2 -->
+<section class="sec">
+  <div class="ey">04 · Spoor 2 · Als het werkt</div>
+  <h2>Outsourcing: <span class="a">vijfentwintig key accounts.</span></h2>
+
+  <div class="track">
+    <div class="track-top">
+      <div>
+        <div class="track-tag">Spoor 2 · Diepte</div>
+        <div class="track-h">Outsourcing unit</div>
+        <p class="track-d">Vijfentwintig bedrijven die jij zelf aanwijst, acht weken lang, met meerdere contactmomenten per account. Hier gaat het om een handvol gesprekken met precies de juiste mensen.</p>
+      </div>
+      <div class="track-price">
+        <div class="track-n">€4.200</div>
+        <div class="track-nl">per maand, 8 weken</div>
+      </div>
+    </div>
+    <div class="track-grid">
+      <div class="tgi"><strong>25 accounts die jij aanwijst</strong>, samen met ons vastgesteld</div>
+      <div class="tgi"><strong>Diepere research per account</strong>, tot op de beslisser en zijn situatie</div>
+      <div class="tgi"><strong>Meerdere contactmomenten</strong> per bedrijf in plaats van één</div>
+      <div class="tgi"><strong>Kaart, pagina, video en opvolging</strong>, volledig op maat</div>
+      <div class="tgi"><strong>Sluit aan op je capaciteit</strong>: je zoekt er één of twee, geen twintig</div>
+      <div class="tgi"><strong>Zelfde garantie</strong> op de vooraf afgesproken KPI's</div>
+    </div>
+  </div>
+
+  <div class="callout"><strong>Deze prijs zakt bewust niet mee.</strong> Bij white-label levert een gewonnen bureau je een opdracht op, met de winst in de doorontwikkeling daarna. Bij outsourcing levert één gewonnen klant je 160 uur per maand op, een jaar lang. De prijs volgt wat één klant waard is, niet hoeveel kaarten er de deur uit gaan.</div>
+</section>
+
+<!-- 05 HET VERSCHIL -->
+<section class="sec">
+  <div class="ey">05 · Het verschil</div>
+  <h2>Breedte tegenover <span class="a">diepte.</span></h2>
+  <p class="sub">Zodat helder is waar het geld heen gaat, en waarom het tweede spoor meer kost bij minder bedrijven.</p>
+  <div class="vs">
+    <div class="vs-card">
+      <div class="vs-tag">Spoor 1</div>
+      <div class="vs-h">White-label</div>
+      <div class="vs-r"><span>Bereik</span><div><strong>100 bedrijven</strong> per maand</div></div>
+      <div class="vs-r"><span>Per bedrijf</span><div>Eén kaart, één pagina, opvolging</div></div>
+      <div class="vs-r"><span>Doel</span><div>Volume aan gesprekken, en zien of dit in jouw markt werkt</div></div>
+      <div class="vs-r"><span>Waarde</span><div>Een opdracht, met de winst in de doorontwikkeling</div></div>
+      <div class="vs-r"><span>Prijs</span><div><strong>€1.950</strong> per maand</div></div>
+    </div>
+    <div class="vs-card">
+      <div class="vs-tag">Spoor 2</div>
+      <div class="vs-h">Outsourcing</div>
+      <div class="vs-r"><span>Bereik</span><div><strong>25 accounts</strong> in acht weken</div></div>
+      <div class="vs-r"><span>Per bedrijf</span><div>Meerdere contactmomenten, diepere research</div></div>
+      <div class="vs-r"><span>Doel</span><div>Eén of twee klanten binnenhalen die jaren blijven</div></div>
+      <div class="vs-r"><span>Waarde</span><div>160 uur per maand, een jaar lang</div></div>
+      <div class="vs-r"><span>Prijs</span><div><strong>€4.200</strong> per maand</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 DE AFSPRAAK -->
+<section class="sec">
+  <div class="ey">06 · De afspraak ertussen</div>
+  <h2>Werkt spoor 1, <span class="a">dan volgt spoor 2.</span></h2>
+  <ul class="plist">
+    <li><strong>We leggen vooraf samen vast wat spoor 1 moet opleveren</strong> aan gesprekken. Halen we dat binnen de drie maanden niet, dan werken we kosteloos door tot dat wel zo is.</li>
+    <li><strong>Halen we het wel, dan starten we binnen dertig dagen met spoor 2</strong>, zodra jij zegt dat de outsourcing unit er ruimte voor heeft.</li>
+    <li><strong>Je tekent hier geen contract voor.</strong> Dat zei je zelf, en dat hoeft ook niet. Dit is een afspraak die we allebei opschrijven, meer niet.</li>
+    <li><strong>Wat het je aan tijd kost blijft hetzelfde:</strong> een uur voor de ICP-sessie aan de start, en daarna alleen de gesprekken zelf voeren.</li>
+  </ul>
+  <div class="callout-dark">Waarom ik dit zo voorstel: je hebt in negen jaar een naam opgebouwd waar bureaus je om vertrouwen. <strong>Een gedeelde lead betekent dat je met acht of negen andere bureaus om dezelfde prospect racet</strong>, waarbij snelheid wint van kwaliteit en de prospect vier keer hetzelfde verhaal hoort. <span class="a">Dat is precies het omgekeerde van waar jij op gebouwd hebt.</span> Een kaart bij één beslisser op het bureau doet het andersom.</div>
+</section>
+
+<!-- 07 STARTEN -->
+<section class="sec">
+  <div class="ey">07 · Starten en vervolg</div>
+  <h2>Beginnen kan <span class="a">vanaf nu.</span></h2>
+  <ul class="plist">
+    <li><strong>Zodra we akkoord hebben plannen we de ICP-sessie</strong>, en gaat de eerste honderd dezelfde week in productie.</li>
+    <li><strong>Donderdag om 16:00 praten we verder.</strong> Dan heb je dit met je collega's kunnen doornemen en kunnen we het over de details hebben.</li>
+    <li><strong>Eén vraag die ik donderdag aan jou heb:</strong> wat factureert één outsourcing-plaatsing per maand, en hoe lang staat zo'n plek gemiddeld? Met dat getal kunnen we spoor 2 precies op maat maken.</li>
+  </ul>
+  <div class="callout">En het staat er nog steeds: door het gedeelde netwerk met marketingbureaus springen er bij mij een paar bedrijven in gedachten die eigenlijk met jou aan tafel zouden moeten. Die neem ik donderdag mee.</div>
+</section>
+
+</div>
+
+<div class="doc-footer">
+  <div class="df-l">Pique · B2B Appointment Intelligence</div>
+  <div class="df-r">Nieuw voorstel · Acendae · 11 augustus 2026</div>
+</div>
+
+</body>
+</html>
