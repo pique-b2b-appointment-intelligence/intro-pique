@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voor Daniëlle van Alewijn - Swapfiets × Yesty</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Persoonlijke pagina voor Daniëlle van Alewijn, Chief People Officer bij Swapfiets.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23F36E21'/%3E%3Cpath d='M9 15.5l4.5 4.5L23 11' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#F36E21;
+  --orange-soft:#FEF0E6;
+  --orange-tint:#FFF4EC;
+  --purple:#440076;
+  --mint:#5DCAA5;
+  --cream:#FAFAF8;
+  --cream-2:#F4F4F0;
+  --ink:#1A1A1A;
+  --ink-2:#2C2C2C;
+  --muted:rgba(26,26,26,.58);
+  --faint:rgba(26,26,26,.40);
+  --line:rgba(26,26,26,.10);
+  --head:'Poppins',system-ui,sans-serif;
+  --body:'Nunito',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--cream);color:var(--ink-2);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:920px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
+h1,h2,h3,.num{font-family:var(--head);letter-spacing:-.02em}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;padding:1.1rem 0;transition:background .3s,box-shadow .3s,padding .3s}
+.nav.solid{background:rgba(250,250,248,.94);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:.7rem 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:800;font-size:1.15rem;color:var(--ink);letter-spacing:-.03em;text-decoration:none}
+.brand .mark{width:26px;height:26px;border-radius:7px;background:var(--orange);display:grid;place-items:center;flex:none}
+.brand .mark svg{width:15px;height:15px;display:block}
+.nav-cta{font-family:var(--head);font-weight:600;font-size:.82rem;background:var(--orange);color:#fff;padding:.55rem 1.1rem;border-radius:100px;text-decoration:none;white-space:nowrap;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(243,110,33,.32)}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:6rem 0 4rem;position:relative;background:
+  radial-gradient(900px 520px at 78% 8%, var(--orange-tint) 0%, rgba(255,244,236,0) 62%),
+  radial-gradient(680px 460px at 6% 92%, rgba(93,202,165,.15) 0%, rgba(93,202,165,0) 60%),
+  var(--cream)}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--head);font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);background:#fff;border:1px solid rgba(243,110,33,.22);padding:.4rem .9rem;border-radius:100px}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--orange)}
+h1{font-size:clamp(2.1rem,6vw,3.65rem);font-weight:700;line-height:1.08;color:var(--ink);margin-top:1.3rem}
+h1 em{font-style:normal;color:var(--orange)}
+.lead{font-size:clamp(1rem,2.2vw,1.14rem);color:var(--muted);max-width:56ch;margin-top:1.3rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.tag{font-family:var(--head);font-weight:600;font-size:.73rem;color:var(--muted);background:#fff;border:1px solid var(--line);padding:.42rem .85rem;border-radius:100px}
+.scroll-hint{margin-top:3.2rem;font-family:var(--head);font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);display:flex;align-items:center;gap:.6rem}
+.scroll-hint .bar{width:34px;height:1px;background:var(--faint);position:relative;overflow:hidden}
+.scroll-hint .bar::after{content:'';position:absolute;inset:0;background:var(--orange);transform:translateX(-100%);animation:slide 2.2s ease-in-out infinite}
+@keyframes slide{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+/* sections */
+section{padding:clamp(3.5rem,8vw,6rem) 0}
+.sec-head{max-width:60ch}
+.kicker{font-family:var(--head);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.kicker::before{content:'';width:18px;height:2px;background:var(--orange);border-radius:2px}
+h2{font-size:clamp(1.6rem,4vw,2.35rem);font-weight:700;line-height:1.15;color:var(--ink)}
+.sec-sub{font-size:1rem;color:var(--muted);margin-top:.9rem;max-width:58ch}
+
+/* journey */
+.journey{position:relative;margin-top:3rem}
+#jpath{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+#jp-base{fill:none;stroke:rgba(26,26,26,.13);stroke-width:2;stroke-dasharray:2 8;stroke-linecap:round}
+#jp-prog{fill:none;stroke:var(--orange);stroke-width:2.4;stroke-dasharray:2 8;stroke-linecap:round;transition:stroke-dashoffset .12s linear}
+.chapter{position:relative;z-index:1;display:grid;grid-template-columns:56px 1fr;gap:1.5rem;margin-bottom:2.4rem;opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.chapter.in{opacity:1;transform:none}
+.ch-rail{display:flex;justify-content:center}
+.ch-dot{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-family:var(--head);font-weight:700;font-size:.85rem;color:var(--faint);transition:all .45s ease;flex:none}
+.chapter.reached .ch-dot{border-color:var(--orange);color:var(--orange);box-shadow:0 0 0 6px rgba(243,110,33,.10)}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(1.3rem,3vw,1.9rem);box-shadow:0 1px 2px rgba(26,26,26,.03)}
+.card h3{font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.3}
+.card p{font-size:.97rem;color:var(--muted);margin-top:.7rem}
+.card p strong{color:var(--ink);font-weight:700}
+.src{display:inline-block;margin-top:1rem;font-family:var(--head);font-weight:600;font-size:.7rem;letter-spacing:.05em;color:var(--faint);background:var(--cream-2);padding:.3rem .7rem;border-radius:6px}
+.card.accent{background:var(--orange-tint);border-color:rgba(243,110,33,.2)}
+.card.dark{background:var(--purple);border-color:transparent}
+.card.dark h3{color:#fff}
+.card.dark p{color:rgba(255,255,255,.72)}
+.card.dark p strong{color:#fff}
+.pull{font-family:var(--head);font-weight:600;font-size:clamp(1.05rem,2.6vw,1.3rem);line-height:1.45;color:var(--ink);margin-top:1.2rem;padding-left:1.1rem;border-left:3px solid var(--orange)}
+
+/* stat */
+.statbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:1.4rem}
+.stat{background:#fff;padding:1.3rem 1.2rem;text-align:center}
+.stat .num{font-size:1.85rem;font-weight:800;color:var(--orange);line-height:1}
+.stat .lbl{font-size:.82rem;color:var(--muted);margin-top:.4rem;line-height:1.45}
+
+/* bridge grid */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:2rem}
+.feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.4rem 1.5rem}
+.feat .ic{width:34px;height:34px;border-radius:10px;background:var(--orange-soft);display:grid;place-items:center;margin-bottom:.85rem}
+.feat .ic svg{width:17px;height:17px;stroke:var(--orange);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.feat h4{font-family:var(--head);font-size:.98rem;font-weight:700;color:var(--ink);line-height:1.35}
+.feat p{font-size:.9rem;color:var(--muted);margin-top:.45rem}
+
+/* sender */
+.sender{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:start;background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(1.4rem,3vw,2rem);margin-top:2rem}
+.avatar{width:58px;height:58px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-family:var(--head);font-weight:700;font-size:1.25rem;flex:none}
+.sender p{font-size:.97rem;color:var(--muted)}
+.sender p + p{margin-top:.8rem}
+.sig{font-family:var(--head);font-weight:700;color:var(--ink);margin-top:1rem;font-size:.95rem}
+.sig span{display:block;font-weight:500;font-size:.83rem;color:var(--faint)}
+
+/* cta */
+.cta-sec{background:var(--purple);color:#fff}
+.cta-sec h2{color:#fff}
+.cta-sec .kicker{color:var(--mint)}
+.cta-sec .kicker::before{background:var(--mint)}
+.cta-sec .sec-sub{color:rgba(255,255,255,.68)}
+.cta-row{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--head);font-weight:700;font-size:.95rem;padding:.95rem 1.7rem;border-radius:100px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-p{background:var(--orange);color:#fff}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(243,110,33,.35)}
+.btn-s{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn-s:hover{background:rgba(255,255,255,.14)}
+.cta-note{font-size:.88rem;color:rgba(255,255,255,.5);margin-top:1.3rem;max-width:52ch}
+
+footer{background:var(--ink);color:rgba(255,255,255,.45);padding:2rem 0;font-size:.83rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+footer a{color:rgba(255,255,255,.7);text-decoration:none}
+
+@media(max-width:640px){
+  .chapter{grid-template-columns:38px 1fr;gap:1rem}
+  .ch-dot{width:34px;height:34px;font-size:.75rem}
+  #jpath{display:none}
+  .sender{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .chapter{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="mark"><svg viewBox="0 0 32 32"><path d="M8 16.5l5 5L24 10" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      Yesty
+    </a>
+    <a href="#gesprek" class="nav-cta">Stuur er zelf één</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>Persoonlijk voor Swapfiets</span>
+    <h1>Hé Daniëlle, daarom<br>kreeg je mijn brief.</h1>
+    <p class="lead">Ik las hoe jullie naar engagement kijken en ging daarna verder lezen dan ik van plan was. Wat me opviel staat hieronder, in drie stukken. Het kost je vier minuten.</p>
+    <div class="hero-meta">
+      <span class="tag">Acht landen</span>
+      <span class="tag">63 nationaliteiten</span>
+      <span class="tag">Winkels, werkplaatsen en de weg</span>
+    </div>
+    <div class="scroll-hint"><span class="bar"></span>Scroll</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Wat ik zag</div>
+      <h2>Drie dingen, en ze wijzen dezelfde kant op.</h2>
+      <p class="sec-sub">Alles hieronder komt uit openbare bronnen. De datum staat erbij, want een uitspraak uit 2023 zegt iets anders dan een vacature van vorige week.</p>
+    </div>
+
+    <div class="journey" id="journey">
+      <svg id="jpath" preserveAspectRatio="none"><path id="jp-base"></path><path id="jp-prog"></path></svg>
+
+      <div class="chapter">
+        <div class="ch-rail"><div class="ch-dot">01</div></div>
+        <div class="card">
+          <h3>Engagement is bij jullie een cijfer, geen gevoel</h3>
+          <p>Elk kwartaal gemeten, rond de 7, met <strong>7,5 als doel</strong>. Dat is vier meetmomenten per jaar. Weinig organisaties van jullie omvang durven er een streefcijfer aan te hangen, want dan moet je er ook iets mee.</p>
+          <span class="src">Bron: CHRO.nl, interview juni 2023</span>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="ch-rail"><div class="ch-dot">02</div></div>
+        <div class="card">
+          <h3>Het bestand is niet te vangen in één adressenlijst</h3>
+          <p><strong>63 nationaliteiten in acht landen.</strong> Het grootste deel van je mensen staat in een winkel, in een werkplaats of op de weg. Er is geen bureau waar je iets neerlegt en geen kantine waar iedereen langsloopt.</p>
+          <span class="src">Bron: CHRO.nl, interview juni 2023</span>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="ch-rail"><div class="ch-dot">03</div></div>
+        <div class="card">
+          <h3>De rollen die je nu werft, zijn de rollen die het snelst weglopen</h3>
+          <p>Op de vacaturepagina staan deze week winkelmedewerker, monteur en logistics driver, in Amsterdam en Berlijn. <strong>Parttime, jong, en overal verspreid.</strong> Dat zijn precies de mensen bij wie waardering het hardst telt en het minst vaak aankomt.</p>
+          <span class="src">Bron: jobs.swapfiets.com, augustus 2026</span>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="ch-rail"><div class="ch-dot">→</div></div>
+        <div class="card accent">
+          <h3>Het ritme loopt uit de pas</h3>
+          <p>Je meet vier keer per jaar wat mensen van Swapfiets vinden. Daartegenover staat meestal <strong>één moment per jaar</strong> waarop iemand daadwerkelijk iets in handen krijgt. Dat ritme loopt niet gelijk, en het meetmoment kan dat niet oplossen.</p>
+          <p class="pull">Een cijfer dat je vier keer per jaar ophaalt, verandert niet van één cadeau in december.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream-2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Wat het kost</div>
+      <h2>Het duurste deel is niet het cadeau.</h2>
+      <p class="sec-sub">Adressen verzamelen, bonnen regelen, pakketten inpakken of vouchers uitprinten. Voor tachtig medewerkers is dat twee volle dagen. Reken dat om naar acht landen en een team dat in ploegen werkt, en het is geen middagje meer.</p>
+    </div>
+
+    <div class="statbar">
+      <div class="stat"><div class="num">4×</div><div class="lbl">Per jaar meet je wat mensen vinden</div></div>
+      <div class="stat"><div class="num">1×</div><div class="lbl">Per jaar krijgt iemand iets in handen</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">Landen waar dat ene moment moet landen</div></div>
+    </div>
+
+    <div class="grid2" style="margin-top:1.6rem">
+      <div class="card dark">
+        <h3>De WKR maakt het niet makkelijker</h3>
+        <p>De vrije ruimte hangt aan je loonsom, en die verschilt per entiteit. Bij honderd medewerkers en vier miljoen loonsom praat je over ruim <strong>€68.000</strong> aan belastingvrije ruimte. Dat is genoeg voor Sinterklaas én Kerst, maar alleen als iemand precies bijhoudt waar de grens ligt.</p>
+      </div>
+      <div class="card">
+        <h3>En als het cadeau niet past, komt het terug</h3>
+        <p>Gemiddeld wordt <strong>acht procent</strong> van de verstuurde beloningen nooit ingewisseld. Bij een fysiek pakket is dat weggegooid geld. Digitaal komt dat bedrag automatisch terug op je rekening.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Hoe het anders kan</div>
+      <h2>Waardering op het moment zelf, in jullie eigen huisstijl.</h2>
+      <p class="sec-sub">Wat wij bij Yesty doen, kort. Je stuurt een beloning op het moment dat er iets te vieren valt, de ontvanger kiest zelf waar hij hem inwisselt, en jouw team houdt er geen dag administratie aan over.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg></div>
+        <h4>Van Swapfiets, niet van een platform</h4>
+        <p>Logo, kleuren, lettertypen en de welkomsttekst zijn van jullie. De ontvanger ziet Swapfiets, in het Nederlands, Duits of Deens.</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg></div>
+        <h4>Binnen seconden bezorgd</h4>
+        <p>Per mail of sms, direct nadat de aanleiding er is. Een monteur die een lastige week goed doorkwam, hoort dat dezelfde dag.</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h4>De WKR wordt automatisch bewaakt</h4>
+        <p>Je vrije ruimte wordt berekend op je loonsom. Je ziet altijd hoeveel belastingvrij budget er nog is, per medewerker en per entiteit.</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 000 18 15 15 0 000-18z"/></svg></div>
+        <h4>Acht landen uit één portaal</h4>
+        <p>Geen aparte accounts per land en geen extra setup. Ruim 150 merken, en de ontvanger kiest zelf welke bij hem past.</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <h4>Of helemaal automatisch, via je HR-systeem</h4>
+        <p>Een koppeling stuurt alleen de verzenddata door, geen salarisgegevens, met een audittrail per synchronisatie. Verjaardagen en jubilea lopen daarna vanzelf.</p>
+      </div>
+      <div class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 20V10M6 20v-6M18 20V4"/></svg></div>
+        <h4>Je ziet per campagne wat ermee gebeurde</h4>
+        <p>Hoeveel er verstuurd is, hoeveel ingewisseld, welke categorieën gekozen worden. Dat is materiaal voor je volgende engagementmeting.</p>
+      </div>
+    </div>
+
+    <div class="sender">
+      <div class="avatar">NS</div>
+      <div>
+        <p>Ik ben Nick. Ik heb hiervoor HotelSpecials en GiftforYou opgebouwd, en in beide gevallen kwam ik hetzelfde tegen: het geven zelf is leuk, en alles eromheen kost iemand een week.</p>
+        <p>Daarom bouwde ik Yesty. Er zit geen maandbedrag aan vast en er is geen demo nodig. Je kunt vandaag één beloning versturen om te zien hoe dat er voor een van je mensen uitziet, en daarna pas besluiten of dit iets voor Swapfiets is.</p>
+        <p class="sig">Nick Stals<span>Oprichter Yesty, Haarlem</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec" id="gesprek">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">De volgende stap</div>
+      <h2>Stuur er vandaag zelf één.</h2>
+      <p class="sec-sub">Vul één e-mailadres in en verstuur je eerste beloning in minder dan een minuut. Er is geen demo nodig, geen creditcard en geen account voor je hele organisatie. Kies iemand uit je eigen team en kijk wat diegene ziet.</p>
+    </div>
+    <div class="cta-row">
+      <a href="https://yesty.nl/" class="btn btn-p">Verstuur je eerste beloning</a>
+      <a href="mailto:info@yesty.nl?subject=Naar%20aanleiding%20van%20je%20brief" class="btn btn-s">Liever eerst even mailen</a>
+    </div>
+    <p class="cta-note">Wil je het liever één keer samen doorlopen met de acht landen erbij, dan plan ik daar twintig minuten voor in. Dat mag ook nadat je zelf hebt gekeken.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Yesty · Haarlem · <a href="https://yesty.nl/">yesty.nl</a></span>
+    <span>Persoonlijke pagina voor Swapfiets</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60),{passive:true});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.chapter').forEach(el=>io.observe(el));
+
+const journey=document.getElementById('journey'),svg=document.getElementById('jpath');
+const base=document.getElementById('jp-base'),prog=document.getElementById('jp-prog');
+const dots=[...journey.querySelectorAll('.ch-dot')];
+let total=0;
+function build(){
+  if(!journey.clientWidth||window.innerWidth<=640)return;
+  const W=journey.clientWidth,H=journey.clientHeight,jr=journey.getBoundingClientRect();
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  const pts=dots.map(x=>{const r=x.getBoundingClientRect();return{x:r.left+r.width/2-jr.left,y:r.top+r.height/2-jr.top};});
+  if(pts.length<2)return;
+  let dd='M '+pts[0].x.toFixed(1)+' '+pts[0].y.toFixed(1);
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],c=pts[i],my=((a.y+c.y)/2).toFixed(1);
+    dd+=' C '+a.x.toFixed(1)+' '+my+', '+c.x.toFixed(1)+' '+my+', '+c.x.toFixed(1)+' '+c.y.toFixed(1);}
+  base.setAttribute('d',dd);prog.setAttribute('d',dd);
+  total=prog.getTotalLength();prog.style.strokeDasharray='2 8';
+  prog.style.strokeDashoffset=0;
+  prog.style.setProperty('stroke-dasharray',total+'px');
+  onScroll();
+}
+function onScroll(){
+  if(!total)return;
+  const jr=journey.getBoundingClientRect(),trig=innerHeight*.55;
+  const frac=Math.max(0,Math.min(1,(trig-jr.top)/journey.clientHeight));
+  prog.style.strokeDashoffset=total*(1-frac);
+  dots.forEach(x=>{const r=x.getBoundingClientRect();x.closest('.chapter').classList.toggle('reached',r.top+r.height/2<trig);});
+}
+addEventListener('scroll',onScroll,{passive:true});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(build,120)});
+build();addEventListener('load',build);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
+setTimeout(build,400);setTimeout(build,1200);
+</script>
+</body>
+</html>
