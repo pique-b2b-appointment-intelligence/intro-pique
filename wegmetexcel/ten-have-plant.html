@@ -116,6 +116,26 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .ft-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--amber);padding-bottom:3px;margin-bottom:2.25rem;transition:gap .3s var(--ease)}
 .ft-cta:hover{gap:.85rem}
 .ft-cta svg{width:15px;height:15px;stroke:var(--amber);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ft-logo{height:26px;width:auto;display:inline-block;margin-bottom:.8rem}
+.founder{grid-template-columns:minmax(190px,290px) 1fr;align-items:center}
+.fo-team{width:100%;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(20,28,51,.15);margin:0}
+.fo-team img{width:100%;height:auto;display:block}
+@media(max-width:600px){.fo-team{max-width:300px;margin:0 auto}}
+.cases{max-width:920px;margin:0 auto;padding:clamp(2rem,5vh,4rem) clamp(1.5rem,4vw,2rem)}
+.cases-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);text-align:center;margin-bottom:.9rem}
+.cases-kop{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.15;letter-spacing:-.02em;text-align:center;color:var(--ink);margin-bottom:clamp(2rem,4vh,3rem)}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,1.75rem)}
+.case{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(1.5rem,3vw,2rem);box-shadow:0 12px 40px rgba(20,28,51,.06)}
+.case-name{font-family:var(--serif);font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:.3rem}
+.case-tag{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.case-text{font-size:.98rem;line-height:1.7;color:var(--ink2)}
+@media(max-width:700px){.case-grid{grid-template-columns:1fr}}
+.faq{max-width:720px;margin:0 auto;padding:clamp(1rem,3vh,2rem) clamp(1.5rem,4vw,2rem) clamp(3rem,6vh,5rem)}
+.faq-kop{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);text-align:center;color:var(--ink);margin-bottom:clamp(1.5rem,3vh,2.25rem)}
+.faq-item{border-top:1px solid var(--line);padding:1.15rem 0}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-q{font-weight:600;font-size:1.02rem;color:var(--ink);margin-bottom:.4rem}
+.faq-a{font-size:.96rem;line-height:1.65;color:var(--ink2)}
 @media(max-width:800px){
   .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
   .chapter.center{justify-content:flex-start}
@@ -142,7 +162,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
         Je browser ondersteunt deze video niet.
       </video>
     </div>
-    <div class="vlabel">Kort woord vooraf van Patrick, oprichter WegMetExcel</div>
+    <div class="vlabel">Een kort woord vooraf van Patrick</div>
     <h1 class="intro-h1">Hé Rob, wil je weten waarom ik je een kaart heb gestuurd?</h1>
     <p class="intro-sub">Scroll dan rustig verder of bekijk zo mijn video. Ik neem je stap voor stap mee.</p>
     <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
@@ -159,14 +179,14 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Er lag een kaart bij je op de mat, en daaronder deze pagina. Ik heb even naar jullie gekeken voordat ik hem stuurde. Jullie zijn echte Campanula-specialisten en doen de teelt en de verkoop helemaal zelf. Wat me opviel gaat niet over of het draait. Dat doet het. Het gaat over wat het je kost om het overzicht te houden.</p><div class="ch-sign">Patrick, oprichter WegMetExcel</div></div>
+        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Er lag een kaart bij je op de mat, en daaronder deze pagina. Ik heb even naar jullie gekeken voordat ik hem stuurde. Jullie zijn echte Campanula-specialisten en doen de teelt en de verkoop helemaal zelf. Wat me opviel gaat niet over of het draait. Dat doet het. Het gaat over hoeveel meer je uit je eigen cijfers zou kunnen halen.</p></div>
       </div>
     </section>
 
     <section class="chapter center phase">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat ik zag</div><h2 class="ch-kop ch-head">Bij Ten Have Plant.</h2><p class="ch-sub">Drie dingen die me opvielen. Ze horen bij elkaar.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Wat we vaak zien</div><h2 class="ch-kop ch-head">Bij bedrijven als Ten Have Plant.</h2><p class="ch-sub">Twee dingen die we vaak tegenkomen, en die ook bij jullie kunnen spelen.</p></div>
       </div>
     </section>
 
@@ -174,21 +194,14 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Je systemen praten niet met elkaar.</h2><p class="ch-text">Je teelt, je verkoop, je arbeid en je machines maken de hele dag data. Alleen zit die overal apart. Bij jullie zit dat in Floriday, de klimaatcomputer, de oppotlijn en de arbeidsregistratie, allemaal apart. Aan het eind van de maand plakt iemand dat met de hand aan elkaar in Excel.</p><div class="ch-bron">Bron: Floriday koppelt met 23 losse softwarepakketten voor kwekers</div></div>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">De data is er wel, alleen wordt ze niet benut.</h2><p class="ch-text">Je teelt, je verkoop, je arbeid en je machines maken de hele dag data. Vaak zit dat verspreid over Floriday, de klimaatcomputer, de oppotlijn en de arbeidsregistratie, allemaal apart. De inzichten zitten er wel in, alleen kost het te veel tijd om erbij te komen, of ontbreekt de kennis om er iets mee te doen. Dus blijft het potentieel liggen.</p></div>
       </div>
     </section>
-    <!-- Bevinding 2 — sector-waar, geldt voor elke RFH-aanvoerende kweker -->
-    <section class="chapter left">
-      <div class="ch-inner">
-        <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Op 1 september valt een databron weg.</h2><p class="ch-text">Royal FloraHolland stopt dan met drie berichten, V-EPT, DAGSTA en EPT. Precies de bron waarmee veel kwekers hun prijs- en omzetrapportage voeden. Draai je daar een Excel of dashboard op, dan klopt dat straks niet meer.</p><div class="ch-bron">Bron: Royal FloraHolland, uitfasering EDI-berichten per 1 september 2026</div></div>
-      </div>
-    </section>
-    <!-- Bevinding 3 -->
+    <!-- Bevinding 2 -->
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Je weet wat je verkocht, niet wat het kostte.</h2><p class="ch-text">Verkoop staat scherp. Maar wat een gewas je kostte om te telen, met arbeid als grootste post, dat blijft een schatting. En arbeid zit nu net het verst van je verkoopcijfers af.</p><div class="ch-bron">Bron: WUR en RaboResearch over kostprijs en arbeid in de glastuinbouw</div></div>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Sturen op cijfers in plaats van op gevoel.</h2><p class="ch-text">Je kosten ken je heus wel. Waar wij het verschil maken, zit in de inzichten die tot actie leiden. Welk gewas volgend jaar meer ruimte krijgt en welke minder. Arbeid is je grootste post, dus waar zitten de uitschieters en wie plukt efficienter. En vooral de waarom achter een stijging of daling, zodat je weet waar je moet ingrijpen.</p></div>
       </div>
     </section>
 
@@ -196,14 +209,14 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter center pivot">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Waar het op uitkomt</div><p class="ch-pivot">Je stuurt een bedrijf van jullie formaat op cijfers die je met de hand uit vijf systemen bij elkaar plakt. En precies als het druk wordt, is dat overzicht er het minst.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Waar het op uitkomt</div><p class="ch-pivot">Mensen doen consistent wat makkelijk is. Zolang je cijfers overal vandaan geplakt moeten worden, is sturen op die cijfers het eerste dat blijft liggen. Juist als het druk wordt.</p></div>
       </div>
     </section>
 
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">De prijs van stilzitten.</h2><p class="ch-text">Elke maand kost dat lijmwerk iemand dagen, en het zit in het hoofd van één persoon. De marge in de sector staat ondertussen onder druk: de kosten stegen harder dan de opbrengsten. Wie niet ziet waar het geld weglekt, stuurt op onderbuik precies wanneer dat het duurst is.</p><p class="ch-pull">'Sturen op gevoel kan niet meer als de marge zo dun is.'</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">De prijs van stilzitten.</h2><p class="ch-text">De sector staat onder druk. Strengere regelgeving, een mogelijk sproeiverbod, groeiende concurrentie uit het buitenland en gasprijzen die alle kanten op schieten. De marges worden dunner, en juist dan wordt sturen op je eigen cijfers belangrijker. Wie op onderbuik stuurt, doet dat precies wanneer het het duurst is.</p><p class="ch-pull">'Sturen op gevoel kan niet meer als de marge zo dun is.'</p></div>
       </div>
     </section>
 
@@ -211,58 +224,89 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter center phase">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Het voorstel</div><h2 class="ch-kop ch-head">Wat ik voorstel.</h2><p class="ch-sub">Wij koppelen je systemen en bouwen er één helder overzicht omheen. Zodat je ziet wat een gewas echt kost en waar je verdient.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Het voorstel</div><h2 class="ch-kop ch-head">Wat ik voorstel.</h2><p class="ch-sub">Wij brengen je data samen op één plek en maken er inzicht van waar je op kunt sturen. Data wordt inzicht, inzicht wordt actie.</p></div>
       </div>
     </section>
 
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Alles in één beeld.</h2><p class="ch-text">Verkoop, arbeid en machines bij elkaar, in plaats van in losse exports.</p></div>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Je inzichten binnen seconden.</h2><p class="ch-text">Een paar klikken en je bent bij je cijfers, in plaats van uren in Excel of dagen een rapportage bouwen.</p></div>
       </div>
     </section>
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Kostprijs per gewas, per week.</h2><p class="ch-text">Geen schatting achteraf, maar zicht op waar je verdient en waar het weglekt terwijl het nog kan.</p></div>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Kostprijs per gewas, per week.</h2><p class="ch-text">Plus zicht dat je helpt bij een financieringsaanvraag, bij gesprekken met je mensen en bij de keuze welk gewas volgend jaar de ruimte krijgt.</p></div>
       </div>
     </section>
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">We beginnen klein.</h2><p class="ch-text">Eén stroom data die we ontsluiten. Werkt het, dan bouwen we het rustig uit, in jouw tempo. Werkt het niet, dan kostte het je een gesprek.</p></div>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">We beginnen klein.</h2><p class="ch-text">Eén stroom data die we ontsluiten. Werkt het, dan bouwen we rustig uit, in jouw tempo. En we werken met een succesgarantie: valt het tegen, dan gaan we door op onze kosten of je krijgt je vergoeding terug.</p></div>
+      </div>
+    </section>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">04</div><h2 class="ch-kop">En als je verder wilt: Atlas.</h2><p class="ch-text">Zodra je overzicht staat, kun je Atlas inzetten. Een AI-collega die je cijfers en je context kent, zodat je gewoon een vraag typt en meteen antwoord krijgt uit je eigen data.</p></div>
       </div>
     </section>
 </main>
 
 <!-- ===== AKT 4 — FOUNDER + VOLGENDE STAP ===== (pricing bewust weggelaten: projecten groeien organisch) -->
 <section class="founder" id="founder">
-  <div class="fo-photo fr"><img src="patrick-pelsma.jpg" alt="Patrick Pelsma, oprichter WegMetExcel"></div>
+  <figure class="fo-team fr"><img src="team-wegmetexcel.jpg" alt="Het team van WegMetExcel"></figure>
   <div class="fr">
-    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-eyebrow">Wie we zijn</div>
     <div class="fo-text">
-      <p>Ik ben Patrick, oprichter van WegMetExcel. Met een klein, vast team halen we kwekers uit Excel en brengen we hun cijfers samen op één plek.</p>
-      <p>We werken met een paar bedrijven tegelijk, want ik wil jullie processen echt leren kennen. Soms kennen we ze op een gegeven moment beter dan de klant zelf.</p>
-      <p>Volume is het doel niet. Zicht op je eigen cijfers wel.</p>
+      <p>Met een klein, vast team van dataspecialisten helpen we kwekers van Excel af en brengen we hun cijfers samen op één plek. Zo kun je altijd sturen en de juiste acties doen op basis van de inzichten uit je eigen data.</p>
+      <p>We werken met een paar bedrijven tegelijk, want we willen jullie processen en data echt kennen. Soms kennen wij onze klanten op een gegeven moment beter dan zij hun eigen bedrijf.</p>
     </div>
     <p class="fo-name"><strong>Patrick Pelsma</strong>, oprichter WegMetExcel</p>
   </div>
+</section>
+
+<!-- ===== SOCIAL PROOF ===== -->
+<section class="cases" id="cases">
+  <div class="cases-eyebrow reveal">Uit de praktijk</div>
+  <h2 class="cases-kop reveal">Wat dit oplevert bij kwekers.</h2>
+  <div class="case-grid">
+    <div class="case reveal">
+      <div class="case-name">LG Flowers</div>
+      <div class="case-tag">Alle data gekoppeld</div>
+      <p class="case-text">We hebben alle data gekoppeld, van teelt en verkoop tot inkoop. In de kas kunnen we nu aanwijzen waar de derving oploopt en op welk gewas, zodat er direct op geacteerd wordt. En we zien per medewerker wie een bloemsoort efficienter plukt, zodat je daarop kunt sturen. In een markt met dunne marges telt elk procent.</p>
+    </div>
+    <div class="case reveal">
+      <div class="case-name">Rosa Plaza</div>
+      <div class="case-tag">Kostprijs en nacalculatie</div>
+      <p class="case-text">Rosa Plaza teelt in Ethiopie, verwerkt en verkoopt in Nederland. We rekenen samengestelde artikelen terug naar de echte kostprijs per product, en maken zichtbaar of iets beter op de klok of op contract verkocht kan worden. Die nacalculatie bepaalt hoe je het jaar erna de contractonderhandelingen ingaat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <h2 class="faq-kop reveal">Veelgestelde vragen.</h2>
+  <div class="faq-item reveal"><div class="faq-q">We hebben al een Power BI. Is dit dan nog relevant?</div><p class="faq-a">Zeker. We kijken graag mee met wat je nu hebt en leggen het naast wat wij bij kwekers bouwen, zodat je precies ziet waar de verbeterpunten zitten.</p></div>
+  <div class="faq-item reveal"><div class="faq-q">Moeten we eerst van systeem wisselen?</div><p class="faq-a">Nee. We werken met de systemen die je al hebt en ontsluiten de data daaruit.</p></div>
+  <div class="faq-item reveal"><div class="faq-q">Hoeveel tijd kost het ons?</div><p class="faq-a">Weinig. Wij doen het koppelwerk, jij krijgt het overzicht.</p></div>
 </section>
 
 <section class="cta" id="gesprek">
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">De volgende stap</div>
     <h2 class="cta-h reveal">Even bijpraten?</h2>
-    <p class="cta-sub reveal">Een kwartier, vrijblijvend. Ik pitch je niks, we kijken gewoon even wat er bij je speelt. [Slot: eerste stap uit de brief, zodra bepaald.]</p>
+    <p class="cta-sub reveal">Een kwartier, vrijblijvend. Ik pitch je niks, we kijken gewoon wat er speelt. Je krijgt sowieso twee concrete tips mee die je meteen kunt gebruiken, of we nu samenwerken of niet, op basis van wat we bij andere kwekers zien.</p>
     <!-- Cal.com embed (placeholder): vervang calLink onderaan door Patricks eigen cal.com-link. -->
     <div class="cta-embed reveal"><div id="cal-embed"></div></div>
   </div>
 </section>
 
 <footer>
-  <div class="ft-brand">Weg<span>Met</span>Excel</div>
+  <div class="ft-brand"><img class="ft-logo" src="wegmetexcel-logo.svg" alt="WegMetExcel"></div>
   <div class="ft-meta">
-    Cijfers waarop je kunt sturen &nbsp;&middot;&nbsp; <a href="https://www.wegmetexcel.nl">wegmetexcel.nl</a><br>
+    <a href="https://www.wegmetexcel.nl">wegmetexcel.nl</a><br>
     &copy; 2026 WegMetExcel
   </div>
 </footer>
