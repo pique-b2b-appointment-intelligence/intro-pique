@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!--
+  WEGMETEXCEL — persoonlijke landingspagina (sierteelt). Master-sjabloon.
+  Vorm = Pique design-ijkpunt (journey-lijn, navy hero, serif, amber accent).
+  Merk = WegMetExcel, founder = Patrick Pelsma. Video = placeholder ("volgt").
+  Personaliseer per prospect: vervang Evert en Van Helvoort Company, en scherp
+  bevinding 1 + de pivot aan met de research per prospect (exacte systemen/omvang).
+  NOG AAN TE LEVEREN: patrick-intro.mp4 (gedeelde founder-video), boekingslink Patrick.
+-->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WegMetExcel voor Van Helvoort Company</title>
+<meta name="description" content="Een persoonlijk voorstel voor Van Helvoort Company.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FBFAF8;--ink:#141C33;--ink2:rgba(20,28,51,.66);--ink3:rgba(20,28,51,.42);
+  --navy:#0E1526;--amber:#C6893C;--ambers:#E0AC66;--line:rgba(20,28,51,.13);--white:#fff;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);
+  --fs-h:clamp(1.9rem,3vw,2.7rem);--fs-body:clamp(1.02rem,1.25vw,1.16rem);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
+::selection{background:rgba(198,137,60,.2)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.5rem clamp(1.5rem,4vw,3rem);transition:background .5s var(--ease),backdrop-filter .5s,padding .4s}
+nav.solid{background:rgba(251,250,248,.72);backdrop-filter:blur(16px) saturate(1.4);padding-top:1rem;padding-bottom:1rem}
+.logo{display:flex;align-items:center;text-decoration:none;background:#fff;padding:.5rem .8rem;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.18);transition:background .5s var(--ease),box-shadow .5s,padding .4s}
+.logo-img{height:22px;width:auto;display:block}
+nav.solid .logo{background:transparent;box-shadow:none;padding:.2rem 0}
+.nav-cta{font-size:.78rem;font-weight:500;letter-spacing:.01em;color:rgba(255,255,255,.7);text-decoration:none;padding:.5rem .95rem;border-radius:100px;border:1px solid rgba(255,255,255,.16);transition:all .4s}
+.nav-cta:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+nav.solid .nav-cta{color:var(--ink2);border-color:var(--line)}
+nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
+.intro{position:relative;background:var(--navy);color:#fff;padding:clamp(6rem,12vh,8rem) clamp(1.5rem,4vw,3rem) clamp(4rem,9vh,6.5rem);overflow:hidden}
+.intro-grid{position:absolute;inset:0;background-image:radial-gradient(circle at 50% 0,rgba(198,137,60,.1),transparent 55%);pointer-events:none}
+.intro-inner{position:relative;max-width:940px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+.intro-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(224,172,102,.9);margin-bottom:2.25rem;opacity:0;animation:up 1s var(--ease) .15s forwards}
+.vframe{width:100%;max-width:820px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 50px 130px rgba(0,0,0,.5);background:#0b101d;aspect-ratio:16/9;opacity:0;animation:up 1.1s var(--ease) .3s forwards;position:relative}
+.vplace{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;background:radial-gradient(circle at 50% 42%,rgba(198,137,60,.14),transparent 60%)}
+.vplay{width:74px;height:74px;border-radius:50%;border:1.5px solid rgba(224,172,102,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.04)}
+.vplay svg{width:26px;height:26px;fill:var(--ambers);margin-left:4px}
+.vplace-t{font-size:.82rem;font-weight:500;letter-spacing:.03em;color:rgba(255,255,255,.5)}
+.vlabel{font-size:.78rem;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.42);margin-top:1rem;opacity:0;animation:up 1s var(--ease) .42s forwards}
+.intro-h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.12;letter-spacing:-.02em;margin-top:clamp(2.5rem,5vh,3.5rem);max-width:22ch;opacity:0;animation:up 1.1s var(--ease) .5s forwards}
+.intro-sub{color:rgba(255,255,255,.55);font-size:1.05rem;font-weight:300;margin-top:1.25rem;max-width:46ch;opacity:0;animation:up 1s var(--ease) .68s forwards}
+.scrollcue{margin-top:clamp(2.5rem,6vh,4rem);display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:up 1s var(--ease) .9s forwards}
+.scrollcue span{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.scrollcue i{display:block;width:1px;height:38px;background:linear-gradient(rgba(224,172,102,.7),transparent);animation:cue 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%,100%{transform:scaleY(.5);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.journey{position:relative;max-width:1180px;margin:0 auto;padding:clamp(4rem,9vh,7rem) clamp(1.25rem,3vw,2rem) clamp(3rem,7vh,5rem)}
+.journey-path{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.jp-base{fill:none;stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11;animation:march 40s linear infinite}
+@keyframes march{to{stroke-dashoffset:-92}}
+.jp-prog{fill:none;stroke:var(--amber);stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(198,137,60,.4))}
+.chapter{position:relative;z-index:1;display:flex;padding:clamp(5.5vh,8vh,10vh) 0}
+.chapter.left{justify-content:flex-start}
+.chapter.right{justify-content:flex-end}
+.chapter.center{justify-content:center}
+.ch-inner{position:relative;width:min(400px,40%)}
+.chapter.center .ch-inner{width:min(560px,78%);text-align:center}
+.chapter.center .ch-body{background:var(--bg);padding:1.5rem 1.75rem;border-radius:16px;position:relative;z-index:1}
+.ch-dot{position:absolute;top:-1.7rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--line);z-index:2;transition:border-color .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+.chapter.left .ch-dot{right:-1.7rem}
+.chapter.right .ch-dot{left:-1.7rem}
+.chapter.center .ch-dot{left:50%;transform:translateX(-50%)}
+.chapter.reached .ch-dot{border-color:var(--amber);background:var(--amber);box-shadow:0 0 0 6px rgba(198,137,60,.12)}
+.ch-body{opacity:0;transform:translateY(30px);filter:blur(5px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.chapter.in .ch-body{opacity:1;transform:none;filter:blur(0)}
+.ch-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+.ch-num{font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--ink3);margin-bottom:.9rem;font-variant-numeric:tabular-nums}
+.ch-kop{font-family:var(--serif);font-weight:500;font-size:var(--fs-h);line-height:1.16;letter-spacing:-.015em;color:var(--ink);margin-bottom:.9rem}
+.ch-head{font-size:clamp(2.1rem,3.6vw,3rem);margin-bottom:0}
+.ch-sub{font-size:1.06rem;color:var(--ink2);line-height:1.7;margin-top:1rem;font-weight:300;max-width:38ch;margin-left:auto;margin-right:auto}
+.ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.75;font-weight:400}
+.ch-bron{font-size:.72rem;color:var(--ink3);margin-top:.95rem;letter-spacing:.02em}
+.ch-sign{font-size:.85rem;color:var(--ink3);margin-top:1.4rem;font-weight:500}
+.chapter.pivot{padding:clamp(8vh,12vh,15vh) 0}
+.ch-pivot{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.1vw,1.75rem);line-height:1.42;letter-spacing:-.015em;color:var(--ink)}
+.chapter.pivot .ch-dot{width:16px;height:16px;top:-2.1rem}
+.chapter.pivot .ch-inner{width:min(680px,88%)}
+.chapter.phase{padding-top:clamp(7vh,10vh,13vh)}
+.chapter.phase .ch-dot{width:15px;height:15px;top:-2.1rem}
+.ch-pull{font-family:var(--serif);font-weight:500;font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.4;color:var(--ink);border-left:3px solid var(--amber);padding-left:1.1rem;margin-top:1.3rem}
+.founder{max-width:760px;margin:0 auto;padding:clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,2rem) clamp(4rem,8vh,6rem);display:grid;grid-template-columns:auto 1fr;gap:clamp(1.75rem,4vw,3rem);align-items:center}
+.founder .fr{opacity:0;transform:translateY(24px);filter:blur(4px);transition:all 1s var(--ease)}
+.founder.in .fr{opacity:1;transform:none;filter:blur(0)}
+.fo-mono{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:50%;background:var(--navy);color:var(--ambers);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.6rem;font-weight:600;box-shadow:0 20px 50px rgba(20,28,51,.15)}
+.fo-photo{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:50%;overflow:hidden;box-shadow:0 20px 50px rgba(20,28,51,.15)}
+.fo-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.fo-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.fo-text{font-family:var(--sans);font-weight:400;font-size:1.02rem;line-height:1.72;color:var(--ink2);margin-bottom:1.1rem}
+.fo-text p{margin-bottom:.7rem}
+.fo-text p:last-child{margin-bottom:0}
+.fo-name{font-size:.92rem;color:var(--ink2)}.fo-name strong{color:var(--ink);font-weight:600}
+@media(max-width:600px){.founder{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.cta{background:var(--navy);color:#fff;padding:clamp(4.5rem,10vh,7rem) clamp(1.5rem,4vw,2rem)}
+.cta-inner{max-width:720px;margin:0 auto;text-align:center}
+.cta-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(224,172,102,.9);margin-bottom:1.25rem}
+.cta-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.15;letter-spacing:-.02em}
+.cta-sub{color:rgba(255,255,255,.6);font-size:1.05rem;font-weight:300;margin:1.25rem auto 0;max-width:48ch}
+.cta-embed{margin-top:clamp(2.5rem,5vh,3.5rem);background:#fff;border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden;min-height:640px}
+#cal-embed{width:100%;min-height:640px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
+.ft-brand{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:.8rem}
+.ft-brand span{color:var(--amber)}
+.ft-meta{font-size:.74rem;color:var(--ink3);line-height:1.9}
+.ft-meta a{color:var(--ink2);text-decoration:none}
+.ft-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--amber);padding-bottom:3px;margin-bottom:2.25rem;transition:gap .3s var(--ease)}
+.ft-cta:hover{gap:.85rem}
+.ft-cta svg{width:15px;height:15px;stroke:var(--amber);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ft-logo{height:26px;width:auto;display:inline-block;margin-bottom:.8rem}
+.founder{grid-template-columns:minmax(190px,290px) 1fr;align-items:center}
+.fo-team{width:100%;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(20,28,51,.15);margin:0}
+.fo-team img{width:100%;height:auto;display:block}
+@media(max-width:600px){.fo-team{max-width:300px;margin:0 auto}}
+.cases{max-width:920px;margin:0 auto;padding:clamp(2rem,5vh,4rem) clamp(1.5rem,4vw,2rem)}
+.cases-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);text-align:center;margin-bottom:.9rem}
+.cases-kop{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.15;letter-spacing:-.02em;text-align:center;color:var(--ink);margin-bottom:clamp(2rem,4vh,3rem)}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,1.75rem)}
+.case{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(1.5rem,3vw,2rem);box-shadow:0 12px 40px rgba(20,28,51,.06)}
+.case-name{font-family:var(--serif);font-weight:600;font-size:1.15rem;color:var(--ink);margin-bottom:.3rem}
+.case-tag{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.case-text{font-size:.98rem;line-height:1.7;color:var(--ink2)}
+@media(max-width:700px){.case-grid{grid-template-columns:1fr}}
+.faq{max-width:720px;margin:0 auto;padding:clamp(1rem,3vh,2rem) clamp(1.5rem,4vw,2rem) clamp(3rem,6vh,5rem)}
+.faq-kop{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);text-align:center;color:var(--ink);margin-bottom:clamp(1.5rem,3vh,2.25rem)}
+.faq-item{border-top:1px solid var(--line);padding:1.15rem 0}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-q{font-weight:600;font-size:1.02rem;color:var(--ink);margin-bottom:.4rem}
+.faq-a{font-size:.96rem;line-height:1.65;color:var(--ink2)}
+@media(max-width:800px){
+  .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
+  .chapter.center{justify-content:flex-start}
+  .ch-inner,.chapter.center .ch-inner{width:100%;text-align:left}
+  .ch-sub{margin-left:0;margin-right:0}
+  .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot,.chapter.center .ch-dot{left:-2.4rem;right:auto;top:.3rem;transform:none}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a href="#gesprek" class="nav-cta">Even bijpraten</a>
+  <a href="#top" class="logo" aria-label="WegMetExcel"><img class="logo-img" src="wegmetexcel-logo.svg" alt="WegMetExcel"></a>
+</nav>
+
+<!-- ============ HERO ============ navy, video van Patrick (placeholder), serif kop met voornaam. -->
+<header class="intro" id="top">
+  <div class="intro-grid"></div>
+  <div class="intro-inner">
+    <div class="intro-eyebrow">Persoonlijk voor Van Helvoort Company</div>
+    <div class="vframe">
+      <video class="vvid" controls preload="metadata" playsinline style="width:100%;height:100%;object-fit:cover;display:block">
+        <source src="patrick-intro.mp4" type="video/mp4">
+        Je browser ondersteunt deze video niet.
+      </video>
+    </div>
+    <div class="vlabel">Een kort woord vooraf van Patrick</div>
+    <h1 class="intro-h1">Hé Evert, wil je weten waarom ik je een kaart heb gestuurd?</h1>
+    <p class="intro-sub">Scroll dan rustig verder of bekijk zo mijn video. Ik neem je stap voor stap mee.</p>
+    <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="journey-path" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path>
+    <path class="jp-prog" id="jp-prog"></path>
+  </svg>
+
+    <!-- ===== AKT 1 — HERKENNING ===== -->
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Er lag een kaart bij je op de mat, en daaronder deze pagina. Ik heb even naar jullie gekeken voordat ik hem stuurde. Jullie namen per 1 oktober de santini-activiteiten van Funny Santini over, waarmee jullie naar zo'n 30 hectare en 150 miljoen stelen groeien. Wat me opviel gaat niet over of het draait. Dat doet het. Het gaat over hoeveel meer je uit je eigen cijfers zou kunnen halen.</p></div>
+      </div>
+    </section>
+
+    <section class="chapter center phase">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Wat we vaak zien</div><h2 class="ch-kop ch-head">Bij bedrijven als Van Helvoort Company.</h2><p class="ch-sub">Twee dingen die we vaak tegenkomen, en die ook bij jullie kunnen spelen.</p></div>
+      </div>
+    </section>
+
+    <!-- Bevinding 1 — per prospect aanscherpen met hun exacte systemen -->
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">De data is er wel, alleen wordt ze niet benut.</h2><p class="ch-text">Je teelt, je verkoop, je arbeid en je machines maken de hele dag data. Vaak zit dat verspreid over Floriday, de klimaatcomputer, de oogst- en boslijn en de arbeidsregistratie, elk in een eigen hoekje. De inzichten zitten er wel in, alleen kost het te veel tijd om erbij te komen, of ontbreekt de kennis om er iets mee te doen. Dus blijft het potentieel liggen.</p></div>
+      </div>
+    </section>
+    <!-- Bevinding 2 -->
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Sturen op cijfers in plaats van op gevoel.</h2><p class="ch-text">Je kosten ken je heus wel. Waar wij het verschil maken, zit in de inzichten die tot actie leiden. Welk gewas volgend jaar meer ruimte krijgt en welke minder. Arbeid is je grootste post, dus waar zitten de uitschieters en wie plukt efficienter. En vooral de waarom achter een stijging of daling, zodat je weet waar je moet ingrijpen.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== AKT 2 — DE SPANNING ===== -->
+    <section class="chapter center pivot">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Waar het op uitkomt</div><p class="ch-pivot">Mensen doen consistent wat makkelijk is. Zolang je cijfers overal vandaan geplakt moeten worden, is sturen op die cijfers het eerste dat blijft liggen. Juist als het druk wordt.</p></div>
+      </div>
+    </section>
+
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">De prijs van stilzitten.</h2><p class="ch-text">De sector staat onder druk. Strengere regelgeving, een mogelijk sproeiverbod, groeiende concurrentie uit het buitenland en gasprijzen die alle kanten op schieten. De marges worden dunner, en juist dan wordt sturen op je eigen cijfers belangrijker. Wie op onderbuik stuurt, doet dat precies wanneer het het duurst is.</p><p class="ch-pull">'Sturen op gevoel kan niet meer als de marge zo dun is.'</p></div>
+      </div>
+    </section>
+
+    <!-- ===== AKT 3 — DE BRUG ===== -->
+    <section class="chapter center phase">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Het voorstel</div><h2 class="ch-kop ch-head">Wat ik voorstel.</h2><p class="ch-sub">Wij brengen je data samen op één plek en maken er inzicht van waar je op kunt sturen. Data wordt inzicht, inzicht wordt actie.</p></div>
+      </div>
+    </section>
+
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Je inzichten binnen seconden.</h2><p class="ch-text">Een paar klikken en je bent bij je cijfers, in plaats van uren in Excel of dagen een rapportage bouwen.</p></div>
+      </div>
+    </section>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Kostprijs per gewas, per week.</h2><p class="ch-text">Plus zicht dat je helpt bij een financieringsaanvraag, bij gesprekken met je mensen en bij de keuze welk gewas volgend jaar de ruimte krijgt.</p></div>
+      </div>
+    </section>
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">We beginnen klein.</h2><p class="ch-text">Eén stroom data die we ontsluiten. Werkt het, dan bouwen we rustig uit, in jouw tempo. En we werken met een succesgarantie: valt het tegen, dan gaan we door op onze kosten of je krijgt je vergoeding terug.</p></div>
+      </div>
+    </section>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">04</div><h2 class="ch-kop">En als je verder wilt: Atlas.</h2><p class="ch-text">Zodra je overzicht staat, kun je Atlas inzetten. Een AI-collega die je cijfers en je context kent, zodat je gewoon een vraag typt en meteen antwoord krijgt uit je eigen data.</p></div>
+      </div>
+    </section>
+</main>
+
+<!-- ===== AKT 4 — FOUNDER + VOLGENDE STAP ===== (pricing bewust weggelaten: projecten groeien organisch) -->
+<section class="founder" id="founder">
+  <figure class="fo-team fr"><img src="team-wegmetexcel.jpg" alt="Het team van WegMetExcel"></figure>
+  <div class="fr">
+    <div class="fo-eyebrow">Wie we zijn</div>
+    <div class="fo-text">
+      <p>Met een klein, vast team van dataspecialisten helpen we kwekers van Excel af en brengen we hun cijfers samen op één plek. Zo kun je altijd sturen en de juiste acties doen op basis van de inzichten uit je eigen data.</p>
+      <p>We werken met een paar bedrijven tegelijk, want we willen jullie processen en data echt kennen. Soms kennen wij onze klanten op een gegeven moment beter dan zij hun eigen bedrijf.</p>
+    </div>
+    <p class="fo-name"><strong>Patrick Pelsma</strong>, oprichter WegMetExcel</p>
+  </div>
+</section>
+
+<!-- ===== SOCIAL PROOF ===== -->
+<section class="cases" id="cases">
+  <div class="cases-eyebrow reveal">Uit de praktijk</div>
+  <h2 class="cases-kop reveal">Wat dit oplevert bij kwekers.</h2>
+  <div class="case-grid">
+    <div class="case reveal">
+      <div class="case-name">LG Flowers</div>
+      <div class="case-tag">Alle data gekoppeld</div>
+      <p class="case-text">We hebben alle data gekoppeld, van teelt en verkoop tot inkoop. In de kas kunnen we nu aanwijzen waar de derving oploopt en op welk gewas, zodat er direct op geacteerd wordt. En we zien per medewerker wie een bloemsoort efficienter plukt, zodat je daarop kunt sturen. In een markt met dunne marges telt elk procent.</p>
+    </div>
+    <div class="case reveal">
+      <div class="case-name">Rosa Plaza</div>
+      <div class="case-tag">Kostprijs en nacalculatie</div>
+      <p class="case-text">Rosa Plaza teelt in Ethiopie, verwerkt en verkoopt in Nederland. We rekenen samengestelde artikelen terug naar de echte kostprijs per product, en maken zichtbaar of iets beter op de klok of op contract verkocht kan worden. Die nacalculatie bepaalt hoe je het jaar erna de contractonderhandelingen ingaat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <h2 class="faq-kop reveal">Veelgestelde vragen.</h2>
+  <div class="faq-item reveal"><div class="faq-q">We hebben al een Power BI. Is dit dan nog relevant?</div><p class="faq-a">Zeker. We kijken graag mee met wat je nu hebt en leggen het naast wat wij bij kwekers bouwen, zodat je precies ziet waar de verbeterpunten zitten.</p></div>
+  <div class="faq-item reveal"><div class="faq-q">Moeten we eerst van systeem wisselen?</div><p class="faq-a">Nee. We werken met de systemen die je al hebt en ontsluiten de data daaruit.</p></div>
+  <div class="faq-item reveal"><div class="faq-q">Hoeveel tijd kost het ons?</div><p class="faq-a">Weinig. Wij doen het koppelwerk, jij krijgt het overzicht.</p></div>
+</section>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Even bijpraten?</h2>
+    <p class="cta-sub reveal">Een kwartier, vrijblijvend. Ik pitch je niks, we kijken gewoon wat er speelt. Je krijgt sowieso twee concrete tips mee die je meteen kunt gebruiken, of we nu samenwerken of niet, op basis van wat we bij andere kwekers zien.</p>
+    <!-- Cal.com embed (placeholder): vervang calLink onderaan door Patricks eigen cal.com-link. -->
+    <div class="cta-embed reveal"><div id="cal-embed"></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand"><img class="ft-logo" src="wegmetexcel-logo.svg" alt="WegMetExcel"></div>
+  <div class="ft-meta">
+    <a href="https://www.wegmetexcel.nl">wegmetexcel.nl</a><br>
+    &copy; 2026 WegMetExcel
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>window.innerHeight*.6),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+document.querySelectorAll('.chapter,.founder,.reveal').forEach(el=>io.observe(el));
+const journey=document.getElementById('journey'),svg=document.getElementById('jpath');
+const base=document.getElementById('jp-base'),prog=document.getElementById('jp-prog');
+const dots=[...journey.querySelectorAll('.ch-dot')];
+let total=0;
+function build(){
+  const W=journey.clientWidth,H=journey.clientHeight,jr=journey.getBoundingClientRect();
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  const pts=dots.map(x=>{const r=x.getBoundingClientRect();return{x:r.left+r.width/2-jr.left,y:r.top+r.height/2-jr.top};});
+  if(pts.length<2)return;
+  let dd='M '+pts[0].x.toFixed(1)+' '+pts[0].y.toFixed(1);
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],c=pts[i],my=((a.y+c.y)/2).toFixed(1);
+    dd+=' C '+a.x.toFixed(1)+' '+my+', '+c.x.toFixed(1)+' '+my+', '+c.x.toFixed(1)+' '+c.y.toFixed(1);}
+  base.setAttribute('d',dd);prog.setAttribute('d',dd);
+  total=prog.getTotalLength();prog.style.strokeDasharray=total;
+  onScroll();
+}
+function onScroll(){
+  if(!total)return;
+  const jr=journey.getBoundingClientRect(),trig=window.innerHeight*.52;
+  const frac=Math.max(0,Math.min(1,(trig-jr.top)/journey.clientHeight));
+  prog.style.strokeDashoffset=total*(1-frac);
+  dots.forEach(x=>{const r=x.getBoundingClientRect();x.parentElement.parentElement.classList.toggle('reached',r.top+r.height/2<trig);});
+}
+addEventListener('scroll',onScroll,{passive:true});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(build,120);});
+build();addEventListener('load',build);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
+setTimeout(build,400);setTimeout(build,1200);
+if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
+// Cal.com inline embed: Patrick, 15 min belafspraak.
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d2 = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d2.head.appendChild(d2.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init","15-min-belafspraak-met-patrick",{origin:"https://app.cal.com"});
+Cal.config=Cal.config||{};Cal.config.forwardQueryParams=true;
+Cal.ns["15-min-belafspraak-met-patrick"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view",useSlotsViewOnSmallScreen:"true"},calLink:"wegmetexcel/15-min-belafspraak-met-patrick"});
+Cal.ns["15-min-belafspraak-met-patrick"]("ui",{hideEventTypeDetails:false,layout:"month_view"});
+</script>
+</body>
+</html>
