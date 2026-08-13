@@ -21,3 +21,10 @@ if (document.getElementById('cal-inline')) {
   });
   Cal.ns["belafspraak-pique"]("ui", { "hideEventTypeDetails": false, "layout": "month_view" });
 }
+
+// Reel: klik om af te spelen (met geluid)
+(function () {
+  var r = document.getElementById('reel'), ov = document.getElementById('reelov'), v = document.getElementById('reelvid');
+  if (!r || !ov || !v) return;
+  ov.addEventListener('click', function () { v.setAttribute('controls', ''); r.classList.add('playing'); v.play(); });
+})();
