@@ -10,6 +10,11 @@
       "source": "/:path*",
       "has": [{ "type": "host", "value": "onlinegoedgevonden.intro-pique.agency" }],
       "destination": "/onlinegoedgevonden/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "wegmetexcel.intro-pique.agency" }],
+      "destination": "/wegmetexcel/:path*"
     }
   ]
 }
