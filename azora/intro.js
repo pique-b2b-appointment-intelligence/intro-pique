@@ -45,6 +45,9 @@
   var cta    = cfg.cta    || 'Ja, laat maar zien';
   var ctaSub = cfg.ctaSub || 'Video van Simon &middot; 1 min 20';
   var lezen  = cfg.lezen  || 'Ik lees liever eerst';
+  /* Op klantpagina's staat er geen afzenderregel boven de kaart:
+     alleen het handschrift. Zet daar merk: false. */
+  var merk   = cfg.merk !== false;
   var label  = cfg.label  || 'Persoonlijk';
   var vidSel = cfg.video     || '#reelvid';
   var vidWrap = cfg.videoWrap || '#reel';
@@ -69,7 +72,7 @@
       '<div class="pq-glow"></div>' +
       '<div class="pq-stage">' +
         '<div class="pq-card" id="pq-card">' +
-          '<div class="pq-brand">' + LOGO + '<span>' + label + '</span></div>' +
+          (merk ? '<div class="pq-brand">' + LOGO + '<span>' + label + '</span></div>' : '') +
           '<div class="pq-ink" id="pq-ink"></div>' +
         '</div>' +
         '<div class="pq-choice" id="pq-choice">' +
