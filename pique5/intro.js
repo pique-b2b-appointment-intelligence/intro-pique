@@ -66,6 +66,12 @@
   document.head.appendChild(f);
 
   function start() {
+    /* Staat er geen video op de pagina, dan is één knop genoeg. Anders
+       beloven we een video die er niet is. Komt voor op pagina's waar de
+       opname nog moet worden gedraaid. */
+    var heeftVideo = cfg.video !== false && !!document.querySelector(vidSel);
+    var knop = heeftVideo ? cta : (cfg.ctaZonderVideo || 'Laat maar zien');
+
     var el = document.createElement('div');
     el.id = 'pq-intro';
     el.innerHTML =
@@ -76,10 +82,10 @@
           '<div class="pq-ink" id="pq-ink"></div>' +
         '</div>' +
         '<div class="pq-choice" id="pq-choice">' +
-          '<button class="pq-btn" id="pq-go" type="button">' + cta + ' <span class="pq-arw">&#8594;</span></button>' +
-          '<span class="pq-btn-sub">' + ctaSub + '</span>' +
+          '<button class="pq-btn" id="pq-go" type="button">' + knop + ' <span class="pq-arw">&#8594;</span></button>' +
+          (heeftVideo ? '<span class="pq-btn-sub">' + ctaSub + '</span>' : '') +
         '</div>' +
-        '<button class="pq-read" id="pq-read" type="button">' + lezen + '</button>' +
+        (heeftVideo ? '<button class="pq-read" id="pq-read" type="button">' + lezen + '</button>' : '') +
       '</div>';
     document.body.appendChild(el);
 
@@ -142,14 +148,14 @@
         if (r < perRegel.length - 1) await wacht(pauze);
       }
       choice.classList.add('in');
-      read.classList.add('in');
+      if (read) read.classList.add('in');
     }
 
     function alles() {
       perRegel.forEach(function (c) { c.forEach(function (s) { s.classList.add('on'); }); });
       card.classList.add('in');
       choice.classList.add('in');
-      read.classList.add('in');
+      if (read) read.classList.add('in');
     }
 
     function sluit(metVideo) {
@@ -179,7 +185,7 @@
     }
 
     document.getElementById('pq-go').addEventListener('click', function () { sluit(true); });
-    read.addEventListener('click', function () { sluit(false); });
+    if (read) read.addEventListener('click', function () { sluit(false); });
 
     if (traag) { alles(); return; }
 
@@ -191,7 +197,7 @@
       if (gestart) return;
       gestart = true;
       setTimeout(function () { card.classList.add('in'); }, 60);
-      setTimeout(function () { read.classList.add('in'); }, 900);
+      setTimeout(function () { if (read) read.classList.add('in'); }, 900);
       setTimeout(schrijf, 620);
     }
     if (document.fonts && document.fonts.load) {
