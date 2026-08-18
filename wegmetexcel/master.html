@@ -166,6 +166,23 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .lg-avg{border-top-style:dashed;border-color:var(--amber)}
 .lg-all{border-color:#c2c6cb}
 @media(max-width:560px){.viz-tip{left:36%;top:1%;padding:.5rem .7rem}.viz-tip .tip-v strong{font-size:1.15rem}}
+.chapter.jchap{padding:clamp(3vh,5vh,7vh) 0}
+.jchap .ch-inner{width:min(900px,96%)}
+.jchap .ch-body{background:none;padding:0}
+.bench{display:grid;gap:1.3rem}
+.bench-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.5rem;gap:1rem}
+.bench-label{font-weight:600;font-size:.98rem;color:var(--ink)}
+.bench-val{font-size:.9rem;color:var(--ink2);white-space:nowrap}
+.bench-val b{color:var(--ink);font-weight:700}
+.bench-bar{position:relative;height:12px;border-radius:7px;background:#eef0ec}
+.bench-bar>i{position:absolute;left:0;top:0;height:12px;border-radius:7px;background:#2f6d4c}
+.bench-avg{position:absolute;top:-4px;height:20px;width:2px;background:var(--amber);border-radius:2px}
+.bench-foot{display:flex;justify-content:space-between;align-items:center;margin-top:.5rem;gap:1rem}
+.bench-note{font-size:.75rem;color:var(--ink3)}
+.bench-tag{font-size:.72rem;font-weight:700;padding:.18rem .6rem;border-radius:100px;background:rgba(47,109,76,.12);color:#2f6d4c;white-space:nowrap}
+.bench-leg{display:flex;gap:1.2rem;margin-top:1.2rem;font-size:.76rem;color:var(--ink2);flex-wrap:wrap}
+.bench-leg span{display:inline-flex;align-items:center;gap:.45rem}
+.bench-leg i{border-radius:3px;display:inline-block}
 @media(max-width:800px){
   .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
   .chapter.center{justify-content:flex-start}
@@ -234,6 +251,47 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
         <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Dus vallen de keuzes terug op gevoel.</h2><p class="ch-text">De cijfers zijn er wel, maar omdat de inzichten niet vanzelf bovenkomen, leunen de grote keuzes toch op ervaring en onderbuik. Welk gewas volgend jaar meer ruimte krijgt, waar de arbeid weglekt, waarom een marge beweegt. Dat blijft vaak een kwestie van gevoel.</p></div>
       </div>
     </section>
+    <section class="chapter center jchap">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body">
+          <figure class="viz">
+    <div class="viz-head">
+      <div class="viz-title"><span class="viz-dot"></span>Omzet per m<sup>2</sup></div>
+      <div class="viz-badge">12 MND</div>
+    </div>
+    <div class="viz-tabs">
+      <span class="tab on">Roos A</span><span class="tab">Roos B</span><span class="tab">Roos C</span><span class="tab">Roos D</span><span class="tab">Roos E</span><span class="tab">Roos F</span><span class="tab">Roos G</span>
+    </div>
+    <div class="viz-plot">
+      <div class="viz-tip"><div class="tip-h">Februari &middot; Roos A</div><div class="tip-v"><strong>&euro;55</strong>per m<sup>2</sup></div><div class="tip-d">+25% t.o.v. alle soorten</div></div>
+      <svg viewBox="0 0 660 300" role="img" aria-label="Omzet per vierkante meter over twaalf maanden">
+        <g stroke="#edeef0" stroke-width="1">
+          <line x1="60" y1="40" x2="620" y2="40"/><line x1="60" y1="120" x2="620" y2="120"/><line x1="60" y1="200" x2="620" y2="200"/><line x1="60" y1="280" x2="620" y2="280"/>
+        </g>
+        <g fill="#9aa0aa" font-family="Inter,system-ui,sans-serif" font-size="15" text-anchor="end">
+          <text x="46" y="45">&euro;60</text><text x="46" y="125">&euro;40</text><text x="46" y="205">&euro;20</text><text x="46" y="285">&euro;0</text>
+        </g>
+        <line x1="315" y1="60" x2="315" y2="280" stroke="#c9cdd0" stroke-width="1.5" stroke-dasharray="4 5"/>
+        <polyline fill="none" stroke="#c2c6cb" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="60,156 111,164 162,152 213,128 264,112 315,104 365,120 416,136 467,152 518,160 569,168 620,152"/>
+        <polyline fill="none" stroke="#C6893C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2 7" points="60,148 111,148 162,144 213,140 264,140 315,136 365,136 416,136 467,132 518,132 569,132 620,128"/>
+        <polyline fill="none" stroke="#2f6d4c" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" points="60,176 111,184 162,160 213,112 264,72 315,60 365,88 416,120 467,144 518,168 569,192 620,164"/>
+        <circle cx="315" cy="60" r="7" fill="#2f6d4c" stroke="#fff" stroke-width="3"/>
+        <g fill="#9aa0aa" font-family="Inter,system-ui,sans-serif" font-size="15" text-anchor="middle">
+          <text x="60" y="298">sep</text><text x="213" y="298">dec</text><text x="365" y="298">mrt</text><text x="518" y="298">jun</text><text x="620" y="298">aug</text>
+        </g>
+      </svg>
+    </div>
+    <div class="viz-legend">
+      <span><i class="lg-sel"></i>Geselecteerde soort</span>
+      <span><i class="lg-avg"></i>Voortschrijdend gem. 12 mnd</span>
+      <span><i class="lg-all"></i>Alle soorten</span>
+    </div>
+  </figure>
+        </div>
+      </div>
+    </section>
+
 
     <!-- ===== AKT 2 — DE SPANNING ===== -->
     <section class="chapter center pivot">
@@ -270,6 +328,35 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
         <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Kostprijs per gewas, per week.</h2><p class="ch-text">Plus zicht dat je helpt bij een financieringsaanvraag, bij gesprekken met je mensen en bij de keuze welk gewas volgend jaar de ruimte krijgt.</p></div>
       </div>
     </section>
+    <section class="chapter center jchap">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body">
+          <figure class="viz">
+            <div class="viz-head"><div class="viz-title"><span class="viz-dot"></span>Soort-benchmark</div><div class="viz-badge">ROOS A</div></div>
+            <div class="bench">
+              <div class="bench-row">
+                <div class="bench-top"><span class="bench-label">Omzet per m&#178;</span><span class="bench-val"><b>&euro;55</b> vs. &euro;44 gemiddeld</span></div>
+                <div class="bench-bar"><i style="width:92%"></i><span class="bench-avg" style="left:73%"></span></div>
+                <div class="bench-foot"><span class="bench-note">Deze soort tegen het gemiddelde van alle soorten</span><span class="bench-tag">+25%</span></div>
+              </div>
+              <div class="bench-row">
+                <div class="bench-top"><span class="bench-label">Stelen per uur</span><span class="bench-val"><b>220</b> vs. 180 gemiddeld</span></div>
+                <div class="bench-bar"><i style="width:88%"></i><span class="bench-avg" style="left:72%"></span></div>
+                <div class="bench-foot"><span class="bench-note">Pluk-effici&euml;ntie per medewerker</span><span class="bench-tag">+22%</span></div>
+              </div>
+              <div class="bench-row">
+                <div class="bench-top"><span class="bench-label">Derving</span><span class="bench-val"><b>4%</b> vs. 9% gemiddeld</span></div>
+                <div class="bench-bar"><i style="width:27%"></i><span class="bench-avg" style="left:60%"></span></div>
+                <div class="bench-foot"><span class="bench-note">Lager is beter</span><span class="bench-tag">-56%</span></div>
+              </div>
+            </div>
+            <div class="bench-leg"><span><i style="background:#2f6d4c;width:14px;height:8px"></i>Deze soort</span><span><i style="background:#C6893C;width:3px;height:14px"></i>Gemiddelde alle soorten</span></div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
@@ -283,45 +370,6 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       </div>
     </section>
 </main>
-
-<!-- ===== SHOWCASE — insight-visual ===== -->
-<section class="showcase" id="showcase">
-  <div class="sc-eyebrow reveal">Zo ziet het eruit</div>
-  <h2 class="sc-kop reveal">Van cijfers naar inzicht.</h2>
-  <figure class="viz reveal">
-    <div class="viz-head">
-      <div class="viz-title"><span class="viz-dot"></span>Omzet per m<sup>2</sup></div>
-      <div class="viz-badge">12 MND</div>
-    </div>
-    <div class="viz-tabs">
-      <span class="tab on">Roos A</span><span class="tab">Roos B</span><span class="tab">Roos C</span><span class="tab">Roos D</span><span class="tab">Roos E</span><span class="tab">Roos F</span><span class="tab">Roos G</span>
-    </div>
-    <div class="viz-plot">
-      <div class="viz-tip"><div class="tip-h">Februari &middot; Roos A</div><div class="tip-v"><strong>&euro;55</strong>per m<sup>2</sup></div><div class="tip-d">+25% t.o.v. alle soorten</div></div>
-      <svg viewBox="0 0 660 300" role="img" aria-label="Omzet per vierkante meter over twaalf maanden">
-        <g stroke="#edeef0" stroke-width="1">
-          <line x1="60" y1="40" x2="620" y2="40"/><line x1="60" y1="120" x2="620" y2="120"/><line x1="60" y1="200" x2="620" y2="200"/><line x1="60" y1="280" x2="620" y2="280"/>
-        </g>
-        <g fill="#9aa0aa" font-family="Inter,system-ui,sans-serif" font-size="15" text-anchor="end">
-          <text x="46" y="45">&euro;60</text><text x="46" y="125">&euro;40</text><text x="46" y="205">&euro;20</text><text x="46" y="285">&euro;0</text>
-        </g>
-        <line x1="315" y1="60" x2="315" y2="280" stroke="#c9cdd0" stroke-width="1.5" stroke-dasharray="4 5"/>
-        <polyline fill="none" stroke="#c2c6cb" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="60,156 111,164 162,152 213,128 264,112 315,104 365,120 416,136 467,152 518,160 569,168 620,152"/>
-        <polyline fill="none" stroke="#C6893C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2 7" points="60,148 111,148 162,144 213,140 264,140 315,136 365,136 416,136 467,132 518,132 569,132 620,128"/>
-        <polyline fill="none" stroke="#2f6d4c" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" points="60,176 111,184 162,160 213,112 264,72 315,60 365,88 416,120 467,144 518,168 569,192 620,164"/>
-        <circle cx="315" cy="60" r="7" fill="#2f6d4c" stroke="#fff" stroke-width="3"/>
-        <g fill="#9aa0aa" font-family="Inter,system-ui,sans-serif" font-size="15" text-anchor="middle">
-          <text x="60" y="298">sep</text><text x="213" y="298">dec</text><text x="365" y="298">mrt</text><text x="518" y="298">jun</text><text x="620" y="298">aug</text>
-        </g>
-      </svg>
-    </div>
-    <div class="viz-legend">
-      <span><i class="lg-sel"></i>Geselecteerde soort</span>
-      <span><i class="lg-avg"></i>Voortschrijdend gem. 12 mnd</span>
-      <span><i class="lg-all"></i>Alle soorten</span>
-    </div>
-  </figure>
-</section>
 
 <!-- ===== AKT 4 — FOUNDER + VOLGENDE STAP ===== (pricing bewust weggelaten: projecten groeien organisch) -->
 <section class="founder" id="founder">
