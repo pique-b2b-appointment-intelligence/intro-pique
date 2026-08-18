@@ -11,6 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-32.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <title>WegMetExcel voor Berg Lisianthus</title>
 <meta name="description" content="Een persoonlijk voorstel voor Berg Lisianthus.">
@@ -137,6 +138,31 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .faq-item:last-child{border-bottom:1px solid var(--line)}
 .faq-q{font-weight:600;font-size:1.02rem;color:var(--ink);margin-bottom:.4rem}
 .faq-a{font-size:.96rem;line-height:1.65;color:var(--ink2)}
+.showcase{max-width:880px;margin:0 auto;padding:clamp(1rem,3vh,2rem) clamp(1.5rem,4vw,2rem) clamp(2.5rem,5vh,4rem)}
+.sc-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);text-align:center;margin-bottom:.9rem}
+.sc-kop{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.2rem);text-align:center;color:var(--ink);margin-bottom:clamp(1.5rem,3vh,2.25rem)}
+.viz{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 60px rgba(20,28,51,.09);padding:clamp(1.25rem,3vw,1.9rem)}
+.viz-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1.1rem}
+.viz-title{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.12rem;color:var(--ink)}
+.viz-dot{width:11px;height:11px;border-radius:50%;background:#2f6d4c;flex:none}
+.viz-badge{font-size:.72rem;font-weight:600;letter-spacing:.14em;color:var(--ink3)}
+.viz-tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.viz-tabs .tab{font-size:.82rem;font-weight:600;color:var(--ink2);background:#f1f2ee;border-radius:100px;padding:.4rem .9rem}
+.viz-tabs .tab.on{background:#17251d;color:#fff}
+.viz-plot{position:relative}
+.viz-plot svg{width:100%;height:auto;display:block}
+.viz-tip{position:absolute;left:43%;top:3%;background:#17251d;color:#fff;border-radius:14px;padding:.7rem 1rem;box-shadow:0 14px 30px rgba(0,0,0,.25);pointer-events:none}
+.viz-tip .tip-h{font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.3rem}
+.viz-tip .tip-v{font-size:.9rem;color:rgba(255,255,255,.8)}
+.viz-tip .tip-v strong{font-size:1.45rem;font-weight:700;color:#fff;margin-right:.25rem}
+.viz-tip .tip-d{font-size:.8rem;color:#7fbf9a;margin-top:.3rem}
+.viz-legend{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.1rem;font-size:.78rem;color:var(--ink2)}
+.viz-legend span{display:inline-flex;align-items:center;gap:.45rem}
+.viz-legend i{width:18px;height:0;border-top:3px solid;display:inline-block}
+.lg-sel{border-color:#2f6d4c}
+.lg-avg{border-top-style:dashed;border-color:var(--amber)}
+.lg-all{border-color:#c2c6cb}
+@media(max-width:560px){.viz-tip{left:36%;top:1%;padding:.5rem .7rem}.viz-tip .tip-v strong{font-size:1.15rem}}
 @media(max-width:800px){
   .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
   .chapter.center{justify-content:flex-start}
@@ -254,6 +280,46 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       </div>
     </section>
 </main>
+
+<!-- ===== SHOWCASE — insight-visual ===== -->
+<section class="showcase" id="showcase">
+  <div class="sc-eyebrow reveal">Zo ziet het eruit</div>
+  <h2 class="sc-kop reveal">Van cijfers naar inzicht.</h2>
+  <figure class="viz reveal">
+    <div class="viz-head">
+      <div class="viz-title"><span class="viz-dot"></span>Omzet per m<sup>2</sup></div>
+      <div class="viz-badge">12 MND</div>
+    </div>
+    <div class="viz-tabs">
+      <span class="tab on">Roos A</span><span class="tab">Roos B</span><span class="tab">Roos C</span><span class="tab">Roos D</span><span class="tab">Roos E</span><span class="tab">Roos F</span><span class="tab">Roos G</span>
+    </div>
+    <div class="viz-plot">
+      <div class="viz-tip"><div class="tip-h">Februari &middot; Roos A</div><div class="tip-v"><strong>&euro;55</strong>per m<sup>2</sup></div><div class="tip-d">+25% t.o.v. alle soorten</div></div>
+      <svg viewBox="0 0 660 300" role="img" aria-label="Omzet per vierkante meter over twaalf maanden">
+        <g stroke="#edeef0" stroke-width="1">
+          <line x1="60" y1="40" x2="620" y2="40"/><line x1="60" y1="120" x2="620" y2="120"/><line x1="60" y1="200" x2="620" y2="200"/><line x1="60" y1="280" x2="620" y2="280"/>
+        </g>
+        <g fill="#9aa0aa" font-family="Inter,system-ui,sans-serif" font-size="15" text-anchor="end">
+          <text x="46" y="45">&euro;60</text><text x="46" y="125">&euro;40</text><text x="46" y="205">&euro;20</text><text x="46" y="285">&euro;0</text>
+        </g>
+        <line x1="315" y1="60" x2="315" y2="280" stroke="#c9cdd0" stroke-width="1.5" stroke-dasharray="4 5"/>
+        <polyline fill="none" stroke="#c2c6cb" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="60,156 111,164 162,152 213,128 264,112 315,104 365,120 416,136 467,152 518,160 569,168 620,152"/>
+        <polyline fill="none" stroke="#C6893C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2 7" points="60,148 111,148 162,144 213,140 264,140 315,136 365,136 416,136 467,132 518,132 569,132 620,128"/>
+        <polyline fill="none" stroke="#2f6d4c" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" points="60,176 111,184 162,160 213,112 264,72 315,60 365,88 416,120 467,144 518,168 569,192 620,164"/>
+        <circle cx="315" cy="60" r="7" fill="#2f6d4c" stroke="#fff" stroke-width="3"/>
+        <g fill="#9aa0aa" font-family="Inter,system-ui,sans-serif" font-size="15" text-anchor="middle">
+          <text x="60" y="298">sep</text><text x="213" y="298">dec</text><text x="365" y="298">mrt</text><text x="518" y="298">jun</text><text x="620" y="298">aug</text>
+        </g>
+      </svg>
+    </div>
+    <div class="viz-legend">
+      <span><i class="lg-sel"></i>Geselecteerde soort</span>
+      <span><i class="lg-avg"></i>Voortschrijdend gem. 12 mnd</span>
+      <span><i class="lg-all"></i>Alle soorten</span>
+    </div>
+  </figure>
+</section>
+
 
 <!-- ===== AKT 4 — FOUNDER + VOLGENDE STAP ===== (pricing bewust weggelaten: projecten groeien organisch) -->
 <section class="founder" id="founder">

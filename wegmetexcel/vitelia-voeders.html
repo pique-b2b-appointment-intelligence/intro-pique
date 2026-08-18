@@ -11,6 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-32.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <title>Atlas voor Vitelia Voeders</title>
 <meta name="description" content="Een persoonlijk voorstel voor Vitelia Voeders.">
@@ -137,6 +138,22 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .faq-item:last-child{border-bottom:1px solid var(--line)}
 .faq-q{font-weight:600;font-size:1.02rem;color:var(--ink);margin-bottom:.4rem}
 .faq-a{font-size:.96rem;line-height:1.65;color:var(--ink2)}
+.atlasviz{max-width:900px;margin:0 auto;padding:clamp(1rem,3vh,2rem) clamp(1.5rem,4vw,2rem) clamp(2.5rem,5vh,4rem)}
+.av-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);text-align:center;margin-bottom:.9rem}
+.av-kop{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.2rem);text-align:center;color:var(--ink);margin-bottom:clamp(1.5rem,3vh,2.25rem)}
+.viz{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 60px rgba(20,28,51,.09);padding:clamp(1.25rem,3vw,1.9rem)}
+.viz-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1.3rem}
+.viz-title{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.12rem;color:var(--ink)}
+.viz-dot{width:11px;height:11px;border-radius:50%;background:#2f6d4c;flex:none}
+.viz-badge{font-size:.72rem;font-weight:600;letter-spacing:.14em;color:var(--ink3)}
+.av-diagram svg{width:100%;height:auto;display:block;max-width:640px;margin:0 auto}
+.av-qa{border-top:1px solid var(--line);margin-top:1.3rem;padding-top:1.3rem;display:grid;gap:1rem}
+.qa-row{display:grid;grid-template-columns:64px 1fr;gap:.8rem;align-items:start}
+.qa-who{font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--ink3);padding-top:.2rem}
+.qa-who.atlas{color:#2f6d4c}
+.qa-row p{font-size:1rem;line-height:1.6;color:var(--ink)}
+.qa-row.q p{color:var(--ink2)}
+@media(max-width:560px){.qa-row{grid-template-columns:52px 1fr}}
 @media(max-width:800px){
   .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
   .chapter.center{justify-content:flex-start}
@@ -262,20 +279,58 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   </div>
 </section>
 
-<!-- ===== WAT JE ATLAS KUNT VRAGEN ===== -->
-<section class="cases" id="cases">
-  <div class="cases-eyebrow reveal">In de praktijk</div>
-  <h2 class="cases-kop reveal">Wat je Atlas kunt vragen.</h2>
-  <div class="case-grid">
-    <div class="case reveal">
-      <div class="case-tag">Over je cijfers</div>
-      <p class="case-text">'Waarom liep de marge op product X vorige maand terug?' Atlas kijkt in je dashboards en je BI en legt het verband dat je anders zelf had moeten uitzoeken.</p>
+<!-- ===== ATLAS DIAGRAM ===== -->
+<section class="atlasviz" id="cases">
+  <div class="av-eyebrow reveal">Zo werkt het</div>
+  <h2 class="av-kop reveal">Alles komt samen in Atlas.</h2>
+  <figure class="viz reveal">
+    <div class="viz-head">
+      <div class="viz-title"><span class="viz-dot"></span>Atlas AI</div>
+      <div class="viz-badge">AI-COLLEGA</div>
     </div>
-    <div class="case reveal">
-      <div class="case-tag">Over je context</div>
-      <p class="case-text">'Wat is er in de laatste directievergadering afgesproken over die leverancier?' Atlas leest je meetings, mails en documenten mee, zodat het antwoord klopt met wat jullie echt hebben afgesproken.</p>
+    <div class="av-diagram">
+      <svg viewBox="0 0 680 340" role="img" aria-label="Dashboards, e-mail, meetings, bedrijfsbeleid en bronsystemen komen samen in Atlas AI">
+        <g fill="none" stroke="#cfd3d6" stroke-width="1.6">
+          <path d="M256 44 C350 44 350 170 430 170"/>
+          <path d="M256 104 C350 104 350 170 430 170"/>
+          <path d="M256 164 C350 164 350 170 430 170"/>
+          <path d="M256 224 C350 224 350 170 430 170"/>
+          <path d="M256 284 C350 284 350 170 430 170"/>
+        </g>
+        <g>
+          <rect x="28" y="22" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="#3b463f"><rect x="41" y="35" width="7" height="7" rx="1.5"/><rect x="52" y="35" width="7" height="7" rx="1.5"/><rect x="41" y="46" width="7" height="7" rx="1.5"/><rect x="52" y="46" width="7" height="7" rx="1.5"/></g>
+          <rect x="28" y="82" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="none" stroke="#3b463f" stroke-width="2" stroke-linejoin="round"><rect x="40" y="96" width="20" height="15" rx="2.5"/><path d="M40.5 98 L50 106 L59.5 98"/></g>
+          <rect x="28" y="142" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="none" stroke="#3b463f" stroke-width="2"><rect x="40" y="155" width="20" height="14" rx="5"/></g><path d="M46 168 L46 174 L52 169 Z" fill="#3b463f"/>
+          <rect x="28" y="202" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="none" stroke="#3b463f" stroke-width="2" stroke-linecap="round"><rect x="42" y="213" width="16" height="22" rx="2.5"/><path d="M46 219 H54"/><path d="M46 224 H54"/><path d="M46 229 H51"/></g>
+          <rect x="28" y="262" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="none" stroke="#3b463f" stroke-width="2"><ellipse cx="50" cy="277" rx="10" ry="3.5"/><path d="M40 277 V291 A10 3.5 0 0 0 60 291 V277"/><path d="M40 284 A10 3.5 0 0 0 60 284"/></g>
+        </g>
+        <g fill="#141C33" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="500" dominant-baseline="middle">
+          <text x="86" y="45">Dashboards</text>
+          <text x="86" y="105">E-mail</text>
+          <text x="86" y="165">Meetings</text>
+          <text x="86" y="225">Bedrijfsbeleid</text>
+          <text x="86" y="285">Bronsystemen</text>
+        </g>
+        <g fill="#2f6d4c"><circle cx="250" cy="44" r="6"/><circle cx="250" cy="104" r="6"/><circle cx="250" cy="164" r="6"/><circle cx="250" cy="224" r="6"/><circle cx="250" cy="284" r="6"/></g>
+        <rect x="430" y="120" width="224" height="100" rx="18" fill="#17251d"/>
+        <circle cx="452" cy="152" r="5" fill="#7fbf9a"/>
+        <text x="468" y="152" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700" dominant-baseline="middle">Atlas AI</text>
+        <g fill="rgba(255,255,255,.8)" font-family="Inter,system-ui,sans-serif" font-size="15">
+          <text x="452" y="183">Kent je cijfers &#233;n je</text>
+          <text x="452" y="203">context</text>
+        </g>
+      </svg>
     </div>
-  </div>
+    <div class="av-qa">
+      <div class="qa-row q"><span class="qa-who">JIJ</span><p>Waarom zakte de marge op Roos A in maart?</p></div>
+      <div class="qa-row"><span class="qa-who atlas">ATLAS</span><p>In maart ging 38% via de klok in plaats van contract, tegen een lagere prijs. Samen met 9% derving kostte dat &euro;0,03 marge per steel. De uitval is op 4 maart in de teeltmeeting benoemd.</p></div>
+    </div>
+  </figure>
 </section>
 
 <!-- ===== FAQ ===== -->
