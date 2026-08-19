@@ -18,8 +18,11 @@
   var cfg = window.PIQUE_INTRO;
   if (!cfg) return;
 
+  /* De laag speelt standaard bij elk bezoek. Een kaart gaat rond op kantoor
+     en wordt door meerdere mensen gescand, dus iedereen hoort hem te zien.
+     Alleen met eenmalig: true slaat hij een tweede bezoek over. */
   var KEY = 'pq-intro:' + location.pathname;
-  var eenmalig = cfg.eenmalig !== false;
+  var eenmalig = cfg.eenmalig === true;
   try { if (eenmalig && localStorage.getItem(KEY)) return; } catch (e) {}
 
   var traag = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
