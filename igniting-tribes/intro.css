@@ -11,7 +11,7 @@ html.pq-on, html.pq-on body { overflow: hidden; height: 100%; }
   position: fixed; inset: 0; z-index: 900;
   display: flex; align-items: center; justify-content: center;
   padding: 24px 20px;
-  background: #0E1526;
+  background: #0E100F;
   opacity: 1;
   transition: opacity .55s ease;
   /* Bij een lange bedrijfsnaam op een klein scherm mag de kaart
@@ -24,7 +24,7 @@ html.pq-on, html.pq-on body { overflow: hidden; height: 100%; }
 
 #pq-intro .pq-glow {
   position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(circle at 50% 8%, rgba(198,137,60,.16), transparent 58%);
+  background: radial-gradient(circle at 50% 8%, rgba(237,231,218,.10), transparent 58%);
 }
 
 .pq-stage { position: relative; width: 100%; max-width: 470px; margin: auto; }
@@ -32,7 +32,7 @@ html.pq-on, html.pq-on body { overflow: hidden; height: 100%; }
 /* ---- de kaart ---- */
 .pq-card {
   position: relative;
-  background: linear-gradient(177deg, #FDFCFA 0%, #F4F0E8 100%);
+  background: linear-gradient(177deg, #F6F2E9 0%, #EDE7DA 100%);
   border-radius: 6px;
   padding: clamp(30px, 6.5vw, 46px) clamp(26px, 6vw, 42px) clamp(32px, 6.5vw, 46px);
   text-align: left;
@@ -57,7 +57,7 @@ html.pq-on, html.pq-on body { overflow: hidden; height: 100%; }
   opacity: 0; transition: opacity .6s ease .12s;
 }
 .pq-card.in .pq-brand { opacity: 1; }
-.pq-brand svg { height: 17px; width: auto; display: block; color: #141C33; }
+.pq-brand svg { height: 17px; width: auto; display: block; color: #1B1E1C; }
 .pq-brand span {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: .58rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
@@ -72,7 +72,7 @@ html.pq-on, html.pq-on body { overflow: hidden; height: 100%; }
   font-weight: 600;
   font-size: clamp(1.6rem, 5.6vw, 2.05rem);
   line-height: 1.42;
-  color: #1B2540;
+  color: #1B1E1C;
 }
 .pq-line { display: block; }
 .pq-line + .pq-line { margin-top: .34em; }
@@ -83,7 +83,7 @@ html.pq-on, html.pq-on body { overflow: hidden; height: 100%; }
   transition: opacity .16s ease, filter .22s ease, transform .22s ease;
 }
 .pq-ch.on { opacity: 1; filter: blur(0); transform: none; }
-.pq-ch.hl { color: #A9741F; }
+.pq-ch.hl { color: #4A4741; }
 
 /* ---- keuze, onder de kaart ---- */
 .pq-choice {
@@ -98,13 +98,13 @@ html.pq-on, html.pq-on body { overflow: hidden; height: 100%; }
   display: inline-flex; align-items: center; gap: .6rem;
   font-family: 'Inter', system-ui, sans-serif;
   font-size: .92rem; font-weight: 600; letter-spacing: .01em;
-  color: #231607; background: #E0AC66;
+  color: #14100F; background: #EDE7DA;
   border: none; border-radius: 100px;
   padding: .95rem 1.9rem; cursor: pointer;
-  box-shadow: 0 14px 34px -10px rgba(198,137,60,.55);
+  box-shadow: 0 14px 34px -12px rgba(237,231,218,.28);
   transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
 }
-.pq-btn:hover { background: #EBBB79; transform: translateY(-2px); box-shadow: 0 20px 44px -10px rgba(198,137,60,.65); }
+.pq-btn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 20px 44px -10px rgba(237,231,218,.35); }
 .pq-btn .pq-arw { font-size: 1rem; margin-top: -1px; }
 .pq-btn-sub {
   display: block; margin-top: .75rem;
