@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pique voor Van der Vlist</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="description" content="Een persoonlijke pagina over opdrachtgevers van speciaal en zwaar transport.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FBFAF8;--ink:#141C33;--ink2:rgba(20,28,51,.66);--ink3:rgba(20,28,51,.42);
+  --navy:#0E1526;--amber:#B57F3C;--ambers:#E0AC66;--line:rgba(20,28,51,.13);--white:#fff;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);
+  --fs-h:clamp(1.9rem,3vw,2.7rem);--fs-body:clamp(1.02rem,1.25vw,1.16rem);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
+::selection{background:rgba(198,137,60,.2)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.5rem clamp(1.5rem,4vw,3rem);transition:background .5s var(--ease),backdrop-filter .5s,padding .4s}
+nav.solid{background:rgba(251,250,248,.72);backdrop-filter:blur(16px) saturate(1.4);padding-top:1rem;padding-bottom:1rem}
+.logo{color:var(--white);text-decoration:none;display:flex;align-items:center;transition:color .5s}
+.logo svg{height:26px;width:auto;display:block}
+nav.solid .logo{color:var(--ink)}
+.logo-dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.nav-cta{font-size:.78rem;font-weight:500;letter-spacing:.01em;color:rgba(255,255,255,.7);text-decoration:none;padding:.5rem .95rem;border-radius:100px;border:1px solid rgba(255,255,255,.16);transition:all .4s}
+.nav-cta:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+nav.solid .nav-cta{color:var(--ink2);border-color:var(--line)}
+nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
+
+/* INTRO / HERO */
+.intro{position:relative;background:var(--navy);color:#fff;padding:clamp(6rem,12vh,8rem) clamp(1.5rem,4vw,3rem) clamp(4rem,9vh,6.5rem);overflow:hidden}
+.intro-grid{position:absolute;inset:0;background-image:radial-gradient(circle at 50% 0,rgba(198,137,60,.1),transparent 55%);pointer-events:none}
+.intro-inner{position:relative;max-width:940px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+.intro-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(224,172,102,.9);margin-bottom:2.25rem;opacity:0;animation:up 1s var(--ease) .15s forwards}
+/* Reel-hero (staande video) */
+.reel{position:relative;width:min(300px,72vw);aspect-ratio:9/16;margin:0 auto;border-radius:24px;overflow:hidden;background:#0c1116;opacity:0;
+  animation:reelin .8s var(--ease) .3s forwards, reelfloat 6s ease-in-out 1.3s infinite, reelglow 3.6s ease-in-out 1.3s infinite}
+.reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#0c1116}
+.reel-ov{position:absolute;inset:0;border:none;padding:0;cursor:pointer;background:linear-gradient(180deg,rgba(14,21,38,.05),rgba(14,21,38,.44));display:flex;align-items:center;justify-content:center}
+.reel-play{position:relative;width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);border:1.5px solid rgba(255,255,255,.62);display:flex;align-items:center;justify-content:center;animation:reelpulse 1.9s ease-in-out infinite;z-index:2}
+.reel-play::after{content:'';margin-left:6px;border-style:solid;border-width:12px 0 12px 21px;border-color:transparent transparent transparent #fff}
+.reel-ring{position:absolute;top:50%;left:50%;width:74px;height:74px;border-radius:50%;border:2px solid var(--ambers);transform:translate(-50%,-50%);animation:reelring 1.9s ease-out infinite;z-index:1}
+.reel-badge{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.66rem;font-weight:600;letter-spacing:.03em;color:#231607;background:var(--ambers);border-radius:100px;padding:.32rem .85rem;box-shadow:0 6px 18px rgba(198,137,60,.42);animation:reelbob 2.3s ease-in-out infinite;z-index:2}
+.reel.playing{animation:reelin .8s var(--ease) .3s forwards;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08)}
+.reel.playing .reel-ov{display:none}
+@keyframes reelin{from{opacity:0}to{opacity:1}}
+@keyframes reelpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes reelring{0%{opacity:.7;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(2)}}
+@keyframes reelbob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-4px)}}
+@keyframes reelfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes reelglow{0%,100%{box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08)}50%{box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(224,172,102,.5),0 0 40px 6px rgba(198,137,60,.26)}}
+@media(max-width:520px){.reel{width:min(268px,70vw);border-radius:20px;animation:reelin .8s var(--ease) .3s forwards, reelglow 3.6s ease-in-out 1.3s infinite}.reel-play,.reel-ring{width:64px;height:64px}.reel-play::after{border-width:11px 0 11px 18px}.reel-badge{bottom:12px;font-size:.62rem}}
+@media(max-height:760px) and (min-width:801px){.reel{width:min(232px,58vw)}}
+@media(prefers-reduced-motion:reduce){.reel{animation:reelin .8s var(--ease) .3s forwards}.reel-play,.reel-ring,.reel-badge{animation:none}}
+.vlabel{font-size:.78rem;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.42);margin-top:1rem;opacity:0;animation:up 1s var(--ease) .42s forwards}
+.intro-h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.12;letter-spacing:-.02em;margin-top:clamp(2.5rem,5vh,3.5rem);max-width:20ch;opacity:0;animation:up 1.1s var(--ease) .5s forwards}
+.intro-sub{color:rgba(255,255,255,.55);font-size:1.05rem;font-weight:400;margin-top:1.25rem;max-width:44ch;opacity:0;animation:up 1s var(--ease) .68s forwards}
+.scrollcue{margin-top:clamp(2.5rem,6vh,4rem);display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:up 1s var(--ease) .9s forwards}
+.scrollcue span{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.scrollcue i{display:block;width:1px;height:38px;background:linear-gradient(rgba(224,172,102,.7),transparent);animation:cue 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%,100%{transform:scaleY(.5);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+/* JOURNEY */
+.journey{position:relative;max-width:1180px;margin:0 auto;padding:clamp(4rem,9vh,7rem) clamp(1.25rem,3vw,2rem) clamp(3rem,7vh,5rem)}
+.journey-path{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.jp-base{fill:none;stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11}
+.jp-prog{fill:none;stroke:var(--amber);stroke-width:2.4;stroke-linecap:round;transition:stroke-dashoffset .12s linear}
+.chapter{position:relative;z-index:1;display:flex;padding:clamp(5.5vh,8vh,10vh) 0}
+.chapter.left{justify-content:flex-start}
+.chapter.right{justify-content:flex-end}
+.chapter.center{justify-content:center}
+.ch-inner{position:relative;width:min(400px,40%)}
+.chapter.center .ch-inner{width:min(560px,78%);text-align:center}
+.chapter.center .ch-body{background:var(--bg);padding:1.5rem 1.75rem;border-radius:16px;position:relative;z-index:1}
+.ch-dot{position:absolute;top:-1.7rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--line);z-index:2;transition:border-color .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+.chapter.left .ch-dot{right:-1.7rem}
+.chapter.right .ch-dot{left:-1.7rem}
+.chapter.center .ch-dot{left:50%;transform:translateX(-50%)}
+.chapter.reached .ch-dot{border-color:var(--amber);background:var(--amber);box-shadow:0 0 0 6px rgba(198,137,60,.12)}
+.ch-body{opacity:0;transform:translateY(30px);filter:blur(5px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.chapter.in .ch-body{opacity:1;transform:none;filter:blur(0)}
+.ch-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+.ch-num{font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--ink3);margin-bottom:.9rem;font-variant-numeric:tabular-nums}
+.ch-kop{font-family:var(--serif);font-weight:500;font-size:var(--fs-h);line-height:1.16;letter-spacing:-.015em;color:var(--ink);margin-bottom:.9rem}
+.ch-head{font-size:clamp(2.1rem,3.6vw,3rem);margin-bottom:0}
+.ch-sub{font-size:1.06rem;color:var(--ink2);line-height:1.7;margin-top:1rem;font-weight:300;max-width:34ch;margin-left:auto;margin-right:auto}
+.ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.75;font-weight:400}
+.ch-extra{font-size:.96rem;color:var(--ink3);line-height:1.65;margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--line)}
+.ch-bron{font-size:.72rem;color:var(--ink3);margin-top:.95rem;letter-spacing:.02em}
+.ch-sign{font-size:.85rem;color:var(--ink3);margin-top:1.4rem;font-weight:500}
+.chapter.pivot{padding:clamp(8vh,12vh,15vh) 0}
+.ch-pivot{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.1vw,1.75rem);line-height:1.42;letter-spacing:-.015em;color:var(--ink)}
+.chapter.pivot .ch-dot{width:16px;height:16px;top:-2.1rem}
+.chapter.pivot .ch-inner{width:min(680px,88%)}
+.chapter.phase{padding-top:clamp(7vh,10vh,13vh)}
+.chapter.phase .ch-dot{width:15px;height:15px;top:-2.1rem}
+
+/* FOUNDER */
+.founder{max-width:760px;margin:0 auto;padding:clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,2rem) clamp(4rem,8vh,6rem);display:grid;grid-template-columns:auto 1fr;gap:clamp(1.75rem,4vw,3rem);align-items:center}
+.founder .fr{opacity:0;transform:translateY(24px);filter:blur(4px);transition:all 1s var(--ease)}
+.founder.in .fr{opacity:1;transform:none;filter:blur(0)}
+.fo-photo{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:50%;object-fit:cover;box-shadow:0 20px 50px rgba(20,28,51,.15)}
+.fo-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.fo-text{font-family:var(--sans);font-weight:400;font-size:1.02rem;line-height:1.72;color:var(--ink2);margin-bottom:1.1rem}
+.fo-text p{margin-bottom:.7rem}
+.fo-text p:last-child{margin-bottom:0}
+.fo-name{font-size:.92rem;color:var(--ink2)}.fo-name strong{color:var(--ink);font-weight:600}
+@media(max-width:600px){.founder{grid-template-columns:1fr;text-align:center;justify-items:center}}
+
+/* CTA */
+.cta{background:var(--navy);color:#fff;padding:clamp(4.5rem,10vh,7rem) clamp(1.5rem,4vw,2rem)}
+.cta-inner{max-width:720px;margin:0 auto;text-align:center}
+.cta-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(224,172,102,.9);margin-bottom:1.25rem}
+.cta-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.15;letter-spacing:-.02em}
+.cta-sub{color:rgba(255,255,255,.6);font-size:1.05rem;font-weight:300;margin:1.25rem auto 0;max-width:48ch}
+.cta-embed{margin-top:clamp(2.5rem,5vh,3.5rem);background:#fff;border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden;min-height:640px}
+#cal-embed{width:100%;min-height:640px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* REVIEWS */
+.reviews{max-width:1000px;margin:0 auto;padding:clamp(4.5rem,9vh,7rem) clamp(1.5rem,4vw,2rem)}
+.rv-eyebrow{text-align:center;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:2.75rem}
+.rv-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.rv{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:2.25rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.rv:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(20,28,51,.08)}
+.rv-stars{color:var(--amber);font-size:.9rem;letter-spacing:.1em;margin-bottom:1.25rem}
+.rv-q{font-family:var(--serif);font-weight:400;font-size:1.25rem;line-height:1.45;color:var(--ink);margin-bottom:1.5rem;letter-spacing:-.01em}
+.rv-who{font-size:.85rem;color:var(--ink2)}.rv-who strong{color:var(--ink);font-weight:600}
+@media(max-width:680px){.rv-grid{grid-template-columns:1fr}}
+
+.guarantee{padding:clamp(2rem,5vh,4rem) clamp(1.5rem,4vw,2rem) clamp(3rem,6vh,5rem)}
+.gr-card{max-width:720px;margin:0 auto;background:var(--white);border:1px solid rgba(198,137,60,.3);border-radius:20px;padding:clamp(2rem,4vw,3rem);box-shadow:0 24px 60px rgba(20,28,51,.07);position:relative}
+.gr-card::before{content:'';position:absolute;top:0;left:clamp(2rem,4vw,3rem);right:clamp(2rem,4vw,3rem);height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.gr-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+.gr-head{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.22;letter-spacing:-.02em;color:var(--ink);margin-bottom:1rem}
+.gr-text{font-size:1.02rem;color:var(--ink2);line-height:1.72;font-weight:400}
+.gr-text sup{color:var(--amber);font-weight:700;font-size:.7em}
+.gr-note{font-size:.82rem;color:var(--ink3);line-height:1.6;margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line)}
+.gr-star{color:var(--amber);font-weight:700}
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
+.ft-logo{color:var(--ink);display:inline-flex;align-items:center;margin-bottom:.8rem}
+.ft-logo svg{height:24px;width:auto}
+.ft-meta{font-size:.74rem;color:var(--ink3);line-height:1.9}
+.ft-meta a{color:var(--ink2);text-decoration:none}
+.ft-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--amber);padding-bottom:3px;margin-bottom:2.25rem;transition:gap .3s var(--ease)}
+.ft-cta:hover{gap:.85rem}
+.ft-cta svg{width:15px;height:15px;stroke:var(--amber);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+@media(max-width:800px){
+  .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
+  .chapter.center{justify-content:flex-start}
+  .ch-inner,.chapter.center .ch-inner{width:100%;text-align:left}
+  .ch-sub{margin-left:0;margin-right:0}
+  .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot,.chapter.center .ch-dot{left:-2.4rem;right:auto;top:.3rem;transform:none}
+}
+
+/* MOTION die het verhaal draagt */
+.chapter.converge .ch-dot{animation:convdot .9s var(--ease) both}
+.chapter.converge:nth-of-type(3) .ch-dot{animation-delay:0s}
+.chapter.converge:nth-of-type(4) .ch-dot{animation-delay:.16s}
+@keyframes convdot{0%{box-shadow:0 0 0 6px rgba(181,127,60,.12)}45%{box-shadow:0 0 0 15px rgba(181,127,60,.28)}100%{box-shadow:0 0 0 6px rgba(181,127,60,.12)}}
+.chapter.pivot.reached .ch-dot{animation:pivotbeat 1.6s var(--ease) 2}
+@keyframes pivotbeat{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.28)}}
+@media(max-width:800px){.chapter.pivot.reached .ch-dot{animation:pivotbeat-m 1.6s var(--ease) 2}
+@keyframes pivotbeat-m{0%,100%{transform:scale(1)}50%{transform:scale(1.28)}}}
+/* de staart: het pad loopt door tot in de knop */
+.tail{position:relative;height:clamp(90px,12vh,140px);margin:0 auto;max-width:1px;overflow:visible}
+.tail svg{position:absolute;left:-1px;top:0;width:2px;height:100%;overflow:visible}
+.tl-base{stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11}
+.tl-prog{stroke:var(--amber);stroke-width:2.4;stroke-linecap:round}
+/* host-regel en amber knop */
+.host{display:flex;align-items:center;justify-content:center;gap:.85rem;margin-top:clamp(2rem,4vh,2.75rem)}
+.host img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.host span{font-size:.92rem;color:rgba(255,255,255,.72);text-align:left;line-height:1.45}
+.cta-btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.6rem;background:var(--amber);color:#160d02;font-weight:600;font-size:1rem;letter-spacing:.01em;border:none;border-radius:100px;padding:1.05rem 2.1rem;cursor:pointer;box-shadow:0 18px 44px rgba(181,127,60,.4);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 22px 54px rgba(181,127,60,.5)}
+.cta-alt{display:block;margin-top:1.15rem;font-size:.9rem;color:rgba(255,255,255,.5);text-decoration:underline;text-underline-offset:3px}
+.cta-alt:hover{color:rgba(255,255,255,.8)}
+.ov{position:fixed;inset:0;z-index:90;background:rgba(8,12,22,.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:1.25rem}
+.ov.open{display:flex}
+.ov-panel{background:#fff;border-radius:22px;width:min(920px,100%);max-height:88vh;overflow:auto;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.45)}
+.ov-close{position:absolute;top:.75rem;right:.9rem;border:none;background:rgba(20,28,51,.07);width:34px;height:34px;border-radius:50%;font-size:1.1rem;cursor:pointer;color:var(--ink);z-index:2}
+@media(prefers-reduced-motion:reduce){.chapter.converge .ch-dot,.chapter.pivot.reached .ch-dot{animation:none}}
+
+</style>
+<link rel="stylesheet" href="intro.css">
+<script>window.PIQUE_INTRO={"voornaam": "Nico", "bedrijf": "Van der Vlist"};</script>
+<script src="intro.js"></script>
+</head>
+<body>
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="Pique"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 929.98 302.23"><path fill="currentColor" d="M0,268v-3.83l7.66-2.68q7.65-2.29,10.14-6.89t2.49-12.26V41.73q0-7.65-2.68-12.25T7.27,22.21L0,19.14V15.32H93q57,0,82.51,20.86t25.46,55a78.41,78.41,0,0,1-10.53,40Q180,149.32,155.83,160T90.74,170.77h-13v70.45q0,14.92,14.93,19.52l11.48,3.45V268ZM77.73,163.11H92.27q18.77,0,30.64-6.13t17.61-21.44q5.74-15.31,5.74-42.5,0-27.57-6.32-42.88T121.37,28.91Q109.12,23,90.74,23h-13Z"/><path fill="currentColor" d="M216.32,268v-3.83l5.36-1.53c5.11-1.54,8.62-3.83,10.53-6.9s2.88-7.14,2.88-12.25V123.67q0-8-2.88-12.06t-10.53-5.55l-5.36-1.15v-3.83l70.07-22.59,3.83,3.83-1.15,54.37V243.9q0,7.65,2.87,12.25T302.09,263l3.83,1.15V268ZM261.5,58.2q-13,0-22-8.23a27.06,27.06,0,0,1-9-20.87q0-13,9-21.06t22-8q13,0,21.83,8t8.8,21.06q0,12.63-8.8,20.87T261.5,58.2Z"/><path fill="currentColor" d="M503.21,119.57a87.17,87.17,0,0,0-33.76-35.13q-21.76-12.69-50.16-12.68T369.4,84.44a90,90,0,0,0-33.8,35.13q-12.27,22.45-12.24,52t12.24,52a90.24,90.24,0,0,0,33.8,35.16q21.5,12.68,49.89,12.66c3.83,0,7.54-.2,11.18-.53,2.21-.22,4.4-.48,6.53-.83-2-4.41-4.22-9.33-6.59-14.54a28.4,28.4,0,0,1-11.08,2.17c-.83,0-1.64,0-2.43-.1q-11.26-.92-19.81-10.52-9.51-10.64-14.72-29.79t-5.17-45.7q0-26.55,5.17-45.71t14.72-29.58c6.3-7,13.72-10.41,22.24-10.41,8.75,0,16.29,3.45,22.53,10.41S453,113,456.44,125.77s5.21,28,5.21,45.71q0,24.09-4.28,42.05c10.39,11.85,21.09,23.82,29.21,32.21a89,89,0,0,0,16.63-22.24q12-22.49,12-52T503.21,119.57Z"/><path fill="currentColor" d="M608.74,273.76A64.49,64.49,0,0,1,581.37,268a42.21,42.21,0,0,1-19.53-18.57q-7.1-12.82-6.7-33.89l1.15-98.4q0-8.8-3.06-12.63t-9.58-5.36l-4.59-1.53V93.81l68.54-13.4,3.82,3.82-1.91,54.37v92.28q0,12.26,7.08,18t17.81,5.75a55.62,55.62,0,0,0,19.14-3.07,68.65,68.65,0,0,0,16.85-9.19l1.53-124.82q0-8.79-2.68-12.44t-10-5.17l-3.82-1.15V95l67-14.54,3.83,3.82-1.15,54.37V242.36q0,8.43,2.3,13t9.95,7.66l3.83,1.15V268l-67,3.83-3.45-22.59a136.35,136.35,0,0,1-27.37,17.42Q628.66,273.76,608.74,273.76Z"/><path fill="currentColor" d="M851.11,78.11q24.89,0,42.5,10.14a69.39,69.39,0,0,1,27,27.57Q930,133.25,930,155.45q0,4.22-.38,8.62a34.71,34.71,0,0,1-1.53,7.84H814q.38,41.35,14.74,59.54t42.69,18.19q19.14,0,31-6.13a75.81,75.81,0,0,0,22.21-18l3.83,3.44a88.14,88.14,0,0,1-31.59,32.93q-19.73,11.87-47.29,11.87-27.18,0-48.24-11.68a82.38,82.38,0,0,1-32.93-33.5q-11.86-21.83-11.87-52.07,0-31.39,13.79-53.41t35.41-33.51A95.54,95.54,0,0,1,851.11,78.11ZM850,85.77a28.2,28.2,0,0,0-19,6.7q-7.85,6.7-12.25,23.73T814,164.26h65.47q3.82-41.73-3.06-60.12T850,85.77Z"/><path fill="#D4943A" d="M400.7,166s35.83,78.88,49.46,109c13.39,29.63,51.1,46.89,84.54-12.47a1,1,0,0,0-1.35-1.37c-7.45,4.12-26.71,12.89-41.07,3.1C474.11,251.94,395,153.48,400.7,166Z"/></svg></a>
+  <a href="#gesprek" class="nav-cta">Plan een gesprek</a>
+</nav>
+
+<header class="intro" id="top">
+  <div class="intro-grid"></div>
+  <div class="intro-inner">
+    <div class="intro-eyebrow">Persoonlijk voor Van der Vlist</div>
+    <div class="reel" id="reel">
+      <video id="reelvid" class="reel-video" playsinline preload="metadata" poster="simon-staand-poster.jpg" src="simon-staand.mp4"></video>
+      <button class="reel-ov" id="reelov" aria-label="Speel de video van Simon af">
+        <span class="reel-ring"></span>
+        <span class="reel-play"></span>
+        <span class="reel-badge">1 min 20 &middot; met geluid</span>
+      </button>
+    </div>
+    <div class="vlabel">Kort woord vooraf van Simon</div>
+    <h1 class="intro-h1">Hé Nico, mijn kaart ging over het verschil tussen 2023 en 2024.</h1>
+    <p class="intro-sub">Vier minuten over waar dat verschil vandaan kan komen.</p>
+    <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="journey-path" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path>
+    <path class="jp-prog" id="jp-prog"></path>
+  </svg>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom deze kaart bij jou lag.</h2><p class="ch-text">Over 2024 boekte de groep een nettoresultaat van vijfduizend euro, tegen 8,8 miljoen in 2023. Dat is een verschil dat je niet met tarieven alleen verklaart. Ik ging kijken waar in jullie markt het volume zit dat zo'n verschil weer omdraait.</p><div class="ch-sign">Simon, oprichter Pique</div></div>
+      </div>
+    </section>
+    <section class="chapter center phase">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Wat ik zag</div><h2 class="ch-kop ch-head">Twee dingen over het bedrijf.</h2><p class="ch-sub">Een cijfer en een familielijn.</p></div>
+      </div>
+    </section>
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Het resultaat viel in een jaar bijna volledig weg</h2><p class="ch-text">Van 8,8 miljoen nettowinst in 2023 naar vijfduizend euro over 2024. In een markt met dure trekkers en schaarse chauffeurs is bezetting de enige knop die zoiets terugdraait, en bezetting komt uit projecten die vroeg worden vergeven.</p><div class="ch-bron">Bron: nt.nl, 26 november 2025</div></div>
+      </div>
+    </section>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Derde generatie, en de vierde zit er al</h2><p class="ch-text">Je leidt de groep samen met je broer Dirk en het bedrijf heeft inmiddels ook de vierde generatie in huis. Zulke continuiteit is precies wat een opdrachtgever zoekt die een project van jaren plant, en het wordt zelden als argument ingezet.</p><div class="ch-bron">Bron: nt.nl, 26 november 2025</div></div>
+      </div>
+    </section>
+    <section class="chapter center pivot">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Waar ik op uitkwam</div><p class="ch-pivot">Speciaal transport wordt gevraagd als de rest van een project al vaststaat. Wie eerder in beeld is, praat mee over route en planning en wordt daarmee bijna vanzelf de uitvoerder.</p></div>
+      </div>
+    </section>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Wat dat kost</div><h2 class="ch-kop">Wat een late offerteaanvraag oplevert.</h2><p class="ch-text">Een fabrikant van windturbines of transformatoren plant zijn transporten maanden vooruit. Kom je pas in beeld bij de aanvraag, dan is de opdracht een prijsvergelijking op een vaste route. Bij een marge die al onder druk staat, is dat het verkeerde soort werk.</p><p class="ch-pull">&lsquo;Vroeg meepraten over de route bepaalt wie hem rijdt.&rsquo;</p></div>
+      </div>
+    </section>
+    <section class="chapter center phase">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Het voorstel</div><h2 class="ch-kop ch-head">Wat ik zou doen.</h2><p class="ch-sub">Ik zou de fabrikanten en projectorganisaties opzoeken die nu zware componenten plannen, en daar de logistiek verantwoordelijke benaderen.</p></div>
+      </div>
+    </section>
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Zoeken op projecten in voorbereiding</h2><p class="ch-text">Een investeringsbesluit, een vergunning voor een windpark, een fabrieksuitbreiding, een aangekondigde revisie. Zulke sporen lopen maanden voor de transportvraag uit.</p></div>
+      </div>
+    </section>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Een kaart doet wat een mail niet meer kan</h2><p class="ch-text">Mail wordt gescand op afzender en weggeklikt. Een kaart wordt opgepakt en omgedraaid. Bij ons scant 56,3 procent van de ontvangers de code en plant 7,4 procent een gesprek.</p></div>
+      </div>
+    </section>
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Eerst een ronde, dan een oordeel</h2><p class="ch-text">Een ronde duurt twee maanden en levert een afgesproken aantal gesprekken op. Alles wat ik per bedrijf vind, krijg je, ook als we daarna stoppen.</p></div>
+      </div>
+    </section>
+
+</main>
+
+<section class="founder" id="founder">
+  <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Ik ben Simon. Pique is ontstaan uit ergernis. Iedereen stuurt meer, niemand stuurt beter, en de ontvanger haakt af bij de eerste regel.</p>
+      <p>Ik draai het daarom om. Eerst de research, dan de lijst, en pas als laatste de tekst. Meestal blijft er van tien namen een over.</p>
+      <p>Liever een korte lijst waar iets uit komt dan een lange lijst die alleen op papier goed oogt.</p>
+    </div>
+    <p class="fo-name"><strong>Simon Kempers</strong>, oprichter Pique</p>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="gr-card reveal">
+    <div class="gr-eyebrow">Hoe we het risico verdelen</div>
+    <p class="gr-head">Wij dragen het risico op volume, jij beoordeelt de kwaliteit.</p>
+    <p class="gr-text">Het aantal gesprekken staat vast en halen we of we werken door. De kwaliteit beoordeel je zelf na de eerste vijf, en daar sturen we op bij.</p>
+  </div>
+</section>
+
+<div class="tail" id="tail"><svg preserveAspectRatio="none" aria-hidden="true"><line class="tl-base" x1="1" y1="0" x2="1" y2="100%"></line><line class="tl-prog" id="tlprog" x1="1" y1="0" x2="1" y2="100%"></line></svg></div>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Kwartiertje?</h2>
+    <p class="cta-sub reveal">In een kwartier laat ik vijf Nederlandse projecten zien waar binnenkort zwaar transport bij komt kijken, met de naam van de verantwoordelijke.</p>
+    <div class="host reveal"><img src="simon.png" alt="Simon Kempers"><span>15 minuten met Simon<br>video of telefoon, jij kiest</span></div>
+    <button class="cta-btn reveal" id="openagenda">Kies een moment</button>
+    <a class="cta-alt reveal" href="mailto:info@pique.agency?subject=Vraag%20naar%20aanleiding%20van%20de%20kaart">Liever eerst iets vragen? Mail me.</a>
+  </div>
+</section>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-label="Plan een gesprek">
+  <div class="ov-panel"><button class="ov-close" id="ovclose" aria-label="Sluiten">&times;</button><div id="cal-embed"></div></div>
+</div>
+
+<footer>
+  <a href="https://www.pique.agency/regional-growth" class="ft-cta">Meer weten over Regional Growth <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <div class="ft-logo"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 929.98 302.23"><path fill="currentColor" d="M0,268v-3.83l7.66-2.68q7.65-2.29,10.14-6.89t2.49-12.26V41.73q0-7.65-2.68-12.25T7.27,22.21L0,19.14V15.32H93q57,0,82.51,20.86t25.46,55a78.41,78.41,0,0,1-10.53,40Q180,149.32,155.83,160T90.74,170.77h-13v70.45q0,14.92,14.93,19.52l11.48,3.45V268ZM77.73,163.11H92.27q18.77,0,30.64-6.13t17.61-21.44q5.74-15.31,5.74-42.5,0-27.57-6.32-42.88T121.37,28.91Q109.12,23,90.74,23h-13Z"/><path fill="currentColor" d="M216.32,268v-3.83l5.36-1.53c5.11-1.54,8.62-3.83,10.53-6.9s2.88-7.14,2.88-12.25V123.67q0-8-2.88-12.06t-10.53-5.55l-5.36-1.15v-3.83l70.07-22.59,3.83,3.83-1.15,54.37V243.9q0,7.65,2.87,12.25T302.09,263l3.83,1.15V268ZM261.5,58.2q-13,0-22-8.23a27.06,27.06,0,0,1-9-20.87q0-13,9-21.06t22-8q13,0,21.83,8t8.8,21.06q0,12.63-8.8,20.87T261.5,58.2Z"/><path fill="currentColor" d="M503.21,119.57a87.17,87.17,0,0,0-33.76-35.13q-21.76-12.69-50.16-12.68T369.4,84.44a90,90,0,0,0-33.8,35.13q-12.27,22.45-12.24,52t12.24,52a90.24,90.24,0,0,0,33.8,35.16q21.5,12.68,49.89,12.66c3.83,0,7.54-.2,11.18-.53,2.21-.22,4.4-.48,6.53-.83-2-4.41-4.22-9.33-6.59-14.54a28.4,28.4,0,0,1-11.08,2.17c-.83,0-1.64,0-2.43-.1q-11.26-.92-19.81-10.52-9.51-10.64-14.72-29.79t-5.17-45.7q0-26.55,5.17-45.71t14.72-29.58c6.3-7,13.72-10.41,22.24-10.41,8.75,0,16.29,3.45,22.53,10.41S453,113,456.44,125.77s5.21,28,5.21,45.71q0,24.09-4.28,42.05c10.39,11.85,21.09,23.82,29.21,32.21a89,89,0,0,0,16.63-22.24q12-22.49,12-52T503.21,119.57Z"/><path fill="currentColor" d="M608.74,273.76A64.49,64.49,0,0,1,581.37,268a42.21,42.21,0,0,1-19.53-18.57q-7.1-12.82-6.7-33.89l1.15-98.4q0-8.8-3.06-12.63t-9.58-5.36l-4.59-1.53V93.81l68.54-13.4,3.82,3.82-1.91,54.37v92.28q0,12.26,7.08,18t17.81,5.75a55.62,55.62,0,0,0,19.14-3.07,68.65,68.65,0,0,0,16.85-9.19l1.53-124.82q0-8.79-2.68-12.44t-10-5.17l-3.82-1.15V95l67-14.54,3.83,3.82-1.15,54.37V242.36q0,8.43,2.3,13t9.95,7.66l3.83,1.15V268l-67,3.83-3.45-22.59a136.35,136.35,0,0,1-27.37,17.42Q628.66,273.76,608.74,273.76Z"/><path fill="currentColor" d="M851.11,78.11q24.89,0,42.5,10.14a69.39,69.39,0,0,1,27,27.57Q930,133.25,930,155.45q0,4.22-.38,8.62a34.71,34.71,0,0,1-1.53,7.84H814q.38,41.35,14.74,59.54t42.69,18.19q19.14,0,31-6.13a75.81,75.81,0,0,0,22.21-18l3.83,3.44a88.14,88.14,0,0,1-31.59,32.93q-19.73,11.87-47.29,11.87-27.18,0-48.24-11.68a82.38,82.38,0,0,1-32.93-33.5q-11.86-21.83-11.87-52.07,0-31.39,13.79-53.41t35.41-33.51A95.54,95.54,0,0,1,851.11,78.11ZM850,85.77a28.2,28.2,0,0,0-19,6.7q-7.85,6.7-12.25,23.73T814,164.26h65.47q3.82-41.73-3.06-60.12T850,85.77Z"/><path fill="#D4943A" d="M400.7,166s35.83,78.88,49.46,109c13.39,29.63,51.1,46.89,84.54-12.47a1,1,0,0,0-1.35-1.37c-7.45,4.12-26.71,12.89-41.07,3.1C474.11,251.94,395,153.48,400.7,166Z"/></svg></div>
+  <div class="ft-meta">
+    Onderdeel van TextInc B2B Copywriting &nbsp;&middot;&nbsp; <a href="mailto:info@pique.agency">info@pique.agency</a><br>
+    &copy; 2026 Pique
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>window.innerHeight*.6),{passive:true});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+document.querySelectorAll('.chapter,.founder,.reveal').forEach(el=>io.observe(el));
+
+const journey=document.getElementById('journey'),svg=document.getElementById('jpath');
+const base=document.getElementById('jp-base'),prog=document.getElementById('jp-prog');
+const dots=[...journey.querySelectorAll('.ch-dot')];
+let total=0;
+function build(){
+  const W=journey.clientWidth,H=journey.clientHeight,jr=journey.getBoundingClientRect();
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  const pts=dots.map(d=>{const r=d.getBoundingClientRect();return{x:r.left+r.width/2-jr.left,y:r.top+r.height/2-jr.top};});
+  if(pts.length<2)return;
+  let d='M '+pts[0].x.toFixed(1)+' '+pts[0].y.toFixed(1);
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],my=((a.y+b.y)/2).toFixed(1);
+    d+=' C '+a.x.toFixed(1)+' '+my+', '+b.x.toFixed(1)+' '+my+', '+b.x.toFixed(1)+' '+b.y.toFixed(1);}
+  base.setAttribute('d',d);prog.setAttribute('d',d);
+  total=prog.getTotalLength();prog.style.strokeDasharray=total;
+  onScroll();
+}
+function onScroll(){
+  if(!total)return;
+  const jr=journey.getBoundingClientRect(),trig=window.innerHeight*.52;
+  const frac=Math.max(0,Math.min(1,(trig-jr.top)/journey.clientHeight));
+  prog.style.strokeDashoffset=total*(1-frac);
+  dots.forEach(d=>{const r=d.getBoundingClientRect();d.parentElement.parentElement.classList.toggle('reached',r.top+r.height/2<trig);});
+}
+addEventListener('scroll',onScroll,{passive:true});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(build,120);});
+build();
+addEventListener('load',build);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
+// Reel: klik om af te spelen (met geluid)
+(function(){var r=document.getElementById('reel'),ov=document.getElementById('reelov'),v=document.getElementById('reelvid');
+ if(r&&ov&&v){ov.addEventListener('click',function(){v.setAttribute('controls','');r.classList.add('playing');v.play();});}})();
+const v=document.querySelector('.reel-video');if(v)v.addEventListener('loadedmetadata',build);
+setTimeout(build,400);setTimeout(build,1200);
+if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
+
+// convergentie: de bevinding-dots lichten kort na elkaar op zodra de laatste bevinding in beeld komt
+(function(){var bev=[...journey.querySelectorAll('.chapter.right,.chapter.left')].slice(0,2);
+ var laatste=bev[bev.length-1];
+ if(!laatste)return;
+ new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){bev.forEach(function(b){b.classList.add('converge')});o.disconnect();}})},{threshold:.5}).observe(laatste);})();
+
+// de staartlijn tekent zich af naar de knop
+(function(){var t=document.getElementById('tail'),p=document.getElementById('tlprog');
+ if(!t||!p)return;
+ function draw(){var r=t.getBoundingClientRect(),h=t.clientHeight,trig=window.innerHeight*.72;
+  var f=Math.max(0,Math.min(1,(trig-r.top)/h));p.style.strokeDasharray=h;p.style.strokeDashoffset=h*(1-f);}
+ addEventListener('scroll',draw,{passive:true});addEventListener('resize',draw);draw();})();
+
+// de kalender laadt pas bij intentie
+(function(){var b=document.getElementById('openagenda'),o=document.getElementById('ov'),c=document.getElementById('ovclose'),geladen=false;
+ function laad(){if(geladen)return;geladen=true;
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init","belafspraak-pique",{origin:"https://cal.com"});
+  Cal.ns["belafspraak-pique"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"simon-kempers/belafspraak-pique"});}
+ if(b){b.addEventListener('click',function(){laad();o.classList.add('open');});}
+ if(c){c.addEventListener('click',function(){o.classList.remove('open');});}
+ if(o){o.addEventListener('click',function(e){if(e.target===o)o.classList.remove('open');});}
+ addEventListener('keydown',function(e){if(e.key==='Escape'&&o)o.classList.remove('open');});})();
+</script>
+</body>
+</html>

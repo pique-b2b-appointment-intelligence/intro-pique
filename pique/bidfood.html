@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pique voor Bidfood Nederland</title>
-<meta name="description" content="Een persoonlijk voorstel voor Bidfood Nederland. Eén aanpak, per regio, exclusief voor jou.">
+<title>Pique voor Bidfood</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="description" content="Een persoonlijke pagina over Bidfood Media Solutions en de merken die er nog niet op zitten.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +14,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#FBFAF8;--ink:#141C33;--ink2:rgba(20,28,51,.66);--ink3:rgba(20,28,51,.42);
-  --navy:#0E1526;--amber:#C6893C;--ambers:#E0AC66;--line:rgba(20,28,51,.13);--white:#fff;
+  --navy:#0E1526;--amber:#B57F3C;--ambers:#E0AC66;--line:rgba(20,28,51,.13);--white:#fff;
   --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);
   --fs-h:clamp(1.9rem,3vw,2.7rem);--fs-body:clamp(1.02rem,1.25vw,1.16rem);
 }
@@ -60,7 +61,7 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 @media(prefers-reduced-motion:reduce){.reel{animation:reelin .8s var(--ease) .3s forwards}.reel-play,.reel-ring,.reel-badge{animation:none}}
 .vlabel{font-size:.78rem;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.42);margin-top:1rem;opacity:0;animation:up 1s var(--ease) .42s forwards}
 .intro-h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.12;letter-spacing:-.02em;margin-top:clamp(2.5rem,5vh,3.5rem);max-width:20ch;opacity:0;animation:up 1.1s var(--ease) .5s forwards}
-.intro-sub{color:rgba(255,255,255,.55);font-size:1.05rem;font-weight:300;margin-top:1.25rem;max-width:44ch;opacity:0;animation:up 1s var(--ease) .68s forwards}
+.intro-sub{color:rgba(255,255,255,.55);font-size:1.05rem;font-weight:400;margin-top:1.25rem;max-width:44ch;opacity:0;animation:up 1s var(--ease) .68s forwards}
 .scrollcue{margin-top:clamp(2.5rem,6vh,4rem);display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:up 1s var(--ease) .9s forwards}
 .scrollcue span{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)}
 .scrollcue i{display:block;width:1px;height:38px;background:linear-gradient(rgba(224,172,102,.7),transparent);animation:cue 2.2s ease-in-out infinite;transform-origin:top}
@@ -70,9 +71,8 @@ nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
 /* JOURNEY */
 .journey{position:relative;max-width:1180px;margin:0 auto;padding:clamp(4rem,9vh,7rem) clamp(1.25rem,3vw,2rem) clamp(3rem,7vh,5rem)}
 .journey-path{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
-.jp-base{fill:none;stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11;animation:march 40s linear infinite}
-@keyframes march{to{stroke-dashoffset:-92}}
-.jp-prog{fill:none;stroke:var(--amber);stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(198,137,60,.4))}
+.jp-base{fill:none;stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11}
+.jp-prog{fill:none;stroke:var(--amber);stroke-width:2.4;stroke-linecap:round;transition:stroke-dashoffset .12s linear}
 .chapter{position:relative;z-index:1;display:flex;padding:clamp(5.5vh,8vh,10vh) 0}
 .chapter.left{justify-content:flex-start}
 .chapter.right{justify-content:flex-end}
@@ -163,9 +163,38 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   .ch-sub{margin-left:0;margin-right:0}
   .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot,.chapter.center .ch-dot{left:-2.4rem;right:auto;top:.3rem;transform:none}
 }
+
+/* MOTION die het verhaal draagt */
+.chapter.converge .ch-dot{animation:convdot .9s var(--ease) both}
+.chapter.converge:nth-of-type(3) .ch-dot{animation-delay:0s}
+.chapter.converge:nth-of-type(4) .ch-dot{animation-delay:.16s}
+@keyframes convdot{0%{box-shadow:0 0 0 6px rgba(181,127,60,.12)}45%{box-shadow:0 0 0 15px rgba(181,127,60,.28)}100%{box-shadow:0 0 0 6px rgba(181,127,60,.12)}}
+.chapter.pivot.reached .ch-dot{animation:pivotbeat 1.6s var(--ease) 2}
+@keyframes pivotbeat{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.28)}}
+@media(max-width:800px){.chapter.pivot.reached .ch-dot{animation:pivotbeat-m 1.6s var(--ease) 2}
+@keyframes pivotbeat-m{0%,100%{transform:scale(1)}50%{transform:scale(1.28)}}}
+/* de staart: het pad loopt door tot in de knop */
+.tail{position:relative;height:clamp(90px,12vh,140px);margin:0 auto;max-width:1px;overflow:visible}
+.tail svg{position:absolute;left:-1px;top:0;width:2px;height:100%;overflow:visible}
+.tl-base{stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11}
+.tl-prog{stroke:var(--amber);stroke-width:2.4;stroke-linecap:round}
+/* host-regel en amber knop */
+.host{display:flex;align-items:center;justify-content:center;gap:.85rem;margin-top:clamp(2rem,4vh,2.75rem)}
+.host img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.host span{font-size:.92rem;color:rgba(255,255,255,.72);text-align:left;line-height:1.45}
+.cta-btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.6rem;background:var(--amber);color:#160d02;font-weight:600;font-size:1rem;letter-spacing:.01em;border:none;border-radius:100px;padding:1.05rem 2.1rem;cursor:pointer;box-shadow:0 18px 44px rgba(181,127,60,.4);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 22px 54px rgba(181,127,60,.5)}
+.cta-alt{display:block;margin-top:1.15rem;font-size:.9rem;color:rgba(255,255,255,.5);text-decoration:underline;text-underline-offset:3px}
+.cta-alt:hover{color:rgba(255,255,255,.8)}
+.ov{position:fixed;inset:0;z-index:90;background:rgba(8,12,22,.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:1.25rem}
+.ov.open{display:flex}
+.ov-panel{background:#fff;border-radius:22px;width:min(920px,100%);max-height:88vh;overflow:auto;position:relative;box-shadow:0 40px 100px rgba(0,0,0,.45)}
+.ov-close{position:absolute;top:.75rem;right:.9rem;border:none;background:rgba(20,28,51,.07);width:34px;height:34px;border-radius:50%;font-size:1.1rem;cursor:pointer;color:var(--ink);z-index:2}
+@media(prefers-reduced-motion:reduce){.chapter.converge .ch-dot,.chapter.pivot.reached .ch-dot{animation:none}}
+
 </style>
 <link rel="stylesheet" href="intro.css">
-<script>window.PIQUE_INTRO={voornaam: "Wieteke", bedrijf: "Bidfood Nederland"};</script>
+<script>window.PIQUE_INTRO={"voornaam": "Wieteke", "bedrijf": "Bidfood"};</script>
 <script src="intro.js"></script>
 </head>
 <body>
@@ -177,7 +206,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 <header class="intro" id="top">
   <div class="intro-grid"></div>
   <div class="intro-inner">
-    <div class="intro-eyebrow">Persoonlijk voor Bidfood Nederland</div>
+    <div class="intro-eyebrow">Persoonlijk voor Bidfood</div>
     <div class="reel" id="reel">
       <video id="reelvid" class="reel-video" playsinline preload="metadata" poster="simon-staand-poster.jpg" src="simon-staand.mp4"></video>
       <button class="reel-ov" id="reelov" aria-label="Speel de video van Simon af">
@@ -187,8 +216,8 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
       </button>
     </div>
     <div class="vlabel">Kort woord vooraf van Simon</div>
-    <h1 class="intro-h1">Hé Wieteke, dit is waarom je mijn brief hebt ontvangen.</h1>
-    <p class="intro-sub">Neem even de tijd. Ik neem je stap voor stap mee.</p>
+    <h1 class="intro-h1">Hé Wieteke, mijn kaart ging over foodprofessionals succesvoller maken.</h1>
+    <p class="intro-sub">Vier minuten over de merken die jullie mediakanaal nog niet kennen.</p>
     <div class="scrollcue"><span>Volg de lijn</span><i></i></div>
   </div>
 </header>
@@ -201,67 +230,64 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Jullie bedienen horeca en instellingen vanuit regionale distributiecentra, elk met een eigen verzorgingsgebied. Elk DC bouwt aan zijn eigen relaties met restaurants, zorglocaties en cateraars. Ik vroeg me af hoe je per regio ziet welke keukens nog niet bij Bidfood bestellen.</p><div class="ch-sign">Simon, oprichter Pique</div></div>
+        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom ik je deze kaart stuurde.</h2><p class="ch-text">Je zei dat bij Bidfood alles om de klant draait en dat de vraag is hoe je foodprofessionals nog succesvoller maakt. Tegelijk verkoop je met BMS advertentieruimte aan merken. Dat zijn twee verschillende klanten in een zin, en dat maakte me nieuwsgierig naar hoe je de tweede binnenhaalt.</p><div class="ch-sign">Simon, oprichter Pique</div></div>
       </div>
     </section>
     <section class="chapter center phase">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat ik zag</div><h2 class="ch-kop ch-head">Bij Bidfood Nederland.</h2><p class="ch-sub">Drie dingen die me opvielen. Ze horen bij elkaar.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Wat me opviel</div><h2 class="ch-kop ch-head">Twee dingen die je hebt gezegd.</h2><p class="ch-sub">Een over jullie klanten, een over jullie media.</p></div>
       </div>
     </section>
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Elk DC bewerkt zijn eigen gebied</h2><p class="ch-text">Het ene distributiecentrum kent zijn horecazaken, het andere zijn zorginstellingen en bedrijfsrestaurants. Die kennis blijft grotendeels binnen dat DC.</p></div>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Je biedt merken een plek in de mediamix</h2><p class="ch-text">Over Bidfood Media Solutions zei je dat merken er gericht kunnen adverteren of deze doelgroep aan hun mediamix kunnen toevoegen. Dat is een voorstel aan een mediaplanner. De beslissing om een heel nieuw kanaal toe te voegen ligt meestal een laag hoger.</p><div class="ch-bron">Bron: marketingtribune.nl, april 2026</div></div>
       </div>
     </section>
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">De nieuwe klant gaat naar wie het snelst levert</h2><p class="ch-text">Meldt een restaurant of instelling zich, dan pakt het DC dat het dichtst zit en ruimte heeft het op. Wie in dat gebied nog meer te winnen valt, blijft daarbij buiten beeld.</p></div>
-      </div>
-    </section>
-    <section class="chapter right">
-      <div class="ch-inner">
-        <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Centraal zie je volume, geen witte vlekken</h2><p class="ch-text">Je ziet afzet per DC en per productgroep, maar niet welke keukens in een regio nog bij een andere groothandel bestellen. Dat komt pas boven bij handmatig uitzoeken.</p></div>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Je zet de foodprofessional centraal</h2><p class="ch-text">Je zei dat alles om de klant draait en dat de vraag is hoe Bidfood foodprofessionals nog succesvoller maakt. Dat is precies het argument dat een merk nodig heeft om hier budget voor vrij te maken, want het gaat over bereik met betekenis.</p><div class="ch-bron">Bron: bidfood.nl, april 2026</div></div>
       </div>
     </section>
     <section class="chapter center pivot">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Waar het op uitkomt</div><p class="ch-pivot">Regionale DC's werken alleen op volle kracht als elk verzorgingsgebied ook echt bewerkt wordt, en in de praktijk bewerkt elk DC vooral zijn bekende klanten. De keukens die klaar zijn om over te stappen blijven onzichtbaar.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Waar ik op uitkwam</div><p class="ch-pivot">Een nieuw mediakanaal wordt zelden toegevoegd door de planner die het bestaande plan maakt. Dat besluit valt bij de marketingdirecteur van het merk, en die weet meestal niet dat Bidfood een mediakanaal heeft.</p></div>
       </div>
     </section>
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">De prijs van stilzitten.</h2><p class="ch-text">Restaurants en instellingen die ontevreden zijn over hun huidige leverancier blijven daar bestellen, omdat het dichtstbijzijnde DC ze nooit gericht benaderde. En de DC's groeien vooral bij bestaande klanten, terwijl de markt eromheen open ligt.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Wat dat kost</div><h2 class="ch-kop">Wat een vastgezet mediaplan doet.</h2><p class="ch-text">Neem een Nederlandse producent van diepvriesproducten die vooral aan horeca levert. Zijn mediaplan wordt in het najaar vastgesteld voor het hele jaar erna. Zit BMS daar in november niet in het gesprek, dan ben je een jaar verder voordat het opnieuw op tafel komt.</p><p class="ch-pull">&lsquo;Een mediaplan wordt een keer per jaar geopend en daarna twaalf maanden uitgevoerd.&rsquo;</p></div>
       </div>
     </section>
     <section class="chapter center phase">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat ik doe</div><h2 class="ch-kop ch-head">Pique, in het kort.</h2><p class="ch-sub">Ik lever gesprekken met beslissers die je normaal niet aan de lijn krijgt. Samen scherpen we het profiel aan, de rest ligt bij mij.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Het voorstel</div><h2 class="ch-kop ch-head">Wat ik zou doen.</h2><p class="ch-sub">Ik zou de foodproducenten opzoeken die aan horeca leveren en daar de marketingdirecteur benaderen ruim voor de planningsronde.</p></div>
       </div>
     </section>
-
     <section class="chapter right">
-      <div class="ch-inner"><span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Eerst het profiel, dan de namen</h2><p class="ch-text">We bepalen samen welk type bedrijf voor jou een droomklant is. Daarna zoek ik de bedrijven die daarin passen en de beslisser die er echt over gaat. Per bedrijf drie kwartier onderzoek, ook als dat betekent dat het alsnog van de lijst valt.</p></div>
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Per producent uitzoeken wat er speelt</h2><p class="ch-text">Een nieuwe lijn, een uitbreiding naar foodservice, een verse marketingdirecteur. Dat zijn de momenten waarop een merk zijn mediamix opnieuw bekijkt, en die momenten zijn openbaar te vinden.</p></div>
       </div>
     </section>
     <section class="chapter left">
-      <div class="ch-inner"><span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">De post is het enige kanaal dat nog openstaat</h2><p class="ch-text">De inbox van een directeur zit vol met berichten die een machine schreef. Een handgeschreven kaart op zijn bureau is dat niet. Van iedereen die er een krijgt scant 56,3 procent de code, en 7,4 procent plant een gesprek. Cold email blijft onder de 1 procent.</p></div>
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Een kaart doet wat een mail niet meer kan</h2><p class="ch-text">Mail wordt gescand op afzender en weggeklikt. Een kaart wordt opgepakt en omgedraaid. Bij ons scant 56,3 procent van de ontvangers de code en plant 7,4 procent een gesprek.</p></div>
       </div>
     </section>
     <section class="chapter right">
-      <div class="ch-inner"><span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Afspraakgarantie</h2><p class="ch-text">We spreken vooraf af hoeveel gesprekken je krijgt. Halen we dat aantal niet, dan gaan we kosteloos door tot het er wel staat.</p></div>
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Zonder langlopend contract</h2><p class="ch-text">Het traject duurt twee maanden en verlengt niet automatisch. Je krijgt per bedrijf het volledige dossier, dus ook als je stopt heb je er iets aan.</p></div>
       </div>
     </section>
+
 </main>
 
 <section class="founder" id="founder">
@@ -269,9 +295,9 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <div class="fr">
     <div class="fo-eyebrow">De persoon achter dit voorstel</div>
     <div class="fo-text">
-      <p>Ik ben Simon. Ik begon Pique omdat de inbox van elke beslisser vol zit met dezelfde geautomatiseerde berichten. Daar val je niet meer tussen op.</p>
-      <p>Dus doe ik het omgekeerd. Een klein aantal bedrijven, per stuk het onderzoek dat je hierboven zag, en een kaart plus pagina die echt alleen over hen gaan.</p>
-      <p>Volume is het doel niet. Aandacht wel.</p>
+      <p>Ik ben Simon. Het idee achter Pique is oud en saai: eerst uitzoeken met wie je praat, en dan pas iets sturen.</p>
+      <p>Daarom werk ik andersom. Weinig bedrijven, veel uitzoekwerk, en per bedrijf iets dat nergens anders bruikbaar is.</p>
+      <p>Bereik is te koop. Het gesprek dat erop volgt niet.</p>
     </div>
     <p class="fo-name"><strong>Simon Kempers</strong>, oprichter Pique</p>
   </div>
@@ -279,29 +305,28 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 
 <section class="guarantee">
   <div class="gr-card reveal">
-    <div class="gr-eyebrow">Onze garantie</div>
-    <p class="gr-head">Break-even binnen drie maanden, of we werken kosteloos door.</p>
-    <p class="gr-text">We rekenen met de gemiddelde waarde van één klant over de volledige looptijd. Heb je na drie maanden je investering nog niet terugverdiend, dan zetten we de samenwerking kosteloos voort tot je dat punt bereikt.<sup>*</sup></p>
-    <p class="gr-note"><span class="gr-star">*</span> De garantie vervalt wanneer je al in de eerste maand break-even draait.</p>
+    <div class="gr-eyebrow">Hoe we het risico verdelen</div>
+    <p class="gr-head">Blijft het aantal gesprekken achter, dan gaat het traject kosteloos door.</p>
+    <p class="gr-text">Het afgesproken aantal is een afspraak en geen verwachting. Zolang het er niet staat, werken we door op onze eigen kosten.</p>
   </div>
 </section>
+
+<div class="tail" id="tail"><svg preserveAspectRatio="none" aria-hidden="true"><line class="tl-base" x1="1" y1="0" x2="1" y2="100%"></line><line class="tl-prog" id="tlprog" x1="1" y1="0" x2="1" y2="100%"></line></svg></div>
 
 <section class="cta" id="gesprek">
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">De volgende stap</div>
-    <h2 class="cta-h reveal">Even kennismaken?</h2>
-    <p class="cta-sub reveal">Dit wordt geen verkoopgesprek. Gewoon kijken of dit bij Bidfood Nederland past, en of dat koude stuk warmer kan.</p>
-    <div class="cta-embed reveal"><div id="cal-embed"></div></div>
+    <h2 class="cta-h reveal">Kort bellen?</h2>
+    <p class="cta-sub reveal">In een kwartier laat ik tien foodproducenten zien die aan horeca leveren en niet bij BMS adverteren, met hun marketingdirecteur erbij.</p>
+    <div class="host reveal"><img src="simon.png" alt="Simon Kempers"><span>15 minuten met Simon<br>video of telefoon, jij kiest</span></div>
+    <button class="cta-btn reveal" id="openagenda">Kies een moment</button>
+    <a class="cta-alt reveal" href="mailto:info@pique.agency?subject=Vraag%20naar%20aanleiding%20van%20de%20kaart">Liever eerst iets vragen? Mail me.</a>
   </div>
 </section>
 
-<section class="reviews">
-  <div class="rv-eyebrow reveal">Wat klanten zeggen</div>
-  <div class="rv-grid">
-    <figure class="rv reveal"><div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="rv-q">&ldquo;Had oprecht niet gedacht dat de service zo uitgebreid was.&rdquo;</blockquote><figcaption class="rv-who"><strong>David Meeusen</strong><br>Azora Studio</figcaption></figure>
-    <figure class="rv reveal"><div class="rv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote class="rv-q">&ldquo;Professioneel, afspraken nagekomen en goede communicatie.&rdquo;</blockquote><figcaption class="rv-who"><strong>Jeffrey Roelands</strong><br>Backbone Customer Service</figcaption></figure>
-  </div>
-</section>
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-label="Plan een gesprek">
+  <div class="ov-panel"><button class="ov-close" id="ovclose" aria-label="Sluiten">&times;</button><div id="cal-embed"></div></div>
+</div>
 
 <footer>
   <a href="https://www.pique.agency/regional-growth" class="ft-cta">Meer weten over Regional Growth <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -354,9 +379,29 @@ const v=document.querySelector('.reel-video');if(v)v.addEventListener('loadedmet
 setTimeout(build,400);setTimeout(build,1200);
 if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
 
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init","belafspraak-pique",{origin:"https://cal.com"});
-Cal.ns["belafspraak-pique"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"simon-kempers/belafspraak-pique"});
+// convergentie: de bevinding-dots lichten kort na elkaar op zodra de laatste bevinding in beeld komt
+(function(){var bev=[...journey.querySelectorAll('.chapter.right,.chapter.left')].slice(0,2);
+ var laatste=bev[bev.length-1];
+ if(!laatste)return;
+ new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){bev.forEach(function(b){b.classList.add('converge')});o.disconnect();}})},{threshold:.5}).observe(laatste);})();
+
+// de staartlijn tekent zich af naar de knop
+(function(){var t=document.getElementById('tail'),p=document.getElementById('tlprog');
+ if(!t||!p)return;
+ function draw(){var r=t.getBoundingClientRect(),h=t.clientHeight,trig=window.innerHeight*.72;
+  var f=Math.max(0,Math.min(1,(trig-r.top)/h));p.style.strokeDasharray=h;p.style.strokeDashoffset=h*(1-f);}
+ addEventListener('scroll',draw,{passive:true});addEventListener('resize',draw);draw();})();
+
+// de kalender laadt pas bij intentie
+(function(){var b=document.getElementById('openagenda'),o=document.getElementById('ov'),c=document.getElementById('ovclose'),geladen=false;
+ function laad(){if(geladen)return;geladen=true;
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init","belafspraak-pique",{origin:"https://cal.com"});
+  Cal.ns["belafspraak-pique"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"simon-kempers/belafspraak-pique"});}
+ if(b){b.addEventListener('click',function(){laad();o.classList.add('open');});}
+ if(c){c.addEventListener('click',function(){o.classList.remove('open');});}
+ if(o){o.addEventListener('click',function(e){if(e.target===o)o.classList.remove('open');});}
+ addEventListener('keydown',function(e){if(e.key==='Escape'&&o)o.classList.remove('open');});})();
 </script>
 </body>
 </html>
