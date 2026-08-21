@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Voorbeeld Autoverhuur en Online Goed Gevonden</title>
+<meta name="description" content="Voorbeeldpagina voor Autoverhuur. Zo ziet een persoonlijke pagina eruit.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FBFAF8;--ink:#141C33;--ink2:rgba(20,28,51,.66);--ink3:rgba(20,28,51,.42);
+  --navy:#0E1526;--amber:#0B8A57;--ambers:#1CD688;--line:rgba(20,28,51,.13);--white:#fff;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);
+  --fs-h:clamp(1.9rem,3vw,2.7rem);--fs-body:clamp(1.02rem,1.25vw,1.16rem);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
+::selection{background:rgba(11,138,87,.2)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.5rem clamp(1.5rem,4vw,3rem);transition:background .5s var(--ease),backdrop-filter .5s,padding .4s}
+nav.solid{background:rgba(251,250,248,.72);backdrop-filter:blur(16px) saturate(1.4);padding-top:1rem;padding-bottom:1rem}
+.logo{color:var(--white);text-decoration:none;display:flex;align-items:center;transition:color .5s}
+.logo svg{height:26px;width:auto;display:block}
+nav.solid .logo{color:var(--ink)}
+.nav-cta{font-size:.78rem;font-weight:500;letter-spacing:.01em;color:rgba(255,255,255,.7);text-decoration:none;padding:.5rem .95rem;border-radius:100px;border:1px solid rgba(255,255,255,.16);transition:all .4s}
+.nav-cta:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+nav.solid .nav-cta{color:var(--ink2);border-color:var(--line)}
+nav.solid .nav-cta:hover{color:var(--ink);border-color:var(--ink3)}
+.intro{position:relative;background:var(--navy);color:#fff;padding:clamp(6rem,12vh,8rem) clamp(1.5rem,4vw,3rem) clamp(4rem,9vh,6.5rem);overflow:hidden}
+.intro-grid{position:absolute;inset:0;background-image:radial-gradient(circle at 50% 0,rgba(11,138,87,.1),transparent 55%);pointer-events:none}
+.intro-inner{position:relative;max-width:940px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+.intro-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(28,214,136,.9);margin-bottom:2.25rem;opacity:0;animation:up 1s var(--ease) .15s forwards}
+/* Reel-hero (staande video) */
+.reel{position:relative;width:min(300px,72vw);aspect-ratio:9/16;margin:0 auto;border-radius:24px;overflow:hidden;background:#0c1116;opacity:0;
+  animation:reelin .8s var(--ease) .3s forwards, reelfloat 6s ease-in-out 1.3s infinite, reelglow 3.6s ease-in-out 1.3s infinite}
+.reel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#0c1116}
+.reel-ov{position:absolute;inset:0;border:none;padding:0;cursor:pointer;background:linear-gradient(180deg,rgba(14,21,38,.05),rgba(14,21,38,.44));display:flex;align-items:center;justify-content:center}
+.reel-play{position:relative;width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);border:1.5px solid rgba(255,255,255,.62);display:flex;align-items:center;justify-content:center;animation:reelpulse 1.9s ease-in-out infinite;z-index:2}
+.reel-play::after{content:'';margin-left:6px;border-style:solid;border-width:12px 0 12px 21px;border-color:transparent transparent transparent #fff}
+.reel-ring{position:absolute;top:50%;left:50%;width:74px;height:74px;border-radius:50%;border:2px solid var(--ambers);transform:translate(-50%,-50%);animation:reelring 1.9s ease-out infinite;z-index:1}
+.reel-badge{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.66rem;font-weight:600;letter-spacing:.03em;color:#231607;background:var(--ambers);border-radius:100px;padding:.32rem .85rem;box-shadow:0 6px 18px rgba(11,138,87,.42);animation:reelbob 2.3s ease-in-out infinite;z-index:2}
+.reel.playing{animation:reelin .8s var(--ease) .3s forwards;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08)}
+.reel.playing .reel-ov{display:none}
+@keyframes reelin{from{opacity:0}to{opacity:1}}
+@keyframes reelpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes reelring{0%{opacity:.7;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(2)}}
+@keyframes reelbob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-4px)}}
+@keyframes reelfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes reelglow{0%,100%{box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08)}50%{box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(28,214,136,.5),0 0 40px 6px rgba(11,138,87,.26)}}
+@media(max-width:520px){.reel{width:min(268px,70vw);border-radius:20px;animation:reelin .8s var(--ease) .3s forwards, reelglow 3.6s ease-in-out 1.3s infinite}.reel-play,.reel-ring{width:64px;height:64px}.reel-play::after{border-width:11px 0 11px 18px}.reel-badge{bottom:12px;font-size:.62rem}}
+@media(max-height:760px) and (min-width:801px){.reel{width:min(232px,58vw)}}
+@media(prefers-reduced-motion:reduce){.reel{animation:reelin .8s var(--ease) .3s forwards}.reel-play,.reel-ring,.reel-badge{animation:none}}
+.vlabel{font-size:.78rem;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.42);margin-top:1rem;opacity:0;animation:up 1s var(--ease) .42s forwards}
+.intro-h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.12;letter-spacing:-.02em;margin-top:clamp(2.5rem,5vh,3.5rem);max-width:20ch;opacity:0;animation:up 1.1s var(--ease) .5s forwards}
+.intro-sub{color:rgba(255,255,255,.55);font-size:1.05rem;font-weight:300;margin-top:1.25rem;max-width:44ch;opacity:0;animation:up 1s var(--ease) .68s forwards}
+.scrollcue{margin-top:clamp(2.5rem,6vh,4rem);display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:up 1s var(--ease) .9s forwards}
+.scrollcue span{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.scrollcue i{display:block;width:1px;height:38px;background:linear-gradient(rgba(28,214,136,.7),transparent);animation:cue 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%,100%{transform:scaleY(.5);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.journey{position:relative;max-width:1180px;margin:0 auto;padding:clamp(4rem,9vh,7rem) clamp(1.25rem,3vw,2rem) clamp(3rem,7vh,5rem)}
+.journey-path{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.jp-base{fill:none;stroke:var(--line);stroke-width:2;stroke-linecap:round;stroke-dasharray:.5 11;animation:march 40s linear infinite}
+@keyframes march{to{stroke-dashoffset:-92}}
+.jp-prog{fill:none;stroke:var(--amber);stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(11,138,87,.4))}
+.chapter{position:relative;z-index:1;display:flex;padding:clamp(5.5vh,8vh,10vh) 0}
+.chapter.left{justify-content:flex-start}
+.chapter.right{justify-content:flex-end}
+.chapter.center{justify-content:center}
+.ch-inner{position:relative;width:min(400px,40%)}
+.chapter.center .ch-inner{width:min(560px,78%);text-align:center}
+.chapter.center .ch-body{background:var(--bg);padding:1.5rem 1.75rem;border-radius:16px;position:relative;z-index:1}
+.ch-dot{position:absolute;top:-1.7rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--line);z-index:2;transition:border-color .5s var(--ease),background .5s var(--ease),box-shadow .5s var(--ease)}
+.chapter.left .ch-dot{right:-1.7rem}
+.chapter.right .ch-dot{left:-1.7rem}
+.chapter.center .ch-dot{left:50%;transform:translateX(-50%)}
+.chapter.reached .ch-dot{border-color:var(--amber);background:var(--amber);box-shadow:0 0 0 6px rgba(11,138,87,.12)}
+.ch-body{opacity:0;transform:translateY(30px);filter:blur(5px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.chapter.in .ch-body{opacity:1;transform:none;filter:blur(0)}
+.ch-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1.1rem}
+.ch-num{font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--ink3);margin-bottom:.9rem;font-variant-numeric:tabular-nums}
+.ch-kop{font-family:var(--serif);font-weight:500;font-size:var(--fs-h);line-height:1.16;letter-spacing:-.015em;color:var(--ink);margin-bottom:.9rem}
+.ch-head{font-size:clamp(2.1rem,3.6vw,3rem);margin-bottom:0}
+.ch-sub{font-size:1.06rem;color:var(--ink2);line-height:1.7;margin-top:1rem;font-weight:300;max-width:38ch;margin-left:auto;margin-right:auto}
+.ch-text{font-size:var(--fs-body);color:var(--ink2);line-height:1.75;font-weight:400}
+.ch-bron{font-size:.72rem;color:var(--ink3);margin-top:.95rem;letter-spacing:.02em}
+.ch-sign{font-size:.85rem;color:var(--ink3);margin-top:1.4rem;font-weight:500}
+.chapter.pivot{padding:clamp(8vh,12vh,15vh) 0}
+.ch-pivot{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.1vw,1.75rem);line-height:1.42;letter-spacing:-.015em;color:var(--ink)}
+.chapter.pivot .ch-dot{width:16px;height:16px;top:-2.1rem}
+.chapter.pivot .ch-inner{width:min(680px,88%)}
+.chapter.phase{padding-top:clamp(7vh,10vh,13vh)}
+.chapter.phase .ch-dot{width:15px;height:15px;top:-2.1rem}
+.ch-pull{font-family:var(--serif);font-weight:500;font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.4;color:var(--ink);border-left:3px solid var(--amber);padding-left:1.1rem;margin-top:1.3rem}
+.pricing{padding:clamp(3rem,7vh,5rem) clamp(1.5rem,4vw,2rem) clamp(1.5rem,3vh,2.5rem)}
+.pr-inner{max-width:940px;margin:0 auto}
+.pr-eyebrow{text-align:center;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.9rem}
+.pr-head{text-align:center;font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.22;letter-spacing:-.02em;color:var(--ink);margin-bottom:2.5rem}
+.pr-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-bottom:2.5rem}
+.pr-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:2rem 1.6rem;text-align:center;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.pr-card:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(20,28,51,.08)}
+.pr-card.feat{border-color:rgba(11,138,87,.45);box-shadow:0 20px 50px rgba(11,138,87,.1)}
+.pr-tier{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.pr-price{font-family:var(--serif);font-weight:600;font-size:2rem;color:var(--ink);line-height:1}
+.pr-per{font-size:.72rem;color:var(--ink3);margin-top:.35rem;margin-bottom:1.1rem}
+.pr-desc{font-size:.9rem;color:var(--ink2);line-height:1.6}
+.pr-min{text-align:center;font-size:.82rem;color:var(--ink3);margin-bottom:2.5rem}
+@media(max-width:680px){.pr-grid{grid-template-columns:1fr}}
+.founder{max-width:760px;margin:0 auto;padding:clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,2rem) clamp(4rem,8vh,6rem);display:grid;grid-template-columns:auto 1fr;gap:clamp(1.75rem,4vw,3rem);align-items:center}
+.founder .fr{opacity:0;transform:translateY(24px);filter:blur(4px);transition:all 1s var(--ease)}
+.founder.in .fr{opacity:1;transform:none;filter:blur(0)}
+.fo-photo{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:50%;object-fit:cover;box-shadow:0 20px 50px rgba(20,28,51,.15)}
+.fo-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem}
+.fo-text{font-family:var(--sans);font-weight:400;font-size:1.02rem;line-height:1.72;color:var(--ink2);margin-bottom:1.1rem}
+.fo-text p{margin-bottom:.7rem}
+.fo-text p:last-child{margin-bottom:0}
+.fo-name{font-size:.92rem;color:var(--ink2)}.fo-name strong{color:var(--ink);font-weight:600}
+@media(max-width:600px){.founder{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.cta{background:var(--navy);color:#fff;padding:clamp(4.5rem,10vh,7rem) clamp(1.5rem,4vw,2rem)}
+.cta-inner{max-width:720px;margin:0 auto;text-align:center}
+.cta-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(28,214,136,.9);margin-bottom:1.25rem}
+.cta-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.15;letter-spacing:-.02em}
+.cta-sub{color:rgba(255,255,255,.6);font-size:1.05rem;font-weight:300;margin:1.25rem auto 0;max-width:48ch}
+.cta-embed{margin-top:clamp(2.5rem,5vh,3.5rem);background:#fff;border-radius:20px;box-shadow:0 40px 100px rgba(0,0,0,.4);overflow:hidden;min-height:640px}
+#cal-embed{width:100%;min-height:640px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
+.ft-logo{color:var(--ink);display:inline-flex;align-items:center;margin-bottom:.8rem}
+.ft-logo svg{height:24px;width:auto}
+.ft-meta{font-size:.74rem;color:var(--ink3);line-height:1.9}
+.ft-meta a{color:var(--ink2);text-decoration:none}
+.ft-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--amber);padding-bottom:3px;margin-bottom:2.25rem;transition:gap .3s var(--ease)}
+.ft-cta:hover{gap:.85rem}
+.ft-cta svg{width:15px;height:15px;stroke:var(--amber);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:800px){
+  .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
+  .chapter.center{justify-content:flex-start}
+  .ch-inner,.chapter.center .ch-inner{width:100%;text-align:left}
+  .ch-sub{margin-left:0;margin-right:0}
+  .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot,.chapter.center .ch-dot{left:-2.4rem;right:auto;top:.3rem;transform:none}
+}
+
+.pr-garantie{max-width:760px;margin:2.4rem auto 0;padding:1.4rem 1.6rem;border:1px solid var(--line);
+  border-radius:16px;font-size:1.04rem;line-height:1.65;color:var(--ink);background:rgba(255,255,255,.6)}
+.pr-bron{max-width:760px;margin:1rem auto 0;font-size:.78rem;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink2)}
+.pr-bron::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--amber);margin-right:.55rem;vertical-align:middle}
+.pr-grid.tweeluik{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center}
+@media(max-width:760px){.pr-grid.tweeluik{grid-template-columns:1fr}}
+
+.af-paneel + .pr-bron{max-width:none}
+.af-paneel{position:relative;overflow:hidden;background:linear-gradient(160deg,#17223d 0%,var(--navy) 58%,#0a1120 100%);
+  border-radius:22px;padding:clamp(1.8rem,4vw,2.9rem);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 34px 80px rgba(14,21,38,.30),0 4px 14px rgba(14,21,38,.14)}
+.af-paneel::before{content:'';position:absolute;top:-40%;right:-18%;width:60%;height:150%;
+  background:radial-gradient(closest-side,rgba(28,214,136,.11),transparent 72%);pointer-events:none}
+.af-kolommen{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem)}
+.af-kolommen::before{content:'';position:absolute;top:.4rem;bottom:.4rem;left:50%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.16),transparent)}
+.af-kop{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem}
+.af-kop-nu{color:rgba(255,255,255,.45)}
+.af-kop-straks{color:var(--ambers)}
+.af-lijst{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.95rem}
+.af-item{display:flex;gap:.85rem;align-items:flex-start;font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.9)}
+.af-item.af-nu{color:rgba(255,255,255,.6)}
+.af-icoon{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;margin-top:.12rem}
+.af-icoon svg{width:13px;height:13px;display:block}
+.af-nu .af-icoon{background:rgba(226,84,74,.16);color:#F0837A}
+.af-straks .af-icoon{background:rgba(28,214,136,.16);color:#3EDCA0}
+.af-garantie{position:relative;margin-top:clamp(1.7rem,3.5vw,2.4rem);padding:clamp(1.3rem,3vw,1.7rem) clamp(1.3rem,3vw,1.8rem);
+  border:1px solid rgba(28,214,136,.28);border-radius:16px;background:rgba(28,214,136,.07)}
+.af-gar-kop{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambers);margin-bottom:.8rem}
+.af-gar-zin{margin:0 0 1.3rem;font-size:1.04rem;line-height:1.6;color:#fff}
+.af-gar-meet-kop{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);margin-bottom:.75rem}
+.af-meet{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem clamp(1.2rem,3vw,2.4rem)}
+.af-meet li{position:relative;padding-left:1.1rem;font-size:.9rem;line-height:1.5;color:rgba(255,255,255,.78)}
+.af-meet li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--ambers)}
+.af-voet{position:relative;margin-top:clamp(1.6rem,3.5vw,2.3rem);padding-top:clamp(1.3rem,3vw,1.7rem);
+  border-top:1px solid rgba(255,255,255,.12);font-size:1rem;line-height:1.65;color:rgba(255,255,255,.82)}
+@media(max-width:760px){
+  .af-kolommen{grid-template-columns:1fr;gap:2rem}
+  .af-kolommen::before{display:none}
+  .af-meet{grid-template-columns:1fr}
+}
+
+/* Prijsvergelijking: links wat het nu kost, rechts wat het wordt.
+   Rood en groen gedempt gehouden, want een verkeerslicht op een navy pagina
+   leest als een aanbieding en niet als een voorstel. */
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:1.1rem;
+  max-width:820px;margin:2.6rem auto 0}
+.vs-kaart{position:relative;border-radius:22px;padding:2.1rem 1.8rem 1.9rem;text-align:left;
+  border:1px solid;display:flex;flex-direction:column}
+.vs-kaart.nu{background:rgba(164,52,46,.05);border-color:rgba(164,52,46,.26)}
+.vs-kaart.straks{background:rgba(47,107,79,.06);border-color:rgba(47,107,79,.32);
+  box-shadow:0 18px 50px rgba(47,107,79,.13)}
+.vs-label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.1rem}
+.vs-kaart.nu .vs-label{color:#A4342E}
+.vs-kaart.straks .vs-label{color:#2F6B4F}
+.vs-bedrag{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,5.2vw,3.5rem);
+  line-height:1;letter-spacing:-.02em}
+.vs-kaart.nu .vs-bedrag{color:rgba(20,28,51,.5)}
+.vs-kaart.nu .vs-bedrag s{text-decoration:line-through;text-decoration-color:rgba(164,52,46,.75);
+  text-decoration-thickness:2px}
+.vs-kaart.straks .vs-bedrag{color:var(--ink)}
+.vs-per{font-size:.9rem;color:var(--ink2);margin-top:.6rem}
+.vs-regel{margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid var(--line);
+  font-size:.97rem;line-height:1.55;color:var(--ink2)}
+.vs-kaart.straks .vs-regel{color:var(--ink)}
+.vs-pijl{align-self:center;font-size:1.5rem;color:var(--ink3)}
+.vs-winst{max-width:820px;margin:1.5rem auto 0;text-align:center;font-family:var(--serif);
+  font-weight:500;font-size:clamp(1.15rem,2vw,1.5rem);color:#2F6B4F}
+@media(max-width:760px){
+  .vs-grid{grid-template-columns:1fr;gap:.85rem}
+  .vs-pijl{transform:rotate(90deg);font-size:1.2rem}
+}
+
+.logo .pill{background:#fff;border-radius:9px;padding:6px 11px;display:inline-flex;align-items:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.22)}
+.logo .pill img{height:24px;width:auto;display:block}
+.ft-logo .pill{background:#fff;border-radius:9px;padding:7px 12px;display:inline-flex;align-items:center}
+.ft-logo .pill img{height:22px;width:auto;display:block}
+</style>
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="stylesheet" href="../intro.css">
+<script>window.PIQUE_INTRO = {"bedrijf": "KLOP Steigerbouw", "ctaSub": "Video van Murphy", "merk": false, "voornaam": "Rory"};</script>
+<script src="../intro.js"></script>
+<style>.pq-ch.hl{color:#0B8A57}.pq-btn{background:#1CD688;color:#0E1526}.pq-btn:hover{background:#49D69B;box-shadow:0 20px 44px -10px rgba(11,138,87,.55)}</style>
+</head>
+<body>
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="Online Goed Gevonden"><span class="pill"><img src="../logo-lockup.png" alt="Online Goed Gevonden"></span></a>
+  <a href="#gesprek" class="nav-cta">Plan een gesprek</a>
+</nav>
+
+<!-- ============ HERO ============ navy, founder-video, serif kop met voornaam. -->
+<header class="intro" id="top">
+  <div class="intro-grid"></div>
+  <div class="intro-inner">
+    <div class="intro-eyebrow">Voorbeeldpagina · Autoverhuur</div>
+    <div class="reel" id="reel">
+      <video id="reelvid" class="reel-video" playsinline preload="metadata" poster="../murphy-staand-poster.jpg" src="../murphy-staand.mp4"></video>
+      <button class="reel-ov" id="reelov" aria-label="Speel de video van Murphy af">
+        <span class="reel-ring"></span>
+        <span class="reel-play"></span>
+        <span class="reel-badge">1 min 3 · met geluid</span>
+      </button>
+    </div>
+    <div class="vlabel">Kort woord vooraf van Murphy</div>
+    <h1 class="intro-h1">Hé Marco, wil je weten waarom ik je die kaart stuurde?</h1>
+    <p class="intro-sub">Twee minuten lezen. Daarna weet je wat mij bij jou opviel.</p>
+    <div class="scrollcue"><span>Even meekijken</span><i></i></div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="journey-path" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path>
+    <path class="jp-prog" id="jp-prog"></path>
+  </svg>
+
+    <!-- ===== AKT 1 — HERKENNING (±30%) ===== aanleiding + max 3 bevindingen met bron. -->
+
+    <!-- Aanleiding: waarom juist deze prospect deze pagina krijgt. Concreet, persoonlijk. -->
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Dit is een voorbeeldpagina voor autoverhuur. Bij een echte prospect staat hier wat mij bij dat bedrijf opviel, met de bron en de datum erbij. Hieronder zie je hoe dat eruitziet en wat ik voorstel. De video is nog een plaatshouder.</p><div class="ch-sign">Murphy, Online Goed Gevonden</div></div>
+      </div>
+    </section>
+
+    <!-- Fase-titel voor de drie bevindingen -->
+    <section class="chapter center phase">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Wat ik zag</div><h2 class="ch-kop ch-head">Bij Verhuurbedrijf Zuid.</h2><p class="ch-sub">Drie dingen die ik bij dit soort bedrijven bijna altijd tegenkom.</p></div>
+      </div>
+    </section>
+
+    <!-- Bevinding 1 — echte externe waarneming met bron. Verklap de spanning NIET. -->
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Iemand die morgen een bus nodig heeft, boekt vandaag online.</h2><p class="ch-text">Bij jou moet hij bellen, en dat doet hij niet.</p><div class="ch-bron">Bij een echte pagina staat hier de bron met datum.</div></div>
+      </div>
+    </section>
+    <!-- Bevinding 2 -->
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Je vloot staat niet online.</h2><p class="ch-text">Mensen willen zien wat er is en wat het kost, voordat ze contact opnemen.</p><div class="ch-bron">Bij een echte pagina staat hier de bron met datum.</div></div>
+      </div>
+    </section>
+    <!-- Bevinding 3 — nog steeds een waarneming, GEEN pivot. De pivot komt hierna apart. -->
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Beschikbaarheid is onzichtbaar.</h2><p class="ch-text">De enige vraag die telt: is hij vrij op mijn datum.</p><div class="ch-bron">Bij een echte pagina staat hier de bron met datum.</div></div>
+      </div>
+    </section>
+
+    <!-- ===== AKT 2 — DE SPANNING (±40%, HET hoofddeel) ===== pivot + gevolg. -->
+
+    <!-- De pivot: de drie bevindingen klappen samen tot één gemis. Apart, groter, prospect-uniek. -->
+    <section class="chapter center pivot">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Wat daaronder ligt</div><p class="ch-pivot">Je hebt drie merken op één adres gezet, en dat adres is technisch prima in orde. Er staat alleen bijna niets op waar iemand naar zoekt.</p></div>
+      </div>
+    </section>
+
+    <!-- Het gevolg: de prijs van stilzitten. Verankerd in HUN cijfers/ambitie en in één concreet, van-hen voorbeeld (bv. één specifieke klant/case), niet abstract. -->
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">Wie de aanvraag krijgt die voor jullie bedoeld was.</h2><p class="ch-text">Ik heb opgezocht wat er gebeurt als iemand in jullie eigen omgeving een steiger zoekt. Bovenaan staat een verhuurpartij met negentig pagina's die alleen over Vianen gaan. Aluminium steiger huren Vianen, binnensteiger huren Vianen, consolesteiger huren Vianen. Jullie zitten in Vianen en hebben er geen enkele. Op de vraag steigerbouw Utrecht staat een verzamelsite uit Almere die zelf geen steiger bouwt. Daar staat letterlijk: 'onze steigerbouwer in Utrecht neemt binnen 24 uur contact met u op.' En weet je wie ze als voorbeeld noemen? Broeke Steigerbouw Utrecht. Jullie oude naam vangt de aanvraag dus nog steeds, alleen loopt hij nu langs een tussenpersoon.</p><p class="ch-pull">'Je bent op één naam gaan staan. Google weet nog niet waarvoor.'</p></div>
+      </div>
+    </section>
+
+    <!-- ===== AKT 3 — DE BRUG (±20%) ===== net genoeg pitch. Landt op de spanning. -->
+    <section class="chapter center phase">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-eyebrow">Het voorstel</div><h2 class="ch-kop ch-head">Wat ik voorstel.</h2><p class="ch-sub">Aanvragen komen rechtstreeks bij jou binnen, niet via een portal waar je per lead betaalt en meteen drie concurrenten naast je hebt. Je aanvragen, je klantcontact en je reviews op één plek, voor één vast bedrag per maand, met een website die je werk laat zien.</p></div>
+      </div>
+    </section>
+
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Direct online reserveren.</h2><p class="ch-text">Met beschikbaarheid per voertuig en per datum.</p></div>
+      </div>
+    </section>
+    <section class="chapter left">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Je vloot en je tarieven zichtbaar.</h2><p class="ch-text">Zodat de vergelijking bij jou gemaakt wordt.</p></div>
+      </div>
+    </section>
+    <section class="chapter right">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Gevonden worden op voertuig plus plaats.</h2><p class="ch-text">Bestelbus huren, aanhanger huren, verhuisbus.</p></div>
+      </div>
+    </section>
+</main>
+
+<!-- ===== AKT 4 — BEWIJS, FOUNDER, VOLGENDE STAP (±10-15%) ===== -->
+
+<!-- PRICING is optioneel. Standaardpakketten Core/Growth/Elite hieronder; vervang door maatwerk bij een partnership. Weglaten mag. -->
+<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De afspraak</div><h2 class="pr-head reveal">Wat er verandert.</h2><div class="af-paneel reveal"><div class="af-kolommen"><div class="af-kolom"><div class="af-kop af-kop-nu">Zoals het nu loopt</div><ul class="af-lijst"><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Aanvragen komen via een portal en zijn gedeeld met concurrenten.</span></li><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Je betaalt per lead, ook als je hem niet wint.</span></li><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Je werk staat niet online, terwijl het op beeld verkoopt.</span></li><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Je bent onvindbaar op de klussen die je wilt doen.</span></li><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Wie het eerst reageert wint, en dat ben jij zelden.</span></li></ul></div><div class="af-kolom"><div class="af-kop af-kop-straks">Zoals het gaat lopen</div><ul class="af-lijst"><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Aanvragen komen binnen op je eigen naam.</span></li><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Geen kosten per lead, wel je eigen instroom.</span></li><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Je werk staat online, precies waar de twijfel zit.</span></li><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Een pagina voor elke klus en elke plaats waar je werkt.</span></li><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Website, vindbaarheid en marketingwerk in één vast bedrag.</span></li></ul></div></div><div class="af-garantie"><div class="af-gar-kop">De garantie</div><p class="af-gar-zin">In het eerste gesprek leggen we vast waar je vandaag staat en waar je over zes maanden moet staan. Haal ik dat niet, dan betaal je de laatste drie maanden niet.</p><div class="af-gar-meet-kop">Dit meten we, vanaf de nulmeting</div><ul class="af-meet"><li>Je positie op de twintig termen uit de nulmeting.</li><li>Het aantal mensen dat je site vindt zonder dat je ervoor betaalt.</li><li>Het aantal aanvragen dat rechtstreeks bij jou binnenkomt.</li><li>Wat een aanvraag je kost. Koop je nu leads in, dan is die prijs het ijkpunt.</li></ul></div><div class="af-voet">Wat dat bedrag per maand wordt, hangt af van hoeveel pagina's er moeten komen. Zeg in het gesprek wat je ervoor over hebt, dan reken ik het ter plekke uit en weet je het meteen.</div></div><div class="pr-bron">Voorbeeldpagina. Bij een echte prospect komt alles hier uit zijn eigen site, broncode en zoekresultaten, met de datum van controle erbij.</div></div></section>
+
+<!-- FOUNDER: kort, menselijk, een gezicht. -->
+<section class="founder" id="founder">
+  <img class="fo-photo fr" src="../ogg-murphy.png" alt="Murphy, Online Goed Gevonden">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Ik ben Murphy. Ik werk voor bedrijven die groter zijn dan hun vindbaarheid, en bij jullie is dat goed te zien: negentig mensen, een terrein van 62.000 vierkante meter, en achtentwintig pagina's.</p>
+      <p>Ik kijk eerst zelf een bedrijf door voordat ik bel. Deze pagina is daar het resultaat van. Dat kost me een halve dag, dus het blijven er een stuk of tien per maand.</p>
+      <p>Ik bel liever tien bedrijven die ik ken dan honderd die ik niet ken.</p>
+    </div>
+    <p class="fo-name"><strong>Murphy</strong>, Online Goed Gevonden</p>
+  </div>
+</section>
+
+<!-- VOLGENDE STAP: de ask staat HIER, één keer, scherp. Niet herhalen in elke sectie. -->
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Even bijpraten?</h2>
+    <p class="cta-sub reveal">Vijftien minuten is genoeg. Ik loop de twintig termen met je door en je hoort meteen waar het werk zit.</p>
+    <div class="cta-embed reveal"><div id="cal-embed"></div></div>
+  </div>
+</section>
+
+<!-- GEEN reviewblok. De research en (bij een warme relatie) de relatie zijn het bewijs. Een generiek reviewblok verkleint de statuur en is standaard weggelaten. -->
+
+<footer>
+  <a href="https://www.onlinegoedgevonden.nl" class="ft-cta">Even bellen <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <div class="ft-logo"><span class="pill"><img src="../logo-lockup.png" alt="Online Goed Gevonden"></span></div>
+  <div class="ft-meta">
+    Online Goed Gevonden &nbsp;&middot;&nbsp; <a href="mailto:murphy@onlinegoedgevonden.nl">murphy@onlinegoedgevonden.nl</a><br>
+    &copy; 2026 Online Goed Gevonden
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>window.innerHeight*.6),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+document.querySelectorAll('.chapter,.founder,.reveal').forEach(el=>io.observe(el));
+const journey=document.getElementById('journey'),svg=document.getElementById('jpath');
+const base=document.getElementById('jp-base'),prog=document.getElementById('jp-prog');
+const dots=[...journey.querySelectorAll('.ch-dot')];
+let total=0;
+function build(){
+  const W=journey.clientWidth,H=journey.clientHeight,jr=journey.getBoundingClientRect();
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  const pts=dots.map(x=>{const r=x.getBoundingClientRect();return{x:r.left+r.width/2-jr.left,y:r.top+r.height/2-jr.top};});
+  if(pts.length<2)return;
+  let dd='M '+pts[0].x.toFixed(1)+' '+pts[0].y.toFixed(1);
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],c=pts[i],my=((a.y+c.y)/2).toFixed(1);
+    dd+=' C '+a.x.toFixed(1)+' '+my+', '+c.x.toFixed(1)+' '+my+', '+c.x.toFixed(1)+' '+c.y.toFixed(1);}
+  base.setAttribute('d',dd);prog.setAttribute('d',dd);
+  total=prog.getTotalLength();prog.style.strokeDasharray=total;
+  onScroll();
+}
+function onScroll(){
+  if(!total)return;
+  const jr=journey.getBoundingClientRect(),trig=window.innerHeight*.52;
+  const frac=Math.max(0,Math.min(1,(trig-jr.top)/journey.clientHeight));
+  prog.style.strokeDashoffset=total*(1-frac);
+  dots.forEach(x=>{const r=x.getBoundingClientRect();x.parentElement.parentElement.classList.toggle('reached',r.top+r.height/2<trig);});
+}
+addEventListener('scroll',onScroll,{passive:true});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(build,120);});
+build();addEventListener('load',build);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
+// Reel: klik om af te spelen (met geluid)
+(function(){var r=document.getElementById('reel'),ov=document.getElementById('reelov'),v=document.getElementById('reelvid');
+ if(r&&ov&&v){ov.addEventListener('click',function(){v.setAttribute('controls','');r.classList.add('playing');v.play();});}})();
+const v=document.querySelector('.reel-video');if(v)v.addEventListener('loadedmetadata',build);
+setTimeout(build,400);setTimeout(build,1200);
+if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d2 = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d2.head.appendChild(d2.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init","kennismaken",{origin:"https://app.cal.com"});
+Cal.ns["kennismaken"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view",useSlotsViewOnSmallScreen:"true"},calLink:"murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief"});
+</script>
+</body>
+</html>
