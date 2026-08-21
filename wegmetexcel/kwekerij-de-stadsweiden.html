@@ -13,6 +13,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon-32.png?v=2">
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+<link rel="stylesheet" href="intro.css">
+<script>window.PIQUE_INTRO={voornaam:"Jan",bedrijf:"Kwekerij de Stadsweiden",eenmalig:false,merk:false,video:".vvid",videoWrap:".vframe",cta:"Ja, laat maar zien",ctaSub:"Video van Patrick",lezen:"Ik lees liever eerst",regels:["Hoi {voornaam}.","Deze kaart lag niet toevallig|op je bureau.","Ik keek even naar {bedrijf}.","*Wil je weten wat me opviel?*"]};</script>
+<script src="intro.js"></script>
 <title>WegMetExcel voor Kwekerij de Stadsweiden</title>
 <meta name="description" content="Een persoonlijk voorstel voor Kwekerij de Stadsweiden.">
 <meta name="robots" content="noindex">
@@ -180,6 +183,17 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .bench-leg{display:flex;gap:1.2rem;margin-top:1.2rem;font-size:.76rem;color:var(--ink2);flex-wrap:wrap}
 .bench-leg span{display:inline-flex;align-items:center;gap:.45rem}
 .bench-leg i{border-radius:3px;display:inline-block}
+.bench-foot{justify-content:flex-end}
+.bench-tag.warn{background:rgba(198,137,60,.16);color:#9a6a1f}
+.bench-bar.warn>i{background:var(--amber)}
+.av-diagram svg{width:100%;height:auto;display:block;max-width:640px;margin:0 auto}
+.av-qa{border-top:1px solid var(--line);margin-top:1.3rem;padding-top:1.3rem;display:grid;gap:1rem}
+.qa-row{display:grid;grid-template-columns:64px 1fr;gap:.8rem;align-items:start}
+.qa-who{font-size:.7rem;font-weight:700;letter-spacing:.08em;color:var(--ink3);padding-top:.2rem}
+.qa-who.atlas{color:#2f6d4c}
+.qa-row p{font-size:1rem;line-height:1.6;color:var(--ink)}
+.qa-row.q p{color:var(--ink2)}
+@media(max-width:560px){.qa-row{grid-template-columns:52px 1fr}}
 @media(max-width:800px){
   .chapter{justify-content:flex-start;padding:5.5vh 0 5.5vh 2.4rem}
   .chapter.center{justify-content:flex-start}
@@ -188,9 +202,6 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   .ch-dot,.chapter.left .ch-dot,.chapter.right .ch-dot,.chapter.center .ch-dot{left:-2.4rem;right:auto;top:.3rem;transform:none}
 }
 </style>
-<link rel="stylesheet" href="intro.css">
-<script>window.PIQUE_INTRO={voornaam:"Jan",bedrijf:"Kwekerij de Stadsweiden",eenmalig:false,merk:false,video:".vvid",videoWrap:".vframe",cta:"Ja, laat maar zien",ctaSub:"Video van Patrick",lezen:"Ik lees liever eerst",regels:["Hoi {voornaam}.","Deze kaart lag niet toevallig|op je bureau.","Ik keek even naar {bedrijf}.","*Wil je weten wat me opviel?*"]};</script>
-<script src="intro.js"></script>
 </head>
 <body>
 <nav id="nav">
@@ -226,7 +237,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Er lag een kaart bij je op de mat, en daaronder deze pagina. Ik heb even naar jullie gekeken voordat ik hem stuurde. Jullie telen hortensia over twee locaties, en dan zit je cijfers al snel verspreid. Wat me opviel gaat niet over of het draait. Dat doet het. Het gaat over hoeveel meer je uit je eigen cijfers zou kunnen halen.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Jullie telen hortensia over twee locaties, en dan zit je cijfers al snel verspreid. Wat me opviel gaat niet over of het draait. Dat doet het. Het gaat over hoeveel meer je uit je eigen cijfers zou kunnen halen.</p></div>
       </div>
     </section>
 
@@ -251,7 +262,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
         <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Dus vallen de keuzes terug op gevoel.</h2><p class="ch-text">De cijfers zijn er wel, maar omdat de inzichten niet vanzelf bovenkomen, leunen de grote keuzes toch op ervaring en onderbuik. Welk gewas volgend jaar meer ruimte krijgt, waar de arbeid weglekt, waarom een marge beweegt. Dat blijft vaak een kwestie van gevoel.</p></div>
       </div>
     </section>
-<section class="chapter center jchap">
+    <section class="chapter center jchap">
       <div class="ch-inner">
         <span class="ch-dot"></span>
         <div class="ch-body">
@@ -297,14 +308,14 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter center pivot">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Waar het op uitkomt</div><p class="ch-pivot">Mensen doen consistent wat makkelijk is. Zolang je cijfers overal vandaan geplakt moeten worden, is sturen op die cijfers het eerste dat blijft liggen. Juist als het druk wordt.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Waar het op uitkomt</div><p class="ch-pivot">Mensen doen constant wat makkelijk is. Als het moeilijk is om je cijfers overal vandaan te halen, is dat het eerste dat blijft liggen. Juist als het druk wordt.</p></div>
       </div>
     </section>
 
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">De prijs van stilzitten.</h2><p class="ch-text">De sector staat onder druk. Strengere regelgeving, een mogelijk sproeiverbod, groeiende concurrentie uit het buitenland en gasprijzen die alle kanten op schieten. De marges worden dunner, en juist dan wordt sturen op je eigen cijfers belangrijker. Wie op onderbuik stuurt, doet dat precies wanneer het het duurst is.</p><p class="ch-pull">'Sturen op gevoel kan niet meer als de marge zo dun is.'</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">De prijs van stilzitten.</h2><p class="ch-text">De sector staat onder druk. Strengere regelgeving, een mogelijk sproeiverbod, groeiende concurrentie uit het buitenland en gasprijzen die alle kanten op schieten. De marges worden dunner, en juist dan wordt sturen op je eigen cijfers belangrijker.</p></div>
       </div>
     </section>
 
@@ -328,7 +339,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
         <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Kostprijs per gewas, per week.</h2><p class="ch-text">Plus zicht dat je helpt bij een financieringsaanvraag, bij gesprekken met je mensen en bij de keuze welk gewas volgend jaar de ruimte krijgt.</p></div>
       </div>
     </section>
-<section class="chapter center jchap">
+    <section class="chapter center jchap">
       <div class="ch-inner">
         <span class="ch-dot"></span>
         <div class="ch-body">
@@ -338,17 +349,17 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
               <div class="bench-row">
                 <div class="bench-top"><span class="bench-label">Omzet per m&#178;</span><span class="bench-val"><b>&euro;55</b> vs. &euro;44 gemiddeld</span></div>
                 <div class="bench-bar"><i style="width:92%"></i><span class="bench-avg" style="left:73%"></span></div>
-                <div class="bench-foot"><span class="bench-note">Deze soort tegen het gemiddelde van alle soorten</span><span class="bench-tag">+25%</span></div>
+                <div class="bench-foot"><span class="bench-tag">+25%</span></div>
               </div>
               <div class="bench-row">
                 <div class="bench-top"><span class="bench-label">Stelen per uur</span><span class="bench-val"><b>220</b> vs. 180 gemiddeld</span></div>
                 <div class="bench-bar"><i style="width:88%"></i><span class="bench-avg" style="left:72%"></span></div>
-                <div class="bench-foot"><span class="bench-note">Pluk-effici&euml;ntie per medewerker</span><span class="bench-tag">+22%</span></div>
+                <div class="bench-foot"><span class="bench-tag">+22%</span></div>
               </div>
               <div class="bench-row">
-                <div class="bench-top"><span class="bench-label">Derving</span><span class="bench-val"><b>4%</b> vs. 9% gemiddeld</span></div>
-                <div class="bench-bar"><i style="width:27%"></i><span class="bench-avg" style="left:60%"></span></div>
-                <div class="bench-foot"><span class="bench-note">Lager is beter</span><span class="bench-tag">-56%</span></div>
+                <div class="bench-top"><span class="bench-label">Derving</span><span class="bench-val"><b>12%</b> vs. 9% gemiddeld</span></div>
+                <div class="bench-bar warn"><i style="width:80%"></i><span class="bench-avg" style="left:60%"></span></div>
+                <div class="bench-foot"><span class="bench-tag warn">Hoger dan gemiddeld</span></div>
               </div>
             </div>
             <div class="bench-leg"><span><i style="background:#2f6d4c;width:14px;height:8px"></i>Deze soort</span><span><i style="background:#C6893C;width:3px;height:14px"></i>Gemiddelde alle soorten</span></div>
@@ -369,6 +380,53 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
         <div class="ch-body"><div class="ch-num">04</div><h2 class="ch-kop">En als je verder wilt: Atlas.</h2><p class="ch-text">Zodra je overzicht staat, kun je Atlas inzetten. Een AI-collega die je cijfers en je context kent, zodat je gewoon een vraag typt en meteen antwoord krijgt uit je eigen data.</p></div>
       </div>
     </section>
+    <!-- VISUAL: Atlas (cijfers en context in een) -->
+    <section class="chapter center jchap">
+      <div class="ch-inner">
+        <span class="ch-dot"></span>
+        <div class="ch-body">
+          <figure class="viz">
+            <div class="viz-head"><div class="viz-title"><span class="viz-dot"></span>Atlas AI</div><div class="viz-badge">AI-COLLEGA</div></div>
+            <div class="av-diagram">
+              <svg viewBox="0 0 680 340" role="img" aria-label="Dashboards, e-mail, meetings, bedrijfsbeleid en bronsystemen komen samen in Atlas AI">
+        <g fill="none" stroke="#cfd3d6" stroke-width="1.6">
+          <path d="M256 44 C350 44 350 170 430 170"/>
+          <path d="M256 104 C350 104 350 170 430 170"/>
+          <path d="M256 164 C350 164 350 170 430 170"/>
+          <path d="M256 224 C350 224 350 170 430 170"/>
+          <path d="M256 284 C350 284 350 170 430 170"/>
+        </g>
+        <g>
+          <rect x="28" y="22" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="#3b463f"><rect x="41" y="35" width="7" height="7" rx="1.5"/><rect x="52" y="35" width="7" height="7" rx="1.5"/><rect x="41" y="46" width="7" height="7" rx="1.5"/><rect x="52" y="46" width="7" height="7" rx="1.5"/></g>
+          <rect x="28" y="82" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="none" stroke="#3b463f" stroke-width="2" stroke-linejoin="round"><rect x="40" y="96" width="20" height="15" rx="2.5"/><path d="M40.5 98 L50 106 L59.5 98"/></g>
+          <rect x="28" y="142" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="none" stroke="#3b463f" stroke-width="2"><rect x="40" y="155" width="20" height="14" rx="5"/></g><path d="M46 168 L46 174 L52 169 Z" fill="#3b463f"/>
+          <rect x="28" y="202" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="none" stroke="#3b463f" stroke-width="2" stroke-linecap="round"><rect x="42" y="213" width="16" height="22" rx="2.5"/><path d="M46 219 H54"/><path d="M46 224 H54"/><path d="M46 229 H51"/></g>
+          <rect x="28" y="262" width="44" height="44" rx="12" fill="#eef0ec"/>
+          <g fill="none" stroke="#3b463f" stroke-width="2"><ellipse cx="50" cy="277" rx="10" ry="3.5"/><path d="M40 277 V291 A10 3.5 0 0 0 60 291 V277"/><path d="M40 284 A10 3.5 0 0 0 60 284"/></g>
+        </g>
+        <g fill="#141C33" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="500" dominant-baseline="middle">
+          <text x="86" y="45">Dashboards</text><text x="86" y="105">E-mail</text><text x="86" y="165">Meetings</text><text x="86" y="225">Bedrijfsbeleid</text><text x="86" y="285">Bronsystemen</text>
+        </g>
+        <g fill="#2f6d4c"><circle cx="250" cy="44" r="6"/><circle cx="250" cy="104" r="6"/><circle cx="250" cy="164" r="6"/><circle cx="250" cy="224" r="6"/><circle cx="250" cy="284" r="6"/></g>
+        <rect x="430" y="120" width="224" height="100" rx="18" fill="#17251d"/>
+        <circle cx="452" cy="152" r="5" fill="#7fbf9a"/>
+        <text x="468" y="152" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="700" dominant-baseline="middle">Atlas AI</text>
+        <g fill="rgba(255,255,255,.8)" font-family="Inter,system-ui,sans-serif" font-size="15"><text x="452" y="183">Kent je cijfers &#233;n je</text><text x="452" y="203">context</text></g>
+      </svg>
+            </div>
+            <div class="av-qa">
+      <div class="qa-row q"><span class="qa-who">JIJ</span><p>Waarom zakte de marge op Roos A in maart?</p></div>
+      <div class="qa-row"><span class="qa-who atlas">ATLAS</span><p>In maart ging 38% via de klok in plaats van contract, tegen een lagere prijs. Samen met 9% derving kostte dat &euro;0,03 marge per steel. De uitval is op 4 maart in de teeltmeeting benoemd.</p></div>
+    </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
 </main>
 
 <!-- ===== AKT 4 — FOUNDER + VOLGENDE STAP ===== (pricing bewust weggelaten: projecten groeien organisch) -->
