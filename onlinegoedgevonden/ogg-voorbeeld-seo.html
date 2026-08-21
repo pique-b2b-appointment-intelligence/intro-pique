@@ -152,6 +152,43 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .pr-grid.tweeluik{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center}
 @media(max-width:760px){.pr-grid.tweeluik{grid-template-columns:1fr}}
 
+.af-paneel + .pr-bron{max-width:none}
+.af-paneel{position:relative;overflow:hidden;background:linear-gradient(160deg,#17223d 0%,var(--navy) 58%,#0a1120 100%);
+  border-radius:22px;padding:clamp(1.8rem,4vw,2.9rem);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 34px 80px rgba(14,21,38,.30),0 4px 14px rgba(14,21,38,.14)}
+.af-paneel::before{content:'';position:absolute;top:-40%;right:-18%;width:60%;height:150%;
+  background:radial-gradient(closest-side,rgba(224,172,102,.11),transparent 72%);pointer-events:none}
+.af-kolommen{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem)}
+.af-kolommen::before{content:'';position:absolute;top:.4rem;bottom:.4rem;left:50%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.16),transparent)}
+.af-kop{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem}
+.af-kop-nu{color:rgba(255,255,255,.45)}
+.af-kop-straks{color:var(--ambers)}
+.af-lijst{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.95rem}
+.af-item{display:flex;gap:.85rem;align-items:flex-start;font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.9)}
+.af-item.af-nu{color:rgba(255,255,255,.6)}
+.af-icoon{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;margin-top:.12rem}
+.af-icoon svg{width:13px;height:13px;display:block}
+.af-nu .af-icoon{background:rgba(226,84,74,.16);color:#F0837A}
+.af-straks .af-icoon{background:rgba(28,214,136,.16);color:#3EDCA0}
+.af-garantie{position:relative;margin-top:clamp(1.7rem,3.5vw,2.4rem);padding:clamp(1.3rem,3vw,1.7rem) clamp(1.3rem,3vw,1.8rem);
+  border:1px solid rgba(224,172,102,.28);border-radius:16px;background:rgba(224,172,102,.07)}
+.af-gar-kop{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambers);margin-bottom:.8rem}
+.af-gar-zin{margin:0 0 1.3rem;font-size:1.04rem;line-height:1.6;color:#fff}
+.af-gar-meet-kop{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);margin-bottom:.75rem}
+.af-meet{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem clamp(1.2rem,3vw,2.4rem)}
+.af-meet li{position:relative;padding-left:1.1rem;font-size:.9rem;line-height:1.5;color:rgba(255,255,255,.78)}
+.af-meet li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--ambers)}
+.af-voet{position:relative;margin-top:clamp(1.6rem,3.5vw,2.3rem);padding-top:clamp(1.3rem,3vw,1.7rem);
+  border-top:1px solid rgba(255,255,255,.12);font-size:1rem;line-height:1.65;color:rgba(255,255,255,.82)}
+@media(max-width:760px){
+  .af-kolommen{grid-template-columns:1fr;gap:2rem}
+  .af-kolommen::before{display:none}
+  .af-meet{grid-template-columns:1fr}
+}
+
 /* Prijsvergelijking: links wat het nu kost, rechts wat het wordt.
    Rood en groen gedempt gehouden, want een verkeerslicht op een navy pagina
    leest als een aanbieding en niet als een voorstel. */
@@ -215,7 +252,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     </div>
     <div class="vlabel">Kort woord vooraf van Murphy</div>
     <h1 class="intro-h1">Hé [Voornaam], wil je weten waarom ik je die kaart stuurde?</h1>
-    <p class="intro-sub">Twee minuten. Daarna weet je wat je nu per tekst betaalt en wat het bij mij kost.</p>
+    <p class="intro-sub">Twee minuten. Daarna weet je op welke termen je meedoet en waar je echt staat.</p>
     <div class="scrollcue"><span>Kijk maar mee</span><i></i></div>
   </div>
 </header>
@@ -232,7 +269,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Ik zag dat er sinds september elke week teksten bij je verschijnen. Dat is een heel programma, geen los blog. Dakdekker Breda, Dakdekker Etten-Leur, Dakdekker Oosterhout, Dakdekker Roosendaal. Iemand vinkt systematisch de plaatsen om je heen af. Daar werd ik nieuwsgierig van, want ik weet wat dat kost en ik weet wat het oplevert.</p><div class="ch-sign">Murphy, Online Goed Gevonden</div></div>
+        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Ik heb je site doorgelopen en opgeschreven op welke termen je probeert te ranken. Dakdekker Breda, Dakdekker Etten-Leur, Dakdekker Oosterhout, Dakdekker Roosendaal. Plaats na plaats, allemaal met een eigen pagina. Daarna heb ik die termen in Google gezet om te kijken waar je dan daadwerkelijk staat. Dat verschil is de reden dat ik je schreef.</p><div class="ch-sign">Murphy, Online Goed Gevonden</div></div>
       </div>
     </section>
 
@@ -240,7 +277,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter center phase">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat ik zag</div><h2 class="ch-kop ch-head">Bij Dakkersland.</h2><p class="ch-sub">Drie dingen die ik zag toen ik je site doorliep.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Wat ik zag</div><h2 class="ch-kop ch-head">Bij Dakkersland.</h2><p class="ch-sub">Drie dingen die opvielen toen ik je site en je zoekresultaten naast elkaar legde.</p></div>
       </div>
     </section>
 
@@ -248,21 +285,21 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Je pakt de plaatsnamen af, één voor één.</h2><p class="ch-text">Breda, Etten-Leur, Oosterhout, Roosendaal. Voor elke plaats een eigen pagina, met dezelfde opbouw. Dat is een programma dat iemand voor je afdraait.</p><div class="ch-bron">Bron: je eigen site, gecontroleerd 21 augustus 2026</div></div>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Je gaat de regio af, plaats voor plaats.</h2><p class="ch-text">Breda, Etten-Leur, Oosterhout, Roosendaal. Voor elke plaats een eigen pagina met dezelfde opbouw. Dat is een bewuste keuze, en het is de juiste.</p><div class="ch-bron">Bron: de plaatspagina’s op dakkersland.nl, gecontroleerd 21 augustus 2026</div></div>
       </div>
     </section>
     <!-- Bevinding 2 -->
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">De zwaarste zoekwoorden liggen er ook.</h2><p class="ch-text">Daklekkage, dakisolatie, bitumen plat dak renovatie. Dat zijn de termen waar iemand op zoekt als het misgaat en het geld kost. Daar wil je staan.</p><div class="ch-bron">Bron: dakkersland.nl/daklekkage, 21 augustus 2026</div></div>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">De termen waar het geld zit liggen er ook.</h2><p class="ch-text">Daklekkage, dakisolatie, bitumen plat dak renovatie. Daar zoekt iemand op als het misgaat en het haast heeft. Dat is de duurste klik in je vak.</p><div class="ch-bron">Bron: dakkersland.nl/daklekkage en /dakisolatie, 21 augustus 2026</div></div>
       </div>
     </section>
     <!-- Bevinding 3 — nog steeds een waarneming, GEEN pivot. De pivot komt hierna apart. -->
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Er komt elke week iets bij.</h2><p class="ch-text">Tussen september en maart telde ik drieënzestig van die teksten. Dat is een vaste maandelijkse rekening, geen eenmalig project.</p><div class="ch-bron">Bron: publicatiedata op dakkersland.nl, 21 augustus 2026</div></div>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Op je thuisbasis sta je niet bovenaan.</h2><p class="ch-text">Ik heb Dakdekker Breda ingetypt. Je hebt er een pagina voor, maar boven je staan partijen die daar geen kantoor hebben. Dat is de plek waar je hoort te winnen.</p><div class="ch-bron">Bron: zoekresultaat in Google op Dakdekker Breda, 21 augustus 2026</div></div>
       </div>
     </section>
 
@@ -272,7 +309,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter center pivot">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">De vraag die daaronder ligt</div><p class="ch-pivot">Je betaalt elke maand voor teksten. Maar er is nooit met je afgesproken waar je dan zou moeten staan.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">De vraag die daaronder ligt</div><p class="ch-pivot">Je hebt de pagina’s gebouwd. Alleen is er nooit met je afgesproken op welke plek je daarmee zou uitkomen.</p></div>
       </div>
     </section>
 
@@ -280,7 +317,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">Wat een tekst kost die niemand vindt.</h2><p class="ch-text">Neem Dakdekker Breda. Dat is de term waar het om gaat, want dat is je thuisbasis. Als je daar op pagina één staat, is die tekst goud. Sta je op pagina twee, dan heb je een keurig geschreven pagina die niemand ooit ziet, en betaal je daar sinds september elke maand voor door. Het verschil tussen die twee situaties is nooit aan je verkocht. Je hebt teksten gekocht, geen posities.</p><p class="ch-pull">'Je koopt teksten. Wat je wilt zijn posities.'</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">Wat een pagina kost die niemand vindt.</h2><p class="ch-text">Neem Dakdekker Breda. Sta je daar op één, dan levert die pagina elke maand werk op. Sta je op pagina twee, dan is het een goed geschreven pagina die niemand ooit ziet. Het werk is in beide gevallen gedaan en betaald. Het verschil zit in iets waar niemand zich aan verbonden heeft.</p><p class="ch-pull">'Je hebt pagina’s gekocht. Wat je wilt zijn plekken.'</p></div>
       </div>
     </section>
 
@@ -295,19 +332,19 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Zelfde zoekwoorden, mijn verantwoordelijkheid.</h2><p class="ch-text">Ik neem de lijst over die er nu ligt. Dakdekker Breda, daklekkage, dakisolatie, en de plaatsen eromheen. Daar leg ik een positiedoel op met een datum.</p></div>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Zelfde termen, nu met een doel eraan.</h2><p class="ch-text">Ik neem de lijst over die er al ligt. Dakdekker Breda, daklekkage, dakisolatie, en de plaatsen eromheen. Daar hang ik een positie aan, met een datum.</p></div>
       </div>
     </section>
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Twintig procent onder wat je nu betaalt.</h2><p class="ch-text">Dat kan omdat er bij mij geen bureau tussen zit dat het schrijven weer uitbesteedt. Ik doe het zelf, dus die laag valt weg.</p></div>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Twintig procent onder wat een programma als dit kost.</h2><p class="ch-text">Dat kan omdat ik het zelf doe. Er zit geen laag tussen die het werk weer doorgeeft, en dat scheelt precies die marge.</p></div>
       </div>
     </section>
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">En ik doe eerst een maand op mijn kosten.</h2><p class="ch-text">Werkt het, dan praten we verder. Werkt het niet, dan heeft het je één gesprek van een kwartier gekost.</p></div>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">De nulmeting krijg je sowieso.</h2><p class="ch-text">Ik lever eerst zwart op wit waar je vandaag staat op twintig termen, en wie er boven je staat. Die lijst is van jou, ook als je verder niets met me doet.</p></div>
       </div>
     </section>
 </main>
@@ -315,7 +352,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 <!-- ===== AKT 4 — BEWIJS, FOUNDER, VOLGENDE STAP (±10-15%) ===== -->
 
 <!-- PRICING is optioneel. Standaardpakketten Core/Growth/Elite hieronder; vervang door maatwerk bij een partnership. Weglaten mag. -->
-<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De garantie</div><h2 class="pr-head reveal">Reken het even mee.</h2><div class="vs-grid"><div class="vs-kaart nu reveal"><div class="vs-label">Wat je nu kwijt bent</div><div class="vs-bedrag"><s>€ 599</s></div><div class="vs-per">per maand, via je SEO-bureau</div><div class="vs-regel">Elke maand teksten. Nooit iemand die zegt waar je zou moeten staan.</div></div><div class="vs-pijl" aria-hidden="true">→</div><div class="vs-kaart straks reveal"><div class="vs-label">Wat het bij mij kost</div><div class="vs-bedrag">€ 479</div><div class="vs-per">per maand, met een garantie eronder</div><div class="vs-regel">Dezelfde zoekwoorden, met een positie en een datum eraan gehangen.</div></div></div><div class="vs-winst reveal">Dat is € 1.440 per jaar, en voor het eerst een afspraak waar je iemand op kunt afrekenen.</div><div class="pr-garantie reveal">Zelfde zoekwoorden, betere posities binnen zes maanden. Twintig procent onder wat je nu betaalt. Haal ik het niet, dan betaal je de laatste drie maanden niet.</div><div class="pr-bron">Dit bedrag is niet geraden. gepubliceerd tarief op de site van het bureau, gecontroleerd 21 augustus 2026.</div></div></section>
+<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De garantie</div><h2 class="pr-head reveal">Reken het even mee.</h2><div class="vs-grid"><div class="vs-kaart nu reveal"><div class="vs-label">Wat dit in de markt kost</div><div class="vs-bedrag"><s>€ 599</s></div><div class="vs-per">per maand, bij een gemiddeld bureau</div><div class="vs-regel">Voor teksten en pagina’s. Zonder afspraak over waar je zou moeten uitkomen.</div></div><div class="vs-pijl" aria-hidden="true">→</div><div class="vs-kaart straks reveal"><div class="vs-label">Wat het bij mij kost</div><div class="vs-bedrag">€ 479</div><div class="vs-per">per maand, met een garantie eronder</div><div class="vs-regel">Dezelfde termen, met een positie en een datum eraan gehangen.</div></div></div><div class="vs-winst reveal">Dat is € 1.440 per jaar, en voor het eerst een afspraak waar je iemand op kunt afrekenen.</div><div class="pr-garantie reveal">Zelfde termen, betere posities binnen zes maanden, en twintig procent onder het markttarief. Haal ik de posities niet, dan betaal je de laatste drie maanden niet.</div><div class="pr-bron">Dit bedrag is niet geraden. gepubliceerde maandtarieven van Nederlandse SEO-bureaus, vergeleken op 21 augustus 2026.</div></div></section>
 
 <!-- FOUNDER: kort, menselijk, een gezicht. -->
 <section class="founder" id="founder">
@@ -323,7 +360,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <div class="fr">
     <div class="fo-eyebrow">De persoon achter dit voorstel</div>
     <div class="fo-text">
-      <p>Ik ben Murphy. Ik doe dit voor een stuk of dertig bedrijven en ik ken de rekening die je nu krijgt van binnenuit. Daarom durf ik er een garantie op te zetten.</p>
+      <p>Ik ben Murphy. Ik doe dit voor een stuk of dertig bedrijven, en ik begin altijd met de vraag waar je nu staat. Zonder dat getal is een garantie een praatje.</p>
       <p>Ik neem er een stuk of tien per maand aan. Dat is niet bescheidenheid, dat is rekenwerk: een garantie afgeven kan alleen als ik vooraf weet waar je staat en wat het gaat kosten om je te verplaatsen. Dat uitzoeken kost me een halve dag per bedrijf.</p>
       <p>Ik neem er tien per maand aan. Meer kan ik niet garanderen.</p>
     </div>
@@ -336,7 +373,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">De volgende stap</div>
     <h2 class="cta-h reveal">Even bijpraten?</h2>
-    <p class="cta-sub reveal">Een kwartier. Ik laat je zien waar je nu staat op je eigen zoekwoorden, en wat het kost om daar te komen waar je hoort.</p>
+    <p class="cta-sub reveal">Een kwartier. Ik laat je zien waar je vandaag staat op je eigen termen, en wie er boven je staat.</p>
     <div class="cta-embed reveal"><div id="cal-embed"></div></div>
   </div>
 </section>
@@ -392,7 +429,7 @@ setTimeout(build,400);setTimeout(build,1200);
 if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d2 = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d2.head.appendChild(d2.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 Cal("init","brief",{origin:"https://app.cal.com"});
-Cal.ns["brief"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief"});
+Cal.ns["brief"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view",useSlotsViewOnSmallScreen:"true"},calLink:"murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief"});
 </script>
 </body>
 </html>

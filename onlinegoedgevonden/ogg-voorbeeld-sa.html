@@ -152,6 +152,43 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .pr-grid.tweeluik{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center}
 @media(max-width:760px){.pr-grid.tweeluik{grid-template-columns:1fr}}
 
+.af-paneel + .pr-bron{max-width:none}
+.af-paneel{position:relative;overflow:hidden;background:linear-gradient(160deg,#17223d 0%,var(--navy) 58%,#0a1120 100%);
+  border-radius:22px;padding:clamp(1.8rem,4vw,2.9rem);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 34px 80px rgba(14,21,38,.30),0 4px 14px rgba(14,21,38,.14)}
+.af-paneel::before{content:'';position:absolute;top:-40%;right:-18%;width:60%;height:150%;
+  background:radial-gradient(closest-side,rgba(224,172,102,.11),transparent 72%);pointer-events:none}
+.af-kolommen{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem)}
+.af-kolommen::before{content:'';position:absolute;top:.4rem;bottom:.4rem;left:50%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.16),transparent)}
+.af-kop{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem}
+.af-kop-nu{color:rgba(255,255,255,.45)}
+.af-kop-straks{color:var(--ambers)}
+.af-lijst{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.95rem}
+.af-item{display:flex;gap:.85rem;align-items:flex-start;font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.9)}
+.af-item.af-nu{color:rgba(255,255,255,.6)}
+.af-icoon{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;margin-top:.12rem}
+.af-icoon svg{width:13px;height:13px;display:block}
+.af-nu .af-icoon{background:rgba(226,84,74,.16);color:#F0837A}
+.af-straks .af-icoon{background:rgba(28,214,136,.16);color:#3EDCA0}
+.af-garantie{position:relative;margin-top:clamp(1.7rem,3.5vw,2.4rem);padding:clamp(1.3rem,3vw,1.7rem) clamp(1.3rem,3vw,1.8rem);
+  border:1px solid rgba(224,172,102,.28);border-radius:16px;background:rgba(224,172,102,.07)}
+.af-gar-kop{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambers);margin-bottom:.8rem}
+.af-gar-zin{margin:0 0 1.3rem;font-size:1.04rem;line-height:1.6;color:#fff}
+.af-gar-meet-kop{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);margin-bottom:.75rem}
+.af-meet{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem clamp(1.2rem,3vw,2.4rem)}
+.af-meet li{position:relative;padding-left:1.1rem;font-size:.9rem;line-height:1.5;color:rgba(255,255,255,.78)}
+.af-meet li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--ambers)}
+.af-voet{position:relative;margin-top:clamp(1.6rem,3.5vw,2.3rem);padding-top:clamp(1.3rem,3vw,1.7rem);
+  border-top:1px solid rgba(255,255,255,.12);font-size:1rem;line-height:1.65;color:rgba(255,255,255,.82)}
+@media(max-width:760px){
+  .af-kolommen{grid-template-columns:1fr;gap:2rem}
+  .af-kolommen::before{display:none}
+  .af-meet{grid-template-columns:1fr}
+}
+
 /* Prijsvergelijking: links wat het nu kost, rechts wat het wordt.
    Rood en groen gedempt gehouden, want een verkeerslicht op een navy pagina
    leest als een aanbieding en niet als een voorstel. */
@@ -232,7 +269,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Ik kwam artikelen over jullie tegen op netwerkscenario.nl, businesscompleet.nl en doe-duurzaam.nl. Steeds met een link naar de kantoorinrichting of de bedrijfskantine. Dus jullie werken aan gevonden worden op projectinrichting. En daar zit precies het probleem dat ik je wil laten zien.</p><div class="ch-sign">Murphy, Online Goed Gevonden</div></div>
+        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Ik kwam artikelen over jullie tegen op netwerkscenario.nl, businesscompleet.nl en doe-duurzaam.nl. Steeds met een link naar de kantoorinrichting of de bedrijfskantine. Jullie werken dus aan gevonden worden op projectinrichting. En juist daar zit het punt dat ik je wil laten zien.</p><div class="ch-sign">Murphy, Online Goed Gevonden</div></div>
       </div>
     </section>
 
@@ -315,7 +352,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 <!-- ===== AKT 4 — BEWIJS, FOUNDER, VOLGENDE STAP (±10-15%) ===== -->
 
 <!-- PRICING is optioneel. Standaardpakketten Core/Growth/Elite hieronder; vervang door maatwerk bij een partnership. Weglaten mag. -->
-<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De garantie</div><h2 class="pr-head reveal">Dit is de afspraak.</h2><div class="pr-grid"><div class="pr-card feat reveal"><div class="pr-tier">De afspraak</div><div class="pr-price">20%</div><div class="pr-per">onder je huidige tarief</div><div class="pr-desc">Wat je nu betaalt is het vertrekpunt. Daar ga ik onder zitten.</div></div></div><div class="pr-garantie reveal">Een lagere kostprijs per aanvraag dan je nu haalt, binnen drie maanden. Lukt dat niet, dan draai ik de maand voor niets.</div><div class="pr-bron">Wat je nu betaalt weet ik niet. Noem het in het gesprek en ik reken het ter plekke voor je uit.</div></div></section>
+<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De garantie</div><h2 class="pr-head reveal">Dit is de afspraak.</h2><div class="pr-grid"><div class="pr-card feat reveal"><div class="pr-tier">De afspraak</div><div class="pr-price">20%</div><div class="pr-per">onder je kostprijs per aanvraag</div><div class="pr-desc">Jij noemt het getal, ik ga eronder zitten. Zonder dat getal is een garantie een praatje.</div></div></div><div class="pr-garantie reveal">Een lagere kostprijs per aanvraag dan je nu haalt, binnen drie maanden. Lukt dat niet, dan draai ik de maand voor niets.</div><div class="pr-bron">Noem je kostprijs per aanvraag in het gesprek, dan reken ik het ter plekke voor je uit.</div></div></section>
 
 <!-- FOUNDER: kort, menselijk, een gezicht. -->
 <section class="founder" id="founder">
@@ -392,7 +429,7 @@ setTimeout(build,400);setTimeout(build,1200);
 if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d2 = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d2.head.appendChild(d2.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 Cal("init","brief",{origin:"https://app.cal.com"});
-Cal.ns["brief"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief"});
+Cal.ns["brief"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view",useSlotsViewOnSmallScreen:"true"},calLink:"murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief"});
 </script>
 </body>
 </html>

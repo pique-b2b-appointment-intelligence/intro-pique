@@ -152,6 +152,43 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .pr-grid.tweeluik{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center}
 @media(max-width:760px){.pr-grid.tweeluik{grid-template-columns:1fr}}
 
+.af-paneel + .pr-bron{max-width:none}
+.af-paneel{position:relative;overflow:hidden;background:linear-gradient(160deg,#17223d 0%,var(--navy) 58%,#0a1120 100%);
+  border-radius:22px;padding:clamp(1.8rem,4vw,2.9rem);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 34px 80px rgba(14,21,38,.30),0 4px 14px rgba(14,21,38,.14)}
+.af-paneel::before{content:'';position:absolute;top:-40%;right:-18%;width:60%;height:150%;
+  background:radial-gradient(closest-side,rgba(224,172,102,.11),transparent 72%);pointer-events:none}
+.af-kolommen{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem)}
+.af-kolommen::before{content:'';position:absolute;top:.4rem;bottom:.4rem;left:50%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.16),transparent)}
+.af-kop{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem}
+.af-kop-nu{color:rgba(255,255,255,.45)}
+.af-kop-straks{color:var(--ambers)}
+.af-lijst{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.95rem}
+.af-item{display:flex;gap:.85rem;align-items:flex-start;font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.9)}
+.af-item.af-nu{color:rgba(255,255,255,.6)}
+.af-icoon{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;margin-top:.12rem}
+.af-icoon svg{width:13px;height:13px;display:block}
+.af-nu .af-icoon{background:rgba(226,84,74,.16);color:#F0837A}
+.af-straks .af-icoon{background:rgba(28,214,136,.16);color:#3EDCA0}
+.af-garantie{position:relative;margin-top:clamp(1.7rem,3.5vw,2.4rem);padding:clamp(1.3rem,3vw,1.7rem) clamp(1.3rem,3vw,1.8rem);
+  border:1px solid rgba(224,172,102,.28);border-radius:16px;background:rgba(224,172,102,.07)}
+.af-gar-kop{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ambers);margin-bottom:.8rem}
+.af-gar-zin{margin:0 0 1.3rem;font-size:1.04rem;line-height:1.6;color:#fff}
+.af-gar-meet-kop{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);margin-bottom:.75rem}
+.af-meet{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem clamp(1.2rem,3vw,2.4rem)}
+.af-meet li{position:relative;padding-left:1.1rem;font-size:.9rem;line-height:1.5;color:rgba(255,255,255,.78)}
+.af-meet li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--ambers)}
+.af-voet{position:relative;margin-top:clamp(1.6rem,3.5vw,2.3rem);padding-top:clamp(1.3rem,3vw,1.7rem);
+  border-top:1px solid rgba(255,255,255,.12);font-size:1rem;line-height:1.65;color:rgba(255,255,255,.82)}
+@media(max-width:760px){
+  .af-kolommen{grid-template-columns:1fr;gap:2rem}
+  .af-kolommen::before{display:none}
+  .af-meet{grid-template-columns:1fr}
+}
+
 /* Prijsvergelijking: links wat het nu kost, rechts wat het wordt.
    Rood en groen gedempt gehouden, want een verkeerslicht op een navy pagina
    leest als een aanbieding en niet als een voorstel. */
@@ -215,7 +252,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     </div>
     <div class="vlabel">Kort woord vooraf van Murphy</div>
     <h1 class="intro-h1">Hé [Voornaam], wil je weten waarom ik je die kaart stuurde?</h1>
-    <p class="intro-sub">Anderhalve minuut. Daarna weet je op welke sites je links staan en wat je er per stuk voor betaalt.</p>
+    <p class="intro-sub">Anderhalve minuut. Daarna weet je welke artikelen ik van je vond en waar ze staan.</p>
     <div class="scrollcue"><span>Kijk maar mee</span><i></i></div>
   </div>
 </header>
@@ -232,7 +269,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Ik kwam je tegen op thuisinspiratie.be, en daarna op luxueus.nl, en daarna nog een paar keer. Steeds een artikel met een link naar een pagina van jullie. Dat is geen toeval, dat is een lopend linkbuildingprogramma. En ik weet ongeveer wat daarvoor gerekend wordt.</p><div class="ch-sign">Murphy, Online Goed Gevonden</div></div>
+        <div class="ch-body"><div class="ch-eyebrow">Voor jou</div><h2 class="ch-kop">Waarom je dit ziet.</h2><p class="ch-text">Ik kwam je tegen op thuisinspiratie.be. Een artikel met een link naar een pagina van jullie. Daarna nog een keer op luxueus.nl, en daarna nog een paar keer. Ik heb opgeschreven welke sites het waren en naar welke pagina’s die links wijzen. Dat staat hieronder.</p><div class="ch-sign">Murphy, Online Goed Gevonden</div></div>
       </div>
     </section>
 
@@ -240,7 +277,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter center phase">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat ik zag</div><h2 class="ch-kop ch-head">Bij X2O Badkamers.</h2><p class="ch-sub">Drie dingen die opvielen toen ik je links naliep.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Wat ik zag</div><h2 class="ch-kop ch-head">Bij X2O Badkamers.</h2><p class="ch-sub">Drie dingen die opvielen toen ik je artikelen naliep.</p></div>
       </div>
     </section>
 
@@ -248,21 +285,21 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Je links komen van blogsites, niet van vakmedia.</h2><p class="ch-text">Thuisinspiratie, Worldwide Wendy, Luxueus, Mama's Meisje, Lisanne Leeft. Persoonlijke blogs die betaalde artikelen plaatsen. Dat werkt, maar het is de goedkoopste laag van de markt.</p><div class="ch-bron">Bron: thuisinspiratie.be, gecontroleerd 21 augustus 2026</div></div>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Je artikelen staan op persoonlijke blogs.</h2><p class="ch-text">Thuisinspiratie, Luxueus, Worldwide Wendy, Mama’s Meisje, Lisanne Leeft. Sites die betaalde artikelen plaatsen. Dat werkt, en het is ook de laag waar iedereen zit.</p><div class="ch-bron">Bron: thuisinspiratie.be en luxueus.nl, gecontroleerd 21 augustus 2026</div></div>
       </div>
     </section>
     <!-- Bevinding 2 -->
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Je duwt vooral op twee pagina's.</h2><p class="ch-text">De inloopdouches en de douchecabines. Daar gaan de meeste links naartoe, op ankers als bad kopen, douchewand kopen en hoekbad.</p><div class="ch-bron">Bron: de linkteksten in die artikelen, 21 augustus 2026</div></div>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">De links wijzen vooral naar twee pagina’s.</h2><p class="ch-text">De inloopdouches en de douchecabines, op ankers als bad kopen, douchewand kopen en hoekbad. Daar wil je dus omhoog, en dat is goed gekozen.</p><div class="ch-bron">Bron: de linkteksten in die artikelen, 21 augustus 2026</div></div>
       </div>
     </section>
     <!-- Bevinding 3 — nog steeds een waarneming, GEEN pivot. De pivot komt hierna apart. -->
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">En op je showrooms.</h2><p class="ch-text">Barendrecht, Amsterdam, Eindhoven. Aparte links naar aparte vestigingspagina's. Dat is lokaal denken, en dat is precies goed.</p><div class="ch-bron">Bron: x2o.nl/showrooms, gecontroleerd 21 augustus 2026</div></div>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">En een deel gaat naar je showrooms.</h2><p class="ch-text">Barendrecht, Amsterdam, Eindhoven. Aparte links naar aparte vestigingspagina’s. Lokaal denken, precies goed.</p><div class="ch-bron">Bron: x2o.nl/showrooms, gecontroleerd 21 augustus 2026</div></div>
       </div>
     </section>
 
@@ -272,7 +309,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter center pivot">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Waar dat op neerkomt</div><p class="ch-pivot">Je koopt links op sites die iedereen kan kopen. En je betaalt daar een tarief voor dat hoort bij sites die dat niet zijn.</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Waar dat op neerkomt</div><p class="ch-pivot">Op de sites waar jij staat, staat je concurrent ook. Hetzelfde artikel, andere naam, zelfde maand.</p></div>
       </div>
     </section>
 
@@ -280,7 +317,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">Waarom je buurman op dezelfde site staat.</h2><p class="ch-text">Die artikelen op thuisinspiratie.be staan er niet alleen voor jou. Op dezelfde site staan artikelen voor je concurrent, geplaatst door een ander bureau, in dezelfde maand. Ik heb het nagekeken: van de plekken waar jullie links staan, staat een groot deel ook in het netwerk dat andere badkamerpartijen gebruiken. Je betaalt dus tweehonderd euro of meer voor een plek die je buurman voor hetzelfde geld ook heeft.</p><p class="ch-pull">'Je betaalt exclusieve prijzen voor een niet-exclusieve plek.'</p></div>
+        <div class="ch-body"><div class="ch-eyebrow">Wat dit betekent</div><h2 class="ch-kop">Waarom je concurrent op dezelfde site staat.</h2><p class="ch-text">Ik heb een paar van die sites nagelopen op wie er nog meer in de badkamerhoek gepubliceerd wordt. Dat zijn er meer dan je zou willen. Je betaalt dus een prijs die hoort bij een plek die van jou is, terwijl je hem deelt met iedereen die hetzelfde lijstje heeft ingekocht.</p><p class="ch-pull">'Je betaalt een exclusieve prijs voor een plek die niemand exclusief heeft.'</p></div>
       </div>
     </section>
 
@@ -295,19 +332,19 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Zelfde soort sites, meer per maand.</h2><p class="ch-text">Ik lever hetzelfde type plaatsing, maar dan meer stuks voor hetzelfde budget. Wil je hoger, dan zeg ik ook wat dat kost.</p></div>
+        <div class="ch-body"><div class="ch-num">01</div><h2 class="ch-kop">Je ziet de lijst voordat je betaalt.</h2><p class="ch-text">Ik stuur vooraf waar je komt te staan. Vind je een site niets, dan gaat hij eraf en komt er een andere voor terug.</p></div>
       </div>
     </section>
     <section class="chapter left">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Twintig procent lager per link.</h2><p class="ch-text">Wat je nu per link betaalt is openbaar, want je bureau zet het zelf op zijn site. Daar ga ik twintig procent onder zitten, met dezelfde tekstkwaliteit.</p></div>
+        <div class="ch-body"><div class="ch-num">02</div><h2 class="ch-kop">Twintig procent onder de markt.</h2><p class="ch-text">Wat een artikel met een link op dit soort sites kost, is openbaar. Daar ga ik onder zitten, met dezelfde tekstkwaliteit.</p></div>
       </div>
     </section>
     <section class="chapter right">
       <div class="ch-inner">
         <span class="ch-dot"></span>
-        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Eerst tien links, dan pas een contract.</h2><p class="ch-text">Ik lever tien plaatsingen. Vind je ze slechter dan wat je nu krijgt, dan betaal je ze niet en zijn we klaar.</p></div>
+        <div class="ch-body"><div class="ch-num">03</div><h2 class="ch-kop">Eerst tien plaatsingen, dan pas een afspraak.</h2><p class="ch-text">Vind je ze slechter dan wat je nu krijgt, dan betaal je ze niet en zijn we klaar.</p></div>
       </div>
     </section>
 </main>
@@ -315,7 +352,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 <!-- ===== AKT 4 — BEWIJS, FOUNDER, VOLGENDE STAP (±10-15%) ===== -->
 
 <!-- PRICING is optioneel. Standaardpakketten Core/Growth/Elite hieronder; vervang door maatwerk bij een partnership. Weglaten mag. -->
-<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De garantie</div><h2 class="pr-head reveal">Reken het even mee.</h2><div class="vs-grid"><div class="vs-kaart nu reveal"><div class="vs-label">Wat je nu kwijt bent</div><div class="vs-bedrag"><s>€ 200 tot 350</s></div><div class="vs-per">per link, via je linkbuildingbureau</div><div class="vs-regel">Voor een plek die je concurrent voor hetzelfde geld ook krijgt.</div></div><div class="vs-pijl" aria-hidden="true">→</div><div class="vs-kaart straks reveal"><div class="vs-label">Wat het bij mij kost</div><div class="vs-bedrag">€ 160 tot 280</div><div class="vs-per">per link, met een garantie eronder</div><div class="vs-regel">Zelfde soort sites, meer per maand, en je ziet ze voordat je betaalt.</div></div></div><div class="vs-winst reveal">Bij tien links per maand scheelt dat € 400 tot € 700. Elke maand.</div><div class="pr-garantie reveal">Meer links per maand dan je nu krijgt, op vergelijkbare sites, voor twintig procent minder per link. Lever ik minder, dan betaal je het verschil niet.</div><div class="pr-bron">Dit bedrag is niet geraden. het bureau publiceert dit zelf op zijn blog over linkbuildingprijzen, gecontroleerd 21 augustus 2026.</div></div></section>
+<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De garantie</div><h2 class="pr-head reveal">Reken het even mee.</h2><div class="vs-grid"><div class="vs-kaart nu reveal"><div class="vs-label">Wat dit in de markt kost</div><div class="vs-bedrag"><s>€ 200 tot 350</s></div><div class="vs-per">per link, bij een gemiddeld bureau</div><div class="vs-regel">Voor een plek die je concurrent voor hetzelfde geld ook krijgt.</div></div><div class="vs-pijl" aria-hidden="true">→</div><div class="vs-kaart straks reveal"><div class="vs-label">Wat het bij mij kost</div><div class="vs-bedrag">€ 160 tot 280</div><div class="vs-per">per link, met een garantie eronder</div><div class="vs-regel">Zelfde soort sites, meer per maand, en je ziet ze voordat je betaalt.</div></div></div><div class="vs-winst reveal">Bij tien links per maand scheelt dat € 400 tot € 700. Elke maand.</div><div class="pr-garantie reveal">Meer links per maand dan je gewend bent, op vergelijkbare sites, voor twintig procent onder het markttarief. Lever ik er minder, dan betaal je het verschil niet.</div><div class="pr-bron">Dit bedrag is niet geraden. gepubliceerde tarieven van Nederlandse linkbuildingbureaus, vergeleken op 21 augustus 2026.</div></div></section>
 
 <!-- FOUNDER: kort, menselijk, een gezicht. -->
 <section class="founder" id="founder">
@@ -323,7 +360,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <div class="fr">
     <div class="fo-eyebrow">De persoon achter dit voorstel</div>
     <div class="fo-text">
-      <p>Ik ben Murphy. Ik koop elke maand links in en ik weet welke sites echt iets doen en welke alleen doorverkocht worden. Daarom kan ik je vooraf zeggen wat je krijgt.</p>
+      <p>Ik ben Murphy. Ik koop elke maand links in en ik weet welke sites echt iets doen en welke gewoon doorverkocht worden. Daarom kan ik je vooraf zeggen wat je krijgt.</p>
       <p>Ik neem er een stuk of tien per maand aan. Dat is niet bescheidenheid, dat is rekenwerk: een garantie afgeven kan alleen als ik vooraf weet waar je staat en wat het gaat kosten om je te verplaatsen. Dat uitzoeken kost me een halve dag per bedrijf.</p>
       <p>Ik neem er tien per maand aan. Meer kan ik niet garanderen.</p>
     </div>
@@ -336,7 +373,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">De volgende stap</div>
     <h2 class="cta-h reveal">Even bijpraten?</h2>
-    <p class="cta-sub reveal">Een kwartier. Ik laat je de sites zien waar je links staan, en wat ik voor hetzelfde budget kan leveren.</p>
+    <p class="cta-sub reveal">Een kwartier. Ik laat je de sites zien waar je nu staat, en wat ik voor hetzelfde budget lever.</p>
     <div class="cta-embed reveal"><div id="cal-embed"></div></div>
   </div>
 </section>
@@ -392,7 +429,7 @@ setTimeout(build,400);setTimeout(build,1200);
 if(window.ResizeObserver)new ResizeObserver(()=>build()).observe(journey);
 (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d2 = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d2.head.appendChild(d2.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 Cal("init","brief",{origin:"https://app.cal.com"});
-Cal.ns["brief"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:"murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief"});
+Cal.ns["brief"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view",useSlotsViewOnSmallScreen:"true"},calLink:"murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief"});
 </script>
 </body>
 </html>
