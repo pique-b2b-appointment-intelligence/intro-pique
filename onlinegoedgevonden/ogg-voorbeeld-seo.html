@@ -149,6 +149,8 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
   text-transform:uppercase;color:var(--ink2)}
 .pr-bron::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;
   background:var(--amber);margin-right:.55rem;vertical-align:middle}
+.pr-grid.tweeluik{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center}
+@media(max-width:760px){.pr-grid.tweeluik{grid-template-columns:1fr}}
 
 .logo .pill{background:#fff;border-radius:9px;padding:6px 11px;display:inline-flex;align-items:center;
   box-shadow:0 6px 20px rgba(0,0,0,.22)}
@@ -157,6 +159,9 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .ft-logo .pill img{height:22px;width:auto;display:block}
 </style>
 <link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="intro.css">
+<script>window.PIQUE_INTRO = {"bedrijf": "Dakkersland", "ctaSub": "Video van Murphy", "merk": false};</script>
+<script src="intro.js"></script>
 </head>
 <body>
 <nav id="nav">
