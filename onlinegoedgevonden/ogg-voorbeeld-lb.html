@@ -152,6 +152,37 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .pr-grid.tweeluik{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center}
 @media(max-width:760px){.pr-grid.tweeluik{grid-template-columns:1fr}}
 
+/* Prijsvergelijking: links wat het nu kost, rechts wat het wordt.
+   Rood en groen gedempt gehouden, want een verkeerslicht op een navy pagina
+   leest als een aanbieding en niet als een voorstel. */
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:1.1rem;
+  max-width:820px;margin:2.6rem auto 0}
+.vs-kaart{position:relative;border-radius:22px;padding:2.1rem 1.8rem 1.9rem;text-align:left;
+  border:1px solid;display:flex;flex-direction:column}
+.vs-kaart.nu{background:rgba(164,52,46,.05);border-color:rgba(164,52,46,.26)}
+.vs-kaart.straks{background:rgba(47,107,79,.06);border-color:rgba(47,107,79,.32);
+  box-shadow:0 18px 50px rgba(47,107,79,.13)}
+.vs-label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.1rem}
+.vs-kaart.nu .vs-label{color:#A4342E}
+.vs-kaart.straks .vs-label{color:#2F6B4F}
+.vs-bedrag{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,5.2vw,3.5rem);
+  line-height:1;letter-spacing:-.02em}
+.vs-kaart.nu .vs-bedrag{color:rgba(20,28,51,.5)}
+.vs-kaart.nu .vs-bedrag s{text-decoration:line-through;text-decoration-color:rgba(164,52,46,.75);
+  text-decoration-thickness:2px}
+.vs-kaart.straks .vs-bedrag{color:var(--ink)}
+.vs-per{font-size:.9rem;color:var(--ink2);margin-top:.6rem}
+.vs-regel{margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid var(--line);
+  font-size:.97rem;line-height:1.55;color:var(--ink2)}
+.vs-kaart.straks .vs-regel{color:var(--ink)}
+.vs-pijl{align-self:center;font-size:1.5rem;color:var(--ink3)}
+.vs-winst{max-width:820px;margin:1.5rem auto 0;text-align:center;font-family:var(--serif);
+  font-weight:500;font-size:clamp(1.15rem,2vw,1.5rem);color:#2F6B4F}
+@media(max-width:760px){
+  .vs-grid{grid-template-columns:1fr;gap:.85rem}
+  .vs-pijl{transform:rotate(90deg);font-size:1.2rem}
+}
+
 .logo .pill{background:#fff;border-radius:9px;padding:6px 11px;display:inline-flex;align-items:center;
   box-shadow:0 6px 20px rgba(0,0,0,.22)}
 .logo .pill img{height:24px;width:auto;display:block}
@@ -284,7 +315,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 <!-- ===== AKT 4 — BEWIJS, FOUNDER, VOLGENDE STAP (±10-15%) ===== -->
 
 <!-- PRICING is optioneel. Standaardpakketten Core/Growth/Elite hieronder; vervang door maatwerk bij een partnership. Weglaten mag. -->
-<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De garantie</div><h2 class="pr-head reveal">Dit is wat het verschil is.</h2><div class="pr-grid"><div class="pr-card reveal"><div class="pr-tier">Wat je nu betaalt</div><div class="pr-price">€ 200 tot 350</div><div class="pr-per">per link</div><div class="pr-desc">Via je linkbuildingbureau.</div></div><div class="pr-card feat reveal"><div class="pr-tier">Wat het hier kost</div><div class="pr-price">€ 160 tot 280</div><div class="pr-per">per link</div><div class="pr-desc">Zelfde werk, twintig procent eronder.</div></div></div><div class="pr-garantie reveal">Meer links per maand dan je nu krijgt, op vergelijkbare sites, voor twintig procent minder per link. Lever ik minder, dan betaal je het verschil niet.</div><div class="pr-bron">Wat je nu betaalt is niet geraden. het bureau publiceert dit zelf op zijn blog over linkbuildingprijzen, gecontroleerd 21 augustus 2026.</div></div></section>
+<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De garantie</div><h2 class="pr-head reveal">Reken het even mee.</h2><div class="vs-grid"><div class="vs-kaart nu reveal"><div class="vs-label">Wat je nu kwijt bent</div><div class="vs-bedrag"><s>€ 200 tot 350</s></div><div class="vs-per">per link, via je linkbuildingbureau</div><div class="vs-regel">Voor een plek die je concurrent voor hetzelfde geld ook krijgt.</div></div><div class="vs-pijl" aria-hidden="true">→</div><div class="vs-kaart straks reveal"><div class="vs-label">Wat het bij mij kost</div><div class="vs-bedrag">€ 160 tot 280</div><div class="vs-per">per link, met een garantie eronder</div><div class="vs-regel">Zelfde soort sites, meer per maand, en je ziet ze voordat je betaalt.</div></div></div><div class="vs-winst reveal">Bij tien links per maand scheelt dat € 400 tot € 700. Elke maand.</div><div class="pr-garantie reveal">Meer links per maand dan je nu krijgt, op vergelijkbare sites, voor twintig procent minder per link. Lever ik minder, dan betaal je het verschil niet.</div><div class="pr-bron">Dit bedrag is niet geraden. het bureau publiceert dit zelf op zijn blog over linkbuildingprijzen, gecontroleerd 21 augustus 2026.</div></div></section>
 
 <!-- FOUNDER: kort, menselijk, een gezicht. -->
 <section class="founder" id="founder">
