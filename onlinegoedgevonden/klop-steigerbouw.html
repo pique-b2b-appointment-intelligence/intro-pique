@@ -152,6 +152,64 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 .pr-grid.tweeluik{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center}
 @media(max-width:760px){.pr-grid.tweeluik{grid-template-columns:1fr}}
 
+.af-paneel + .pr-bron{max-width:none}
+.af-paneel{position:relative;overflow:hidden;background:linear-gradient(160deg,#17223d 0%,var(--navy) 58%,#0a1120 100%);
+  border-radius:22px;padding:clamp(1.8rem,4vw,2.9rem);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 34px 80px rgba(14,21,38,.30),0 4px 14px rgba(14,21,38,.14)}
+.af-paneel::before{content:'';position:absolute;top:-40%;right:-18%;width:60%;height:150%;
+  background:radial-gradient(closest-side,rgba(224,172,102,.16),transparent 70%);pointer-events:none}
+.af-kolommen{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem)}
+.af-kolommen::before{content:'';position:absolute;top:.4rem;bottom:.4rem;left:50%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.16),transparent)}
+.af-kop{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem}
+.af-kop-nu{color:rgba(255,255,255,.45)}
+.af-kop-straks{color:var(--ambers)}
+.af-lijst{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.95rem}
+.af-item{display:flex;gap:.85rem;align-items:flex-start;font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.9)}
+.af-item.af-nu{color:rgba(255,255,255,.6)}
+.af-icoon{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;margin-top:.12rem}
+.af-icoon svg{width:13px;height:13px;display:block}
+.af-nu .af-icoon{background:rgba(226,84,74,.16);color:#F0837A}
+.af-straks .af-icoon{background:rgba(28,214,136,.16);color:#3EDCA0}
+.af-voet{position:relative;margin-top:clamp(1.6rem,3.5vw,2.3rem);padding-top:clamp(1.3rem,3vw,1.7rem);
+  border-top:1px solid rgba(255,255,255,.12);font-size:1rem;line-height:1.65;color:rgba(255,255,255,.82)}
+@media(max-width:760px){
+  .af-kolommen{grid-template-columns:1fr;gap:2rem}
+  .af-kolommen::before{display:none}
+}
+
+/* Prijsvergelijking: links wat het nu kost, rechts wat het wordt.
+   Rood en groen gedempt gehouden, want een verkeerslicht op een navy pagina
+   leest als een aanbieding en niet als een voorstel. */
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:1.1rem;
+  max-width:820px;margin:2.6rem auto 0}
+.vs-kaart{position:relative;border-radius:22px;padding:2.1rem 1.8rem 1.9rem;text-align:left;
+  border:1px solid;display:flex;flex-direction:column}
+.vs-kaart.nu{background:rgba(164,52,46,.05);border-color:rgba(164,52,46,.26)}
+.vs-kaart.straks{background:rgba(47,107,79,.06);border-color:rgba(47,107,79,.32);
+  box-shadow:0 18px 50px rgba(47,107,79,.13)}
+.vs-label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.1rem}
+.vs-kaart.nu .vs-label{color:#A4342E}
+.vs-kaart.straks .vs-label{color:#2F6B4F}
+.vs-bedrag{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,5.2vw,3.5rem);
+  line-height:1;letter-spacing:-.02em}
+.vs-kaart.nu .vs-bedrag{color:rgba(20,28,51,.5)}
+.vs-kaart.nu .vs-bedrag s{text-decoration:line-through;text-decoration-color:rgba(164,52,46,.75);
+  text-decoration-thickness:2px}
+.vs-kaart.straks .vs-bedrag{color:var(--ink)}
+.vs-per{font-size:.9rem;color:var(--ink2);margin-top:.6rem}
+.vs-regel{margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid var(--line);
+  font-size:.97rem;line-height:1.55;color:var(--ink2)}
+.vs-kaart.straks .vs-regel{color:var(--ink)}
+.vs-pijl{align-self:center;font-size:1.5rem;color:var(--ink3)}
+.vs-winst{max-width:820px;margin:1.5rem auto 0;text-align:center;font-family:var(--serif);
+  font-weight:500;font-size:clamp(1.15rem,2vw,1.5rem);color:#2F6B4F}
+@media(max-width:760px){
+  .vs-grid{grid-template-columns:1fr;gap:.85rem}
+  .vs-pijl{transform:rotate(90deg);font-size:1.2rem}
+}
+
 .logo .pill{background:#fff;border-radius:9px;padding:6px 11px;display:inline-flex;align-items:center;
   box-shadow:0 6px 20px rgba(0,0,0,.22)}
 .logo .pill img{height:24px;width:auto;display:block}
@@ -160,7 +218,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 </style>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="intro.css">
-<script>window.PIQUE_INTRO = {"bedrijf": "KLOP Steigerbouw", "ctaSub": "Video van Murphy", "merk": false};</script>
+<script>window.PIQUE_INTRO = {"bedrijf": "KLOP Steigerbouw", "ctaSub": "Video van Murphy", "merk": false, "voornaam": "Rory"};</script>
 <script src="intro.js"></script>
 </head>
 <body>
@@ -284,7 +342,7 @@ footer{border-top:1px solid var(--line);padding:2.75rem 2rem;text-align:center}
 <!-- ===== AKT 4 — BEWIJS, FOUNDER, VOLGENDE STAP (±10-15%) ===== -->
 
 <!-- PRICING is optioneel. Standaardpakketten Core/Growth/Elite hieronder; vervang door maatwerk bij een partnership. Weglaten mag. -->
-<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De afspraak</div><h2 class="pr-head reveal">Hoe dit eruitziet.</h2><div class="pr-grid tweeluik"><div class="pr-card reveal"><div class="pr-tier">Waar we beginnen</div><div class="pr-price">De nulmeting</div><div class="pr-per">in het gesprek</div><div class="pr-desc">Twintig termen, jouw positie erop, en de partijen die er nu boven staan.</div></div><div class="pr-card feat reveal"><div class="pr-tier">Hoe het daarna loopt</div><div class="pr-price">Vast per maand</div><div class="pr-per">één bedrag</div><div class="pr-desc">De website, de vindbaarheid en het marketingwerk zitten er samen in. Er komen geen losse rekeningen achteraan.</div></div></div><div class="pr-garantie reveal">Wat dat bedrag wordt, hangt af van hoeveel pagina's er moeten komen. Zeg in het gesprek wat je ervoor over hebt, dan reken ik het ter plekke uit en weet je het meteen.</div><div class="pr-bron">Alles op deze pagina komt uit je eigen sitemap, je broncode en de zoekresultaten, gecontroleerd op 21 augustus 2026</div></div></section>
+<section class="pricing"><div class="pr-inner"><div class="pr-eyebrow reveal">De afspraak</div><h2 class="pr-head reveal">Wat er verandert.</h2><div class="af-paneel reveal"><div class="af-kolommen"><div class="af-kolom"><div class="af-kop af-kop-nu">Zoals het nu loopt</div><ul class="af-lijst"><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Op 'steigerbouw Utrecht' staat een verzamelsite uit Almere die de aanvraag opvangt.</span></li><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Diezelfde site noemt Broeke Steigerbouw Utrecht als aangesloten bedrijf, dus je oude naam.</span></li><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Negentig pagina's over Vianen zijn van een ander. Jullie zitten er en hebben er nul.</span></li><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>Voor gevelsteiger, ondersteuning, dakwerk en evenementen bestaat geen eigen pagina.</span></li><li class="af-item af-nu"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 5.6l8.8 8.8M14.4 5.6l-8.8 8.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span><span>De titel van je homepage is de merknaam, en die is er nog geen jaar.</span></li></ul></div><div class="af-kolom"><div class="af-kop af-kop-straks">Zoals het gaat lopen</div><ul class="af-lijst"><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Een eigen pagina voor elke klus die je aanneemt, en voor de plaatsen waar je werkt.</span></li><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Je zestien projecten hangen onder de woorden waar wel op wordt gezocht.</span></li><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Aanvragen komen op je eigen naam binnen, zonder tussenpersoon ertussen.</span></li><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>De website, de vindbaarheid en het marketingwerk in één vast bedrag per maand.</span></li><li class="af-item af-straks"><span class="af-icoon"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 10.4l3.6 3.6 8-8.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Eén aanspreekpunt, en elke maand dezelfde rekening.</span></li></ul></div></div><div class="af-voet">Wat dat bedrag per maand wordt, hangt af van hoeveel pagina's er moeten komen. Zeg in het gesprek wat je ervoor over hebt, dan reken ik het ter plekke uit en weet je het meteen.</div></div><div class="pr-bron">Alles op deze pagina komt uit je eigen sitemap, je broncode en de zoekresultaten, gecontroleerd op 21 augustus 2026</div></div></section>
 
 <!-- FOUNDER: kort, menselijk, een gezicht. -->
 <section class="founder" id="founder">
