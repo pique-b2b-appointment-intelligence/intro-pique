@@ -64,7 +64,24 @@
   var KEY = 'pq-intro:' + location.pathname;
   var eenmalig = cfg.eenmalig === true;
   try { if (eenmalig && localStorage.getItem(KEY)) return; } catch (e) {}
+  /* Pagina afdekken vóór de eerste paint. Zonder dit zie je eerst een split
+     second de pagina zelf en pas daarna de kaart, en precies dat moment is wat
+     de hele laag probeert te voorkomen. De laag zelf blijft zichtbaar. */
   document.documentElement.className += ' pq-on';
+  var dek = document.createElement('style');
+  dek.textContent = 'html.pq-on{background:var(--donker,#0E1526)}' +
+                    'html.pq-on body{visibility:hidden}' +
+                    'html.pq-on #pq{visibility:visible}';
+  (document.head || document.documentElement).appendChild(dek);
+  /* Vangnet: gaat er hierna iets mis, dan mag de pagina niet onzichtbaar
+     blijven. Na drie seconden gaat de afdekking eraf, of de kaart er nu is
+     of niet. */
+  setTimeout(function () {
+    if (!document.getElementById('pq')) {
+      document.documentElement.className =
+        document.documentElement.className.replace(' pq-on', '');
+    }
+  }, 3000);
 
   /* Is er geen opname, dan is één knop genoeg. Anders beloven we
      een video die er niet is. Zet cfg.video op false op zo'n pagina. */
@@ -89,8 +106,14 @@
     if (merkblok && navlogo) merkblok.insertAdjacentHTML('afterbegin', navlogo.innerHTML);
     document.body.appendChild(el);
   }
-  if (document.body) inhangen();
-  else document.addEventListener('DOMContentLoaded', inhangen);
+  /* Zodra <body> bestaat inhangen, niet pas bij DOMContentLoaded. Op een zware
+     pagina scheelt dat honderden milliseconden waarin er niets te zien is.
+     Kan hier veilig, omdat de videocheck uit window.PQ_VIDEO komt en niet uit
+     een element dat nog geparsed moet worden. */
+  (function wacht() {
+    if (document.body) { inhangen(); return; }
+    setTimeout(wacht, 4);
+  })();
 
   var card = el.querySelector('#pqcard'), ink = el.querySelector('#pqink');
   var choice = el.querySelector('#pqchoice'), read = el.querySelector('#pqread');
