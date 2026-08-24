@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--
+  Backbone Customer Service — persoonlijke pagina voor Catwalk Junkie
+  Vorm: Componenten/lp-v2 (ongewijzigd). Hier staat alleen thema plus inhoud.
+  Gegenereerd door Klanten/BCS/lp/bcs-lp-generator.py
+-->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Backbone Customer Service voor Catwalk Junkie</title>
+<meta name="description" content="Een persoonlijke bevinding over het klantcontact van Catwalk Junkie.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="thema-bcs.css">
+<link rel="stylesheet" href="lp.css">
+
+<script>
+  window.PQ_BEDRIJF      = 'Catwalk Junkie';
+  window.PQ_KLANT        = 'bcs';
+  window.PQ_CAMPAGNE     = 'bcs-batch4';
+  window.PQ_CAL          = 'backbone-cs/30min';
+  window.PQ_VIDEO        = 'jeffrey-staand.mp4';
+  window.PQ_POSTER       = 'jeffrey-staand-poster.jpg';
+  window.PQ_TRACK_URL    = '/api/t';
+  window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
+  window.PIQUE_INTRO     = { voornaam: 'Ben', bedrijf: 'Catwalk Junkie', merk: false };
+</script>
+<script src="lp-intro.js"></script>
+</head>
+<body>
+<div class="mbar" id="mbar"></div>
+
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="Backbone Customer Service"><span style="font:600 1.02rem/1 'Schibsted Grotesk',system-ui,sans-serif;letter-spacing:-.02em">Backbone<span style="opacity:.55">&nbsp;CS</span></span></a>
+  <button class="nav-cta" data-open="sheet" data-tab="plan">Plan een gesprek</button>
+</nav>
+
+<div class="rail" id="rail">
+  <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
+  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">Wat dat betekent</span></a>
+  <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
+  <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Hoi Ben.<br>Ik keek een tijd naar <em>Catwalk Junkie</em>.</div>
+          <div class="sig">Jeffrey</div>
+        </div>
+        <span class="slot-tag">De kaart die je net scande</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1 class="hero-h1">Daarom kreeg je <span class="u">mijn kaart</span>.</h1>
+      <p class="hero-sub">Drie dingen die me opvielen aan het klantcontact van Catwalk Junkie.</p>
+      <div class="hero-meta">
+        <span class="chip"><i></i>3 bevindingen</span>
+        <span class="chip">Kort, twee minuten</span>
+        <span class="chip">Alleen voor <b>Catwalk Junkie</b> geschreven</span>
+      </div>
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="jeffrey-staand-poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Jeffrey vat het samen in 1 minuut</span>
+      </button>
+      <div class="scrollcue"><i></i><span>Scroll</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path>
+    <path class="jp-prog" id="jp-prog"></path>
+  </svg>
+
+  <section class="chapter left" id="s1">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom jij</div>
+        <h2 class="ch-kop">Er is iets bij gekomen, en het klantcontact moet mee.</h2>
+        <p class="ch-text">Ik heb naar jullie contactpagina's gekeken zoals een klant dat zou doen. Dus met een vraag in mijn hoofd en de wens om snel antwoord te krijgen.</p>
+        <p class="ch-text"><strong>Dit is wat ik vond.</strong></p>
+        <div class="ch-sign">Jeffrey, Backbone Customer Service</div>
+      </div>
+      <div class="note">3 dingen, in deze volgorde
+        <svg class="arw" viewBox="0 0 52 26"><path d="M2 4c14 0 26 6 34 16M36 20l8 0M36 20l0-8"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find" id="s2">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">De uren staan vast, de vragen niet</h2>
+        <p class="ch-text">Buiten deze uren blijft een bericht liggen tot de volgende ochtend.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">'maandag t/m vrijdag tussen 9:00 en 18:00'</p>
+          <div class="f-meta"><span class="dom">catwalkjunkie.com</span><span class="sep"></span><span>gecontroleerd 17 augustus 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter left find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">De belofte staat er zwart op wit</h2>
+        <p class="ch-text">Dat is jullie eigen belofte. Elke klant leest hem, en elke klant rekent erop, ook in de week voor kerst.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">'binnen 24 uur'</p>
+          <div class="f-meta"><span class="dom">catwalkjunkie.com</span><span class="sep"></span><span>gecontroleerd 17 augustus 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Alles loopt via het toetsenbord</h2>
+        <p class="ch-text">Op de contactpagina vond ik de mail, zonder telefoonlijn. Alles gaat via tekst, dus elk misverstand kost een extra ronde heen en weer.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">'catwalkjunkie@uspfashion.com'</p>
+          <div class="f-meta"><span class="dom">catwalkjunkie.com</span><span class="sep"></span><span>gecontroleerd 17 augustus 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center pivot" id="s3">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dat betekent</div>
+        <p class="ch-pivot">Op zichzelf is elk punt klein. Samen vormen ze de bottleneck. Zonder telefoonlijn komt elke twijfel als bericht binnen en wordt hij een wachtrij in plaats van een gesprek van twee minuten. Een toegezegde reactietijd is een belofte die per binnenkomend bericht wordt gemeten, dus hij wordt zwaarder naarmate het volume stijgt. Elke extra markt brengt zijn eigen taal, feestdagen en retourregels mee, terwijl dezelfde mailbox het opvangt. Een breed assortiment betekent meer maat-, kleur- en voorraadvragen per order.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="ask" id="ask">
+  <div class="ask-in">
+    <p class="ask-hand">Zal ik je hier gewoon even over bellen?</p>
+    <p class="ask-sub">Hieronder leg ik uit hoe ik het zou aanpakken. Bellen mag ook, dan hoor je het in twintig minuten.</p>
+    <div class="ask-btns">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
+      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
+    </div>
+    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
+  </div>
+</section>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
+
+  <section class="chapter left">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dit kost</div>
+        <h2 class="ch-kop">Wat dat in de praktijk kost.</h2>
+        <p class="ch-text">Een klant die wacht, koopt in die dagen niets. En als hij afhaakt, schrijft hij er soms iets over op. <strong>Die ene review blijft daarna staan voor iedereen die jullie opzoekt.</strong></p>
+        <p class="ch-pull">'De duurste ticket is die van de klant die twee keer moest vragen.'</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Hoe het anders kan</div>
+        <p class="ch-text">Stel dat de drukke weken eruitzien als de rustige. Zelfde reactietijd, zelfde toon, zonder dat er iemand extra ingewerkt moet worden.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center phase" id="s4">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Het voorstel</div>
+        <h2 class="ch-kop ch-head">Wat ik voorstel.</h2>
+        <p class="ch-sub">Ik neem het klantcontact van Catwalk Junkie over. De mail, de chat, WhatsApp en de telefoon.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="toon" id="toon">
+  <div class="toon-rij">
+    <article class="tp" style="--dl:.05s">
+      <div class="tp-vis">
+        <div class="mk">
+          <div class="mk-h">Hoi Ben.<br>Ik keek een tijd naar <em>Catwalk Junkie</em>.</div>
+          <div class="mk-s">Jeffrey</div>
+          <div class="mk-adres">intro-pique.agency/bcs4/catwalk-junkie</div>
+          <svg class='qr' viewBox='0 0 21 21' shape-rendering='crispEdges' aria-hidden='true'><rect width='21' height='21' fill='#FEFBF4'/><g fill='#241C12'><path d='M0 0h7v7H0z M2 2h3v3H2z' fill-rule='evenodd'/><path d='M14 0h7v7h-7z M16 2h3v3h-3z' fill-rule='evenodd'/><path d='M0 14h7v7H0z M2 16h3v3H2z' fill-rule='evenodd'/><rect x='9' y='1' width='1' height='1'/><rect x='9' y='3' width='1' height='2'/><rect x='11' y='0' width='1' height='2'/><rect x='11' y='4' width='1' height='1'/><rect x='9' y='7' width='2' height='1'/><rect x='12' y='7' width='1' height='1'/><rect x='0' y='9' width='2' height='1'/><rect x='3' y='9' width='1' height='1'/><rect x='5' y='9' width='1' height='2'/><rect x='7' y='10' width='1' height='1'/><rect x='9' y='9' width='1' height='1'/><rect x='11' y='9' width='2' height='1'/><rect x='14' y='9' width='1' height='1'/><rect x='16' y='9' width='1' height='2'/><rect x='18' y='9' width='1' height='1'/><rect x='20' y='10' width='1' height='1'/><rect x='9' y='11' width='1' height='2'/><rect x='11' y='12' width='1' height='1'/><rect x='13' y='11' width='1' height='1'/><rect x='15' y='12' width='2' height='1'/><rect x='18' y='12' width='1' height='1'/><rect x='9' y='14' width='1' height='1'/><rect x='11' y='14' width='1' height='2'/><rect x='13' y='15' width='1' height='1'/><rect x='15' y='14' width='1' height='1'/><rect x='17' y='15' width='2' height='1'/><rect x='9' y='17' width='2' height='1'/><rect x='12' y='17' width='1' height='2'/><rect x='14' y='18' width='1' height='1'/><rect x='16' y='17' width='1' height='1'/><rect x='18' y='18' width='2' height='1'/><rect x='9' y='20' width='1' height='1'/><rect x='11' y='20' width='2' height='1'/><rect x='15' y='20' width='1' height='1'/><rect x='17' y='19' width='1' height='2'/><rect x='20' y='20' width='1' height='1'/></g></svg>
+        </div>
+      </div>
+      <div class="tp-num">01</div>
+      <h3>De kaart die je vasthield</h3>
+      <p>Met de hand geschreven, aan jou gericht, met dit webadres eronder. Zo kwam je hier.</p>
+    </article>
+    <article class="tp" style="--dl:.22s">
+      <div class="tp-vis">
+        <div class="mp">
+          <div class="mp-bar"><u></u><u></u><u></u><em>intro-pique.agency/bcs4/catwalk-junkie</em></div>
+          <div class="mp-hero"><i class="a"></i><i class="b"></i><i class="s"></i></div>
+          <div class="mp-body">
+            <div class="mp-note"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+            <i class="x"></i><i class="y"></i>
+          </div>
+        </div>
+      </div>
+      <div class="tp-num">02</div>
+      <h3>Deze pagina</h3>
+      <p>Wat ik zag bij Catwalk Junkie, uitgeschreven met het bewijs erbij. Je leest hem nu.</p>
+    </article>
+    <article class="tp" style="--dl:.39s">
+      <div class="tp-vis">
+        <div class="ma">
+          <div class="ma-top">
+            <div class="ma-dag"><b>20</b><span>min</span></div>
+            <div><strong>Kennismaking</strong><em>video of telefoon &middot; jij kiest</em></div>
+          </div>
+          <div class="ma-rij"><span class="v"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Zelf ingepland</div>
+          <div class="ma-hand">en dan weet je of het past</div>
+        </div>
+      </div>
+      <div class="tp-num">03</div>
+      <h3>Een gesprek van twintig minuten</h3>
+      <p>Je plant het zelf in, of je laat je nummer achter. Daarna weet je wat ik zou doen.</p>
+    </article>
+  </div>
+
+  <div class="vw">
+    <div style="--dl:.55s"><span>&#10003;</span><b>Wij richten het in</b><p>De koppeling met je webshop, de antwoorden en de toon. Jij levert alleen de kennis die wij nog missen.</p></div>
+    <div style="--dl:.68s"><span>&#10003;</span><b>Een vaste prijs per ticket</b><p>Je weet vooraf wat een maand kost, ook in december. Op de factuur staan tickets en verder niets.</p></div>
+    <div style="--dl:.81s"><span>&#10003;</span><b>Er staat altijd een mens achter</b><p>Wordt het ingewikkeld, dan neemt een collega het gesprek over. Dat zit in de afspraak.</p></div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <img class="fo-photo fr" src="jeffrey-dylan.jpg" alt="Jeffrey en Dylan van Backbone Customer Service">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Ik ben Jeffrey. Ik begon Backbone omdat klantcontact bij bijna elke webshop het onderdeel is dat als laatste aandacht krijgt en als eerste piept.</p>
+      <p>Wij nemen het over. Wij richten het in, wij draaien het, en jij hoeft er zelf niets voor te doen. Er staat altijd een mens achter, dus als het ingewikkeld wordt, pakt iemand het op.</p>
+    </div>
+    <p class="fo-name">Jeffrey, Backbone Customer Service</p>
+  </div>
+</section>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Twintig minuten?</h2>
+    <p class="cta-sub reveal">Ik vertel wat ik zou aanpakken en wat het kost. Daarna beslis jij.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
+      <button class="btn-b" style="color:rgba(var(--wit-rgb),.75);border-color:rgba(var(--wit-rgb),.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+    </div>
+    <p class="cta-alt reveal">Liever eerst een mailtje? <a href="mailto:jeffrey@backbonecustomerservice.com?subject=Catwalk%20Junkie%20x%20Backbone">Mail me een korte vraag.</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo"><span style="font:600 1.05rem/1 'Schibsted Grotesk',system-ui,sans-serif;letter-spacing:-.02em">Backbone<span style="opacity:.55">&nbsp;CS</span></span></div>
+  <div class="ft-meta">Backbone Customer Service &nbsp;&middot;&nbsp; <a href="mailto:jeffrey@backbonecustomerservice.com">jeffrey@backbonecustomerservice.com</a><br>&copy; 2026 Backbone Customer Service</div>
+</footer>
+
+<div class="dock" id="dock">
+  <span class="dock-t"><b>Liever even sparren?</b> 20 minuten.</span>
+  <button class="dock-b" data-open="sheet" data-tab="plan">Plannen</button>
+  <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
+</div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Plan een gesprek">
+    <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
+    <div class="sheet-host">
+      <img src="jeffrey-avatar.jpg" alt="">
+      <div><div class="n">20 minuten met Jeffrey</div><div class="s">Video of telefoon, jij kiest.</div></div>
+    </div>
+    <div class="sheet-tabs">
+      <button class="on" data-tab="plan">Zelf een moment kiezen</button>
+      <button data-tab="bel">Laat mij terugbellen</button>
+    </div>
+    <div class="panes">
+    <div class="pane on" id="pane-plan">
+      <div id="cal-wrap">
+        <div id="cal-embed"></div>
+        <div class="cal-skel" id="calskel">
+          <div class="kop"></div>
+          <div class="grid"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u><u class="o"></u><u></u><u></u><u class="o"></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u></div>
+          <div class="glans"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pane" id="pane-bel">
+      <form id="belform">
+        <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" value="Ben" required></div>
+        <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.35rem">Wanneer schikt het?</label>
+        <div class="slots" id="slots">
+          <button type="button" data-v="Vandaag, later vanmiddag">Later vanmiddag</button>
+          <button type="button" data-v="Morgenochtend">Morgenochtend</button>
+          <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
+          <button type="button" data-v="Deze week, maakt niet uit">Deze week, maakt niet uit</button>
+        </div>
+        <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
+        <p class="sheet-note">Ik pak zelf de telefoon. Je nummer bewaar ik nergens anders voor.</p>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script src="lp-v2.js"></script>
+</body>
+</html>
