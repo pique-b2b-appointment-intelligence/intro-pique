@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!--
+  Online Goed Gevonden — persoonlijke pagina, gegenereerd door bouw-lps.py.
+  Niet met de hand aanpassen: een nieuwe ronde overschrijft hem.
+  Vorm: Componenten/lp-v2 (lp.css, lp.js, lp-intro.js). Merk: thema-ogg.css.
+  Hier staat alleen thema plus inhoud. Zie Componenten/lp-v2/LEESMIJ.md.
+-->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Online Goed Gevonden voor Alex Helmer Containerverhuur B.V.</title>
+<meta name="description" content="Wat mij opviel aan de vindbaarheid van Alex Helmer Containerverhuur B.V. in Breda.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="thema-ogg.css">
+<link rel="stylesheet" href="lp.css">
+
+<script>
+  window.PQ_BEDRIJF      = 'Alex Helmer Containerverhuur B.V.';
+  window.PQ_KLANT        = 'ogg';
+  window.PQ_CAMPAGNE     = 'container-huren-34';
+  window.PQ_CAL          = 'murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief';
+  window.PQ_VIDEO        = '../voorbeeld/34-containerverhuur/video.mp4';
+  window.PQ_POSTER       = '../voorbeeld/34-containerverhuur/poster.jpg';
+  window.PQ_TRACK_URL    = '/api/t';
+  window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
+  /* Geen voornaam bekend bij dit bedrijf, dus de aanhef vervalt. merk:false omdat dit
+     een klantpagina is: Pique hoort hier nergens te staan. */
+  /* Eigen regels: een zaak met klanten over de vloer heeft een toonbank, een bedrijf
+     dat offertes maakt een bureau. De hero zegt
+     hetzelfde, anders landt de kaart op een plek met een andere tekst eronder. */
+  window.PIQUE_INTRO     = { bedrijf: 'Alex Helmer Containerverhuur B.V.', merk: false, ctaSub: 'Video van Murphy &middot; 1 min 10',
+                             regels: ['Deze kaart lag niet toevallig|op je bureau.',
+                                      'Ik keek een tijd naar {bedrijf}.',
+                                      '*Wil je weten wat ik zag?*'] };
+</script>
+<script src="lp-intro.js"></script>
+</head>
+<body>
+<div class="mbar" id="mbar"></div>
+
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="Online Goed Gevonden"><img class="op-donker" src="logo-wit.png" alt="Online Goed Gevonden"><img class="op-licht" src="logo-lockup.png" alt=""></a>
+  <button class="nav-cta" data-open="sheet" data-tab="plan">Plan een gesprek</button>
+</nav>
+
+<div class="rail" id="rail">
+  <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
+  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">De rode draad</span></a>
+  <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
+  <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Deze kaart lag niet<br>toevallig op je bureau.<br>Ik keek een tijd naar <em>Alex Helmer Containerverhuur B.V.</em>.</div>
+          <div class="sig">Murphy</div>
+        </div>
+        <span class="slot-tag">De kaart op je bureau</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1 class="hero-h1">Waarom die kaart <span class="u">bij jou lag</span>.</h1>
+      <p class="hero-sub">Drie dingen die me opvielen aan Alex Helmer Containerverhuur B.V. online. Ze wijzen dezelfde kant op.</p>
+      <div class="hero-meta">
+        <span class="chip"><i></i>3 bevindingen</span>
+        <span class="chip">2 minuten lezen</span>
+        <span class="chip">Alleen voor <b>Alex Helmer Containerverhuur B.V.</b> geschreven</span>
+      </div>
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="../voorbeeld/34-containerverhuur/poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Murphy vat het samen in 1 min 10</span>
+      </button>
+      <div class="scrollcue"><i></i><span>Scroll</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path>
+    <path class="jp-prog" id="jp-prog"></path>
+  </svg>
+
+  <section class="chapter left" id="s1">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom jij</div>
+        <h2 class="ch-kop">Wat een klant tegenkomt die jou zoekt.</h2>
+        <p class="ch-text">Iemand die container huren nodig heeft in Breda begint bij Google en eindigt bij degene die het makkelijkst te bereiken was. Ik heb nagelopen waar jij in dat rijtje staat.</p>
+        <p class="ch-text"><strong>Dit is wat ik vond.</strong></p>
+        <div class="ch-sign">Murphy, Online Goed Gevonden</div>
+      </div>
+      <div class="note">3 dingen, in deze volgorde
+        <svg class="arw" viewBox="0 0 52 26"><path d="M2 4c14 0 26 6 34 16M36 20l8 0M36 20l0-8"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find" id="s2">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Er is online geen plek die van jou is</h2>
+        <p class="ch-text">Ik heb gezocht op je bedrijfsnaam en op het domein van je mailadres, en er staat niets. Iemand die jou in Breda overweegt, moet het dus doen met een regel in een gids en een telefoonnummer.</p>
+        <div class="f-bewijs">
+          <div class="f-meta"><span class="dom">wat er online van je te vinden is</span><span class="sep"></span><span>gezocht op de bedrijfsnaam en op het domein van het mailadres, 24 augustus 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter left find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Alleen bellen, en verder niets</h2>
+        <p class="ch-text">Er is geen mailadres van je bekend. Wie een foto wil sturen van wat er aan de hand is, of even iets op papier wil, kan dat nergens kwijt.</p>
+        <div class="f-bewijs">
+          <div class="f-meta"><span class="dom">wat er online van je te vinden is</span><span class="sep"></span><span>gezocht in alle vermeldingen die van je te vinden zijn, 24 augustus 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Je staat er wel, maar niet op je eigen voorwaarden</h2>
+        <p class="ch-text">Wat er over je te vinden is, staat in de bedrijvengids telefoonboek.nl. Daar staat wat iemand ooit heeft ingevuld. Je kunt er niets aan toevoegen en niets weghalen.</p>
+        <div class="f-bewijs">
+          <div class="f-meta"><span class="dom">wat er online van je te vinden is</span><span class="sep"></span><span>de bedrijvengids telefoonboek.nl, 24 augustus 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center pivot" id="s3">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">De rode draad</div>
+        <p class="ch-pivot">Je hebt geen eigen plek online, er is online geen adres waarop je te bereiken bent, en wat er van je te vinden is onderhoudt iemand anders. Alle drie komen ze op hetzelfde neer: wie jou overweegt, moet het doen met wat iemand anders over je opschreef.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="ask" id="ask">
+  <div class="ask-in">
+    <p class="ask-hand">Even sparren hierover?</p>
+    <p class="ask-sub">Hieronder staat mijn voorstel. Lees je liever niet door, bel me dan. Twintig minuten is genoeg, en er hangt geen offerte aan vast.</p>
+    <div class="ask-btns">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
+      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
+    </div>
+    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
+  </div>
+</section>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
+
+  <section class="chapter left">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dit betekent</div>
+        <h2 class="ch-kop">Wat een gemiste aanvraag je kost.</h2>
+        <p class="ch-text">Reken het even door. Wie je niet vindt, vraagt geen offerte aan. Die aanvraag gaat naar iemand die wel bovenaan staat, of hij wordt ingekocht bij een portal en dan betaal je ervoor. <strong>Eén klus per maand die je zo misloopt, is over een jaar meer dan wat het kost om het goed te zetten.</strong></p>
+        <p class="ch-pull">&#x27;Een aanvraag die je moet inkopen, had je ook zelf kunnen krijgen.&#x27;</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Hoe het anders kan</div>
+        <p class="ch-text">Stel dat de volgende klant uit Breda jou vindt zonder dat er een platform of een portal tussen zit. Hij zoekt op container huren, komt bij jou uit, en legt daar meteen iets vast. Die klant is dan van jou, vanaf het eerste moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center phase" id="s4">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Het voorstel</div>
+        <h2 class="ch-kop ch-head">Wat ik voorstel.</h2>
+        <p class="ch-sub">Je website, je agenda, je klantgegevens en je vindbaarheid onder één dak, voor een vast bedrag per maand.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="toon" id="toon">
+  <div class="toon-rij">
+    <article class="tp" style="--dl:.05s">
+      <div class="tp-vis">
+        <div class="mp">
+          <div class="mp-bar"><u></u><u></u><u></u><em>alex-helmer-containerverhuur-b-v.nl/container huren</em></div>
+          <div class="mp-hero"><i class="a"></i><i class="b"></i><i class="s"></i></div>
+          <div class="mp-body">
+            <div class="mp-note"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+            <i class="x"></i><i class="y"></i>
+          </div>
+        </div>
+      </div>
+      <div class="tp-num">01</div>
+      <h3>Een plek die je zelf bezit</h3>
+      <p>een pagina per maat en per afval, zodat wie iets zoekt precies daarover leest en niet over alles tegelijk.</p>
+    </article>
+    <article class="tp" style="--dl:.22s">
+      <div class="tp-vis">
+        <div class="mz">
+          <div class="mz-q"><i></i><span>container huren Breda</span></div>
+          <div class="mz-r on">
+            <div class="mz-dom">alex-helmer-containerverhuur-b-v.nl</div>
+            <div class="mz-t">container huren in Breda</div>
+            <div class="mz-s"></div><div class="mz-s kort"></div>
+          </div>
+          <div class="mz-r"><div class="mz-s"></div><div class="mz-s kort"></div></div>
+        </div>
+      </div>
+      <div class="tp-num">02</div>
+      <h3>Zichtbaar waar je werkt</h3>
+      <p>In Breda en de plaatsen eromheen, op de woorden die je klanten intypen.</p>
+    </article>
+    <article class="tp" style="--dl:.39s">
+      <div class="tp-vis">
+        <div class="ma">
+          <div class="ma-top">
+            <div class="ma-dag"><b>12</b><span>sep</span></div>
+            <div><strong>container huren</strong><em>rechtstreeks bij jou</em></div>
+          </div>
+          <div class="ma-rij"><span class="v"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Zelf ingepland</div>
+          <div class="ma-hand">en zonder commissie</div>
+        </div>
+      </div>
+      <div class="tp-num">03</div>
+      <h3>Rechtstreeks in je agenda</h3>
+      <p>Wat er binnenkomt is van jou, inclusief de gegevens van de klant erachter.</p>
+    </article>
+  </div>
+
+  <div class="vw">
+    <div style="--dl:.55s"><span>&#10003;</span><b>Niets meer los van elkaar</b><p>Site, agenda, klantgegevens en vindbaarheid horen bij elkaar, dus zetten we ze bij elkaar.</p></div>
+    <div style="--dl:.68s"><span>&#10003;</span><b>Je omzet blijft heel</b><p>Wat je verdient houd je, en wie bij je boekt staat in jouw bestand en niet in dat van een ander.</p></div>
+    <div style="--dl:.81s"><span>&#10003;</span><b>Vooraf duidelijk wat het kost</b><p>Eén maandbedrag, waarin het bouwen, het onderhoud en het vindbaar houden allemaal zit.</p></div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <img class="fo-photo fr" src="ogg-murphy.png" alt="Murphy von Schukkmann, Online Goed Gevonden">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Elke maand kijk ik voor een klein aantal bedrijven wat er online misgaat, en dat is bijna nooit één ding. Murphy, aangenaam.</p>
+      <p>Het is een site die niet gevonden wordt, een agenda die ergens anders staat en een aanvraag die op de verkeerde plek binnenkomt. Samen kost dat klanten. Los is het zo verholpen.</p>
+    </div>
+    <p class="fo-name">Murphy von Schukkmann, Online Goed Gevonden</p>
+  </div>
+</section>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Kort even sparren?</h2>
+    <p class="cta-sub reveal">Twintig minuten, en daarna weet je of dit voor Alex Helmer Containerverhuur B.V. de moeite is. Meer is het niet.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
+      <button class="btn-b" style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+    </div>
+    <p class="cta-alt reveal">Liever eerst even schriftelijk? <a href="mailto:murphy@onlinegoedgevonden.nl?subject=Alex%20Helmer%20Containerverhuur%20B.V.">Mail me een korte vraag.</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo"><img src="logo-lockup.png" alt="Online Goed Gevonden"></div>
+  <div class="ft-meta">Online Goed Gevonden &nbsp;&middot;&nbsp; <a href="mailto:murphy@onlinegoedgevonden.nl">murphy@onlinegoedgevonden.nl</a><br>&copy; 2026 Online Goed Gevonden</div>
+</footer>
+
+<div class="dock" id="dock">
+  <span class="dock-t"><b>Even bellen over wat ik zag?</b> 20 minuten.</span>
+  <button class="dock-b" data-open="sheet" data-tab="plan">Plannen</button>
+  <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
+</div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Plan een gesprek">
+    <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
+    <div class="sheet-host">
+      <img src="ogg-murphy.png" alt="">
+      <div><div class="n">20 minuten met Murphy</div><div class="s">Twintig minuten, telefonisch of via beeld.</div></div>
+    </div>
+    <div class="sheet-tabs">
+      <button class="on" data-tab="plan">Zelf een moment kiezen</button>
+      <button data-tab="bel">Laat mij terugbellen</button>
+    </div>
+    <div class="panes">
+    <div class="pane on" id="pane-plan">
+      <div id="cal-wrap">
+        <div id="cal-embed"></div>
+        <div class="cal-skel" id="calskel">
+          <div class="kop"></div>
+          <div class="grid"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u><u class="o"></u><u></u><u></u><u class="o"></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u></div>
+          <div class="glans"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pane" id="pane-bel">
+      <form id="belform">
+        <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" required></div>
+        <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.35rem">Wanneer schikt het?</label>
+        <div class="slots" id="slots">
+          <button type="button" data-v="Vandaag, later vanmiddag">Later vanmiddag</button>
+          <button type="button" data-v="Morgenochtend">Morgenochtend</button>
+          <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
+          <button type="button" data-v="Deze week, maakt niet uit">Deze week, maakt niet uit</button>
+        </div>
+        <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
+        <p class="sheet-note">Murphy belt zelf. Je nummer gaat nergens anders heen en komt op geen enkele lijst.</p>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script src="lp.js"></script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!--
+  Online Goed Gevonden — persoonlijke pagina, gegenereerd door bouw-lps.py.
+  Niet met de hand aanpassen: een nieuwe ronde overschrijft hem.
+  Vorm: Componenten/lp-v2 (lp.css, lp.js, lp-intro.js). Merk: thema-ogg.css.
+  Hier staat alleen thema plus inhoud. Zie Componenten/lp-v2/LEESMIJ.md.
+-->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Online Goed Gevonden voor De Herberg</title>
+<meta name="description" content="Wat mij opviel aan de vindbaarheid van De Herberg in Apeldoorn.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="thema-ogg.css">
+<link rel="stylesheet" href="lp.css">
+
+<script>
+  window.PQ_BEDRIJF      = 'De Herberg';
+  window.PQ_KLANT        = 'ogg';
+  window.PQ_CAMPAGNE     = 'thuiszorg-22';
+  window.PQ_CAL          = 'murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief';
+  window.PQ_VIDEO        = '../voorbeeld/22-thuiszorg/video.mp4';
+  window.PQ_POSTER       = '../voorbeeld/22-thuiszorg/poster.jpg';
+  window.PQ_TRACK_URL    = '/api/t';
+  window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
+  /* Geen voornaam bekend bij dit bedrijf, dus de aanhef vervalt. merk:false omdat dit
+     een klantpagina is: Pique hoort hier nergens te staan. */
+  /* Eigen regels: een zaak met klanten over de vloer heeft een toonbank, een bedrijf
+     dat offertes maakt een bureau. De hero zegt
+     hetzelfde, anders landt de kaart op een plek met een andere tekst eronder. */
+  window.PIQUE_INTRO     = { bedrijf: 'De Herberg', merk: false, ctaSub: 'Video van Murphy &middot; 1 min 05',
+                             regels: ['Deze kaart lag niet toevallig|op je toonbank.',
+                                      'Ik keek een tijd naar {bedrijf}.',
+                                      '*Wil je weten wat ik zag?*'] };
+</script>
+<script src="lp-intro.js"></script>
+</head>
+<body>
+<div class="mbar" id="mbar"></div>
+
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="Online Goed Gevonden"><img class="op-donker" src="logo-wit.png" alt="Online Goed Gevonden"><img class="op-licht" src="logo-lockup.png" alt=""></a>
+  <button class="nav-cta" data-open="sheet" data-tab="plan">Plan een gesprek</button>
+</nav>
+
+<div class="rail" id="rail">
+  <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
+  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">De rode draad</span></a>
+  <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
+  <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Deze kaart lag niet<br>toevallig op je toonbank.<br>Ik keek een tijd naar <em>De Herberg</em>.</div>
+          <div class="sig">Murphy</div>
+        </div>
+        <span class="slot-tag">De kaart op je toonbank</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1 class="hero-h1">Daarom kreeg je <span class="u">mijn kaart</span>.</h1>
+      <p class="hero-sub">Drie dingen die me opvielen aan De Herberg online. Ze hangen samen.</p>
+      <div class="hero-meta">
+        <span class="chip"><i></i>3 bevindingen</span>
+        <span class="chip">2 minuten lezen</span>
+        <span class="chip">Alleen voor <b>De Herberg</b> geschreven</span>
+      </div>
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="../voorbeeld/22-thuiszorg/poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Murphy vat het samen in 1 min 05</span>
+      </button>
+      <div class="scrollcue"><i></i><span>Scroll</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path>
+    <path class="jp-prog" id="jp-prog"></path>
+  </svg>
+
+  <section class="chapter left" id="s1">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom jij</div>
+        <h2 class="ch-kop">Wat er online van De Herberg te vinden is.</h2>
+        <p class="ch-text">Ik keek naar wat iemand tegenkomt die in Apeldoorn zoekt op thuiszorg, en daarna naar wat er gebeurt als hij bij jou aankomt. Dat viel me op, dus keek ik wat langer.</p>
+        <p class="ch-text"><strong>Dit is wat ik vond.</strong></p>
+        <div class="ch-sign">Murphy, Online Goed Gevonden</div>
+      </div>
+      <div class="note">3 dingen, in deze volgorde
+        <svg class="arw" viewBox="0 0 52 26"><path d="M2 4c14 0 26 6 34 16M36 20l8 0M36 20l0-8"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find" id="s2">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Klanten kunnen niets zelf vastleggen</h2>
+        <p class="ch-text">Nergens op je site kan iemand zelf een moment kiezen. Alles loopt via de telefoon, dus wie 's avonds op de bank zit kan niets en belt de volgende ochtend iemand anders.</p>
+        <div class="f-bewijs">
+          <div class="f-meta"><span class="dom">deherberg-apeldoorn.nl</span><span class="sep"></span><span>de hele site nagelopen, 24 augustus 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter left find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Je zegt het zelf, en verder niemand</h2>
+        <p class="ch-text">Op je site staat geen enkele beoordeling. Daar kijkt iemand als eerste naar wanneer hij je nog niet kent en de knoop moet doorhakken.</p>
+        <div class="f-bewijs">
+          <div class="f-meta"><span class="dom">deherberg-apeldoorn.nl</span><span class="sep"></span><span>de hele site nagelopen op beoordelingen, 24 augustus 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Google verzint zelf je zoekresultaat</h2>
+        <p class="ch-text">In de broncode van je site staat geen omschrijving. Google plakt er dan zelf een zin bij elkaar uit je pagina. Dat is precies de regel waarop mensen besluiten of ze klikken.</p>
+        <div class="f-bewijs">
+          <div class="f-meta"><span class="dom">deherberg-apeldoorn.nl</span><span class="sep"></span><span>geen omschrijving in de broncode, 24 augustus 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center pivot" id="s3">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">De rode draad</div>
+        <p class="ch-pivot">Niemand kan zelf een moment vastleggen, er staat nergens wat een klant van je vindt, en Google verzint zelf de regel waarop mensen klikken. Alle drie komen ze op hetzelfde neer: online is er nog niets dat echt van jou is.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="ask" id="ask">
+  <div class="ask-in">
+    <p class="ask-hand">Zal ik je hier gewoon even over bellen?</p>
+    <p class="ask-sub">Hieronder staat wat ik zou doen. Wil je dat liever horen dan lezen, dan pak ik de telefoon. Twintig minuten, en je verbindt je nergens aan.</p>
+    <div class="ask-btns">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
+      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
+    </div>
+    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
+  </div>
+</section>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
+
+  <section class="chapter left">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dit betekent</div>
+        <h2 class="ch-kop">Wat een gemiste klant je kost.</h2>
+        <p class="ch-text">Reken het even door. Wie je niet kan vinden of niets kan vastleggen, gaat verder naar de volgende. Dat merk je niet, want er gaat geen belletje af bij iemand die wegklikt. <strong>Bij een zaak die het van herhaling moet hebben tikt dat harder aan dan een lege dag, want die klant komt ook niet terug.</strong></p>
+        <p class="ch-pull">&#x27;Iemand die op de bank zit en niets kan vastleggen, belt de volgende ochtend iemand anders.&#x27;</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Hoe het anders kan</div>
+        <p class="ch-text">Stel dat iemand die in Apeldoorn zoekt op thuiszorg bij jou uitkomt, op een pagina die daarover gaat, met de prijs erbij. En dat diezelfde pagina een moment laat kiezen dat rechtstreeks bij jou binnenkomt, op jouw naam, zonder tussenpersoon.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center phase" id="s4">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Het voorstel</div>
+        <h2 class="ch-kop ch-head">Wat ik voorstel.</h2>
+        <p class="ch-sub">Je website, je agenda, je klantgegevens en je vindbaarheid onder één dak, voor een vast bedrag per maand.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="toon" id="toon">
+  <div class="toon-rij">
+    <article class="tp" style="--dl:.05s">
+      <div class="tp-vis">
+        <div class="mp">
+          <div class="mp-bar"><u></u><u></u><u></u><em>deherberg-apeldoorn.nl/thuiszorg</em></div>
+          <div class="mp-hero"><i class="a"></i><i class="b"></i><i class="s"></i></div>
+          <div class="mp-body">
+            <div class="mp-note"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+            <i class="x"></i><i class="y"></i>
+          </div>
+        </div>
+      </div>
+      <div class="tp-num">01</div>
+      <h3>Een site die van jou is</h3>
+      <p>een pagina per vorm van zorg, met de prijs erbij, op je eigen domein in plaats van op dat van een ander.</p>
+    </article>
+    <article class="tp" style="--dl:.22s">
+      <div class="tp-vis">
+        <div class="mz">
+          <div class="mz-q"><i></i><span>thuiszorg Apeldoorn</span></div>
+          <div class="mz-r on">
+            <div class="mz-dom">deherberg-apeldoorn.nl</div>
+            <div class="mz-t">thuiszorg in Apeldoorn</div>
+            <div class="mz-s"></div><div class="mz-s kort"></div>
+          </div>
+          <div class="mz-r"><div class="mz-s"></div><div class="mz-s kort"></div></div>
+        </div>
+      </div>
+      <div class="tp-num">02</div>
+      <h3>Gevonden in Apeldoorn</h3>
+      <p>Op waar iemand echt op zoekt, in de plaats waar jij zit, in plaats van ergens op pagina twee.</p>
+    </article>
+    <article class="tp" style="--dl:.39s">
+      <div class="tp-vis">
+        <div class="ma">
+          <div class="ma-top">
+            <div class="ma-dag"><b>12</b><span>sep</span></div>
+            <div><strong>thuiszorg</strong><em>rechtstreeks bij jou</em></div>
+          </div>
+          <div class="ma-rij"><span class="v"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Zelf ingepland</div>
+          <div class="ma-hand">en zonder commissie</div>
+        </div>
+      </div>
+      <div class="tp-num">03</div>
+      <h3>De boeking komt bij jou binnen</h3>
+      <p>In je eigen agenda, met de klantgegevens erbij. Die klant blijft van jou, ook de volgende keer.</p>
+    </article>
+  </div>
+
+  <div class="vw">
+    <div style="--dl:.55s"><span>&#10003;</span><b>Alles onder één dak</b><p>Website, agenda, klantgegevens en vindbaarheid in één systeem. Eén partij die je belt als er iets is.</p></div>
+    <div style="--dl:.68s"><span>&#10003;</span><b>Je klanten blijven van jou</b><p>Geen deel van je omzet per boeking, en de gegevens van je klanten staan bij jou in plaats van bij een platform.</p></div>
+    <div style="--dl:.81s"><span>&#10003;</span><b>Een vast bedrag per maand</b><p>Je weet vooraf wat het kost. Wij bouwen, onderhouden en zorgen dat je gevonden wordt.</p></div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <img class="fo-photo fr" src="ogg-murphy.png" alt="Murphy von Schukkmann, Online Goed Gevonden">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Murphy is mijn naam, en ik werk voor ondernemers die online een stuk kleiner lijken dan ze in het echt zijn.</p>
+      <p>Meestal komt dat doordat er in de loop van de jaren een site, een agenda en een platform los naast elkaar zijn gaan staan. Ik zet die drie weer bij elkaar, op jouw eigen naam.</p>
+    </div>
+    <p class="fo-name">Murphy von Schukkmann, Online Goed Gevonden</p>
+  </div>
+</section>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Even bijpraten?</h2>
+    <p class="cta-sub reveal">Twintig minuten waarin ik laat zien wat ik zou doen bij De Herberg. Daarna beslis jij, en je zit nergens aan vast.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
+      <button class="btn-b" style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+    </div>
+    <p class="cta-alt reveal">Liever eerst even schriftelijk? <a href="mailto:murphy@onlinegoedgevonden.nl?subject=De%20Herberg">Mail me een korte vraag.</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo"><img src="logo-lockup.png" alt="Online Goed Gevonden"></div>
+  <div class="ft-meta">Online Goed Gevonden &nbsp;&middot;&nbsp; <a href="mailto:murphy@onlinegoedgevonden.nl">murphy@onlinegoedgevonden.nl</a><br>&copy; 2026 Online Goed Gevonden</div>
+</footer>
+
+<div class="dock" id="dock">
+  <span class="dock-t"><b>Even bellen over wat ik zag?</b> 20 minuten.</span>
+  <button class="dock-b" data-open="sheet" data-tab="plan">Plannen</button>
+  <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
+</div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Plan een gesprek">
+    <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
+    <div class="sheet-host">
+      <img src="ogg-murphy.png" alt="">
+      <div><div class="n">20 minuten met Murphy</div><div class="s">Video of telefoon, jij kiest.</div></div>
+    </div>
+    <div class="sheet-tabs">
+      <button class="on" data-tab="plan">Zelf een moment kiezen</button>
+      <button data-tab="bel">Laat mij terugbellen</button>
+    </div>
+    <div class="panes">
+    <div class="pane on" id="pane-plan">
+      <div id="cal-wrap">
+        <div id="cal-embed"></div>
+        <div class="cal-skel" id="calskel">
+          <div class="kop"></div>
+          <div class="grid"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u><u class="o"></u><u></u><u></u><u class="o"></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u></div>
+          <div class="glans"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pane" id="pane-bel">
+      <form id="belform">
+        <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" required></div>
+        <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.35rem">Wanneer schikt het?</label>
+        <div class="slots" id="slots">
+          <button type="button" data-v="Vandaag, later vanmiddag">Later vanmiddag</button>
+          <button type="button" data-v="Morgenochtend">Morgenochtend</button>
+          <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
+          <button type="button" data-v="Deze week, maakt niet uit">Deze week, maakt niet uit</button>
+        </div>
+        <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
+        <p class="sheet-note">Murphy belt zelf. Je nummer gaat nergens anders heen en komt op geen enkele lijst.</p>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script src="lp.js"></script>
+</body>
+</html>
