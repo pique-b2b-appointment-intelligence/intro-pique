@@ -24,8 +24,8 @@
 .azwerk-cap{font-family:var(--hand);font-size:1.15rem;color:var(--ink3);margin-top:.4rem;text-align:center}
 @media(max-width:640px){.azwerk-grid{grid-template-columns:1fr;max-width:300px}}
 /* David's intro is liggend (16:9); het gedeelde overlay is voor een staande video.
-   De geinjecteerde overlay-video (inline z-index:300) hier verbreden. */
-body>div[style*="z-index:300"]>video{width:min(900px,94vw)!important;height:auto!important;max-height:84vh!important}
+   De overlay-video is de enige met autoplay, dus die hier verbreden. */
+video[autoplay]{width:min(960px,94vw)!important;height:auto!important;max-height:84vh!important}
 </style>
 <script>
   window.PQ_BEDRIJF      = 'Dropship Academy';
