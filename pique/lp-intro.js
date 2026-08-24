@@ -64,8 +64,6 @@
   var KEY = 'pq-intro:' + location.pathname;
   var eenmalig = cfg.eenmalig === true;
   try { if (eenmalig && localStorage.getItem(KEY)) return; } catch (e) {}
-  var nl = document.querySelector('nav .logo');
-  var LOGO = nl ? nl.innerHTML : '';
   document.documentElement.className += ' pq-on';
 
   /* Is er geen opname, dan is één knop genoeg. Anders beloven we
@@ -75,7 +73,7 @@
   el.id = 'pq';
   el.innerHTML =
     '<div class="pq-glow"></div><div class="pq-stage">' +
-      '<div class="pq-card" id="pqcard">' + (merk ? '<div class="pq-brand">' + LOGO + '<span>' + label + '</span></div>' : '') + '<div class="pq-ink" id="pqink"></div></div>' +
+      '<div class="pq-card" id="pqcard">' + (merk ? '<div class="pq-brand"><span>' + label + '</span></div>' : '') + '<div class="pq-ink" id="pqink"></div></div>' +
       '<div class="pq-choice" id="pqchoice"><button class="pq-btn" id="pqgo" type="button">' + (heeftVideo ? cta : (cfg.ctaZonderVideo || 'Laat maar zien')) + ' <span class="pq-arw">&#8594;</span></button>' + (heeftVideo ? '<span class="pq-btn-sub">' + ctaSub + '</span>' : '') + '</div>' +
       (heeftVideo ? '<button class="pq-read" id="pqread" type="button">' + lezen + '</button>' : '') +
     '</div>';
@@ -83,7 +81,14 @@
      gooit een fout. De laag werd daardoor nooit ingehangen, terwijl pq-on wel op <html>
      bleef staan: elke v2-pagina opende zonder kaart en met een lege plek in de hero.
      De laag is los van het document al compleet, dus inhangen mag ook later. */
-  function inhangen(){ document.body.appendChild(el); }
+  function inhangen(){
+    /* Het logo pas hier ophalen. Dit bestand hangt in de <head>, dus bij het
+       opbouwen van de kaart bestaat de nav nog niet en zou het leeg blijven. */
+    var merkblok = el.querySelector('.pq-brand');
+    var navlogo = document.querySelector('nav .logo');
+    if (merkblok && navlogo) merkblok.insertAdjacentHTML('afterbegin', navlogo.innerHTML);
+    document.body.appendChild(el);
+  }
   if (document.body) inhangen();
   else document.addEventListener('DOMContentLoaded', inhangen);
 
@@ -164,7 +169,7 @@
   function begin(){
     if (gestart) return; gestart = true;
     setTimeout(function(){ card.classList.add('in'); }, 60);
-    setTimeout(function(){ read.classList.add('in'); }, 900);
+    setTimeout(function(){ if (read) read.classList.add('in'); }, 900);
     setTimeout(schrijf, 620);
   }
   if (document.fonts && document.fonts.load) document.fonts.load('600 2rem Caveat').then(begin, begin);
