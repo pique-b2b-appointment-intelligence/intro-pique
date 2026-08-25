@@ -29,6 +29,12 @@
   --pap-1:#F6F2E9;                                     /* bovenkant papiertje   */
   --pap-2:#EAE3D3;                                     /* onderkant papiertje   */
   --tape-rgb:214,205,186;                              /* plakband              */
+  /* Tekst op papier. Bij een licht merk is dit gelijk aan --ink en hoef je het
+     niet te zetten. Bij een donker merk moet het wel, anders staat cremekleurige
+     tekst op cremekleurig papier. */
+  --pap-ink:#1B1E1C;       --pap-ink2:rgba(27,30,28,.74);   --pap-ink3:rgba(27,30,28,.5);
+  --pap-inkt:#6E6A61;                                  /* handgeschreven op papier */
+  --pap-line:rgba(27,30,28,.22);                       /* randen op papier      */
   --hand-ink:#1B1E1C;      --hand-rgb:27,30,28;        /* handschrift           */
 
   /* ── overig ─────────────────────────────────────────────── */
