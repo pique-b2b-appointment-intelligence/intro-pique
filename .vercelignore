@@ -10,6 +10,7 @@ node_modules
 !bcs2/video.mp4
 !bcs3/video.mp4
 !bcs4/*.mp4
+!igniting-tribes/*.mp4
 !onlinegoedgevonden/*.mp4
 !onlinegoedgevonden/voorbeeld/*/*.mp4
 *.csv
