@@ -1,0 +1,60 @@
+/* ============================================================
+   THEMA — Igniting Tribes
+   Donker merk: near-black met crème. Waar bij Pique wit papier op een
+   lichte pagina ligt, ligt hier crème papier op bijna zwart. Elke kleur
+   staat twee keer: als hex en als losse kanalen voor rgba().
+   Merkfont is The Seasons (display) met Inter eronder.
+   ============================================================ */
+:root{
+  /* ── accent ─────────────────────────────────────────────── */
+  --accent:#EDE7DA;        --accent-rgb:237,231,218;   /* lijnen, labels, dots  */
+  --accent-l:#FFFFFF;      --accent-l-rgb:255,255,255; /* knoppen, accent op donker */
+  --accent-h:#FFFFFF;                                  /* knop bij hover        */
+  --op-accent:#12140F;                                 /* tekst op een accentknop */
+  --inkt:#8C8579;          --inkt-rgb:140,133,121;     /* handgeschreven accent */
+
+  /* ── vlakken en tekst ───────────────────────────────────── */
+  --bg:#0E100F;            --bg-rgb:14,16,15;          /* de pagina             */
+  --ink:#EDE7DA;           --ink-rgb:237,231,218;      /* tekst                 */
+  --donker:#151816;        --donker-rgb:21,24,22;      /* hero, kantelpunt, CTA */
+  --dieper:#090A09;        --dieper-rgb:9,10,9;        /* overlays              */
+  --wit:#F6F2E9;           --wit-rgb:246,242,233;      /* papier en vlakken     */
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.62);                     /* bodytekst             */
+  --ink3:rgba(var(--ink-rgb),.38);                     /* bijschrift, bron      */
+  --line:rgba(var(--ink-rgb),.14);                     /* haarlijnen, randen    */
+
+  /* ── papier ─────────────────────────────────────────────── */
+  --pap-0:#F8F5EC;                                     /* het knipsel           */
+  --pap-1:#F6F2E9;                                     /* bovenkant papiertje   */
+  --pap-2:#EAE3D3;                                     /* onderkant papiertje   */
+  --tape-rgb:214,205,186;                              /* plakband              */
+  --hand-ink:#1B1E1C;      --hand-rgb:27,30,28;        /* handschrift           */
+
+  /* ── overig ─────────────────────────────────────────────── */
+  --goed:#7FA98C;          --goed-rgb:127,169,140;     /* vinkje                */
+  --chrome:#E6E0D2;                                    /* browserbalk in de mockup */
+  --video-bg:#0A0B0A;
+
+  /* ── typografie ─────────────────────────────────────────── */
+  --serif:'The Seasons',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;                     /* The Seasons heeft geen assen */
+
+  /* ── vorm ───────────────────────────────────────────────── */
+  --r-pap:3px;
+  --r-kaart:16px;
+  --r-blok:20px;
+  --r-pil:100px;
+
+  /* ── beweging ───────────────────────────────────────────── */
+  --ease:cubic-bezier(.16,1,.3,1);
+
+  /* ── maten ──────────────────────────────────────────────── */
+  --fs-h:clamp(1.9rem,3vw,2.7rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;
+}
+@font-face{font-family:'The Seasons';src:url('theseasons-regular.woff2') format('woff2');
+  font-weight:400;font-style:normal;font-display:swap}

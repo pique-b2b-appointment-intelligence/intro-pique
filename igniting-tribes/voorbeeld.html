@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Igniting Tribes voor W. Bos Makelaars</title>
 <meta name="description" content="Drie dingen die W. Bos Makelaars meer opdrachten zouden opleveren.">
 <meta name="robots" content="noindex">
@@ -11,313 +11,344 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
-<style>
-@font-face{font-family:'The Seasons';src:url('theseasons-regular.woff2') format('woff2');
-  font-weight:400;font-style:normal;font-display:swap}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0E100F;--bg2:#141614;--card:#181B19;--line:rgba(237,231,218,.12);
-  --wit:#fff;--creme:#EDE7DA;--grijs:#9A9A9A;--grijs2:#707070;
-  --serif:'The Seasons',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--hand:'Caveat',cursive;
-  --ease:cubic-bezier(.16,1,.3,1);
-}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{background:var(--bg);color:var(--creme);font-family:var(--sans);line-height:1.75;font-weight:300;overflow-x:hidden}
-::selection{background:rgba(237,231,218,.18)}
-img{max-width:100%;display:block}
-.wrap{max-width:820px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2rem);text-align:center}
+<link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 
-header{padding:clamp(2.2rem,5vh,3rem) 0 0;text-align:center}
-header img{height:26px;margin:0 auto;opacity:.9}
+<link rel="stylesheet" href="thema-ignitingtribes.css">
+<link rel="stylesheet" href="lp.css">
 
-.pill{display:inline-block;font-size:.66rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--grijs);border:1px solid var(--line);border-radius:100px;padding:.5rem 1.15rem;background:rgba(237,231,218,.03)}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,5vw,3.6rem);line-height:1.14;
-  letter-spacing:-.005em;color:var(--wit);margin:1.6rem auto 0;max-width:18ch}
-.sub{color:var(--grijs2);font-size:1.02rem;margin:1.3rem auto 0;max-width:58ch}
-
-.videoblok{margin:clamp(2rem,5vh,3rem) auto 0;max-width:900px;padding:0 clamp(1.25rem,5vw,2rem)}
-.frame{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;
-  border:1px solid var(--line);box-shadow:0 30px 90px rgba(0,0,0,.55)}
-/* De opname is staand. Een onscherpe still van dezelfde frame vult de brede lijst,
-   zodat het beeld niet wordt aangesneden en het kader van het merk blijft kloppen. */
-.frame::before{content:'';position:absolute;inset:-4%;background:url('luke-blur.jpg') center/cover;
-  filter:brightness(.42) saturate(.75);transform:scale(1.06)}
-.frame video{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);
-  height:100%;width:auto;max-width:none;object-fit:contain;display:block;background:#000}
-@media(max-width:700px){
-  .frame{aspect-ratio:9/16;max-width:330px;margin:0 auto}
-  .frame::before{display:none}
-  .frame video{width:100%;height:100%;object-fit:cover}
-}
-.frame-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:1.1rem;cursor:pointer;background:radial-gradient(circle at 50% 50%,rgba(14,16,15,.55),rgba(14,16,15,.25) 45%,transparent 70%)}
-.play{width:74px;height:74px;border-radius:50%;border:1px solid rgba(237,231,218,.5);
-  background:rgba(237,231,218,.08);backdrop-filter:blur(6px);display:grid;place-items:center;transition:all .35s var(--ease)}
-.play::after{content:'';margin-left:5px;border-style:solid;border-width:11px 0 11px 18px;
-  border-color:transparent transparent transparent var(--creme)}
-.frame-ph:hover .play{background:rgba(237,231,218,.16);transform:scale(1.05)}
-.playlabel{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--creme);
-  text-shadow:0 1px 10px rgba(0,0,0,.8)}
-.scrollhint{font-family:var(--hand);font-size:1.4rem;color:var(--grijs);margin-top:1.7rem}
-
-/* JOURNEY met de lijn */
-.journey{position:relative;max-width:1120px;margin:0 auto;padding:clamp(3.5rem,8vh,6rem) clamp(1.25rem,3vw,2rem) clamp(2rem,5vh,3.5rem)}
-.jpath{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
-.jp-base{fill:none;stroke:rgba(237,231,218,.13);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:.5 10;
-  animation:march 42s linear infinite}
-@keyframes march{to{stroke-dashoffset:-84}}
-.jp-prog{fill:none;stroke:rgba(237,231,218,.85);stroke-width:1.6;stroke-linecap:round;
-  filter:drop-shadow(0 0 6px rgba(237,231,218,.3))}
-.hs{position:relative;z-index:1;display:flex;padding:clamp(4vh,7vh,9vh) 0}
-.hs.l{justify-content:flex-start}.hs.r{justify-content:flex-end}.hs.c{justify-content:center}
-.hs-in{position:relative;width:min(420px,44%);text-align:left}
-.hs.c .hs-in{width:min(620px,84%);text-align:center}
-.hs.c .hs-body{background:var(--bg);padding:1.3rem 1.6rem;border-radius:16px;position:relative}
-.dot{position:absolute;top:-1.6rem;width:11px;height:11px;border-radius:50%;background:var(--bg);
-  border:1px solid rgba(237,231,218,.28);z-index:2;transition:all .5s var(--ease)}
-.hs.l .dot{right:-1.6rem}.hs.r .dot{left:-1.6rem}
-.hs.c .dot{left:50%;transform:translateX(-50%)}
-.hs.reached .dot{background:var(--creme);border-color:var(--creme);box-shadow:0 0 0 5px rgba(237,231,218,.08),0 0 16px rgba(237,231,218,.35)}
-.hs-body{opacity:0;transform:translateY(26px);filter:blur(5px);
-  transition:opacity 1.1s var(--ease),transform 1.1s var(--ease),filter 1.1s var(--ease)}
-.hs.in .hs-body{opacity:1;transform:none;filter:blur(0)}
-.ey{display:inline-block;font-size:.64rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--grijs);border:1px solid var(--line);border-radius:100px;padding:.42rem 1rem;
-  background:rgba(237,231,218,.03);margin-bottom:1.1rem}
-.nr{font-family:var(--serif);font-size:1.5rem;color:var(--grijs2);line-height:1;margin-bottom:.5rem}
-h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.24;color:var(--wit)}
-.hs.c h2{font-size:clamp(1.8rem,3.6vw,2.7rem);max-width:18ch;margin:0 auto}
-.t{color:var(--grijs);font-size:1rem;margin-top:.9rem}
-.t + .t{margin-top:.9rem}
-.t b{color:var(--creme);font-weight:400}
-.hs.c .t{max-width:44ch;margin-left:auto;margin-right:auto}
-.citaat{font-family:var(--hand);font-size:1.45rem;line-height:1.45;color:var(--creme);
-  border-left:1px solid rgba(237,231,218,.3);padding-left:1.1rem;margin:1.1rem 0}
-.bron{font-size:.71rem;color:rgba(237,231,218,.32);margin-top:.9rem}
-.spot{font-family:var(--serif);font-size:clamp(1.4rem,2.9vw,2rem);line-height:1.35;color:var(--wit)}
-
-/* losse secties */
-section{padding:clamp(3.5rem,8vh,5.5rem) 0}
-.blok-h{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.2;color:var(--wit);margin:0 auto;max-width:20ch}
-.p{color:var(--grijs);font-size:1.02rem;margin:1.2rem auto 0;max-width:56ch}
-.p b{color:var(--creme);font-weight:400}
-.streep{width:40px;height:1px;background:rgba(237,231,218,.22);margin:2.2rem auto}
-
-.cta{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stap{font-family:var(--hand);font-size:1.5rem;color:var(--grijs);margin-bottom:.3rem}
-.calwrap{margin:2.2rem auto 0;background:#fff;border-radius:16px;overflow:hidden;max-width:900px;min-height:560px}
-.cta-klein{font-size:.85rem;color:var(--grijs2);margin-top:1.2rem}
-
-footer{padding:2.6rem 0 3.4rem;text-align:center;color:rgba(237,231,218,.32);font-size:.8rem}
-footer img{height:22px;margin:0 auto 1.2rem;opacity:.6}
-footer a{color:var(--grijs);text-decoration:none}
-
-.rv{opacity:0;transform:translateY(22px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
-.rv.in{opacity:1;transform:none}
-.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
-@media(max-width:860px){
-  .hs-in,.hs.c .hs-in{width:100%!important;text-align:left}
-  .hs{padding:3.5vh 0 3.5vh 1.6rem}
-  .hs.l,.hs.r,.hs.c{justify-content:flex-start}
-  .hs .dot{left:-1.6rem!important;right:auto!important;transform:none!important}
-  .hs.c .hs-body{padding:0;background:none}
-  .hs.c h2,.hs.c .t{margin-left:0;text-align:left}
-}
-@media(prefers-reduced-motion:reduce){.rv,.hs-body{opacity:1;transform:none;filter:none;transition:none}}
-</style>
-<link rel="stylesheet" href="intro.css">
-<script>window.PIQUE_INTRO={voornaam:"Sjors",bedrijf:"W. Bos Makelaars",merk:false,
-  cta:"Ja, laat maar zien",ctaSub:"Video van Luke &middot; 3 min",lezen:"Ik lees liever eerst",
-  regels:["Hoi Sjors.","Deze kaart lag niet toevallig op je bureau.","Ik heb een middag naar *W. Bos Makelaars* zitten kijken.","Benieuwd wat me opviel?"]};</script>
-<script src="intro.js"></script>
+<script>
+  window.PQ_BEDRIJF      = 'W. Bos Makelaars';
+  window.PQ_KLANT        = 'ignitingtribes';
+  window.PQ_CAMPAGNE     = 'makelaars-golf1';
+  window.PQ_CAL          = 'igniting-tribes/10min-kennismaking';
+  window.PQ_VIDEO        = 'luke.mp4';
+  window.PQ_POSTER       = 'luke-poster.jpg';
+  window.PQ_TRACK_URL    = '/api/t';
+  window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
+  window.PIQUE_INTRO     = { voornaam: 'Sjors', bedrijf: 'W. Bos Makelaars', merk: false,
+                             ctaSub: 'Video van Luke &middot; 2 min' };
+</script>
+<script src="lp-intro.js"></script>
 </head>
 <body>
+<div class="mbar" id="mbar"></div>
 
-<header><img src="logo.png" alt="Igniting Tribes"></header>
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="Igniting Tribes"><img src="logo.png" alt="Igniting Tribes" style="height:24px;width:auto;display:block"></a>
+  <button class="nav-cta" data-open="sheet" data-tab="plan">Plan een belletje</button>
+</nav>
 
-<div class="wrap" style="padding-top:clamp(2.5rem,7vh,4.5rem)">
-  <span class="pill rv">Voor W. Bos Makelaars</span>
-  <h1 class="rv d1">3 dingen die W. Bos Makelaars meer opdrachten zouden opleveren</h1>
-  <p class="sub rv d2">Geef me 3 minuten en dan laat ik je precies zien waar jullie uitstraling op dit moment opdrachten laat liggen, en hoe je dat oplost.</p>
+<div class="rail" id="rail">
+  <a href="#s1"><span class="rd"></span><span class="rl">Waarom jullie</span></a>
+  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">Wat het betekent</span></a>
+  <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
+  <a href="#gesprek"><span class="rd"></span><span class="rl">Even kennismaken</span></a>
 </div>
 
-<div class="videoblok rv d2">
-  <div class="frame" id="frame">
-    <video id="vid" playsinline preload="metadata" poster="luke-poster.jpg" src="luke.mp4"></video>
-    <div class="frame-ph" id="ph">
-      <div class="play"></div>
-      <div class="playlabel">2 min 06 &middot; met geluid</div>
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Hoi Sjors.<br>Ik heb een middag naar <em>W. Bos Makelaars</em> zitten kijken.</div>
+          <div class="sig">Luke</div>
+        </div>
+        <span class="slot-tag">De kaart op je bureau</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1 class="hero-h1">3 dingen die W. Bos Makelaars <span class="u">meer opdrachten</span> zouden opleveren.</h1>
+      <p class="hero-sub">Op basis van wat ik online over jullie kon vinden. Geef me drie minuten, dan laat ik zien waar jullie uitstraling nu opdrachten laat liggen.</p>
+      <div class="hero-meta">
+        <span class="chip"><i></i>3 bevindingen</span>
+        <span class="chip">3 minuten lezen</span>
+        <span class="chip">Alleen voor <b>W. Bos Makelaars</b> geschreven</span>
+      </div>
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="luke-poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Luke vat het samen in 2 minuten</span>
+      </button>
+      <div class="scrollcue"><i></i><span>Scroll</span></div>
     </div>
   </div>
-</div>
-
-<div class="wrap"><p class="scrollhint rv">En als je hulp zou willen&hellip; blijf scrollen</p></div>
+</header>
 
 <main class="journey" id="journey">
-  <svg class="jpath" id="jsvg" preserveAspectRatio="none" aria-hidden="true">
-    <path class="jp-base" id="jbase"></path><path class="jp-prog" id="jprog"></path>
+  <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path>
+    <path class="jp-prog" id="jp-prog"></path>
   </svg>
 
-  <section class="hs c">
-    <div class="hs-in"><span class="dot"></span>
-      <div class="hs-body">
-        <h2>Dit zijn de 3 dingen die ik heb gevonden over W. Bos Makelaars</h2>
-        <p class="t">Op basis van wat ik online over jullie kon vinden:</p>
+  <section class="chapter left" id="s1">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom jullie</div>
+        <h2 class="ch-kop">Ik schrijf niet zomaar iemand.</h2>
+        <p class="ch-text">Willem Bos begon in 1948, jij bent de derde die het draagt, en de vestiging in Haarlemmermeer groeit. Dat is geen kantoor dat zit te wachten.</p>
+        <p class="ch-text">Ik ben zelf geen makelaar, dus over jullie vak zeg ik niks. Ik bouw merken. <strong>Dit is wat ik vond.</strong></p>
+        <div class="ch-sign">Luke, Igniting Tribes</div>
+      </div>
+      <div class="note">3 dingen, in deze volgorde
+        <svg class="arw" viewBox="0 0 52 26"><path d="M2 4c14 0 26 6 34 16M36 20l8 0M36 20l0-8"/></svg>
       </div>
     </div>
   </section>
 
-  <section class="hs l">
-    <div class="hs-in"><span class="dot"></span>
-      <div class="hs-body">
-        <div class="nr">01</div>
-        <h2>Haarlemmermeer groeit, en jullie zoeken iemand die die vestiging verder brengt</h2>
-        <div class="citaat">Onze vestiging voor de regio Haarlemmermeer groeit. Om deze vestiging naar een volgende fase te brengen, zoeken wij een getalenteerde makelaar &ndash; vestigingsmanager.</div>
-        <p class="t">Dat is een mooi moment, en het is ook het lastigste. Zo iemand komt binnen en gaat de markt op met wat jullie hem meegeven: de site, de brochure, de manier waarop een woning van jullie eruitziet.</p>
-        <p class="t">Ik werd benieuwd wat die volgende fase in jouw hoofd is. <b>En vooral wat hij straks in handen krijgt om mee binnen te lopen.</b></p>
-        <div class="bron">Bron: wbosmakelaars.nl/vacatures &middot; gelezen 19 augustus 2026</div>
+  <section class="chapter right find" id="s2">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">Wat ik vond</div></div>
+        <h2 class="f-kop">Haarlemmermeer groeit, en je zoekt iemand die daar de kar trekt</h2>
+        <p class="ch-text">Zo iemand komt binnen en gaat de markt op met wat jullie hem meegeven: de site, de brochure, de manier waarop een woning van jullie eruitziet. <strong>Ik werd benieuwd wat hij straks in handen krijgt.</strong></p>
+        <div class="f-bewijs">
+          <p class="f-quote">'Onze vestiging voor de regio Haarlemmermeer groeit. Om deze vestiging naar een volgende fase te brengen, zoeken wij een getalenteerde makelaar &ndash; vestigingsmanager.'</p>
+          <div class="f-meta"><span class="dom">wbosmakelaars.nl</span><span class="sep"></span><span>19 augustus 2026</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="hs r">
-    <div class="hs-in"><span class="dot"></span>
-      <div class="hs-body">
-        <div class="nr">02</div>
-        <h2>Jullie duurste woning staat op 2.595.000 euro</h2>
-        <p class="t">In dat segment nodigt een verkoper meestal drie kantoren uit. En dan gebeurt er iets vervelends: hij kijkt eerst.</p>
-        <p class="t">Naar de foto's van jullie laatste verkopen. Naar de brochure. Naar de site, op zijn telefoon, in de auto. Dat kost hem twee minuten, en daarna ligt de volgorde al vast.</p>
-        <p class="t"><b>Reken het eens door.</b> Bij één procent courtage is dat pand twintigduizend euro waard. Mis er twee per jaar omdat de ander er duurder uitzag, en het gaat over veertigduizend euro die nooit op een factuur heeft gestaan.</p>
-        <div class="bron">Bron: jullie woningaanbod &middot; augustus 2026</div>
+  <section class="chapter left find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">Wat ik vond</div></div>
+        <h2 class="f-kop">Jullie duurste woning staat op 2.595.000 euro</h2>
+        <p class="ch-text">In dat segment nodigt een verkoper drie kantoren uit, en dan kijkt hij eerst. Naar de foto's van jullie laatste verkopen, naar de brochure, naar de site op zijn telefoon. <strong>Dat kost hem twee minuten, en daarna ligt de volgorde vast.</strong></p>
+        <div class="f-bewijs">
+          <p class="f-quote">'Koningin Astrid Boulevard 26B, vraagprijs &euro; 2.595.000 k.k.'</p>
+          <div class="f-meta"><span class="dom">wbosmakelaars.nl</span><span class="sep"></span><span>augustus 2026</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="hs l">
-    <div class="hs-in"><span class="dot"></span>
-      <div class="hs-body">
-        <div class="nr">03</div>
-        <h2>'Morgen begint vandaag', staat er op jullie site</h2>
-        <p class="t">Mooie zin. Alleen is de laatste publicatie van 1 juli 2024.</p>
-        <p class="t">Daar schuurt het. De belofte kijkt vooruit en het merk staat stil. Bij een kantoor dat in 1948 begon en nu in de derde generatie zit, is dat dubbel zonde. <b>Achtenzeventig jaar is precies wat het kantoor uit de volgende straat niet heeft, en op dit moment ziet niemand het.</b></p>
-        <div class="bron">Bron: wbosmakelaars.nl &middot; laatste artikel 1 juli 2024</div>
+  <section class="chapter right find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat ik vond</div></div>
+        <h2 class="f-kop">'Morgen begint vandaag', staat er op jullie site</h2>
+        <p class="ch-text">Mooie zin. Alleen is de laatste publicatie van 1 juli 2024. De belofte kijkt vooruit en het merk staat stil. <strong>Achtenzeventig jaar is precies wat het kantoor uit de volgende straat niet heeft.</strong></p>
+        <div class="f-bewijs">
+          <p class="f-quote">'Morgen begint vandaag.'</p>
+          <div class="f-meta"><span class="dom">wbosmakelaars.nl</span><span class="sep"></span><span>laatste artikel 1 juli 2024</span></div>
+        </div>
       </div>
+      <div class="note">en dit maakt de eerste twee urgent</div>
     </div>
   </section>
 
-  <section class="hs c">
-    <div class="hs-in"><span class="dot"></span>
-      <div class="hs-body">
-        <p class="spot">Jullie zijn beter dan hoe jullie eruitzien. Dat merkt een verkoper pas aan tafel, en daar zit hij alleen als hij jullie eerst heeft gebeld.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="hs r">
-    <div class="hs-in"><span class="dot"></span>
-      <div class="hs-body">
-        <div class="ey">In jullie markt</div>
-        <h2>Een huis in dit segment koop je op gevoel</h2>
-        <p class="t">Luxe woningen zijn bijzonder. Ze geven een gevoel van kalmte, rust en ruimte. Dat is het gevoel waar een koper naar zoekt in zijn volgende huis.</p>
-        <p class="t">En dat gevoel verdient jullie merk ook, juist omdat jullie dat soort woningen verkopen. Want of iemand nou koopt of verkoopt, <b>hij kiest zijn makelaar op gevoel. En de makelaar die dat gevoel raakt, wint de opdracht.</b></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="hs c">
-    <div class="hs-in"><span class="dot"></span>
-      <div class="hs-body">
-        <div class="ey">Wie wij zijn</div>
-        <h2>Dat gevoel creëren is al zeven jaar ons vak</h2>
-        <p class="t">Wij zijn een brandingstudio. Tot nu toe deden we dat voor allerlei bedrijven, en vanaf dit jaar richten we ons volledig op ondernemers in vastgoed. David doet het ontwerp, ik doe de strategie en de uitvoering.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="hs l">
-    <div class="hs-in"><span class="dot"></span>
-      <div class="hs-body">
-        <div class="ey">Hoe het loopt</div>
-        <h2>Van kick-off tot re-launch, in negentig dagen</h2>
-        <p class="t"><b>Week 1.</b> De kick-off, online, twee tot drie uur met jou en Wouter. We halen op waar de opdracht in het hogere segment echt op gewonnen wordt.</p>
-        <p class="t"><b>Week 2 tot 4.</b> Jullie premium merkidentiteit. Typografie, kleur, fotografiestijl, en de manier waarop een woning van jullie eruitziet. Zo dat 1948 leest als kracht in plaats van als leeftijd.</p>
-        <p class="t"><b>Week 5 tot 12.</b> Hier bouwen we de assets die zorgen voor aanvragen en deals: de website, brochures, social media templates en wat er verder van waarde is in jullie verkoopproces.</p>
-        <p class="t"><b>Week 9 tot 12.</b> De re-launch. Alles gaat in één keer naar buiten, zodat jullie regio in één week ziet wat er is veranderd.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="hs r">
-    <div class="hs-in"><span class="dot"></span>
-      <div class="hs-body">
-        <div class="ey">Waarom jullie</div>
-        <h2>We draaien een handvol trajecten tegelijk</h2>
-        <p class="t">Daarom kiezen we de bedrijven zelf uit, en na uitgebreid onderzoek staan jullie op die lijst. Het aanbod is er, de vestiging groeit, en er komt iemand binnen die het moet gaan dragen.</p>
-        <p class="t"><b>Wat ontbreekt is de uitstraling eromheen.</b> Dat is het enige stuk waar wij over gaan.</p>
+  <section class="chapter center pivot" id="s3">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat het betekent</div>
+        <p class="ch-pivot">Jullie zijn beter dan hoe jullie eruitzien. Dat merkt een verkoper pas aan tafel, en daar zit hij alleen als hij jullie eerst heeft gebeld.</p>
+        <div class="tl">
+          <div class="tl-rail">
+            <div class="tl-i" style="--dl:.2s"><span class="d"></span><b>1948</b><span>Willem Bos begint</span></div>
+            <div class="tl-i" style="--dl:.45s"><span class="d"></span><b>jul 2024</b><span>laatste publicatie</span></div>
+            <div class="tl-i" style="--dl:.7s"><span class="d"></span><b>aug 2026</b><span>aanbod tot 2,6 miljoen</span></div>
+            <div class="tl-i nu" style="--dl:.95s"><span class="d"></span><b>nu</b><span>vestiging zoekt een trekker</span></div>
+          </div>
+          <p class="tl-hand">Het kantoor groeit door, het merk bleef staan.</p>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
+<section class="ask" id="ask">
+  <div class="ask-in">
+    <p class="ask-hand">Zal ik je hier gewoon even over bellen?</p>
+    <p class="ask-sub">Hieronder staat wat ik zou doen. Ik ontdek graag samen of dit een match is en of wij jullie kunnen helpen naar een hoger niveau. Vijf tot tien minuten, en je verbindt je nergens aan.</p>
+    <div class="ask-btns">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een belletje</button>
+      <button class="btn-b" id="askread">Ik lees eerst verder</button>
+    </div>
+    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
+  </div>
+</section>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
+
+  <section class="chapter left">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dit kost</div>
+        <h2 class="ch-kop">Reken het eens door.</h2>
+        <p class="ch-text">Bij één procent courtage is een pand van twee miljoen twintigduizend euro waard. Eén opdracht. <strong>Mis er twee per jaar omdat de ander er duurder uitzag, en het gaat over veertigduizend euro die nooit op een factuur heeft gestaan.</strong></p>
+        <p class="ch-pull">'Je merkt het niet. Je hoort alleen nooit waarom je 'm niet kreeg.'</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom het zwaarder weegt bij jullie</div>
+        <p class="ch-text">Luxe woningen zijn bijzonder. Ze geven een gevoel van kalmte, rust en ruimte, en dat zoekt een koper in zijn volgende huis. Dat gevoel verdient jullie merk ook.</p>
+        <p class="ch-text">Want of iemand nou koopt of verkoopt, hij kiest zijn makelaar op gevoel. <strong>En de makelaar die dat gevoel raakt, wint de opdracht.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center phase" id="s4">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Het voorstel</div>
+        <h2 class="ch-kop ch-head">Metamorphosis.</h2>
+        <p class="ch-sub">In negentig dagen geven we jullie hele online presence een make-over. Kick-off online, dan de merkidentiteit, dan de assets die zorgen voor aanvragen en deals, en een re-launch waarin het in één keer naar buiten gaat.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="toon" id="toon">
+  <div class="toon-rij">
+    <article class="tp" style="--dl:.05s">
+      <div class="tp-vis">
+        <div class="mk">
+          <div class="mk-h">Hoi Sjors.<br>Ik heb een middag<br>naar <em>W. Bos</em> gekeken.</div>
+          <div class="mk-s">Luke</div>
+          <div class="mk-adres">intro-pique.agency/&hellip;</div>
+          <svg class='qr' viewBox='0 0 21 21' shape-rendering='crispEdges' aria-hidden='true'><rect width='21' height='21' fill='%23F6F2E9'/><g fill='%231B1E1C'><path d='M0 0h7v7H0z M2 2h3v3H2z' fill-rule='evenodd'/><path d='M14 0h7v7h-7z M16 2h3v3h-3z' fill-rule='evenodd'/><path d='M0 14h7v7H0z M2 16h3v3H2z' fill-rule='evenodd'/><rect x='9' y='1' width='1' height='1'/><rect x='9' y='3' width='1' height='2'/><rect x='11' y='0' width='1' height='2'/><rect x='11' y='4' width='1' height='1'/><rect x='9' y='7' width='2' height='1'/><rect x='12' y='7' width='1' height='1'/><rect x='0' y='9' width='2' height='1'/><rect x='3' y='9' width='1' height='1'/><rect x='5' y='9' width='1' height='2'/><rect x='7' y='10' width='1' height='1'/><rect x='9' y='9' width='1' height='1'/><rect x='11' y='9' width='2' height='1'/><rect x='14' y='9' width='1' height='1'/><rect x='16' y='9' width='1' height='2'/><rect x='18' y='9' width='1' height='1'/><rect x='20' y='10' width='1' height='1'/><rect x='9' y='11' width='1' height='2'/><rect x='11' y='12' width='1' height='1'/><rect x='13' y='11' width='1' height='1'/><rect x='15' y='12' width='2' height='1'/><rect x='18' y='12' width='1' height='1'/><rect x='9' y='14' width='1' height='1'/><rect x='11' y='14' width='1' height='2'/><rect x='13' y='15' width='1' height='1'/><rect x='15' y='14' width='1' height='1'/><rect x='17' y='15' width='2' height='1'/><rect x='9' y='17' width='2' height='1'/><rect x='12' y='17' width='1' height='2'/><rect x='14' y='18' width='1' height='1'/><rect x='16' y='17' width='1' height='1'/><rect x='18' y='18' width='2' height='1'/><rect x='9' y='20' width='1' height='1'/><rect x='11' y='20' width='2' height='1'/><rect x='15' y='20' width='1' height='1'/><rect x='17' y='19' width='1' height='2'/><rect x='20' y='20' width='1' height='1'/></g></svg>
+        </div>
+      </div>
+      <div class="tp-num">01</div>
+      <h3>De kaart die op je bureau lag</h3>
+      <p>Met de hand geschreven, aan jou gericht, met één adres eronder. Zo kwam je hier.</p>
+    </article>
+    <article class="tp" style="--dl:.22s">
+      <div class="tp-vis">
+        <div class="mp">
+          <div class="mp-bar"><u></u><u></u><u></u><em>wbosmakelaars.nl</em></div>
+          <div class="mp-hero"><i class="a"></i><i class="b"></i><i class="s"></i></div>
+          <div class="mp-body">
+            <div class="mp-note"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+            <i class="x"></i><i class="y"></i>
+          </div>
+        </div>
+      </div>
+      <div class="tp-num">02</div>
+      <h3>Een site die bij het aanbod past</h3>
+      <p>Met de presentatie, de brochure en de beelden eromheen. Zo dat 1948 leest als kracht.</p>
+    </article>
+    <article class="tp" style="--dl:.39s">
+      <div class="tp-vis">
+        <div class="ma">
+          <div class="ma-top">
+            <div class="ma-dag"><b>02</b><span>sep</span></div>
+            <div><strong>Kennismaking</strong><em>5 tot 10 minuten &middot; video of telefoon</em></div>
+          </div>
+          <div class="ma-rij"><span class="v"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Zelf ingepland</div>
+          <div class="ma-hand">en dan weten we het</div>
+        </div>
+      </div>
+      <div class="tp-num">03</div>
+      <h3>Een belletje van tien minuten</h3>
+      <p>Je plant het zelf in, of laat je nummer achter. Ik zal het je tijd waard maken.</p>
+    </article>
+  </div>
+
+  <div class="vw">
+    <div style="--dl:.55s"><span>&#10003;</span><b>Een handvol trajecten tegelijk</b><p>Daarom kiezen we de bedrijven zelf uit, en na onderzoek staan jullie op die lijst.</p></div>
+    <div style="--dl:.68s"><span>&#10003;</span><b>Negentig dagen, vaste doorlooptijd</b><p>Je weet vooraf wat er komt en wanneer het klaar is. Wij doen het werk.</p></div>
+    <div style="--dl:.81s"><span>&#10003;</span><b>Zeven jaar dit vak</b><p>Sinds 2018 bouwen we merken. Vanaf dit jaar volledig voor ondernemers in vastgoed.</p></div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <img class="fo-photo fr" src="luke-founder.jpg" alt="Luke van Igniting Tribes">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Ik ben Luke. Sinds 2018 bouw ik merken voor bedrijven die verder zijn dan hun uitstraling laat zien. David doet het ontwerp, ik doe de strategie en de uitvoering.</p>
+      <p>We nemen weinig projecten tegelijk aan, want een rebrand rendeert alleen als er al mensen kijken. Bij jullie kijken ze, en daarom schrijf ik je.</p>
+    </div>
+    <p class="fo-name">Luke, Igniting Tribes</p>
+  </div>
+</section>
+
 <section class="cta" id="gesprek">
-  <div class="wrap">
-    <p class="stap rv">Ga door naar stap 2</p>
-    <h2 class="blok-h rv d1">Plan een belletje van 5 tot 10 minuten</h2>
-    <p class="p rv d2">Ik ontdek graag samen of dit een match is en of wij jullie kunnen helpen naar een hoger niveau. Zo ja, dan deel ik tijdens het belletje de volgende stap.</p>
-    <div class="calwrap rv d2"><div id="my-cal-inline-10min-kennismaking" style="width:100%;height:100%;overflow:scroll"></div></div>
-    <p class="cta-klein rv d3">Ik zal het je tijd waard maken.</p>
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">Ga door naar stap 2</div>
+    <h2 class="cta-h reveal">Plan een belletje van 5 tot 10 minuten</h2>
+    <p class="cta-sub reveal">Ik loop met je langs de drie dingen hierboven en vertel waarom we juist voor jullie hebben gekozen. Zo ja, dan deel ik tijdens het belletje de volgende stap.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
+      <button class="btn-b" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+    </div>
+    <p class="cta-alt reveal">Liever eerst schriftelijk? <a href="mailto:luke@ignitingtribes.co?subject=W.%20Bos%20Makelaars%20%C3%97%20Igniting%20Tribes">Mail me een korte vraag.</a></p>
   </div>
 </section>
 
 <footer>
-  <img src="logo.png" alt="Igniting Tribes">
-  <div>Dit is een gepersonaliseerde pagina voor W. Bos Makelaars. Deel hem gerust met de rest van je team.<br>
-  &copy; 2026 Igniting Tribes &middot; <a href="mailto:luke@ignitingtribes.co">luke@ignitingtribes.co</a></div>
+  <div class="ft-logo"><img src="logo.png" alt="Igniting Tribes" style="height:22px;width:auto;display:block;margin:0 auto"></div>
+  <div class="ft-meta">Deze pagina is gemaakt voor W. Bos Makelaars &nbsp;&middot;&nbsp; <a href="mailto:luke@ignitingtribes.co">luke@ignitingtribes.co</a><br>&copy; 2026 Igniting Tribes</div>
 </footer>
 
-<script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.18});
-document.querySelectorAll('.rv,.hs').forEach(el=>io.observe(el));
+<div class="dock" id="dock">
+  <span class="dock-t"><b>Even bellen over wat ik zag?</b> 5 tot 10 minuten.</span>
+  <button class="dock-b" data-open="sheet" data-tab="plan">Plannen</button>
+  <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
+</div>
 
-const J=document.getElementById('journey'),SVG=document.getElementById('jsvg');
-const BASE=document.getElementById('jbase'),PROG=document.getElementById('jprog');
-const dots=[...J.querySelectorAll('.dot')];
-let totaal=0;
-function bouw(){
-  const W=J.clientWidth,H=J.clientHeight,jr=J.getBoundingClientRect();
-  SVG.setAttribute('viewBox','0 0 '+W+' '+H);
-  const pts=dots.map(d=>{const r=d.getBoundingClientRect();return{x:r.left+r.width/2-jr.left,y:r.top+r.height/2-jr.top};});
-  if(pts.length<2)return;
-  let d='M '+pts[0].x.toFixed(1)+' '+pts[0].y.toFixed(1);
-  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],my=((a.y+b.y)/2).toFixed(1);
-    d+=' C '+a.x.toFixed(1)+' '+my+', '+b.x.toFixed(1)+' '+my+', '+b.x.toFixed(1)+' '+b.y.toFixed(1);}
-  BASE.setAttribute('d',d);PROG.setAttribute('d',d);
-  totaal=PROG.getTotalLength();PROG.style.strokeDasharray=totaal;scroll_();
-}
-function scroll_(){
-  if(!totaal)return;
-  const jr=J.getBoundingClientRect(),trig=innerHeight*.55;
-  const frac=Math.max(0,Math.min(1,(trig-jr.top)/J.clientHeight));
-  PROG.style.strokeDashoffset=totaal*(1-frac);
-  dots.forEach(d=>{const r=d.getBoundingClientRect();d.closest('.hs').classList.toggle('reached',r.top+r.height/2<trig);});
-}
-addEventListener('scroll',scroll_,{passive:true});
-let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(bouw,120)});
-bouw();addEventListener('load',bouw);
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(bouw);
-setTimeout(bouw,400);setTimeout(bouw,1400);
-if(window.ResizeObserver)new ResizeObserver(()=>bouw()).observe(J);
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Plan een belletje">
+    <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
+    <div class="sheet-host">
+      <img src="luke-founder.jpg" alt="">
+      <div><div class="n">10 minuten met Luke</div><div class="s">Video of telefoon, jij kiest.</div></div>
+    </div>
+    <div class="sheet-tabs">
+      <button class="on" data-tab="plan">Zelf een moment kiezen</button>
+      <button data-tab="bel">Laat mij terugbellen</button>
+    </div>
+    <div class="panes">
+    <div class="pane on" id="pane-plan">
+      <div id="cal-wrap">
+        <div id="cal-embed"></div>
+        <div class="cal-skel" id="calskel">
+          <div class="kop"></div>
+          <div class="grid"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u><u class="o"></u><u></u><u></u><u class="o"></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u></div>
+          <div class="glans"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pane" id="pane-bel">
+      <form id="belform">
+        <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" value="Sjors" required></div>
+        <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.35rem">Wanneer schikt het?</label>
+        <div class="slots" id="slots">
+          <button type="button" data-v="Vandaag, later vanmiddag">Later vanmiddag</button>
+          <button type="button" data-v="Morgenochtend">Morgenochtend</button>
+          <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
+          <button type="button" data-v="Deze week, maakt niet uit">Deze week, maakt niet uit</button>
+        </div>
+        <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
+        <p class="sheet-note">Luke belt zelf. Je nummer gaat nergens anders heen en komt op geen enkele lijst.</p>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
 
-(function(){var f=document.getElementById('frame'),ph=document.getElementById('ph'),v=document.getElementById('vid');
- if(f&&ph&&v){ph.addEventListener('click',function(){v.setAttribute('controls','');ph.style.display='none';v.play();});}})();
-
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init","10min-kennismaking",{origin:"https://app.cal.com"});
-Cal.config=Cal.config||{};Cal.config.forwardQueryParams=true;
-Cal.ns["10min-kennismaking"]("inline",{elementOrSelector:"#my-cal-inline-10min-kennismaking",config:{"layout":"month_view","useSlotsViewOnSmallScreen":"true"},calLink:"igniting-tribes/10min-kennismaking"});
-Cal.ns["10min-kennismaking"]("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
-</script>
+<script src="lp-v2.js"></script>
 </body>
 </html>
