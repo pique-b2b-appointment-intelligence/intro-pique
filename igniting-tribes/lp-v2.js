@@ -14,7 +14,7 @@
      window.PQ_POSTER       = 'simon-staand-poster.jpg';
    ============================================================ */
 /* ══ 0. SIGNAAL. Elke stap die de prospect zet is een belsignaal voor Timon.
-   Wire dit op /api/t en Belcockpit weet wie tot het eind las zonder te boeken. ══ */
+   /api/t vangt het profiel op en Belcockpit weet wie tot het eind las zonder te boeken. ══ */
 var PQ_SLUG = location.pathname.split('/').pop().replace('.html','');
 /* Endpoint voor terugbelverzoeken. Zie Dashboard/Terugbelverzoek.gs voor het opzetten.
    Zolang dit leeg is, laat het formulier de bevestiging zien en logt het naar de console. */
@@ -25,13 +25,80 @@ window.PQ_BEDRIJF  = window.PQ_BEDRIJF  || '';
    klantpagina, anders belt Murphy niet en jij ook niet. */
 window.PQ_KLANT    = window.PQ_KLANT    || 'pique';
 window.PQ_CAMPAGNE = window.PQ_CAMPAGNE || '';
-var pqGezien = {};
+/* Meten staat aan tenzij een pagina hem expliciet op '' zet. Het endpoint staat op
+   hetzelfde domein als de pagina, dus geen extra script van derden en geen cookie. */
+window.PQ_TRACK_URL = (typeof window.PQ_TRACK_URL === 'string') ? window.PQ_TRACK_URL : '/api/t';
+
+/* Eén bezoek levert één event op, geen twaalf. De ringbuffer in Belcockpit is 4.000 events
+   groot; twaalf losse stappen per scan vaagt de historie binnen twee batches weg. Daarom
+   telt de pagina alles zelf op en stuurt hij een profiel: hoe lang, hoe diep, waar bleef
+   hij hangen. Meerdere flushes van hetzelfde bezoek overschrijven elkaar op de sessie-id.
+
+   Alleen actieve tijd telt. Een tabblad dat een uur op de achtergrond staat is geen
+   aandacht, en zonder deze correctie is elke vergeten tab een tophit op het belbord. */
+var pqSessie = String(Date.now().toString(36) + Math.random().toString(36).slice(2, 8));
+var pqGezien = {};      // stap -> 1, zodat elke stap maar één keer telt
+var pqStappen = [];     // in de volgorde waarin het gebeurde
+var pqSecties = {};     // blok -> seconden werkelijk in beeld
+var pqActief  = 0;      // seconden met de pagina zichtbaar
+var pqDiep    = 0;      // hoogste scrolldiepte in procenten
+var pqVideoSec = 0;     // verst bekeken punt in de video
+var pqVorige  = '';     // vingerafdruk van de vorige flush, tegen dubbel verkeer
+
+/* Welke blokken we los volgen. Dezelfde ids als de journeylijn verderop. */
+var PQ_BLOKKEN = [['s2','bevinding-1'],['s3','kantelpunt'],['ask','belaanbod'],['s4','voorstel'],['gesprek','cta']];
+
 function pqTrack(stap, extra){
   if (pqGezien[stap]) return; pqGezien[stap] = 1;
-  var body = JSON.stringify({slug:PQ_SLUG, stap:stap, extra:extra||null, t:Date.now()});
-  if (window.PQ_TRACK_URL && navigator.sendBeacon) navigator.sendBeacon(window.PQ_TRACK_URL, body);
-  else if (console && console.debug) console.debug('[pique]', stap, extra||'');
+  pqStappen.push(extra ? stap + ':' + String(extra).slice(0, 24) : stap);
+  /* Deze drie mogen niet wachten op het verlaten van de pagina: daarna belt of mailt
+     er iemand, en dan moet het signaal er al zijn. */
+  if (stap === 'terugbelverzoek' || stap === 'afspraak-geboekt' || stap === 'video-uitgekeken') pqFlush(stap);
 }
+
+/* Eén tik per seconde, alleen als de pagina echt in beeld staat. Een blok telt mee zolang
+   het het midden van het scherm raakt; dat is dichter bij lezen dan 'is een pixel zichtbaar'. */
+setInterval(function(){
+  if (document.hidden) return;
+  pqActief++;
+  PQ_BLOKKEN.forEach(function(b){
+    var el = document.getElementById(b[0]); if (!el) return;
+    var r = el.getBoundingClientRect();
+    if (r.top < innerHeight * 0.75 && r.bottom > innerHeight * 0.25) pqSecties[b[1]] = (pqSecties[b[1]] || 0) + 1;
+  });
+}, 1000);
+
+function pqDiepteMeten(){
+  var h = document.body.scrollHeight - innerHeight;
+  var pct = h > 0 ? Math.round((scrollY / h) * 100) : 100;
+  if (pct > pqDiep) pqDiep = Math.min(100, pct);
+}
+
+function pqFlush(reden){
+  /* De vingerafdruk laat tijd en reden bewust weg: anders stuurt elke trigger opnieuw
+     hetzelfde profiel en telt Belcockpit bezoeken die er niet waren. */
+  var vinger = pqActief + '|' + pqDiep + '|' + pqStappen.join(',') + '|' + JSON.stringify(pqSecties);
+  if (vinger === pqVorige) return;
+  pqVorige = vinger;
+  var lading = JSON.stringify({
+    v: 2, slug: PQ_SLUG, sessie: pqSessie, reden: reden || '',
+    sec: pqActief, diep: pqDiep, secties: pqSecties, stappen: pqStappen,
+    video: Math.round(pqVideoSec), bedrijf: window.PQ_BEDRIJF,
+    klant: window.PQ_KLANT, campagne: window.PQ_CAMPAGNE, t: Date.now()
+  });
+  if (!window.PQ_TRACK_URL) { if (console && console.debug) console.debug('[pique] bezoek', lading); return; }
+  var blob = new Blob([lading], {type: 'text/plain;charset=UTF-8'});
+  if (navigator.sendBeacon && navigator.sendBeacon(window.PQ_TRACK_URL, blob)) return;
+  fetch(window.PQ_TRACK_URL, {method: 'POST', body: lading, keepalive: true,
+    headers: {'Content-Type': 'text/plain;charset=utf-8'}}).catch(function(){});
+}
+
+/* Twee tussentijdse flushes, want een tabblad dat hard wordt afgesloten stuurt niets meer.
+   Daarna alleen nog bij het weggaan. pagehide vuurt ook op iOS, waar unload dat niet doet. */
+setTimeout(function(){ pqFlush('20s'); }, 20000);
+setTimeout(function(){ pqFlush('90s'); }, 90000);
+addEventListener('visibilitychange', function(){ if (document.hidden) pqFlush('weg'); });
+addEventListener('pagehide', function(){ pqFlush('einde'); });
 
 /* ══ 2. VIDEO-OVERLAY. Video is een aanbod, geen blokkade. ══
    De kleuren komen uit tokens, net als in lp.css. Ze stonden hier hard in het navy
@@ -48,7 +115,11 @@ window.pqVideo = function(){
   function dicht(){ o.style.opacity='0'; setTimeout(function(){ o.remove(); }, 350); }
   o.querySelector('button').addEventListener('click', dicht);
   o.addEventListener('click', function(e){ if (e.target === o) dicht(); });
-  o.querySelector('video').addEventListener('ended', function(){ pqTrack('video-uitgekeken'); dicht(); });
+  var vid = o.querySelector('video');
+  /* Hoe ver iemand keek zegt meer dan of hij op play drukte. Alleen het verste punt,
+     want terugspoelen mag de teller niet verlagen. */
+  vid.addEventListener('timeupdate', function(){ if (vid.currentTime > pqVideoSec) pqVideoSec = vid.currentTime; });
+  vid.addEventListener('ended', function(){ pqTrack('video-uitgekeken'); dicht(); });
 };
 (function(){ var v = document.getElementById('vrow'); if (v) v.addEventListener('click', window.pqVideo); })();
 
@@ -133,7 +204,7 @@ function diepteUpdate(){
 var tikt = false;
 addEventListener('scroll', function(){
   if (tikt) return; tikt = true;
-  requestAnimationFrame(function(){ bijScroll(); railUpdate(); dockUpdate(); diepteUpdate(); tikt = false; });
+  requestAnimationFrame(function(){ bijScroll(); railUpdate(); dockUpdate(); diepteUpdate(); pqDiepteMeten(); tikt = false; });
 }, {passive:true});
 addEventListener('scroll', function(){
   document.getElementById('nav').classList.toggle('solid', scrollY > innerHeight * .6);
