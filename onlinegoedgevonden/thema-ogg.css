@@ -1,0 +1,56 @@
+/* ============================================================
+   THEMA — Online Goed Gevonden
+   Bewijs dat de vorm merkloos is: alleen dit bestand verschilt van
+   thema-pique.css. lp.css, lp.js en lp-intro.js blijven ongewijzigd.
+   Kleuren komen uit Klanten/OnlineGoedGevonden/lp/ogg-lp-content.json.
+   ============================================================ */
+:root{
+  /* ── accent: OGG-groen in plaats van amber ──────────────── */
+  --accent:#0B8A57;        --accent-rgb:11,138,87;
+  --accent-l:#1CD688;      --accent-l-rgb:28,214,136;
+  --accent-h:#49D69B;
+  --op-accent:#04231A;                                 /* donker op fel groen  */
+  --inkt:#0B8A57;          --inkt-rgb:11,138,87;
+
+  /* ── vlakken en tekst ───────────────────────────────────── */
+  --bg:#FAFBFA;            --bg-rgb:250,251,250;
+  --ink:#0F1F19;           --ink-rgb:15,31,25;
+  --donker:#0B1713;        --donker-rgb:11,23,19;
+  --dieper:#060F0C;        --dieper-rgb:6,15,12;
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.66);
+  --ink3:rgba(var(--ink-rgb),.42);
+  --line:rgba(var(--ink-rgb),.13);
+
+  /* ── papier: koeler, past bij groen ─────────────────────── */
+  --pap-0:#FDFEFD;
+  --pap-1:#FCFDFC;
+  --pap-2:#EDF3EF;
+  --tape-rgb:215,229,221;
+  --hand-ink:#15281F;      --hand-rgb:21,40,31;
+
+  --goed:#0B8A57;          --goed-rgb:11,138,87;
+  --chrome:#EEF2F0;
+  --video-bg:#0B1713;
+
+  /* ── typografie: OGG gebruikt Poppins ───────────────────── */
+  --serif:'Poppins',system-ui,sans-serif;   /* OGG heeft geen serif in het merk */
+  --sans:'Poppins',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;                            /* Poppins heeft geen SOFT/WONK-as */
+
+  /* ── vorm: OGG is ronder dan Pique ──────────────────────── */
+  --r-pap:6px;
+  --r-kaart:18px;
+  --r-blok:26px;
+  --r-pil:100px;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fs-h:clamp(1.9rem,3vw,2.7rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;
+}
+/* Poppins is zwaarder dan Fraunces, dus de koppen mogen een tandje lichter. */
+.hero-h1,.ch-kop,.f-kop,.ch-pivot,.cta-h,.tp h3{font-weight:600;letter-spacing:-.025em}
+.f-quote{font-style:normal}
