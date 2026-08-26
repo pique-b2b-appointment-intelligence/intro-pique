@@ -93,11 +93,15 @@ function pqFlush(reden){
     headers: {'Content-Type': 'text/plain;charset=utf-8'}}).catch(function(){});
 }
 
-/* Twee tussentijdse flushes, want een tabblad dat hard wordt afgesloten stuurt niets meer.
-   Daarna alleen nog bij het weggaan. pagehide vuurt ook op iOS, waar unload dat niet doet. */
-setTimeout(function(){ pqFlush('20s'); }, 20000);
-setTimeout(function(){ pqFlush('90s'); }, 90000);
-addEventListener('visibilitychange', function(){ if (document.hidden) pqFlush('weg'); });
+/* Een tik bij binnenkomst en daarna een hartslag, zodat het bord kan laten zien wie er
+   nu op zijn pagina zit en niet pas na afloop. Alle tikken dragen dezelfde sessie-id en
+   smelten server-side samen tot één bezoek, dus dit kost geen extra opslag.
+   De hartslag staat stil zolang het tabblad op de achtergrond staat, want dan telt de
+   tijd ook niet mee. Een tabblad dat hard wordt afgesloten stuurt niets meer; door de
+   hartslag ben je dan hooguit een halve minuut kwijt in plaats van het hele bezoek. */
+setTimeout(function(){ pqFlush('binnen'); }, 3000);
+setInterval(function(){ if (!document.hidden) pqFlush('bezig'); }, 30000);
+addEventListener('visibilitychange', function(){ pqFlush(document.hidden ? 'weg' : 'terug'); });
 addEventListener('pagehide', function(){ pqFlush('einde'); });
 
 /* ══ 2. VIDEO-OVERLAY. Video is een aanbod, geen blokkade. ══
