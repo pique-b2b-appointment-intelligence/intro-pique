@@ -183,3 +183,11 @@
   .pl-slot{grid-template-columns:1fr;gap:.35rem}
   .pl-slot b{padding-top:0}
 }
+
+/* ── de staart ────────────────────────────────────────────────────────────────────
+   Het garantieblok is zwaar en het founder-blok is licht. Daardoor leest de normale
+   sectieafstand ertussen als een gat waar iets weggevallen is. De persoon achter het
+   voorstel hoort er juist tegenaan te liggen, alsof hij het net heeft neergelegd.
+   Alleen op de dossierpagina's, want lp.css bedient ook de andere klanten. */
+.founder{padding-top:clamp(1.4rem,2.6vh,2.2rem);padding-bottom:clamp(2rem,4vh,3rem)}
+.founder .fr{align-self:start}
