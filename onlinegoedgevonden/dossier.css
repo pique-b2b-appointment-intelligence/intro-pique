@@ -1,182 +1,134 @@
 /* ═══════════════════════════════════════════════════════════════════════════════
-   Dossier-indeling
+   Dossier op de reisindeling
    ═══════════════════════════════════════════════════════════════════════════════
 
-   De reisindeling van lp-v2 zet elk hoofdstuk in een kolom van een derde met de
-   rest leeg. Dat werkt voor een brief van vier alinea's. Voor een dossier met zes
-   bevindingen over vijf disciplines leest het als een gedichtje: veel lucht, weinig
-   gewicht, en de lezer moet zelf bedenken dat het ernstig is.
+   De papiertjes blijven, want die maken het verschil tussen ontworpen en
+   neergelegd. Wat hier gebeurt is dat er meer op tafel komt te liggen: een lijstje
+   met wat er is nagekeken, een scorekaart over vijf disciplines, een kostenregel
+   onder elke bevinding, en twee papiertjes die je niet mag lezen.
 
-   Deze indeling doet het omgekeerde. Volle breedte, strakke regelafstand, elke
-   bevinding op één rij met het nummer links en het bewijs rechts. De lucht zit
-   alleen tussen de bewegingen en niet binnen een blok.
+   Tegelijk gaat de lucht eruit. Een bevinding van 47 procent breed met de halve
+   pagina leeg leest als een gedichtje. De papiertjes worden breder, de afstand
+   tussen de hoofdstukken korter, en de lege kant krijgt een handgeschreven regel
+   zodat daar iets staat in plaats van niets.
 
-   Laden ná lp.css. Alle kleuren komen uit de thematokens, dus hier staat geen
-   enkele vaste kleur.
+   Laden ná lp.css. Alle kleuren komen uit de thematokens.
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-.ds{position:relative;z-index:1}
-.ds-in{max-width:1120px;margin:0 auto;padding:0 clamp(1.25rem,3.5vw,2.5rem)}
-.ds-band{padding:clamp(3rem,6vw,4.6rem) 0}
-.ds-band + .ds-band{padding-top:0}
-.ds-donker{background:var(--donker);color:var(--pap-0)}
-.ds-lijn{border-top:1px solid var(--line)}
+/* ── minder lucht, breder papier ──────────────────────────────────────────────── */
+.chapter{padding:clamp(1.2rem,2.6vh,2.2rem) 0}
+.ch-inner{width:min(600px,54%)}
+.chapter.center.breed .ch-inner{width:min(860px,88%)}
+.chapter.center.breed .ch-body{text-align:left}
 
-.ds-kop-eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:.9rem}
-.ds-h2{font-size:clamp(1.75rem,4vw,2.85rem);line-height:1.08;letter-spacing:-.03em;
-  color:var(--pap-ink,var(--ink));margin:0 0 1rem;max-width:20ch}
-.ds-h2.breed{max-width:26ch}
-.ds-lead{font-size:clamp(1.02rem,1.8vw,1.18rem);line-height:1.62;color:var(--ink2);max-width:62ch}
-.ds-lead strong{color:var(--pap-ink,var(--ink));font-weight:650}
+/* de handgeschreven regel aan de lege kant, zodat die kant niet leeg is */
+.note-links{left:0;right:auto;text-align:left}
+.chapter.right .note-links{left:2%;width:min(26ch,26vw)}
+.chapter.left .note-rechts{right:2%;left:auto;text-align:right;width:min(26ch,26vw)}
 
-/* ── waarom dit onderzoek: tekst links, wat we nakeken rechts ─────────────────── */
-.ds-waarom{display:grid;grid-template-columns:1.25fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:start}
-.ds-checks{border:1px solid var(--line);border-radius:var(--r-kaart);padding:1.4rem 1.5rem;
-  background:rgba(var(--ink-rgb),.02)}
-.ds-checks h3{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink3);margin:0 0 1rem;font-weight:500}
-.ds-check{display:grid;grid-template-columns:auto 1fr;gap:.7rem;padding:.6rem 0;
-  border-top:1px solid var(--line);line-height:1.45;font-size:.94rem;color:var(--pap-ink,var(--ink))}
-.ds-check:first-of-type{border-top:0;padding-top:0}
-.ds-check i{width:16px;height:16px;flex:none;border-radius:50%;background:rgba(var(--accent-rgb),.14);
-  position:relative;margin-top:.18rem}
-.ds-check i::after{content:'';position:absolute;left:5px;top:4px;width:4px;height:7px;
+/* ── wat we hebben nagekeken ──────────────────────────────────────────────────── */
+.nk{display:grid;gap:.1rem;margin-top:.9rem}
+.nk-r{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;
+  padding:.55rem 0;border-top:1px solid rgba(var(--ink-rgb),.11);line-height:1.42}
+.nk-r:first-child{border-top:0;padding-top:0}
+.nk-r i{width:15px;height:15px;flex:none;border-radius:50%;margin-top:.2rem;
+  background:rgba(var(--accent-rgb),.16);position:relative}
+.nk-r i::after{content:'';position:absolute;left:5px;top:4px;width:4px;height:7px;
   border:solid var(--accent);border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
-.ds-check b{display:block;font-weight:650}
-.ds-check span{color:var(--ink2);font-size:.88rem}
+.nk-r b{display:block;font-weight:650;font-size:.97rem;color:var(--pap-ink,var(--ink))}
+.nk-r span{font-size:.87rem;color:var(--pap-ink2,rgba(var(--ink-rgb),.68))}
 
-/* ── de bevindingen: nummer links, bewijs rechts, geen lucht ertussen ─────────── */
-.ds-vondst{display:grid;grid-template-columns:clamp(90px,11vw,150px) 1fr;gap:clamp(1.2rem,3vw,2.6rem);
-  padding:clamp(1.8rem,3.4vw,2.6rem) 0;border-top:1px solid var(--line)}
-.ds-vondst:first-of-type{border-top:2px solid var(--pap-ink,var(--ink))}
-.ds-zij{position:sticky;top:110px;align-self:start}
-.ds-nr{font-family:var(--mono);font-size:clamp(2.2rem,5vw,3.4rem);line-height:.9;
-  color:var(--pap-ink,var(--ink));letter-spacing:-.04em}
-.ds-nr em{font-style:normal;color:var(--ink3);font-size:.4em;letter-spacing:0}
-.ds-vak{font-family:var(--mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--accent);margin-top:.6rem;line-height:1.4}
-.ds-vkop{font-size:clamp(1.3rem,2.7vw,1.95rem);line-height:1.18;letter-spacing:-.025em;
-  color:var(--pap-ink,var(--ink));margin:0 0 .75rem}
-.ds-vtekst{font-size:clamp(.98rem,1.65vw,1.08rem);line-height:1.62;color:var(--ink2);max-width:66ch}
-.ds-vtekst strong{color:var(--pap-ink,var(--ink));font-weight:650}
-.ds-bewijs{margin-top:1.1rem;border-radius:var(--r-kaart);overflow:hidden;border:1px solid var(--line)}
-.ds-bcode{font-family:var(--mono);font-size:.82rem;line-height:1.5;padding:.75rem .95rem;
-  background:rgba(var(--ink-rgb),.045);color:var(--pap-ink,var(--ink));word-break:break-word}
-.ds-bbron{display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:center;padding:.5rem .95rem;
-  border-top:1px solid var(--line);font-family:var(--mono);font-size:.66rem;color:var(--ink3)}
-.ds-bbron b{font-weight:500;color:var(--ink2)}
-.ds-kost{display:grid;grid-template-columns:auto 1fr;gap:.85rem;margin-top:1rem;padding:.9rem 1.05rem;
-  border-left:3px solid var(--let-op);background:rgba(var(--let-op-rgb),.07);
-  border-radius:0 var(--r-kaart) var(--r-kaart) 0}
-.ds-kost b{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;
+/* ── de scorekaart ────────────────────────────────────────────────────────────── */
+.sk{margin-top:1.1rem;border-top:2px solid var(--pap-ink,var(--ink))}
+.sk-r{display:grid;grid-template-columns:clamp(84px,10vw,132px) 1fr auto;
+  gap:clamp(.7rem,2vw,1.6rem);align-items:baseline;padding:.85rem 0;
+  border-bottom:1px solid rgba(var(--ink-rgb),.13)}
+.sk-vak{font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--pap-ink2,rgba(var(--ink-rgb),.6))}
+.sk-wat{font-size:clamp(.95rem,1.6vw,1.05rem);line-height:1.42;color:var(--pap-ink,var(--ink))}
+.sk-o{font-family:var(--mono);font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;
+  white-space:nowrap;color:var(--let-op);border:1px solid rgba(var(--let-op-rgb),.42);
+  background:rgba(var(--let-op-rgb),.09);border-radius:var(--r-pil);padding:.26rem .62rem}
+
+/* ── wat dit kost, onder elke bevinding ───────────────────────────────────────── */
+.kost{display:grid;grid-template-columns:auto 1fr;gap:.8rem;margin-top:1rem;padding:.85rem 1rem;
+  border-left:3px solid var(--let-op);background:rgba(var(--let-op-rgb),.08);
+  border-radius:0 var(--r-kaart) var(--r-kaart) 0;position:relative;z-index:1}
+.kost b{font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;
   color:var(--let-op);padding-top:.2rem;white-space:nowrap}
-.ds-kost span{color:var(--pap-ink,var(--ink));line-height:1.55;font-size:.97rem}
+.kost span{color:var(--pap-ink,var(--ink));line-height:1.55;font-size:.95rem}
 
-/* ── de scorekaart, nu op volle breedte ───────────────────────────────────────── */
-.ds-score{border-top:2px solid var(--pap-ink,var(--ink))}
-.ds-srij{display:grid;grid-template-columns:clamp(90px,11vw,150px) 1fr auto;
-  gap:clamp(1.2rem,3vw,2.6rem);align-items:baseline;padding:1.15rem 0;border-bottom:1px solid var(--line)}
-.ds-svak{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink3)}
-.ds-swat{font-size:clamp(1rem,1.8vw,1.13rem);line-height:1.45;color:var(--pap-ink,var(--ink))}
-.ds-soordeel{font-family:var(--mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;
-  white-space:nowrap;color:var(--let-op);border:1px solid rgba(var(--let-op-rgb),.4);
-  background:rgba(var(--let-op-rgb),.08);border-radius:var(--r-pil);padding:.28rem .68rem}
-
-/* ── het slot: twee kaarten die opengaan in een venster ───────────────────────── */
-.ds-slot{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem}
-.ds-sk{position:relative;text-align:left;width:100%;border:1px solid var(--line);
-  border-radius:var(--r-kaart);padding:1.15rem 1.25rem 1.25rem;overflow:hidden;cursor:pointer;
-  background:rgba(var(--ink-rgb),.025);font:inherit;color:inherit;
+/* ── de twee papiertjes die je niet mag lezen ─────────────────────────────────── */
+.ds-slot{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.3rem;
+  position:relative;z-index:1}
+.ds-sk{position:relative;text-align:left;width:100%;border:1px solid rgba(var(--ink-rgb),.16);
+  border-radius:var(--r-kaart);padding:1.05rem 1.15rem 1.15rem;overflow:hidden;cursor:pointer;
+  background:rgba(var(--ink-rgb),.03);font:inherit;color:inherit;
   transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease}
-.ds-sk:hover{border-color:rgba(var(--accent-rgb),.55);transform:translateY(-2px);
-  box-shadow:0 18px 40px -26px rgba(var(--ink-rgb),.5)}
-.ds-sk-num{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;
+.ds-sk:hover{border-color:rgba(var(--accent-rgb),.6);transform:translateY(-2px);
+  box-shadow:0 16px 34px -22px rgba(var(--ink-rgb),.6)}
+.ds-sk-num{font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;
   color:var(--accent);margin-bottom:.45rem}
 .ds-sk-waas{filter:blur(5px);-webkit-filter:blur(5px);user-select:none}
-.ds-sk-t{font-size:1.05rem;font-weight:650;line-height:1.3;color:var(--pap-ink,var(--ink));
+.ds-sk-t{font-size:1.02rem;font-weight:650;line-height:1.3;color:var(--pap-ink,var(--ink));
   margin-bottom:.55rem}
-.ds-sk-r{height:9px;border-radius:4px;background:rgba(var(--ink-rgb),.15);margin-bottom:.42rem}
+.ds-sk-r{height:9px;border-radius:4px;background:rgba(var(--ink-rgb),.16);margin-bottom:.42rem}
 .ds-sk-r.k{width:78%}
 .ds-sk-r.kk{width:54%;margin-bottom:0}
-.ds-sk-op{position:absolute;left:0;right:0;bottom:0;top:2.1rem;display:flex;align-items:center;
-  justify-content:center;background:linear-gradient(180deg,rgba(var(--bg-rgb),0),rgba(var(--bg-rgb),.72))}
-.ds-sk-knop{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.66rem;
+.ds-sk-op{position:absolute;left:0;right:0;bottom:0;top:2rem;display:flex;align-items:center;
+  justify-content:center;background:linear-gradient(180deg,rgba(var(--pap-1-rgb,var(--bg-rgb)),0),
+  rgba(var(--pap-1-rgb,var(--bg-rgb)),.6))}
+.ds-sk-knop{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.65rem;
   letter-spacing:.1em;text-transform:uppercase;background:var(--pap-ink,var(--ink));
-  color:var(--bg);border-radius:var(--r-pil);padding:.5rem .95rem;
-  box-shadow:0 10px 26px -12px rgba(var(--ink-rgb),.75)}
+  color:var(--pap-1,var(--bg));border-radius:var(--r-pil);padding:.48rem .9rem;
+  box-shadow:0 10px 24px -12px rgba(var(--ink-rgb),.8)}
 .ds-sk-knop i{width:9px;height:11px;flex:none;border:1.6px solid currentColor;border-radius:2px;
   position:relative;margin-top:2px}
 .ds-sk-knop i::before{content:'';position:absolute;left:1px;top:-5px;width:5px;height:5px;
   border:1.6px solid currentColor;border-bottom:none;border-radius:3px 3px 0 0}
 
-/* het venster zelf */
+/* ── het venster achter die twee ──────────────────────────────────────────────── */
 .ds-venster{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;
   padding:clamp(1rem,4vw,2rem)}
 .ds-venster.aan{display:flex}
 .ds-vbg{position:absolute;inset:0;background:rgba(var(--dieper-rgb),.62);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transition:opacity .3s ease}
 .ds-venster.in .ds-vbg{opacity:1}
-.ds-vkaart{position:relative;width:min(560px,100%);background:var(--wit);border-radius:var(--r-kaart);
-  padding:clamp(1.6rem,4vw,2.4rem);box-shadow:0 50px 120px -50px rgba(var(--ink-rgb),.85);
+.ds-vkaart{position:relative;width:min(560px,100%);
+  background:linear-gradient(172deg,var(--pap-1) 0%,var(--pap-2) 100%);
+  border-radius:var(--r-pap);padding:clamp(1.6rem,4vw,2.4rem);
+  box-shadow:0 50px 120px -50px rgba(var(--ink-rgb),.9);
   opacity:0;transform:translateY(18px) scale(.98);
   transition:opacity .35s var(--ease),transform .35s var(--ease);max-height:90vh;overflow:auto}
 .ds-venster.in .ds-vkaart{opacity:1;transform:none}
 .ds-vsluit{position:absolute;top:.85rem;right:.85rem;width:34px;height:34px;border-radius:50%;
-  border:1px solid var(--line);background:var(--wit);cursor:pointer;color:var(--ink2);
-  display:flex;align-items:center;justify-content:center;font-size:1.1rem;line-height:1}
-.ds-vsluit:hover{border-color:var(--ink3);color:var(--ink)}
-.ds-vnum{font-family:var(--mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:.7rem}
-.ds-vtitel{font-size:clamp(1.3rem,3vw,1.75rem);line-height:1.18;letter-spacing:-.025em;
-  color:var(--pap-ink,var(--ink));margin-bottom:.8rem}
-.ds-vuitleg{color:var(--ink2);line-height:1.62;margin-bottom:1.1rem}
-.ds-vstrook{display:grid;gap:.5rem;padding:.9rem 1rem;border-radius:var(--r-kaart);
-  background:rgba(var(--ink-rgb),.04);margin-bottom:1.3rem}
-.ds-vs{display:grid;grid-template-columns:auto 1fr;gap:.7rem;font-size:.9rem;line-height:1.45;
-  color:var(--pap-ink,var(--ink))}
-.ds-vs b{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink3);white-space:nowrap;padding-top:.18rem;font-weight:500}
-.ds-vknoppen{display:flex;flex-wrap:wrap;gap:.6rem}
-.ds-vklein{font-size:.83rem;color:var(--ink3);margin-top:.9rem;line-height:1.5}
-
-@media (max-width:860px){
-  .ds-waarom{grid-template-columns:1fr;gap:1.6rem}
-  .ds-slot{grid-template-columns:1fr}
-  .ds-vondst{grid-template-columns:1fr;gap:.9rem}
-  .ds-zij{position:static;display:flex;align-items:baseline;gap:.9rem}
-  .ds-vak{margin-top:0}
-  .ds-srij{grid-template-columns:1fr auto;gap:.35rem 1rem}
-  .ds-svak{grid-column:1}
-  .ds-soordeel{grid-column:2;grid-row:1}
-  .ds-swat{grid-column:1/-1}
-}
-
-/* ── het aanbod: drie stappen naast elkaar, direct onder de kop ───────────────── */
-.ds-stappen{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.6vw,2rem);
-  margin-top:2rem}
-.ds-stap{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;
-  padding-top:1.1rem;border-top:2px solid var(--accent)}
-.ds-stapnr{font-family:var(--mono);font-size:1.5rem;line-height:1;color:var(--accent);
-  letter-spacing:-.03em}
-.ds-stap b{display:block;font-size:1.04rem;line-height:1.3;color:var(--pap-ink,var(--ink));
-  margin-bottom:.4rem}
-.ds-stap p{color:var(--ink2);line-height:1.55;font-size:.93rem;margin:0}
-
-/* de losse alinea's in het waaromblok stonden tegen elkaar aan */
-.ds-lead + .ds-lead{margin-top:.9rem}
-
-/* restje van de reisindeling: de knooppunten op het pad bestaan niet meer */
-.ds .ch-dot,.ds .jpath{display:none}
-@media (max-width:860px){.ds-stappen{grid-template-columns:1fr;gap:1.4rem}}
-
-/* Op het donkere blok erft de vetgedrukte zin de inktkleur van het papier, en dan
-   staat de belangrijkste regel van de pagina onzichtbaar op zwart. */
-.ds-donker .ds-lead strong,.ds-donker .ds-h2,.ds-donker .ds-vkop{color:inherit}
-.ds-donker .ds-lead strong{font-weight:700}
-.ds-donker .tl-hand{color:inherit;opacity:.7}
-
-/* de knop in het venster kreeg een blauwe rand van de browser bij het openen */
+  border:1px solid rgba(var(--ink-rgb),.18);background:transparent;cursor:pointer;
+  color:var(--pap-ink2,rgba(var(--ink-rgb),.6));display:flex;align-items:center;
+  justify-content:center;font-size:1.1rem;line-height:1}
+.ds-vsluit:hover{border-color:rgba(var(--ink-rgb),.4);color:var(--pap-ink,var(--ink))}
 .ds-vsluit:focus{outline:none}
 .ds-vsluit:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ds-vnum{font-family:var(--mono);font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.7rem}
+.ds-vtitel{font-size:clamp(1.28rem,3vw,1.7rem);line-height:1.18;letter-spacing:-.025em;
+  color:var(--pap-ink,var(--ink));margin-bottom:.8rem}
+.ds-vuitleg{color:var(--pap-ink2,rgba(var(--ink-rgb),.72));line-height:1.62;margin-bottom:1.1rem}
+.ds-vstrook{display:grid;gap:.5rem;padding:.9rem 1rem;border-radius:var(--r-kaart);
+  background:rgba(var(--ink-rgb),.05);margin-bottom:1.3rem}
+.ds-vs{display:grid;grid-template-columns:auto 1fr;gap:.7rem;font-size:.9rem;line-height:1.45;
+  color:var(--pap-ink,var(--ink))}
+.ds-vs b{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--pap-ink2,rgba(var(--ink-rgb),.55));white-space:nowrap;padding-top:.18rem;font-weight:500}
+.ds-vknoppen{display:flex;flex-wrap:wrap;gap:.6rem}
+.ds-vklein{font-size:.82rem;color:var(--pap-ink2,rgba(var(--ink-rgb),.6));margin-top:.9rem;
+  line-height:1.5}
+
+@media (max-width:900px){
+  .ch-inner,.chapter.center.breed .ch-inner{width:min(600px,92%)}
+  .ds-slot{grid-template-columns:1fr}
+  .note,.note-links{display:none}
+  .sk-r{grid-template-columns:1fr auto;gap:.3rem 1rem}
+  .sk-vak{grid-column:1}
+  .sk-o{grid-column:2;grid-row:1}
+  .sk-wat{grid-column:1/-1}
+}
