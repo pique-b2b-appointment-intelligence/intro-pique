@@ -191,3 +191,73 @@
    Alleen op de dossierpagina's, want lp.css bedient ook de andere klanten. */
 .founder{padding-top:clamp(1.4rem,2.6vh,2.2rem);padding-bottom:clamp(2rem,4vh,3rem)}
 .founder .fr{align-self:start}
+
+/* ── De belofte, als vergelijking ─────────────────────────────────────────────────
+   Vier vinkjes onder elkaar zeggen wat je krijgt. Ze zeggen niet waaróm dat wat
+   waard is, want daarvoor moet de lezer zelf terugbladeren naar de bevindingen.
+   Twee kolommen naast elkaar doen dat werk wel: links staat met kruisjes wat er
+   vandaag aan de hand is, rechts met vinkjes wat we vastleggen. Dezelfde regel,
+   twee keer, en het verschil is het aanbod.
+
+   De kaart zelf is licht in plaats van een groen vlak, met een gekleurde kop en een
+   donkere voet. Zo staat hij naast de papiertjes in plaats van erbovenop, en dragen
+   de merkkleuren de betekenis: rood is wat er misgaat, groen is wat we beloven. */
+.belofte{position:relative;z-index:1;max-width:1180px;margin:0 auto;
+  padding:clamp(1.6rem,4vh,2.6rem) clamp(1.25rem,3vw,2rem) 0}
+.bl-in{max-width:880px;margin:0 auto;background:var(--wit);border-radius:var(--r-kaart);
+  overflow:hidden;box-shadow:0 30px 80px -45px rgba(var(--ink-rgb),.55),
+  0 0 0 1px rgba(var(--ink-rgb),.09);
+  opacity:0;transform:translateY(22px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.belofte.in .bl-in{opacity:1;transform:none}
+
+.bl-top{background:var(--accent);color:var(--op-accent);
+  padding:clamp(1.4rem,3vw,2rem) clamp(1.4rem,3.4vw,2.4rem) clamp(1.2rem,2.6vw,1.7rem)}
+.bl-merk{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+.bl-merk img{height:22px;width:auto;display:block;background:var(--wit);
+  border-radius:7px;padding:5px 9px}
+.bl-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;
+  text-transform:uppercase;opacity:.82}
+.bl-kop{font-size:clamp(1.5rem,3.4vw,2.25rem);line-height:1.12;letter-spacing:-.03em;
+  margin:0 0 .55rem}
+.bl-tekst{font-size:clamp(.95rem,1.7vw,1.05rem);line-height:1.55;opacity:.9;margin:0;
+  max-width:56ch}
+
+.bl-kolommen{display:grid;grid-template-columns:1fr 1fr}
+.bl-kol{padding:clamp(1.2rem,2.8vw,1.8rem) clamp(1.2rem,3vw,2rem)}
+.bl-kol.nu{background:rgba(var(--let-op-rgb),.045);border-right:1px solid var(--line)}
+.bl-kol.straks{background:rgba(var(--goed-rgb),.05)}
+.bl-kol h3{font-family:var(--mono);font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;
+  font-weight:500;margin:0 0 1rem}
+.bl-kol.nu h3{color:var(--let-op)}
+.bl-kol.straks h3{color:var(--goed)}
+.bl-r{display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-items:start;
+  padding:.6rem 0;line-height:1.48;font-size:.95rem;color:var(--pap-ink,var(--ink));
+  border-top:1px solid rgba(var(--ink-rgb),.08)}
+.bl-r:first-of-type{border-top:0;padding-top:0}
+.bl-r i{width:19px;height:19px;flex:none;border-radius:50%;position:relative;margin-top:.14rem}
+/* het kruisje */
+.bl-kol.nu .bl-r i{background:rgba(var(--let-op-rgb),.14)}
+.bl-kol.nu .bl-r i::before,.bl-kol.nu .bl-r i::after{content:'';position:absolute;
+  left:5px;top:9px;width:9px;height:1.7px;background:var(--let-op);border-radius:1px}
+.bl-kol.nu .bl-r i::before{transform:rotate(45deg)}
+.bl-kol.nu .bl-r i::after{transform:rotate(-45deg)}
+/* het vinkje */
+.bl-kol.straks .bl-r i{background:rgba(var(--goed-rgb),.16)}
+.bl-kol.straks .bl-r i::after{content:'';position:absolute;left:6px;top:4px;width:5px;height:9px;
+  border:solid var(--goed);border-width:0 1.8px 1.8px 0;transform:rotate(45deg)}
+.bl-kol.nu .bl-r span{color:var(--ink2)}
+
+.bl-voet{background:var(--donker);color:var(--pap-0);
+  padding:clamp(1rem,2.4vw,1.4rem) clamp(1.4rem,3.4vw,2.4rem);
+  display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
+.bl-voet b{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--accent-h,var(--accent-l));white-space:nowrap;padding-top:.2rem}
+.bl-voet span{line-height:1.55;font-size:.95rem;opacity:.92}
+
+@media (max-width:760px){
+  .bl-kolommen{grid-template-columns:1fr}
+  .bl-kol.nu{border-right:0;border-bottom:1px solid var(--line)}
+  .bl-voet{grid-template-columns:1fr;gap:.35rem}
+  .bl-voet b{padding-top:0}
+}
