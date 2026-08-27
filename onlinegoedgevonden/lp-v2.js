@@ -131,7 +131,10 @@ window.pqVideo = function(){
 var io = new IntersectionObserver(function(es){
   es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 }, {threshold:.18});
-document.querySelectorAll('.chapter,.founder,.reveal,.ask,.toon').forEach(function(el){ io.observe(el); });
+/* .belofte hoorde hier niet bij, waardoor het garantieblok op de dossierpagina's
+   nooit zichtbaar werd: de opmaak zet het op opacity 0 tot deze waarnemer de klasse
+   'in' toevoegt. Een blok dat niet in deze lijst staat, blijft onzichtbaar. */
+document.querySelectorAll('.chapter,.founder,.reveal,.ask,.toon,.belofte').forEach(function(el){ io.observe(el); });
 
 var paden = [['journey','jp-base','jp-prog'],['journey2','jp-base2','jp-prog2']].map(function(x){
   var wrap = document.getElementById(x[0]);
