@@ -15,9 +15,20 @@
    Laden ná lp.css. Alle kleuren komen uit de thematokens.
    ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* ── minder lucht, breder papier ──────────────────────────────────────────────── */
-.chapter{padding:clamp(1.2rem,2.6vh,2.2rem) 0}
-.ch-inner{width:min(600px,54%)}
+/* ── minder lucht, breder papier ──────────────────────────────────────────────────
+   Let op de 48 procent. Het groene pad loopt door het midden en de knooppunten
+   hangen 1,7rem buiten het papier. Bij 47 procent, de oorspronkelijke maat, blijft
+   er een gang van zes procent over waar het pad doorheen kan. Bij 54 procent
+   overlappen een linker- en een rechterpapiertje elkaars helft, en dan moet het pad
+   wel dwars door de tekst. 48 procent is het maximum waarbij de gang open blijft.
+   Wie dit getal ophoogt, trekt de lijn door de bevindingen heen.
+
+   Het staat op 46 en niet op 48, omdat het pad zijn golf ontleent aan de afstand van
+   de knooppunten tot het midden. Hoe breder het papier, hoe dichter die knooppunten
+   bij elkaar komen en hoe rechter de lijn wordt. Op 48 procent was hij kaarsrecht. */
+.chapter{padding:clamp(1.2rem,2.6vh,2.2rem) 0;z-index:2}
+.ch-inner{width:min(500px,46%)}
+.find .ch-body{position:relative;z-index:2}
 .chapter.center.breed .ch-inner{width:min(860px,88%)}
 .chapter.center.breed .ch-body{text-align:left}
 
@@ -125,6 +136,10 @@
 
 @media (max-width:900px){
   .ch-inner,.chapter.center.breed .ch-inner{width:min(600px,92%)}
+  /* het kopje stond naast de tekst en kneep die op een telefoon tot vier woorden
+     per regel; op smal scherm hoort het erboven */
+  .kost{grid-template-columns:1fr;gap:.35rem}
+  .kost b{padding-top:0}
   .ds-slot{grid-template-columns:1fr}
   .note,.note-links{display:none}
   .sk-r{grid-template-columns:1fr auto;gap:.3rem 1rem}
