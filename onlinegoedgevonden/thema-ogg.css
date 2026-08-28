@@ -24,7 +24,7 @@
   --line:rgba(var(--ink-rgb),.13);
 
   /* ── papier: koeler, past bij groen ─────────────────────── */
-  --pap-0:#FDFEFD;
+  --pap-0:#FDFEFD;       --pap-0-rgb:253,254,253;
   --pap-1:#FCFDFC;
   --pap-2:#EDF3EF;
   --tape-rgb:215,229,221;

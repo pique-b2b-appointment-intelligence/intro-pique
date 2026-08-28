@@ -192,144 +192,119 @@
 .founder{padding-top:clamp(1.4rem,2.6vh,2.2rem);padding-bottom:clamp(2rem,4vh,3rem)}
 .founder .fr{align-self:start}
 
-/* ── De belofte, als vergelijking ─────────────────────────────────────────────────
-   Vier vinkjes onder elkaar zeggen wat je krijgt. Ze zeggen niet waaróm dat wat
-   waard is, want daarvoor moet de lezer zelf terugbladeren naar de bevindingen.
-   Twee kolommen naast elkaar doen dat werk wel: links staat met kruisjes wat er
-   vandaag aan de hand is, rechts met vinkjes wat we vastleggen. Dezelfde regel,
-   twee keer, en het verschil is het aanbod.
+/* ── De belofte, in de eigen stijl van Online Goed Gevonden ───────────────────────
+   De hele pagina is papier. Dit ene blok is dat niet, en dat is de bedoeling: hier
+   houdt het dossier op en begint het aanbod. Donker vlak, een oplichtende hairline
+   over de bovenrand die naar de zijkanten wegvalt, een fijn raster op de achtergrond
+   en het accentgroen voor alles wat we beloven. Zo staat het ook op hun eigen site.
 
-   De kaart zelf is licht in plaats van een groen vlak, met een gekleurde kop en een
-   donkere voet. Zo staat hij naast de papiertjes in plaats van erbovenop, en dragen
-   de merkkleuren de betekenis: rood is wat er misgaat, groen is wat we beloven. */
+   Het raster is een verloop en geen plaatje, zodat het meeschaalt en geen extra
+   bestand kost. De gloed is een pseudo-element, want een border-image zou de
+   afgeronde hoek breken. */
 .belofte{position:relative;z-index:1;max-width:1180px;margin:0 auto;
   padding:clamp(1.6rem,4vh,2.6rem) clamp(1.25rem,3vw,2rem) 0}
-.bl-in{max-width:880px;margin:0 auto;background:var(--wit);border-radius:var(--r-kaart);
-  overflow:hidden;box-shadow:0 30px 80px -45px rgba(var(--ink-rgb),.55),
-  0 0 0 1px rgba(var(--ink-rgb),.09);
+.bl-in{position:relative;max-width:880px;margin:0 auto;border-radius:22px;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(var(--accent-rgb),.20), transparent 62%),
+    linear-gradient(168deg, var(--donker) 0%, var(--dieper) 100%);
+  box-shadow:0 40px 100px -50px rgba(var(--dieper-rgb),.95),
+             0 0 0 1px rgba(var(--accent-rgb),.18);
+  color:var(--pap-0);
   opacity:0;transform:translateY(22px);
   transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .belofte.in .bl-in{opacity:1;transform:none}
+/* het raster, net zichtbaar genoeg om diepte te geven */
+.bl-in::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(var(--accent-rgb),.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--accent-rgb),.055) 1px, transparent 1px);
+  background-size:52px 52px;
+  /* Bij een masker telt alleen de doorzichtigheid en niet de kleur, dus zwart is hier
+     geen merkkleur maar het woord voor volledig dekkend. */
+  -webkit-mask-image:radial-gradient(115% 85% at 50% 0%, black 30%, transparent 78%);
+  mask-image:radial-gradient(115% 85% at 50% 0%, black 30%, transparent 78%)}
+/* de oplichtende bovenrand die naar de zijkanten wegvalt */
+.bl-in::before{content:'';position:absolute;left:8%;right:8%;top:0;height:1px;z-index:2;
+  background:linear-gradient(90deg, transparent, var(--accent-l,var(--accent)) 22%,
+             var(--accent-l,var(--accent)) 78%, transparent);
+  box-shadow:0 0 14px 1px rgba(var(--accent-rgb),.55)}
 
-.bl-top{background:var(--accent);color:var(--op-accent);
-  padding:clamp(1.4rem,3vw,2rem) clamp(1.4rem,3.4vw,2.4rem) clamp(1.2rem,2.6vw,1.7rem)}
-.bl-merk{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
-.bl-merk img{height:22px;width:auto;display:block;background:var(--wit);
+.bl-top{position:relative;z-index:1;
+  padding:clamp(1.7rem,3.6vw,2.5rem) clamp(1.5rem,3.6vw,2.5rem) clamp(1.1rem,2.4vw,1.5rem)}
+.bl-merk{display:flex;align-items:center;gap:.75rem;margin-bottom:1.15rem}
+.bl-merk img{height:20px;width:auto;display:block;background:var(--wit);
   border-radius:7px;padding:5px 9px}
-.bl-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;
-  text-transform:uppercase;opacity:.82}
-.bl-kop{font-size:clamp(1.5rem,3.4vw,2.25rem);line-height:1.12;letter-spacing:-.03em;
-  margin:0 0 .55rem}
-.bl-tekst{font-size:clamp(.95rem,1.7vw,1.05rem);line-height:1.55;opacity:.9;margin:0;
-  max-width:56ch}
+.bl-eyebrow{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent-h,var(--accent-l));opacity:.95}
+.bl-kop{font-size:clamp(1.5rem,3.4vw,2.15rem);line-height:1.13;letter-spacing:-.03em;
+  margin:0 0 .6rem;color:var(--pap-0);text-wrap:balance}
+.bl-tekst{font-size:clamp(.95rem,1.7vw,1.04rem);line-height:1.58;margin:0;max-width:54ch;
+  color:rgba(var(--pap-0-rgb),.72)}
 
-.bl-kolommen{display:grid;grid-template-columns:1fr 1fr}
-.bl-kol{padding:clamp(1.2rem,2.8vw,1.8rem) clamp(1.2rem,3vw,2rem)}
-.bl-kol.nu{background:rgba(var(--let-op-rgb),.045);border-right:1px solid var(--line)}
-.bl-kol.straks{background:rgba(var(--goed-rgb),.05)}
-.bl-kol h3{font-family:var(--mono);font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;
-  font-weight:500;margin:0 0 1rem}
-.bl-kol.nu h3{color:var(--let-op)}
-.bl-kol.straks h3{color:var(--goed)}
-.bl-r{display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-items:start;
-  padding:.6rem 0;line-height:1.48;font-size:.95rem;color:var(--pap-ink,var(--ink));
-  border-top:1px solid rgba(var(--ink-rgb),.08)}
-.bl-r:first-of-type{border-top:0;padding-top:0}
-.bl-r i{width:19px;height:19px;flex:none;border-radius:50%;position:relative;margin-top:.14rem}
-/* het kruisje */
-.bl-kol.nu .bl-r i{background:rgba(var(--let-op-rgb),.14)}
-.bl-kol.nu .bl-r i::before,.bl-kol.nu .bl-r i::after{content:'';position:absolute;
-  left:5px;top:9px;width:9px;height:1.7px;background:var(--let-op);border-radius:1px}
-.bl-kol.nu .bl-r i::before{transform:rotate(45deg)}
-.bl-kol.nu .bl-r i::after{transform:rotate(-45deg)}
-/* het vinkje */
-.bl-kol.straks .bl-r i{background:rgba(var(--goed-rgb),.16)}
-.bl-kol.straks .bl-r i::after{content:'';position:absolute;left:6px;top:4px;width:5px;height:9px;
-  border:solid var(--goed);border-width:0 1.8px 1.8px 0;transform:rotate(45deg)}
-.bl-kol.nu .bl-r span{color:var(--ink2)}
+.bl-lijst{position:relative;z-index:1;display:grid;gap:0;
+  padding:0 clamp(1.5rem,3.6vw,2.5rem) clamp(1.3rem,2.8vw,1.8rem)}
+.bl-r{display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:start;
+  padding:.72rem 0;line-height:1.5;font-size:.98rem;
+  border-top:1px solid rgba(var(--accent-rgb),.16)}
+.bl-r:first-child{border-top:0}
+.bl-r i{width:21px;height:21px;flex:none;border-radius:50%;position:relative;margin-top:.1rem;
+  background:rgba(var(--accent-rgb),.18);box-shadow:0 0 0 1px rgba(var(--accent-rgb),.35)}
+.bl-r i::after{content:'';position:absolute;left:7px;top:5px;width:5px;height:9px;
+  border:solid var(--accent-h,var(--accent-l));border-width:0 1.9px 1.9px 0;transform:rotate(45deg)}
+.bl-r span{color:rgba(var(--pap-0-rgb),.9)}
 
-.bl-voet{background:var(--donker);color:var(--pap-0);
-  padding:clamp(1rem,2.4vw,1.4rem) clamp(1.4rem,3.4vw,2.4rem);
-  display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
-.bl-voet b{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--accent-h,var(--accent-l));white-space:nowrap;padding-top:.2rem}
-.bl-voet span{line-height:1.55;font-size:.95rem;opacity:.92}
-
-@media (max-width:760px){
-  .bl-kolommen{grid-template-columns:1fr}
-  .bl-kol.nu{border-right:0;border-bottom:1px solid var(--line)}
-  .bl-voet{grid-template-columns:1fr;gap:.35rem}
-  .bl-voet b{padding-top:0}
-}
-
-/* ── De intake ────────────────────────────────────────────────────────────────────
-   Een echt formulier, geen schakelaars. Drie vragen die in tien seconden te
-   beantwoorden zijn, dan naam en mailadres, en pas daarna het bedrag waar wij
-   onderduiken. Het bedrag is de reden dat hij invult, het mailadres is de reden
-   dat wij het bouwen: zonder dat weten we alleen dat er iemand gescand heeft.
-
-   De keuzes zijn echte radioknoppen met de pil er overheen. Daarmee werkt het met
-   een toetsenbord, leest een schermlezer de vraag bij het antwoord, en bewaakt de
-   browser zelf dat er iets is ingevuld. */
-.ivr{display:grid;gap:1.15rem;margin-top:1.1rem}
-.ivr-v{border:0;padding:0;margin:0;display:grid;gap:.55rem}
-.ivr-v legend{padding:0;font-size:.97rem;line-height:1.4;color:var(--pap-ink,var(--ink));
-  font-weight:600}
-.ivr-knoppen{display:flex;flex-wrap:wrap;gap:.45rem}
-.ivr-k{position:relative;display:inline-flex}
-.ivr-k input{position:absolute;opacity:0;width:100%;height:100%;left:0;top:0;margin:0;cursor:pointer}
-.ivr-k span{display:inline-block;font-size:.9rem;padding:.42rem .85rem;border-radius:var(--r-pil);
-  border:1px solid rgba(var(--ink-rgb),.2);color:var(--pap-ink2,var(--ink2));
-  transition:border-color .2s ease,background .2s ease,color .2s ease}
-.ivr-k:hover span{border-color:rgba(var(--accent-rgb),.6)}
-.ivr-k input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
-.ivr-k input:checked + span{background:var(--accent);border-color:var(--accent);
-  color:var(--op-accent);font-weight:500}
-.ivr-bedrag{display:flex;align-items:center;gap:.5rem;max-width:240px}
-.ivr-bedrag span{font-family:var(--mono);color:var(--ink3);font-size:1rem}
-.ivr-rij{display:grid;grid-template-columns:1fr 1.35fr;gap:.8rem}
-.ivr-veld{display:grid;gap:.35rem}
-.ivr-veld span{font-size:.86rem;color:var(--pap-ink2,var(--ink2))}
-.ivr input[type="text"],.ivr input[type="email"]{font:inherit;font-size:1rem;width:100%;
-  padding:.55rem .75rem;border:1px solid rgba(var(--ink-rgb),.2);border-radius:var(--r-kaart);
-  background:var(--pap-0,transparent);color:var(--pap-ink,var(--ink))}
-.ivr input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--op-accent-zacht,rgba(var(--accent-rgb),.14))}
-.ivr input[type="text"]#ivr-bedrag{font-variant-numeric:tabular-nums}
-.ivr-knop{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1rem;margin-top:.3rem}
-.ivr-na{font-size:.85rem;color:var(--pap-ink2,var(--ink2));line-height:1.45;max-width:34ch}
-.ivr-fout{margin:0;font-size:.9rem;color:var(--let-op);line-height:1.45}
-.ivr-dank{display:grid;gap:.8rem;margin-top:.4rem}
-.ivr-dank h3{margin:0;font-size:1.15rem;line-height:1.3;color:var(--pap-ink,var(--ink))}
-.ivr-dank p{margin:0;color:var(--pap-ink2,var(--ink2));line-height:1.55}
-.ivr-dank .knoppen{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.3rem}
-
-/* ── Het antwoord onderaan, dat meebeweegt met de intake ──────────────────────── */
-.aw{display:grid;gap:.7rem;margin:1.2rem 0 0}
+/* het antwoord op de intake, in dezelfde donkere kaart */
+.aw{display:grid;gap:.6rem;margin:1.1rem 0 0}
 .aw-r{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;
-  padding:.8rem 1rem;border-radius:var(--r-kaart);background:rgba(var(--ink-rgb),.04);
-  line-height:1.52;font-size:.97rem}
-.aw-r b{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);white-space:nowrap;padding-top:.22rem}
-.prijs{margin-top:1.2rem;padding:1.15rem 1.25rem;border-radius:var(--r-kaart);
-  border:1px solid rgba(var(--accent-rgb),.4);background:rgba(var(--accent-rgb),.07)}
-.prijs-rij{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1.4rem}
-.prijs-nu{font-family:var(--mono);font-size:1rem;color:var(--pap-ink2,var(--ink2));
+  padding:.85rem 1rem;border-radius:12px;line-height:1.5;font-size:.95rem;
+  background:rgba(var(--accent-rgb),.10);color:rgba(var(--pap-0-rgb),.9)}
+.aw-r b{font-family:var(--mono);font-size:.6rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--accent-h,var(--accent-l));white-space:nowrap;padding-top:.24rem}
+.prijs{margin-top:1.1rem;padding:1.2rem 1.3rem;border-radius:14px;
+  background:rgba(var(--accent-rgb),.14);box-shadow:0 0 0 1px rgba(var(--accent-rgb),.34)}
+.prijs-rij{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.5rem}
+.prijs-nu{font-family:var(--mono);font-size:1rem;color:rgba(var(--pap-0-rgb),.55);
   text-decoration:line-through;text-decoration-thickness:1px;font-variant-numeric:tabular-nums}
-.prijs-wij{font-family:var(--mono);font-size:clamp(1.6rem,3.6vw,2.2rem);line-height:1;
-  color:var(--accent);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.prijs-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--ink3)}
-.prijs p{margin:.7rem 0 0;font-size:.94rem;line-height:1.55;color:var(--pap-ink2,var(--ink2))}
+.prijs-wij{font-family:var(--mono);font-size:clamp(1.7rem,3.8vw,2.3rem);line-height:1;
+  color:var(--accent-h,var(--accent-l));letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.prijs-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(var(--pap-0-rgb),.5)}
+.prijs p{margin:.75rem 0 0;font-size:.93rem;line-height:1.55;
+  color:rgba(var(--pap-0-rgb),.72)}
 
-/* ── Sociaal bewijs, één regel ────────────────────────────────────────────────── */
-.bewijs{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;margin-top:1.1rem;
-  padding-top:1rem;border-top:1px solid rgba(var(--ink-rgb),.12)}
-.bewijs .sterren{color:var(--accent);letter-spacing:.12em;font-size:.95rem}
-.bewijs span{font-size:.93rem;color:var(--pap-ink2,var(--ink2))}
-.bewijs b{font-weight:650;color:var(--pap-ink,var(--ink))}
+/* Murphy in de hoek, met de ring en het label uit hun eigen site */
+.bl-voet{position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;
+  gap:clamp(.9rem,2.4vw,1.3rem);align-items:center;
+  padding:clamp(1.1rem,2.6vw,1.5rem) clamp(1.5rem,3.6vw,2.5rem) clamp(1.4rem,3vw,1.9rem);
+  border-top:1px solid rgba(var(--accent-rgb),.16)}
+.bl-mur{position:relative;width:62px;height:62px;flex:none}
+.bl-mur img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;
+  box-shadow:0 0 0 2px var(--accent-l,var(--accent)),0 0 22px -4px rgba(var(--accent-rgb),.8)}
+.bl-mur b{position:absolute;left:calc(100% - 8px);bottom:2px;white-space:nowrap;
+  background:var(--dieper);border-radius:9px;padding:.34rem .6rem;line-height:1.25;
+  box-shadow:0 0 0 1px rgba(var(--accent-rgb),.3);font-size:.74rem;font-weight:650;
+  color:var(--pap-0)}
+.bl-mur b span{display:block;font-weight:400;font-size:.68rem;
+  color:rgba(var(--pap-0-rgb),.6)}
+.bl-garantie{padding-left:clamp(3.6rem,9vw,5.4rem)}
+.bl-garantie b{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent-h,var(--accent-l));margin-bottom:.3rem}
+.bl-garantie span{font-size:.92rem;line-height:1.55;
+  color:rgba(var(--pap-0-rgb),.72)}
+.bewijs{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem .85rem;margin-top:.9rem;
+  padding-top:.85rem;border-top:1px solid rgba(var(--accent-rgb),.16)}
+.bewijs .sterren{color:var(--accent-h,var(--accent-l));letter-spacing:.1em;font-size:.9rem}
+.bewijs span{font-size:.9rem;color:rgba(var(--pap-0-rgb),.72)}
+.bewijs b{font-weight:650;color:var(--pap-0)}
 
 @media (max-width:640px){
-  .ivr-rij{grid-template-columns:1fr}
-  .ivr-knop{flex-direction:column;align-items:flex-start}
-  .ivr-na{max-width:none}
+  .bl-voet{grid-template-columns:1fr;gap:1.6rem}
+  .bl-garantie{padding-left:0}
+  .bl-mur b{left:calc(100% - 4px)}
 }
+
+/* Murphy staat nu in de garantiekaart, met ring en label. Het blok eronder houdt
+   zijn tekst, want die zegt iets wat de kaart niet zegt, maar de tweede foto gaat
+   eraf. Eén gezicht per pagina. */
+.founder{grid-template-columns:1fr;max-width:640px}
+.founder .fo-photo{display:none}
