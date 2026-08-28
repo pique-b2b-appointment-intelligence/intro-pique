@@ -290,11 +290,13 @@ document.getElementById('askread').addEventListener('click', function(){
     if (!tel) return;
     pqTrack('terugbelverzoek', tel);
 
-    var lading = JSON.stringify({
+    /* PQ_EXTRA vult een pagina zelf, bijvoorbeeld met de antwoorden uit een intake.
+       Die gaan pas mee op het moment dat iemand zelf zijn nummer achterlaat. */
+    var lading = JSON.stringify(Object.assign({
       naam: naam, tel: tel, wanneer: gekozen,
       bedrijf: window.PQ_BEDRIJF, slug: PQ_SLUG,
       klant: window.PQ_KLANT, campagne: window.PQ_CAMPAGNE
-    });
+    }, window.PQ_EXTRA || {}));
 
     /* Bewust text/plain: daarmee is het een simpele request en vraagt de browser
        geen preflight, wat een Apps Script-webapp toch niet zou beantwoorden.
