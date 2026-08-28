@@ -263,28 +263,45 @@
 }
 
 /* ── De intake ────────────────────────────────────────────────────────────────────
-   Drie vragen boven aan de pagina waar de lezer zelf antwoord op geeft. Dat doet
-   drie dingen tegelijk. Het maakt van lezen meedoen, het levert het enige getal op
-   dat wij niet kunnen weten, en het geeft het voorstel onderaan iets om op te
-   antwoorden. Alles blijft in de browser staan; er gaat niets weg tot iemand zijn
-   nummer achterlaat, en dan gaan de antwoorden mee. */
-.ivr{display:grid;gap:1.1rem;margin-top:1.1rem}
-.ivr-v{display:grid;gap:.55rem}
-.ivr-v > label{font-size:.97rem;line-height:1.4;color:var(--pap-ink,var(--ink));font-weight:600}
+   Een echt formulier, geen schakelaars. Drie vragen die in tien seconden te
+   beantwoorden zijn, dan naam en mailadres, en pas daarna het bedrag waar wij
+   onderduiken. Het bedrag is de reden dat hij invult, het mailadres is de reden
+   dat wij het bouwen: zonder dat weten we alleen dat er iemand gescand heeft.
+
+   De keuzes zijn echte radioknoppen met de pil er overheen. Daarmee werkt het met
+   een toetsenbord, leest een schermlezer de vraag bij het antwoord, en bewaakt de
+   browser zelf dat er iets is ingevuld. */
+.ivr{display:grid;gap:1.15rem;margin-top:1.1rem}
+.ivr-v{border:0;padding:0;margin:0;display:grid;gap:.55rem}
+.ivr-v legend{padding:0;font-size:.97rem;line-height:1.4;color:var(--pap-ink,var(--ink));
+  font-weight:600}
 .ivr-knoppen{display:flex;flex-wrap:wrap;gap:.45rem}
-.ivr-k{font:inherit;font-size:.9rem;cursor:pointer;padding:.42rem .85rem;border-radius:var(--r-pil);
-  border:1px solid rgba(var(--ink-rgb),.2);background:transparent;color:var(--pap-ink2,var(--ink2));
+.ivr-k{position:relative;display:inline-flex}
+.ivr-k input{position:absolute;opacity:0;width:100%;height:100%;left:0;top:0;margin:0;cursor:pointer}
+.ivr-k span{display:inline-block;font-size:.9rem;padding:.42rem .85rem;border-radius:var(--r-pil);
+  border:1px solid rgba(var(--ink-rgb),.2);color:var(--pap-ink2,var(--ink2));
   transition:border-color .2s ease,background .2s ease,color .2s ease}
-.ivr-k:hover{border-color:rgba(var(--accent-rgb),.6)}
-.ivr-k[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);
+.ivr-k:hover span{border-color:rgba(var(--accent-rgb),.6)}
+.ivr-k input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.ivr-k input:checked + span{background:var(--accent);border-color:var(--accent);
   color:var(--op-accent);font-weight:500}
-.ivr-bedrag{display:flex;align-items:center;gap:.5rem;max-width:260px}
+.ivr-bedrag{display:flex;align-items:center;gap:.5rem;max-width:240px}
 .ivr-bedrag span{font-family:var(--mono);color:var(--ink3);font-size:1rem}
-.ivr-bedrag input{font:inherit;font-size:1.05rem;width:100%;padding:.5rem .7rem;
-  border:1px solid rgba(var(--ink-rgb),.2);border-radius:var(--r-kaart);background:transparent;
-  color:var(--pap-ink,var(--ink));font-variant-numeric:tabular-nums}
-.ivr-bedrag input:focus{outline:none;border-color:var(--accent)}
-.ivr-na{font-size:.87rem;color:var(--pap-ink2,var(--ink2));line-height:1.5;margin:.2rem 0 0}
+.ivr-rij{display:grid;grid-template-columns:1fr 1.35fr;gap:.8rem}
+.ivr-veld{display:grid;gap:.35rem}
+.ivr-veld span{font-size:.86rem;color:var(--pap-ink2,var(--ink2))}
+.ivr input[type="text"],.ivr input[type="email"]{font:inherit;font-size:1rem;width:100%;
+  padding:.55rem .75rem;border:1px solid rgba(var(--ink-rgb),.2);border-radius:var(--r-kaart);
+  background:var(--pap-0,transparent);color:var(--pap-ink,var(--ink))}
+.ivr input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--op-accent-zacht,rgba(var(--accent-rgb),.14))}
+.ivr input[type="text"]#ivr-bedrag{font-variant-numeric:tabular-nums}
+.ivr-knop{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1rem;margin-top:.3rem}
+.ivr-na{font-size:.85rem;color:var(--pap-ink2,var(--ink2));line-height:1.45;max-width:34ch}
+.ivr-fout{margin:0;font-size:.9rem;color:var(--let-op);line-height:1.45}
+.ivr-dank{display:grid;gap:.8rem;margin-top:.4rem}
+.ivr-dank h3{margin:0;font-size:1.15rem;line-height:1.3;color:var(--pap-ink,var(--ink))}
+.ivr-dank p{margin:0;color:var(--pap-ink2,var(--ink2));line-height:1.55}
+.ivr-dank .knoppen{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.3rem}
 
 /* ── Het antwoord onderaan, dat meebeweegt met de intake ──────────────────────── */
 .aw{display:grid;gap:.7rem;margin:1.2rem 0 0}
@@ -310,3 +327,9 @@
 .bewijs .sterren{color:var(--accent);letter-spacing:.12em;font-size:.95rem}
 .bewijs span{font-size:.93rem;color:var(--pap-ink2,var(--ink2))}
 .bewijs b{font-weight:650;color:var(--pap-ink,var(--ink))}
+
+@media (max-width:640px){
+  .ivr-rij{grid-template-columns:1fr}
+  .ivr-knop{flex-direction:column;align-items:flex-start}
+  .ivr-na{max-width:none}
+}

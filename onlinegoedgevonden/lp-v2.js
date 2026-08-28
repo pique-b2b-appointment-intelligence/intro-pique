@@ -223,9 +223,14 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(bouw);
 setTimeout(bouw, 400); setTimeout(bouw, 1200);
 if (window.ResizeObserver) paden.forEach(function(p){ new ResizeObserver(bouw).observe(p.wrap); });
 
-document.getElementById('askread').addEventListener('click', function(){
+/* Deze knop staat niet op elke pagina. Zonder deze controle gooit de regel een fout
+   op een pagina die hem mist, en dan draait alles hieronder niet meer: het belscherm,
+   de agenda en het terugbelformulier. */
+var askread = document.getElementById('askread');
+if (askread) askread.addEventListener('click', function(){
   pqTrack('leest-eerst-voorstel');
-  document.getElementById('s4').scrollIntoView({behavior:'smooth', block:'start'});
+  var doel = document.getElementById('s4');
+  if (doel) doel.scrollIntoView({behavior:'smooth', block:'start'});
 });
 
 /* ══ 7. SHEET. Cal.com laadt pas als iemand hem opent, niet bij elke scan. ══ */
@@ -270,6 +275,9 @@ document.getElementById('askread').addEventListener('click', function(){
     sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true');
     document.body.style.overflow = ''; dockUpdate();
   }
+  /* Ook bereikbaar voor knoppen die pas ná het laden ontstaan, zoals de bevestiging
+     onder een verzonden formulier. */
+  window.pqOpenSheet = open;
   document.querySelectorAll('[data-open="sheet"]').forEach(function(b){
     b.addEventListener('click', function(){ open(b.dataset.tab); });
   });

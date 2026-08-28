@@ -88,7 +88,8 @@
       <div class="ch-body">
         <div class="ch-eyebrow">Waarom we naar jullie zijn gaan kijken</div>
         <h2 class="ch-kop">Je geeft al meer dan een jaar geld uit aan vindbaarheid. Daarom zijn we gaan meten.</h2>
-        <p class="ch-text">Sinds april 2025 verschijnen er met regelmaat artikelen over Table du Sud op andere sites. Steeds met een link terug, en steeds naar dezelfde hoek van je assortiment: je eettafels, je organische banken, je salontafels. In de linkteksten staan koopwoorden en niet je merknaam. Dat is geen los experiment. <strong>Dat is een programma, met een budget en met iemand die het uitvoert.</strong></p>
+        <p class="ch-text">Er verschijnen met regelmaat artikelen over Table du Sud op andere sites. Steeds met een link terug, en steeds naar dezelfde hoek van je assortiment: je eettafels, je organische banken, je salontafels. In de linkteksten staan koopwoorden en niet je merknaam. Dat is geen los experiment. <strong>Dat is een programma, met een budget en met iemand die het uitvoert.</strong></p>
+        <p class="ch-text">De oudste plaatsing die we konden vinden staat er sinds april 2025. Hoe lang het daarvoor al liep weten we niet, want die artikelen zijn niet meer terug te zoeken. <strong>Ergens in die periode is er iets misgegaan met een deel van die links, en dat loopt sindsdien door.</strong></p>
         <p class="ch-text">Wat eruit kwam staat hieronder. Vijf stuks, verdeeld over vijf onderdelen, allemaal na te kijken met rechtermuisknop en paginabron weergeven. En <strong>geen ervan is ooit bij je gemeld</strong> door de partij die er maandelijks voor factureert.</p>
         <p class="ch-text"><strong>Dit is wat we vonden.</strong></p>
         <div class="ch-sign">Murphy, Online Goed Gevonden</div>
@@ -121,21 +122,30 @@
       <div class="ch-body">
         <div class="f-tag">Drie vragen, dan weet je wat het kost</div>
         <h2 class="f-kop">Voordat je verder leest, drie dingen die alleen jij weet.</h2>
-      <div class="ivr">
-        <div class="ivr-v">
-          <label>Sta je op pagina één op de zoekterm waar je klanten vandaan komen?</label>
-          <div class="ivr-knoppen" data-veld="positie"><button type="button" class="ivr-k" data-waarde="ja" aria-pressed="false">Ja</button><button type="button" class="ivr-k" data-waarde="nee" aria-pressed="false">Nee</button><button type="button" class="ivr-k" data-waarde="weet" aria-pressed="false">Weet ik niet</button></div>
-        </div>
-        <div class="ivr-v">
-          <label>Hoe loopt het met de partij die je marketing nu doet?</label>
-          <div class="ivr-knoppen" data-veld="partij"><button type="button" class="ivr-k" data-waarde="goed" aria-pressed="false">Goed</button><button type="button" class="ivr-k" data-waarde="wisselend" aria-pressed="false">Wisselend</button><button type="button" class="ivr-k" data-waarde="matig" aria-pressed="false">Matig</button></div>
-        </div>
-        <div class="ivr-v">
-          <label>Wat ben je hier per maand aan kwijt, alles bij elkaar?</label>
-          <div class="ivr-bedrag"><span>&euro;</span><input id="ivr-bedrag" type="text" inputmode="numeric" placeholder="2.000" autocomplete="off" aria-label="Bedrag per maand"></div>
-        </div>
-      </div>
-      <p class="ivr-na">Je antwoorden blijven op deze pagina staan en bepalen wat er onderaan bij het voorstel komt. Ze gaan pas mee als je zelf je nummer achterlaat.</p>
+        <form class="ivr" id="intakeform" novalidate>
+        <fieldset class="ivr-v">
+          <legend>Sta je op pagina één op de zoekterm waar je klanten vandaan komen?</legend>
+          <div class="ivr-knoppen" data-veld="positie"><label class="ivr-k"><input type="radio" name="positie" value="ja" required><span>Ja</span></label><label class="ivr-k"><input type="radio" name="positie" value="nee" required><span>Nee</span></label><label class="ivr-k"><input type="radio" name="positie" value="weet" required><span>Weet ik niet</span></label></div>
+        </fieldset>
+        <fieldset class="ivr-v">
+          <legend>Hoe loopt het met de partij die je marketing nu doet?</legend>
+          <div class="ivr-knoppen" data-veld="partij"><label class="ivr-k"><input type="radio" name="partij" value="goed" required><span>Goed</span></label><label class="ivr-k"><input type="radio" name="partij" value="wisselend" required><span>Wisselend</span></label><label class="ivr-k"><input type="radio" name="partij" value="matig" required><span>Matig</span></label></div>
+        </fieldset>
+          <fieldset class="ivr-v">
+            <legend>Wat ben je hier per maand aan kwijt, alles bij elkaar?</legend>
+            <div class="ivr-bedrag"><span>&euro;</span><input id="ivr-bedrag" name="bedrag" type="text" inputmode="numeric" placeholder="2.000" autocomplete="off" required aria-label="Bedrag per maand in euro"></div>
+          </fieldset>
+          <div class="ivr-rij">
+            <label class="ivr-veld"><span>Je naam</span><input name="naam" type="text" autocomplete="given-name" required></label>
+            <label class="ivr-veld"><span>Waar mogen we het naartoe sturen?</span><input name="email" type="email" autocomplete="email" required placeholder="naam@bedrijf.nl"></label>
+          </div>
+          <p class="ivr-fout" id="ivr-fout" role="alert" hidden></p>
+          <div class="ivr-knop">
+            <button class="btn-a" type="submit">Laat mijn voorstel zien</button>
+            <span class="ivr-na">Je krijgt het meteen op deze pagina te zien en daarna in je mail. We bellen alleen als je daar zelf om vraagt.</span>
+          </div>
+        </form>
+        <div class="ivr-dank" id="ivr-dank" hidden></div>
       </div>
     </div>
   </section>

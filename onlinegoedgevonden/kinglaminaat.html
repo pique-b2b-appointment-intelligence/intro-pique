@@ -88,7 +88,8 @@
       <div class="ch-body">
         <div class="ch-eyebrow">Waarom we naar jullie zijn gaan kijken</div>
         <h2 class="ch-kop">Je legt al een jaar plaats na plaats aan. Daarom zijn we gaan meten.</h2>
-        <p class="ch-text">Sinds juni 2025 komt er bij Kinglaminaat plaats na plaats een pagina bij. Laminaat Hellevoetsluis, Laminaat Ridderkerk, PVC vloeren Barendrecht, PVC vloeren Capelle. Inmiddels tweeënvijftig pagina’s over tweeëndertig plaatsen, en het gaat om koopzoekwoorden: iemand die dat intypt wil een vloer, meestal binnen een maand. <strong>Dat is een programma, met een budget en met iemand die het uitvoert.</strong></p>
+        <p class="ch-text">Er komt bij Kinglaminaat plaats na plaats een pagina bij. Laminaat Hellevoetsluis, Laminaat Ridderkerk, PVC vloeren Barendrecht, PVC vloeren Capelle. Inmiddels tweeënvijftig pagina’s over tweeëndertig plaatsen, en het gaat om koopzoekwoorden: iemand die dat intypt wil een vloer, meestal binnen een maand. <strong>Dat is een programma, met een budget en met iemand die het uitvoert.</strong></p>
+        <p class="ch-text">De oudste pagina die we konden dateren staat er sinds juni 2025. Hoe lang het daarvoor al liep weten we niet. <strong>Wat we wel weten is dat je zes winkels hebt en dat er in die hele periode voor geen van die zes een pagina is gemaakt.</strong></p>
         <p class="ch-text">Hieronder staan vijf uitkomsten, verdeeld over vijf onderdelen. Twee ervan zijn met één druk op de knop te herstellen en kosten je niets aan mediabudget. <strong>Er is er alleen nooit iemand geweest die het je verteld heeft.</strong></p>
         <p class="ch-text"><strong>Dit is wat we vonden.</strong></p>
         <div class="ch-sign">Murphy, Online Goed Gevonden</div>
@@ -121,21 +122,30 @@
       <div class="ch-body">
         <div class="f-tag">Drie vragen, dan weet je wat het kost</div>
         <h2 class="f-kop">Voordat je verder leest, drie dingen die alleen jij weet.</h2>
-      <div class="ivr">
-        <div class="ivr-v">
-          <label>Sta je op pagina één op laminaat en pvc in je eigen winkelplaatsen?</label>
-          <div class="ivr-knoppen" data-veld="positie"><button type="button" class="ivr-k" data-waarde="ja" aria-pressed="false">Ja</button><button type="button" class="ivr-k" data-waarde="nee" aria-pressed="false">Nee</button><button type="button" class="ivr-k" data-waarde="weet" aria-pressed="false">Weet ik niet</button></div>
-        </div>
-        <div class="ivr-v">
-          <label>Hoe loopt het met de partij die je marketing nu doet?</label>
-          <div class="ivr-knoppen" data-veld="partij"><button type="button" class="ivr-k" data-waarde="goed" aria-pressed="false">Goed</button><button type="button" class="ivr-k" data-waarde="wisselend" aria-pressed="false">Wisselend</button><button type="button" class="ivr-k" data-waarde="matig" aria-pressed="false">Matig</button></div>
-        </div>
-        <div class="ivr-v">
-          <label>Wat ben je hier per maand aan kwijt, alles bij elkaar?</label>
-          <div class="ivr-bedrag"><span>&euro;</span><input id="ivr-bedrag" type="text" inputmode="numeric" placeholder="2.000" autocomplete="off" aria-label="Bedrag per maand"></div>
-        </div>
-      </div>
-      <p class="ivr-na">Je antwoorden blijven op deze pagina staan en bepalen wat er onderaan bij het voorstel komt. Ze gaan pas mee als je zelf je nummer achterlaat.</p>
+        <form class="ivr" id="intakeform" novalidate>
+        <fieldset class="ivr-v">
+          <legend>Sta je op pagina één op laminaat en pvc in je eigen winkelplaatsen?</legend>
+          <div class="ivr-knoppen" data-veld="positie"><label class="ivr-k"><input type="radio" name="positie" value="ja" required><span>Ja</span></label><label class="ivr-k"><input type="radio" name="positie" value="nee" required><span>Nee</span></label><label class="ivr-k"><input type="radio" name="positie" value="weet" required><span>Weet ik niet</span></label></div>
+        </fieldset>
+        <fieldset class="ivr-v">
+          <legend>Hoe loopt het met de partij die je marketing nu doet?</legend>
+          <div class="ivr-knoppen" data-veld="partij"><label class="ivr-k"><input type="radio" name="partij" value="goed" required><span>Goed</span></label><label class="ivr-k"><input type="radio" name="partij" value="wisselend" required><span>Wisselend</span></label><label class="ivr-k"><input type="radio" name="partij" value="matig" required><span>Matig</span></label></div>
+        </fieldset>
+          <fieldset class="ivr-v">
+            <legend>Wat ben je hier per maand aan kwijt, alles bij elkaar?</legend>
+            <div class="ivr-bedrag"><span>&euro;</span><input id="ivr-bedrag" name="bedrag" type="text" inputmode="numeric" placeholder="2.000" autocomplete="off" required aria-label="Bedrag per maand in euro"></div>
+          </fieldset>
+          <div class="ivr-rij">
+            <label class="ivr-veld"><span>Je naam</span><input name="naam" type="text" autocomplete="given-name" required></label>
+            <label class="ivr-veld"><span>Waar mogen we het naartoe sturen?</span><input name="email" type="email" autocomplete="email" required placeholder="naam@bedrijf.nl"></label>
+          </div>
+          <p class="ivr-fout" id="ivr-fout" role="alert" hidden></p>
+          <div class="ivr-knop">
+            <button class="btn-a" type="submit">Laat mijn voorstel zien</button>
+            <span class="ivr-na">Je krijgt het meteen op deze pagina te zien en daarna in je mail. We bellen alleen als je daar zelf om vraagt.</span>
+          </div>
+        </form>
+        <div class="ivr-dank" id="ivr-dank" hidden></div>
       </div>
     </div>
   </section>
@@ -236,7 +246,7 @@
         <p class="ch-pivot">Je betaalt voor vijf onderdelen tegelijk. Je pagina’s, je assortiment online, je advertenties, je vindbaarheid in AI en de snelheid van je site. Er is er geen één op orde, en ze lopen allemaal langs dezelfde partij.</p>
         <div class="tl">
           <div class="tl-rail">
-            <div class="tl-i" style="--dl:0.20s"><span class="d"></span><b>jun 2025</b><span>eerste plaatspagina’s</span></div>
+            <div class="tl-i" style="--dl:0.20s"><span class="d"></span><b>vóór jun 2025</b><span>het liep al</span></div>
             <div class="tl-i" style="--dl:0.45s"><span class="d"></span><b>2025</b><span>regio uitgebreid</span></div>
             <div class="tl-i" style="--dl:0.70s"><span class="d"></span><b>feb 2026</b><span>laatste pagina’s</span></div>
             <div class="tl-i nu" style="--dl:0.95s"><span class="d"></span><b>nu</b><span>vijf bevindingen</span></div>

@@ -66,32 +66,22 @@
 })();
 
 /* ══ De intake ══════════════════════════════════════════════════════════════════
- * Drie vragen boven aan de pagina, en een voorstel onderaan dat erop antwoordt.
+ * Een echt formulier. Drie vragen, een naam en een mailadres, en dan het voorstel.
  *
- * Wat de lezer invult blijft in zijn eigen browser. Er gaat pas iets weg op het
- * moment dat hij zelf zijn nummer achterlaat, en dan gaan de antwoorden mee in
- * hetzelfde bericht. Dat is de enige eerlijke volgorde.
+ * Wat er gebeurt bij verzenden: het gaat naar hetzelfde eindpunt als een
+ * terugbelverzoek, met soort 'intake' erbij zodat Murphy ze uit elkaar houdt. De
+ * lezer krijgt zijn voorstel meteen op de pagina te zien, want een formulier dat
+ * belooft te sturen en verder niets laat zien voelt als een val.
  *
- * Het bedrag is het enige getal dat wij niet kunnen meten en hij wel weet. Daarom
- * rekenen we er niets omheen: twintig procent eraf, afgerond op vijftig euro, en
- * dat is het voorstel.
+ * Lukt het versturen niet, dan zien we dat wel maar hij niet: hij heeft zijn
+ * voorstel al. Het bericht gaat dan alsnog met een beacon de deur uit.
  */
 (function () {
   'use strict';
-  var vak = document.getElementById('intake');
-  if (!vak) return;
-  var staat = {positie: '', partij: '', bedrag: ''};
-
-  try {
-    var bewaard = localStorage.getItem('pq-intake-' + (window.PQ_SLUG || 'x'));
-    if (bewaard) staat = JSON.parse(bewaard);
-  } catch (e) { /* privémodus of geblokkeerde opslag: dan begint hij gewoon leeg */ }
-
-  function bewaar() {
-    try {
-      localStorage.setItem('pq-intake-' + (window.PQ_SLUG || 'x'), JSON.stringify(staat));
-    } catch (e) { /* niets aan de hand, de pagina werkt ook zonder */ }
-  }
+  var form = document.getElementById('intakeform');
+  if (!form) return;
+  var dank = document.getElementById('ivr-dank');
+  var fout = document.getElementById('ivr-fout');
 
   var ANTWOORD = {
     positie: {
@@ -114,31 +104,36 @@
     }
   };
 
-  function euro(n) {
-    return '€ ' + Math.round(n).toLocaleString('nl-NL');
+  function euro(n) { return '€ ' + Math.round(n).toLocaleString('nl-NL'); }
+  function veld(naam) {
+    var el = form.elements[naam];
+    if (!el) return '';
+    if (el.length && el[0] && el[0].type === 'radio') {
+      for (var i = 0; i < el.length; i++) if (el[i].checked) return el[i].value;
+      return '';
+    }
+    return String(el.value || '').trim();
   }
 
-  function teken() {
+  /* het voorstel onderaan, dat op zijn antwoorden slaat */
+  function vulVoorstel(a) {
     var doel = document.getElementById('intake-antwoord');
-    if (!doel) return;
-    var rijen = '';
-    if (staat.positie && ANTWOORD.positie[staat.positie]) {
-      rijen += '<div class="aw-r"><b>Je positie</b><span>' +
-               ANTWOORD.positie[staat.positie] + '</span></div>';
+    if (doel) {
+      var rijen = '';
+      if (ANTWOORD.positie[a.positie]) {
+        rijen += '<div class="aw-r"><b>Je positie</b><span>' +
+                 ANTWOORD.positie[a.positie] + '</span></div>';
+      }
+      if (ANTWOORD.partij[a.partij]) {
+        rijen += '<div class="aw-r"><b>Je huidige partij</b><span>' +
+                 ANTWOORD.partij[a.partij] + '</span></div>';
+      }
+      doel.innerHTML = rijen;
     }
-    if (staat.partij && ANTWOORD.partij[staat.partij]) {
-      rijen += '<div class="aw-r"><b>Je huidige partij</b><span>' +
-               ANTWOORD.partij[staat.partij] + '</span></div>';
-    }
-    doel.innerHTML = rijen;
-
     var prijsvak = document.getElementById('intake-prijs');
-    if (!prijsvak) return;
-    var bedrag = parseInt(String(staat.bedrag).replace(/[^0-9]/g, ''), 10);
-    if (!bedrag || bedrag < 100) {
-      prijsvak.hidden = true;
-      return;
-    }
+    if (!prijsvak) return 0;
+    var bedrag = parseInt(String(a.bedrag).replace(/[^0-9]/g, ''), 10);
+    if (!bedrag || bedrag < 100) { prijsvak.hidden = true; return 0; }
     var wij = Math.round(bedrag * 0.8 / 50) * 50;
     prijsvak.hidden = false;
     prijsvak.innerHTML =
@@ -149,49 +144,70 @@
       '<p>Twintig procent onder wat je vandaag kwijt bent, voor het geheel: je vindbaarheid, ' +
       'je advertenties en de artikelen die over je verschijnen. Dat bedrag komt in de ' +
       'overeenkomst te staan, samen met de posities en de datums hierboven.</p>';
+    return wij;
   }
 
-  vak.addEventListener('click', function (e) {
-    var k = e.target.closest('.ivr-k');
-    if (!k) return;
-    var veld = k.parentNode.dataset.veld;
-    staat[veld] = k.dataset.waarde;
-    Array.prototype.forEach.call(k.parentNode.querySelectorAll('.ivr-k'), function (b) {
-      b.setAttribute('aria-pressed', b === k ? 'true' : 'false');
+  function verstuur(a) {
+    var lading = JSON.stringify({
+      soort: 'intake', naam: a.naam, email: a.email,
+      positie: a.positie, partij: a.partij, bedrag: a.bedrag,
+      bedrijf: window.PQ_BEDRIJF, slug: window.PQ_SLUG,
+      klant: window.PQ_KLANT, campagne: window.PQ_CAMPAGNE
     });
-    bewaar();
-    teken();
-    if (window.pqTrack) window.pqTrack('intake-' + veld, staat[veld]);
-  });
-
-  var geld = document.getElementById('ivr-bedrag');
-  if (geld) {
-    geld.addEventListener('input', function () {
-      staat.bedrag = geld.value;
-      bewaar();
-      teken();
-    });
-    geld.addEventListener('change', function () {
-      if (window.pqTrack && staat.bedrag) window.pqTrack('intake-bedrag', staat.bedrag);
-    });
+    var url = window.PQ_TERUGBEL_URL;
+    if (!url) {
+      if (window.console) console.debug('[pique] intake (nog geen endpoint ingesteld)', lading);
+      return;
+    }
+    /* text/plain houdt het een simpele request, zodat een Apps Script-webapp geen
+       preflight hoeft te beantwoorden die hij toch niet kan geven. */
+    fetch(url, {method: 'POST', body: lading, keepalive: true,
+                headers: {'Content-Type': 'text/plain;charset=utf-8'}})
+      .catch(function () {
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(url, new Blob([lading], {type: 'text/plain'}));
+        }
+      });
   }
 
-  /* terugzetten wat hij eerder invulde */
-  Object.keys(staat).forEach(function (veld) {
-    var groep = vak.querySelector('[data-veld="' + veld + '"]');
-    if (groep && staat[veld]) {
-      var k = groep.querySelector('[data-waarde="' + staat[veld] + '"]');
-      if (k) k.setAttribute('aria-pressed', 'true');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = {positie: veld('positie'), partij: veld('partij'), bedrag: veld('bedrag'),
+             naam: veld('naam'), email: veld('email')};
+
+    var mist = [];
+    if (!a.positie) mist.push('waar je nu staat');
+    if (!a.partij) mist.push('hoe het loopt met je huidige partij');
+    if (!parseInt(String(a.bedrag).replace(/[^0-9]/g, ''), 10)) mist.push('je maandbedrag');
+    if (!a.naam) mist.push('je naam');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(a.email)) mist.push('een geldig mailadres');
+    if (mist.length) {
+      fout.hidden = false;
+      fout.textContent = 'We missen nog ' + (mist.length > 1
+        ? mist.slice(0, -1).join(', ') + ' en ' + mist[mist.length - 1] : mist[0]) + '.';
+      return;
+    }
+    fout.hidden = true;
+
+    var wij = vulVoorstel(a);
+    verstuur(a);
+    if (window.pqTrack) window.pqTrack('intake-verstuurd', a.bedrag);
+
+    form.hidden = true;
+    dank.hidden = false;
+    dank.innerHTML =
+      '<h3>Dank je, ' + a.naam.split(' ')[0].replace(/[<>&]/g, '') + '. Je voorstel staat klaar.</h3>' +
+      '<p>Onderaan deze pagina staat wat we vastleggen en wat het kost' +
+      (wij ? ': <strong>' + euro(wij) + ' per maand</strong>' : '') +
+      '. Je krijgt het ook in je mail, zodat je het rustig kunt nalezen.</p>' +
+      '<div class="knoppen">' +
+      '<button class="btn-a" type="button" data-open="sheet" data-tab="plan">' +
+      'Loop het met ons door</button>' +
+      '<a class="btn-b" href="#belofte">Naar mijn voorstel</a></div>';
+    /* de knop in dit blok bestond nog niet toen lp-v2.js zijn luisteraars zette */
+    var plan = dank.querySelector('[data-open="sheet"]');
+    if (plan && window.pqOpenSheet) {
+      plan.addEventListener('click', function () { window.pqOpenSheet('plan'); });
     }
   });
-  if (geld && staat.bedrag) geld.value = staat.bedrag;
-  teken();
-
-  /* De antwoorden gaan mee zodra hij zelf zijn nummer achterlaat. Niet eerder. */
-  var form = document.getElementById('belform');
-  if (form) {
-    form.addEventListener('submit', function () {
-      window.PQ_EXTRA = {positie: staat.positie, partij: staat.partij, bedrag: staat.bedrag};
-    }, true);
-  }
 })();
