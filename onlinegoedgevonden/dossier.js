@@ -83,24 +83,27 @@
   var dank = document.getElementById('ivr-dank');
   var fout = document.getElementById('ivr-fout');
 
+  /* Twee keer tevredenheid, apart gevraagd. De interessantste uitkomst is tevreden
+     over de samenwerking en niet over het resultaat: dan is er geen ruzie en wel een
+     probleem, en dat is precies de reden dat het al zo lang zo blijft. */
   var ANTWOORD = {
-    positie: {
-      ja: 'Je staat op pagina één. Op je eigen naam waarschijnlijk ook. De vraag is of je er ' +
-          'staat op de termen waarop iemand koopt die jou nog niet kent, en dat is precies ' +
-          'waar wij een positie en een datum in het contract zetten.',
-      nee: 'Je staat niet op pagina één. Dat is geen mening en geen inspanningsverplichting: ' +
-           'wij zetten de termen, de positie en de datum in de overeenkomst.',
-      weet: 'Je weet niet waar je staat. Dat is het eerlijkste antwoord dat er is, en het is ' +
-            'meteen het probleem. Wij beginnen met een nulmeting, en die lijst is van jou, ' +
-            'ook als je verder niets met ons doet.'
+    resultaat: {
+      ja: 'Je bent tevreden over het resultaat. Dan is de vraag alleen nog of het ook ' +
+          'goedkoper kan. Hierboven staan vijf dingen die daar het antwoord op geven.',
+      wisselend: 'Het resultaat is wisselend. Dat komt zelden door te weinig inzet en meestal ' +
+                 'door wat er nooit is nagekeken. Hierboven staan vijf dingen die niemand je ' +
+                 'heeft gemeld.',
+      nee: 'Je bent niet tevreden over het resultaat. Dan is de enige vraag nog wanneer je ' +
+           'overstapt, en niet of.'
     },
-    partij: {
-      goed: 'Je bent tevreden over je huidige partij. Dat zegt iets over de samenwerking en ' +
-            'niets over de uitkomst. Hierboven staan vijf bevindingen, en er is er geen ' +
-            'één van bij je gemeld.',
-      wisselend: 'Het gaat wisselend. Dan kost dit gesprek je een kwartier en levert het je ' +
-                 'een tweede mening op over dezelfde rekening.',
-      matig: 'Het loopt niet lekker. Dan is de enige vraag nog wanneer je overstapt, en niet of.'
+    samenwerking: {
+      ja: 'Over de samenwerking ben je wel tevreden. Dat maakt het lastig, en het is precies ' +
+          'de reden dat dit soort dingen blijft liggen. Aardig zijn en gevonden worden zijn ' +
+          'twee verschillende opdrachten.',
+      wisselend: 'De samenwerking loopt wisselend. Dan kost dit gesprek je een kwartier en ' +
+                 'levert het je een tweede mening op over dezelfde rekening.',
+      nee: 'De samenwerking loopt niet lekker. Dan hoef je van ons alleen te weten dat je er ' +
+           'na drie maanden zonder opzegtermijn weer uit kunt.'
     }
   };
 
@@ -120,13 +123,13 @@
     var doel = document.getElementById('intake-antwoord');
     if (doel) {
       var rijen = '';
-      if (ANTWOORD.positie[a.positie]) {
-        rijen += '<div class="aw-r"><b>Je positie</b><span>' +
-                 ANTWOORD.positie[a.positie] + '</span></div>';
+      if (ANTWOORD.resultaat[a.resultaat]) {
+        rijen += '<div class="aw-r"><b>Het resultaat</b><span>' +
+                 ANTWOORD.resultaat[a.resultaat] + '</span></div>';
       }
-      if (ANTWOORD.partij[a.partij]) {
-        rijen += '<div class="aw-r"><b>Je huidige partij</b><span>' +
-                 ANTWOORD.partij[a.partij] + '</span></div>';
+      if (ANTWOORD.samenwerking[a.samenwerking]) {
+        rijen += '<div class="aw-r"><b>De samenwerking</b><span>' +
+                 ANTWOORD.samenwerking[a.samenwerking] + '</span></div>';
       }
       doel.innerHTML = rijen;
     }
@@ -150,7 +153,7 @@
   function verstuur(a) {
     var lading = JSON.stringify({
       soort: 'intake', naam: a.naam, email: a.email,
-      positie: a.positie, partij: a.partij, bedrag: a.bedrag,
+      resultaat: a.resultaat, samenwerking: a.samenwerking, bedrag: a.bedrag,
       bedrijf: window.PQ_BEDRIJF, slug: window.PQ_SLUG,
       klant: window.PQ_KLANT, campagne: window.PQ_CAMPAGNE
     });
@@ -172,12 +175,12 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var a = {positie: veld('positie'), partij: veld('partij'), bedrag: veld('bedrag'),
-             naam: veld('naam'), email: veld('email')};
+    var a = {resultaat: veld('resultaat'), samenwerking: veld('samenwerking'),
+             bedrag: veld('bedrag'), naam: veld('naam'), email: veld('email')};
 
     var mist = [];
-    if (!a.positie) mist.push('waar je nu staat');
-    if (!a.partij) mist.push('hoe het loopt met je huidige partij');
+    if (!a.resultaat) mist.push('of je tevreden bent over het resultaat');
+    if (!a.samenwerking) mist.push('of je tevreden bent over de samenwerking');
     if (!parseInt(String(a.bedrag).replace(/[^0-9]/g, ''), 10)) mist.push('je maandbedrag');
     if (!a.naam) mist.push('je naam');
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(a.email)) mist.push('een geldig mailadres');
