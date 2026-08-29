@@ -38,7 +38,7 @@
 
 <nav id="nav">
   <a href="#top" class="logo" aria-label="Odido"><img src="odido-logo.png" alt="Odido" style="height:22px;width:auto;display:block"></a>
-  <button class="nav-cta" data-open="sheet" data-tab="plan">Even bellen</button>
+  <button class="nav-cta" data-open="sheet" data-tab="bel">Even bellen</button>
 </nav>
 
 <!-- voortgangsrail: waar ben ik, hoeveel komt er nog -->
@@ -152,7 +152,7 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Waar het samenkomt</div>
-        <p class="ch-pivot">Twee vloten, twee vestigingsnetwerken en twee administraties worden &eacute;&eacute;n. Alles wat daaronder hangt komt daarmee tegelijk op tafel: de abonnementen, de apparatuur in de cabine en de verbindingen tussen de locaties.</p>
+        <p class="ch-pivot">Twee vloten en twee vestigingsnetwerken worden &eacute;&eacute;n administratie. Alles wat daaronder hangt komt daarmee tegelijk op tafel.</p>
         <div class="tl">
           <div class="tl-rail">
             <div class="tl-i" style="--dl:.2s"><span class="d"></span><b>4 jun</b><span>overname bekend</span></div>
@@ -173,7 +173,7 @@
     <p class="ask-hand">Zal ik je hier gewoon even over bellen?</p>
     <p class="ask-sub">Hieronder staat wat wij zouden doen. Wil je dat liever horen dan lezen, dan pak ik de telefoon. Twintig minuten, en je verbindt je nergens aan.</p>
     <div class="ask-btns">
-      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
+      <button class="btn-a" data-open="sheet" data-tab="bel">Ja, bel me hierover</button>
       <button class="btn-b" id="askread">Ik lees eerst verder</button>
     </div>
     <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
@@ -249,7 +249,7 @@
     <h2 class="cta-h reveal">Even bijpraten?</h2>
     <p class="cta-sub reveal">Twintig minuten. Aan het eind weet je wat er onder beide bedrijven hangt en wanneer het afloopt, ook als je verder niets met ons doet.</p>
     <div class="cta-btns reveal">
-      <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
+      <button class="btn-a" data-open="sheet" data-tab="bel">Laat je nummer achter</button>
       <button class="btn-b" style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
     </div>
     <p class="cta-alt reveal">Liever eerst even schriftelijk? <a href="mailto:zakelijk@odido.nl?subject=Ewals%20Cargo%20Care">Mail een korte vraag.</a></p>
@@ -264,7 +264,7 @@
 <!-- rustige dock, verschijnt pas na het kantelpunt -->
 <div class="dock" id="dock">
   <span class="dock-t"><b>Even bellen over wat er nu speelt?</b> 20 minuten.</span>
-  <button class="dock-b" data-open="sheet" data-tab="plan">Plannen</button>
+  <button class="dock-b" data-open="sheet" data-tab="bel">Plannen</button>
   <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
 </div>
 
@@ -278,22 +278,10 @@
       <div><div class="n">20 minuten met Odido Zakelijk</div><div class="s">Video of telefoon, jij kiest.</div></div>
     </div>
     </div>
-    <div class="sheet-tabs">
-      <button class="on" data-tab="plan">Zelf een moment kiezen</button>
-      <button data-tab="bel">Laat mij terugbellen</button>
-    </div>
+    
     <div class="panes">
-    <div class="pane on" id="pane-plan">
-      <div id="cal-wrap">
-        <div id="cal-embed"></div>
-        <div class="cal-skel" id="calskel">
-          <div class="kop"></div>
-          <div class="grid"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u><u class="o"></u><u></u><u></u><u class="o"></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u></div>
-          <div class="glans"></div>
-        </div>
-      </div>
-    </div>
-    <div class="pane" id="pane-bel">
+    <div class="pane" id="pane-plan"></div>
+    <div class="pane on" id="pane-bel">
       <form id="belform">
         <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" value="Bram" required></div>
         <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
@@ -313,5 +301,9 @@
 </div>
 
 <script src="lp-v2.js"></script>
+<script>
+  /* Deze voorbeeldpagina heeft geen eigen agenda, dus de embed blijft uit. */
+  window.pqWarmCal = function(){};
+</script>
 </body>
 </html>
