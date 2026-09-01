@@ -34,8 +34,8 @@
   /* Eigen regels: een zaak met klanten over de vloer heeft een toonbank, een bedrijf
      dat offertes maakt een bureau. De hero zegt
      hetzelfde, anders landt de kaart op een plek met een andere tekst eronder. */
-  window.PIQUE_INTRO     = { bedrijf: 'Klimavisie', merk: false,
-                             regels: ['Deze kaart lag niet toevallig|op je bureau.',
+  window.PIQUE_INTRO     = { bedrijf: 'Klimavisie', merk: false, voornaam: 'Davey',
+                             regels: ['Hoi {voornaam}.', 'Deze kaart lag niet toevallig|op je bureau.',
                                       'Ik keek een tijd naar {bedrijf}.',
                                       '*Wil je weten wat ik zag?*'] };
 </script>
@@ -63,7 +63,7 @@
     <div class="hero-left">
       <div class="slot" id="slot">
         <div class="slot-card" id="slotcard">
-          <div class="h">Deze kaart lag niet<br>toevallig op je bureau.<br>Ik keek een tijd naar <em>Klimavisie</em>.</div>
+          <div class="h">Hoi Davey.<br>Deze kaart lag niet<br>toevallig op je bureau.<br>Ik keek een tijd naar <em>Klimavisie</em>.</div>
           <div class="sig">Murphy</div>
         </div>
         <span class="slot-tag">De kaart op je bureau</span>
