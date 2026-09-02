@@ -106,6 +106,11 @@
 .faq-item:last-child{border-bottom:1px solid var(--line)}
 .faq-q{font-weight:600;font-size:1.02rem;color:var(--ink);margin-bottom:.4rem}
 .faq-a{font-size:.96rem;line-height:1.65;color:var(--ink2)}
+.vhero{background:var(--donker);padding:0 clamp(1.25rem,4vw,3rem) clamp(3rem,7vh,5.5rem)}
+.vhero-in{max-width:900px;margin:0 auto}
+.vhero .vframe{width:100%;aspect-ratio:16/9;border-radius:var(--r-blok);overflow:hidden;background:var(--video-bg);box-shadow:0 40px 100px rgba(0,0,0,.45);border:1px solid rgba(var(--wit-rgb),.08)}
+.vhero .vframe video{width:100%;height:100%;object-fit:cover;display:block}
+.vhero-label{text-align:center;color:rgba(var(--wit-rgb),.5);font-size:.82rem;margin-top:1rem;letter-spacing:.02em}
 </style>
 </head>
 <body>
@@ -144,14 +149,18 @@
         <span class="chip">2 minuten lezen</span>
         <span class="chip">Van Patrick, WegMetExcel</span>
       </div>
-      <button class="vrow" id="vrow" type="button">
-        <span class="vthumb"><span class="vring"></span><img src="patrick-intro-poster.jpg" alt=""><span class="vplay"></span></span>
-        <span><b>Liever horen dan lezen?</b>Patrick neemt je mee in het kort</span>
-      </button>
       <div class="scrollcue"><i></i><span>Scroll</span></div>
     </div>
   </div>
 </header>
+<section class="vhero">
+  <div class="vhero-in">
+    <div class="vframe" id="vframe"></div>
+    <p class="vhero-label">Een kort woord van Patrick</p>
+  </div>
+  <script>(function(){var f=document.getElementById('vframe');if(f&&window.PQ_VIDEO){f.innerHTML='<video controls preload="metadata" playsinline poster="'+(window.PQ_POSTER||'')+'"><source src="'+window.PQ_VIDEO+'" type="video/mp4"></video>';}})();</script>
+</section>
+
 
 <main class="journey" id="journey">
   <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true">
