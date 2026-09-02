@@ -333,14 +333,28 @@ if (askread) askread.addEventListener('click', function(){
     if (naam === 'plan') laadCal();
   }
   function laadCal(){
+    /* Zonder eigen agenda geen agenda. Terugvallen op de kalender van Pique zet
+       op een klantpagina de verkeerde persoon in beeld. De tab verdwijnt dan. */
+    if (!window.PQ_CAL) { geenAgenda(); return; }
     if (calGeladen) return; calGeladen = true;
     (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d2 = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d2.head.appendChild(d2.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
     Cal("init","belafspraak-pique",{origin:"https://cal.com"});
-    Cal.ns["belafspraak-pique"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:(window.PQ_CAL || "simon-kempers/belafspraak-pique")});
+    Cal.ns["belafspraak-pique"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:window.PQ_CAL});
     Cal.ns["belafspraak-pique"]("on",{action:"bookingSuccessful",callback:function(){ pqTrack('afspraak-geboekt'); }});
     Cal.ns["belafspraak-pique"]("on",{action:"linkReady",callback:klaarMetLaden});
     /* Vangnet: reageert cal niet, dan gaat het skelet na 12s toch weg. */
     setTimeout(klaarMetLaden, 12000);
+  }
+  function geenAgenda(){
+    var tab = sheet.querySelector('.sheet-tabs button[data-tab="plan"]');
+    var pane = document.getElementById('pane-plan');
+    if (tab) tab.remove();
+    if (pane) pane.remove();
+    var tabs = sheet.querySelector('.sheet-tabs');
+    if (tabs) tabs.style.display = 'none';
+    tab = sheet.querySelector('.sheet-tabs button[data-tab="bel"]');
+    var bel = document.getElementById('pane-bel');
+    if (bel) bel.classList.add('on');
   }
   function klaarMetLaden(){
     var sk = document.getElementById('calskel');
