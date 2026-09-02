@@ -9,7 +9,8 @@
      window.PQ_BEDRIJF      = 'Odido Zakelijk';
      window.PQ_KLANT        = 'pique';        // sleutel uit KLANTEN in Terugbelverzoek.gs
      window.PQ_CAMPAGNE     = 'grote-merken'; // vrije naam, om later op te filteren
-     window.PQ_SCHRIJF      = true;           // kantelpunt schrijft zichzelf
+     window.PQ_SCHRIJF      = true;           // kantelpunt wordt een geschreven briefje
+     window.PQ_AFZENDER     = 'Simon';        // ondertekening onder dat briefje
      window.PQ_DOCK_NA      = 0.75;           // dock pas na dit deel van de pagina
      window.PQ_CAL          = 'simon-kempers/belafspraak-pique';
      window.PQ_VIDEO        = 'simon-staand.mp4';
@@ -173,20 +174,35 @@ function bijScroll(){
   });
 }
 
-/* ══ 3b. HET KANTELPUNT SCHRIJFT ZICHZELF ══
-   Sneller dan de kaart bij binnenkomst: daar heb je nog niets gelezen en mag
-   het duren, hier ben je al halverwege en wil je door. */
+/* ══ 3b. HET KANTELPUNT ALS GESCHREVEN BRIEFJE ══
+   Halverwege komt de kaart terug. Het donkere blok wordt papier, de zin komt
+   in hetzelfde handschrift, en hij wordt geschreven terwijl je kijkt. Sneller
+   dan bij binnenkomst, want daar had je nog niets gelezen en hier wil je door. */
 (function(){
   if (!window.PQ_SCHRIJF) return;
   var blok = document.querySelector('.chapter.pivot');
   var zin = blok && blok.querySelector('.ch-pivot');
   if (!zin) return;
+  blok.classList.add('brief');
+
+  /* De tijdlijn hoort niet ín een handgeschreven briefje. Die gaat eronder,
+     buiten het papier, en krijgt daar de lichte kleuren. */
+  var tl = blok.querySelector('.tl');
+  if (tl) { tl.classList.add('los'); blok.querySelector('.ch-inner').appendChild(tl); }
+
+  /* Een brief eindigt met een naam. Dat maakt van een uitspraak een bericht. */
+  var sig = document.createElement('div');
+  sig.className = 'brief-sig';
+  sig.textContent = window.PQ_AFZENDER || 'Simon';
+  zin.parentNode.insertBefore(sig, zin.nextSibling);
+
   var traag = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  blok.classList.add('schrijft');
   if (traag) { blok.classList.add('klaar'); return; }
 
   /* Elk teken een eigen span, maar woorden in een nowrap-wikkel. Zonder die
-     wikkel mag de browser midden in een woord afbreken. */
+     wikkel mag de browser midden in een woord afbreken. Alle spans staan er
+     meteen in, alleen nog onzichtbaar, zodat het papier vanaf het begin zijn
+     eindhoogte heeft en er niets verspringt tijdens het schrijven. */
   var tekst = zin.textContent;
   zin.textContent = '';
   var tekens = [], woord = null;
@@ -202,38 +218,44 @@ function bijScroll(){
     tekens.push(sp);
   }
 
-  var tempo = window.PQ_SCHRIJF_TEMPO || 11;   // ms per teken
+  var tempo = window.PQ_SCHRIJF_TEMPO || 13;   // ms per teken; de kaart doet 30
   var bezig = false;
+
+  function schrijf(){
+    var i = 0;
+    (function stap(){
+      /* Per beurt een paar tekens, anders zet je honderden timers aan. */
+      var eind = Math.min(tekens.length, i + Math.max(1, Math.round(16 / tempo)));
+      for (; i < eind; i++) tekens[i].classList.add('aan');
+      if (i < tekens.length) setTimeout(stap, tempo);
+      else setTimeout(function(){ blok.classList.add('klaar'); pqTrack('kantelpunt-gelezen'); }, 300);
+    })();
+  }
+  function alles(){
+    tekens.forEach(function(t){ t.classList.add('aan'); });
+    blok.classList.add('klaar');
+  }
+
+  /* Geen drempel op het blok zelf: met de tijdlijn eronder is het kantelpunt op
+     een laptop hoger dan het venster, en dan wordt een percentage nooit gehaald.
+     Een marge die alleen de middenband van het scherm overhoudt werkt bij elke
+     hoogte, want daar komt het blok altijd doorheen. */
   var io2 = new IntersectionObserver(function(es){
     es.forEach(function(e){
       if (!e.isIntersecting || bezig) return;
-      bezig = true; io2.disconnect();
-      var i = 0;
-      (function stap(){
-        /* Per frame een paar tekens, anders zet je honderden timers aan. */
-        var eind = Math.min(tekens.length, i + Math.max(1, Math.round(16 / tempo)));
-        for (; i < eind; i++) tekens[i].classList.add('aan');
-        if (i < tekens.length) setTimeout(stap, tempo);
-        else setTimeout(function(){ blok.classList.add('klaar'); pqTrack('kantelpunt-gelezen'); }, 260);
-      })();
+      bezig = true; io2.disconnect(); schrijf();
     });
-  /* Geen threshold op het blok zelf: met de tijdlijn erin is het kantelpunt op
-     een laptop hoger dan het venster, en dan wordt 55 procent nooit gehaald.
-     Een marge die alleen de middenband van het scherm overhoudt werkt bij elke
-     hoogte, want daar komt het blok altijd doorheen. */
   }, {threshold:0, rootMargin:'-30% 0px -30% 0px'});
   io2.observe(blok);
 
-  /* Vangnet. Scrollt iemand er in één ruk voorbij, of levert de waarnemer om
-     wat voor reden dan ook niets, dan blijft de zin anders onzichtbaar en zie
-     je een leeg blok. In dat geval zetten we hem in één keer aan. */
+  /* Vangnet. Scrollt iemand er in een ruk voorbij, of levert de waarnemer om
+     wat voor reden dan ook niets, dan blijft het papier anders leeg. */
   addEventListener('scroll', function vangnet(){
     if (bezig) { removeEventListener('scroll', vangnet); return; }
     if (blok.getBoundingClientRect().bottom < 0) {
       bezig = true; io2.disconnect();
       removeEventListener('scroll', vangnet);
-      tekens.forEach(function(t){ t.classList.add('aan'); });
-      blok.classList.add('klaar');
+      alles();
     }
   }, {passive:true});
 })();
