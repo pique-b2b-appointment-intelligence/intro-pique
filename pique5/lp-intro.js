@@ -192,7 +192,6 @@
   function begin(){
     if (gestart) return; gestart = true;
     setTimeout(function(){ card.classList.add('in'); }, 60);
-    setTimeout(function(){ if (read) read.classList.add('in'); }, 900);
     setTimeout(schrijf, 620);
   }
   if (document.fonts && document.fonts.load) document.fonts.load('600 2rem Caveat').then(begin, begin);

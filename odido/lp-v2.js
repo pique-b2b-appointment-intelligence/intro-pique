@@ -9,6 +9,9 @@
      window.PQ_BEDRIJF      = 'Odido Zakelijk';
      window.PQ_KLANT        = 'pique';        // sleutel uit KLANTEN in Terugbelverzoek.gs
      window.PQ_CAMPAGNE     = 'grote-merken'; // vrije naam, om later op te filteren
+     window.PQ_SCHRIJF      = false;          // briefje halverwege uitzetten (staat standaard aan)
+     window.PQ_AFZENDER     = 'Murphy';       // ondertekening; anders die van de kaart
+     window.PQ_DOCK_NA      = 0.75;           // deel van de pagina waarna de dock komt
      window.PQ_CAL          = 'simon-kempers/belafspraak-pique';
      window.PQ_VIDEO        = 'simon-staand.mp4';
      window.PQ_POSTER       = 'simon-staand-poster.jpg';
@@ -171,6 +174,105 @@ function bijScroll(){
   });
 }
 
+/* ══ 3b. HET KANTELPUNT ALS GESCHREVEN BRIEFJE ══
+   Halverwege komt de kaart terug. Het donkere blok wordt papier, de zin komt
+   in hetzelfde handschrift, en hij wordt geschreven terwijl je kijkt. Sneller
+   dan bij binnenkomst, want daar had je nog niets gelezen en hier wil je door. */
+(function(){
+  if (window.PQ_SCHRIJF === false) return;
+  var blok = document.querySelector('.chapter.pivot');
+  var zin = blok && blok.querySelector('.ch-pivot');
+  if (!zin) return;
+  blok.classList.add('brief');
+
+  /* De tijdlijn hoort niet ín een handgeschreven briefje. Die gaat eronder,
+     buiten het papier, en krijgt daar de lichte kleuren. */
+  var tl = blok.querySelector('.tl');
+  if (tl) { tl.classList.add('los'); blok.querySelector('.ch-inner').appendChild(tl); }
+
+  /* Een brief eindigt met een naam. Dat maakt van een uitspraak een bericht.
+     De naam staat al op de kaart in de hero, dus die nemen we over. Zo tekent
+     een klantpagina met de afzender van die klant en niet met Simon. */
+  var naam = window.PQ_AFZENDER;
+  if (!naam) {
+    var opkaart = document.querySelector('.slot-card .sig');
+    naam = opkaart ? opkaart.textContent.trim() : '';
+  }
+  /* Staat daar de bedrijfsnaam in plaats van een persoon, dan onderteken je
+     met het bedrijf van de ontvanger. Liever geen naam dan de verkeerde. */
+  if (naam && window.PQ_BEDRIJF &&
+      naam.toLowerCase() === String(window.PQ_BEDRIJF).toLowerCase()) naam = '';
+  if (naam) {
+    var sig = document.createElement('div');
+    sig.className = 'brief-sig';
+    sig.textContent = naam;
+    zin.parentNode.insertBefore(sig, zin.nextSibling);
+  }
+
+  var traag = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (traag) { blok.classList.add('klaar'); return; }
+
+  /* Elk teken een eigen span, maar woorden in een nowrap-wikkel. Zonder die
+     wikkel mag de browser midden in een woord afbreken. Alle spans staan er
+     meteen in, alleen nog onzichtbaar, zodat het papier vanaf het begin zijn
+     eindhoogte heeft en er niets verspringt tijdens het schrijven. */
+  var tekst = zin.textContent;
+  zin.textContent = '';
+  var tekens = [], woord = null;
+  for (var i = 0; i < tekst.length; i++) {
+    var c = tekst[i];
+    var sp = document.createElement('span');
+    sp.className = 'pc'; sp.textContent = c;
+    if (c === ' ' || c === '\n') { woord = null; zin.appendChild(sp); }
+    else {
+      if (!woord) { woord = document.createElement('span'); woord.className = 'pw'; zin.appendChild(woord); }
+      woord.appendChild(sp);
+    }
+    tekens.push(sp);
+  }
+
+  var tempo = window.PQ_SCHRIJF_TEMPO || 13;   // ms per teken; de kaart doet 30
+  var bezig = false;
+
+  function schrijf(){
+    var i = 0;
+    (function stap(){
+      /* Per beurt een paar tekens, anders zet je honderden timers aan. */
+      var eind = Math.min(tekens.length, i + Math.max(1, Math.round(16 / tempo)));
+      for (; i < eind; i++) tekens[i].classList.add('aan');
+      if (i < tekens.length) setTimeout(stap, tempo);
+      else setTimeout(function(){ blok.classList.add('klaar'); pqTrack('kantelpunt-gelezen'); }, 300);
+    })();
+  }
+  function alles(){
+    tekens.forEach(function(t){ t.classList.add('aan'); });
+    blok.classList.add('klaar');
+  }
+
+  /* Geen drempel op het blok zelf: met de tijdlijn eronder is het kantelpunt op
+     een laptop hoger dan het venster, en dan wordt een percentage nooit gehaald.
+     Een marge die alleen de middenband van het scherm overhoudt werkt bij elke
+     hoogte, want daar komt het blok altijd doorheen. */
+  var io2 = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting || bezig) return;
+      bezig = true; io2.disconnect(); schrijf();
+    });
+  }, {threshold:0, rootMargin:'-30% 0px -30% 0px'});
+  io2.observe(blok);
+
+  /* Vangnet. Scrollt iemand er in een ruk voorbij, of levert de waarnemer om
+     wat voor reden dan ook niets, dan blijft het papier anders leeg. */
+  addEventListener('scroll', function vangnet(){
+    if (bezig) { removeEventListener('scroll', vangnet); return; }
+    if (blok.getBoundingClientRect().bottom < 0) {
+      bezig = true; io2.disconnect();
+      removeEventListener('scroll', vangnet);
+      alles();
+    }
+  }, {passive:true});
+})();
+
 /* ══ 4. RAIL + VOORTGANGSBALK. Weten waar je bent halveert het wegklikken. ══ */
 var rail = document.getElementById('rail'), railLinks = [].slice.call(rail.querySelectorAll('a'));
 var mbar = document.getElementById('mbar');
@@ -189,9 +291,17 @@ var dock = document.getElementById('dock'), pivot = document.getElementById('s3'
 var dockWeg = false;
 document.getElementById('dockx').addEventListener('click', function(){ dockWeg = true; dock.classList.remove('up'); pqTrack('dock-weggeklikt'); });
 function dockUpdate(){
-  var na = pivot.getBoundingClientRect().bottom < innerHeight * .5;
-  if (na && window.pqWarmCal) window.pqWarmCal();
+  /* De agenda alvast warm draaien mag zodra het kantelpunt voorbij is, want dat
+     kost de bezoeker niets. De dock zelf komt later: op het kantelpunt heeft hij
+     de vraag net gelezen en is een balk in beeld opdringerig. */
+  if (pivot.getBoundingClientRect().bottom < innerHeight * .5 && window.pqWarmCal) window.pqWarmCal();
   if (dockWeg || document.getElementById('sheet').classList.contains('open')) { dock.classList.remove('up'); return; }
+  /* Met PQ_DOCK_NA komt de dock op een deel van de paginahoogte. Zonder,
+     op het oude moment: zodra het kantelpunt voorbij is. Zolang niet alle
+     batches zijn nagelopen staan die twee naast elkaar. */
+  var hoogte = document.documentElement.scrollHeight - innerHeight;
+  var deel = hoogte > 0 ? scrollY / hoogte : 0;
+  var na = deel >= (typeof window.PQ_DOCK_NA === 'number' ? window.PQ_DOCK_NA : 0.75);
   var bij = cta.getBoundingClientRect().top < innerHeight * .85;
   var aan = na && !bij;
   dock.classList.toggle('up', aan);

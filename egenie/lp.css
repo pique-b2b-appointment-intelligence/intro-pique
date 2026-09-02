@@ -73,6 +73,9 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
 .hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle at 50% 0,rgba(var(--accent-rgb),.1),transparent 55%);pointer-events:none}
 .hero-inner{position:relative;max-width:1020px;margin:0 auto;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:center}
 .hero-left{position:relative}
+/* De videorij mag links onder de kaart staan in plaats van rechts onder de kop.
+   Zet de knop dan in .hero-left; de rij centreert zich onder de kaart. */
+.hero-left .vrow{margin:3.2rem auto 0}   /* ruimte laten voor het label onder de kaart */
 /* de landingsplek van de kaart */
 .slot{position:relative;width:100%;max-width:300px;margin:0 auto;aspect-ratio:5/4}
 .slot-card{position:absolute;inset:0;background:linear-gradient(177deg,var(--pap-1) 0%,var(--pap-2) 100%);border-radius:6px;padding:1.5rem 1.4rem;
@@ -177,7 +180,7 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
   box-shadow:0 26px 26px -14px rgba(var(--ink-rgb),.34);
   transform:rotate(var(--tilt));pointer-events:none}
 /* plakband */
-.find .ch-body::before{
+.find:not(.geen-tape) .ch-body::before{
   content:'';position:absolute;top:-13px;left:50%;width:104px;height:27px;
   transform:translateX(-50%) rotate(var(--tape));
   background:linear-gradient(105deg,rgba(var(--wit-rgb),.5),rgba(var(--tape-rgb),.62) 42%,rgba(var(--wit-rgb),.42));
@@ -191,20 +194,21 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .f-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:.55rem}
 /* het nummer met de hand, niet in een display-serif */
-.f-num{font-family:var(--hand);font-weight:700;font-size:2.9rem;line-height:.8;color:var(--inkt)}
-.f-num .of{font-family:var(--hand);font-weight:600;font-size:1.2rem;color:rgba(var(--ink-rgb),.32);margin-left:.15rem}
-.f-tag{font-family:var(--hand);font-size:1.02rem;font-weight:600;color:rgba(var(--ink-rgb),.4);white-space:nowrap;transform:rotate(-1deg)}
-.f-kop{font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,2.1vw,1.68rem);line-height:1.18;letter-spacing:-.012em;margin:0 0 .7rem;position:relative;z-index:1}
+.f-num{font-family:var(--hand);font-weight:700;font-size:2.9rem;line-height:.8;color:var(--pap-inkt,var(--inkt))}
+.f-num .of{font-family:var(--hand);font-weight:600;font-size:1.2rem;color:var(--pap-ink3,rgba(var(--ink-rgb),.32));margin-left:.15rem}
+.f-tag{font-family:var(--hand);font-size:1.02rem;font-weight:600;color:var(--pap-ink3,rgba(var(--ink-rgb),.4));white-space:nowrap;transform:rotate(-1deg)}
+.f-kop{color:var(--pap-ink,var(--ink));font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,2.1vw,1.68rem);line-height:1.18;letter-spacing:-.012em;margin:0 0 .7rem;position:relative;z-index:1}
 /* onderstreping met de hand */
 /* De streep is een masker en geen plaatje. In een data-URI kun je geen token zetten,
    dus stond de kleur er hard in: bij OGG kreeg je een groene pagina met een amberen
    streep. Een masker neemt de kleur van de achtergrond eronder, en die komt wel uit
    een token. Let op bij een controle op vaste kleuren: %23 is ook een #. */
-.f-kop::after{content:'';position:absolute;left:0;right:12%;bottom:-5px;height:6px;
+.find:not(.geen-streep) .f-kop::after{content:'';position:absolute;left:0;right:12%;bottom:-5px;height:6px;
   background:rgba(var(--inkt-rgb),.5);
   -webkit-mask:no-repeat center/100% 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 6' preserveAspectRatio='none'%3E%3Cpath d='M1 4.2C40 1.8 88 1.2 199 3' stroke='black' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   mask:no-repeat center/100% 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 6' preserveAspectRatio='none'%3E%3Cpath d='M1 4.2C40 1.8 88 1.2 199 3' stroke='black' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
-.find .ch-text{position:relative;z-index:1;color:rgba(var(--ink-rgb),.72)}
+.find .ch-text strong{color:var(--pap-ink,var(--ink))}
+.find .ch-text{position:relative;z-index:1;color:var(--pap-ink2,rgba(var(--ink-rgb),.72))}
 /* het bewijs als uitgeknipt stukje, met een gescheurde onderrand */
 .f-bewijs{position:relative;z-index:1;margin:1.35rem .2rem .35rem;background:var(--pap-0);
   padding:.9rem 1rem 1.15rem;transform:rotate(calc(var(--tilt) * -1.9));
@@ -213,10 +217,10 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
 .f-bewijs::before{content:'';position:absolute;top:-9px;left:14px;width:56px;height:19px;
   transform:rotate(-6deg);background:linear-gradient(100deg,rgba(var(--wit-rgb),.55),rgba(var(--tape-rgb),.6));
   box-shadow:0 1px 2px rgba(var(--ink-rgb),.14)}
-.f-quote{font-family:var(--serif);font-weight:400;font-size:.98rem;line-height:1.5;color:var(--ink)}
-.f-meta{display:flex;align-items:center;gap:.5rem;margin-top:.6rem;font-size:.68rem;color:var(--ink3);font-weight:500;flex-wrap:wrap;letter-spacing:.02em}
-.f-meta .dom{color:var(--ink2);font-weight:600}
-.f-meta .sep{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
+.f-quote{font-family:var(--serif);font-weight:400;font-size:.98rem;line-height:1.5;color:var(--pap-ink,var(--ink))}
+.f-meta{display:flex;align-items:center;gap:.5rem;margin-top:.6rem;font-size:.68rem;color:var(--pap-ink3,var(--ink3));font-weight:500;flex-wrap:wrap;letter-spacing:.02em}
+.f-meta .dom{color:var(--pap-ink2,var(--ink2));font-weight:600}
+.f-meta .sep{width:3px;height:3px;border-radius:50%;background:var(--pap-ink3,var(--ink3))}
 /* gestapelde reveal binnen het papiertje */
 .find .ch-body>*{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .find.in .ch-body>*{opacity:1;transform:none}
@@ -257,8 +261,6 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
 .tl-i b{display:block;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-l)}
 .tl-i span{display:block;font-size:.8rem;color:rgba(var(--wit-rgb),.55);line-height:1.35;margin-top:.28rem}
 .tl-i.nu .d{width:13px;height:13px;top:-1.55rem;background:var(--accent-l);box-shadow:0 0 0 5px rgba(var(--accent-rgb),.2)}
-.chapter.pivot.in .tl-i.nu .d{animation:nupuls 2.4s ease-in-out 1.2s infinite}
-@keyframes nupuls{0%,100%{box-shadow:0 0 0 5px rgba(var(--accent-rgb),.18)}50%{box-shadow:0 0 0 11px rgba(var(--accent-rgb),.05)}}
 .tl-i.nu b{color:var(--wit)}
 .tl-hand{font-family:var(--hand);font-size:1.15rem;color:rgba(var(--wit-rgb),.42);text-align:center;margin-top:1.4rem;transform:rotate(-.8deg)}
 @media(max-width:640px){
@@ -273,14 +275,82 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
   .tl-hand{text-align:left;margin-left:1.5rem}
 }
 
-.chapter.phase .ch-dot{width:15px;height:15px;top:-2.1rem}
+/* 5c-ter. HET KANTELPUNT ALS GESCHREVEN BRIEFJE
+   Halverwege komt de kaart terug, nu met de zin waar het op uitkomt. Zelfde
+   papier, zelfde handschrift en dezelfde inkt als de kaart bij binnenkomst,
+   alleen sneller geschreven: daar had je nog niets gelezen, hier wil je door. */
+.chapter.pivot.brief .ch-body{
+  position:relative;color:var(--hand-ink);
+  background:linear-gradient(174deg,var(--pap-1) 0%,var(--pap-2) 100%);
+  border-radius:var(--r-pap);
+  padding:clamp(2.4rem,5vw,3.6rem) clamp(1.9rem,4.2vw,3rem) clamp(2rem,4vw,2.8rem);
+  transform:rotate(-.8deg);
+  box-shadow:0 1px 2px rgba(var(--ink-rgb),.12),0 28px 54px -26px rgba(var(--ink-rgb),.5)}
+/* plakband, net als op de papiertjes bij de bevindingen */
+.chapter.pivot.brief .ch-body::before{
+  content:'';position:absolute;top:-14px;left:50%;width:118px;height:29px;
+  transform:translateX(-50%) rotate(3deg);
+  background:linear-gradient(105deg,rgba(var(--wit-rgb),.5),rgba(var(--tape-rgb),.62) 42%,rgba(var(--wit-rgb),.42));
+  box-shadow:0 1px 3px rgba(var(--ink-rgb),.16);opacity:.9}
+/* papiervezel */
+.chapter.pivot.brief .ch-body::after{
+  content:'';position:absolute;inset:0;border-radius:var(--r-pap);pointer-events:none;
+  opacity:.2;mix-blend-mode:multiply;background-size:130px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.chapter.pivot.brief .ch-eyebrow{color:var(--inkt);position:relative;z-index:1}
+.chapter.pivot.brief .ch-pivot{
+  position:relative;z-index:1;
+  font-family:var(--hand);font-weight:600;letter-spacing:0;
+  font-size:clamp(1.45rem,2.9vw,2.05rem);line-height:1.5;
+  color:var(--hand-ink);text-align:left}
+.chapter.pivot.brief .ch-inner{width:min(620px,92%)}
+/* de ondertekening komt pas als de zin af is */
+.brief-sig{position:relative;z-index:1;font-family:var(--hand);font-size:1.7rem;
+  color:var(--hand-ink);margin-top:1.3rem;text-align:left;
+  opacity:0;transform:translateY(6px);transition:opacity .6s ease,transform .6s var(--ease)}
+.brief.klaar .brief-sig{opacity:.78;transform:none}
+/* De dot van de journeylijn zit standaard net boven het blok. Op het briefje
+   staat daar het plakband, dus hij gaat een stukje hoger en de lijn volgt. */
+.chapter.pivot.brief .ch-dot{top:-3.1rem}
+
+/* het schrijven zelf: zelfde inktlanding als de kaart bij binnenkomst */
+.ch-pivot .pw{white-space:nowrap}
+.ch-pivot .pc{display:inline-block;white-space:pre;opacity:0;filter:blur(4px);transform:translateY(2px);
+  transition:opacity .16s ease,filter .22s ease,transform .22s ease}
+.ch-pivot .pc.aan{opacity:1;filter:blur(0);transform:none}
+
+/* de tijdlijn hangt nu onder het briefje, dus in de lichte kleuren */
+.tl.los{max-width:620px;margin:clamp(2rem,4vw,3rem) auto 0;padding-top:1.5rem;
+  border-top:1px solid var(--line);opacity:0;transform:translateY(10px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.brief.klaar .tl.los{opacity:1;transform:none}
+.tl.los .tl-rail::before{background:linear-gradient(90deg,var(--line),var(--accent))}
+.tl.los .tl-i .d{background:rgba(var(--ink-rgb),.18)}
+.chapter.pivot.in .tl.los .tl-i .d{background:var(--accent)}
+.tl.los{border-top-color:var(--line)}
+.tl.los .tl-i b{color:var(--inkt)}
+.tl.los .tl-i span{color:var(--ink2)}
+.tl.los .tl-hand{color:var(--ink3)}
+.tl.los .tl-i.nu .d{background:var(--accent);box-shadow:0 0 0 5px rgba(var(--accent-rgb),.16)}
+.tl.los .tl-i.nu b{color:var(--ink)}
+.chapter.pivot.in .tl.los .tl-i .d{background:var(--accent)}
+@media(max-width:640px){
+  .tl.los .tl-rail::before{background:linear-gradient(180deg,var(--line),var(--accent))}
+}
+@media(prefers-reduced-motion:reduce){
+  .ch-pivot .pc{opacity:1!important;filter:none!important;transform:none!important}
+  .brief-sig,.tl.los{opacity:1!important;transform:none!important}
+}
 
 /* 5d. HET AANBOD OM TE BELLEN, HALVERWEGE EN IN DE LIJN */
 .ask{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 clamp(1.25rem,3vw,2rem)}
 .ask-in{max-width:620px;margin:0 auto;background:var(--wit);border:1px solid rgba(var(--accent-rgb),.3);border-radius:var(--r-kaart);padding:clamp(1.6rem,3.2vw,2.2rem);text-align:center;box-shadow:0 30px 70px -40px rgba(var(--ink-rgb),.35);opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .ask.in .ask-in{opacity:1;transform:none}
-.ask-hand{font-family:var(--hand);font-size:clamp(1.4rem,2.4vw,1.75rem);color:var(--ink);line-height:1.3}
-.ask-sub{font-size:.95rem;color:var(--ink2);margin:.7rem auto 0;max-width:40ch;line-height:1.6}
+.ask-hand{font-family:var(--hand);font-size:clamp(1.4rem,2.4vw,1.75rem);color:var(--pap-ink,var(--ink));line-height:1.3}
+.ask-sub{font-size:.95rem;color:var(--pap-ink2,var(--ink2));margin:.7rem auto 0;max-width:40ch;line-height:1.6}
+.ask .btn-b{color:var(--pap-ink2,var(--ink2));border-color:var(--pap-line,var(--line))}
+.ask .btn-b:hover{border-color:var(--pap-ink3,var(--ink3));color:var(--pap-ink,var(--ink))}
+.ask .ask-later,.ask .ask-later button{color:var(--pap-ink3,var(--ink3))}
 .ask-btns{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:1.35rem}
 .btn-a{display:inline-flex;align-items:center;gap:.55rem;font-size:.9rem;font-weight:600;color:var(--op-accent);background:var(--accent-l);border:none;border-radius:var(--r-pil);padding:.85rem 1.6rem;cursor:pointer;text-decoration:none;box-shadow:0 12px 30px -10px rgba(var(--accent-rgb),.55);transition:transform .3s,box-shadow .3s,background .3s}
 .btn-a:hover{background:var(--accent-h);transform:translateY(-2px)}
@@ -295,6 +365,10 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
    Hier staat het er gewoon: de kaart, de pagina, de afspraak. */
 .toon{position:relative;max-width:1180px;margin:0 auto;padding:clamp(1rem,3vh,2rem) clamp(1.25rem,3vw,2rem) clamp(2.5rem,6vh,4rem)}
 .toon-rij{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,3vw,2.4rem);position:relative}
+/* Eén tastbaar ding tonen mag ook. Bij een klant waar de pagina en de agenda
+   niet zijn wat hij koopt, blijft alleen de kaart over. */
+.toon-rij.een{grid-template-columns:min(360px,100%);justify-content:center}
+.toon-rij.een::before{display:none}
 .toon-rij::before{content:'';position:absolute;top:96px;left:16%;right:16%;height:2px;z-index:0;
   background:repeating-linear-gradient(90deg,var(--line) 0 3px,transparent 3px 11px)}
 .tp{position:relative;z-index:1;text-align:center;opacity:0;transform:translateY(24px);
@@ -397,7 +471,7 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
 .sheet-host .s{font-size:.85rem;color:var(--ink2);margin-top:.15rem}
 .sheet-tabs{display:flex;gap:.4rem;background:rgba(var(--ink-rgb),.05);border-radius:var(--r-pil);padding:.28rem;margin-bottom:1.35rem}
 .sheet-tabs button{flex:1;font-size:.85rem;font-weight:600;color:var(--ink2);background:none;border:none;border-radius:var(--r-pil);padding:.6rem .8rem;cursor:pointer;transition:background .3s,color .3s}
-.sheet-tabs button.on{background:var(--wit);color:var(--ink);box-shadow:0 2px 8px rgba(var(--ink-rgb),.08)}
+.sheet-tabs button.on{background:var(--wit);color:var(--pap-ink,var(--ink));box-shadow:0 2px 8px rgba(var(--zwart-rgb),.18)}
 .panes{position:relative}
 .pane{position:absolute;inset:0 0 auto 0;opacity:0;pointer-events:none;transition:opacity .3s ease}
 .pane.on{position:relative;opacity:1;pointer-events:auto}
@@ -418,11 +492,11 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
 /* terugbelformulier, twee velden, meer niet */
 .fld{margin-bottom:.8rem}
 .fld label{display:block;font-size:.74rem;font-weight:600;letter-spacing:.02em;color:var(--ink2);margin-bottom:.35rem}
-.fld input{width:100%;font:inherit;font-size:.95rem;color:var(--ink);background:var(--wit);border:1px solid var(--line);border-radius:12px;padding:.8rem .95rem;transition:border-color .3s}
+.fld input{width:100%;font:inherit;font-size:.95rem;color:var(--pap-ink,var(--ink));background:var(--wit);border:1px solid var(--line);border-radius:12px;padding:.8rem .95rem;transition:border-color .3s}
 .fld input:focus{outline:none;border-color:var(--accent)}
 .slots{display:flex;flex-wrap:wrap;gap:.45rem;margin:.2rem 0 1.1rem}
-.slots button{font-size:.82rem;font-weight:500;color:var(--ink2);background:var(--wit);border:1px solid var(--line);border-radius:var(--r-pil);padding:.55rem 1rem;cursor:pointer;transition:all .25s}
-.slots button.on{border-color:var(--accent);background:rgba(var(--accent-rgb),.09);color:var(--ink);font-weight:600}
+.slots button{font-size:.82rem;font-weight:500;color:var(--pap-ink2,var(--ink2));background:var(--wit);border:1px solid var(--pap-line,var(--line));border-radius:var(--r-pil);padding:.55rem 1rem;cursor:pointer;transition:all .25s}
+.slots button.on{border-color:var(--accent);background:rgba(var(--accent-rgb),.14);color:var(--pap-ink,var(--ink));font-weight:600}
 .sheet-note{font-size:.78rem;color:var(--ink3);margin-top:.9rem;line-height:1.6}
 .sheet-ok{text-align:center;padding:2.5rem 1rem}
 .sheet-ok .hand{font-family:var(--hand);font-size:1.8rem;color:var(--ink)}
@@ -432,7 +506,8 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
 .founder{max-width:780px;margin:0 auto;padding:clamp(3rem,6vh,5rem) clamp(1.25rem,4vw,2rem) clamp(3.5rem,7vh,5rem);display:grid;grid-template-columns:auto 1fr;gap:clamp(1.75rem,4vw,3rem);align-items:center}
 .founder .fr{opacity:0;transform:translateY(24px);filter:blur(4px);transition:all 1s var(--ease)}
 .founder.in .fr{opacity:1;transform:none;filter:blur(0)}
-.fo-photo{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:50%;object-fit:cover;box-shadow:0 20px 50px rgba(var(--ink-rgb),.15)}
+.fo-photo{width:clamp(120px,16vw,150px);height:clamp(120px,16vw,150px);border-radius:50%;object-fit:cover;
+  box-shadow:var(--fo-schaduw,0 20px 50px rgba(var(--ink-rgb),.15))}
 .fo-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
 .fo-text{font-size:1.02rem;line-height:1.72;color:var(--ink2)}
 .fo-text p+p{margin-top:.7rem}
@@ -490,3 +565,4 @@ footer{border-top:1px solid var(--line);padding:2.5rem 2rem calc(2.5rem + var(--
 .mz-s{height:5px;border-radius:3px;background:rgba(var(--ink-rgb),.13);margin-bottom:.28rem}
 .mz-s.kort{width:62%}
 .mz-r.on .mz-s{background:rgba(var(--ink-rgb),.18)}
+
