@@ -10,7 +10,6 @@
      window.PQ_KLANT        = 'pique';        // sleutel uit KLANTEN in Terugbelverzoek.gs
      window.PQ_CAMPAGNE     = 'grote-merken'; // vrije naam, om later op te filteren
      window.PQ_SCHRIJF      = false;          // briefje halverwege uitzetten (staat standaard aan)
-     window.PQ_AFZENDER     = 'Murphy';       // ondertekening; anders die van de kaart
      window.PQ_DOCK_NA      = 0.75;           // deel van de pagina waarna de dock komt
      window.PQ_CAL          = 'simon-kempers/belafspraak-pique';
      window.PQ_VIDEO        = 'simon-staand.mp4';
@@ -189,25 +188,6 @@ function bijScroll(){
      buiten het papier, en krijgt daar de lichte kleuren. */
   var tl = blok.querySelector('.tl');
   if (tl) { tl.classList.add('los'); blok.querySelector('.ch-inner').appendChild(tl); }
-
-  /* Een brief eindigt met een naam. Dat maakt van een uitspraak een bericht.
-     De naam staat al op de kaart in de hero, dus die nemen we over. Zo tekent
-     een klantpagina met de afzender van die klant en niet met Simon. */
-  var naam = window.PQ_AFZENDER;
-  if (!naam) {
-    var opkaart = document.querySelector('.slot-card .sig');
-    naam = opkaart ? opkaart.textContent.trim() : '';
-  }
-  /* Staat daar de bedrijfsnaam in plaats van een persoon, dan onderteken je
-     met het bedrijf van de ontvanger. Liever geen naam dan de verkeerde. */
-  if (naam && window.PQ_BEDRIJF &&
-      naam.toLowerCase() === String(window.PQ_BEDRIJF).toLowerCase()) naam = '';
-  if (naam) {
-    var sig = document.createElement('div');
-    sig.className = 'brief-sig';
-    sig.textContent = naam;
-    zin.parentNode.insertBefore(sig, zin.nextSibling);
-  }
 
   var traag = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (traag) { blok.classList.add('klaar'); return; }

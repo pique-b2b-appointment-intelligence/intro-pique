@@ -304,11 +304,6 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
   font-size:clamp(1.45rem,2.9vw,2.05rem);line-height:1.5;
   color:var(--hand-ink);text-align:left}
 .chapter.pivot.brief .ch-inner{width:min(620px,92%)}
-/* de ondertekening komt pas als de zin af is */
-.brief-sig{position:relative;z-index:1;font-family:var(--hand);font-size:1.7rem;
-  color:var(--hand-ink);margin-top:1.3rem;text-align:left;
-  opacity:0;transform:translateY(6px);transition:opacity .6s ease,transform .6s var(--ease)}
-.brief.klaar .brief-sig{opacity:.78;transform:none}
 /* De dot van de journeylijn zit standaard net boven het blok. Op het briefje
    staat daar het plakband, dus hij gaat een stukje hoger en de lijn volgt. */
 .chapter.pivot.brief .ch-dot{top:-3.1rem}
@@ -339,7 +334,7 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
 }
 @media(prefers-reduced-motion:reduce){
   .ch-pivot .pc{opacity:1!important;filter:none!important;transform:none!important}
-  .brief-sig,.tl.los{opacity:1!important;transform:none!important}
+  .tl.los{opacity:1!important;transform:none!important}
 }
 
 /* 5d. HET AANBOD OM TE BELLEN, HALVERWEGE EN IN DE LIJN */
