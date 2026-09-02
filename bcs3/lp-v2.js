@@ -11,7 +11,8 @@
      window.PQ_CAMPAGNE     = 'grote-merken'; // vrije naam, om later op te filteren
      window.PQ_SCHRIJF      = false;          // briefje halverwege uitzetten (staat standaard aan)
      window.PQ_DOCK_NA      = 0.75;           // deel van de pagina waarna de dock komt
-     window.PQ_CAL          = 'simon-kempers/belafspraak-pique';
+     window.PQ_CAL          = 'simon-kempers/belafspraak-pique';  // cal.com
+     window.PQ_CALENDLY     = 'stephan-krijger/15-minuten-kennismaking'; // of Calendly
      window.PQ_VIDEO        = 'simon-staand.mp4';
      window.PQ_POSTER       = 'simon-staand-poster.jpg';
    ============================================================ */
@@ -335,8 +336,9 @@ if (askread) askread.addEventListener('click', function(){
   function laadCal(){
     /* Zonder eigen agenda geen agenda. Terugvallen op de kalender van Pique zet
        op een klantpagina de verkeerde persoon in beeld. De tab verdwijnt dan. */
-    if (!window.PQ_CAL) { geenAgenda(); return; }
+    if (!window.PQ_CAL && !window.PQ_CALENDLY) { geenAgenda(); return; }
     if (calGeladen) return; calGeladen = true;
+    if (window.PQ_CALENDLY) { laadCalendly(); return; }
     (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d2 = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d2.head.appendChild(d2.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
     Cal("init","belafspraak-pique",{origin:"https://cal.com"});
     Cal.ns["belafspraak-pique"]("inline",{elementOrSelector:"#cal-embed",config:{layout:"month_view"},calLink:window.PQ_CAL});
@@ -356,6 +358,38 @@ if (askread) askread.addEventListener('click', function(){
     var bel = document.getElementById('pane-bel');
     if (bel) bel.classList.add('on');
   }
+  /* Calendly in plaats van cal.com. Een deel van de klanten zit daarop, en
+     terugvallen op de agenda van Pique is geen optie. */
+  function laadCalendly(){
+    var doel = document.getElementById('cal-embed');
+    if (!doel) return;
+    var url = window.PQ_CALENDLY;
+    if (url.indexOf('http') !== 0) url = 'https://calendly.com/' + url.replace(/^\/+/, '');
+    /* Hun eigen kop en voetregel eraf: die herhalen wat er al boven de sheet staat. */
+    url += (url.indexOf('?') > -1 ? '&' : '?') + 'hide_landing_page_details=1&hide_gdpr_banner=1';
+    doel.innerHTML = '';
+    var vak = document.createElement('div');
+    vak.className = 'calendly-inline-widget';
+    vak.setAttribute('data-url', url);
+    vak.style.cssText = 'min-width:280px;height:640px';
+    doel.appendChild(vak);
+    /* Het skelet blijft staan tot Calendly zijn iframe erin hangt. */
+    var kijk = new MutationObserver(function(){
+      if (vak.querySelector('iframe')) { kijk.disconnect(); klaarMetLaden(); }
+    });
+    kijk.observe(vak, {childList:true, subtree:true});
+    if (window.Calendly && window.Calendly.initInlineWidget) {
+      window.Calendly.initInlineWidget({url:url, parentElement:vak});
+    } else {
+      var sc = document.createElement('script');
+      sc.src = 'https://assets.calendly.com/assets/external/widget.js';
+      sc.async = true;
+      sc.onerror = klaarMetLaden;
+      document.head.appendChild(sc);
+    }
+    setTimeout(klaarMetLaden, 12000);
+  }
+
   function klaarMetLaden(){
     var sk = document.getElementById('calskel');
     if (sk) sk.classList.add('weg');

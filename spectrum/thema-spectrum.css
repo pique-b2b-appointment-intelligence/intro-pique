@@ -1,0 +1,45 @@
+/* ============================================================
+   THEMA — Spectrum Performance
+   Palet uit de bestaande Spectrum-pagina's: groen accent op donkergroen.
+   Papier gaat mee naar koel, want warm crèmepapier vloekt met dit merk.
+   ============================================================ */
+:root{
+  --accent:#3BBE6B;        --accent-rgb:59,190,107;
+  --accent-l:#4ade80;      --accent-l-rgb:74,222,128;
+  --accent-h:#7bedaa;
+  --op-accent:#062012;
+  --inkt:#2F9E58;          --inkt-rgb:47,158,88;
+
+  --bg:#F7FAF8;            --bg-rgb:247,250,248;
+  --ink:#0F1F17;           --ink-rgb:15,31,23;
+  --donker:#0B1F15;        --donker-rgb:11,31,21;
+  --dieper:#061109;        --dieper-rgb:6,17,9;
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.66);
+  --ink3:rgba(var(--ink-rgb),.42);
+  --line:rgba(var(--ink-rgb),.13);
+
+  --pap-0:#FDFEFD;
+  --pap-1:#FCFEFC;
+  --pap-2:#EBF2ED;
+  --tape-rgb:212,229,218;
+  --hand-ink:#12291C;      --hand-rgb:18,41,28;
+
+  --goed:#2F9E58;          --goed-rgb:47,158,88;
+  --chrome:#EDF2EF;
+  --video-bg:#0B1F15;
+
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;           /* Instrument Serif heeft geen SOFT/WONK-as */
+
+  --r-pap:4px; --r-kaart:16px; --r-blok:22px; --r-pil:100px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fs-h:clamp(2rem,3.2vw,2.9rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;
+}
+/* Instrument Serif is licht en groot van aard, dus koppen mogen strakker staan. */
+.hero-h1,.ch-kop,.f-kop,.cta-h,.tp h3{font-weight:400;letter-spacing:-.015em}
