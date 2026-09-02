@@ -131,7 +131,10 @@ window.pqVideo = function(){
 var io = new IntersectionObserver(function(es){
   es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 }, {threshold:.18});
-document.querySelectorAll('.chapter,.founder,.reveal,.ask,.toon').forEach(function(el){ io.observe(el); });
+/* .belofte hoorde hier niet bij, waardoor het garantieblok op de dossierpagina's
+   nooit zichtbaar werd: de opmaak zet het op opacity 0 tot deze waarnemer de klasse
+   'in' toevoegt. Een blok dat niet in deze lijst staat, blijft onzichtbaar. */
+document.querySelectorAll('.chapter,.founder,.reveal,.ask,.toon,.belofte').forEach(function(el){ io.observe(el); });
 
 var paden = [['journey','jp-base','jp-prog'],['journey2','jp-base2','jp-prog2']].map(function(x){
   var wrap = document.getElementById(x[0]);
@@ -220,9 +223,14 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(bouw);
 setTimeout(bouw, 400); setTimeout(bouw, 1200);
 if (window.ResizeObserver) paden.forEach(function(p){ new ResizeObserver(bouw).observe(p.wrap); });
 
-document.getElementById('askread').addEventListener('click', function(){
+/* Deze knop staat niet op elke pagina. Zonder deze controle gooit de regel een fout
+   op een pagina die hem mist, en dan draait alles hieronder niet meer: het belscherm,
+   de agenda en het terugbelformulier. */
+var askread = document.getElementById('askread');
+if (askread) askread.addEventListener('click', function(){
   pqTrack('leest-eerst-voorstel');
-  document.getElementById('s4').scrollIntoView({behavior:'smooth', block:'start'});
+  var doel = document.getElementById('s4');
+  if (doel) doel.scrollIntoView({behavior:'smooth', block:'start'});
 });
 
 /* ══ 7. SHEET. Cal.com laadt pas als iemand hem opent, niet bij elke scan. ══ */
@@ -267,6 +275,9 @@ document.getElementById('askread').addEventListener('click', function(){
     sheet.classList.remove('open'); sheet.setAttribute('aria-hidden','true');
     document.body.style.overflow = ''; dockUpdate();
   }
+  /* Ook bereikbaar voor knoppen die pas ná het laden ontstaan, zoals de bevestiging
+     onder een verzonden formulier. */
+  window.pqOpenSheet = open;
   document.querySelectorAll('[data-open="sheet"]').forEach(function(b){
     b.addEventListener('click', function(){ open(b.dataset.tab); });
   });
@@ -287,11 +298,13 @@ document.getElementById('askread').addEventListener('click', function(){
     if (!tel) return;
     pqTrack('terugbelverzoek', tel);
 
-    var lading = JSON.stringify({
+    /* PQ_EXTRA vult een pagina zelf, bijvoorbeeld met de antwoorden uit een intake.
+       Die gaan pas mee op het moment dat iemand zelf zijn nummer achterlaat. */
+    var lading = JSON.stringify(Object.assign({
       naam: naam, tel: tel, wanneer: gekozen,
       bedrijf: window.PQ_BEDRIJF, slug: PQ_SLUG,
       klant: window.PQ_KLANT, campagne: window.PQ_CAMPAGNE
-    });
+    }, window.PQ_EXTRA || {}));
 
     /* Bewust text/plain: daarmee is het een simpele request en vraagt de browser
        geen preflight, wat een Apps Script-webapp toch niet zou beantwoorden.
