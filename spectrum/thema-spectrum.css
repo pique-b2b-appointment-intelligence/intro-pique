@@ -43,3 +43,8 @@
 }
 /* Instrument Serif is licht en groot van aard, dus koppen mogen strakker staan. */
 .hero-h1,.ch-kop,.f-kop,.cta-h,.tp h3{font-weight:400;letter-spacing:-.015em}
+
+/* Grote video in de hero i.p.v. het compacte teaser-knopje (.vrow). */
+.hero-vid{margin-top:1.9rem;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 80px rgba(0,0,0,.45);background:#06140d}
+.hero-vid video{width:100%;height:100%;display:block;object-fit:cover}
+.vrow{display:none}
