@@ -25,3 +25,4 @@ node_modules
 !azora/*.mp4
 !wegmetexcel/*.mp4
 egenie-tussenstap/
+*.py
