@@ -26,7 +26,8 @@
   window.PQ_KLANT        = 'ogg';
   window.PQ_CAMPAGNE     = 'laadpaal-laten-plaatsen-40';
   window.PQ_CAL          = 'murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief';
-
+  window.PQ_VIDEO        = '../voorbeeld/40-elektrotechniek-en-laadpalen/video.mp4';
+  window.PQ_POSTER       = '../voorbeeld/40-elektrotechniek-en-laadpalen/poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
   /* Geen voornaam bekend bij dit bedrijf, dus de aanhef vervalt. merk:false omdat dit
@@ -34,7 +35,7 @@
   /* Eigen regels: een zaak met klanten over de vloer heeft een toonbank, een bedrijf
      dat offertes maakt een bureau. De hero zegt
      hetzelfde, anders landt de kaart op een plek met een andere tekst eronder. */
-  window.PIQUE_INTRO     = { bedrijf: 'Elektrotechnisch installatiebedrijf HAN', merk: false,
+  window.PIQUE_INTRO     = { bedrijf: 'Elektrotechnisch installatiebedrijf HAN', merk: false, ctaSub: 'Video van Murphy &middot; 1 min 11',
                              regels: ['Deze kaart lag niet toevallig|op je bureau.',
                                       'Ik keek een tijd naar {bedrijf}.',
                                       '*Wil je weten wat ik zag?*'] };
@@ -70,14 +71,17 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Waarom die kaart <span class="u">bij jou lag</span>.</h1>
+      <h1 class="hero-h1">Daarom kreeg je <span class="u">mijn kaart</span>.</h1>
       <p class="hero-sub">Drie dingen die me opvielen aan Elektrotechnisch installatiebedrijf HAN online. Ze hangen samen.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>3 bevindingen</span>
         <span class="chip">2 minuten lezen</span>
         <span class="chip">Alleen voor <b>Elektrotechnisch installatiebedrijf HAN</b> geschreven</span>
       </div>
-
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="../voorbeeld/40-elektrotechniek-en-laadpalen/poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Murphy vat het samen in 1 min 11</span>
+      </button>
       <div class="scrollcue"><i></i><span>Scroll</span></div>
     </div>
   </div>
@@ -94,8 +98,8 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Waarom jij</div>
-        <h2 class="ch-kop">Wat een klant tegenkomt die jou zoekt.</h2>
-        <p class="ch-text">Iemand die laadpaal laten plaatsen nodig heeft in Haaksbergen begint bij Google en eindigt bij degene die het makkelijkst te bereiken was. Ik heb nagelopen waar jij in dat rijtje staat.</p>
+        <h2 class="ch-kop">Wat er online van Elektrotechnisch installatiebedrijf HAN te vinden is.</h2>
+        <p class="ch-text">Ik keek naar wat iemand tegenkomt die in Haaksbergen zoekt op laadpaal laten plaatsen, en daarna naar wat er gebeurt als hij bij jou aankomt. Dat viel me op, dus keek ik wat langer.</p>
         <p class="ch-text"><strong>Dit is wat ik vond.</strong></p>
         <div class="ch-sign">Murphy, Online Goed Gevonden</div>
       </div>
@@ -262,9 +266,9 @@
   </div>
 
   <div class="vw">
-    <div style="--dl:.55s"><span>&#10003;</span><b>Niets meer los van elkaar</b><p>Site, agenda, klantgegevens en vindbaarheid horen bij elkaar, dus zetten we ze bij elkaar.</p></div>
-    <div style="--dl:.68s"><span>&#10003;</span><b>Je omzet blijft heel</b><p>Wat je verdient houd je, en wie bij je boekt staat in jouw bestand en niet in dat van een ander.</p></div>
-    <div style="--dl:.81s"><span>&#10003;</span><b>Vooraf duidelijk wat het kost</b><p>Eén maandbedrag, waarin het bouwen, het onderhoud en het vindbaar houden allemaal zit.</p></div>
+    <div style="--dl:.55s"><span>&#10003;</span><b>Alles onder één dak</b><p>Website, agenda, klantgegevens en vindbaarheid in één systeem. Eén partij die je belt als er iets is.</p></div>
+    <div style="--dl:.68s"><span>&#10003;</span><b>Je klanten blijven van jou</b><p>Geen deel van je omzet per boeking, en de gegevens van je klanten staan bij jou in plaats van bij een platform.</p></div>
+    <div style="--dl:.81s"><span>&#10003;</span><b>Een vast bedrag per maand</b><p>Je weet vooraf wat het kost. Wij bouwen, onderhouden en zorgen dat je gevonden wordt.</p></div>
   </div>
 </section>
 
@@ -310,7 +314,7 @@
     <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
     <div class="sheet-host">
       <img src="ogg-murphy.png" alt="">
-      <div><div class="n">20 minuten met Murphy</div><div class="s">Twintig minuten, telefonisch of via beeld.</div></div>
+      <div><div class="n">20 minuten met Murphy</div><div class="s">Video of telefoon, jij kiest.</div></div>
     </div>
     <div class="sheet-tabs">
       <button class="on" data-tab="plan">Zelf een moment kiezen</button>

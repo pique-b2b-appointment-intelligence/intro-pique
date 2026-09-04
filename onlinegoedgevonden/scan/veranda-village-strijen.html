@@ -26,7 +26,8 @@
   window.PQ_KLANT        = 'ogg';
   window.PQ_CAMPAGNE     = 'veranda-46';
   window.PQ_CAL          = 'murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief';
-
+  window.PQ_VIDEO        = '../voorbeeld/46-serres-en-verandas/video.mp4';
+  window.PQ_POSTER       = '../voorbeeld/46-serres-en-verandas/poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
   /* Geen voornaam bekend bij dit bedrijf, dus de aanhef vervalt. merk:false omdat dit
@@ -34,7 +35,7 @@
   /* Eigen regels: een zaak met klanten over de vloer heeft een toonbank, een bedrijf
      dat offertes maakt een bureau. De hero zegt
      hetzelfde, anders landt de kaart op een plek met een andere tekst eronder. */
-  window.PIQUE_INTRO     = { bedrijf: 'Veranda Village', merk: false,
+  window.PIQUE_INTRO     = { bedrijf: 'Veranda Village', merk: false, ctaSub: 'Video van Murphy &middot; 1 min 11',
                              regels: ['Deze kaart lag niet toevallig|op je bureau.',
                                       'Ik keek een tijd naar {bedrijf}.',
                                       '*Wil je weten wat ik zag?*'] };
@@ -77,7 +78,10 @@
         <span class="chip">2 minuten lezen</span>
         <span class="chip">Alleen voor <b>Veranda Village</b> geschreven</span>
       </div>
-
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="../voorbeeld/46-serres-en-verandas/poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Murphy vat het samen in 1 min 11</span>
+      </button>
       <div class="scrollcue"><i></i><span>Scroll</span></div>
     </div>
   </div>
