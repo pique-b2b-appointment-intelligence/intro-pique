@@ -115,3 +115,10 @@
   border-right:1.8px solid var(--accent);border-bottom:1.8px solid var(--accent);transform:rotate(45deg);transition:transform .22s}
 .fq[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
 .fq p{margin:0 0 1.15rem;color:var(--ink2);line-height:1.65;font-size:.93rem;max-width:60ch}
+
+/* Portret in het founderblok. v2 liet .fo-photo ongestyled, dus dat gebeurt hier. */
+.fo-photo{width:clamp(96px,13vw,132px);height:clamp(96px,13vw,132px);border-radius:50%;object-fit:cover;
+  display:block;box-shadow:0 12px 30px rgba(var(--zwart-rgb),.16),0 0 0 1px rgba(var(--accent-rgb),.35);
+  opacity:0;transform:translateY(18px);transition:all .9s var(--ease)}
+.founder.in .fo-photo{opacity:1;transform:none}
+@media(max-width:600px){.fo-photo{width:84px;height:84px}}
