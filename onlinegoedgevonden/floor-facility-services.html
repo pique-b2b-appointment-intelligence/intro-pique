@@ -21,11 +21,11 @@
   window.PQ_KLANT        = 'ogg';          /* sleutel uit KLANTEN in Terugbelverzoek.gs */
   window.PQ_CAMPAGNE     = 'whitelabel-video50';   /* vrije naam, om later op te filteren */
   window.PQ_CAL          = 'murphy-van-online-goed-gevonden/online-meeting-met-murphy-von-schukkmann-brief';
-  window.PQ_VIDEO        = 'murphy-staand.mp4';
-  window.PQ_POSTER       = 'murphy-staand-poster.jpg';
+  window.PQ_VIDEO        = '';
+  window.PQ_POSTER       = '';
   window.PQ_TRACK_URL    = '';   /* leesdiepte, zie lp-v2.js */
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';   /* zie Dashboard/Terugbelverzoek.gs */
-  window.PIQUE_INTRO     = { voornaam: 'Stijn', bedrijf: 'Floor Facility Services', merk: false };
+  window.PIQUE_INTRO     = { voornaam: 'Stijn', bedrijf: 'Floor Facility Services', merk: false, video: false, ctaZonderVideo: 'Laat maar zien' };
 </script>
 <script src="lp-intro.js"></script>
 <style>.logo .pill{background:#fff;border-radius:9px;padding:6px 11px;display:inline-flex;align-items:center}.logo .pill img{height:24px;width:auto;display:block}</style>
@@ -67,11 +67,7 @@
         <span class="chip">5 onderdelen nagekeken</span>
         <span class="chip">Dossier van <b>28 augustus 2026</b></span>
       </div>
-      <button class="vrow" id="vrow" type="button">
-        <span class="vthumb"><span class="vring"></span><img src="murphy-staand-poster.jpg" alt=""><span class="vplay"></span></span>
-        <span><b>Liever horen dan lezen?</b>Murphy vat het samen in 1 min 20</span>
-      </button>
-      <div class="scrollcue"><i></i><span>Scroll</span></div>
+<div class="scrollcue"><i></i><span>Scroll</span></div>
     </div>
   </div>
 </header>
