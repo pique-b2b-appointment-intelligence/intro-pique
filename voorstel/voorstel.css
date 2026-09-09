@@ -49,35 +49,43 @@ body.introbezig{overflow:hidden}
   text-transform:uppercase;color:rgba(var(--wit-rgb),.4);margin-top:2.2rem;
   opacity:0;animation:ksOp .6s var(--ease) 2.72s forwards}
 @keyframes ksOp{to{opacity:1}}
-/* ── het slot. De opening eindigt niet vanzelf: de ontvanger ontgrendelt hem. ── */
-.slot-wrap{margin-top:1.9rem;display:flex;flex-direction:column;align-items:center;gap:1rem;
+/* ── het slot. Een medaillon met fijne lijnen, geen icoon uit een pakket.
+      De opening eindigt niet vanzelf: de ontvanger ontgrendelt hem. ── */
+.slot-wrap{margin-top:2rem;display:flex;flex-direction:column;align-items:center;gap:1.15rem;
   opacity:0;transform:translateY(12px);animation:slotOp .7s var(--ease) 3.02s forwards}
 @keyframes slotOp{to{opacity:1;transform:none}}
-.slot{position:relative;width:96px;height:106px;padding:0;border:0;background:none;cursor:pointer;
-  transition:transform .18s var(--ease)}
-.slot svg{width:100%;height:100%;display:block;overflow:visible}
-.slot path,.slot rect,.slot circle{fill:none;stroke:var(--accent-l);stroke-width:7;
+.slot{position:relative;width:152px;height:152px;padding:0;border:0;background:none;cursor:pointer;
+  transition:transform .2s var(--ease)}
+.slot svg{width:100%;height:100%;display:block;overflow:visible;
+  filter:drop-shadow(0 0 22px rgba(var(--accent-rgb),.22))}
+.slot .ring{fill:none;stroke:var(--accent-l);stroke-linecap:round;
+  transform-origin:50% 50%;rotate:-90deg;
+  stroke-dasharray:1;stroke-dashoffset:1;pathLength:1}
+.slot .ring-b{stroke-width:1.1;opacity:.5;animation:ringTeken 1.5s var(--ease) 3.1s forwards}
+.slot .ring-k{stroke-width:.7;opacity:.24;animation:ringTeken 1.5s var(--ease) 3.35s forwards}
+@keyframes ringTeken{to{stroke-dashoffset:0}}
+.slot .slot-beugel path,.slot .slot-huis rect{fill:none;stroke:var(--accent-l);stroke-width:3;
   stroke-linecap:round;stroke-linejoin:round}
-.slot rect{fill:rgba(var(--accent-rgb),.12)}
-.slot .slot-gat{stroke-width:5.5}
-.slot .slot-gat-s{fill:var(--accent-l);stroke:none}
-.slot::after{content:'';position:absolute;inset:-16px -10px;border-radius:var(--r-blok);
-  border:1px solid rgba(var(--accent-rgb),.28);animation:slotPuls 2.8s ease-in-out 3.9s infinite}
-@keyframes slotPuls{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.08);opacity:0}}
-.slot:hover{transform:translateY(-2px)}
-.slot-beugel{transform-box:fill-box;transform-origin:88% 100%;
-  transition:transform .62s cubic-bezier(.34,1.42,.5,1)}
-.slot-t{font-family:var(--mono,'DM Mono',monospace);font-size:.64rem;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--accent-l);transition:opacity .3s ease}
+.slot .gat{fill:var(--accent-l);stroke:none}
+.slot::after{content:'';position:absolute;inset:-2px;border-radius:50%;
+  box-shadow:0 0 0 1px rgba(var(--accent-rgb),.001);
+  animation:slotPuls 3s ease-in-out 4.4s infinite}
+@keyframes slotPuls{0%,100%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),.22)}
+  55%{box-shadow:0 0 0 16px rgba(var(--accent-rgb),0)}}
+.slot:hover{transform:translateY(-3px)}
+.slot:hover .ring-b{opacity:.8}
+.slot-t{font-family:var(--mono,'DM Mono',monospace);font-size:.62rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--accent-l);opacity:.85;transition:opacity .3s ease}
 
-/* ontgrendelen: even indrukken, dan wipt de beugel open en licht het slot op */
-.intro.drukt .slot{transform:scale(.93)}
-.intro.opent .slot::after{animation:none;opacity:0}
-.intro.opent .slot-beugel{transform:translateY(-7px) rotate(-38deg)}
-.intro.opent .slot path,.intro.opent .slot rect,.intro.opent .slot circle{
-  stroke:var(--accent-h);transition:stroke .4s ease}
+/* ontgrendelen: even indrukken, de beugel wipt open, de ringen draaien mee weg */
+.intro.drukt .slot{transform:scale(.95)}
+.intro.opent .slot::after{animation:none}
+.slot-beugel{transform-box:fill-box;transform-origin:92% 100%;
+  transition:transform .68s cubic-bezier(.34,1.46,.5,1)}
+.intro.opent .slot-beugel{transform:translateY(-6px) rotate(-41deg)}
+.intro.opent .slot .ring{transition:transform .9s var(--ease),opacity .7s ease;
+  transform:rotate(26deg);opacity:0}
 .intro.opent .slot-t{opacity:0}
-.intro.opent .slot,.intro.opent .intro-in{transition:transform .7s var(--ease),opacity .7s ease}
 .intro-skip{position:absolute;right:clamp(1rem,4vw,2.4rem);bottom:clamp(1rem,4vw,2.4rem);z-index:3;
   border:0;background:none;cursor:pointer;font-family:var(--mono,'DM Mono',monospace);
   font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(var(--wit-rgb),.32);
@@ -85,7 +93,7 @@ body.introbezig{overflow:hidden}
 .intro-skip:hover{color:var(--accent-l)}
 /* Op een lage viewport moet de hele opening nog passen zonder te scrollen. */
 @media(max-height:720px){
-  .slot{width:78px;height:86px}
+  .slot{width:116px;height:116px}
   .slot-wrap{margin-top:1.2rem;gap:.7rem}
   .intro-logo{margin-top:1rem}
   .intro-logo img{width:min(168px,30vw)}
