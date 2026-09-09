@@ -165,6 +165,9 @@
 
   /* ── 6. de keuze, het ondertekenen en het verzenden ───── */
   var form = $('.akkoord');
+  function jaKnop() {
+    return (form && form.dataset.jaKnop) || 'Ondertekenen en verzenden';
+  }
   var doek = $('.hb-vlak');
   var ctx = doek ? doek.getContext('2d') : null;
   var getekend = false;
@@ -215,7 +218,9 @@
       el.hidden = el.dataset.alleen !== soort;
     });
     var k = $('.verzend .knop');
-    k.textContent = soort === 'ja' ? 'Ondertekenen en verzenden' : 'Verzenden';
+    /* Staat er geen handtekening op de pagina, dan onderteken je ook niets.
+       De knop heet dan zoals data-ja-knop op het formulier zegt. */
+    k.textContent = soort === 'ja' ? jaKnop() : 'Verzenden';
     /* Wie gebeld wil worden zonder nummer achter te laten, wordt niet gebeld. */
     var tel = $('#ak-tel');
     tel.required = soort === 'bellen';
@@ -244,10 +249,10 @@
     if (!naam.value.trim()) return melden('Vul je naam even in.', naam);
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim()))
       return melden('Dat mailadres klopt nog niet. Zonder adres kan ik je geen kopie sturen.', mail);
+    var vink = $('.vink input');
     if (soort === 'ja') {
-      if (!getekend) { doek.classList.add('mis'); return melden('Zet even je handtekening in het vak.'); }
-      var vink = $('.vink input');
-      if (!vink.checked) return melden('Zet het vinkje bij de algemene voorwaarden.', vink);
+      if (doek && !getekend) { doek.classList.add('mis'); return melden('Zet even je handtekening in het vak.'); }
+      if (vink && !vink.checked) return melden('Zet het vinkje bij de algemene voorwaarden.', vink);
     }
     var tel = $('#ak-tel');
     if (soort === 'bellen' && tel.value.replace(/\D/g, '').length < 8)
@@ -261,8 +266,8 @@
       naam: naam.value.trim(), functie: $('#ak-functie').value.trim(),
       email: mail.value.trim(), tel: $('#ak-tel').value.trim(),
       opmerking: $('#ak-opm').value.trim(), wanneer: $('#ak-wanneer').value.trim(),
-      voorwaarden: soort === 'ja' ? $('.vink input').checked : false,
-      handtekening: soort === 'ja' && getekend ? doek.toDataURL('image/png') : '',
+      voorwaarden: !!(soort === 'ja' && vink && vink.checked),
+      handtekening: soort === 'ja' && doek && getekend ? doek.toDataURL('image/png') : '',
       volume: window.PQ_VOLUME || '', opvolging: window.PQ_OPVOLGING || '', bedrag: ($('[data-prijs="bedrag"]') || {}).textContent || '',
       looptijd: ($('[data-prijs="looptijd"]') || {}).textContent || '',
       garantie: ($('[data-prijs="garantie"]') || {}).textContent || '',
@@ -277,7 +282,7 @@
     var klaar = function (gelukt, reden) {
       if (!gelukt) {
         knop.disabled = false;
-        knop.textContent = soort === 'ja' ? 'Ondertekenen en verzenden' : 'Verzenden';
+        knop.textContent = soort === 'ja' ? jaKnop() : 'Verzenden';
         if (console && console.warn && reden) console.warn('[pique] akkoord geweigerd: ' + reden);
         return melden('Het versturen lukte niet. Mail het even naar ' + (window.PQ_MAIL || 'info@pique.agency') + ', dan pakken we het zo op.');
       }
