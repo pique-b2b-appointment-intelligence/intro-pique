@@ -45,11 +45,18 @@
       return;
     }
     document.body.classList.add('introbezig');
-    var af = setTimeout(function () { sluiten('intro-uitgekeken'); }, 3900);
-    function vroeg() { clearTimeout(af); sluiten('intro-overgeslagen'); }
-    intro.addEventListener('click', vroeg);
+    /* Geen tijdslot: de laag blijft staan tot iemand het zegel verbreekt. Een
+       voorstel dat vanzelf opengaat is geen voorstel dat je hebt geopend. */
+    function verbreken(reden) {
+      if (intro.dataset.klaar) return;
+      intro.classList.add('breekt');
+      setTimeout(function () { sluiten(reden); }, 620);
+    }
+    var zegel = $('.zegel');
+    if (zegel) zegel.addEventListener('click', function () { verbreken('zegel-verbroken'); });
+    $('.intro-skip').addEventListener('click', function () { verbreken('intro-overgeslagen'); });
     addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') vroeg();
+      if (e.key === 'Escape') verbreken('intro-overgeslagen');
     });
   })();
 
