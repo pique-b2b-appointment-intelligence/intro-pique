@@ -33,18 +33,27 @@ body.introbezig{overflow:hidden}
 /* De maskerpaden staan in <defs> en niet in de groep die ze maskeert, dus ze zijn
    alleen op hun eigen klasse te raken. Een selector als .ks-r1 .ks-pen mist ze. */
 .ks-pen-r1{animation:ksSchrijf 1.0s linear .45s forwards}
-.ks-pen-kr{animation:ksSchrijf .3s linear 1.52s forwards}
-.ks-pen-r2{animation:ksSchrijf .72s linear 1.86s forwards}
+.ks-pen-kr{animation:ksSchrijf .3s linear 1.5s forwards}
+
 @keyframes ksSchrijf{to{stroke-dashoffset:0}}
+.intro-logo{position:relative;margin-top:1.4rem;opacity:0;transform:translateY(14px);
+  animation:ksLogo .85s var(--ease) 1.62s forwards}
+.intro-logo img{display:block;width:min(210px,34vw);height:auto;margin:0 auto;
+  filter:drop-shadow(0 6px 26px rgba(var(--zwart-rgb),.5))}
+.intro-streep{display:block;height:1px;width:0;margin:1rem auto 0;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  animation:ksStreep 1s var(--ease) 2.24s forwards}
+@keyframes ksLogo{to{opacity:1;transform:none}}
+@keyframes ksStreep{to{width:min(260px,42vw)}}
 .intro-meta{font-family:var(--mono,'DM Mono',monospace);font-size:.66rem;letter-spacing:.28em;
   text-transform:uppercase;color:rgba(var(--wit-rgb),.4);margin-top:2.2rem;
-  opacity:0;animation:ksOp .6s var(--ease) 2.62s forwards}
+  opacity:0;animation:ksOp .6s var(--ease) 2.72s forwards}
 @keyframes ksOp{to{opacity:1}}
 .intro-stempel{display:inline-block;margin-top:1.5rem;padding:.55rem 1.3rem;
   border:2px solid rgba(var(--accent-rgb),.6);border-radius:var(--r-pap);
   font-family:var(--mono,'DM Mono',monospace);font-size:.66rem;letter-spacing:.24em;
   text-transform:uppercase;color:var(--accent-l);
-  opacity:0;rotate:-7deg;scale:2.6;animation:ksStempel .5s cubic-bezier(.3,1.5,.5,1) 2.92s forwards}
+  opacity:0;rotate:-7deg;scale:2.6;animation:ksStempel .5s cubic-bezier(.3,1.5,.5,1) 3.06s forwards}
 @keyframes ksStempel{60%{opacity:1;scale:.94}to{opacity:1;scale:1}}
 .intro-skip{position:absolute;right:clamp(1rem,4vw,2.4rem);bottom:clamp(1rem,4vw,2.4rem);z-index:3;
   border:0;background:none;cursor:pointer;font-family:var(--mono,'DM Mono',monospace);
@@ -54,7 +63,8 @@ body.introbezig{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   .intro-lijn{width:100%;animation:none}
   .ks-pen{stroke-dashoffset:0;animation:none}
-  .intro-meta,.intro-stempel{opacity:1;scale:1;animation:none}
+  .intro-meta,.intro-stempel,.intro-logo{opacity:1;scale:1;transform:none;animation:none}
+  .intro-streep{width:min(260px,42vw);animation:none}
 }
 
 /* ── balk boven ───────────────────────────────────────────── */
@@ -397,3 +407,10 @@ tr.aan td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
   font-family:var(--mono,'DM Mono',monospace);font-size:.6rem;letter-spacing:.07em}
 .voet img{height:19px;opacity:.85}
 @media(max-width:700px){.hero-g{grid-template-columns:1fr}.kaart{max-width:340px}}
+
+/* ── dossierpagina ────────────────────────────────────────── */
+.bar-terug{font-family:var(--mono,'DM Mono',monospace);font-size:.62rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent-l);text-decoration:none;white-space:nowrap}
+.bar-terug:hover{color:var(--accent-h)}
+.dos-hero{padding-top:clamp(6rem,12vw,8rem);padding-bottom:clamp(2.5rem,6vw,4rem)}
+.dos-hero h1{font-size:clamp(1.9rem,3.8vw,3rem)}

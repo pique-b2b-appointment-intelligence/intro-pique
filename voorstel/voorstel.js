@@ -23,19 +23,15 @@
   var gezien = {}, stappen = [], secties = {}, actief = 0, diep = 0, vorige = '';
 
 
-  /* ── 0. de intro. Draait één keer per bezoek, want de derde keer dat
-        iemand terugkomt is het een drempel in plaats van een opening. ── */
+  /* ── 0. de intro. Draait elke keer dat de pagina opengaat. ── */
   (function () {
     var intro = $('#intro');
     if (!intro) return;
-    var overslaan = rust
-      || location.search.indexOf('nointro') > -1
-      || (function () { try { return sessionStorage.getItem('pq-intro') === '1'; } catch (e) { return false; } })();
+    var overslaan = rust || location.search.indexOf('nointro') > -1;
 
     function sluiten(reden) {
       if (intro.dataset.klaar) return;
       intro.dataset.klaar = '1';
-      try { sessionStorage.setItem('pq-intro', '1'); } catch (e) {}
       document.body.classList.remove('introbezig');
       tik(reden);
       intro.classList.add('weg');
@@ -184,6 +180,10 @@
     });
     var k = $('.verzend .knop');
     k.textContent = soort === 'ja' ? 'Ondertekenen en verzenden' : 'Verzenden';
+    /* Wie gebeld wil worden zonder nummer achter te laten, wordt niet gebeld. */
+    var tel = $('#ak-tel');
+    tel.required = soort === 'bellen';
+    $('[data-tel-l]').textContent = soort === 'bellen' ? 'Telefoonnummer' : 'Telefoonnummer, mag ook leeg';
     window.PQ_KEUZE = soort;
   }
   $$('input[name="keuze"]').forEach(function (r) {
@@ -213,6 +213,9 @@
       var vink = $('.vink input');
       if (!vink.checked) return melden('Zet het vinkje bij de algemene voorwaarden.', vink);
     }
+    var tel = $('#ak-tel');
+    if (soort === 'bellen' && tel.value.replace(/\D/g, '').length < 8)
+      return melden('Vul een telefoonnummer in, anders kunnen we je niet bellen.', tel);
 
     var knop = $('.verzend .knop');
     knop.disabled = true; knop.textContent = 'Bezig met verzenden';
@@ -221,7 +224,7 @@
       soort: 'akkoord', keuze: soort,
       naam: naam.value.trim(), functie: $('#ak-functie').value.trim(),
       email: mail.value.trim(), tel: $('#ak-tel').value.trim(),
-      opmerking: $('#ak-opm').value.trim(),
+      opmerking: $('#ak-opm').value.trim(), wanneer: $('#ak-wanneer').value.trim(),
       voorwaarden: soort === 'ja' ? $('.vink input').checked : false,
       handtekening: soort === 'ja' && getekend ? doek.toDataURL('image/png') : '',
       volume: window.PQ_VOLUME || '', bedrag: ($('[data-prijs="bedrag"]') || {}).textContent || '',
@@ -240,17 +243,17 @@
         knop.disabled = false;
         knop.textContent = soort === 'ja' ? 'Ondertekenen en verzenden' : 'Verzenden';
         if (console && console.warn && reden) console.warn('[pique] akkoord geweigerd: ' + reden);
-        return melden('Het versturen lukte niet. Mail me even op ' + (window.PQ_MAIL || 'info@pique.agency') + ', dan pak ik het zo op.');
+        return melden('Het versturen lukte niet. Mail het even naar ' + (window.PQ_MAIL || 'info@pique.agency') + ', dan pakken we het zo op.');
       }
       form.hidden = true;
       var dank = $('.dank');
       var teksten = {
-        ja: ['Getekend. Ik zet hem klaar.',
+        ja: ['Getekend. We zetten hem klaar.',
              'Je krijgt binnen een uur de opdrachtbevestiging en drie momenten voor de startsessie. Een kopie van dit ondertekende voorstel staat al in je mail.'],
         dossiers: ['Komen eraan.',
-             'Ik stuur je binnen twee werkdagen vier volledige dossiers uit jouw eigen lijst. Dat kost je een kwartier lezen en verplicht je tot niets.'],
-        bellen: ['Ik bel je.',
-             'Ik neem binnen een werkdag contact op. Komt het eerder uit, bel dan gerust zelf.']
+             'Je krijgt binnen twee werkdagen vier volledige dossiers uit je eigen lijst. Dat kost je een kwartier lezen en verplicht je tot niets.'],
+        bellen: ['We bellen je.',
+             'Je wordt binnen een werkdag gebeld. Komt het eerder uit, bel dan gerust zelf.']
       }[soort];
       $('[data-dank-kop]', dank).textContent = teksten[0];
       $('[data-dank-tekst]', dank).textContent = teksten[1];
