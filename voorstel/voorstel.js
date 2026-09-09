@@ -116,19 +116,39 @@
 
   /* ── 4. de volumeschuif ─────────────────────────────────── */
   var staffel = window.PQ_STAFFEL || {};
-  var kiesKnoppen = $$('.kies button');
+  var kiesKnoppen = $$('.kies button[data-v]');
+  var wieKnoppen = $$('.kies button[data-w]');
+  /* Wie er nabelt verandert de prijs en of er een garantie op zit. Een trede
+     mag daarom velden hebben met _zelf erachter. Staan die er niet, dan
+     gedraagt de schuif zich zoals hij altijd deed. */
+  var wie = window.PQ_OPVOLGING || 'met';
   function zetVolume(sleutel) {
     var d = staffel[sleutel];
     if (!d) return;
     kiesKnoppen.forEach(function (b) { b.classList.toggle('aan', b.dataset.v === sleutel); });
+    wieKnoppen.forEach(function (b) { b.classList.toggle('aan', b.dataset.w === wie); });
+    var toon = {};
     Object.keys(d).forEach(function (k) {
-      $$('[data-prijs="' + k + '"]').forEach(function (el) { el.textContent = d[k]; });
+      if (k.slice(-5) !== '_zelf') toon[k] = d[k];
+    });
+    if (wie === 'zelf') Object.keys(d).forEach(function (k) {
+      if (k.slice(-5) === '_zelf') toon[k.slice(0, -5)] = d[k];
+    });
+    Object.keys(toon).forEach(function (k) {
+      $$('[data-prijs="' + k + '"]').forEach(function (el) { el.textContent = toon[k]; });
     });
     window.PQ_VOLUME = sleutel;
-    tik('volume-' + sleutel);
+    window.PQ_OPVOLGING = wie;
+    tik('volume-' + sleutel + '-' + wie);
   }
   kiesKnoppen.forEach(function (b) {
     b.addEventListener('click', function () { zetVolume(b.dataset.v); });
+  });
+  wieKnoppen.forEach(function (b) {
+    b.addEventListener('click', function () {
+      wie = b.dataset.w;
+      zetVolume(window.PQ_VOLUME || String(window.PQ_ADVIES || ''));
+    });
   });
   if (window.PQ_ADVIES) zetVolume(String(window.PQ_ADVIES));
 
@@ -243,7 +263,7 @@
       opmerking: $('#ak-opm').value.trim(), wanneer: $('#ak-wanneer').value.trim(),
       voorwaarden: soort === 'ja' ? $('.vink input').checked : false,
       handtekening: soort === 'ja' && getekend ? doek.toDataURL('image/png') : '',
-      volume: window.PQ_VOLUME || '', bedrag: ($('[data-prijs="bedrag"]') || {}).textContent || '',
+      volume: window.PQ_VOLUME || '', opvolging: window.PQ_OPVOLGING || '', bedrag: ($('[data-prijs="bedrag"]') || {}).textContent || '',
       looptijd: ($('[data-prijs="looptijd"]') || {}).textContent || '',
       garantie: ($('[data-prijs="garantie"]') || {}).textContent || '',
       bedrijf: window.PQ_BEDRIJF, slug: SLUG, klant: window.PQ_KLANT,
