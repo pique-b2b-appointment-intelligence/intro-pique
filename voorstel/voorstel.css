@@ -14,6 +14,49 @@ a{color:inherit}
 .wrap{width:min(1040px,100% - 3rem);margin-inline:auto}
 .smal{width:min(760px,100% - 3rem);margin-inline:auto}
 
+/* ── intro: de twee namen schrijven zichzelf ──────────────── */
+.intro{position:fixed;inset:0;z-index:200;display:grid;place-items:center;
+  background:var(--donker);padding:2rem;overflow:hidden}
+.intro::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(110% 70% at 50% 42%,rgba(var(--accent-rgb),.15),transparent 62%)}
+.intro.weg{opacity:0;transform:scale(1.035);pointer-events:none;
+  transition:opacity .75s var(--ease),transform .95s var(--ease)}
+.intro.uit{display:none}
+body.introbezig{overflow:hidden}
+.intro-in{position:relative;z-index:2;width:min(760px,84vw);text-align:center}
+.intro-lijn{display:block;height:1px;width:0;margin:0 auto 2.6rem;
+  background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.75),transparent);
+  animation:ksLijn .8s var(--ease) .08s forwards}
+@keyframes ksLijn{to{width:100%}}
+.ks{display:block;width:100%;height:auto;color:var(--pap-0);overflow:visible}
+.ks-pen{stroke-dasharray:1;stroke-dashoffset:1}
+/* De maskerpaden staan in <defs> en niet in de groep die ze maskeert, dus ze zijn
+   alleen op hun eigen klasse te raken. Een selector als .ks-r1 .ks-pen mist ze. */
+.ks-pen-r1{animation:ksSchrijf 1.0s linear .45s forwards}
+.ks-pen-kr{animation:ksSchrijf .3s linear 1.52s forwards}
+.ks-pen-r2{animation:ksSchrijf .72s linear 1.86s forwards}
+@keyframes ksSchrijf{to{stroke-dashoffset:0}}
+.intro-meta{font-family:var(--mono,'DM Mono',monospace);font-size:.66rem;letter-spacing:.28em;
+  text-transform:uppercase;color:rgba(var(--wit-rgb),.4);margin-top:2.2rem;
+  opacity:0;animation:ksOp .6s var(--ease) 2.62s forwards}
+@keyframes ksOp{to{opacity:1}}
+.intro-stempel{display:inline-block;margin-top:1.5rem;padding:.55rem 1.3rem;
+  border:2px solid rgba(var(--accent-rgb),.6);border-radius:var(--r-pap);
+  font-family:var(--mono,'DM Mono',monospace);font-size:.66rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--accent-l);
+  opacity:0;rotate:-7deg;scale:2.6;animation:ksStempel .5s cubic-bezier(.3,1.5,.5,1) 2.92s forwards}
+@keyframes ksStempel{60%{opacity:1;scale:.94}to{opacity:1;scale:1}}
+.intro-skip{position:absolute;right:clamp(1rem,4vw,2.4rem);bottom:clamp(1rem,4vw,2.4rem);z-index:3;
+  border:0;background:none;cursor:pointer;font-family:var(--mono,'DM Mono',monospace);
+  font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(var(--wit-rgb),.32);
+  padding:.5rem;transition:color .25s var(--ease)}
+.intro-skip:hover{color:var(--accent-l)}
+@media(prefers-reduced-motion:reduce){
+  .intro-lijn{width:100%;animation:none}
+  .ks-pen{stroke-dashoffset:0;animation:none}
+  .intro-meta,.intro-stempel{opacity:1;scale:1;animation:none}
+}
+
 /* ── balk boven ───────────────────────────────────────────── */
 .bar{position:fixed;inset:0 0 auto;z-index:60;display:flex;align-items:center;
   justify-content:space-between;gap:1rem;padding:.75rem clamp(1rem,4vw,2.4rem);

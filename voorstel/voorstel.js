@@ -23,6 +23,40 @@
   var gezien = {}, stappen = [], secties = {}, actief = 0, diep = 0, vorige = '';
 
 
+  /* ── 0. de intro. Draait één keer per bezoek, want de derde keer dat
+        iemand terugkomt is het een drempel in plaats van een opening. ── */
+  (function () {
+    var intro = $('#intro');
+    if (!intro) return;
+    var overslaan = rust
+      || location.search.indexOf('nointro') > -1
+      || (function () { try { return sessionStorage.getItem('pq-intro') === '1'; } catch (e) { return false; } })();
+
+    function sluiten(reden) {
+      if (intro.dataset.klaar) return;
+      intro.dataset.klaar = '1';
+      try { sessionStorage.setItem('pq-intro', '1'); } catch (e) {}
+      document.body.classList.remove('introbezig');
+      tik(reden);
+      intro.classList.add('weg');
+      setTimeout(function () { intro.classList.add('uit'); }, 950);
+    }
+
+    if (overslaan) {
+      intro.classList.add('uit');
+      intro.dataset.klaar = '1';
+      document.body.classList.remove('introbezig');
+      return;
+    }
+    document.body.classList.add('introbezig');
+    var af = setTimeout(function () { sluiten('intro-uitgekeken'); }, 3900);
+    function vroeg() { clearTimeout(af); sluiten('intro-overgeslagen'); }
+    intro.addEventListener('click', vroeg);
+    addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') vroeg();
+    });
+  })();
+
   /* ── 1. reveals ─────────────────────────────────────────── */
   var io = new IntersectionObserver(function (rijen) {
     rijen.forEach(function (r) {
