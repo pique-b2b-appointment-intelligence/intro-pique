@@ -49,27 +49,35 @@ body.introbezig{overflow:hidden}
   text-transform:uppercase;color:rgba(var(--wit-rgb),.4);margin-top:2.2rem;
   opacity:0;animation:ksOp .6s var(--ease) 2.72s forwards}
 @keyframes ksOp{to{opacity:1}}
-/* ── het zegel. De opening eindigt niet vanzelf: de ontvanger verbreekt hem. ── */
-.zegel-wrap{margin-top:1.9rem;display:flex;flex-direction:column;align-items:center;gap:.9rem;
-  opacity:0;scale:2.5;animation:zgDruk .55s cubic-bezier(.3,1.55,.5,1) 3.02s forwards}
-@keyframes zgDruk{60%{opacity:1;scale:.93}to{opacity:1;scale:1}}
-.zegel{position:relative;width:134px;height:134px;padding:0;border:0;background:none;cursor:pointer;
-  filter:drop-shadow(0 10px 22px rgba(var(--zwart-rgb),.55))}
-.zegel::after{content:'';position:absolute;inset:-14px;border-radius:50%;
-  border:1px solid rgba(var(--accent-rgb),.3);animation:zgPuls 2.6s ease-in-out 3.8s infinite}
-@keyframes zgPuls{0%,100%{transform:scale(1);opacity:.45}50%{transform:scale(1.09);opacity:0}}
-.zegel-helft{position:absolute;inset:0;display:block;
-  transition:transform .85s var(--ease),opacity .7s ease}
-.zegel-helft svg{width:100%;height:100%;display:block}
-.zegel-l{clip-path:polygon(0 0,54% 0,47% 22%,56% 41%,44% 62%,53% 82%,46% 100%,0 100%)}
-.zegel-r{clip-path:polygon(54% 0,100% 0,100% 100%,46% 100%,53% 82%,44% 62%,56% 41%,47% 22%)}
-.zegel:hover{filter:drop-shadow(0 14px 28px rgba(var(--zwart-rgb),.6)) brightness(1.06)}
-.zegel-t{font-family:var(--mono,'DM Mono',monospace);font-size:.64rem;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--accent-l);transition:opacity .4s ease}
-.intro.breekt .zegel::after{animation:none;opacity:0}
-.intro.breekt .zegel-l{transform:translate(-48px,36px) rotate(-27deg);opacity:0}
-.intro.breekt .zegel-r{transform:translate(48px,40px) rotate(24deg);opacity:0}
-.intro.breekt .zegel-t{opacity:0}
+/* ── het slot. De opening eindigt niet vanzelf: de ontvanger ontgrendelt hem. ── */
+.slot-wrap{margin-top:1.9rem;display:flex;flex-direction:column;align-items:center;gap:1rem;
+  opacity:0;transform:translateY(12px);animation:slotOp .7s var(--ease) 3.02s forwards}
+@keyframes slotOp{to{opacity:1;transform:none}}
+.slot{position:relative;width:96px;height:106px;padding:0;border:0;background:none;cursor:pointer;
+  transition:transform .18s var(--ease)}
+.slot svg{width:100%;height:100%;display:block;overflow:visible}
+.slot path,.slot rect,.slot circle{fill:none;stroke:var(--accent-l);stroke-width:7;
+  stroke-linecap:round;stroke-linejoin:round}
+.slot rect{fill:rgba(var(--accent-rgb),.12)}
+.slot .slot-gat{stroke-width:5.5}
+.slot .slot-gat-s{fill:var(--accent-l);stroke:none}
+.slot::after{content:'';position:absolute;inset:-16px -10px;border-radius:var(--r-blok);
+  border:1px solid rgba(var(--accent-rgb),.28);animation:slotPuls 2.8s ease-in-out 3.9s infinite}
+@keyframes slotPuls{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.08);opacity:0}}
+.slot:hover{transform:translateY(-2px)}
+.slot-beugel{transform-box:fill-box;transform-origin:88% 100%;
+  transition:transform .62s cubic-bezier(.34,1.42,.5,1)}
+.slot-t{font-family:var(--mono,'DM Mono',monospace);font-size:.64rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent-l);transition:opacity .3s ease}
+
+/* ontgrendelen: even indrukken, dan wipt de beugel open en licht het slot op */
+.intro.drukt .slot{transform:scale(.93)}
+.intro.opent .slot::after{animation:none;opacity:0}
+.intro.opent .slot-beugel{transform:translateY(-7px) rotate(-38deg)}
+.intro.opent .slot path,.intro.opent .slot rect,.intro.opent .slot circle{
+  stroke:var(--accent-h);transition:stroke .4s ease}
+.intro.opent .slot-t{opacity:0}
+.intro.opent .slot,.intro.opent .intro-in{transition:transform .7s var(--ease),opacity .7s ease}
 .intro-skip{position:absolute;right:clamp(1rem,4vw,2.4rem);bottom:clamp(1rem,4vw,2.4rem);z-index:3;
   border:0;background:none;cursor:pointer;font-family:var(--mono,'DM Mono',monospace);
   font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(var(--wit-rgb),.32);
@@ -77,8 +85,8 @@ body.introbezig{overflow:hidden}
 .intro-skip:hover{color:var(--accent-l)}
 /* Op een lage viewport moet de hele opening nog passen zonder te scrollen. */
 @media(max-height:720px){
-  .zegel{width:104px;height:104px}
-  .zegel-wrap{margin-top:1.2rem;gap:.6rem}
+  .slot{width:78px;height:86px}
+  .slot-wrap{margin-top:1.2rem;gap:.7rem}
   .intro-logo{margin-top:1rem}
   .intro-logo img{width:min(168px,30vw)}
   .intro-lijn{margin-bottom:1.7rem}
@@ -87,8 +95,8 @@ body.introbezig{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   .intro-lijn{width:100%;animation:none}
   .ks-pen{stroke-dashoffset:0;animation:none}
-  .intro-meta,.intro-logo,.zegel-wrap{opacity:1;scale:1;transform:none;animation:none}
-  .zegel::after{animation:none}
+  .intro-meta,.intro-logo,.slot-wrap{opacity:1;transform:none;animation:none}
+  .slot::after{animation:none}
   .intro-streep{width:min(260px,42vw);animation:none}
 }
 
@@ -170,15 +178,43 @@ h1 .a{color:var(--accent-l)}
 .kaart-cap{font-family:var(--mono,'DM Mono',monospace);font-size:.55rem;letter-spacing:.15em;
   text-transform:uppercase;color:rgba(var(--wit-rgb),.3);text-align:center;margin-top:1.2rem}
 
+/* ── inleiding: waar je bent en wat er komt ──────────────── */
+.mid{margin-left:auto;margin-right:auto;text-align:center}
+h2.mid{max-width:none}
+.inhoud{list-style:none;counter-reset:none;margin-top:2.6rem;border-top:1px solid var(--line)}
+.inhoud a{display:grid;grid-template-columns:3.2rem 1fr auto;gap:1.2rem;align-items:baseline;
+  padding:1.15rem .4rem;border-bottom:1px solid var(--line);text-decoration:none;
+  transition:.28s var(--ease)}
+.inhoud a:hover{background:rgba(var(--accent-rgb),.05);padding-left:1rem}
+.inh-n{font-family:var(--mono,'DM Mono',monospace);font-size:.72rem;letter-spacing:.1em;
+  color:var(--accent)}
+.inh-l{font-family:var(--serif);font-variation-settings:var(--wonk);font-size:1.18rem;
+  font-weight:600;line-height:1.3;color:var(--ink)}
+.inh-r{display:block;font-family:var(--sans);font-size:.9rem;font-weight:400;line-height:1.55;
+  color:var(--ink3);margin-top:.2rem}
+.inh-p{font-family:var(--mono,'DM Mono',monospace);font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);white-space:nowrap;align-self:center}
+.inhoud a:hover .inh-p{color:var(--accent)}
+
+/* ── voortgang in de vaste balk ───────────────────────────── */
+.bar-voortgang{position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent-l));
+  transition:width .18s linear;opacity:0}
+.bar.vast .bar-voortgang{opacity:1}
+
 /* ── secties ──────────────────────────────────────────────── */
 section{padding:clamp(3.5rem,8vw,6.5rem) 0;position:relative}
-.kap{display:flex;align-items:baseline;gap:1.1rem;border-bottom:1px solid var(--line);
-  padding-bottom:.8rem;margin-bottom:2rem}
-.kap-n{font-family:var(--serif);font-variation-settings:var(--wonk);font-size:2.6rem;
-  font-weight:600;line-height:.8;color:rgba(var(--ink-rgb),.13)}
+.kap{display:flex;align-items:baseline;gap:1.2rem;position:relative;
+  padding-bottom:1rem;margin-bottom:2.2rem}
+.kap::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--line);transform:scaleX(0);transform-origin:left;
+  transition:transform 1.1s var(--ease) .15s}
+.kap.in::after{transform:none}
+.kap-n{font-family:var(--serif);font-variation-settings:var(--wonk);font-size:3.1rem;
+  font-weight:600;line-height:.78;color:rgba(var(--ink-rgb),.12)}
 .kap-l{font-family:var(--mono,'DM Mono',monospace);font-size:.62rem;letter-spacing:.19em;
   text-transform:uppercase;color:var(--accent)}
-.kap.donker{border-color:rgba(var(--wit-rgb),.14)}
+.kap.donker::after{background:rgba(var(--wit-rgb),.14)}
 .kap.donker .kap-n{color:rgba(var(--wit-rgb),.16)}
 .kap.donker .kap-l{color:var(--accent-l)}
 h2{font-family:var(--serif);font-variation-settings:var(--wonk);font-size:var(--fs-h);

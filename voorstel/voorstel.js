@@ -47,16 +47,20 @@
     document.body.classList.add('introbezig');
     /* Geen tijdslot: de laag blijft staan tot iemand het zegel verbreekt. Een
        voorstel dat vanzelf opengaat is geen voorstel dat je hebt geopend. */
-    function verbreken(reden) {
+    function openen(reden) {
       if (intro.dataset.klaar) return;
-      intro.classList.add('breekt');
-      setTimeout(function () { sluiten(reden); }, 620);
+      intro.classList.add('drukt');
+      setTimeout(function () {
+        intro.classList.remove('drukt');
+        intro.classList.add('opent');
+        setTimeout(function () { sluiten(reden); }, 620);
+      }, 130);
     }
-    var zegel = $('.zegel');
-    if (zegel) zegel.addEventListener('click', function () { verbreken('zegel-verbroken'); });
-    $('.intro-skip').addEventListener('click', function () { verbreken('intro-overgeslagen'); });
+    var slot = $('.slot');
+    if (slot) slot.addEventListener('click', function () { openen('slot-geopend'); });
+    $('.intro-skip').addEventListener('click', function () { openen('intro-overgeslagen'); });
     addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') verbreken('intro-overgeslagen');
+      if (e.key === 'Escape') openen('intro-overgeslagen');
     });
   })();
 
@@ -101,6 +105,11 @@
       });
     }
     diepteMeten();
+    var balk = $('.bar-voortgang');
+    if (balk) {
+      var hoog = document.body.scrollHeight - innerHeight;
+      balk.style.width = (hoog > 0 ? Math.min(100, (y / hoog) * 100) : 100) + '%';
+    }
   }
   addEventListener('scroll', bijScroll, { passive: true });
   addEventListener('resize', bijScroll);
