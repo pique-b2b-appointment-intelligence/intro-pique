@@ -263,7 +263,8 @@
       }
       form.hidden = true;
       var dank = $('.dank');
-      var teksten = {
+      var eigen = window.PQ_DANK || {};
+      var teksten = eigen[soort] || {
         ja: ['Getekend. We zetten hem klaar.',
              'Je krijgt binnen een uur de opdrachtbevestiging en drie momenten voor de startsessie. Een kopie van dit ondertekende voorstel staat al in je mail.'],
         dossiers: ['Komen eraan.',

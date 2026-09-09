@@ -64,8 +64,12 @@ body.introbezig{overflow:hidden}
 .slot .ring-b{stroke-width:1.1;opacity:.5;animation:ringTeken 1.5s var(--ease) 3.1s forwards}
 .slot .ring-k{stroke-width:.7;opacity:.24;animation:ringTeken 1.5s var(--ease) 3.35s forwards}
 @keyframes ringTeken{to{stroke-dashoffset:0}}
-.slot .slot-beugel path,.slot .slot-huis rect{fill:none;stroke:var(--accent-l);stroke-width:3;
+.slot .beugel,.slot .slot-huis rect{fill:none;stroke:var(--accent-l);stroke-width:3;
   stroke-linecap:round;stroke-linejoin:round}
+/* Twee getekende standen in plaats van een beugel die over het huis heen draait.
+   Dat zwaaien zag er lelijk uit, want de poot sneed door de bovenrand. */
+.slot .beugel{transition:opacity .3s ease,transform .45s var(--ease)}
+.slot .beugel-open{opacity:0;transform:translateY(5px)}
 .slot .gat{fill:var(--accent-l);stroke:none}
 .slot::after{content:'';position:absolute;inset:-2px;border-radius:50%;
   box-shadow:0 0 0 1px rgba(var(--accent-rgb),.001);
@@ -80,9 +84,8 @@ body.introbezig{overflow:hidden}
 /* ontgrendelen: even indrukken, de beugel wipt open, de ringen draaien mee weg */
 .intro.drukt .slot{transform:scale(.95)}
 .intro.opent .slot::after{animation:none}
-.slot-beugel{transform-box:fill-box;transform-origin:92% 100%;
-  transition:transform .68s cubic-bezier(.34,1.46,.5,1)}
-.intro.opent .slot-beugel{transform:translateY(-6px) rotate(-41deg)}
+.intro.opent .beugel-dicht{opacity:0;transform:translateY(-7px)}
+.intro.opent .beugel-open{opacity:1;transform:translateY(-2px);transition-delay:.13s}
 .intro.opent .slot .ring{transition:transform .9s var(--ease),opacity .7s ease;
   transform:rotate(26deg);opacity:0}
 .intro.opent .slot-t{opacity:0}
