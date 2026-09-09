@@ -18,8 +18,10 @@
   window.PQ_CAMPAGNE = 'voorstel';
   window.PQ_SLUG     = 'voorstel/meridiaan';
   window.PQ_TRACK_URL = '/api/t';
+  window.PQ_AKKOORD_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';   // /exec van Terugbelverzoek.gs
+  window.PQ_MAIL     = 'info@pique.agency';
   window.PQ_ADVIES   = '200';
-  window.PQ_STAFFEL  = {"100": {"aantal": "100", "bedrag": "€ 4.750", "looptijd": "2 mnd", "gesprekken": "12", "totaal": "€ 9.500", "garantie": "9", "zin": "Twaalf gesprekken over vier segmenten zijn er drie per segment. Daarmee kun je wel iets meemaken, alleen kun je er niets uit aflezen.", "gesprekken_pm": "6", "t_verstuurd": "100", "t_bezorgd": "98", "t_scans": "64", "t_gesprekken": "6"}, "200": {"aantal": "200", "bedrag": "€ 7.500", "looptijd": "2 mnd", "gesprekken": "24", "totaal": "€ 15.000", "garantie": "18", "zin": "Vierentwintig gesprekken zijn er zes per segment. Op dat aantal begint een verschil tussen segmenten zichtbaar te worden. Ongeveer tachtig procent van de trajecten start hier.", "gesprekken_pm": "12", "t_verstuurd": "200", "t_bezorgd": "196", "t_scans": "129", "t_gesprekken": "12"}, "400": {"aantal": "400", "bedrag": "€ 12.800", "looptijd": "2 mnd", "gesprekken": "48", "totaal": "€ 25.600", "garantie": "36", "zin": "De laagste prijs per gesprek. Het bezwaar zit ergens anders: je zet dit volume op segmenten die zich nog moeten bewijzen.", "gesprekken_pm": "25", "t_verstuurd": "400", "t_bezorgd": "392", "t_scans": "258", "t_gesprekken": "25"}};
+  window.PQ_STAFFEL  = {"100": {"aantal": "100", "bedrag": "€ 4.750", "looptijd": "2 mnd", "gesprekken": "12", "totaal": "€ 9.500", "garantie": "9", "zin": "Twaalf gesprekken over vier segmenten zijn er drie per segment. Daarmee kun je wel iets meemaken, alleen kun je er niets uit aflezen.", "gesprekken_pm": "6", "t_verstuurd": "100", "t_bezorgd": "98", "t_scans": "64", "t_gesprekken": "6"}, "200": {"aantal": "200", "bedrag": "€ 7.500", "looptijd": "2 mnd", "gesprekken": "24", "totaal": "€ 15.000", "garantie": "18", "zin": "Vierentwintig gesprekken zijn er zes per segment. Op dat aantal begint een verschil tussen segmenten zichtbaar te worden. Ongeveer tachtig procent van de trajecten start hier.", "gesprekken_pm": "12", "t_verstuurd": "200", "t_bezorgd": "196", "t_scans": "129", "t_gesprekken": "12"}, "400": {"aantal": "400", "bedrag": "€ 12.800", "looptijd": "2 mnd", "gesprekken": "48", "totaal": "€ 25.600", "garantie": "36", "zin": "De laagste prijs per gesprek van de trajecten. Het bezwaar zit ergens anders: je zet dit volume op segmenten die zich nog moeten bewijzen.", "gesprekken_pm": "25", "t_verstuurd": "400", "t_bezorgd": "392", "t_scans": "258", "t_gesprekken": "25"}, "800": {"aantal": "800", "bedrag": "€ 21.800", "looptijd": "2 mnd", "gesprekken": "97", "totaal": "€ 43.600", "garantie": "73", "zin": "Bijna honderd gesprekken in twee maanden. Reken voor jezelf na hoeveel mensen je daarvoor aan tafel wilt hebben zitten, want dat is de echte grens.", "gesprekken_pm": "49", "t_verstuurd": "800", "t_bezorgd": "784", "t_scans": "516", "t_gesprekken": "49"}, "1000": {"aantal": "1.000", "bedrag": "In overleg", "looptijd": "2 mnd", "gesprekken": "121", "totaal": "In overleg", "garantie": "90", "zin": "Vanaf duizend per maand stemmen we een bewijsronde samen af, want dan hangt de prijs van de opzet af. Bel me even, dan reken ik het voor je door.", "gesprekken_pm": "61", "t_verstuurd": "1000", "t_bezorgd": "980", "t_scans": "645", "t_gesprekken": "61"}, "2000": {"aantal": "2.000", "bedrag": "In overleg", "looptijd": "2 mnd", "gesprekken": "242", "totaal": "In overleg", "garantie": "180", "zin": "Op dit volume gaat het over meerdere regio's of meerdere segmenten tegelijk, en dan is de staffel per regio interessanter dan deze. Dat rekenen we samen uit.", "gesprekken_pm": "123", "t_verstuurd": "2000", "t_bezorgd": "1960", "t_scans": "1290", "t_gesprekken": "123"}};
 </script>
 </head>
 <body>
@@ -89,7 +91,7 @@
 <section id="vondsten">
   <div class="wrap">
     <div class="kap op"><span class="kap-n">02</span><span class="kap-l">Wat ik zag</span></div>
-    <h2 class="op">Drie dingen die ik heb uitgeprint <span class="a">en omcirkeld.</span></h2>
+    <h2 class="op">Drie dingen die me bijblijven. <span class="a">Ik heb ze omcirkeld.</span></h2>
     <p class="lead op d1">Ik ben op je site begonnen en daarna verder gaan zoeken. Hieronder staat precies wat er in mijn map zit, met de regel eromheen die mij liet stilstaan.</p>
 
     <div class="vondst op">
@@ -185,9 +187,13 @@
     <p class="lead op d1">Alles zit in het tarief: research, de kaart, de persoonlijke pagina, je video, verzending en het nabellen. Er komt geen setupfee overheen.</p>
 
     <div class="kies op d1" role="group" aria-label="Benaderingen per maand">
-      <button data-v="100" type="button">100 p/m</button>
-      <button data-v="200" type="button">200 p/m</button>
-      <button data-v="400" type="button">400 p/m</button>
+      <button data-v="100" type="button">100</button>
+      <button data-v="200" type="button">200</button>
+      <button data-v="400" type="button">400</button>
+      <button data-v="800" type="button">800</button>
+      <button data-v="1000" type="button">1.000</button>
+      <button data-v="2000" type="button">2.000</button>
+      <span class="kies-l">per maand</span>
     </div>
 
     <div class="prijskaart op d1">
@@ -206,20 +212,24 @@
     </div>
 
     <details class="klap op d1" data-k="staffel">
-      <summary>Alle treden en wat ze opleveren</summary>
+      <summary><span class="kl-n">01</span><span class="kl-t">Alle treden naast elkaar
+        <em>Wat elk volume kost, en hoeveel gesprekken eruit komen</em></span></summary>
       <div class="klap-in">
         <table><thead><tr><th>Per maand</th><th class='r'>Wij bellen na</th><th class='r'>Per stuk</th><th class='r'>Jij belt zelf</th><th class='r'>Gesprekken p/m</th></tr></thead><tbody>
-<tr><td class='n'>50</td><td class='r n'>&euro; 2.875</td><td class='r n'>&euro; 57,50</td><td class='r n'>&euro; 1.625</td><td class='r n'>3</td></tr>
-<tr><td class='n'>100</td><td class='r n'>&euro; 4.750</td><td class='r n'>&euro; 47,50</td><td class='r n'>&euro; 2.750</td><td class='r n'>6</td></tr>
-<tr class='aan'><td class='n'>200</td><td class='r n'>&euro; 7.500</td><td class='r n'>&euro; 37,50</td><td class='r n'>&euro; 4.500</td><td class='r n'>12</td></tr>
-<tr><td class='n'>400</td><td class='r n'>&euro; 12.800</td><td class='r n'>&euro; 32,00</td><td class='r n'>&euro; 7.800</td><td class='r n'>24</td></tr>
-<tr><td class='n'>800</td><td class='r n'>&euro; 21.800</td><td class='r n'>&euro; 27,25</td><td class='r n'>&euro; 13.000</td><td class='r n'>49</td></tr></tbody></table>
-        <p class="lead" style="font-size:.86rem">Bedragen per maand, exclusief btw, over een validatietraject van twee maanden. Bel je zelf na, dan vervalt de afspraakgarantie, want dan hebben wij geen invloed op wat er met een scan gebeurt. Ga je na twee maanden door, dan zit je op de doorlopende staffel en die ligt vijftien procent lager.</p>
+<tr><td class='n'>50</td><td class='r n'>€ 2.875</td><td class='r n'>€ 57,50</td><td class='r n'>€ 1.625</td><td class='r n'>3</td></tr>
+<tr><td class='n'>100</td><td class='r n'>€ 4.750</td><td class='r n'>€ 47,50</td><td class='r n'>€ 2.750</td><td class='r n'>6</td></tr>
+<tr class='aan'><td class='n'>200</td><td class='r n'>€ 7.500</td><td class='r n'>€ 37,50</td><td class='r n'>€ 4.500</td><td class='r n'>12</td></tr>
+<tr><td class='n'>400</td><td class='r n'>€ 12.800</td><td class='r n'>€ 32,00</td><td class='r n'>€ 7.800</td><td class='r n'>24</td></tr>
+<tr><td class='n'>800</td><td class='r n'>€ 21.800</td><td class='r n'>€ 27,25</td><td class='r n'>€ 13.000</td><td class='r n'>49</td></tr>
+<tr><td class='n'>1.000</td><td class='r n'>In overleg</td><td class='r n'>In overleg</td><td class='r n'>In overleg</td><td class='r n'>61</td></tr>
+<tr><td class='n'>2.000</td><td class='r n'>In overleg</td><td class='r n'>In overleg</td><td class='r n'>In overleg</td><td class='r n'>121</td></tr></tbody></table>
+        <p class="lead" style="font-size:.86rem">Bedragen per maand, exclusief btw, over een validatietraject van twee maanden. Bel je zelf na, dan vervalt de afspraakgarantie, want dan hebben wij geen invloed op wat er met een scan gebeurt. Ga je na twee maanden door, dan zit je op de doorlopende staffel en die ligt ongeveer vijftien procent lager. Vanaf duizend per maand stemmen we de opzet samen af, want dan hangt de prijs af van het aantal regio&rsquo;s en segmenten.</p>
       </div>
     </details>
 
     <details class="klap op d1" data-k="trechter">
-      <summary><span>Hoe <span data-prijs="aantal">200</span> kaarten <span data-prijs="gesprekken_pm">12</span> gesprekken worden</span></summary>
+      <summary><span class="kl-n">02</span><span class="kl-t">Waar de gesprekken vandaan komen
+        <em>Van <span data-prijs="aantal">200</span> kaarten naar <span data-prijs="gesprekken_pm">12</span> gesprekken, met de percentages erbij</em></span></summary>
       <div class="klap-in trechter">
         <div class="tr"><span class="tr-l">Kaarten verstuurd</span><span class="tr-b"><span class="tr-f z" data-w="100"></span></span><span class="tr-v" data-prijs="t_verstuurd">200</span></div>
         <div class="tr"><span class="tr-l">Bezorgd op het bureau</span><span class="tr-b"><span class="tr-f z" data-w="98"></span></span><span class="tr-v" data-prijs="t_bezorgd">196</span></div>
@@ -230,7 +240,8 @@
     </details>
 
     <details class="klap op d1" data-k="voorwaarden">
-      <summary>Wat er verder vaststaat</summary>
+      <summary><span class="kl-n">03</span><span class="kl-t">De afspraken
+        <em>Looptijd, exclusiviteit, facturatie en de afspraakgarantie</em></span></summary>
       <div class="klap-in"><table><tbody><tr><td><strong>Exclusiviteit</strong></td><td>E&eacute;n klant per prospectlijst. Zolang dit loopt nemen wij geen tweede koeltechnisch installateur aan die dezelfde beslissers zou aanschrijven.</td></tr><tr><td><strong>Looptijd</strong></td><td>Twee maanden, daarna stopt het vanzelf. Zonder opzegtermijn en zonder stilzwijgende verlenging.</td></tr><tr><td><strong>Volume</strong></td><td>Opschalen kan per direct. Afschalen doen we aan het eind van een kwartaal.</td></tr><tr><td><strong>Wat je houdt</strong></td><td>De lijst, de research, de pagina&rsquo;s en je video blijven van jou, ook als je stopt.</td></tr><tr><td><strong>Facturatie</strong></td><td>Per maand vooraf, veertien dagen. Er komt geen setupfee overheen.</td></tr><tr><td><strong>Afspraakgarantie</strong></td><td>Halen we het vastgelegde aantal gesprekken niet, dan werken we door tot het er staat zonder extra factuur.</td></tr><tr><td><strong>Capaciteit</strong></td><td>Wij draaien vijf validatietrajecten per kwartaal. Daarvan zijn er nu twee vrij.</td></tr></tbody></table></div>
     </details>
   </div>
@@ -240,25 +251,62 @@
   <div class="wrap">
     <div class="kap donker op"><span class="kap-n">06</span><span class="kap-l">De keuze</span></div>
     <h2 class="op">Wat wordt het?</h2>
-    <p class="lead op d1">E&eacute;n klik is genoeg. Ik zie hem meteen en je krijgt vandaag antwoord.</p>
-    <div class="kz op d1">
-      <button class="p" data-keuze="ja" data-dank-kop="Mooi. Ik ga hem klaarzetten."
-              data-dank-tekst="Je krijgt vandaag de opdrachtbevestiging en drie momenten voor de startsessie. Stuur je uitsluitingslijst mee wanneer het uitkomt.">
-        <span class="kz-k">Ja, we beginnen</span>
-        <span class="kz-t"><span data-prijs="aantal">200</span> per maand, <span data-prijs="looptijd">2 mnd</span>. Ik zet de startsessie klaar.</span>
-      </button>
-      <button data-keuze="dossiers" data-dank-kop="Komen eraan."
-              data-dank-tekst="Ik stuur je binnen twee werkdagen vier volledige dossiers uit jouw eigen lijst. Dat kost je een kwartier lezen en verplicht je tot niets.">
-        <span class="kz-k">Stuur eerst de vier dossiers</span>
-        <span class="kz-t">Volledig uitgezocht, uit jouw eigen lijst. Kost je niets.</span>
-      </button>
-      <button data-keuze="bellen" data-dank-kop="Ik bel je."
-              data-dank-tekst="Ik neem morgen contact op. Heb je liever zelf de regie, bel dan 06 12 34 56 78."
-              data-href="https://cal.com/simon-kempers/belafspraak-pique">
-        <span class="kz-k">Bel me even</span>
-        <span class="kz-t">06 12 34 56 78. Of prik hier meteen een moment.</span>
-      </button>
-    </div>
+    <p class="lead op d1">Kies wat je wil, vul je gegevens in en druk op verzenden. Ik krijg het direct in mijn mail en jij krijgt een kopie.</p>
+    <form class="akkoord op d1" novalidate>
+      <fieldset class="kz">
+        <legend class="vh">Wat wordt het?</legend>
+        <label class="kzo">
+          <input type="radio" name="keuze" value="ja" checked>
+          <span class="kz-in">
+            <span class="kz-k">Ja, we beginnen</span>
+            <span class="kz-t"><span data-prijs="aantal">200</span> per maand, <span data-prijs="looptijd">2 mnd</span>, <span data-prijs="bedrag">€ 7.500</span> per maand</span>
+          </span>
+        </label>
+        <label class="kzo">
+          <input type="radio" name="keuze" value="dossiers">
+          <span class="kz-in">
+            <span class="kz-k">Stuur eerst de vier dossiers</span>
+            <span class="kz-t">Volledig uitgezocht, uit jouw eigen lijst. Kost je niets.</span>
+          </span>
+        </label>
+        <label class="kzo">
+          <input type="radio" name="keuze" value="bellen">
+          <span class="kz-in">
+            <span class="kz-k">Bel me even</span>
+            <span class="kz-t">Ik heb nog een vraag voordat ik iets beslis.</span>
+          </span>
+        </label>
+      </fieldset>
+
+      <div class="velden">
+        <div class="vd"><label for="ak-naam">Naam</label><input id="ak-naam" name="naam" autocomplete="name" required></div>
+        <div class="vd"><label for="ak-functie">Functie</label><input id="ak-functie" name="functie" autocomplete="organization-title"></div>
+        <div class="vd"><label for="ak-mail">E-mailadres</label><input id="ak-mail" name="email" type="email" autocomplete="email" required></div>
+        <div class="vd"><label for="ak-tel">Telefoonnummer</label><input id="ak-tel" name="tel" type="tel" autocomplete="tel"></div>
+        <div class="vd breed"><label for="ak-opm">Opmerking, vraag of afwijking</label><textarea id="ak-opm" name="opmerking" rows="2"></textarea></div>
+      </div>
+
+      <div class="hb" data-alleen="ja">
+        <div class="hb-kop">
+          <span class="hb-l">Handtekening</span>
+          <button type="button" class="hb-wis">Opnieuw</button>
+        </div>
+        <canvas class="hb-vlak" width="1400" height="320" aria-label="Teken hier je handtekening"></canvas>
+        <p class="hb-h">Teken met je muis of je vinger. Hiermee onderteken je dit voorstel voor <span data-prijs="aantal">200</span> benaderingen per maand, <span data-prijs="looptijd">2 mnd</span>, voor <span data-prijs="bedrag">€ 7.500</span> per maand exclusief btw.</p>
+      </div>
+
+      <label class="vink" data-alleen="ja">
+        <input type="checkbox" name="voorwaarden">
+        <span>Ik ga akkoord met de <a href="https://www.pique.agency/algemene-voorwaarden" target="_blank" rel="noopener">algemene voorwaarden</a> en met dit voorstel zoals het hierboven staat.</span>
+      </label>
+
+      <div class="verzend">
+        <button type="submit" class="knop p">Ondertekenen en verzenden</button>
+        <span class="verzend-h">Je krijgt zelf een kopie op het adres dat je hierboven invult.</span>
+      </div>
+      <p class="fout" hidden></p>
+    </form>
+
     <div class="dank">
       <h3 data-dank-kop></h3>
       <p data-dank-tekst></p>

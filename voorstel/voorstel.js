@@ -97,22 +97,159 @@
   $$('.trechter').forEach(function (el) { ioTr.observe(el); });
   function vulBalken(w) { $$('.tr-f', w).forEach(function (f) { f.style.width = f.dataset.w + '%'; }); }
 
-  /* ── 6. de keuze ────────────────────────────────────────── */
-  $$('[data-keuze]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var soort = b.dataset.keuze;
-      tik('keuze-' + soort);
-      flush('keuze');
-      var dank = $('.dank');
-      if (dank) {
-        $('[data-dank-kop]', dank).textContent = b.dataset.dankKop || 'Genoteerd.';
-        $('[data-dank-tekst]', dank).textContent = b.dataset.dankTekst || '';
-        dank.classList.add('toon');
-        dank.scrollIntoView({ behavior: rust ? 'auto' : 'smooth', block: 'center' });
-      }
-      if (b.dataset.href) setTimeout(function () { location.href = b.dataset.href; }, 900);
+  /* ── 6. de keuze, het ondertekenen en het verzenden ───── */
+  var form = $('.akkoord');
+  var doek = $('.hb-vlak');
+  var ctx = doek ? doek.getContext('2d') : null;
+  var getekend = false;
+
+  /* De canvas is groot opgezet en wordt door de css geschaald, anders is de lijn
+     op een scherm met hoge dichtheid korrelig. */
+  function penKlaar() {
+    if (!ctx) return;
+    ctx.lineWidth = 4.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = getComputedStyle(document.documentElement)
+      .getPropertyValue('--hand-ink').trim() || '#1B2540';
+  }
+  function punt(e) {
+    var r = doek.getBoundingClientRect();
+    return { x: (e.clientX - r.left) * (doek.width / r.width),
+             y: (e.clientY - r.top) * (doek.height / r.height) };
+  }
+  if (doek) {
+    penKlaar();
+    var tekent = false;
+    doek.addEventListener('pointerdown', function (e) {
+      tekent = true; getekend = true;
+      doek.setPointerCapture(e.pointerId);
+      doek.classList.remove('mis');
+      var p = punt(e); ctx.beginPath(); ctx.moveTo(p.x, p.y);
+      tik('handtekening');
     });
+    doek.addEventListener('pointermove', function (e) {
+      if (!tekent) return;
+      var p = punt(e); ctx.lineTo(p.x, p.y); ctx.stroke();
+    });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (n) {
+      doek.addEventListener(n, function () { tekent = false; });
+    });
+    $('.hb-wis').addEventListener('click', function () {
+      ctx.clearRect(0, 0, doek.width, doek.height); getekend = false; penKlaar();
+    });
+  }
+
+  /* Handtekening en voorwaarden horen alleen bij een ja. Wie eerst dossiers wil
+     of gebeld wil worden tekent niets. */
+  function zetKeuze() {
+    var g = $('input[name="keuze"]:checked');
+    var soort = g ? g.value : 'ja';
+    $$('[data-alleen]').forEach(function (el) {
+      el.hidden = el.dataset.alleen !== soort;
+    });
+    var k = $('.verzend .knop');
+    k.textContent = soort === 'ja' ? 'Ondertekenen en verzenden' : 'Verzenden';
+    window.PQ_KEUZE = soort;
+  }
+  $$('input[name="keuze"]').forEach(function (r) {
+    r.addEventListener('change', function () { zetKeuze(); tik('keuze-' + r.value); });
   });
+  if (form) zetKeuze();
+
+  function melden(tekst, veld) {
+    var f = $('.fout');
+    f.textContent = tekst; f.hidden = false;
+    if (veld) { veld.classList.add('mis'); veld.focus({ preventScroll: true }); }
+    f.scrollIntoView({ behavior: rust ? 'auto' : 'smooth', block: 'center' });
+  }
+
+  if (form) form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    $('.fout').hidden = true;
+    $$('.mis').forEach(function (el) { el.classList.remove('mis'); });
+
+    var soort = window.PQ_KEUZE || 'ja';
+    var naam = $('#ak-naam'), mail = $('#ak-mail');
+    if (!naam.value.trim()) return melden('Vul je naam even in.', naam);
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim()))
+      return melden('Dat mailadres klopt nog niet. Zonder adres kan ik je geen kopie sturen.', mail);
+    if (soort === 'ja') {
+      if (!getekend) { doek.classList.add('mis'); return melden('Zet even je handtekening in het vak.'); }
+      var vink = $('.vink input');
+      if (!vink.checked) return melden('Zet het vinkje bij de algemene voorwaarden.', vink);
+    }
+
+    var knop = $('.verzend .knop');
+    knop.disabled = true; knop.textContent = 'Bezig met verzenden';
+
+    var lading = {
+      soort: 'akkoord', keuze: soort,
+      naam: naam.value.trim(), functie: $('#ak-functie').value.trim(),
+      email: mail.value.trim(), tel: $('#ak-tel').value.trim(),
+      opmerking: $('#ak-opm').value.trim(),
+      voorwaarden: soort === 'ja' ? $('.vink input').checked : false,
+      handtekening: soort === 'ja' && getekend ? doek.toDataURL('image/png') : '',
+      volume: window.PQ_VOLUME || '', bedrag: ($('[data-prijs="bedrag"]') || {}).textContent || '',
+      looptijd: ($('[data-prijs="looptijd"]') || {}).textContent || '',
+      garantie: ($('[data-prijs="garantie"]') || {}).textContent || '',
+      bedrijf: window.PQ_BEDRIJF, slug: SLUG, klant: window.PQ_KLANT,
+      campagne: window.PQ_CAMPAGNE || 'voorstel', url: location.href
+    };
+
+    tik('verzonden-' + soort);
+    flush('akkoord');
+
+    var doel = window.PQ_AKKOORD_URL || '';
+    var klaar = function (gelukt, reden) {
+      if (!gelukt) {
+        knop.disabled = false;
+        knop.textContent = soort === 'ja' ? 'Ondertekenen en verzenden' : 'Verzenden';
+        if (console && console.warn && reden) console.warn('[pique] akkoord geweigerd: ' + reden);
+        return melden('Het versturen lukte niet. Mail me even op ' + (window.PQ_MAIL || 'info@pique.agency') + ', dan pak ik het zo op.');
+      }
+      form.hidden = true;
+      var dank = $('.dank');
+      var teksten = {
+        ja: ['Getekend. Ik zet hem klaar.',
+             'Je krijgt binnen een uur de opdrachtbevestiging en drie momenten voor de startsessie. Een kopie van dit ondertekende voorstel staat al in je mail.'],
+        dossiers: ['Komen eraan.',
+             'Ik stuur je binnen twee werkdagen vier volledige dossiers uit jouw eigen lijst. Dat kost je een kwartier lezen en verplicht je tot niets.'],
+        bellen: ['Ik bel je.',
+             'Ik neem binnen een werkdag contact op. Komt het eerder uit, bel dan gerust zelf.']
+      }[soort];
+      $('[data-dank-kop]', dank).textContent = teksten[0];
+      $('[data-dank-tekst]', dank).textContent = teksten[1];
+      dank.classList.add('toon');
+      dank.scrollIntoView({ behavior: rust ? 'auto' : 'smooth', block: 'center' });
+    };
+
+    if (!doel) { if (console && console.debug) console.debug('[pique] akkoord', lading); return klaar(true); }
+    /* Bewust text/plain, net als bij het terugbelverzoek in lp-v2: dan is het een
+       simpele request en vraagt de browser geen preflight, wat een Apps
+       Script-webapp toch niet beantwoordt. Lukt fetch niet, dan gaat het alsnog
+       met een beacon de deur uit en is het verzoek niet weg. */
+    var ruw = JSON.stringify(lading);
+    fetch(doel, { method: 'POST', body: ruw, keepalive: true,
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' } })
+      .then(function (r) { return r.text(); })
+      .then(function (tekst) {
+        /* Apps Script antwoordt altijd met 200 en zet het echte oordeel in de body.
+           Kunnen we die lezen en staat er ok:false in, dan is er niets vastgelegd en
+           mogen we hier geen bevestiging tonen. Lukt lezen niet, dan blokkeert CORS
+           het antwoord en niet de verzending, en gaan we uit van verzonden. */
+        try {
+          var a = JSON.parse(tekst);
+          if (a && a.ok === false) return klaar(false, a.fout);
+        } catch (e) { /* geen leesbaar antwoord, dan is het onderweg */ }
+        klaar(true);
+      })
+      .catch(function () {
+        var blob = new Blob([ruw], { type: 'text/plain;charset=UTF-8' });
+        klaar(!!(navigator.sendBeacon && navigator.sendBeacon(doel, blob)));
+      });
+  });
+
   $$('.bar-knop, [data-spring]').forEach(function (b) {
     b.addEventListener('click', function () {
       var d = $('#keuze');
