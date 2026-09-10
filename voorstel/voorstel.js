@@ -137,6 +137,11 @@
     Object.keys(toon).forEach(function (k) {
       $$('[data-prijs="' + k + '"]').forEach(function (el) { el.textContent = toon[k]; });
     });
+    /* Het formulier vraagt hetzelfde nog een keer, dus die twee moeten altijd
+       hetzelfde zeggen. Wie boven schuift ziet het onder meeveranderen. */
+    var vv = $('#ak-volume'), vw = $('#ak-wie');
+    if (vv && vv.value !== sleutel) vv.value = sleutel;
+    if (vw && vw.value !== wie) vw.value = wie;
     window.PQ_VOLUME = sleutel;
     window.PQ_OPVOLGING = wie;
     tik('volume-' + sleutel + '-' + wie);
@@ -149,6 +154,12 @@
       wie = b.dataset.w;
       zetVolume(window.PQ_VOLUME || String(window.PQ_ADVIES || ''));
     });
+  });
+  var velVolume = $('#ak-volume'), velWie = $('#ak-wie');
+  if (velVolume) velVolume.addEventListener('change', function () { zetVolume(velVolume.value); });
+  if (velWie) velWie.addEventListener('change', function () {
+    wie = velWie.value;
+    zetVolume(window.PQ_VOLUME || String(window.PQ_ADVIES || ''));
   });
   if (window.PQ_ADVIES) zetVolume(String(window.PQ_ADVIES));
 
@@ -268,7 +279,8 @@
       opmerking: $('#ak-opm').value.trim(), wanneer: $('#ak-wanneer').value.trim(),
       voorwaarden: !!(soort === 'ja' && vink && vink.checked),
       handtekening: soort === 'ja' && doek && getekend ? doek.toDataURL('image/png') : '',
-      volume: window.PQ_VOLUME || '', opvolging: window.PQ_OPVOLGING || '', bedrag: ($('[data-prijs="bedrag"]') || {}).textContent || '',
+      volume: window.PQ_VOLUME || '',
+      opvolging: velWie ? velWie.options[velWie.selectedIndex].text : (window.PQ_OPVOLGING || ''), bedrag: ($('[data-prijs="bedrag"]') || {}).textContent || '',
       looptijd: ($('[data-prijs="looptijd"]') || {}).textContent || '',
       garantie: ($('[data-prijs="garantie"]') || {}).textContent || '',
       bedrijf: window.PQ_BEDRIJF, slug: SLUG, klant: window.PQ_KLANT,

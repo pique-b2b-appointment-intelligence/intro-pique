@@ -441,12 +441,13 @@ tr.aan td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
 .vd.breed{grid-column:1/-1}
 .vd label{display:block;font-family:var(--mono,'DM Mono',monospace);font-size:.58rem;letter-spacing:.14em;
   text-transform:uppercase;color:rgba(var(--wit-rgb),.42);margin-bottom:.4rem}
-.vd input,.vd textarea{width:100%;font:400 .98rem/1.5 var(--sans);color:var(--wit);
+.vd select{appearance:none;cursor:pointer}
+.vd input,.vd select,.vd textarea{width:100%;font:400 .98rem/1.5 var(--sans);color:var(--wit);
   background:rgba(var(--wit-rgb),.05);border:1px solid rgba(var(--wit-rgb),.16);
   border-radius:var(--r-pap);padding:.7rem .9rem;transition:.22s var(--ease);resize:vertical}
-.vd input:focus,.vd textarea:focus{outline:0;border-color:var(--accent-l);
+.vd input:focus,.vd select:focus,.vd textarea:focus{outline:0;border-color:var(--accent-l);
   background:rgba(var(--wit-rgb),.09)}
-.vd input.mis,.vd textarea.mis{border-color:var(--let-op)}
+.vd input.mis,.vd select.mis,.vd textarea.mis{border-color:var(--let-op)}
 
 .hb{margin-top:1.6rem}
 .hb[hidden]{display:none}
