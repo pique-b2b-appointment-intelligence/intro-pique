@@ -562,3 +562,21 @@ footer{border-top:1px solid var(--line);padding:2.5rem 2rem calc(2.5rem + var(--
 .mz-s.kort{width:62%}
 .mz-r.on .mz-s{background:rgba(var(--ink-rgb),.18)}
 
+
+/* ══ FAQ. De vragen die iemand stelt voordat hij iets probeert. Staat na het
+   voorstel en voor de oprichter, zodat een bezwaar niet blijft hangen tot de CTA.
+   Werkt op <details>, dus hij doet het ook zonder javascript. ══ */
+.faq{max-width:780px;margin:0 auto;padding:clamp(1rem,3vh,2rem) clamp(1.25rem,3vw,2rem) clamp(2.5rem,6vh,4rem)}
+.faq-kop{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.1rem);
+  line-height:1.16;letter-spacing:-.015em;color:var(--ink);margin-bottom:1.35rem}
+.faq details{border-top:1px solid var(--line);transition-delay:var(--dl,0s)}
+.faq details:last-of-type{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:1.05rem 2.4rem 1.05rem 0;position:relative;
+  font-family:var(--serif);font-weight:600;font-size:1.03rem;line-height:1.45;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'';position:absolute;right:.4rem;top:1.4rem;width:9px;height:9px;
+  border-right:1.8px solid var(--accent);border-bottom:1.8px solid var(--accent);
+  transform:rotate(45deg);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(-135deg);top:1.65rem}
+.faq .a{padding:0 2.4rem 1.2rem 0;font-size:.95rem;color:var(--ink2);line-height:1.68}
+.faq .a a{color:var(--accent);text-underline-offset:3px}
