@@ -1,0 +1,72 @@
+/* ============================================================
+   THEMA — ProspectPro
+   Overgenomen van prospectpro.nl (thema ocjBd-2, style.css).
+   Blauw is de structuur, oranje is de aandacht: op hun eigen site
+   staat oranje alleen op labels en op de belangrijkste knop, en
+   verder is alles blauw of marine. Die verhouding is hier gelijk
+   gehouden, anders wordt het een oranje pagina en dat is het merk niet.
+
+   Geteld in hun stylesheet: #0075f2 105x, #0d1b2a 86x, #fafcff 71x,
+   #d6ebff 67x, #fe5d26 25x.
+
+   Elke kleur staat twee keer: als hex, en als losse kanalen voor
+   rgba(). Vergeet je de kanalen, dan krijg je een pagina in de
+   nieuwe kleur met oude randjes.
+   ============================================================ */
+:root{
+  /* ── accent ─────────────────────────────────────────────── */
+  --accent:#0075F2;        --accent-rgb:0,117,242;     /* lijnen, labels, dots  */
+  --accent-l:#FE5D26;      --accent-l-rgb:254,93,38;   /* knoppen, accent op donker */
+  --accent-h:#FE4202;                                  /* knop bij hover        */
+  --op-accent:#FAFCFF;                                 /* tekst op een accentknop */
+  --inkt:#0075F2;          --inkt-rgb:0,117,242;       /* handgeschreven accent */
+
+  /* ── vlakken en tekst ───────────────────────────────────── */
+  --bg:#FAFCFF;            --bg-rgb:250,252,255;       /* de pagina             */
+  --ink:#0D1B2A;           --ink-rgb:13,27,42;         /* tekst                 */
+  --donker:#0D1B2A;        --donker-rgb:13,27,42;      /* hero, kantelpunt, CTA */
+  --dieper:#081320;        --dieper-rgb:8,19,32;       /* overlays              */
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.66);                     /* bodytekst             */
+  --ink3:rgba(var(--ink-rgb),.42);                     /* bijschrift, bron      */
+  --line:rgba(var(--ink-rgb),.13);                     /* haarlijnen, randen    */
+
+  /* ── papier ─────────────────────────────────────────────── */
+  /* koel merk, dus koel papier. Crème zou hier misstaan.      */
+  --pap-0:#FFFFFF;         --pap-0-rgb:255,255,255;    /* het knipsel           */
+  --pap-1:#FDFEFF;                                     /* bovenkant papiertje   */
+  --pap-2:#E9F2FC;                                     /* onderkant papiertje   */
+  --tape-rgb:206,227,248;                              /* plakband              */
+  --hand-ink:#0D1B2A;      --hand-rgb:13,27,42;        /* handschrift           */
+
+  /* ── overig ─────────────────────────────────────────────── */
+  --goed:#4AAD52;          --goed-rgb:74,173,82;       /* vinkje, hun groen     */
+  --let-op:#CA2E55;        --let-op-rgb:202,46,85;   /* oordeel dat niet goed is */
+  --chrome:#E4EFFB;                                    /* browserbalk in de mockup */
+  --video-bg:#081320;
+
+  /* ── typografie ─────────────────────────────────────────── */
+  /* ProspectPro voert geen serif. Plus Jakarta Sans staat op de
+     koppen, Inter op de bodytekst, dus --wonk gaat uit.        */
+  --serif:'Plus Jakarta Sans','Inter',system-ui,sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;
+
+  /* ── vorm ───────────────────────────────────────────────── */
+  /* hun site is scherper dan Pique: .25rem en .5rem overheersen,
+     knoppen zijn pillen.                                       */
+  --r-pap:3px;             /* papiertjes: bijna vierkant, want papier is dat ook */
+  --r-kaart:10px;
+  --r-blok:14px;
+  --r-pil:100px;
+
+  /* ── beweging ───────────────────────────────────────────── */
+  --ease:cubic-bezier(.16,1,.3,1);
+
+  /* ── maten ──────────────────────────────────────────────── */
+  --fs-h:clamp(1.9rem,3vw,2.7rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;              /* wordt door lp.js gezet, niet aanpassen */
+}
