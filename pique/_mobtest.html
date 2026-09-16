@@ -1,0 +1,29 @@
+<!doctype html><meta charset="utf-8"><style>
+html,body{margin:0;background:#888}
+iframe{width:390px;height:6400px;border:0;display:block;background:#fff}
+</style>
+<iframe src="_design-referentie-v2.html?nointro" id="f"></iframe>
+<script>
+// reveals aanzetten binnen de iframe, anders is alles onzichtbaar op de foto
+document.getElementById('f').addEventListener('load',function(){
+  var d=this.contentDocument, w=this.contentWindow;
+  w.pqWarmCal=function(){};
+  var st=d.createElement('style');
+  st.textContent='.ch-body,.reveal,.note,.ask-in,.founder .fr,.fo-sig,.tp,.vw div{opacity:1!important;transition:none!important}'+
+    '.ch-body{transform:none!important;filter:none!important}'+
+    '.find .ch-body{transform:rotate(var(--tilt))!important}'+
+    '.find .ch-body>*{opacity:1!important;transform:none!important}'+
+    '.tp,.vw div,.fo-sig{transform:none!important}'+
+    '.chapter .ch-dot{border-color:#C6893C;background:#C6893C}'+
+    '.chapter.pivot .tl-i .d{background:#E0AC66!important}';
+  d.head.appendChild(st);
+  setTimeout(function(){
+    d.querySelectorAll('.chapter,.founder,.reveal,.ask,.toon').forEach(function(e){e.classList.add('in')});
+    // overloop-controle
+    var vw=d.documentElement.clientWidth, uit=[];
+    d.querySelectorAll('*').forEach(function(e){var r=e.getBoundingClientRect();
+      if(r.right>vw+1||r.width>vw+1) uit.push(e.tagName+'.'+(e.className||'')+' w='+Math.round(r.width));});
+    document.title='VW='+vw+' OVERLOOP='+(uit.length?uit.slice(0,6).join(' | '):'geen');
+  },500);
+});
+</script>

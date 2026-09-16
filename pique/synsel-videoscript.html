@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Videoscript — Synsel</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FBFAF8;--ink:#141C33;--ink2:rgba(20,28,51,.66);--ink3:rgba(20,28,51,.42);
+  --navy:#0E1526;--amber:#C6893C;--ambers:#E0AC66;--line:rgba(20,28,51,.13);--white:#fff;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);
+}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6}
+::selection{background:rgba(198,137,60,.2)}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(1.5rem,4vw,2.5rem)}
+
+/* HEAD */
+.head{background:var(--navy);color:#fff;border-radius:22px;padding:clamp(2.25rem,5vw,3.25rem);position:relative;overflow:hidden;margin-bottom:clamp(2rem,5vh,3.25rem)}
+.head::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 15% 0,rgba(198,137,60,.16),transparent 55%);pointer-events:none}
+.head .logo{height:24px;margin-bottom:2rem;display:block}
+.head .eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(224,172,102,.95);margin-bottom:1rem}
+.head h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.5vw,2.9rem);line-height:1.1;letter-spacing:-.02em}
+.head .sub{color:rgba(255,255,255,.6);font-weight:300;font-size:1.02rem;margin-top:1rem;max-width:46ch}
+.meta{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.75rem;position:relative;z-index:1}
+.meta span{font-size:.74rem;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:.4rem .85rem}
+
+/* SCRIPT */
+.line{position:relative;padding:1.5rem 0 1.5rem 1.75rem;border-left:2px solid var(--line)}
+.line::before{content:'';position:absolute;left:-6px;top:2.15rem;width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px rgba(198,137,60,.12)}
+.line+.line{margin-top:.25rem}
+.line .lbl{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem}
+.line .lbl .t{color:var(--ink3);font-weight:500;letter-spacing:.04em}
+.line p{font-family:var(--serif);font-weight:400;font-size:clamp(1.25rem,2.3vw,1.5rem);line-height:1.5;color:var(--ink);letter-spacing:-.01em}
+.line.req .lbl{color:#B0702A}
+.line.req::before{background:var(--ink);box-shadow:0 0 0 5px rgba(20,28,51,.1)}
+
+/* TIPS */
+.tips{margin-top:clamp(2.25rem,5vh,3.25rem);background:var(--white);border:1px solid rgba(198,137,60,.3);border-radius:20px;padding:clamp(1.75rem,4vw,2.5rem);box-shadow:0 24px 60px rgba(20,28,51,.06);position:relative}
+.tips::before{content:'';position:absolute;top:0;left:clamp(1.75rem,4vw,2.5rem);right:clamp(1.75rem,4vw,2.5rem);height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.tips .eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.25rem}
+.tips ul{list-style:none;display:flex;flex-direction:column;gap:.95rem}
+.tips li{position:relative;padding-left:1.5rem;font-size:1rem;line-height:1.6;color:var(--ink2)}
+.tips li::before{content:'';position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--amber)}
+.tips li strong{color:var(--ink);font-weight:600}
+.tips code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:rgba(20,28,51,.06);padding:.12em .45em;border-radius:6px;color:var(--ink)}
+
+.foot{text-align:center;padding:2.5rem 1rem 1rem;font-size:.74rem;color:var(--ink3);line-height:1.8}
+@media(max-width:520px){.line{padding-left:1.4rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 929.98 302.23"><path fill="#fff" d="M0,268v-3.83l7.66-2.68q7.65-2.29,10.14-6.89t2.49-12.26V41.73q0-7.65-2.68-12.25T7.27,22.21L0,19.14V15.32H93q57,0,82.51,20.86t25.46,55a78.41,78.41,0,0,1-10.53,40Q180,149.32,155.83,160T90.74,170.77h-13v70.45q0,14.92,14.93,19.52l11.48,3.45V268ZM77.73,163.11H92.27q18.77,0,30.64-6.13t17.61-21.44q5.74-15.31,5.74-42.5,0-27.57-6.32-42.88T121.37,28.91Q109.12,23,90.74,23h-13Z"/><path fill="#fff" d="M216.32,268v-3.83l5.36-1.53c5.11-1.54,8.62-3.83,10.53-6.9s2.88-7.14,2.88-12.25V123.67q0-8-2.88-12.06t-10.53-5.55l-5.36-1.15v-3.83l70.07-22.59,3.83,3.83-1.15,54.37V243.9q0,7.65,2.87,12.25T302.09,263l3.83,1.15V268ZM261.5,58.2q-13,0-22-8.23a27.06,27.06,0,0,1-9-20.87q0-13,9-21.06t22-8q13,0,21.83,8t8.8,21.06q0,12.63-8.8,20.87T261.5,58.2Z"/><path fill="#fff" d="M503.21,119.57a87.17,87.17,0,0,0-33.76-35.13q-21.76-12.69-50.16-12.68T369.4,84.44a90,90,0,0,0-33.8,35.13q-12.27,22.45-12.24,52t12.24,52a90.24,90.24,0,0,0,33.8,35.16q21.5,12.68,49.89,12.66c3.83,0,7.54-.2,11.18-.53,2.21-.22,4.4-.48,6.53-.83-2-4.41-4.22-9.33-6.59-14.54a28.4,28.4,0,0,1-11.08,2.17c-.83,0-1.64,0-2.43-.1q-11.26-.92-19.81-10.52-9.51-10.64-14.72-29.79t-5.17-45.7q0-26.55,5.17-45.71t14.72-29.58c6.3-7,13.72-10.41,22.24-10.41,8.75,0,16.29,3.45,22.53,10.41S453,113,456.44,125.77s5.21,28,5.21,45.71q0,24.09-4.28,42.05c10.39,11.85,21.09,23.82,29.21,32.21a89,89,0,0,0,16.63-22.24q12-22.49,12-52T503.21,119.57Z"/><path fill="#fff" d="M608.74,273.76A64.49,64.49,0,0,1,581.37,268a42.21,42.21,0,0,1-19.53-18.57q-7.1-12.82-6.7-33.89l1.15-98.4q0-8.8-3.06-12.63t-9.58-5.36l-4.59-1.53V93.81l68.54-13.4,3.82,3.82-1.91,54.37v92.28q0,12.26,7.08,18t17.81,5.75a55.62,55.62,0,0,0,19.14-3.07,68.65,68.65,0,0,0,16.85-9.19l1.53-124.82q0-8.79-2.68-12.44t-10-5.17l-3.82-1.15V95l67-14.54,3.83,3.82-1.15,54.37V242.36q0,8.43,2.3,13t9.95,7.66l3.83,1.15V268l-67,3.83-3.45-22.59a136.35,136.35,0,0,1-27.37,17.42Q628.66,273.76,608.74,273.76Z"/><path fill="#fff" d="M851.11,78.11q24.89,0,42.5,10.14a69.39,69.39,0,0,1,27,27.57Q930,133.25,930,155.45q0,4.22-.38,8.62a34.71,34.71,0,0,1-1.53,7.84H814q.38,41.35,14.74,59.54t42.69,18.19q19.14,0,31-6.13a75.81,75.81,0,0,0,22.21-18l3.83,3.44a88.14,88.14,0,0,1-31.59,32.93q-19.73,11.87-47.29,11.87-27.18,0-48.24-11.68a82.38,82.38,0,0,1-32.93-33.5q-11.86-21.83-11.87-52.07,0-31.39,13.79-53.41t35.41-33.51A95.54,95.54,0,0,1,851.11,78.11ZM850,85.77a28.2,28.2,0,0,0-19,6.7q-7.85,6.7-12.25,23.73T814,164.26h65.47q3.82-41.73-3.06-60.12T850,85.77Z"/><path fill="#C6893C" d="M400.7,166s35.83,78.88,49.46,109c13.39,29.63,51.1,46.89,84.54-12.47a1,1,0,0,0-1.35-1.37c-7.45,4.12-26.71,12.89-41.07,3.1C474.11,251.94,395,153.48,400.7,166Z"/></svg>
+    <div class="eyebrow">Videoscript &middot; hero-video</div>
+    <h1>Voor Barend, Synsel</h1>
+    <p class="sub">Een kort woord vooraf, oud-collega die even langskomt. Recht in de lens, geen presentatie-energie.</p>
+    <div class="meta"><span>&plusmn; 75 seconden</span><span>Rustig &middot; warm &middot; nieuwsgierig</span><span>Persoonlijk, dus naam mag hier wel</span></div>
+  </header>
+
+  <main>
+    <div class="line">
+      <div class="lbl">01 &middot; Open</div>
+      <p>&ldquo;H&eacute; Barend. Je kreeg net een kaartje van me, en dit is het filmpje dat erbij hoort. Kort, beloofd.&rdquo;</p>
+    </div>
+
+    <div class="line">
+      <div class="lbl">02 &middot; Wat ik deed</div>
+      <p>&ldquo;Ik heb even goed naar Synsel gekeken, vooral naar de werkgeverkant. Hoe jullie aan tafel komen bij nieuwe werkgevers. De kandidaatkant staat, dat weet jij beter dan ik, dus daar heb ik het niet over. Wat me op die andere kant opviel, heb ik op deze pagina gezet.&rdquo;</p>
+    </div>
+
+    <div class="line req">
+      <div class="lbl">03 &middot; Scroll-instructie <span class="t">verplicht</span></div>
+      <p>&ldquo;Ben je vooral benieuwd wat dat is? Zet dit filmpje gerust op pauze en scroll verder. De pagina vertelt de rest.&rdquo;</p>
+    </div>
+
+    <div class="line">
+      <div class="lbl">04 &middot; Wie ik nu ben</div>
+      <p>&ldquo;Voor wie het even kwijt is: na mijn tijd bij jullie ben ik Pique begonnen. We helpen bedrijven aan tafel te komen bij mensen die ze normaal niet warm te pakken krijgen.&rdquo;</p>
+    </div>
+
+    <div class="line">
+      <div class="lbl">05 &middot; Waarom</div>
+      <p>&ldquo;En ik denk dat dat precies is wat jullie werkgeverkant kan gebruiken. De mooiste werkgevers haal je niet binnen met hetzelfde belletje dat elke detacheerder pleegt. Dat gaat via een rustige, persoonlijke manier van benaderen.&rdquo;</p>
+    </div>
+
+    <div class="line">
+      <div class="lbl">06 &middot; Social proof, licht</div>
+      <p>&ldquo;We doen dit al voor een paar organisaties met flink wat vestigingen. En jouw wereld ken ik van binnenuit, dus voor mij voelt dit logisch.&rdquo;</p>
+    </div>
+
+    <div class="line">
+      <div class="lbl">07 &middot; Afsluiting, terug naar de pagina</div>
+      <p>&ldquo;Scroll even verder, dan zie je wat ik bedoel. En anders kom ik gewoon een keer langs bij m'n oude werkgever, dertig minuutjes bijpraten. Tot snel, Barend.&rdquo;</p>
+    </div>
+  </main>
+
+  <section class="tips">
+    <div class="eyebrow">Opnametips</div>
+    <ul>
+      <li>Kijk waar mogelijk <strong>in de lens</strong>, niet naar jezelf op het scherm.</li>
+      <li>Bij de scroll-zin heel even <strong>glimlachen en licht naar beneden knikken</strong>. Dan landt de instructie ook zonder geluid.</li>
+      <li>Praat door alsof Barend tegenover je zit. Klinkt het als voorlezen, doe 'm opnieuw.</li>
+      <li>Bestand heet <code>synsel-video.mp4</code> in <code>Klanten/BCS/pique/</code>. Het label onder het frame is &lsquo;Kort woord vooraf van Simon&rsquo;.</li>
+    </ul>
+  </section>
+
+  <div class="foot">Pique &middot; intern script</div>
+
+</div>
+</body>
+</html>

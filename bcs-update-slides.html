@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>BCS ICP Update - Slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8F6F2;--navy:#0F172A;--navy2:#162035;
+  --amber:#D4943A;--white:#FFFFFF;--text:#1E2433;
+  --muted:rgba(30,36,51,.48);--border:rgba(15,23,42,.09);
+  --red:#dc2626;--green:#16a34a;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+
+html,body{margin:0;padding:0;width:100%;height:100%;background:#111;font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow:hidden}
+
+#stage{
+  position:fixed;top:0;left:0;
+  width:1366px;height:768px;
+  transform-origin:top left;
+}
+
+.slide{
+  width:1366px;height:768px;position:absolute;top:0;left:0;
+  display:none;overflow:hidden;
+}
+.slide.active{display:flex}
+
+/* NAV ARROWS */
+.nav{position:fixed;bottom:1.2rem;right:1.5rem;display:flex;gap:.5rem;z-index:9999}
+.nav button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:7px;width:38px;height:38px;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.nav button:hover{background:rgba(255,255,255,.22)}
+.nav-counter{position:fixed;bottom:1.4rem;left:1.5rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);z-index:9999}
+
+/* LAYOUTS */
+.sl-full{width:100%;height:100%;display:flex;flex-direction:column}
+.sl-split{width:100%;height:100%;display:grid;grid-template-columns:380px 1fr}
+
+/* TOPBAR */
+.tb{background:var(--navy);height:48px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem}
+.tb-l{display:flex;align-items:center;gap:.85rem}
+.tb-logo{font-family:var(--serif);font-size:.9rem;font-weight:600;color:var(--white);letter-spacing:-.02em}
+.tb-sep{width:1px;height:11px;background:rgba(255,255,255,.12)}
+.tb-title{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32)}
+.tb-r{display:flex;align-items:center;gap:.75rem}
+.tb-meta{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.tb-badge{background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);border-radius:100px;padding:.18rem .6rem;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.tb-counter{font-family:var(--mono);font-size:.52rem;color:rgba(255,255,255,.18)}
+
+/* SLIDE BODY */
+.sb{flex:1;background:var(--bg);padding:2.2rem 3rem;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.sb-left{background:var(--navy);padding:2.5rem 2.2rem;display:flex;flex-direction:column;justify-content:center}
+.sb-right{background:var(--bg);padding:2rem 2.5rem;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+
+/* TYPOGRAPHY */
+.ey{font-family:var(--mono);font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;display:flex;align-items:center;gap:.45rem}
+.ey::before{content:'';width:8px;height:1px;background:var(--amber);opacity:.7}
+.ey-w{color:rgba(212,148,58,.7)}
+.ey-w::before{background:rgba(212,148,58,.7)}
+h1{font-family:var(--serif);font-size:2.6rem;font-weight:600;line-height:1.08;letter-spacing:-.03em;color:var(--navy)}
+h1.light{color:var(--white)}
+h2{font-family:var(--serif);font-size:1.7rem;font-weight:600;line-height:1.1;letter-spacing:-.025em;color:var(--navy)}
+h2.light{color:var(--white)}
+h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
+.a{color:var(--amber)}
+.sub{font-size:.82rem;color:var(--muted);line-height:1.65;margin-top:.5rem;max-width:520px}
+.sub-w{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.65;margin-top:.5rem}
+.div{width:24px;height:2px;background:var(--amber);border-radius:2px;margin:.8rem 0;opacity:.7}
+
+/* STAT CARDS */
+.stats-g{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-top:1.5rem}
+.stat{background:rgba(255,255,255,.04);border-radius:10px;padding:.9rem .75rem;text-align:center;border:1px solid rgba(255,255,255,.06)}
+.stat-n{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--white);line-height:1}
+.stat-n .a{color:var(--amber)}
+.stat-l{font-size:.58rem;color:rgba(255,255,255,.3);margin-top:.2rem;line-height:1.3}
+
+/* DELTA CARDS */
+.delta-stack{display:flex;flex-direction:column;gap:.7rem}
+.delta{border-radius:10px;overflow:hidden;border:1.5px solid var(--border)}
+.delta-head{background:var(--navy);padding:.55rem 1.1rem;display:flex;align-items:center;gap:.75rem}
+.delta-num{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,148,58,.45)}
+.delta-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:500}
+.delta-body{display:grid;grid-template-columns:1fr 1fr;background:var(--white)}
+.delta-col{padding:.7rem 1.1rem}
+.delta-col.old{border-right:1px solid var(--border);background:rgba(220,38,38,.025)}
+.delta-col.new{background:rgba(22,163,74,.025)}
+.delta-tag{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;padding:.13rem .45rem;border-radius:100px;display:inline-block;margin-bottom:.4rem}
+.delta-tag.old{background:rgba(220,38,38,.08);color:var(--red);border:1px solid rgba(220,38,38,.15)}
+.delta-tag.new{background:rgba(22,163,74,.08);color:var(--green);border:1px solid rgba(22,163,74,.15)}
+.delta-text{font-size:.78rem;color:var(--navy);font-weight:500;line-height:1.4;margin-bottom:.3rem}
+.delta-why{font-size:.7rem;color:var(--muted);line-height:1.5}
+.delta-why strong{color:var(--text)}
+
+/* PAIN CARDS */
+.pain-g{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.pain{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem}
+.pain-ref{font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,148,58,.55);margin-bottom:.35rem}
+.pain-title{font-size:.88rem;font-weight:600;color:var(--navy);margin-bottom:.25rem}
+.pain-desc{font-size:.73rem;color:var(--muted);line-height:1.55;margin-bottom:.6rem}
+.pain-hook{background:rgba(212,148,58,.06);border:1px solid rgba(212,148,58,.15);border-radius:7px;padding:.5rem .75rem;font-size:.7rem;color:rgba(30,36,51,.6);line-height:1.4}
+.pain-hook strong{color:var(--navy)}
+
+/* KANALEN */
+.kanalen-g{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
+.kanaal{background:var(--white);border:1.5px solid var(--border);border-radius:9px;padding:.65rem .9rem;display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:.6rem}
+.kanaal-n{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0}
+.kanaal-name{font-size:.78rem;font-weight:500;color:var(--navy)}
+.kanaal-desc{font-size:.67rem;color:var(--muted);margin-top:.06rem;line-height:1.35}
+.kanaal-signal{font-family:var(--mono);font-size:.52rem;letter-spacing:.06em;padding:.15rem .45rem;border-radius:100px;white-space:nowrap}
+.sig-go{background:rgba(22,163,74,.08);color:var(--green);border:1px solid rgba(22,163,74,.15)}
+.sig-check{background:rgba(212,148,58,.08);color:var(--amber);border:1px solid rgba(212,148,58,.2)}
+.sig-stop{background:rgba(220,38,38,.06);color:var(--red);border:1px solid rgba(220,38,38,.12)}
+
+/* PORTALS */
+.portal-g{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.portal{background:var(--white);border:1.5px solid var(--border);border-radius:11px;padding:.9rem 1.1rem}
+.portal-icon{width:26px;height:26px;background:rgba(212,148,58,.1);border-radius:7px;display:flex;align-items:center;justify-content:center;margin-bottom:.5rem}
+.portal-name{font-size:.8rem;font-weight:600;color:var(--navy);margin-bottom:.15rem}
+.portal-desc{font-size:.7rem;color:var(--muted);line-height:1.4}
+
+/* PROSPECT ROWS */
+.pr-header{padding:.35rem .9rem;font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:.6rem;margin-bottom:.2rem}
+.pr{background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:.65rem .9rem;display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;align-items:center;gap:.6rem;margin-bottom:.3rem}
+.pr-name{font-size:.82rem;font-weight:600;color:var(--navy)}
+.pr-sub{font-size:.66rem;color:var(--muted);margin-top:.04rem;line-height:1.3}
+.pr-vert{font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;text-transform:uppercase;color:rgba(30,36,51,.38)}
+.pr-rev{font-size:.74rem;color:var(--muted)}
+.pr-cs{font-size:.7rem;font-weight:500}
+.pr-cs.geen{color:rgba(220,38,38,.7)}
+.pr-cs.basic{color:rgba(212,148,58,.9)}
+.pr-cs.groeit{color:var(--amber)}
+.pr-cs.inhouse{color:rgba(30,36,51,.35)}
+.pr-tier{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .6rem;border-radius:100px;background:var(--bg);color:rgba(30,36,51,.38);border:1px solid var(--border)}
+
+.warm{background:var(--navy);border-radius:12px;padding:1rem 1.3rem;margin-top:.8rem;display:flex;align-items:center;gap:1.2rem}
+.warm-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(212,148,58,.6);margin-bottom:.2rem}
+.warm-name{font-size:.88rem;font-weight:600;color:var(--white)}
+.warm-sub{font-size:.7rem;color:rgba(255,255,255,.38);margin-top:.12rem;line-height:1.35}
+.warm-badge{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px;background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);color:var(--amber);white-space:nowrap;flex-shrink:0}
+
+/* TIER 3 LIST - 2 columns */
+.t3-g{display:grid;grid-template-columns:1fr 1fr;gap:.3rem}
+.t3{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:.5rem .8rem;display:grid;grid-template-columns:1fr auto;gap:.5rem;align-items:center}
+.t3-name{font-size:.78rem;font-weight:600;color:var(--navy)}
+.t3-sub{font-size:.63rem;color:var(--muted);margin-top:.05rem}
+.t3-tag{font-family:var(--mono);font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;padding:.15rem .4rem;border-radius:100px;background:var(--bg);color:var(--muted);border:1px solid var(--border);white-space:nowrap}
+
+/* SLIDE FOOTER */
+.sf{height:36px;background:var(--navy);flex-shrink:0;display:flex;align-items:center;padding:0 2.5rem;justify-content:space-between}
+.sf-l{font-family:var(--mono);font-size:.5rem;color:rgba(255,255,255,.2);letter-spacing:.06em}
+.sf-r{font-family:var(--mono);font-size:.5rem;color:rgba(255,255,255,.15);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- SLIDE 0: TITLE -->
+<div class="slide active" id="s0">
+  <div class="sl-split">
+    <div class="sb-left">
+      <div class="ey ey-w">ICP Update · Na intake Jeffrey</div>
+      <h1 class="light" style="font-size:2.2rem">Wat er verandert.<br><span class="a">En waarom.</span></h1>
+      <div class="div"></div>
+      <p class="sub-w">Dit is de delta na de intake call. Vijf criteria bijgesteld, twee nieuwe kwalificatielagen, en vijftien Tier 3-kandidaten voor de messaging-test.</p>
+      <div class="stats-g" style="margin-top:2rem">
+        <div class="stat"><div class="stat-n"><span class="a">5</span></div><div class="stat-l">Criteria<br>bijgesteld</div></div>
+        <div class="stat"><div class="stat-n">2</div><div class="stat-l">Nieuwe<br>kwalificatielagen</div></div>
+        <div class="stat"><div class="stat-n"><span class="a">1</span></div><div class="stat-l">Warme<br>naam</div></div>
+        <div class="stat"><div class="stat-n">15</div><div class="stat-l">Tier 3<br>test</div></div>
+      </div>
+    </div>
+    <div class="sb-right" style="background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:2.5rem 3rem">
+      <div class="ey">Referentiepunten</div>
+      <h2 style="font-size:1.3rem;margin-bottom:1.2rem">Twee klanten als kompas.</h2>
+      <div style="display:flex;flex-direction:column;gap:.8rem">
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:1rem 1.2rem">
+          <div style="font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,148,58,.55);margin-bottom:.3rem">Pijn-profiel A</div>
+          <div style="font-size:.88rem;font-weight:600;color:var(--navy);margin-bottom:.2rem">Hornbad</div>
+          <div style="font-size:.74rem;color:var(--muted);line-height:1.45">Overbelaste insider. Founder of collega die CS erbij doet. Goed genoeg om niet acuut te zijn - maar kost dagelijks aandacht.</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:1rem 1.2rem">
+          <div style="font-family:var(--mono);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,148,58,.55);margin-bottom:.3rem">Pijn-profiel B · Ideale klant</div>
+          <div style="font-size:.88rem;font-weight:600;color:var(--navy);margin-bottom:.2rem">SOLIT Socks</div>
+          <div style="font-size:.74rem;color:var(--muted);line-height:1.45">Onbetrouwbare part-timer opzet. Vakantie, ziekte, kwaliteitsverschillen. Op een gegeven moment is de pijn groot genoeg. Dit is het SOLIT-niveau dat we najagen.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 1: CRITERIA DELTA 1/2 -->
+<div class="slide" id="s1">
+  <div class="sl-full">
+    <div class="tb">
+      <div class="tb-l"><div class="tb-logo">Pique</div><div class="tb-sep"></div><div class="tb-title">ICP Update na Intake - Backbone CS</div></div>
+      <div class="tb-r"><span class="tb-meta">Mei 2026</span><span class="tb-badge">Criteria delta</span><span class="tb-counter">2/8</span></div>
+    </div>
+    <div class="sb">
+      <div class="ey">01 - ICP Criteria: wat verandert (1/2)</div>
+      <h2 style="margin-bottom:1.2rem">Vijf bijstellingen. <span class="a">Op basis van Jeffrey.</span></h2>
+      <div class="delta-stack">
+        <div class="delta">
+          <div class="delta-head"><span class="delta-num">01</span><span class="delta-label">Merktype</span></div>
+          <div class="delta-body">
+            <div class="delta-col old"><span class="delta-tag old">Oud</span><div class="delta-text">Eigen merk, D2C primair. Geen resellers.</div><div class="delta-why">Te strikt. Hornbad is een reseller en tegelijk een van de beste klanten.</div></div>
+            <div class="delta-col new"><span class="delta-tag new">Nieuw</span><div class="delta-text">Eigen merk of reseller - maakt niet uit. Wat telt is CS-volume en de contactkanalen.</div><div class="delta-why"><strong>Doorslaggevend:</strong> verkoopt het merk direct aan consumenten en is er een servicevraag achter?</div></div>
+          </div>
+        </div>
+        <div class="delta">
+          <div class="delta-head"><span class="delta-num">02</span><span class="delta-label">Omzet</span></div>
+          <div class="delta-body">
+            <div class="delta-col old"><span class="delta-tag old">Oud</span><div class="delta-text">€500K – €5M per jaar.</div><div class="delta-why">€500K is technisch haalbaar maar levert minder snel resultaat.</div></div>
+            <div class="delta-col new"><span class="delta-tag new">Nieuw</span><div class="delta-text">€500K – €5M. Sweetspot rond €2M–€3M - het SOLIT-niveau.</div><div class="delta-why"><strong>Waarom:</strong> op €2M+ is de terugverdientijd korter en is er genoeg CS-volume voor zichtbaar resultaat.</div></div>
+          </div>
+        </div>
+        <div class="delta">
+          <div class="delta-head"><span class="delta-num">08</span><span class="delta-label">Momentum</span></div>
+          <div class="delta-body">
+            <div class="delta-col old"><span class="delta-tag old">Oud</span><div class="delta-text">Aantoonbare activiteit op LinkedIn in de afgelopen zes maanden.</div><div class="delta-why">SOLIT is weinig actief op LinkedIn maar wel ideale klant. LinkedIn is het verkeerde signaal.</div></div>
+            <div class="delta-col new"><span class="delta-tag new">Nieuw</span><div class="delta-text">Actief op eigen socials, aanwezig op Trustpilot, én beperkt contactkanalenplaatje op de website.</div><div class="delta-why"><strong>Waarom:</strong> sociale activiteit op eigen kanalen + Trustpilot + beperkte contactkanalen = sterkste instapsignaal.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sf"><div class="sf-l">Pique × Backbone CS · ICP Update na Intake</div><div class="sf-r">Mei 2026</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 2: CRITERIA DELTA 2/2 -->
+<div class="slide" id="s2">
+  <div class="sl-full">
+    <div class="tb">
+      <div class="tb-l"><div class="tb-logo">Pique</div><div class="tb-sep"></div><div class="tb-title">ICP Update na Intake - Backbone CS</div></div>
+      <div class="tb-r"><span class="tb-meta">Mei 2026</span><span class="tb-badge">Criteria delta</span><span class="tb-counter">3/8</span></div>
+    </div>
+    <div class="sb">
+      <div class="ey">01 - ICP Criteria: wat verandert (2/2)</div>
+      <h2 style="margin-bottom:1.2rem">Twee criteria. <span class="a">Fundamentele bijstelling.</span></h2>
+      <div class="delta-stack">
+        <div class="delta">
+          <div class="delta-head"><span class="delta-num">06</span><span class="delta-label">CS-situatie</span></div>
+          <div class="delta-body">
+            <div class="delta-col old"><span class="delta-tag old">Oud</span><div class="delta-text">Structuur ontbreekt, basic tool, of groeit eruit.</div><div class="delta-why">Te generiek. Verbergt twee fundamenteel verschillende pijn-profielen met elk een andere opening.</div></div>
+            <div class="delta-col new"><span class="delta-tag new">Nieuw</span><div class="delta-text">Twee concrete pijn-profielen: de overbelaste founder/collega (Hornbad) of de onbetrouwbare part-timer opzet (SOLIT).</div><div class="delta-why"><strong>Waarom:</strong> beide leiden tot uitbesteden, maar de opening in de outreach is anders.</div></div>
+          </div>
+        </div>
+        <div class="delta">
+          <div class="delta-head"><span class="delta-num">04</span><span class="delta-label">Positionering</span></div>
+          <div class="delta-body">
+            <div class="delta-col old"><span class="delta-tag old">Oud</span><div class="delta-text">BCS als AI-gedreven CS met menselijke fallback en vaste ticketprijs.</div><div class="delta-why">Compleet, maar mist het transparantie-argument dat BCS onderscheidt van de meeste agencies.</div></div>
+            <div class="delta-col new"><span class="delta-tag new">Nieuw</span><div class="delta-text">Toevoeging: de klant heeft 100% inzicht via vier portals. Geen black box.</div><div class="delta-why"><strong>Toevoegen aan pitch:</strong> Zendesk dashboard, live ticket meelezen, dispute portal, refund portal.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sf"><div class="sf-l">Pique × Backbone CS · ICP Update na Intake</div><div class="sf-r">Mei 2026</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 3: PAIN PROFILES -->
+<div class="slide" id="s3">
+  <div class="sl-full">
+    <div class="tb">
+      <div class="tb-l"><div class="tb-logo">Pique</div><div class="tb-sep"></div><div class="tb-title">ICP Update na Intake - Backbone CS</div></div>
+      <div class="tb-r"><span class="tb-meta">Mei 2026</span><span class="tb-badge">Pijn-profielen</span><span class="tb-counter">4/8</span></div>
+    </div>
+    <div class="sb">
+      <div class="ey">02 - Nieuwe laag: pijn-profielen</div>
+      <h2 style="margin-bottom:.35rem">Twee situaties. <span class="a">Twee openingen.</span></h2>
+      <p class="sub" style="margin-bottom:1.2rem">Beide leiden tot dezelfde beslissing - uitbesteden - maar ze voelen anders. De outreach haak sluit aan op wat zichtbaar is op de website.</p>
+      <div class="pain-g">
+        <div class="pain">
+          <div class="pain-ref">Pijn-profiel A · Hornbad-type</div>
+          <div class="pain-title">De overbelaste insider</div>
+          <div class="pain-desc">CS wordt gedaan door de founder zelf of een medewerker die ook tien andere dingen doet. Het gaat goed genoeg om niet acuut te zijn, maar het kost dagelijks aandacht die ergens anders naartoe zou moeten. Geen systeem, geen structuur, geen overzicht.</div>
+          <div class="pain-hook"><strong>Opening:</strong> "Jullie groeien hard - dan is CS erbij doen het eerste dat scheef gaat, ook als het nu nog lijkt te lopen."</div>
+        </div>
+        <div class="pain">
+          <div class="pain-ref">Pijn-profiel B · SOLIT-type · Ideale klant</div>
+          <div class="pain-title">De onbetrouwbare part-timer opzet</div>
+          <div class="pain-desc">Er zijn één of twee part-timers voor CS, maar de organisatie errond is een aanhoudende bron van gedoe. Vakantie, ziekte, inwerktrajecten, kwaliteitsverschillen. Het kost meer energie om het te managen dan het oplevert. Op een gegeven moment is de pijn groot genoeg.</div>
+          <div class="pain-hook"><strong>Opening:</strong> "Een of twee mensen voor CS klinkt geregeld - totdat één ziek is. Dan staat alles stil."</div>
+        </div>
+      </div>
+    </div>
+    <div class="sf"><div class="sf-l">Pique × Backbone CS · ICP Update na Intake</div><div class="sf-r">Mei 2026</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 4: CONTACTKANALEN -->
+<div class="slide" id="s4">
+  <div class="sl-full">
+    <div class="tb">
+      <div class="tb-l"><div class="tb-logo">Pique</div><div class="tb-sep"></div><div class="tb-title">ICP Update na Intake - Backbone CS</div></div>
+      <div class="tb-r"><span class="tb-meta">Mei 2026</span><span class="tb-badge">Contactkanalen audit</span><span class="tb-counter">5/8</span></div>
+    </div>
+    <div class="sb">
+      <div class="ey">03 - Nieuwe laag: contactkanalen audit</div>
+      <h2 style="margin-bottom:.35rem">Het sterkste instapsignaal. <span class="a">Zichtbaar op de website.</span></h2>
+      <p class="sub" style="margin-bottom:1.2rem">Voordat een prospect de lijst ingaat, check je welke contactkanalen ze aanbieden. Dat bepaalt de tier én de opening van het eerste bericht. Dertig seconden per prospect.</p>
+      <div class="kanalen-g">
+        <div class="kanaal">
+          <div class="kanaal-n" style="background:rgba(220,38,38,.08)">📧</div>
+          <div><div class="kanaal-name">Alleen e-mail</div><div class="kanaal-desc">BCS kan direct waarde toevoegen via snellere respons, WhatsApp, socials. Ideale instapsituatie.</div></div>
+          <span class="kanaal-signal sig-go">Tier 1</span>
+        </div>
+        <div class="kanaal">
+          <div class="kanaal-n" style="background:rgba(212,148,58,.08)">💬</div>
+          <div><div class="kanaal-name">E-mail + chat of contactformulier</div><div class="kanaal-desc">Beperkt maar iets verder. BCS kan uitbreiden naar WhatsApp en socials. Goede fit.</div></div>
+          <span class="kanaal-signal sig-go">Tier 1</span>
+        </div>
+        <div class="kanaal">
+          <div class="kanaal-n" style="background:rgba(212,148,58,.08)">📱</div>
+          <div><div class="kanaal-name">E-mail + WhatsApp of socials</div><div class="kanaal-desc">Al wat verder uitgebouwd. BCS neemt het over en optimaliseert. Iets minder directe winst maar fit klopt.</div></div>
+          <span class="kanaal-signal sig-check">Tier 1–2</span>
+        </div>
+        <div class="kanaal">
+          <div class="kanaal-n" style="background:rgba(220,38,38,.06)">📞</div>
+          <div><div class="kanaal-name">Telefoon aanwezig</div><div class="kanaal-desc">BCS biedt nog geen telefonische CS. Klant heeft een kanaal dat BCS niet kan overnemen - moeilijker gesprek.</div></div>
+          <span class="kanaal-signal sig-stop">Tier 2–3</span>
+        </div>
+        <div class="kanaal">
+          <div class="kanaal-n" style="background:rgba(22,163,74,.08)">⭐</div>
+          <div><div class="kanaal-name">Trustpilot actief maar onbeheerd</div><div class="kanaal-desc">Reviews staan er maar niemand reageert. BCS pakt dit op als onderdeel van de service. Sterk signaal.</div></div>
+          <span class="kanaal-signal sig-go">Trigger</span>
+        </div>
+        <div class="kanaal">
+          <div class="kanaal-n" style="background:rgba(22,163,74,.08)">📣</div>
+          <div><div class="kanaal-name">Actief op socials, niet op LinkedIn</div><div class="kanaal-desc">Instagram, TikTok of Pinterest actief = merk leeft en groeit. LinkedIn-activiteit is geen vereiste.</div></div>
+          <span class="kanaal-signal sig-go">Momentum</span>
+        </div>
+      </div>
+    </div>
+    <div class="sf"><div class="sf-l">Pique × Backbone CS · ICP Update na Intake</div><div class="sf-r">Mei 2026</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 5: POSITIONERING -->
+<div class="slide" id="s5">
+  <div class="sl-full">
+    <div class="tb">
+      <div class="tb-l"><div class="tb-logo">Pique</div><div class="tb-sep"></div><div class="tb-title">ICP Update na Intake - Backbone CS</div></div>
+      <div class="tb-r"><span class="tb-meta">Mei 2026</span><span class="tb-badge">Positionering</span><span class="tb-counter">6/8</span></div>
+    </div>
+    <div class="sb">
+      <div class="ey">04 - Positionering: transparantie toevoegen</div>
+      <h2 style="margin-bottom:.35rem">Volledige transparantie. <span class="a">Klant ziet alles.</span></h2>
+      <p class="sub" style="margin-bottom:1.2rem">Dit onderscheidt BCS van de meeste agencies. Toevoegen als vierde argument in elk eerste contactmoment - na de pijn, niet als opener.</p>
+      <div class="portal-g">
+        <div class="portal">
+          <div class="portal-icon">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="portal-name">Zendesk rapportage dashboard</div>
+          <div class="portal-desc">Live inzicht in SLA-scores, ticketvolume, kosten per ticket en klanttevredenheid. Altijd beschikbaar, geen wekelijks rapport nodig.</div>
+        </div>
+        <div class="portal">
+          <div class="portal-icon">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="portal-name">Zendesk ticket dashboard</div>
+          <div class="portal-desc">De klant kan live meelezen hoe BCS reageert op elke ticket. Volledige controle, zonder dat ze zelf iets hoeven te doen.</div>
+        </div>
+        <div class="portal">
+          <div class="portal-icon">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
+          </div>
+          <div class="portal-name">Dispute portal</div>
+          <div class="portal-desc">Custom portal voor escalaties en geschillen. Klant houdt overzicht, BCS verwerkt. Geen e-mailchaos over uitzonderingen.</div>
+        </div>
+        <div class="portal">
+          <div class="portal-icon">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="portal-name">Refund portal</div>
+          <div class="portal-desc">Verantwoording per gegeven refund - waarom, door wie, op welke grond. Klant ziet exact wat is goedgekeurd en waarom.</div>
+        </div>
+      </div>
+    </div>
+    <div class="sf"><div class="sf-l">Pique × Backbone CS · ICP Update na Intake</div><div class="sf-r">Mei 2026</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 6: PROSPECT UPDATES -->
+<div class="slide" id="s6">
+  <div class="sl-full">
+    <div class="tb">
+      <div class="tb-l"><div class="tb-logo">Pique</div><div class="tb-sep"></div><div class="tb-title">ICP Update na Intake - Backbone CS</div></div>
+      <div class="tb-r"><span class="tb-meta">Mei 2026</span><span class="tb-badge">Prospectlijst</span><span class="tb-counter">7/8</span></div>
+    </div>
+    <div class="sb">
+      <div class="ey">05 - Prospectlijst: drie correcties</div>
+      <h2 style="margin-bottom:.35rem">Kleine wijzigingen. <span class="a">Op basis van Jeffrey.</span></h2>
+      <p class="sub" style="margin-bottom:1rem">De grote lijst blijft staan. Drie prospects bijgesteld op basis van directe feedback.</p>
+      <div class="pr-header"><div>Bedrijf</div><div>Verticaal</div><div>Omzet (est.)</div><div>Tier</div></div>
+      <div class="pr">
+        <div><div class="pr-name">By-Boo</div><div class="pr-sub">Verkoopt via retailers, heeft geen eigen webshop. D2C CS-volume ontbreekt.</div></div>
+        <div class="pr-vert">Home</div><div class="pr-rev">€1M–3M</div>
+        <div class="pr-tier" style="color:var(--red);border-color:rgba(220,38,38,.2)">Tier 3 ↓</div>
+      </div>
+      <div class="pr">
+        <div><div class="pr-name">Fabienne Chapot</div><div class="pr-sub">Grote naam, kan geweldige klant zijn. Maar: bereid CS volledig uit te besteden? Monitoren.</div></div>
+        <div class="pr-vert">Fashion</div><div class="pr-rev">€3M–8M</div>
+        <div class="pr-tier" style="color:var(--amber);border-color:rgba(212,148,58,.3)">Tier 1 ⚑</div>
+      </div>
+      <div class="pr">
+        <div><div class="pr-name">Kings of Indigo</div><div class="pr-sub">Jeffrey bevestigt als top kandidaat. Als geen inhouse team: direct Tier 1 activeren.</div></div>
+        <div class="pr-vert">Fashion</div><div class="pr-rev">€3M–8M</div>
+        <div class="pr-tier" style="color:var(--green);border-color:rgba(22,163,74,.25)">Tier 1 ✓</div>
+      </div>
+      <div class="warm">
+        <div style="flex:1">
+          <div class="warm-label">Warme naam - direct Tier 1</div>
+          <div class="warm-name">The Car Parfume</div>
+          <div class="warm-sub">Merk van JayJay Boske · Al mailcontact gehad met mede-eigenaar Ruben · Eigen merk, D2C, parfum/lifestyle · Direct activeren via bestaand contact</div>
+        </div>
+        <span class="warm-badge">Warm contact</span>
+      </div>
+    </div>
+    <div class="sf"><div class="sf-l">Pique × Backbone CS · ICP Update na Intake</div><div class="sf-r">Mei 2026</div></div>
+  </div>
+</div>
+
+<!-- SLIDE 7: TIER 3 MESSAGING TEST -->
+<div class="slide" id="s7">
+  <div class="sl-full">
+    <div class="tb">
+      <div class="tb-l"><div class="tb-logo">Pique</div><div class="tb-sep"></div><div class="tb-title">ICP Update na Intake - Backbone CS</div></div>
+      <div class="tb-r"><span class="tb-meta">Mei 2026</span><span class="tb-badge">Messaging test</span><span class="tb-counter">8/8</span></div>
+    </div>
+    <div class="sb" style="justify-content:flex-start;padding-top:1.6rem">
+      <div class="ey">06 - Tier 3: messaging test</div>
+      <h2 style="margin-bottom:.25rem">Vijftien kandidaten. <span class="a">Messaging testen.</span></h2>
+      <p class="sub" style="margin-bottom:.9rem;font-size:.76rem">Net buiten de perfecte ICP - iets te groot, CS-situatie onduidelijk, of één criterium ontbreekt. Ideaal om te leren zonder de beste Tier 1-prospects te verbranden.</p>
+      <div class="t3-g">
+        <div class="t3"><div><div class="t3-name">Bamigo</div><div class="t3-sub">Basics & ondergoed · Amsterdam</div></div><span class="t3-tag">CS onduidelijk</span></div>
+        <div class="t3"><div><div class="t3-name">Pockies</div><div class="t3-sub">Loungewear · D2C · Shopify</div></div><span class="t3-tag">CS onduidelijk</span></div>
+        <div class="t3"><div><div class="t3-name">Studio Noos</div><div class="t3-sub">Fashion accessories · community-sterk</div></div><span class="t3-tag">CS onduidelijk</span></div>
+        <div class="t3"><div><div class="t3-name">Ekster</div><div class="t3-sub">Premium wallets · internationaal</div></div><span class="t3-tag">Mogelijk inhouse</span></div>
+        <div class="t3"><div><div class="t3-name">Dopper</div><div class="t3-sub">Duurzame waterflessen · D2C + retail</div></div><span class="t3-tag">D2C-volume checken</span></div>
+        <div class="t3"><div><div class="t3-name">Vingino</div><div class="t3-sub">Kindermode · Q4-pieken</div></div><span class="t3-tag">Mogelijk inhouse</span></div>
+        <div class="t3"><div><div class="t3-name">Ace & Tate</div><div class="t3-sub">Brillen · D2C · groter merk</div></div><span class="t3-tag">Te groot</span></div>
+        <div class="t3"><div><div class="t3-name">8mountains</div><div class="t3-sub">Supplements · groeiend</div></div><span class="t3-tag">CS onduidelijk</span></div>
+        <div class="t3"><div><div class="t3-name">Maison Lab</div><div class="t3-sub">Skincare & beauty · Instagram actief</div></div><span class="t3-tag">CS onduidelijk</span></div>
+        <div class="t3"><div><div class="t3-name">Vanilia</div><div class="t3-sub">Damesmode · Shopify + winkels</div></div><span class="t3-tag">D2C-aandeel checken</span></div>
+        <div class="t3"><div><div class="t3-name">Sissy-Boy</div><div class="t3-sub">Fashion · D2C + winkels · groter</div></div><span class="t3-tag">Waarsch. inhouse</span></div>
+        <div class="t3"><div><div class="t3-name">BALR.</div><div class="t3-sub">Premium streetwear · Shopify Plus</div></div><span class="t3-tag">Te groot</span></div>
+        <div class="t3"><div><div class="t3-name">Only Natural</div><div class="t3-sub">Biologische supplements · groeiend</div></div><span class="t3-tag">CS onduidelijk</span></div>
+        <div class="t3"><div><div class="t3-name">Mr. Maria</div><div class="t3-sub">Design verlichting · D2C + B2B</div></div><span class="t3-tag">D2C-volume bepalen</span></div>
+        <div class="t3"><div><div class="t3-name">Denham The Jeanmaker</div><div class="t3-sub">Premium denim · Shopify</div></div><span class="t3-tag">Waarsch. inhouse</span></div>
+      </div>
+    </div>
+    <div class="sf"><div class="sf-l">Tier 1 en Tier 2 worden pas geactiveerd na de messaging-test</div><div class="sf-r">Mei 2026</div></div>
+  </div>
+</div>
+
+</div><!-- /stage -->
+
+<div class="nav">
+  <button onclick="go(current-1)" title="Vorige">&#8592;</button>
+  <button onclick="go(current+1)" title="Volgende">&#8594;</button>
+</div>
+<div class="nav-counter" id="nc"></div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const stage  = document.getElementById('stage');
+const nc     = document.getElementById('nc');
+let current  = 0;
+
+function scale() {
+  const sw = window.innerWidth / 1366;
+  const sh = window.innerHeight / 768;
+  const s  = Math.min(sw, sh);
+  const ox = (window.innerWidth  - 1366 * s) / 2;
+  const oy = (window.innerHeight - 768  * s) / 2;
+  stage.style.transform = `translate(${ox}px,${oy}px) scale(${s})`;
+}
+
+function go(n) {
+  slides[current].classList.remove('active');
+  current = Math.max(0, Math.min(n, slides.length - 1));
+  slides[current].classList.add('active');
+  nc.textContent = `${current + 1} / ${slides.length}`;
+}
+
+window.addEventListener('resize', scale);
+scale();
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') go(current + 1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                     go(current - 1);
+});
+
+window.go = go;
+go(0);
+</script>
+</body>
+</html>

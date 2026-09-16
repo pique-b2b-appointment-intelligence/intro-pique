@@ -28,3 +28,10 @@ node_modules
 !egenie/*.mp4
 egenie-tussenstap/
 *.py
+
+# Interne referentie-, sjabloon- en testpagina's. Ze staan bewust in de repo zodat het
+# team ze kan gebruiken, maar ze hoeven niet publiek: pique/_referentie-model en
+# onlinegoedgevonden/test gaven een 200 op het open internet.
+_*.html
+**/_*.html
+**/test.html

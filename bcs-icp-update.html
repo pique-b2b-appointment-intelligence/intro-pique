@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICP Update na Intake – Backbone CS × Pique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8F6F2;--navy:#0F172A;--navy2:#162035;
+  --amber:#D4943A;--white:#FFFFFF;--text:#1E2433;
+  --muted:rgba(30,36,51,.48);--border:rgba(15,23,42,.09);
+  --red:#dc2626;--green:#16a34a;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6}
+
+.topbar{background:var(--navy);padding:.7rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-l{display:flex;align-items:center;gap:1rem}
+.topbar-logo{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--white);letter-spacing:-.02em}
+.topbar-sep{width:1px;height:12px;background:rgba(255,255,255,.12)}
+.topbar-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.topbar-r{display:flex;align-items:center;gap:.75rem}
+.topbar-meta{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.22)}
+.topbar-badge{background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);border-radius:100px;padding:.22rem .65rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+
+.wrap{max-width:1060px;margin:0 auto;padding:0 2.5rem}
+.sec{padding:3.5rem 0;border-bottom:1px solid var(--border)}
+.sec:last-child{border-bottom:none;padding-bottom:5rem}
+
+.ey{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.ey::before{content:'';width:10px;height:1px;background:var(--amber);opacity:.7}
+h1{font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;color:var(--navy)}
+h2{font-family:var(--serif);font-size:clamp(1.4rem,2vw,1.8rem);font-weight:600;line-height:1.15;letter-spacing:-.025em;color:var(--navy)}
+.sub{font-size:.88rem;color:var(--muted);line-height:1.7;margin-top:.6rem}
+.a{color:var(--amber)}
+.div{width:28px;height:2px;background:var(--amber);border-radius:2px;margin:.9rem 0;opacity:.7}
+
+/* HERO */
+.hero{padding:3.5rem 0 3rem;border-bottom:1px solid var(--border)}
+.hero-g{display:grid;grid-template-columns:1fr 300px;gap:3.5rem;align-items:start}
+.hcard{background:var(--navy);border-radius:16px;padding:1.5rem;border:1px solid rgba(255,255,255,.06)}
+.hcard-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,148,58,.6);margin-bottom:1rem;display:block}
+.hcard-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:1.1rem}
+.hs{background:rgba(255,255,255,.03);padding:.85rem;text-align:center}
+.hs-n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);line-height:1}
+.hs-n .a{color:var(--amber)}
+.hs-l{font-size:.6rem;color:rgba(255,255,255,.25);margin-top:.25rem}
+.hcard-note{font-size:.75rem;color:rgba(255,255,255,.35);line-height:1.55;border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem}
+.hcard-note strong{color:rgba(255,255,255,.65)}
+
+/* DELTA CARDS */
+.delta-stack{display:flex;flex-direction:column;gap:1.25rem;margin-top:1.75rem}
+.delta{border-radius:16px;overflow:hidden;border:1.5px solid var(--border)}
+.delta-head{background:var(--navy);padding:.85rem 1.4rem;display:flex;align-items:center;gap:1rem}
+.delta-num{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,148,58,.5)}
+.delta-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);font-weight:500}
+.delta-body{display:grid;grid-template-columns:1fr 1fr;background:var(--white)}
+.delta-col{padding:1.1rem 1.4rem}
+.delta-col.old{border-right:1px solid var(--border);background:rgba(220,38,38,.025)}
+.delta-col.new{background:rgba(22,163,74,.025)}
+.delta-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;padding:.16rem .5rem;border-radius:100px;display:inline-block;margin-bottom:.6rem}
+.delta-tag.old{background:rgba(220,38,38,.08);color:var(--red);border:1px solid rgba(220,38,38,.15)}
+.delta-tag.new{background:rgba(22,163,74,.08);color:var(--green);border:1px solid rgba(22,163,74,.15)}
+.delta-text{font-size:.84rem;color:var(--navy);font-weight:500;line-height:1.45;margin-bottom:.5rem}
+.delta-why{font-size:.76rem;color:var(--muted);line-height:1.55}
+.delta-why strong{color:var(--text)}
+
+/* PIJN PROFIELEN */
+.pain-g{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.pain{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.4rem}
+.pain-ref{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,148,58,.55);margin-bottom:.5rem}
+.pain-title{font-size:.9rem;font-weight:600;color:var(--navy);margin-bottom:.35rem}
+.pain-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:.75rem}
+.pain-hook{background:rgba(212,148,58,.06);border:1px solid rgba(212,148,58,.15);border-radius:8px;padding:.6rem .85rem;font-size:.74rem;color:rgba(30,36,51,.6);line-height:1.45}
+.pain-hook strong{color:var(--navy)}
+
+/* KANALEN CHECKER */
+.kanalen-g{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-top:1.25rem}
+.kanaal{background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;display:grid;grid-template-columns:auto 1fr auto;align-items:start;gap:.75rem}
+.kanaal-name{font-size:.82rem;font-weight:500;color:var(--navy)}
+.kanaal-desc{font-size:.72rem;color:var(--muted);margin-top:.1rem;line-height:1.4}
+.kanaal-signal{font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;padding:.18rem .5rem;border-radius:100px;white-space:nowrap;align-self:start}
+.sig-go{background:rgba(22,163,74,.08);color:var(--green);border:1px solid rgba(22,163,74,.15)}
+.sig-check{background:rgba(212,148,58,.08);color:var(--amber);border:1px solid rgba(212,148,58,.2)}
+.sig-stop{background:rgba(220,38,38,.06);color:var(--red);border:1px solid rgba(220,38,38,.12)}
+.kanaal-n{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0}
+
+/* POSITIONERING ADDITIONS */
+.portal-g{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1.25rem}
+.portal{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:1rem 1.2rem}
+.portal-icon{width:28px;height:28px;background:rgba(212,148,58,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:.65rem}
+.portal-name{font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
+.portal-desc{font-size:.74rem;color:var(--muted);line-height:1.45}
+
+/* PROSPECT TABLE */
+.pr-header{padding:.45rem 1.1rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:.75rem;margin-bottom:.25rem;margin-top:1.5rem}
+.pr{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:.85rem 1.1rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;align-items:center;gap:.75rem;transition:border-color .25s;margin-bottom:.4rem}
+.pr:hover{border-color:rgba(212,148,58,.25)}
+.pr-name{font-size:.85rem;font-weight:600;color:var(--navy)}
+.pr-sub{font-size:.7rem;color:var(--muted);margin-top:.06rem}
+.pr-vert{font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:rgba(30,36,51,.38)}
+.pr-rev{font-size:.78rem;color:var(--muted)}
+.pr-cs{font-size:.75rem;font-weight:500}
+.pr-cs.geen{color:rgba(220,38,38,.7)}
+.pr-cs.basic{color:rgba(212,148,58,.9)}
+.pr-cs.groeit{color:var(--amber)}
+.pr-cs.inhouse{color:rgba(30,36,51,.35)}
+.pr-tier{display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .7rem;border-radius:100px;background:var(--bg);color:rgba(30,36,51,.38);border:1px solid var(--border)}
+
+.test-note{display:flex;align-items:flex-start;gap:.65rem;margin-top:1rem;padding:.85rem 1.1rem;background:rgba(212,148,58,.05);border:1px solid rgba(212,148,58,.15);border-radius:10px;font-size:.78rem;color:rgba(30,36,51,.6);line-height:1.55}
+.test-note strong{color:var(--navy)}
+
+/* WARM LEAD */
+.warm{background:var(--navy);border-radius:14px;padding:1.25rem 1.5rem;margin-top:1rem;display:flex;align-items:center;gap:1.5rem}
+.warm-label{font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(212,148,58,.6);margin-bottom:.3rem}
+.warm-name{font-size:.92rem;font-weight:600;color:var(--white)}
+.warm-sub{font-size:.76rem;color:rgba(255,255,255,.38);margin-top:.15rem}
+.warm-badge{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .8rem;border-radius:100px;background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);color:var(--amber);white-space:nowrap;flex-shrink:0}
+
+.doc-footer{background:var(--navy);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;margin-top:4rem}
+.df-l{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.06em}
+.df-r{font-family:var(--mono);font-size:.56rem;color:rgba(255,255,255,.18);letter-spacing:.06em}
+
+@media(max-width:860px){
+  .hero-g,.delta-body,.pain-g,.portal-g,.kanalen-g{grid-template-columns:1fr}
+  .pr,.pr-header{grid-template-columns:1fr auto}
+  .pr-vert,.pr-rev,.pr-cs{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-l">
+    <div class="topbar-logo">Pique</div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-title">ICP Update na Intake — Backbone CS</div>
+  </div>
+  <div class="topbar-r">
+    <span class="topbar-meta">Mei 2026</span>
+    <span class="topbar-badge">Na intake call</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-g">
+    <div>
+      <div class="ey">ICP Update · Na intake Jeffrey</div>
+      <h1>Wat er verandert.<br><span class="a">En waarom.</span></h1>
+      <div class="div"></div>
+      <p class="sub">Dit document verwerkt de feedback van Jeffrey op het ICP van fase 1. Geen volledig herschreven document - alleen de delta. Zes criteria zijn bijgesteld, twee nieuwe kwalificatielagen toegevoegd, en onderaan staan de eerste twintig Tier 3-kandidaten klaar voor de messaging-test.</p>
+    </div>
+    <div class="hcard">
+      <span class="hcard-label">Wijzigingen na intake</span>
+      <div class="hcard-stats">
+        <div class="hs"><div class="hs-n"><span class="a">5</span></div><div class="hs-l">Criteria bijgesteld</div></div>
+        <div class="hs"><div class="hs-n">2</div><div class="hs-l">Nieuwe lagen</div></div>
+        <div class="hs"><div class="hs-n"><span class="a">1</span></div><div class="hs-l">Warme naam</div></div>
+        <div class="hs"><div class="hs-n">15</div><div class="hs-l">Tier 3 test</div></div>
+      </div>
+      <div class="hcard-note">
+        <strong>Referentie:</strong> SOLIT Socks = ideale klant. Hornbad = ook goed. Alles wat daartussenin zit of op SOLIT lijkt gaat Tier 1.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CRITERIA DELTA -->
+<div class="sec">
+  <div class="ey">01 - ICP Criteria: wat verandert</div>
+  <h2>Vijf bijstellingen. <span class="a">Op basis van Jeffrey.</span></h2>
+  <p class="sub">Alleen de criteria die zijn bijgesteld staan hier. De rest blijft ongewijzigd.</p>
+
+  <div class="delta-stack">
+
+    <div class="delta">
+      <div class="delta-head">
+        <span class="delta-num">01</span>
+        <span class="delta-label">Merktype</span>
+      </div>
+      <div class="delta-body">
+        <div class="delta-col old">
+          <span class="delta-tag old">Oud</span>
+          <div class="delta-text">Eigen merk, D2C primair. Geen resellers.</div>
+          <div class="delta-why">Te strikt. Hornbad is een reseller en tegelijk een van de beste klanten die BCS heeft.</div>
+        </div>
+        <div class="delta-col new">
+          <span class="delta-tag new">Nieuw</span>
+          <div class="delta-text">Eigen merk of reseller - maakt niet uit. Wat telt is het CS-volume en de contactkanalen die ze aanbieden.</div>
+          <div class="delta-why"><strong>Doorslaggevend:</strong> verkoopt het merk direct aan consumenten en is er een servicevraag achter? Dan is het een kandidaat.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="delta">
+      <div class="delta-head">
+        <span class="delta-num">02</span>
+        <span class="delta-label">Omzet</span>
+      </div>
+      <div class="delta-body">
+        <div class="delta-col old">
+          <span class="delta-tag old">Oud</span>
+          <div class="delta-text">€500K – €5M per jaar.</div>
+          <div class="delta-why">€500K is technisch haalbaar maar levert minder snel resultaat dan een grotere klant.</div>
+        </div>
+        <div class="delta-col new">
+          <span class="delta-tag new">Nieuw</span>
+          <div class="delta-text">€500K – €5M. Sweetspot ligt rond de €2M–€3M - het SOLIT-niveau.</div>
+          <div class="delta-why"><strong>Waarom:</strong> op €2M+ is de terugverdientijd voor de klant korter en is er genoeg CS-volume om direct zichtbaar resultaat te leveren. Onder €500K is het volume te laag.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="delta">
+      <div class="delta-head">
+        <span class="delta-num">06</span>
+        <span class="delta-label">CS-situatie</span>
+      </div>
+      <div class="delta-body">
+        <div class="delta-col old">
+          <span class="delta-tag old">Oud</span>
+          <div class="delta-text">Geen structuur, basic tool, of groeit eruit.</div>
+          <div class="delta-why">Te generiek. Verbergt twee fundamenteel verschillende pijn-profielen die elk een andere opening vragen.</div>
+        </div>
+        <div class="delta-col new">
+          <span class="delta-tag new">Nieuw</span>
+          <div class="delta-text">Twee concrete pijn-profielen: de overbelaste founder/collega (Hornbad) of de onbetrouwbare part-timer opzet (SOLIT).</div>
+          <div class="delta-why"><strong>Waarom:</strong> beide leiden tot hetzelfde resultaat - uitbesteden aan BCS - maar de opening in de outreach is anders. Zie hieronder.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="delta">
+      <div class="delta-head">
+        <span class="delta-num">08</span>
+        <span class="delta-label">Momentum</span>
+      </div>
+      <div class="delta-body">
+        <div class="delta-col old">
+          <span class="delta-tag old">Oud</span>
+          <div class="delta-text">Aantoonbare activiteit op LinkedIn in de afgelopen zes maanden.</div>
+          <div class="delta-why">SOLIT is weinig actief op LinkedIn maar wel een ideale klant. LinkedIn is het verkeerde signaal.</div>
+        </div>
+        <div class="delta-col new">
+          <span class="delta-tag new">Nieuw</span>
+          <div class="delta-text">Actief op eigen socials, aanwezig op Trustpilot, én een beperkt contactkanalenplaatje op de website.</div>
+          <div class="delta-why"><strong>Waarom:</strong> sociale activiteit op eigen kanalen bewijst dat het merk leeft. Trustpilot-aanwezigheid bewijst dat klanten reageren. Beperkte contactkanalen zijn het sterkste instapsignaal.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="delta">
+      <div class="delta-head">
+        <span class="delta-num">04</span>
+        <span class="delta-label">Positionering</span>
+      </div>
+      <div class="delta-body">
+        <div class="delta-col old">
+          <span class="delta-tag old">Oud</span>
+          <div class="delta-text">BCS als AI-gedreven CS met menselijke fallback en vaste ticketprijs.</div>
+          <div class="delta-why">Compleet, maar mist het transparantie-argument dat BCS onderscheidt van de meeste agencies.</div>
+        </div>
+        <div class="delta-col new">
+          <span class="delta-tag new">Nieuw</span>
+          <div class="delta-text">Toevoeging: de klant heeft 100% inzicht in wat BCS doet via vier portals. Geen black box.</div>
+          <div class="delta-why"><strong>Toevoegen aan pitch:</strong> Zendesk-rapportage dashboard, live ticket meelezen, dispute portal en refund portal. Klant ziet alles, altijd.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PIJN PROFIELEN -->
+<div class="sec">
+  <div class="ey">02 - Nieuwe laag: pijn-profielen</div>
+  <h2>Twee situaties. <span class="a">Twee openingen.</span></h2>
+  <p class="sub">Beide leiden tot dezelfde beslissing - uitbesteden - maar ze voelen anders. De outreach haak sluit aan op de situatie die zichtbaar is op de website en LinkedIn.</p>
+  <div class="pain-g">
+
+    <div class="pain">
+      <div class="pain-ref">Pijn-profiel A · Hornbad-type</div>
+      <div class="pain-title">De overbelaste insider</div>
+      <div class="pain-desc">CS wordt gedaan door de founder zelf of een medewerker die ook tien andere dingen doet. Het gaat goed genoeg om niet acuut te zijn, maar het kost dagelijks aandacht die ergens anders naartoe zou moeten. Geen systeem, geen structuur, geen overzicht.</div>
+      <div class="pain-hook"><strong>Opening:</strong> "Jullie groeien hard - dan is CS erbij doen het eerste dat scheef gaat, ook als het nu nog lijkt te lopen."</div>
+    </div>
+
+    <div class="pain">
+      <div class="pain-ref">Pijn-profiel B · SOLIT-type</div>
+      <div class="pain-title">De onbetrouwbare part-timer opzet</div>
+      <div class="pain-desc">Er zijn één of twee part-timers voor CS, maar de organisatie errond is een aanhoudende bron van gedoe. Vakantie, ziekte, inwerktrajecten, kwaliteitsverschillen. Het kost meer energie om het te managen dan het oplevert. Op een gegeven moment is de pijn groot genoeg om te zeggen: dit gaat eruit.</div>
+      <div class="pain-hook"><strong>Opening:</strong> "Een of twee mensen voor CS klinkt geregeld - totdat één ziek is. Dan staat alles stil."</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTACTKANALEN CHECKER -->
+<div class="sec">
+  <div class="ey">03 - Nieuwe laag: contactkanalen audit</div>
+  <h2>Het sterkste instapsignaal. <span class="a">Zichtbaar op de website.</span></h2>
+  <p class="sub">Voordat een prospect de lijst ingaat, checken we welke contactkanalen ze aanbieden aan hun klant. Dat bepaalt zowel de tier als de opening van het eerste bericht. Dit kost dertig seconden per prospect.</p>
+  <div class="kanalen-g">
+
+    <div class="kanaal">
+      <div class="kanaal-n" style="background:rgba(220,38,38,.08)">📧</div>
+      <div>
+        <div class="kanaal-name">Alleen e-mail</div>
+        <div class="kanaal-desc">BCS kan direct waarde toevoegen via snellere respons, WhatsApp, socials. Ideale instapsituatie.</div>
+      </div>
+      <span class="kanaal-signal sig-go">Tier 1</span>
+    </div>
+
+    <div class="kanaal">
+      <div class="kanaal-n" style="background:rgba(212,148,58,.08)">💬</div>
+      <div>
+        <div class="kanaal-name">E-mail + chat of contactformulier</div>
+        <div class="kanaal-desc">Beperkt maar iets verder. BCS kan uitbreiden naar WhatsApp en socials. Goede fit.</div>
+      </div>
+      <span class="kanaal-signal sig-go">Tier 1</span>
+    </div>
+
+    <div class="kanaal">
+      <div class="kanaal-n" style="background:rgba(212,148,58,.08)">📱</div>
+      <div>
+        <div class="kanaal-name">E-mail + WhatsApp of socials</div>
+        <div class="kanaal-desc">Al wat verder uitgebouwd. BCS neemt het over en optimaliseert. Iets minder directe winst maar fit klopt.</div>
+      </div>
+      <span class="kanaal-signal sig-check">Tier 1–2</span>
+    </div>
+
+    <div class="kanaal">
+      <div class="kanaal-n" style="background:rgba(220,38,38,.06)">📞</div>
+      <div>
+        <div class="kanaal-name">Telefoon aanwezig</div>
+        <div class="kanaal-desc">BCS biedt nog geen telefonische CS. Klant heeft een kanaal dat BCS niet kan overnemen - moeilijker gesprek.</div>
+      </div>
+      <span class="kanaal-signal sig-stop">Tier 2–3</span>
+    </div>
+
+    <div class="kanaal">
+      <div class="kanaal-n" style="background:rgba(22,163,74,.08)">⭐</div>
+      <div>
+        <div class="kanaal-name">Trustpilot actief maar onbeheerd</div>
+        <div class="kanaal-desc">Reviews staan er maar niemand reageert. BCS pakt dit op als onderdeel van de service. Sterk signaal.</div>
+      </div>
+      <span class="kanaal-signal sig-go">Trigger</span>
+    </div>
+
+    <div class="kanaal">
+      <div class="kanaal-n" style="background:rgba(22,163,74,.08)">📣</div>
+      <div>
+        <div class="kanaal-name">Actief op socials, niet op LI</div>
+        <div class="kanaal-desc">Instagram, TikTok of Pinterest actief = merk leeft en groeit. LinkedIn-activiteit is geen vereiste.</div>
+      </div>
+      <span class="kanaal-signal sig-go">Momentum</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- POSITIONERING PORTALS -->
+<div class="sec">
+  <div class="ey">04 - Positionering: transparantie toevoegen</div>
+  <h2>Geen black box. <span class="a">Klant ziet alles.</span></h2>
+  <p class="sub">Dit onderscheidt BCS van de meeste agencies. Toevoegen als vierde argument in elk eerste contactmoment waar het past - na de pijn, niet als opener.</p>
+  <div class="portal-g">
+
+    <div class="portal">
+      <div class="portal-icon">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="portal-name">Zendesk rapportage dashboard</div>
+      <div class="portal-desc">Live inzicht in SLA-scores, ticketvolume, kosten per ticket en klanttevredenheid. Altijd beschikbaar, geen wekelijks rapport nodig.</div>
+    </div>
+
+    <div class="portal">
+      <div class="portal-icon">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="portal-name">Zendesk ticket dashboard</div>
+      <div class="portal-desc">De klant kan live meelezen hoe BCS reageert op elke ticket. Volledige controle, zonder dat ze zelf iets hoeven te doen.</div>
+    </div>
+
+    <div class="portal">
+      <div class="portal-icon">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
+      </div>
+      <div class="portal-name">Dispute portal</div>
+      <div class="portal-desc">Custom portal voor escalaties en geschillen. Klant houdt overzicht, BCS verwerkt. Geen e-mailchaos over uitzonderingen.</div>
+    </div>
+
+    <div class="portal">
+      <div class="portal-icon">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="portal-name">Refund portal</div>
+      <div class="portal-desc">Verantwoording per gegeven refund - waarom, door wie, op welke grond. Klant ziet exact wat er is goedgekeurd en waarom.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROSPECT UPDATES -->
+<div class="sec">
+  <div class="ey">05 - Prospectlijst: drie correcties</div>
+  <h2>Kleine wijzigingen <span class="a">op basis van Jeffrey.</span></h2>
+  <p class="sub">De grote lijst blijft staan. Drie prospects zijn bijgesteld op basis van directe feedback.</p>
+
+  <div class="pr-header">
+    <div>Bedrijf</div>
+    <div>Verticaal</div>
+    <div>Omzet (est.)</div>
+    <div>CS-situatie</div>
+    <div>Tier</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">By-Boo</div><div class="pr-sub">Geen eigen webshop — verkoopt via retailers. Geen D2C CS-volume. Tier 2 wordt Tier 3.</div></div>
+    <div class="pr-vert">Home</div>
+    <div class="pr-rev">€1M–3M</div>
+    <div class="pr-cs inhouse">Geen webshop</div>
+    <div class="pr-tier">Tier 3 ↓</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Fabienne Chapot</div><div class="pr-sub">Grote naam, kan een geweldige klant zijn. Maar: zijn ze bereid hun CS volledig uit te besteden? Monitoren op signalen.</div></div>
+    <div class="pr-vert">Fashion</div>
+    <div class="pr-rev">€3M–8M</div>
+    <div class="pr-cs groeit">Groeit eruit</div>
+    <div class="pr-tier">Tier 1 ⚑</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Kings of Indigo</div><div class="pr-sub">Jeffrey bevestigt als top kandidaat. Verificeer CS-situatie — als geen inhouse team: direct Tier 1 activeren.</div></div>
+    <div class="pr-vert">Fashion</div>
+    <div class="pr-rev">€3M–8M</div>
+    <div class="pr-cs groeit">Verificeren</div>
+    <div class="pr-tier">Tier 1 ✓</div>
+  </div>
+
+  <div class="warm">
+    <div style="flex:1">
+      <div class="warm-label">Warme naam — direct Tier 1</div>
+      <div class="warm-name">The Car Parfume</div>
+      <div class="warm-sub">Merk van JayJay Boske · Al mailcontact gehad met mede-eigenaar Ruben · Eigen merk, D2C, parfum/lifestyle · Direct activeren via bestaand contact</div>
+    </div>
+    <span class="warm-badge">Warm contact</span>
+  </div>
+</div>
+
+<!-- TIER 3 TEST LIJST -->
+<div class="sec">
+  <div class="ey">06 - Tier 3: messaging test</div>
+  <h2>Vijftien kandidaten. <span class="a">Messaging testen.</span></h2>
+  <p class="sub">Deze bedrijven zijn geschikt om de eerste outreach-varianten op te testen. Ze zitten net buiten de perfecte ICP - iets te groot, CS-situatie onduidelijk, of één criterium ontbreekt. Dat maakt ze ideaal om te leren zonder de beste Tier 1-prospects te verbranden.</p>
+
+  <div class="pr-header">
+    <div>Bedrijf</div>
+    <div>Verticaal</div>
+    <div>Omzet (est.)</div>
+    <div>Reden Tier 3</div>
+    <div>CS-situatie</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Bamigo</div><div class="pr-sub">Amsterdam · Basics & ondergoed, eigen merk, Shopify, D2C, actief op socials</div></div>
+    <div class="pr-vert">Fashion</div><div class="pr-rev">€1M–3M</div>
+    <div class="pr-cs basic">CS-situatie onduidelijk</div>
+    <div class="pr-cs groeit">Verificeren</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Pockies</div><div class="pr-sub">NL · Loungewear, eigen merk, D2C, Shopify, jonge doelgroep, actief op socials</div></div>
+    <div class="pr-vert">Fashion</div><div class="pr-rev">€1M–3M</div>
+    <div class="pr-cs basic">CS-situatie onduidelijk</div>
+    <div class="pr-cs geen">Vermoedelijk geen systeem</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Studio Noos</div><div class="pr-sub">NL · Fashion accessories & tassen, eigen merk, D2C, Shopify, community-sterk</div></div>
+    <div class="pr-vert">Fashion</div><div class="pr-rev">€1M–3M</div>
+    <div class="pr-cs basic">CS-situatie onduidelijk</div>
+    <div class="pr-cs geen">Vermoedelijk weinig structuur</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Ekster</div><div class="pr-sub">Amsterdam · Premium wallets, eigen merk, D2C, Shopify, internationaal - volume mogelijk te groot</div></div>
+    <div class="pr-vert">Lifestyle</div><div class="pr-rev">€3M–8M</div>
+    <div class="pr-cs basic">Mogelijk inhouse CS</div>
+    <div class="pr-cs groeit">Verificeren</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Dopper</div><div class="pr-sub">Amsterdam · Duurzame waterflessen, eigen merk, D2C + retail mix, Shopify</div></div>
+    <div class="pr-vert">Lifestyle</div><div class="pr-rev">€2M–5M</div>
+    <div class="pr-cs basic">CS-situatie onduidelijk</div>
+    <div class="pr-cs groeit">Deels retail, D2C-volume checken</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Vingino</div><div class="pr-sub">NL · Kindermode, eigen merk, Shopify, D2C + retailers, Q4-pieken</div></div>
+    <div class="pr-vert">Fashion</div><div class="pr-rev">€5M–12M</div>
+    <div class="pr-cs inhouse">Mogelijk inhouse team</div>
+    <div class="pr-cs groeit">Verificeren op grootte</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Ace & Tate</div><div class="pr-sub">Amsterdam · Brillen, eigen merk, D2C, groter merk - CS-team waarschijnlijk aanwezig</div></div>
+    <div class="pr-vert">Lifestyle</div><div class="pr-rev">€10M–20M</div>
+    <div class="pr-cs inhouse">Waarschijnlijk inhouse</div>
+    <div class="pr-cs inhouse">Te groot - toch testen op messaging</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">8mountains</div><div class="pr-sub">NL · Supplements, eigen merk, D2C, Shopify, groeiend - CS-volume aannemelijk</div></div>
+    <div class="pr-vert">Supplements</div><div class="pr-rev">€500K–2M</div>
+    <div class="pr-cs basic">CS-situatie onduidelijk</div>
+    <div class="pr-cs geen">Vermoedelijk weinig structuur</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Maison Lab</div><div class="pr-sub">NL · Skincare & beauty, eigen merk, D2C, Shopify, actief op Instagram</div></div>
+    <div class="pr-vert">Beauty</div><div class="pr-rev">€500K–2M</div>
+    <div class="pr-cs basic">CS-situatie onduidelijk</div>
+    <div class="pr-cs geen">Vermoedelijk geen systeem</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Vanilia</div><div class="pr-sub">NL · Damesmode, eigen merk, Shopify + winkels, D2C-volume naast retail</div></div>
+    <div class="pr-vert">Fashion</div><div class="pr-rev">€5M–12M</div>
+    <div class="pr-cs basic">Retail + D2C mix</div>
+    <div class="pr-cs groeit">D2C-aandeel + CS-opzet checken</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Sissy-Boy</div><div class="pr-sub">Amsterdam · Fashion, eigen merk, D2C + winkels, Shopify - grotere organisatie</div></div>
+    <div class="pr-vert">Fashion</div><div class="pr-rev">€5M–15M</div>
+    <div class="pr-cs inhouse">Waarschijnlijk inhouse</div>
+    <div class="pr-cs groeit">Testen op messaging aanpak</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">BALR.</div><div class="pr-sub">Amsterdam · Premium streetwear, eigen merk, D2C, Shopify Plus - groot en internationaal</div></div>
+    <div class="pr-vert">Fashion</div><div class="pr-rev">€10M+</div>
+    <div class="pr-cs inhouse">Waarschijnlijk inhouse</div>
+    <div class="pr-cs inhouse">Te groot maar sterk voor messaging-test</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Only Natural</div><div class="pr-sub">NL · Biologische supplements & voeding, eigen merk, D2C, Shopify, groeiend</div></div>
+    <div class="pr-vert">Supplements</div><div class="pr-rev">€500K–2M</div>
+    <div class="pr-cs basic">CS-situatie onduidelijk</div>
+    <div class="pr-cs geen">Vermoedelijk geen systeem</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Mr. Maria</div><div class="pr-sub">Amsterdam · Design verlichting & home, eigen merk, D2C + B2B mix, hogere orderwaarden</div></div>
+    <div class="pr-vert">Home</div><div class="pr-rev">€1M–4M</div>
+    <div class="pr-cs basic">B2B + D2C mix</div>
+    <div class="pr-cs groeit">D2C-CS-volume bepalen</div>
+  </div>
+
+  <div class="pr">
+    <div><div class="pr-name">Denham The Jeanmaker</div><div class="pr-sub">Amsterdam · Premium denim, eigen merk, Shopify - CS-team waarschijnlijk aanwezig bij dit volume</div></div>
+    <div class="pr-vert">Fashion</div><div class="pr-rev">€5M–15M</div>
+    <div class="pr-cs inhouse">Waarschijnlijk inhouse</div>
+    <div class="pr-cs inhouse">Testen op messaging voor premium segment</div>
+  </div>
+
+  <div class="test-note">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--amber);flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span>Deze lijst is bedoeld om messaging-varianten op te testen - niet om de beste prospects te converteren. Gebruik de respons om te leren welke opening werkt voor welk pijn-profiel. <strong>Tier 1 en Tier 2 worden pas geactiveerd na de messaging-test.</strong></span>
+  </div>
+</div>
+
+</div>
+
+<div class="doc-footer">
+  <div class="df-l">Pique × Backbone CS · ICP Update na Intake · Mei 2026</div>
+  <div class="df-r">Tier 3 messaging-test start komende dagen</div>
+</div>
+
+</body>
+</html>

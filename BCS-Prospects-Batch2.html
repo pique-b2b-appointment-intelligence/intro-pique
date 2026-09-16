@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="nl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BCS · Prospectlijst Batch 2 · Tier 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F8F6F2;--navy:#0F172A;--amber:#D4943A;--white:#FFFFFF;--text:#1E2433;--muted:rgba(30,36,51,.48);--border:rgba(15,23,42,.09);--red:#dc2626;--green:#16a34a;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'DM Mono',monospace}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6}
+.topbar{background:var(--navy);padding:.7rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-l{display:flex;align-items:center;gap:1rem}
+.topbar-logo{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--white);letter-spacing:-.02em}
+.topbar-sep{width:1px;height:12px;background:rgba(255,255,255,.12)}
+.topbar-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.topbar-badge{background:rgba(212,148,58,.15);border:1px solid rgba(212,148,58,.3);border-radius:100px;padding:.22rem .65rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 2.5rem}
+.ey{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.ey::before{content:'';width:10px;height:1px;background:var(--amber);opacity:.7}
+h1{font-family:var(--serif);font-size:clamp(2rem,3vw,2.8rem);font-weight:600;line-height:1.1;letter-spacing:-.03em;color:var(--navy)}
+.sub{font-size:.9rem;color:var(--muted);line-height:1.7;margin-top:.7rem;max-width:680px}
+.hero{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border)}
+.hero-g{display:grid;grid-template-columns:1fr 320px;gap:3.5rem;align-items:start}
+.hcard{background:var(--navy);border-radius:16px;padding:1.5rem;border:1px solid rgba(255,255,255,.06)}
+.hcard-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(212,148,58,.6);margin-bottom:1rem;display:block}
+.hcard-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:1.1rem}
+.hs{background:rgba(255,255,255,.03);padding:.85rem;text-align:center}
+.hs-n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);line-height:1}
+.hs-n .a{color:var(--amber)}
+.hs-l{font-size:.6rem;color:rgba(255,255,255,.3);margin-top:.25rem}
+.hcard-note{font-size:.74rem;color:rgba(255,255,255,.4);line-height:1.55;border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem}
+.hcard-note strong{color:rgba(255,255,255,.7)}
+.callout{margin-top:1.75rem;background:rgba(212,148,58,.06);border:1px solid rgba(212,148,58,.18);border-radius:12px;padding:1.1rem 1.3rem;font-size:.82rem;color:rgba(30,36,51,.66);line-height:1.6}
+.callout strong{color:var(--navy)}
+.sec{padding:2.75rem 0 .5rem}
+.sec-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1.25rem}
+.sec-title{font-family:var(--serif);font-size:1.45rem;font-weight:600;color:var(--navy);letter-spacing:-.02em}
+.sec-count{font-family:var(--mono);font-size:.6rem;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:.15rem .55rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.2rem 1.35rem;transition:border-color .2s}
+.card:hover{border-color:rgba(212,148,58,.3)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.card-name{font-size:1rem;font-weight:600;color:var(--navy);letter-spacing:-.01em}
+.card-web{font-family:var(--mono);font-size:.66rem;color:var(--muted);text-decoration:none}
+.card-web:hover{color:var(--amber)}
+.conf{font-family:var(--mono);font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:.24rem .55rem;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.conf-ok{background:rgba(22,163,74,.1);color:var(--green);border:1px solid rgba(22,163,74,.2)}
+.conf-check{background:rgba(212,148,58,.08);color:var(--amber);border:1px solid rgba(212,148,58,.2)}
+.conf-none{background:rgba(15,23,42,.05);color:var(--muted);border:1px solid var(--border)}
+.card-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;margin-top:.55rem;font-size:.72rem;color:var(--muted)}
+.card-meta .dot{opacity:.4}
+.pp{font-family:var(--mono);font-size:.54rem;letter-spacing:.05em;padding:.1rem .45rem;border-radius:100px;margin-left:.25rem}
+.pp-A{background:rgba(220,38,38,.07);color:rgba(220,38,38,.8)}
+.pp-B{background:rgba(15,23,42,.06);color:rgba(30,36,51,.55)}
+.card-besl{margin-top:.9rem;padding:.75rem .9rem;background:rgba(15,23,42,.025);border-radius:10px;border:1px solid var(--border)}
+.besl-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,148,58,.7);margin-bottom:.35rem}
+.besl-naam{font-size:.86rem;font-weight:600;color:var(--navy)}
+.besl-leeg{color:var(--muted);font-weight:500;font-style:italic}
+.besl-functie{font-size:.74rem;color:var(--muted);margin-top:.1rem}
+.besl-li{display:inline-block;margin-top:.35rem;font-family:var(--mono);font-size:.6rem;color:var(--amber);text-decoration:none}
+.besl-note{font-size:.66rem;color:rgba(30,36,51,.42);margin-top:.3rem;line-height:1.4;font-style:italic}
+.card-detail{margin-top:.85rem;display:flex;flex-direction:column;gap:.5rem}
+.dl{display:grid;grid-template-columns:66px 1fr;gap:.6rem;align-items:start}
+.dl-k{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(30,36,51,.38);padding-top:.1rem}
+.dl-v{font-size:.76rem;color:rgba(30,36,51,.72);line-height:1.5}
+.dl-obs{color:var(--navy);font-style:italic}
+.mono-sm{font-family:var(--mono);font-size:.64rem;color:rgba(30,36,51,.5);word-break:break-word}
+.doc-footer{background:var(--navy);padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;margin-top:3.5rem}
+.df-l{font-family:var(--mono);font-size:.58rem;color:rgba(255,255,255,.25);letter-spacing:.06em}
+.df-r{font-family:var(--mono);font-size:.56rem;color:rgba(255,255,255,.18);letter-spacing:.06em}
+@media(max-width:880px){.hero-g,.grid{grid-template-columns:1fr}.wrap{padding:0 1.3rem}.topbar{padding:.7rem 1.3rem}}
+</style></head>
+<body>
+<div class="topbar">
+  <div class="topbar-l"><span class="topbar-logo">Pique</span><span class="topbar-sep"></span><span class="topbar-title">Prospectlijst · Backbone CS</span></div>
+  <span class="topbar-badge">Batch 2 · Tier 1 · Geverifieerd</span>
+</div>
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-g">
+      <div>
+        <div class="ey">Prospectlijst · Batch 2 · Onderzoeksronde</div>
+        <h1>93 Tier 1 bedrijven.<br>Beslisser en trigger onderzocht.</h1>
+        <p class="sub">Elk bedrijf is opnieuw diep onderzocht via de eigen contact-, team- en klantenservicepagina, plus reviews. Per bedrijf staat de beslisser met betrouwbaarheidsniveau, welke contactkanalen ze de klant echt bieden, een verifieerbare trigger op basis van hun klantenservicesituatie, en een openingshoek voor het eerste contact.</p>
+        <div class="callout">
+          <strong>Betrouwbaarheid van de beslisser.</strong> <strong>Geverifieerd</strong> (88): naam en rol staan op de eigen site of zijn in meerdere bronnen bevestigd, hier sta ik achter. <strong>Lead, checken</strong> (0): de naam komt uit een LinkedIn-zoekresultaat of externe database die ik niet kon openen, controleer die in een ingelogde sessie voordat je benadert. <strong>Naam te vinden</strong> (5): geen bereikbare beslisser gevonden, alleen een algemeen adres of een naam achter een betaald KvK-uittreksel. Er is geen naam verzonnen. Bedrijven die niet meer actief of niet in Nederland bleken, zijn onderweg verwijderd.
+        </div>
+      </div>
+      <div class="hcard">
+        <span class="hcard-label">Stand na onderzoek</span>
+        <div class="hcard-stats">
+          <div class="hs"><div class="hs-n">93</div><div class="hs-l">Actieve Tier 1</div></div>
+          <div class="hs"><div class="hs-n"><span class="a">88</span></div><div class="hs-l">Beslisser geverifieerd</div></div>
+          <div class="hs"><div class="hs-n">0</div><div class="hs-l">Lead, checken</div></div>
+          <div class="hs"><div class="hs-n">5</div><div class="hs-l">Naam te vinden</div></div>
+        </div>
+        <div class="hcard-note"><strong>Pijnprofiel A</strong> = overbelaste founder/insider doet CS erbij. <strong>Pijnprofiel B</strong> = onbetrouwbare part-timer/junior-opzet. De trigger en opening sluiten aan op het zichtbare profiel.</div>
+      </div>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="sec-head"><span class="sec-title">Fashion &amp; apparel</span><span class="sec-count">12</span></div>
+    <div class="grid"><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Florèz</div>
+        <a class="card-web" href="https://florez.nl" target="_blank">florez.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Eemnes</span><span class="dot">·</span><span>Fashion · denim</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Marilène Oldert</div><div class="besl-functie">Klantenservice / Operations</div><a class="besl-li" href="https://www.linkedin.com/in/maril%C3%A8ne-oldert-b3023214b" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, socials; geen chat/WhatsApp/telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Biedt de klant alleen e-mail en twee contactformulieren plus socials; geen live chat, WhatsApp of telefoon.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie laten klanten via het formulier of de mail wachten terwijl de rest van de winkel juist snel en persoonlijk aanvoelt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">denim.lab</div>
+        <a class="card-web" href="https://denimlab.nl" target="_blank">denimlab.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nijkerkerveen</span><span class="dot">·</span><span>Fashion · denim</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Sander van de Vecht</div><div class="besl-functie">Oprichter / eigenaar</div><div class="besl-note">Bron: eigen meet-the-maker + pers</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, chat (door founder zelf); geen telefoon/formulier</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De contactpagina stuurt klanten naar de chatknop ('we try to reply asap') en e-mail, zonder telefoon of formulier, terwijl de oprichter half het jaar bij mills en fabrieken zit.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Je belooft klanten op de chat 'zo snel mogelijk' te reageren, maar je zit half het jaar bij mills en fabrieken.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Benzak Denim Developers</div>
+        <a class="card-web" href="https://benzakdenimdevelopers.com" target="_blank">benzakdenimdevelopers.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Fashion · denim</span><span class="dot">·</span><span>€500K-1,5M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Lennaert Nijgh</div><div class="besl-functie">Oprichter</div><div class="besl-note">Bron: eigen our-story + brede pers</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">alleen contactformulier + socials; geen e-mail/telefoon/chat</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De contactpagina biedt uitsluitend een contactformulier plus socials, geen zichtbaar e-mailadres, telefoon of chat, terwijl er wereldwijd verzonden wordt.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Je verkoopt wereldwijd premium denim, maar internationale klanten kunnen je alleen via een formulier bereiken en dan wachten op jou persoonlijk.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Lotties Period</div>
+        <a class="card-web" href="https://lottiesperiod.com" target="_blank">lottiesperiod.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Fashion · underwear</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Milou van Dalen</div><div class="besl-functie">Klantenservice</div><div class="besl-note">Bron: eigen teampagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, WhatsApp; geen chat/telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantenservice loopt via e-mail, WhatsApp en FAQ, en komt bij één toegewijde medewerker (Milou) binnen; kwetsbaar bij volume of afwezigheid.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Bij een groeiend menstruatieondergoed-merk hangt jullie hele klantcontact aan WhatsApp en de mailbox van één iemand.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Savara Intimates</div>
+        <a class="card-web" href="https://savaraintimates.com" target="_blank">savaraintimates.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Utrecht</span><span class="dot">·</span><span>Fashion · lingerie</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Michelle Jamoneau</div><div class="besl-functie">Eigenaar (nam merk over; ook founder Bandini)</div><div class="besl-note">Bron: RetailTrends + FashionUnited</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier; geen chat/WhatsApp/telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De contactpagina biedt alleen e-mail en een formulier, geen chat, WhatsApp of telefoon, ondanks een gevoelig productdomein (prothese-bh's, pasvorm).</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie verkopen bh's waar pasvorm en vertrouwen alles zijn, maar klanten met twijfel kunnen alleen een formulier invullen en wachten.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Boru Bamboo</div>
+        <a class="card-web" href="https://borubamboo.nl" target="_blank">borubamboo.nl</a>
+      </div>
+      <span class="conf conf-none">Naam te vinden</span>
+    </div>
+    <div class="card-meta">
+      <span>Zuidbroek</span><span class="dot">·</span><span>Fashion · underwear</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam besl-leeg">Doelrol: Eigenaar (familiebedrijf; naam alleen via KvK)</div><div class="besl-note">Bron: Simon: algemeen adres, geen beslisser</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, telefoon, socials</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">91 Kiyoh-reviews worden niet beantwoord en er zijn geen nieuwe reviews in de laatste 12 maanden; reviewbeheer lijkt stilgevallen.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie hebben 91 mooie Kiyoh-reviews staan, maar het lijkt alsof er al een tijd niemand meer op reageert of nieuwe ophaalt.</span></div>
+      <div class="dl"><span class="dl-k">Checken</span><span class="dl-v mono-sm">site:linkedin.com/in "Boru Bamboo" (operations OR customer OR klantenservice)</span></div>
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Swaens Bamboo Underwear</div>
+        <a class="card-web" href="https://swaens.nl" target="_blank">swaens.nl</a>
+      </div>
+      <span class="conf conf-none">Naam te vinden</span>
+    </div>
+    <div class="card-meta">
+      <span>Obbicht</span><span class="dot">·</span><span>Fashion · underwear</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam besl-leeg">Doelrol: Eigenaar/oprichtster (oud-verpleegkundige; 'Mark van Seggelen' klopt niet)</div><div class="besl-note">Bron: Simon: algemeen adres, geen beslisser</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, telefoon; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantenservice via telefoon, e-mail en formulier met belofte 'binnen 24 uur', zonder chat of WhatsApp, terwijl het domein (menstruatie/incontinentie/lichen sclerosus) gevoelig en vraag-intensief is.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie beloven binnen 24 uur te reageren op vragen over heel gevoelige producten, en dat rust nu op jou en het gezin.</span></div>
+      <div class="dl"><span class="dl-k">Checken</span><span class="dl-v mono-sm">site:linkedin.com/in "Swaens" Obbicht (operations OR customer OR klantenservice)</span></div>
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Unrecorded</div>
+        <a class="card-web" href="https://unrecorded.co" target="_blank">unrecorded.co</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Fashion · basics</span><span class="dot">·</span><span>€2-6M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Jolle van der Mast</div><div class="besl-functie">Mede-oprichter</div><div class="besl-note">Bron: OPUMO + trademark + pers</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, telefoon; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Trustpilot-reviews melden dat retouren niet tijdig worden terugbetaald en dat de klant geen communicatie krijgt tot hij zelf achteraan gaat; internationale retouren worden afgeraden.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Ik zie op Trustpilot dat klanten weken op hun terugbetaling wachten zonder bericht, terwijl jullie merk juist om rust en kwaliteit draait.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Rhea</div>
+        <a class="card-web" href="https://rheastore.co" target="_blank">rheastore.co</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Fashion · knitwear</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Roos Fleuren</div><div class="besl-functie">Mede-oprichter</div><div class="besl-note">Bron: eigen our-story + LinkedIn</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (hello@), formulier, Instagram; geen telefoon/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Contact uitsluitend via e-mail, formulier en Instagram, geen telefoon/chat/WhatsApp, terwijl het merk internationaal verkoopt.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie bouwen een merk rond aandacht en zorg, maar klanten kunnen jullie alleen via de mail of Instagram-DM bereiken.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Loop.a life</div>
+        <a class="card-web" href="https://loopalife.com" target="_blank">loopalife.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Fashion · knitwear</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Ellen Mensink</div><div class="besl-functie">Oprichter (ook CEO Brightfiber)</div><div class="besl-note">Bron: eigen site + pers; NB moederbedrijf failliet 2024, doorstart</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, socials; geen chat/WhatsApp/telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Contact uitsluitend via e-mail en formulier plus socials; bovendien ging moederbedrijf Brightloops B.V. failliet in 2024 en draait het merk afgeslankt door.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Na alles wat er rond Brightloops is gebeurd, houden jullie de winkel draaiend met alleen de mailbox voor klantvragen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Lofty Manner</div>
+        <a class="card-web" href="https://loftymanner.com" target="_blank">loftymanner.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Fashion · womenswear</span><span class="dot">·</span><span>€3-7M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Michael Vinke</div><div class="besl-functie">Founder / CEO (alt niet-founder: Inge Stufkens, E-commerce Manager, blijft lead)</div><div class="besl-note">Bron: FashionUnited</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, chat, WhatsApp, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Ondanks vier contactkanalen belooft Lofty Manner zelf pas reactie 'binnen 5 werkdagen', en klanten melden vertraagde terugbetalingen en moeizaam contact.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie bieden vier contactkanalen aan, maar beloven klanten pas na vijf werkdagen antwoord, dat vloekt met hoe snel jullie groeien.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Girav</div>
+        <a class="card-web" href="https://girav.com" target="_blank">girav.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Ouderkerk a/d Amstel</span><span class="dot">·</span><span>Fashion · menswear</span><span class="dot">·</span><span>€3-6M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Arné Imming</div><div class="besl-functie">Head of Product Operations</div><div class="besl-note">Bron: TheOrg + LinkedIn</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, telefoon; geen chat/WhatsApp/formulier op servicepagina</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Girav belooft reactie binnen 24 uur, maar Trustpilot-reviews melden dat mails dagenlang onbeantwoord bleven.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie beloven klanten binnen 24 uur antwoord, maar ik lees op Trustpilot dat mails soms dagen blijven liggen.</span></div>
+      
+    </div>
+  </div></div>
+  </section><section class="sec">
+    <div class="sec-head"><span class="sec-title">Home &amp; interior</span><span class="sec-count">12</span></div>
+    <div class="grid"><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Plantsome</div>
+        <a class="card-web" href="https://plantsome.nl" target="_blank">plantsome.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Honselersdijk</span><span class="dot">·</span><span>Home · planten</span><span class="dot">·</span><span>€8-15M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Axel Persoon</div><div class="besl-functie">Mede-oprichter / eigenaar (leidende oprichter; geen aparte CS-teamlead publiek)</div><div class="besl-note">Bron: eigen over-ons + KvK/drimble</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail 9-14u, chat 9-12u; geen telefoon; WhatsApp expliciet uitgesloten</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantenservice is maar beperkt bereikbaar: e-mail ma-vr 9-14, chat alleen 9-12, geen telefoon en WhatsApp expliciet uitgesloten, bij ~2.800 reviews.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie chat staat maar drie uur per ochtend open en de mail sluit om twee uur; ik werd benieuwd hoeveel vragen er buiten die uren blijven liggen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Urban Nature Culture</div>
+        <a class="card-web" href="https://urbannatureculture.com" target="_blank">urbannatureculture.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Home · decor &amp; servies</span><span class="dot">·</span><span>€3-10M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Marel Paus</div><div class="besl-functie">Customer Care / Operations</div><a class="besl-li" href="https://www.linkedin.com/in/marel-paus-50b537138/" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">formulier, telefoon; geen zichtbaar e-mail/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Op de contactpagina staat alleen een telefoonnummer en een formulier; geen zichtbaar e-mailadres, chat of WhatsApp voor consumenten, naast een sterke wholesale-focus.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Op jullie contactpagina vond ik alleen een telefoonnummer en een formulier; ik vroeg me af of consumentvragen naast de wholesale-drukte blijven doorlopen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Passion for Linen</div>
+        <a class="card-web" href="https://passionforlinen.com" target="_blank">passionforlinen.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Venlo</span><span class="dot">·</span><span>Home · linnen textiel</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Barbara Sprengers</div><div class="besl-functie">Owner (Homelinen Labels)</div><div class="besl-note">Bron: pers-interview + bedrijfsprofiel</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Het bedrijf achter Passion for Linen heeft ~2 medewerkers terwijl Barbara drie merken tegelijk aanstuurt (Passion for Linen, House in Style, Homelinen).</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Je runt Passion for Linen, House in Style en Homelinen naast elkaar met een klein team; ik werd nieuwsgierig hoe de klantvragen daar tussendoor blijven passen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">By Mölle</div>
+        <a class="card-web" href="https://bymolle.com" target="_blank">bymolle.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Dalfsen</span><span class="dot">·</span><span>Home · woontextiel</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Lucienne Dunnewijk</div><div class="besl-functie">Mede-oprichter</div><div class="besl-note">Bron: lokale pers + eigen about</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail 10-17u, telefoon, Calendly-afspraken; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantcontact loopt volledig via de oprichters: mail/telefoon 10-17 plus persoonlijke stylingafspraken via Calendly, alles handmatig en made-to-order.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Alles is bij jullie made-to-order en de stylingafspraken lopen direct via jullie zelf; ik vroeg me af wanneer dat begint te knellen als het drukker wordt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Casa Comodo</div>
+        <a class="card-web" href="https://casacomodo.nl" target="_blank">casacomodo.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Oisterwijk</span><span class="dot">·</span><span>Home · linnen beddengoed</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Joanna Vervoort</div><div class="besl-functie">Owner / oprichter</div><div class="besl-note">Bron: eigen about-pagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (joanna@ persoonlijk), formulier, telefoon; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantvragen komen binnen op het persoonlijke adres joanna@casacomodo.nl en een 06-nummer; een vakantiemelding meldde tragere reacties en volledige verzendstop.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Je klantenservice loopt via joanna@ en je eigen mobiel, en tijdens je vakantie lag de mail en verzending stil; hoe voelt dat als je even weg wilt kunnen?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">UrbanSofa</div>
+        <a class="card-web" href="https://urbansofa.nl" target="_blank">urbansofa.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Noord-Brabant</span><span class="dot">·</span><span>Home · meubels</span><span class="dot">·</span><span>€5-15M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Ronald Arissen</div><div class="besl-functie">Directeur / eigenaar (CORRECTIE: niet Sarah Kleijnen)</div><div class="besl-note">Bron: Drimble (Arissen Holding, gedeeld adres Renkum)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, telefoon 9-17; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Trustpilot-score van 2,9/5 over circa 2.519 reviews, opvallend laag voor een merk van deze omvang, wijst op CS die de klachtenstroom niet aankan.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie meubels zijn prachtig maar op Trustpilot blijft de score rond de 2,9 hangen; ik werd nieuwsgierig hoeveel daarvan over bereikbaarheid en nazorg gaat.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Yumeko</div>
+        <a class="card-web" href="https://yumeko.nl" target="_blank">yumeko.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Home · eco bedtextiel</span><span class="dot">·</span><span>€5-12M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Rob van den Dool</div><div class="besl-functie">Oprichter &amp; CEO (alt CS-lead: Stephanie Xenakis, blijft lead)</div><div class="besl-note">Bron: pers (Biojournaal/Change Inc)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (klantenservice@), formulier per land, chat, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Voert klantenservice in vier landen/talen (NL, DE, BE, FR) met aparte contactformulieren per land, terwijl één Customer Care-team dat via chat, mail en social bedient.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie bedienen klanten in vier landen en talen vanuit één Customer Care-team; hoe houd je die drukte over NL, DE, BE en FR verdeeld?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Sfeer aan de Muur</div>
+        <a class="card-web" href="https://sfeeraandemuur.nl" target="_blank">sfeeraandemuur.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Goirle</span><span class="dot">·</span><span>Home · wall art</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Lieke Theresia den Braanker</div><div class="besl-functie">Eigenaar / vennoot (CORRECTIE: niet Ummie Vursavas)</div><div class="besl-note">Bron: Drimble KvK-uittreksel (39215237)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (klantenservice@); geen duidelijke telefoon/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Reviewers noemen specifiek dat levering langer duurt dan verwacht en dat tijdige communicatie over vertraging ontbreekt, terwijl de zichtbare CS vooral op e-mail leunt.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">In jullie reviews lees ik vaak dat mensen bij een vertraging graag eerder iets hadden gehoord; ligt dat vooral aan bezetting op de mail?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">BedAffair</div>
+        <a class="card-web" href="https://bedaffair.nl" target="_blank">bedaffair.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Heemstede</span><span class="dot">·</span><span>Home · matrassen</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Marjolein Vaders</div><div class="besl-functie">Mede-eigenaar (commercieel/online gezicht; Arend is de maker)</div><div class="besl-note">Bron: pers-interviews</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@ voor klant én bedrijf), formulier, telefoon; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Eén e-mailadres (info@bedaffair.nl) doet dienst voor zowel klanten als bedrijven, met alleen telefoon en formulier ernaast, terwijl de eigenaren ook showroom en productie draaien.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Bij jullie loopt alles, van klant tot bedrijf, via één info-adres terwijl jullie ook zelf de bedden maken en de showroom draaien; waar landen de klantvragen dan?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">DEENS.NL</div>
+        <a class="card-web" href="https://deens.nl" target="_blank">deens.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Online (NL)</span><span class="dot">·</span><span>Home · Scandinavisch wonen</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Nicole Loos</div><div class="besl-functie">Mede-oprichter / eigenaar</div><div class="besl-note">Bron: eigen teampagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (klantenservice@), formulier, WhatsApp, telefoon beperkte uren</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Telefonische bereikbaarheid is smal (ma-wo 9-17, do pas vanaf 13:00) voor een merk met ~40k Instagram-volgers, terwijl de rest via mail/WhatsApp/formulier moet.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Met bijna 40.000 volgers en een klein team houden jullie de telefoon maar een deel van de week open; hoe houd je die stroom vragen verdeeld?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">The Souks</div>
+        <a class="card-web" href="https://thesouks.nl" target="_blank">thesouks.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Roelofarendsveen</span><span class="dot">·</span><span>Home · Berber-tapijten</span><span class="dot">·</span><span>€500K-1,5M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Sandra van Aanholt</div><div class="besl-functie">Founder / eigenaar</div><div class="besl-note">Bron: eigen site + interviews</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, telefoon 8-18; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Oprichter Sandra is ongeveer drie maanden per jaar in Marokko voor inkoop en kwaliteitscontrole, terwijl The Souks een klein team met één kantoor in Amsterdam is.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Je zit een paar maanden per jaar in Marokko voor de inkoop; hoe lopen de klantvragen thuis door terwijl jij daar bent?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Kalani</div>
+        <a class="card-web" href="https://kalani-home.com" target="_blank">kalani-home.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Genval (BE)</span><span class="dot">·</span><span>Home · linnen textiel</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Bruno Van Steenberghe</div><div class="besl-functie">Founder / Managing Director</div><div class="besl-note">Bron: eigen site + juridische CS-vermelding</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@ + bruno@ officieel), formulier, telefoon BE/FR; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Het officiële klantenservicecontact loopt via bruno@kalani-home.com en de founder leest naar eigen zeggen wekelijks zelf de klantmails, terwijl Kalani cross-border (BE + FR) verkoopt.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Je leest naar eigen zeggen elke week zelf de klantmails, en het officiële adres loopt nog via bruno@; hoelang is dat houdbaar nu je in meerdere landen verkoopt?</span></div>
+      
+    </div>
+  </div></div>
+  </section><section class="sec">
+    <div class="sec-head"><span class="sec-title">Beauty &amp; skincare</span><span class="sec-count">11</span></div>
+    <div class="grid"><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Meroda Cosmetics</div>
+        <a class="card-web" href="https://merodacosmetics.nl" target="_blank">merodacosmetics.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Berkel-Enschot</span><span class="dot">·</span><span>Beauty · make-up</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Micha Medendorp</div><div class="besl-functie">CEO (per 1-1-2026; oprichter Melvin van Bueren trad terug). Ops-contact Blake Crawford blijft onbevestigd</div><div class="besl-note">Bron: pers: aankondiging CEO-wissel</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">alleen 'help'-knop/Help Center; geen telefoon/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Stuurt al het klantcontact via één help-knop/Help Center zonder telefoon, chat of WhatsApp, terwijl ze internationaal (NL/UK/EU/CH) opereren met duizenden reviews.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Voor een merk met jullie volume en vier landensites valt op dat al het klantcontact door een enkele help-knop moet.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Velveux</div>
+        <a class="card-web" href="https://velveux.com" target="_blank">velveux.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Beauty · vegan skincare</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Ali Abbas</div><div class="besl-functie">Eigenaar / CEO Three4One</div><div class="besl-note">Bron: Drimble (openbare KvK-data)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">alleen e-mail + formulier, 9-17u; geen telefoon/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Al het klantcontact loopt via één inbox (klantenservice@velveux.com) en formulier, werkdagen 9-17u, zonder telefoon, chat of WhatsApp, terwijl het merk hard groeit.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie hele klantcontact loopt nu door één inbox tussen negen en vijf, terwijl het merk juist hard groeit.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Dr. Jetske Ultee</div>
+        <a class="card-web" href="https://dr-jetskeultee-skincare.nl" target="_blank">dr-jetskeultee-skincare.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Rotterdam</span><span class="dot">·</span><span>Beauty · skincare</span><span class="dot">·</span><span>€3-8M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Amber V.</div><div class="besl-functie">Klantenservice</div><a class="besl-li" href="https://www.linkedin.com/in/amber-v-a3468920a/" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, chat, WhatsApp, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Het CS-team bestaat uit huidtherapeuten die persoonlijk advies geven via mail, telefoon, WhatsApp en chat, bij 10.000+ Kiyoh-reviews.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie laten huidtherapeuten de klantenservice doen, wat inhoudelijk sterk is maar ook betekent dat je duurste mensen aan de eerstelijnsvragen zitten.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Kaerel Skincare</div>
+        <a class="card-web" href="https://kaerelskincare.com" target="_blank">kaerelskincare.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Utrecht</span><span class="dot">·</span><span>Beauty · men's grooming</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Ton Severrien</div><div class="besl-functie">Eigenaar YellowBlueBrands (nieuwe eigenaar sinds mei 2025)</div><div class="besl-note">Bron: biojournaal (persbericht)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, chat/WhatsApp-widget, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Kaerel is in mei 2025 overgenomen door YellowBlueBrands (van Petit&amp;Jolie), het eerste merk in hun nieuwe portfolio, terwijl de over-ons-pagina nog de oude oprichterstekst toont.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Nu Kaerel het eerste merk in het YellowBlueBrands-portfolio is, komt de vraag hoe je de klantcontacten meeneemt in die nieuwe opzet.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Queen Tarzi</div>
+        <a class="card-web" href="https://queentarzi.com" target="_blank">queentarzi.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nieuw-Vennep</span><span class="dot">·</span><span>Beauty · vegan make-up</span><span class="dot">·</span><span>€2-6M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Manizha Nabizada</div><div class="besl-functie">CEO &amp; Founder</div><div class="besl-note">Bron: eigen about-pagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">alleen extern ClickUp-formulier; geen e-mail/telefoon/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Al het klantcontact loopt via een extern ClickUp-supportformulier; er staat geen e-mailadres, telefoon, chat of WhatsApp op de contactpagina, terwijl het merk sterk TikTok-gedreven is.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Voor een merk dat op TikTok zo aanwezig is, valt op dat klanten jullie alleen via een los formulier kunnen bereiken.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">LOOkX Cosmetics</div>
+        <a class="card-web" href="https://lookx.com" target="_blank">lookx.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Beauty · skincare/make-up</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Cindy van der Peet</div><div class="besl-functie">CEO &amp; Founder (LOOkX Group)</div><div class="besl-note">Bron: eigen founder-pagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">formulier + terugbelverzoek, telefoon 8:30-17; geen e-mail/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Werft actief een Customer Service-medewerker, terwijl een team van ~16 zowel 1.500+ huidexperts (B2B) als consumenten (B2C) bedient.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Ik zag dat jullie een klantenservicemedewerker zoeken, wat logisch is als je met een klein team zowel salons als consumenten wilt bedienen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">WONDR</div>
+        <a class="card-web" href="https://wondr.planetb.care" target="_blank">wondr.planetb.care</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Beauty · plasticvrij</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Tibbe Verschaffel</div><div class="besl-functie">Founder &amp; CEO Planet B / WONDR (Gent BE; ops Jolien Plouy blijft lead)</div><div class="besl-note">Bron: openbare podcast/artikel</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (hello@planetb.be), formulier; geen chat/WhatsApp/telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Planet B draait meerdere merken (WONDR, POWR, BRAUZZ., Klaaar) plus winkels in Gent en Antwerpen vanuit één centraal team, met CS via één adres.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Met meerdere merken en winkels in Gent en Antwerpen onder Planet B vraag ik me af hoe jullie het klantcontact over al die kanalen gebundeld houden.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Loïs Lee SkinCare</div>
+        <a class="card-web" href="https://loislee.nl" target="_blank">loislee.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Beauty · natuurlijke skincare</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Debbie van Weelden</div><div class="besl-functie">Founder (alt niet-founder: Sharon Smildiger-IJntema, COO, blijft lead)</div><div class="besl-note">Bron: eigen about-pagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (support@), formulier, chat werkdagen; geen telefoon/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Biedt persoonlijk huidadvies via CS die routines aanpast, maar alleen via e-mail, formulier en chat op werkdagen, zonder telefoon of WhatsApp.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie geven klanten heel persoonlijk huidadvies via de klantenservice, terwijl dat kanaal nu vrij smal is ingericht.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">IK Skin Perfection</div>
+        <a class="card-web" href="https://ik-skinperfection.nl" target="_blank">ik-skinperfection.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Beauty · cosmeceutical</span><span class="dot">·</span><span>€2-6M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Petra Sanderman</div><div class="besl-functie">Oprichter/eigenaar Summery Cosmedical Group</div><div class="besl-note">Bron: Beauty-Pro (openbaar)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (support@), formulier + terugbel, telefoon groepsniveau; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Levert uitsluitend aan schoonheidsspecialisten (min. MBO-3) met een Medical Collection voor zware medicatie/chemo, wat klantcontact sterk advies- en professional-gericht maakt.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Omdat jullie alleen via geschoolde specialisten verkopen, is jullie klantcontact denk ik heel anders dan bij een gewone webshop.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Food for Skin</div>
+        <a class="card-web" href="https://foodforskin.nl" target="_blank">foodforskin.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Beauty · natuurlijke skincare</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Angela Ursem</div><div class="besl-functie">Co-founder &amp; CEO</div><div class="besl-note">Bron: eigen contactpagina + pers</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (hello@ + persoonlijke), formulier, telefoon; geen chat/WhatsApp. NB domein nu foodforskin.care</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Op de contactpagina staan de founders zelf met naam en persoonlijk e-mailadres als aanspreekpunt, terwijl het merk net kapitaal ophaalde om Europees op te schalen.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Nu jullie Europees willen opschalen, wordt het lastiger om klanten nog persoonlijk door de oprichters zelf te woord te laten staan.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Skin for Skin</div>
+        <a class="card-web" href="https://skinforskin.nl" target="_blank">skinforskin.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Urk</span><span class="dot">·</span><span>Beauty · collageen/supplementen</span><span class="dot">·</span><span>€500K-4M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Mardien Radewalt-Brouwer</div><div class="besl-functie">(Co-)founder</div><div class="besl-note">Bron: Beauty-Pro + interview</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, WhatsApp, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klein team (~1-10) uit Urk, voortgekomen uit visverwerker Varia Vis, met de founder als persoonlijk aanspreekpunt inclusief WhatsApp.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Als klein team uit Urk doen jullie het klantcontact nu nog heel persoonlijk, zelfs via WhatsApp, wat knap is maar ook veel tijd van dat team vraagt.</span></div>
+      
+    </div>
+  </div></div>
+  </section><section class="sec">
+    <div class="sec-head"><span class="sec-title">Supplements &amp; health</span><span class="sec-count">11</span></div>
+    <div class="grid"><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Superfoodies</div>
+        <a class="card-web" href="https://superfoodies.nl" target="_blank">superfoodies.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Landsmeer</span><span class="dot">·</span><span>Supplements · superfoods</span><span class="dot">·</span><span>€4,1M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Patricia van Noord</div><div class="besl-functie">Customer Happiness / Klantenservice</div><a class="besl-li" href="https://www.linkedin.com/in/patricia-van-noord-39ba2a47" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, chat, WhatsApp, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Lage Trustpilot-score (~2,4) met overwegend negatieve reviews, terwijl er tegelijk een vacature loopt voor Teamleader Customer Happiness Team.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie noemen het bewust een 'Customer Happiness Team', maar de Trustpilot-reviews laten zien dat de happiness op piekmomenten lastig vast te houden is.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Orangefit</div>
+        <a class="card-web" href="https://orangefit.com" target="_blank">orangefit.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Alkmaar</span><span class="dot">·</span><span>Supplements · vegan sportvoeding</span><span class="dot">·</span><span>€1-5M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Rens Slik</div><div class="besl-functie">Oprichter &amp; CEO (alt CS-drager: Maayke Symone Spruit, officemanager, blijft lead)</div><div class="besl-note">Bron: eigen our-story</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (hallo@), formulier, WhatsApp, telefoon; geen chat</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Zeer hoog reviewvolume (5.500+) en een team van 13: CS-volume groeit sneller dan het interne team, terwijl geen aparte CS-lead publiek zichtbaar is.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Met 5.500+ reviews en een team van dertien loopt de klantcontactstroom waarschijnlijk grotendeels via één paar handen op kantoor.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Nutramin</div>
+        <a class="card-web" href="https://nutramin.nl" target="_blank">nutramin.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amersfoort</span><span class="dot">·</span><span>Supplements · orthomoleculair</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Mischa Strijder</div><div class="besl-functie">Eigenaar &amp; CEO (alt: Krizia de Groot, marketing, blijft lead)</div><div class="besl-note">Bron: eigen over-ons ('Mischa Strijder heeft Nutramin overgenomen')</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), telefoon, fax; geen formulier/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Contactpagina biedt alleen telefoon, e-mail en fax (geen formulier, chat of WhatsApp), opvallend traditioneel voor een D2C-webshop in 2026.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Een faxnummer op de contactpagina zegt genoeg over hoeveel er sinds de kliniek-jaren aan het klantcontact veranderd is.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Natuurlijk Presteren</div>
+        <a class="card-web" href="https://natuurlijkpresteren.nl" target="_blank">natuurlijkpresteren.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Raamsdonksveer</span><span class="dot">·</span><span>Supplements · performance</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Jochum Smid</div><div class="besl-functie">Founder / eigenaar (CORRECTIE: niet Hein van Kuijck, die is content-auteur)</div><div class="besl-note">Bron: eigen over-ons + LinkedIn</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (klantenservice@), formulier, live chat 9-21, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Live-chat belooft bereikbaarheid dagelijks 09:00-21:00 met reactie binnen 30 seconden, een brede belofte die met een klein team en founder-gedreven advies moeilijk vol te houden is.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Van 09:00 tot 21:00 chatbereikbaarheid beloven met binnen 30 seconden antwoord is een flinke lat voor een merk dat nog grotendeels om de kennis van de oprichter draait.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Ergomax</div>
+        <a class="card-web" href="https://ergomax.nl" target="_blank">ergomax.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nijmegen</span><span class="dot">·</span><span>Supplements · biohacking</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Samuel Zonneveld</div><div class="besl-functie">Mede-oprichter / directie (met Paul Zonneveld)</div><div class="besl-note">Bron: eigen blog 'oude eigenaren kopen Ergomax terug'</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, telefoon 3u/dag; chat vaak offline</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Telefonische klantenservice is slechts 3 uur per dag bereikbaar (ma-vr 9:30-12:30) terwijl Trustpilot-reviews melden dat mails/telefoon onbeantwoord blijven en de chat offline staat.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Een klantenservice die maar drie uur per ochtend telefonisch open is, verklaart precies de reviews waarin klanten schrijven dat er niemand opneemt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Plent</div>
+        <a class="card-web" href="https://plent.nl" target="_blank">plent.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Schagen</span><span class="dot">·</span><span>Supplements · vegan</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Bas Hoeve</div><div class="besl-functie">B2B / Klantenservice (tevens mede-oprichter; bezit CS)</div><div class="besl-note">Bron: eigen teampagina + beantwoordt reviews</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@ 24/7), formulier, WhatsApp, telefoon; geen chat</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De persoon die klantenservice runt en de Trustpilot-reviews persoonlijk beantwoordt (Bas) is tegelijk mede-oprichter en verantwoordelijk voor B2B; CS deelt tijd met sales.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Dat Bas zelf nog de Trustpilot-reviews beantwoordt naast de B2B-tak laat zien hoe dicht de klantenservice bij de oprichter zit.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Vitals</div>
+        <a class="card-web" href="https://vitals.nl" target="_blank">vitals.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Zaandam</span><span class="dot">·</span><span>Supplements · orthomoleculair</span><span class="dot">·</span><span>€2-6M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Patricia Bakker</div><div class="besl-functie">Klantenservice (op eigen contactpagina; niet op woensdag)</div><div class="besl-note">Bron: eigen contactpagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@/patricia@), telefoon; geen formulier/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De klantenservice draait herkenbaar op enkele met naam genoemde personen (Patricia Bakker, niet op woensdag; Joyce Donker-Haanappel) bij ~3.000 reviews, een persoonlijke maar kwetsbare bezetting.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Dat klanten Patricia en Joyce bij naam kennen is charmant, maar het betekent ook dat de hele klantenservice op woensdag al dunner bezet is.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">LUTO Supplements</div>
+        <a class="card-web" href="https://luto-supplements.nl" target="_blank">luto-supplements.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Zwolle</span><span class="dot">·</span><span>Supplements · sport</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Tobian van der Aa</div><div class="besl-functie">Mede-eigenaar / oprichter</div><div class="besl-note">Bron: LinkedIn + regionaal nieuws</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (klantenservice@), formulier, live chat, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De twee eigenaren zijn nog studenten en runnen tegelijk een tweede webshop (Woofies); de klantenservice van LUTO deelt hun aandacht met studie en een ander bedrijf.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Twee studentondernemers die naast LUTO ook nog Woofies runnen, dan is klantenservice al snel het bordje dat als eerste te veel wordt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Consiouz</div>
+        <a class="card-web" href="https://consiouz.nl" target="_blank">consiouz.nl</a>
+      </div>
+      <span class="conf conf-none">Naam te vinden</span>
+    </div>
+    <div class="card-meta">
+      <span>Eindhoven</span><span class="dot">·</span><span>Supplements · slaap</span><span class="dot">·</span><span>€500K-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam besl-leeg">Doelrol: Algemeen adres, geen contactpersoon</div><div class="besl-note">Bron: Simon: geen beslisser vindbaar, algemeen adres</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantcontact loopt hoofdzakelijk via een persoonlijk WhatsApp-nummer en de eigenaar voert zelf klantgesprekken; zeer persoonsafhankelijke klantenservice.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Dat klanten je persoonlijk kunnen appen en je zelf de slaapgesprekken voert, is precies de charme die op drukke momenten je grootste knelpunt wordt.</span></div>
+      <div class="dl"><span class="dl-k">Checken</span><span class="dl-v mono-sm">site:linkedin.com/in Consiouz (operations OR customer OR klantenservice) Eindhoven</span></div>
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Mr. &amp; Mrs. Green</div>
+        <a class="card-web" href="https://mrandmrs-green.com" target="_blank">mrandmrs-green.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Hengelo</span><span class="dot">·</span><span>Supplements · natuurlijk</span><span class="dot">·</span><span>€500K-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Tamara Elbaz</div><div class="besl-functie">Algemeen directeur / CEO (sinds 2019; Hans Spee niet als bestuurder in KvK)</div><div class="besl-note">Bron: company.info (KvK 75632551)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), telefoon, chat</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Meerdere reviews melden leveringen van &gt;2 weken met niet-werkende Track &amp; Trace en een klantenservice die daarbij per telefoon, e-mail en chat niet reageert.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Bij een merk dat zo op persoonlijke uitstraling drijft, valt het extra op als klanten twee weken op hun bestelling wachten zonder dat iemand van de klantenservice reageert.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Green Fuel</div>
+        <a class="card-web" href="https://greenfuel.shop" target="_blank">greenfuel.shop</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Beverwijk</span><span class="dot">·</span><span>Supplements · vegan sport</span><span class="dot">·</span><span>€500K-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Nick Admiraal</div><div class="besl-functie">Mede-oprichter / bestuurder (2e oprichter Daan Korsten, lead)</div><div class="besl-note">Bron: KvK/drimble (81164092) + eigen Instagram-post</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">formulier; geen zichtbaar e-mail/telefoon/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De contactpagina biedt alleen een formulier, geen zichtbaar telefoonnummer, direct e-mailadres, chat of WhatsApp, opvallend schraal voor een D2C-sportvoedingswebshop.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Op jullie contactpagina staat alleen een formulier; voor een merk dat 'Fuel Your Passion' uitdraagt is dat een opvallend stille manier om klanten te woord te staan.</span></div>
+      
+    </div>
+  </div></div>
+  </section><section class="sec">
+    <div class="sec-head"><span class="sec-title">Food &amp; beverage</span><span class="sec-count">11</span></div>
+    <div class="grid"><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Oot Granola</div>
+        <a class="card-web" href="https://oot.nl" target="_blank">oot.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Food · granola/abonnement</span><span class="dot">·</span><span>€3-6M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Wisal El Mathari</div><div class="besl-functie">Klantenservice / E-commerce</div><a class="besl-li" href="https://www.linkedin.com/in/wisal-el-mathari-787132143" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, WhatsApp; geen chat/telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Openstaande vacature E-commerce Manager (juli 2026) naast 4.700+ reviews; dezelfde rol raakt de klantenservice.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie zoeken net iemand die de webshops in drie landen laat groeien, terwijl diezelfde persoon nu ook de klantvragen bij 4.700 reviews opvangt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Jimmy Joy</div>
+        <a class="card-web" href="https://jimmyjoy.com" target="_blank">jimmyjoy.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Food · maaltijdvervangers</span><span class="dot">·</span><span>€5-8M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Daniel de Niet</div><div class="besl-functie">Head of Customer Care</div><div class="besl-note">Bron: eigen teampagina + naam in reviews 2025-2026</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, live chat</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Recente Trustpilot-reviews (mrt-apr 2026) melden bestellingen die wekenlang niet aankomen; het care-team vangt die 'where is my order'-golf op.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Op jullie teampagina staat dat Daniel vaker 'waar is mijn bestelling' hoort dan een moeder 'ik hou van je' zegt, en de reviews van dit voorjaar laten zien dat dat geen grap is.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">De Pindakaaswinkel</div>
+        <a class="card-web" href="https://depindakaaswinkel.nl" target="_blank">depindakaaswinkel.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Food · pindakaas</span><span class="dot">·</span><span>€3-6M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Frank Duivenvoorde</div><div class="besl-functie">Head of Operations</div><div class="besl-note">Bron: eigen teampagina + RocketReach</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (per persoon); geen chat/WhatsApp zichtbaar</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Op de eigen teampagina staat geen enkele 'klantenservice'-functie; klantvragen lopen via de Head of Operations en de office manager naast productie en meerdere winkels.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Op jullie teampagina zie ik makers, productie en operations, maar niemand die puur de klantvragen doet, dus die komen er waarschijnlijk bovenop bij jou.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Boerschappen</div>
+        <a class="card-web" href="https://boerschappen.nl" target="_blank">boerschappen.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Breda</span><span class="dot">·</span><span>Food · maaltijdbox</span><span class="dot">·</span><span>€4-8M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Marlous Spaven</div><div class="besl-functie">Head of Marketing &amp; Customer Service</div><div class="besl-note">Bron: EMAS 2025 sprekerspagina (openbaar)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">site tijdelijk onbereikbaar (429)</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Score 3,6 met 23% 1-ster; reageert op slechts ~25% van de negatieve reviews en pas binnen ~1 maand.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie score staat op 3,6 en driekwart van de negatieve reviews blijft onbeantwoord, terwijl marketing en klantenservice bij één persoon liggen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Ekomenu</div>
+        <a class="card-web" href="https://ekomenu.nl" target="_blank">ekomenu.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Almere</span><span class="dot">·</span><span>Food · biologische maaltijdbox</span><span class="dot">·</span><span>€3-7M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Chris de Vries</div><div class="besl-functie">Klantenservice</div><a class="besl-li" href="https://www.linkedin.com/in/chrisdvries/" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier; geen chat/telefoon/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klachten draaien terugkerend om versheid, bezorgtiming en incomplete pakketten, terwijl klantcontact enkel via e-mail en formulier loopt.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Bij een verse maaltijdbox draait bijna elke klantvraag om timing en compleetheid, en die komen bij jullie allemaal via één mailadres binnen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Pit&amp;Pit</div>
+        <a class="card-web" href="https://pit-pit.com" target="_blank">pit-pit.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Tessenderlo (BE)</span><span class="dot">·</span><span>Food · natuurvoeding</span><span class="dot">·</span><span>€4-8M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Boris De Bruyn</div><div class="besl-functie">Customer Care</div><div class="besl-note">Bron: naam in Trustpilot-reviews + LinkedIn</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (help@), formulier</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">In reviews wordt Boris bij naam genoemd omdat hij persoonlijk problemen oplost en leveringen versnelt, bij tienduizenden reviews over vijf landen.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie vijf sterren houden jullie overeind doordat iemand als Boris elk probleem persoonlijk oplost, klanten noemen hem letterlijk bij naam.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Aard'g</div>
+        <a class="card-web" href="https://aardg.nl" target="_blank">aardg.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Alkmaar</span><span class="dot">·</span><span>Food · kombucha/abonnement</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Max Rood</div><div class="besl-functie">Mede-oprichter (doet zelf klantcontact)</div><div class="besl-note">Bron: eigen supportpagina + LinkedIn</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), telefoon 9-17, Facebook Messenger; geen WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Op de eigen supportpagina staat dat mede-oprichter Max persoonlijk bereikbaar is voor klantvragen van maandag tot vrijdag 9:00-17:00; er is geen apart klantenserviceteam.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Op jullie supportpagina staat dat jij, Max, zelf tussen negen en vijf de telefoon en de mail doet, naast alles wat er bij het opbouwen van een merk komt kijken.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Bocca Coffee</div>
+        <a class="card-web" href="https://bocca.nl" target="_blank">bocca.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Food · specialty koffie</span><span class="dot">·</span><span>€3-7M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Jeroen Bol</div><div class="besl-functie">Operations Manager</div><div class="besl-note">Bron: eigen about-pagina ('Jeroen - Operation manager'); achternaam via LinkedIn</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, telefoon roastery</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Alle klantvragen lopen via één algemeen adres (info@bocca.nl), formulier en het roastery-telefoonnummer; geen apart CS-kanaal of -team zichtbaar.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Bij jullie komen webshopvragen en horecavragen op hetzelfde algemene adres binnen, terwijl dat één team is dat eigenlijk koffie moet branden en verkopen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Funky Fat Foods</div>
+        <a class="card-web" href="https://funkyfatfoods.com" target="_blank">funkyfatfoods.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Food · keto chocolade</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Louisa Mesquita Bakker</div><div class="besl-functie">Founder (geen aparte CS-persoon publiek)</div><div class="besl-note">Bron: eigen about-pagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, live chat (ma-vr 9-18)</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Biedt live chat als primair kanaal (ma-vr 9-18) terwijl het team klein is (founder + brand manager) en internationaal levert.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie hebben live chat aanstaan van negen tot zes, maar het team eromheen is klein, dus die chat komt bij een handvol mensen terecht.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Tea Bar</div>
+        <a class="card-web" href="https://teabar.nl" target="_blank">teabar.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Food · losse thee</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Britt Kramer</div><div class="besl-functie">Klantenservice</div><div class="besl-note">Bron: eigen FAQ koppelt naam aan CS-rol</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (klantenservice@ t.a.v. Britt), formulier</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">In de eigen FAQ verwijst Tea Bar voor alle klantvragen naar één persoon en één mailadres (Britt Kramer), terwijl ze op Kiyoh ruim 4.000 reviews hebben.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">In jullie FAQ staat bij elke klantvraag hetzelfde adres met Britt erbij, terwijl er ruim vierduizend reviews en meerdere winkels achter hangen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">BoxBites</div>
+        <a class="card-web" href="https://boxbites.nl" target="_blank">boxbites.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Food · snackbox</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Larissa Renée S.</div><div class="besl-functie">Klantenservice / Operations</div><a class="besl-li" href="https://www.linkedin.com/in/larissa-ren%C3%A9e-s-84a89998" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantcontact via één centraal adres en telefoonnummer zonder aparte CS-functie, terwijl het abonnementsmodel doorlopende wijzig- en bezorgvragen oplevert.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Als familiebedrijf met abonnementen komen alle pauzeer-, wijzig- en bezorgvragen bij jullie op één centraal nummer binnen, naast het runnen van de operatie.</span></div>
+      
+    </div>
+  </div></div>
+  </section><section class="sec">
+    <div class="sec-head"><span class="sec-title">Accessoires &amp; sieraden</span><span class="sec-count">13</span></div>
+    <div class="grid"><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">ByNouck Jewelry</div>
+        <a class="card-web" href="https://bynouck.com" target="_blank">bynouck.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Haarlem</span><span class="dot">·</span><span>Accessoires · sieraden</span><span class="dot">·</span><span>€3-6M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Anouck Goudsmit</div><div class="besl-functie">Founder / Owner (geen aparte online-CS-naam publiek)</div><div class="besl-note">Bron: eigen about-pagina (correctie: Anouck, niet Nouck)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), WhatsApp (belofte &lt;1u); geen chat/telefoon/formulier</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Stuurt klanten voor snel contact bewust naar WhatsApp (belofte binnen 1 uur) terwijl e-mail 24u mag duren; geen telefoon of formulier, bij ~2.170 reviews.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie beloven op WhatsApp binnen een uur te reageren terwijl e-mail 24 uur mag duren; bij ruim tweeduizend reviews vraag ik me af wie dat uur-venster de hele dag bewaakt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Eline Rosina</div>
+        <a class="card-web" href="https://elinerosina.com" target="_blank">elinerosina.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Accessoires · sieraden</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Hanna Pranger</div><div class="besl-functie">Founder &amp; Creative Director (Eline Bons/wholesale blijft onbevestigd)</div><div class="besl-note">Bron: eigen site + interview</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (customerservice@, 48u), formulier, WhatsApp; geen chat/telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Draait op een team van circa 8 medewerkers maar heeft al ~1.849 Trustpilot-reviews en een dedicated customerservice@-adres met 48u-belofte; CS-capaciteit schaalt niet mee met het volume.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Met een team van een man of acht en al bijna tweeduizend reviews vraag ik me af hoeveel van jullie dag opgaat aan klantvragen naast inkoop en wholesale.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">ARLIZI</div>
+        <a class="card-web" href="https://arlizi.com" target="_blank">arlizi.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Laren</span><span class="dot">·</span><span>Accessoires · sieraden</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Liz Meijs</div><div class="besl-functie">Klantenservice / eigenaar</div><a class="besl-li" href="https://www.linkedin.com/in/liz-meijs-7aba725/" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, telefoon; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Volledig webshop-only, ontwerpt en verpakt in-house en biedt gratis maatwerk, maar er is geen enkele medewerker publiek; alle klantcontact loopt via één info-adres en telefoonnummer.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie doen alles zelf, van ontwerp tot het gratis op maat maken van een ketting, en ik vermoed dat elke klantvraag ook op datzelfde bureau belandt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">SILK Jewellery</div>
+        <a class="card-web" href="https://silkjewellery.com" target="_blank">silkjewellery.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Accessoires · sieraden</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Maarten Smetsers</div><div class="besl-functie">Mede-oprichter / CEO &amp; Designer</div><div class="besl-note">Bron: eigen 'Our Roots'-pagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@/support@), formulier, telefoon, mogelijk Zendesk-chat</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Draait CS via meerdere afdelings-e-mailadressen, een telefoonlijn met vaste uren en een Zendesk-chatwidget, en bedient meerdere landenshops (.nl en .de); de stroom is over veel kanalen en markten verspreid.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie hebben aparte adressen voor support, sales en PR en draaien naast de Nederlandse ook een Duitse shop; hoe overzichtelijk is dat klantcontact nog?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Smaak Amsterdam</div>
+        <a class="card-web" href="https://smaakamsterdam.com" target="_blank">smaakamsterdam.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Accessoires · leren tassen</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">André Grundmann</div><div class="besl-functie">Founder (Niels Wijbenga/brand manager onbevestigd)</div><div class="besl-note">Bron: pers (Discover Benelux/FAJO) + eigen site</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (support@), formulier, telefoon 9-16; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Op Trustpilot staan slechts een handvol reviews en een zichtbare klacht over een foute levering (3 i.p.v. 4 tassen) met 'te laat om te klagen'; tegelijk staat er een vacature open voor e-commerce fulfilment.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Ik zag op Trustpilot een klant die maar drie van vier bestelde tassen kreeg en te horen kreeg dat het te laat was om te klagen; zulke berichten blijven lang staan bij een merk met weinig reviews.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">MYoMY</div>
+        <a class="card-web" href="https://myomy.nl" target="_blank">myomy.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Accessoires · leren tassen</span><span class="dot">·</span><span>€3-7M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Marja Baas</div><div class="besl-functie">Founder</div><div class="besl-note">Bron: eigen site + pers</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), CS ma-do 9-17; rest onbekend door SSL-fout</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De contact-/klantenservicepagina laadt met een verlopen SSL-certificaat, waardoor bezoekers een beveiligingswaarschuwing krijgen precies waar ze hulp zoeken; CS is bovendien maar vier dagen per week bereikbaar.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie klantenservicepagina gaf bij mij een certificaatwaarschuwing, en dat is nou net de plek waar een twijfelende klant contact zoekt; zagen jullie dat al?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">O My Bag</div>
+        <a class="card-web" href="https://omybagamsterdam.com" target="_blank">omybagamsterdam.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Accessoires · leren tassen</span><span class="dot">·</span><span>€4-8M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Paulien Wesselink</div><div class="besl-functie">Founder &amp; CEO</div><div class="besl-note">Bron: eigen jubileumbrief + FashionUnited</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (customerservice@), Freshdesk-portal reparaties, telefoon; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Leidt vragen en reparaties naar een apart Freshdesk-portal en heeft naast customerservice@ aparte adressen voor sales, pers en sustainability; met bijna 4.000 reviews is de stroom fors en over meerdere systemen verdeeld.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie sturen klanten voor reparaties al naar een apart Freshdesk-portaal terwijl e-mail via een ander adres loopt; hoeveel handmatig schakelen zit daar tussenin?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">The Chesterfield Brand</div>
+        <a class="card-web" href="https://chesterfieldbags.com" target="_blank">chesterfieldbags.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Accessoires · leren tassen</span><span class="dot">·</span><span>€3-7M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Maikel Wiegertjes</div><div class="besl-functie">Marketing &amp; E-Commerce</div><div class="besl-note">Bron: eigen teampagina + LinkedIn</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">Freshdesk-ticketformulier, telefoon; geen direct e-mail/chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Leidt alle klantvragen via een Freshdesk-ticketformulier zonder direct e-mailadres of chat, en heeft een aparte Returns-afdeling; retouren en tickets zijn een gestructureerde maar arbeidsintensieve stroom.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie hebben zelfs een eigen retourenafdeling en sturen elke vraag door een Freshdesk-ticket; hoeveel van die tickets zijn steeds dezelfde retour- en levervragen?</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Berba</div>
+        <a class="card-web" href="https://berba.nl" target="_blank">berba.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Accessoires · leren tassen</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Berry Kuckelkorn</div><div class="besl-functie">Eigenaar (2e generatie, met echtgenote Olga)</div><div class="besl-note">Bron: eigen historie-pagina + pers</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (webshop@), formulier, telefoon 9-17; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Familiebedrijf dat door Berry en Olga zelf wordt gerund; de webshop-klantenservice loopt via één adres en één telefoonnummer tijdens kantooruren, zonder chat of WhatsApp.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie runnen Berba echt als familie, en dan vermoed ik dat de webshopvragen ook gewoon bij jullie zelf op de mat vallen tussen alles door.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">dR Amsterdam</div>
+        <a class="card-web" href="https://dramsterdam.nl" target="_blank">dramsterdam.nl</a>
+      </div>
+      <span class="conf conf-none">Naam te vinden</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Accessoires · leren tassen</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam besl-leeg">Doelrol: Algemeen adres, geen contactpersoon</div><div class="besl-note">Bron: Simon: geen beslisser vindbaar, algemeen adres</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (sales@de-rooy.com), formulier, telefoon; geen chat/WhatsApp/eigen CS-adres</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De klantenservice van de webshop loopt via het algemene sales@de-rooy.com-adres en telefoonnummer van het moederbedrijf; er is geen apart D2C-klantcontactkanaal.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Webshopvragen van dR Amsterdam komen binnen op het algemene sales-adres van De Rooy; hoe verhouden die consumentenvragen zich tot alle zakelijke post op datzelfde adres?</span></div>
+      <div class="dl"><span class="dl-k">Checken</span><span class="dl-v mono-sm">site:linkedin.com/in "dR Amsterdam" (customer OR operations OR e-commerce)</span></div>
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">WoodWatch</div>
+        <a class="card-web" href="https://woodwatch.com" target="_blank">woodwatch.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Accessoires · horloges</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Kevin van der Veer, Daniel Salimian, Jeroen Westerbeek</div><div class="besl-functie">Executive Directors / oprichters</div><div class="besl-note">Bron: eigen imprint + pers (KvK 75672162)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (care@), live chat, WhatsApp, telefoon incl. weekend</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Belooft klantcontact via live chat, WhatsApp én telefoon met ruime openingstijden (ook weekend), maar in de ~1.896 Trustpilot-reviews duiken juist klachten op over responstijden en het retourproces.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie zijn via chat, WhatsApp en telefoon tot in het weekend bereikbaar, en juist daar zie ik in reviews de klacht dat een reactie soms uitblijft; die belofte over al die kanalen waarmaken is een klus.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Castelijn &amp; Beerens</div>
+        <a class="card-web" href="https://castelijnenbeerens.com" target="_blank">castelijnenbeerens.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Waalwijk</span><span class="dot">·</span><span>Accessoires · lederwaren</span><span class="dot">·</span><span>€4-8M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Rick Dingenouts</div><div class="besl-functie">E-commerce Manager (ex Manager Customer Service Medpets)</div><div class="besl-note">Bron: RocketReach + ContactOut, twee bronnen</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (serviceadres), formulier, mogelijk Zendesk; telefoon niet op servicepagina</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Reviews roemen reacties 'binnen 3 minuten' op e-mail en gratis nazending van onderdelen; met een E-commerce Manager die zelf uit customer service komt is dat een bewuste maar arbeidsintensieve keuze.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Klanten schrijven dat jullie soms binnen drie minuten antwoorden; dat is knap, en tegelijk vraag ik me af wat dat vraagt van de mensen die het al die uren waarmaken.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Bag2Bag</div>
+        <a class="card-web" href="https://bag2bag.nl" target="_blank">bag2bag.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Accessoires · leren tassen</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Daphne Cuypers</div><div class="besl-functie">Mede-oprichter / eigenaar</div><a class="besl-li" href="https://www.linkedin.com/in/daphne-cuypers-04833b1a3" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, 2 persoonlijke 06-nummers; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Wordt door twee oprichters gerund die elk seizoen zelf de collectie ontwerpen, en de webshop-klantenservice loopt via één info-adres en letterlijk twee persoonlijke 06-mobiele nummers.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Op jullie contactpagina staan twee 06-nummers, en ik vermoed dat die gewoon in jullie eigen broekzak zitten terwijl jullie de volgende collectie aan het ontwerpen zijn.</span></div>
+      
+    </div>
+  </div></div>
+  </section><section class="sec">
+    <div class="sec-head"><span class="sec-title">Kids, baby &amp; maternity</span><span class="sec-count">11</span></div>
+    <div class="grid"><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Nixnut</div>
+        <a class="card-web" href="https://nixnut.nl" target="_blank">nixnut.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Breda</span><span class="dot">·</span><span>Kids · fashion</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Lieveke Ligtenberg</div><div class="besl-functie">Support &amp; Backoffice</div><a class="besl-li" href="https://www.linkedin.com/in/lieveke-ligtenberg-b1a2b224/" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (service@), formulier, chat, WhatsApp, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantcontact loopt via een enkele Support &amp; Backoffice-medewerker naast winkel, recente pop-up (Ginnekenweg Breda) en wholesale; alle kanalen komen bij hetzelfde kleine team binnen.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Ik zag dat jullie klantcontact, de webshop, de nieuwe pop-up in Breda en wholesale eigenlijk allemaal via hetzelfde kleine support-team lopen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Phil &amp; Phae</div>
+        <a class="card-web" href="https://philandphae.com" target="_blank">philandphae.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Almere</span><span class="dot">·</span><span>Kids · organic kidswear</span><span class="dot">·</span><span>€1-2M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Barbara de Jonge</div><div class="besl-functie">Oprichter/directeur (CS was dunne parttime rol)</div><div class="besl-note">Bron: KvK Anothermay B.V. + interview</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (service@), formulier; geen chat/WhatsApp/consumenten-telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantenservice draait op één service@-mailbox zonder chat, WhatsApp of consumenten-telefoon; support was slechts een parttime 'Allround Product Support'-rol die nu als vervuld/gesloten staat.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Ik zag dat jullie klantcontact via één service-mailbox loopt en dat support bij jullie eigenlijk een parttime rol naast design was.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Minis Only</div>
+        <a class="card-web" href="https://minisonly.nl" target="_blank">minisonly.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Horst</span><span class="dot">·</span><span>Kids · streetwear</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Mieke Jakobs</div><div class="besl-functie">Eigenaar / oprichter</div><div class="besl-note">Bron: eigen about-pagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, chat, WhatsApp, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Bij een uitstekende WebwinkelKeur-score (9,1 over 2.797) staan meerdere recente reviews waarin klanten melden dat er na herhaald bellen, mailen en appen geen reactie komt.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie reviewscore is bijna vlekkeloos, maar juist daardoor vallen de recente reacties op waarin klanten schrijven dat ze na meerdere keren bellen, mailen en appen niets terughoorden.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">A Little Lovely Company</div>
+        <a class="card-web" href="https://alittlelovelycompany.com" target="_blank">alittlelovelycompany.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Groningen</span><span class="dot">·</span><span>Kids · lifestyle/decor</span><span class="dot">·</span><span>€2-6M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Judith de Ruijter</div><div class="besl-functie">Mede-oprichter / eigenaar (geen aparte CS-naam publiek)</div><div class="besl-note">Bron: Entrepreneur Magazine + pers</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (service@), telefoon ma-vr 9-16; geen chat/WhatsApp/formulier</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Gepolariseerd Trustpilot-beeld (~4,2 met 17% 1-ster) terwijl negatieve reviews onbeantwoord blijven, en contact loopt alleen via e-mail en telefoon met beperkte uren.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Voor een merk dat in tientallen landen op de plank ligt, valt op hoe stil het blijft op jullie Trustpilot: kritische reviews blijven onbeantwoord en klanten bereiken jullie eigenlijk alleen op werkdagen tot 16:00.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Studio Ditte</div>
+        <a class="card-web" href="https://studioditte.nl" target="_blank">studioditte.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Breda</span><span class="dot">·</span><span>Kids · interieur/decor</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Marieke Dirks</div><div class="besl-functie">Mede-oprichter (1 van 3: Dirks, Heesbeen, van Zwam)</div><div class="besl-note">Bron: eigen 'ons verhaal'-pagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (mail@), formulier, 3 persoonlijke mobiels; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Op de contactpagina komen klantvragen binnen via de persoonlijke mobiele nummers van de drie oprichters plus een algemeen adres; fulfilment is wel uitbesteed, klantcontact niet.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Het viel me op dat jullie het inpakken en verzenden allang hebben uitbesteed, maar dat klantvragen nog altijd op jullie eigen mobiele nummers binnenkomen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Noubased</div>
+        <a class="card-web" href="https://noubased.com" target="_blank">noubased.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Maternity · voedingskleding</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Anita van Luijk-Groenendijk</div><div class="besl-functie">Oprichter / eigenaar</div><div class="besl-note">Bron: eigen over-pagina + LinkedIn</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, mobiel oprichter; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De contactpagina belooft 'zo snel mogelijk' antwoord, terwijl al het klantcontact via één algemeen adres, een formulier en het mobiele nummer van de oprichter loopt, voor een merk dat tot in British Vogue wordt genoemd.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Ik zag dat jullie tot in British Vogue worden genoemd, terwijl elke klantvraag nog op een enkel adres bij jou persoonlijk binnenkomt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Lodger</div>
+        <a class="card-web" href="https://lodger.com" target="_blank">lodger.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Woerden</span><span class="dot">·</span><span>Baby · mobiliteit/verzorging</span><span class="dot">·</span><span>€3-7M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Tristan Gerding</div><div class="besl-functie">Klantenservice / Operations</div><a class="besl-li" href="https://www.linkedin.com/in/tristan-gerding-07ba98180/" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (customerservice@), formulier, telefoon 9-17; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Terugkerende reviewkritiek op het betaalde retourbeleid, terwijl concurrenten gratis retour bieden; klanten noemen dit expliciet als reden voor teleurstelling.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Ik zag dat een paar van jullie reviews niet over de producten gingen maar over het retour- en leverproces, en vroeg me af wie daar nu eigenaar van is.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Little Indians</div>
+        <a class="card-web" href="https://little-indians.nl" target="_blank">little-indians.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Rotterdam</span><span class="dot">·</span><span>Baby/kids · fashion</span><span class="dot">·</span><span>€1-5M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Kelly (Backoffice B2C)</div><div class="besl-functie">Backoffice B2C (niet-oprichter, op teampagina)</div><div class="besl-note">Bron: eigen teampagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (service@), formulier; geen chat/WhatsApp/telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De enige publieke reviews (score 3,3/10) klagen specifiek dat e-mails aan de klantenservice onbeantwoord blijven en pakketkwesties niet worden opgelost.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Ik las klantreacties dat mails aan service@little-indians.nl onbeantwoord bleven, zonde voor een merk waar jullie zoveel zorg in de collectie steken.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Mies &amp; Co</div>
+        <a class="card-web" href="https://miesenco.nl" target="_blank">miesenco.nl</a>
+      </div>
+      <span class="conf conf-none">Naam te vinden</span>
+    </div>
+    <div class="card-meta">
+      <span>Rijssen</span><span class="dot">·</span><span>Baby · textiel/verzorging</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam besl-leeg">Doelrol: Algemeen adres, geen contactpersoon</div><div class="besl-note">Bron: Simon: geen beslisser vindbaar, algemeen adres</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, telefoon 06; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantcontact loopt uitsluitend via e-mail, formulier en een 06-mobielnummer, zonder live chat of WhatsApp, terwijl het merk zich als premium babylifestyle positioneert.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie positioneren Mies &amp; Co echt als premium babymerk, maar het klantcontact hangt nu volledig op één mailbox en een 06-nummer.</span></div>
+      <div class="dl"><span class="dl-k">Checken</span><span class="dl-v mono-sm">site:linkedin.com/in ("Mies &amp; Co" OR miesenco) (operations OR klantenservice) Rijssen</span></div>
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Love2Wait</div>
+        <a class="card-web" href="https://love2wait.nl" target="_blank">love2wait.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Dronten</span><span class="dot">·</span><span>Maternity · positiekleding</span><span class="dot">·</span><span>€2-6M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Mark de Jong</div><div class="besl-functie">General Manager Brands2Love (eigenaar/oprichter: Wendy Walet)</div><div class="besl-note">Bron: FashionUnited (openbaar)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (shop@), formulier, telefoon ma-vr 10-16; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De klantenservice is telefonisch alleen bereikbaar op werkdagen 10-16 en biedt geen chat of WhatsApp, terwijl de doelgroep (zwangere klanten) juist snelle, laagdrempelige antwoorden verwacht.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Voor een zwangerschapsmerk valt me op dat jullie klantenservice maar zes uur per dag telefonisch bereikbaar is en verder alleen via mail loopt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">ELLIE Studio</div>
+        <a class="card-web" href="https://ellie-studio.nl" target="_blank">ellie-studio.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nederland</span><span class="dot">·</span><span>Kids · interieur/decor</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Lisanne Klep</div><div class="besl-functie">Eigenares (1 van 2: Lisanne + Evy)</div><div class="besl-note">Bron: eigen over-pagina + KvK-plaats Rijsbergen</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, chatwidget; geen telefoon/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">ELLIE wordt volgens de eigen over-pagina volledig gerund door twee oprichtsters die zelf ontwerpen, printen, snijden en inpakken; klantcontact loopt via mail, formulier en chat, zonder telefoon of apart CS-team.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie doen bij ELLIE echt alles met z'n tweeën, van ontwerp tot inpakken, en dan komt de klantenservice er via mail en chat ook nog eens bovenop.</span></div>
+      
+    </div>
+  </div></div>
+  </section><section class="sec">
+    <div class="sec-head"><span class="sec-title">Sport, outdoor &amp; pets</span><span class="sec-count">12</span></div>
+    <div class="grid"><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">DogSuppy</div>
+        <a class="card-web" href="https://dogsuppy.com" target="_blank">dogsuppy.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Pets · supplementen</span><span class="dot">·</span><span>€2-6M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Yentel van Hemert</div><div class="besl-functie">Klantenservice</div><a class="besl-li" href="https://www.linkedin.com/in/yentel-van-hemert-9731aa161" target="_blank">LinkedIn</a><div class="besl-note">Bron: Bevestigd via LinkedIn (Simon)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, WhatsApp; geen chat/telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Belooft CS 7 dagen/week 07:00-22:30, antwoord binnen 1-2u, zonder live chat; alles via e-mail en WhatsApp.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie beloven zeven dagen per week snel antwoord van vroeg tot laat; ik vroeg me af hoeveel mensen dat ritme dragen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Maats Cycling Culture</div>
+        <a class="card-web" href="https://maats.cc" target="_blank">maats.cc</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Cycling · wielerkleding</span><span class="dot">·</span><span>€3-6M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Rob Schoof &amp; Joost Hiemstra</div><div class="besl-functie">Oprichters/eigenaren (mede-eigenaar Janco Nagelhout)</div><div class="besl-note">Bron: duic.nl-pers + eigen about-pagina</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, chat, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Beantwoordt op Trustpilot slechts 14% van de negatieve reviews; een klant meldde een onbeantwoorde e-mail, terwijl het merk op persoonlijke service leunt.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">In de winkel voelt jullie service persoonlijk, maar online blijven de meeste negatieve reviews onbeantwoord.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Dog with a Mission</div>
+        <a class="card-web" href="https://dogwithamission.com" target="_blank">dogwithamission.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Bergen (NH)</span><span class="dot">·</span><span>Pets · design accessoires</span><span class="dot">·</span><span>€2-6M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Kim Koopman &amp; Eugenie Verbiest</div><div class="besl-functie">Mede-oprichters / eigenaren</div><div class="besl-note">Bron: eigen about + Flessenpost Alkmaar</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, chat, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Openstaande vacature Customer Service (3 dagen/week, Alkmaar) terwijl de servicedesk nu alleen ma t/m do 9:00-17:00 bereikbaar is.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie zoeken een extra klantenservicemedewerker terwijl de desk nu vier dagen per week open is; dat lijkt lastig plannen rond pieken.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Rogelli</div>
+        <a class="card-web" href="https://rogelli.com" target="_blank">rogelli.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Sint Willebrord</span><span class="dot">·</span><span>Cycling · wielerkleding</span><span class="dot">·</span><span>€5-8M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Melvin Wagtmans</div><div class="besl-functie">CEO / mede-eigenaar (Michel Struijs is marketing, niet CS)</div><div class="besl-note">Bron: NieuwsFiets-pers</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (customerservice@), formulier, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klanten melden stelselmatig dat de maatvoering kleiner uitvalt, wat een voorspelbare stroom maat-, ruil- en retourvragen oplevert.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">In jullie reviews komt telkens terug dat de maat klein uitvalt; dat levert de servicedesk veel ruil- en maatvragen op.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Q1905</div>
+        <a class="card-web" href="https://q1905.com" target="_blank">q1905.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Strijen</span><span class="dot">·</span><span>Sport · tennis/padel</span><span class="dot">·</span><span>€5-8M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">R. van Trigt</div><div class="besl-functie">Algemeen Directeur (Ferrini B.V.)</div><div class="besl-note">Bron: Drimble handelsregister (KvK 24321031)</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (service@), formulier, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Op Kiyoh beantwoordt Q1905 bijna elke review persoonlijk (8,7 over 11.734), maar op het onafhankelijke Trustpilot melden klanten juist dat berichten via app én e-mail onbeantwoord blijven.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Op jullie reviewpagina beantwoorden jullie bijna elke reactie persoonlijk, maar op Trustpilot lees ik van klanten die na meerdere app- en mailberichten geen antwoord kregen.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Urban Goddess</div>
+        <a class="card-web" href="https://urban-goddess.com" target="_blank">urban-goddess.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Amsterdam</span><span class="dot">·</span><span>Sport · yoga/activewear</span><span class="dot">·</span><span>€2-5M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Marlene Smits</div><div class="besl-functie">Oprichter / eigenaar / designer (Blissworkz BV; geen aparte CS-naam)</div><div class="besl-note">Bron: eigen site 'goddess of the month'</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (hello@), formulier, chat, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Blissworkz/Urban Goddess werft herhaaldelijk drietalige Customer Happiness-medewerkers voor meerdere merken, terwijl de enige onafhankelijke Trustpilot-review een onbeantwoord retourprobleem beschrijft.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie zoeken telkens weer een Customer Happiness-medewerker voor drie talen en meerdere shops, en tegelijk zie ik online één klant die na een verkeerd artikel op antwoord blijft wachten.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Renske Natural Petfood</div>
+        <a class="card-web" href="https://natuurlijkrenske.nl" target="_blank">natuurlijkrenske.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Cuijk</span><span class="dot">·</span><span>Pets · diervoeding</span><span class="dot">·</span><span>€3-8M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Annemijn Arts</div><div class="besl-functie">Commercieel medewerkster (sales, niet expliciet CS)</div><div class="besl-note">Bron: eigen teampagina + RocketReach</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, telefoon; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Klantcontact loopt uitsluitend via e-mail, telefoon en formulier (geen chat/WhatsApp), bij een team van 10-19 dat op een kleine commerciële/office-bezetting rust.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie klantcontact loopt nog volledig via mail, telefoon en een formulier, terwijl het bij een team van jullie omvang al snel op een paar mensen tegelijk neerkomt.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">The Nomad Company</div>
+        <a class="card-web" href="https://nomad.nl" target="_blank">nomad.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Nootdorp</span><span class="dot">·</span><span>Outdoor · tenten/kleding</span><span class="dot">·</span><span>€500K-5M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Mitchell Kruithof</div><div class="besl-functie">E-commerce Manager</div><div class="besl-note">Bron: LinkedIn + RocketReach + ZoomInfo</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail, formulier, telefoon; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Sterke historische Kiyoh-score (8,8 over 1.320) maar slechts 7 reviews in 12 maanden, en een klant meldde geen antwoord op een bericht over een in april besteld product.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie Kiyoh-score is jarenlang sterk, maar het laatste jaar staan er nog maar een handjevol reviews en las ik van een klant die na een bestelling in april in juni nog op antwoord wachtte.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Bobiotics / Pure Bob</div>
+        <a class="card-web" href="https://bobiotics.nl" target="_blank">bobiotics.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Gent (BE)</span><span class="dot">·</span><span>Pets · supplementen/voer</span><span class="dot">·</span><span>€500K-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Lowie Verschelden</div><div class="besl-functie">Mede-oprichter (doet CS zelf via lowie@purebob.com)</div><div class="besl-note">Bron: eigen LinkedIn-post rebrand + purebob.com</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (founder), formulier, WhatsApp-updates</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Net gerebrand van Bobiotics naar Pure Bob met een abonnementsmodel (fresh-dried voer + Care), terwijl klantenservice nog via het persoonlijke oprichters-e-mailadres lowie@purebob.com loopt.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Lowie, je klanten mailen voor hun bestelling nog rechtstreeks naar jouw eigen inbox, terwijl Pure Bob net is gerebrand en met het abonnement sneller gaat groeien.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">JUSS7 Sportswear</div>
+        <a class="card-web" href="https://juss7.com" target="_blank">juss7.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Hoogeveen</span><span class="dot">·</span><span>Sport · performance kleding</span><span class="dot">·</span><span>€1-3M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Justin Kunst</div><div class="besl-functie">Oprichter / eigenaar (CORRECTIE: Wietse Hoogeveen was fout)</div><div class="besl-note">Bron: company.info KvK-management + eigen Instagram/site</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">alleen contactformulier; geen zichtbaar e-mail/telefoon/chat</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">De contactpagina biedt uitsluitend een contactformulier, geen zichtbaar e-mailadres, telefoon, chat of WhatsApp, terwijl het een verkopend D2C-sportmerk is.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Wietse, bij JUSS7 kunnen klanten je op de contactpagina alleen via een formulier bereiken, verder geen mail, telefoon of chat zichtbaar.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Vieux Jeu</div>
+        <a class="card-web" href="https://vieuxjeu.com" target="_blank">vieuxjeu.com</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Oostende (BE)</span><span class="dot">·</span><span>Sport · tennis/padel</span><span class="dot">·</span><span>€1-4M</span><span class="pp pp-B">Pijn B</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Claudia Storme</div><div class="besl-functie">Oprichter / designer</div><div class="besl-note">Bron: eigen site + media</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (info@), formulier, live chat, telefoon</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Draait juist meerdere gelijktijdige klantkanalen (telefoon met vaste uren, live chat, e-mail, fysieke pop-up), dus relatief volwassen CS. Minst urgente prospect.</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Claudia, jullie bemannen tegelijk telefoon, live chat, mail en een pop-up store, terwijl de collectie internationaal en richting B2B blijft groeien.</span></div>
+      
+    </div>
+  </div><div class="card">
+    <div class="card-top">
+      <div>
+        <div class="card-name">Clarijs Fietstassen</div>
+        <a class="card-web" href="https://clarijs-fietstassen.nl" target="_blank">clarijs-fietstassen.nl</a>
+      </div>
+      <span class="conf conf-ok">Geverifieerd</span>
+    </div>
+    <div class="card-meta">
+      <span>Serooskerke</span><span class="dot">·</span><span>Cycling · fietstassen</span><span class="dot">·</span><span>€500K-2M</span><span class="pp pp-A">Pijn A</span>
+    </div>
+    <div class="card-besl">
+      <div class="besl-label">Beslisser</div>
+      <div class="besl-naam">Frank Koppenol</div><div class="besl-functie">Mede-eigenaar &amp; product manager</div><div class="besl-note">Bron: NieuwsFiets + Dockwize</div>
+    </div>
+    <div class="card-detail">
+      <div class="dl"><span class="dl-k">Kanalen</span><span class="dl-v">e-mail (webshop@), formulier, telefoon 4u/dag; geen chat/WhatsApp</span></div>
+      <div class="dl"><span class="dl-k">Trigger</span><span class="dl-v">Telefonische service is maar 4 uur per werkdag bereikbaar (09:00-13:00), geen chat of WhatsApp, terwijl het merk in 12+ landen verkoopt (incl. VS/Canada).</span></div>
+      <div class="dl"><span class="dl-k">Opening</span><span class="dl-v dl-obs">Jullie tassen gaan de hele wereld over, van Serooskerke tot Canada, maar de telefoon staat maar vier uur per dag open; hoe bijbenen jullie dat aan de servicekant?</span></div>
+      
+    </div>
+  </div></div>
+  </section>
+</div>
+<div class="doc-footer">
+  <span class="df-l">Pique × Backbone CS · Prospectlijst Batch 2 · Onderzoeksronde</span>
+  <span class="df-r">Volgende stap: leads bevestigen, daarna assets</span>
+</div>
+</body></html>
