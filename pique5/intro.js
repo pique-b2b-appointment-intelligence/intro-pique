@@ -155,19 +155,29 @@
       return chars;
     });
 
-    function wacht(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+    /* pq-vlot: elk teken had een eigen setTimeout. Op een telefoon die nog staat
+       te laden schuiven die timers achter elkaar aan, en dan hapert precies de
+       eerste regel. Nu loopt er een lus mee met het beeldscherm: alles wat op
+       dit frame aan de beurt is gaat in een keer aan, en na een traag frame
+       haalt hij de achterstand in. Het tempo blijft daardoor gelijk. */
+    var plan = [], klok = 0;
+    perRegel.forEach(function (chars, r) {
+      chars.forEach(function (s) {
+        plan.push({ s: s, t: klok });
+        klok += (s.textContent === ' ' ? Math.round(tempo * .45) : tempo);
+      });
+      if (r < perRegel.length - 1) klok += pauze;
+    });
 
-    async function schrijf() {
-      for (var r = 0; r < perRegel.length; r++) {
-        var chars = perRegel[r];
-        for (var i = 0; i < chars.length; i++) {
-          chars[i].classList.add('on');
-          await wacht(chars[i].textContent === ' ' ? Math.round(tempo * .45) : tempo);
-        }
-        if (r < perRegel.length - 1) await wacht(pauze);
-      }
-      choice.classList.add('in');
-      if (read) read.classList.add('in');
+    function schrijf() {
+      var start = performance.now(), i = 0;
+      requestAnimationFrame(function frame(nu) {
+        var verstreken = nu - start;
+        while (i < plan.length && plan[i].t <= verstreken) { plan[i].s.classList.add('on'); i++; }
+        if (i < plan.length) { requestAnimationFrame(frame); return; }
+        choice.classList.add('in');
+        if (read) read.classList.add('in');
+      });
     }
 
     function alles() {
@@ -215,14 +225,18 @@
     function begin() {
       if (gestart) return;
       gestart = true;
-      setTimeout(function () { card.classList.add('in'); }, 60);
       setTimeout(function () { if (read) read.classList.add('in'); }, 900);
-      setTimeout(schrijf, 620);
+      setTimeout(schrijf, 380);
     }
+    /* pq-vlot: de kaart hoeft niet op het handschrift te wachten, alleen de inkt,
+       dus hij komt meteen op. */
+    requestAnimationFrame(function () { requestAnimationFrame(function () { card.classList.add('in'); }); });
     if (document.fonts && document.fonts.load) {
       document.fonts.load('600 2rem Caveat').then(begin, begin);
     }
-    setTimeout(begin, 1200);
+    /* pq-vlot: het vangnet stond op 1200 ms en dat was op een telefoon zuiver
+       wachten. Caveat komt nu van dezelfde server als de pagina. */
+    setTimeout(begin, 700);
   }
 
   if (document.readyState === 'loading') {

@@ -105,6 +105,10 @@
     var navlogo = document.querySelector('nav .logo');
     if (merkblok && navlogo) merkblok.insertAdjacentHTML('afterbegin', navlogo.innerHTML);
     document.body.appendChild(el);
+    /* pq-vlot: de kaart komt op zodra hij echt in de pagina hangt, en niet pas
+       als het handschrift binnen is. Twee frames, anders staat hij er in een
+       keer zonder de opkomst. */
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ card.classList.add('in'); }); });
   }
   /* Zodra <body> bestaat inhangen, niet pas bij DOMContentLoaded. Op een zware
      pagina scheelt dat honderden milliseconden waarin er niets te zien is.
@@ -136,22 +140,36 @@
     ink.appendChild(lijn); return chars;
   });
 
-  function wacht(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
-  async function schrijf(){
-    for (var r=0; r<perRegel.length; r++){
-      var chars = perRegel[r];
-      for (var i=0;i<chars.length;i++){ chars[i].classList.add('on'); await wacht(chars[i].textContent===' '?Math.round(tempo*.45):tempo); }
-      if (r < perRegel.length-1) await wacht(pauze);
-    }
-    choice.classList.add('in'); if (read) read.classList.add('in');
-    pqTrack('kaart-uitgeschreven');
+  /* pq-vlot: elk teken had een eigen setTimeout. Op een telefoon die nog staat
+     te laden schuiven die timers achter elkaar aan, en dan hapert precies de
+     eerste regel, het moment waarop iemand kijkt. Nu loopt er een lus mee met
+     het beeldscherm: alles wat op dit frame aan de beurt is gaat in een keer
+     aan, en na een traag frame haalt hij de achterstand in plaats van hem op
+     te tellen. Het tempo van de kaart blijft daardoor precies gelijk. */
+  var plan = [], klok = 0;
+  perRegel.forEach(function(chars, r){
+    chars.forEach(function(s){ plan.push({s:s, t:klok}); klok += (s.textContent===' '?Math.round(tempo*.45):tempo); });
+    if (r < perRegel.length-1) klok += pauze;
+  });
+  function schrijf(){
+    var start = performance.now(), i = 0;
+    requestAnimationFrame(function frame(nu){
+      var verstreken = nu - start;
+      while (i < plan.length && plan[i].t <= verstreken) { plan[i].s.classList.add('on'); i++; }
+      if (i < plan.length) { requestAnimationFrame(frame); return; }
+      choice.classList.add('in'); if (read) read.classList.add('in');
+      if (typeof pqTrack === 'function') pqTrack('kaart-uitgeschreven');
+    });
   }
 
   /* De kaart vliegt naar zijn plek in de hero. Dat is het hele punt:
      het voorwerp in hun hand wordt het voorwerp op het scherm. */
   function sluit(metVideo){
     if (klaar) return; klaar = true;
-    pqTrack(metVideo ? 'intro-video' : 'intro-lezen');
+    /* pq-vlot: lp-v2.js hangt onderaan de pagina. Wie op een trage telefoon
+       meteen tikt, liep tegen een pqTrack die er nog niet was, en dan deed
+       de knop niets. */
+    if (typeof pqTrack === 'function') pqTrack(metVideo ? 'intro-video' : 'intro-lezen');
     var slot = document.getElementById('slot');
     var slotcard = document.getElementById('slotcard');
     el.classList.add('gone');
@@ -188,13 +206,17 @@
     card.classList.add('in'); choice.classList.add('in'); if (read) read.classList.add('in');
     return;
   }
+  /* pq-vlot: de kaart zelf hoeft niet op het handschrift te wachten, alleen de
+     inkt. Hij komt dus op zodra hij in de pagina hangt, en het schrijven begint
+     zodra Caveat binnen is. Dat lettertype staat nu naast de pagina, dus dat is
+     in de praktijk meteen. De 700 ms eronder is het vangnet als het bestand er
+     niet komt; daar stond 1200, en dat was zuiver wachttijd op een telefoon. */
   var gestart = false;
   function begin(){
     if (gestart) return; gestart = true;
-    setTimeout(function(){ card.classList.add('in'); }, 60);
     setTimeout(function(){ if (read) read.classList.add('in'); }, 900);
-    setTimeout(schrijf, 620);
+    setTimeout(schrijf, 380);
   }
   if (document.fonts && document.fonts.load) document.fonts.load('600 2rem Caveat').then(begin, begin);
-  setTimeout(begin, 1200);
+  setTimeout(begin, 700);
 })();

@@ -216,14 +216,17 @@ function bijScroll(){
   var bezig = false;
 
   function schrijf(){
-    var i = 0;
-    (function stap(){
-      /* Per beurt een paar tekens, anders zet je honderden timers aan. */
-      var eind = Math.min(tekens.length, i + Math.max(1, Math.round(16 / tempo)));
-      for (; i < eind; i++) tekens[i].classList.add('aan');
-      if (i < tekens.length) setTimeout(stap, tempo);
-      else setTimeout(function(){ blok.classList.add('klaar'); pqTrack('kantelpunt-gelezen'); }, 300);
-    })();
+    /* pq-vlot: liep op setTimeout en dat schuift zodra de pagina het druk heeft.
+       Nu op de klok van het beeldscherm, met dezelfde snelheid: wat op dit frame
+       aan de beurt is gaat in een keer aan, en een traag frame wordt ingehaald
+       in plaats van opgeteld. */
+    var start = performance.now(), i = 0;
+    requestAnimationFrame(function frame(nu){
+      var moet = Math.min(tekens.length, Math.floor((nu - start) / tempo));
+      for (; i < moet; i++) tekens[i].classList.add('aan');
+      if (i < tekens.length) { requestAnimationFrame(frame); return; }
+      setTimeout(function(){ blok.classList.add('klaar'); if (typeof pqTrack === 'function') pqTrack('kantelpunt-gelezen'); }, 300);
+    });
   }
   function alles(){
     tekens.forEach(function(t){ t.classList.add('aan'); });

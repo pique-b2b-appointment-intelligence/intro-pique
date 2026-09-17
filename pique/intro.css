@@ -4,6 +4,16 @@
    Palet en typografie volgen het nieuwe LP-design (navy/amber).
    Gedeeld bestand. Per pagina alleen window.PIQUE_INTRO instellen.
    ============================================================ */
+/* pq-vlot */
+/* Caveat staat sinds 17 september 2026 naast de pagina in plaats van bij Google.
+   Het handschrift is het eerste wat iemand na de scan ziet, en de omweg via
+   fonts.googleapis.com naar fonts.gstatic.com kostte op een telefoon 1,4 seconde
+   voordat de eerste letter stond. Dit zijn de bestanden van Google zelf, alleen
+   dan van dezelfde server als de pagina. Deze regels moeten na de Google-link
+   staan, anders wint die laatste alsnog. */
+@font-face{font-family:'Caveat';font-style:normal;font-weight:500 700;font-display:swap;src:url(caveat-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:500 700;font-display:swap;src:url(caveat-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
 
 html.pq-on, html.pq-on body { overflow: hidden; height: 100%; }
 
@@ -79,10 +89,12 @@ html.pq-on, html.pq-on body { overflow: hidden; height: 100%; }
 .pq-w { white-space: nowrap; }
 .pq-ch {
   display: inline-block; white-space: pre;
-  opacity: 0; filter: blur(4px); transform: translateY(2px);
-  transition: opacity .16s ease, filter .22s ease, transform .22s ease;
+  /* pq-vlot: elk teken vervaagde apart, en honderd blurs tegelijk is op een
+     telefoon de duurste manier om inkt na te doen. */
+  opacity: 0; transform: translateY(2px);
+  transition: opacity .2s ease, transform .22s ease;
 }
-.pq-ch.on { opacity: 1; filter: blur(0); transform: none; }
+.pq-ch.on { opacity: 1; transform: none; }
 .pq-ch.hl { color: #A9741F; }
 
 /* ---- keuze, onder de kaart ---- */

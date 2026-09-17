@@ -4,6 +4,16 @@
    bevat geen enkele vaste merkkleur, dus een klantpagina hoeft
    alleen het thema te vervangen. Zie thema-pique.css en LEESMIJ.md.
    ============================================================ */
+/* pq-vlot */
+/* Caveat staat sinds 17 september 2026 naast de pagina in plaats van bij Google.
+   Het handschrift is het eerste wat iemand na de scan ziet, en de omweg via
+   fonts.googleapis.com naar fonts.gstatic.com kostte op een telefoon 1,4 seconde
+   voordat de eerste letter stond. Dit zijn de bestanden van Google zelf, alleen
+   dan van dezelfde server als de pagina. Deze regels moeten na de Google-link
+   staan, anders wint die laatste alsnog. */
+@font-face{font-family:'Caveat';font-style:normal;font-weight:500 700;font-display:swap;src:url(caveat-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:500 700;font-display:swap;src:url(caveat-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 h1,h2,.ch-pivot,.ch-pull,.f-quote,.sheet-host .n,.cta-h,.hero-h1{font-variation-settings:var(--wonk)}
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
@@ -27,6 +37,9 @@ html.pq-on,html.pq-on body{overflow:hidden;height:100%}
 .pq-card.in{opacity:1;transform:none}
 .pq-card::after{content:'';position:absolute;inset:0;border-radius:6px;pointer-events:none;opacity:.17;mix-blend-mode:multiply;background-size:120px;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* pq-vlot */ De ruislaag moest bij elk teken opnieuw door de kaart heen
+   gerekend worden. Op een telefoon ligt hij er gewoon overheen. */
+@media(max-width:820px){.pq-card::after{mix-blend-mode:normal;opacity:.09}}
 .pq-brand{display:flex;align-items:center;gap:.6rem;margin-bottom:clamp(20px,4.5vw,28px);opacity:0;transition:opacity .6s ease .12s}
 .pq-card.in .pq-brand{opacity:1}
 .pq-brand svg{height:17px;width:auto;display:block;color:var(--ink)}
@@ -34,8 +47,10 @@ html.pq-on,html.pq-on body{overflow:hidden;height:100%}
 .pq-ink{position:relative;z-index:2;font-family:var(--hand);font-weight:600;font-size:clamp(1.6rem,5.6vw,2.05rem);line-height:1.42;color:var(--hand-ink)}
 .pq-line{display:block}.pq-line+.pq-line{margin-top:.34em}
 .pq-w{white-space:nowrap}
-.pq-ch{display:inline-block;white-space:pre;opacity:0;filter:blur(4px);transform:translateY(2px);transition:opacity .16s ease,filter .22s ease,transform .22s ease}
-.pq-ch.on{opacity:1;filter:blur(0);transform:none}
+/* pq-vlot */ Elk teken vervaagde apart. Honderd blurs tegelijk is op een telefoon
+   de duurste manier om inkt na te doen, en daar zat de hapering. */
+.pq-ch{display:inline-block;white-space:pre;opacity:0;transform:translateY(2px);transition:opacity .2s ease,transform .22s ease}
+.pq-ch.on{opacity:1;transform:none}
 .pq-ch.hl{color:var(--inkt)}
 .pq-choice{margin-top:clamp(22px,4.5vw,30px);text-align:center;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .5s ease,transform .5s var(--ease)}
 .pq-choice.in{opacity:1;transform:none;pointer-events:auto}
@@ -310,9 +325,11 @@ nav.hidecta .nav-cta{opacity:0;pointer-events:none}
 
 /* het schrijven zelf: zelfde inktlanding als de kaart bij binnenkomst */
 .ch-pivot .pw{white-space:nowrap}
-.ch-pivot .pc{display:inline-block;white-space:pre;opacity:0;filter:blur(4px);transform:translateY(2px);
-  transition:opacity .16s ease,filter .22s ease,transform .22s ease}
-.ch-pivot .pc.aan{opacity:1;filter:blur(0);transform:none}
+/* pq-vlot: zelfde reden als bij de kaart. Het kantelpunt is een lange zin, dus
+   hier stonden nog meer blurs tegelijk aan dan daar. */
+.ch-pivot .pc{display:inline-block;white-space:pre;opacity:0;transform:translateY(2px);
+  transition:opacity .2s ease,transform .22s ease}
+.ch-pivot .pc.aan{opacity:1;transform:none}
 
 /* de tijdlijn hangt nu onder het briefje, dus in de lichte kleuren */
 .tl.los{max-width:620px;margin:clamp(2rem,4vw,3rem) auto 0;padding-top:1.5rem;
