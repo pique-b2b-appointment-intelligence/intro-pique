@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>diag</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="thema-lightr.css">
+<link rel="stylesheet" href="lp.css">
+<style>
+  /* debugbox altijd zichtbaar, ook als de intro de body verbergt */
+  #dbg{position:fixed;top:8px;left:8px;z-index:2147483647;background:#fff;color:#000;
+    font:13px/1.5 monospace;padding:10px 12px;border:2px solid red;border-radius:8px;
+    max-width:94vw;white-space:pre;visibility:visible!important}
+  html.pq-on #dbg{visibility:visible!important}
+</style>
+<script>
+  window.PQ_VIDEO    = 'placeholder-video.mp4';
+  window.PIQUE_INTRO = { voornaam:'Sven', bedrijf:'Aanpoters', merk:false, tempo:60, pauze:600 };
+</script>
+<script src="lp-intro.js"></script>
+</head>
+<body>
+<div id="dbg">laden...</div>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Hoi Sven.<br>Ik keek een tijd naar <em>Aanpoters</em>.</div>
+          <div class="sig">Simon</div>
+        </div>
+        <span class="slot-tag">De kaart op je bureau</span>
+      </div>
+    </div>
+    <div class="hero-right"><h1 class="hero-h1">Diagnose</h1></div>
+  </div>
+</header>
+
+<script>
+  var maxOn = 0, veranderd = 'nee';
+  function rep(){
+    var pq  = document.getElementById('pq');
+    var chs = document.querySelectorAll('.pq-ch');
+    var on  = document.querySelectorAll('.pq-ch.on').length;
+    if (on > maxOn) { if (maxOn > 0 && on > maxOn) veranderd = 'JA'; maxOn = on; }
+    if (on > 0 && on < chs.length) veranderd = 'JA (nu bezig)';
+    var op  = chs.length ? getComputedStyle(chs[0]).opacity : 'n/a';
+    var rm  = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    document.getElementById('dbg').textContent =
+      'overlay(#pq): ' + (pq ? 'JA' : 'nee') +
+      '\nletters totaal: ' + chs.length +
+      '\nletters onthuld (on): ' + on +
+      '\nliep op tijdens laden: ' + veranderd +
+      '\nopacity 1e letter: ' + op +
+      '\nverklein-beweging aan: ' + rm +
+      '\ntijd: ' + Math.round(performance.now()) + 'ms';
+  }
+  setInterval(rep, 120);
+  rep();
+</script>
+</body>
+</html>
