@@ -1,0 +1,59 @@
+/* ============================================================
+   THEMA — lightr  (voor de Aanpoters-demo)
+   Echte Lightr-branding: navy #081245, mint #00E6BF, Montserrat.
+   lp.css kent geen enkele vaste kleur, dus wat hier staat bepaalt
+   de hele pagina. Elke kleur staat twee keer: als hex en als losse
+   kanalen voor rgba().
+   ============================================================ */
+:root{
+  /* ── accent ─────────────────────────────────────────────── */
+  --accent:#08B59B;        --accent-rgb:8,181,155;      /* lijnen, labels, dots  */
+  --accent-l:#00E6BF;      --accent-l-rgb:0,230,191;    /* knoppen, accent op donker */
+  --accent-h:#2CF0D0;                                   /* knop bij hover        */
+  --op-accent:#062240;                                  /* tekst op een mint knop */
+  --inkt:#0E9C86;          --inkt-rgb:14,156,134;       /* handgeschreven accent */
+
+  /* ── vlakken en tekst ───────────────────────────────────── */
+  --bg:#F8FAFB;            --bg-rgb:248,250,251;        /* de pagina             */
+  --ink:#0C1636;           --ink-rgb:12,22,54;          /* tekst                 */
+  --donker:#081245;        --donker-rgb:8,18,69;        /* hero, kantelpunt, CTA */
+  --dieper:#050C2E;        --dieper-rgb:5,12,46;        /* overlays              */
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.66);                      /* bodytekst             */
+  --ink3:rgba(var(--ink-rgb),.42);                      /* bijschrift, bron      */
+  --line:rgba(var(--ink-rgb),.12);                      /* haarlijnen, randen    */
+
+  /* ── papier ─────────────────────────────────────────────── */
+  --pap-0:#FFFFFF;         --pap-0-rgb:255,255,255;     /* het knipsel           */
+  --pap-1:#FDFEFE;                                      /* bovenkant papiertje   */
+  --pap-2:#EEF4F4;                                      /* onderkant papiertje   */
+  --tape-rgb:192,242,233;                               /* plakband (mint)       */
+  --hand-ink:#12244C;      --hand-rgb:18,36,76;         /* handschrift (navy)    */
+
+  /* ── overig ─────────────────────────────────────────────── */
+  --goed:#0BB89A;          --goed-rgb:11,184,154;       /* vinkje                */
+  --let-op:#E23557;        --let-op-rgb:226,53,87;      /* oordeel dat niet goed is */
+  --chrome:#EDF3F3;                                     /* browserbalk in de mockup */
+  --video-bg:#081227;
+
+  /* ── typografie ─────────────────────────────────────────── */
+  --serif:'Montserrat',system-ui,sans-serif;
+  --sans:'Montserrat',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;                     /* Montserrat heeft geen variabele assen */
+
+  /* ── vorm ───────────────────────────────────────────────── */
+  --r-pap:3px;
+  --r-kaart:16px;
+  --r-blok:22px;
+  --r-pil:100px;
+
+  /* ── beweging ───────────────────────────────────────────── */
+  --ease:cubic-bezier(.16,1,.3,1);
+
+  /* ── maten ──────────────────────────────────────────────── */
+  --fs-h:clamp(1.9rem,3vw,2.7rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;
+}

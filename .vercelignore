@@ -13,6 +13,7 @@ node_modules
 !onlinegeduld/*.mp4
 !onlinegoedgevonden/voorbeeld/*/*.mp4
 !prospectpro/*.mp4
+!lightr/*.mp4
 *.csv
 *.md
 *.mjs
