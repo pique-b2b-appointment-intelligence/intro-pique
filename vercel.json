@@ -17,6 +17,11 @@
       "destination": "/wegmetexcel/:path*"
     },
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "lightr.intro-pique.agency" }],
+      "destination": "/lightr/index.html"
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "lightr.intro-pique.agency" }],
       "destination": "/lightr/:path*"
