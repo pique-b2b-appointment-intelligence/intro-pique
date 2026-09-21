@@ -35,7 +35,7 @@
   }
   var cfg = window.PIQUE_INTRO;
   if (!cfg) return;
-  var traag = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var traag = false; /* demo: schrijfanimatie altijd afspelen, ook bij 'verklein beweging' */
   var bedrijf = cfg.bedrijf || 'je bedrijf';
   /* Zonder voornaam vervalt de aanhef. Een kaart die '[Voornaam]'
      uitschrijft is meteen ontmaskerd. */

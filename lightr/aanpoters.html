@@ -28,25 +28,7 @@
   window.PQ_POSTER       = 'placeholder-poster.jpg';
   window.PQ_TRACK_URL    = '';
   window.PQ_TERUGBEL_URL = '';
-  window.PIQUE_INTRO     = { voornaam: 'Sven', bedrijf: 'Aanpoters', merk: false, ctaSub: 'Placeholder, hier komt de video' };
-</script>
-<script>
-  /* Demo: forceer de schrijfanimatie, ook als 'verklein beweging' op het systeem aan staat.
-     Het lp-v2-component slaat de animatie anders over (dan staat de hele tekst meteen in beeld).
-     Alleen op deze demopagina, zodat hij altijd afspeelt. */
-  (function(){
-    var mm = window.matchMedia ? window.matchMedia.bind(window) : null;
-    window.matchMedia = function(q){
-      if (q && /prefers-reduced-motion/i.test(q)) {
-        return { matches:false, media:q, onchange:null,
-          addEventListener:function(){}, removeEventListener:function(){},
-          addListener:function(){}, removeListener:function(){}, dispatchEvent:function(){return false;} };
-      }
-      return mm ? mm(q) : { matches:false, media:q,
-        addEventListener:function(){}, removeEventListener:function(){},
-        addListener:function(){}, removeListener:function(){} };
-    };
-  })();
+  window.PIQUE_INTRO     = { voornaam: 'Sven', bedrijf: 'Aanpoters', merk: false, ctaSub: 'Placeholder, hier komt de video', tempo: 46, pauze: 520 };
 </script>
 <script src="lp-intro.js"></script>
 </head>
