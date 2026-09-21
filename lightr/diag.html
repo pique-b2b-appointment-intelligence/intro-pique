@@ -40,21 +40,20 @@
 </header>
 
 <script>
-  var maxOn = 0, veranderd = 'nee';
   function rep(){
     var pq  = document.getElementById('pq');
     var chs = document.querySelectorAll('.pq-ch');
     var on  = document.querySelectorAll('.pq-ch.on').length;
-    if (on > maxOn) { if (maxOn > 0 && on > maxOn) veranderd = 'JA'; maxOn = on; }
-    if (on > 0 && on < chs.length) veranderd = 'JA (nu bezig)';
-    var op  = chs.length ? getComputedStyle(chs[0]).opacity : 'n/a';
+    var zichtbaar = 0, opLast = 'n/a';
+    for (var k=0;k<chs.length;k++){ if (parseFloat(getComputedStyle(chs[k]).opacity) > 0.5) zichtbaar++; }
+    if (chs.length) opLast = getComputedStyle(chs[chs.length-1]).opacity;
     var rm  = matchMedia('(prefers-reduced-motion:reduce)').matches;
     document.getElementById('dbg').textContent =
       'overlay(#pq): ' + (pq ? 'JA' : 'nee') +
       '\nletters totaal: ' + chs.length +
-      '\nletters onthuld (on): ' + on +
-      '\nliep op tijdens laden: ' + veranderd +
-      '\nopacity 1e letter: ' + op +
+      '\nletters met class .on: ' + on +
+      '\nletters ECHT zichtbaar: ' + zichtbaar +
+      '\nopacity LAATSTE letter: ' + opLast +
       '\nverklein-beweging aan: ' + rm +
       '\ntijd: ' + Math.round(performance.now()) + 'ms';
   }
