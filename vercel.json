@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "lightr.intro-pique.agency" }],
+      "destination": "/aanpoters"
+    }
+  ],
   "rewrites": [
     {
       "source": "/pagina/:path*",
@@ -15,11 +22,6 @@
       "source": "/:path*",
       "has": [{ "type": "host", "value": "wegmetexcel.intro-pique.agency" }],
       "destination": "/wegmetexcel/:path*"
-    },
-    {
-      "source": "/",
-      "has": [{ "type": "host", "value": "lightr.intro-pique.agency" }],
-      "destination": "/lightr/index.html"
     },
     {
       "source": "/:path*",
