@@ -17,6 +17,13 @@
 <link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="thema-lightr.css">
 <link rel="stylesheet" href="lp.css">
+<style>
+  /* De intro-kaart verbergt niet-geschreven letters met .pq-ch{opacity:0}. Op deze
+     pagina werd die regel overschreven, waardoor de hele tekst meteen stond. Dit
+     forceert de verberging terug, zodat de kaart zich zichtbaar volschrijft. */
+  #pq .pq-ch{opacity:0!important;transform:translateY(2px)!important}
+  #pq .pq-ch.on{opacity:1!important;transform:none!important}
+</style>
 
 <script>
   window.PQ_BEDRIJF      = 'Aanpoters';
