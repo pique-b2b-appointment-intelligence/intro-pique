@@ -569,6 +569,9 @@ body.generiek .herogrid{grid-template-columns:1fr}
   max-height:84vh;overflow:auto;padding:1.5rem;margin-bottom:1rem
 }
 .data-in h3{font-size:1.05rem;margin-bottom:.42rem}
+.data-in .dt-2{margin-top:1.7rem}
+.trace.licht span{color:var(--muted);background:var(--paper);border-color:var(--line)}
+.trace.licht span.done{color:#3d5c14;background:var(--green-soft);border-color:var(--green)}
 .data-in p{font-size:.855rem;color:var(--muted);margin-bottom:1.15rem}
 .data-in table{width:100%;border-collapse:collapse;font-size:.79rem}
 .data-in td{padding:.42rem .5rem;border-bottom:1px solid var(--line-2);vertical-align:top}
@@ -793,8 +796,8 @@ body.js .fx.in{opacity:1;transform:none;filter:none}
       </div>
     </div>
 
-    <p class="trace-l fx" data-t="cq_trace_l"></p>
-    <div class="trace" id="trace"></div>
+    <p class="trace-l fx p-only" data-t="cq_trace_l"></p>
+    <div class="trace p-only" id="trace"></div>
   </div>
 </section>
 
@@ -844,6 +847,12 @@ body.js .fx.in{opacity:1;transform:none;filter:none}
     <h3 data-t="dt_h">Eén regel uit jullie export</h3>
     <p data-t="dt_p">Alles op deze pagina komt hier vandaan. Dezelfde regel die naar Lightr gaat voor de kaart, vult ook de pagina achter de QR-code.</p>
     <table id="datatbl"></table>
+
+    <h3 class="dt-2">En dit krijgen jullie terug</h3>
+    <p>Lightr meet de eerste twee. De vier daarna meet Domek zelf, allemaal terug
+       te koppelen op het klant-ID uit de regel hierboven.</p>
+    <div class="trace licht" id="mtrace"></div>
+
     <button class="close" id="dataclose" data-t="dt_btn">Sluiten</button>
   </div>
 </div>
@@ -947,8 +956,8 @@ const T = {
       cq_meta:'Cheque {code} · geldig tot {geldig_tot}',
       cq_wa:'Stuur de cheque via WhatsApp',
       wa_text:'Hoi, ik heb mijn huis via Domek gekocht en ik heb een cheque van {korting_vriend} voor je advieskosten. Hier staat hij: ',
-      cq_trace_l:'Wat je hiervan terugziet',
-      trace:['Kaart bezorgd','QR gescand','Pagina geopend','Cheque verstuurd','Cheque geopend','Hypotheek gepasseerd'],
+      cq_trace_l:'Waar je cheque staat',
+      trace:['Cheque klaar','Doorgestuurd','Geopend','Hypotheek gepasseerd','{cashback} uitbetaald'],
       ad_eye:'Vragen', ad_h:'{adviseur} spreekt Pools en Nederlands',
       ad_name:'{adviseur}', ad_role:'Hypotheekadviseur bij Domek, 7 dagen per week bereikbaar',
       ft_1:'Deze pagina is gemaakt voor {voornaam} {achternaam}, klantnummer {klant_id}, en is tot {geldig_tot} bereikbaar. Daarna vervalt hij.',
@@ -971,9 +980,7 @@ const T = {
       cq_for:'Op naam van', cq_amt_l:'Cashback', cq_name:'de klant',
       cq_body:'Wie via jou klant wordt bij Domek, betaalt minder advieskosten. Jij krijgt een cashback zodra de hypotheek passeert. Vraag je adviseur naar de voorwaarden.',
       cq_meta:'Vraag naar de voorwaarden', cq_wa:'Deel deze pagina',
-      cq_trace_l:'Wat je hiervan terugziet',
       wa_text:'Kijk eens naar Domek voor je hypotheek: ',
-      trace:['Kaart bezorgd','QR gescand'],
       ft_1:'Domek helpt internationale klanten in Nederland met hypotheken, verzekeringen en leningen.',
       ft_2:'Domek Group · Burgemeesters Godschalxstraat 59, 5235 AB ’s-Hertogenbosch · 088 102 1500'
     }
@@ -1016,8 +1023,8 @@ const T = {
       cq_meta:'Czek {code} · ważny do {geldig_tot}',
       cq_wa:'Wyślij czek przez WhatsApp',
       wa_text:'Cześć, kupiłem dom przez Domek i mam dla Ciebie czek na {korting_vriend} na koszty doradztwa. Tutaj jest: ',
-      cq_trace_l:'Co z tego zobaczysz',
-      trace:['Kartka dostarczona','Kod zeskanowany','Strona otwarta','Czek wysłany','Czek otwarty','Kredyt uruchomiony'],
+      cq_trace_l:'Gdzie jest Twój czek',
+      trace:['Czek gotowy','Wysłany','Otwarty','Kredyt uruchomiony','{cashback} wypłacone'],
       ad_eye:'Pytania', ad_h:'{adviseur} mówi po polsku i po niderlandzku',
       ad_name:'{adviseur}', ad_role:'Doradca kredytowy w Domek, dostępna 7 dni w tygodniu',
       ft_1:'Ta strona została przygotowana dla {voornaam} {achternaam}, numer klienta {klant_id}, i jest dostępna do {geldig_tot}. Potem wygasa.',
@@ -1040,9 +1047,7 @@ const T = {
       cq_for:'Wystawiony na', cq_amt_l:'Zwrot', cq_name:'klienta',
       cq_body:'Osoba, która zostanie klientem Domek dzięki Tobie, zapłaci mniej za doradztwo. Ty dostaniesz zwrot, kiedy kredyt zostanie uruchomiony. Zapytaj doradcę o warunki.',
       cq_meta:'Zapytaj o warunki', cq_wa:'Udostępnij tę stronę',
-      cq_trace_l:'Co z tego zobaczysz',
       wa_text:'Zobacz Domek, jeśli szukasz kredytu hipotecznego: ',
-      trace:['Kartka dostarczona','Kod zeskanowany'],
       ft_1:'Domek pomaga klientom międzynarodowym w Holandii z kredytami, ubezpieczeniami i pożyczkami.',
       ft_2:'Domek Group · Burgemeesters Godschalxstraat 59, 5235 AB ’s-Hertogenbosch · 088 102 1500'
     }
@@ -1116,6 +1121,12 @@ const PAIN = [
   'Het aanbod dat bij zijn huis hoort, in plaats van vanafprijzen',
   'De cheque op zijn naam, en daarmee ook het meetpunt'
 ];
+/* Wat Domek kan meten. Dat is uitleg aan Dirk en hoort dus in de demolaag.
+   Op de pagina van de ontvanger snapt niemand waarom daar staat dat is
+   bijgehouden of hij hem geopend heeft. */
+const METEN = ['Kaart bezorgd','QR gescand','Pagina geopend',
+               'Cheque verstuurd','Cheque geopend','Hypotheek gepasseerd'];
+
 const PAIN_KICK = 'De kaart kost hetzelfde en de scan kost hetzelfde. Het moment waarop Kamil zijn sleutel krijgt komt één keer. Op deze pagina moet je hem eerst vragen wie hij is, en dan heb je een handgeschreven kaart uitgegeven om een formulier te laten invullen.';
 
 /* ═══════════════════════════════════════════════════════
@@ -1183,10 +1194,15 @@ function render(){
   /* whatsapp */
   $('#walink').href = 'https://wa.me/?text=' + encodeURIComponent(fill(c.wa_text) + location.href);
 
-  /* meetpunten. Lightr meet de scan, alles daarna meet Domek zelf */
-  const gehaald = modus === 'persoonlijk' ? 3 : 2;
+  /* De stand van zijn eigen cheque. Alleen de eerste stap is gehaald, de rest
+     hangt van hem af. Dat is precies de reden om terug te komen kijken. */
   $('#trace').innerHTML = c.trace.map((t,i) =>
-    `<span class="fx ${i < gehaald ? 'done' : ''}">${t}</span>`).join('');
+    `<span class="fx ${i < 1 ? 'done' : ''}">${fill(t)}</span>`).join('');
+
+  /* Wat Domek hiervan terugziet hoort niet op de pagina van de ontvanger,
+     maar in de demolaag. Staat in het datapaneel. */
+  $('#mtrace').innerHTML = METEN.map((t,i) =>
+    `<span class="${i < 2 ? 'done' : ''}">${t}</span>`).join('');
 
   /* adviseur */
   $('#advini').textContent = D.adviseur.split(' ').map(w => w[0]).join('');
@@ -1401,11 +1417,12 @@ function afronden(){
   setTimeout(() => { const l = $('#cardlayer'); if(l) l.remove(); }, 700);
   /* De donkere laag eerst laten wegtrekken. Kwam de tekst op hetzelfde moment
      op, dan ging de brief in één klap over in de pagina. */
-  setTimeout(() => { podium = true; reveals(); }, 450);
+  setTimeout(() => { podium = true; reveals(); sweepStart(); }, 450);
   if(naarVideo){
     setTimeout(() => {
       const v = document.getElementById('s-video');
       if(v) v.scrollIntoView({behavior:'smooth', block:'center'});
+      reveals();
     }, 1100);
   }
 }
@@ -1532,6 +1549,14 @@ function opScroll(){
 addEventListener('scroll', opScroll, {passive:true});
 addEventListener('resize', opScroll);
 
+/* Vangnet. Een sprong naar de video levert niet altijd een scrollgebeurtenis
+   op, en dan blijft die sectie onzichtbaar staan. Even meekijken na het
+   openen, daarna nemen de scrollgebeurtenissen het over. */
+function sweepStart(){
+  let n = 0;
+  const t = setInterval(() => { reveals(); if(++n > 30) clearInterval(t); }, 400);
+}
+
 /* URL-parameters, zodat je iemand direct naar één versie kunt sturen:
    ?open        slaat de codepoort over
    ?taal=pl     opent de Poolse versie
@@ -1562,6 +1587,7 @@ if(modus === 'generiek'){
   document.body.classList.remove('locked');
   podium = true;
   reveals();
+  sweepStart();
 } else if(P.has('open')){
   $('#gate').classList.add('gone');
   $('#cardlayer').classList.remove('gone');
