@@ -231,7 +231,8 @@ a{color:inherit}
 }
 .card-txt{
   font-family:var(--hand);font-size:clamp(1.02rem,3.6vw,1.24rem);
-  line-height:1.52;color:#1d3a56;white-space:pre-wrap;letter-spacing:.005em
+  line-height:1.5;color:#1d3a56;white-space:pre-wrap;letter-spacing:.005em;
+  overflow-wrap:break-word;hyphens:none;min-width:0
 }
 .card-txt .ch{opacity:0}
 .card-txt .ch.on{opacity:1}
@@ -1175,8 +1176,15 @@ function postBezorgen(){
 function schrijfKaart(){
   const txt   = fill(copy().card);
   const holder = $('#cardtxt');
+  /* De spatie blijft een gewone spatie buiten de span. Zet je er een span met
+     &nbsp; omheen, dan kan de regel nergens meer afbreken en loopt de tekst
+     het kaartje uit. Onzichtbaar zijn spaties toch, dus ze hoeven niet mee
+     geschreven te worden. */
   holder.innerHTML = txt.split('').map(ch =>
-    ch === '\n' ? '<br>' : `<span class="ch">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');
+      ch === '\n' ? '<br>'
+    : ch === ' '  ? ' '
+    : `<span class="ch">${ch === '<' ? '&lt;' : ch === '&' ? '&amp;' : ch}</span>`
+  ).join('');
   const chars = holder.querySelectorAll('.ch');
   let i = 0;
   const tick = setInterval(() => {
