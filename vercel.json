@@ -6,6 +6,16 @@
       "source": "/",
       "has": [{ "type": "host", "value": "lightr.intro-pique.agency" }],
       "destination": "/aanpoters"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "evenkennismaken.nl" }],
+      "destination": "https://lightr.nl"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.evenkennismaken.nl" }],
+      "destination": "https://lightr.nl"
     }
   ],
   "rewrites": [
@@ -26,6 +36,16 @@
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "lightr.intro-pique.agency" }],
+      "destination": "/lightr/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "evenkennismaken.nl" }],
+      "destination": "/lightr/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.evenkennismaken.nl" }],
       "destination": "/lightr/:path*"
     }
   ]
