@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Voor Kamil Wójcik · Domek</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Concept van een persoonlijke landingspagina achter een handgeschreven kaart. Voorbeeldpagina, gemaakt voor Domek Group.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23189DD9'/%3E%3Cpath d='M16 7l8 6.4V25H8V13.4z' fill='none' stroke='white' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --navy:#030329;
+  --ink:#0A2C45;
+  --blue:#189DD9;
+  --blue-2:#4EB4E2;
+  --blue-soft:#E7F4FB;
+  --green:#97C03D;
+  --green-soft:#F1F7E4;
+  --amber:#FFC136;
+  --amber-soft:#FFF3D6;
+  --cream:#FEFCEC;
+  --paper:#F7FBFA;
+  --white:#fff;
+  --muted:rgba(10,44,69,.62);
+  --faint:rgba(10,44,69,.42);
+  --line:rgba(10,44,69,.11);
+  --line-2:rgba(10,44,69,.06);
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --hand:'Caveat','Plus Jakarta Sans',cursive;
+  --bar:44px;
+  --shadow:0 1px 2px rgba(3,3,41,.04),0 8px 28px rgba(3,3,41,.07);
+  --shadow-lg:0 2px 6px rgba(3,3,41,.05),0 22px 60px rgba(3,3,41,.13);
+}
+
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:hidden}
+body{
+  font-family:var(--font);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  padding-top:var(--bar);
+}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+h1,h2,h3{letter-spacing:-.028em;line-height:1.12;font-weight:800;color:var(--navy)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:780px;margin:0 auto;padding:0 clamp(1.15rem,5vw,2rem)}
+.sec{padding:clamp(3.2rem,8vw,5.2rem) 0;position:relative}
+.eyebrow{
+  font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem
+}
+.eyebrow::before{content:'';width:18px;height:2px;background:var(--blue);border-radius:2px;flex:none}
+.lead{font-size:clamp(1.02rem,2.4vw,1.12rem);color:var(--muted);max-width:56ch}
+
+/* ─── demobalk ─────────────────────────────────────────── */
+.demobar{
+  position:fixed;top:0;left:0;right:0;height:var(--bar);z-index:400;
+  background:var(--navy);color:rgba(255,255,255,.92);
+  display:flex;align-items:center;gap:.9rem;
+  padding:0 clamp(.7rem,3vw,1.1rem);
+  font-size:.74rem;font-weight:600;
+  box-shadow:0 1px 0 rgba(255,255,255,.08)
+}
+.demobar .tag{
+  display:inline-flex;align-items:center;gap:.4rem;flex:none;
+  color:var(--amber);letter-spacing:.09em;text-transform:uppercase;font-size:.64rem;font-weight:800
+}
+.demobar .tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.demobar .who{color:rgba(255,255,255,.52);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.demobar .grow{flex:1 1 auto;min-width:0}
+.ctrl{display:flex;align-items:center;gap:.28rem;flex:none}
+.seg{display:flex;background:rgba(255,255,255,.1);border-radius:99px;padding:2px}
+.seg button{
+  font:inherit;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.62);
+  background:none;border:0;padding:.3rem .66rem;border-radius:99px;cursor:pointer;
+  transition:background .18s,color .18s;white-space:nowrap
+}
+.seg button[aria-pressed="true"]{background:var(--white);color:var(--navy)}
+.seg.warn button[aria-pressed="true"]{background:var(--amber);color:var(--navy)}
+.linkbtn{
+  font:inherit;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.62);
+  background:none;border:0;cursor:pointer;padding:.3rem .2rem;text-decoration:underline;
+  text-underline-offset:3px;white-space:nowrap
+}
+.linkbtn:hover{color:var(--white)}
+/* de balk mag het document nooit breder maken dan het scherm */
+.demobar{overflow-x:auto;scrollbar-width:none}
+.demobar::-webkit-scrollbar{display:none}
+.ctrl{min-width:0}
+@media (max-width:760px){
+  .demobar .who{display:none}
+  .demobar{gap:.55rem;font-size:.7rem}
+}
+@media (max-width:560px){
+  .demobar{gap:.4rem;padding:0 .55rem}
+  .demobar .tag{font-size:0;gap:0}
+  .demobar .tag::before{width:7px;height:7px}
+  .seg button{padding:.3rem .5rem;font-size:.67rem}
+  .linkbtn{font-size:.67rem}
+}
+
+/* ─── codepoort ────────────────────────────────────────── */
+.gate{
+  position:fixed;inset:var(--bar) 0 0 0;z-index:300;
+  background:var(--navy);
+  display:grid;place-items:center;padding:1.5rem;
+  transition:opacity .5s ease,visibility .5s
+}
+.gate.gone{opacity:0;visibility:hidden;pointer-events:none}
+.gate-in{max-width:378px;width:100%;text-align:center;color:var(--white)}
+.gate-mark{height:34px;margin:0 auto 2.1rem;opacity:.95}
+.gate h2{color:var(--white);font-size:clamp(1.28rem,4.4vw,1.55rem);margin-bottom:.62rem}
+.gate p{color:rgba(255,255,255,.58);font-size:.9rem;line-height:1.6}
+.gate-form{margin:1.9rem 0 1.15rem;display:flex;gap:.55rem;justify-content:center}
+.gate-form input{
+  font:inherit;font-weight:700;font-size:1.32rem;letter-spacing:.42em;text-align:center;
+  text-transform:uppercase;width:100%;max-width:238px;
+  background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.2);
+  color:var(--white);border-radius:12px;padding:.82rem .5rem .82rem .92rem;
+  transition:border-color .2s,background .2s
+}
+.gate-form input::placeholder{color:rgba(255,255,255,.22);letter-spacing:.42em}
+.gate-form input:focus{outline:0;border-color:var(--blue-2);background:rgba(255,255,255,.11)}
+.gate-form.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+.gate-btn{
+  font:inherit;font-weight:700;font-size:.92rem;background:var(--blue);color:var(--white);
+  border:0;border-radius:12px;padding:.82rem 1.35rem;cursor:pointer;flex:none;
+  transition:background .2s,transform .15s
+}
+.gate-btn:hover{background:var(--blue-2)}
+.gate-btn:active{transform:scale(.97)}
+.gate-hint{
+  font-size:.76rem;color:rgba(255,255,255,.4);margin-top:1.6rem;
+  padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.1)
+}
+.gate-hint b{color:var(--amber);font-weight:800;letter-spacing:.1em}
+.gate-note{font-size:.76rem;color:rgba(255,255,255,.36);margin-top:.5rem}
+
+/* ─── kaartlaag ────────────────────────────────────────── */
+.cardlayer{
+  position:fixed;inset:0;z-index:280;display:grid;place-items:center;
+  background:rgba(3,3,41,.82);backdrop-filter:blur(3px);
+  transition:opacity .55s ease,visibility .55s
+}
+.cardlayer.gone{opacity:0;visibility:hidden;pointer-events:none}
+.card{
+  width:min(87vw,392px);aspect-ratio:1.5/1;
+  background:
+    radial-gradient(120% 90% at 12% 6%,#fffefb 0%,#fdfaf1 46%,#f8f2e4 100%);
+  border-radius:4px;
+  box-shadow:0 2px 3px rgba(3,3,41,.16),0 26px 60px rgba(3,3,41,.42);
+  padding:clamp(1.15rem,4.4vw,1.7rem);
+  position:relative;transform-origin:center center;
+  display:flex;flex-direction:column;justify-content:space-between
+}
+.card::after{
+  content:'';position:absolute;inset:0;border-radius:4px;pointer-events:none;
+  background:repeating-linear-gradient(94deg,rgba(10,44,69,.022) 0 1px,transparent 1px 3px);
+  mix-blend-mode:multiply
+}
+.card-txt{
+  font-family:var(--hand);font-size:clamp(1.02rem,3.6vw,1.24rem);
+  line-height:1.52;color:#1d3a56;white-space:pre-wrap;letter-spacing:.005em
+}
+.card-txt .ch{opacity:0}
+.card-txt .ch.on{opacity:1}
+.card-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}
+.card-sign{font-family:var(--hand);font-size:clamp(1.12rem,3.8vw,1.34rem);color:#1d3a56}
+.card-qr{
+  width:clamp(46px,13vw,58px);height:clamp(46px,13vw,58px);flex:none;
+  background:#fff;padding:3px;border-radius:2px;box-shadow:0 1px 3px rgba(3,3,41,.14)
+}
+.card-flying{position:fixed;z-index:281;margin:0;transition:transform 1.05s cubic-bezier(.66,0,.24,1),box-shadow 1.05s}
+
+/* ─── hero ─────────────────────────────────────────────── */
+.hero{
+  background:
+    radial-gradient(760px 420px at 88% -6%,var(--blue-soft) 0%,rgba(231,244,251,0) 66%),
+    radial-gradient(560px 380px at 2% 104%,var(--amber-soft) 0%,rgba(255,243,214,0) 62%),
+    var(--cream);
+  border-bottom:1px solid var(--line-2);
+  padding:clamp(1.6rem,4vw,2.3rem) 0 clamp(2.8rem,7vw,4rem)
+}
+.topline{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding-bottom:clamp(2rem,6vw,3.1rem)
+}
+.mark{height:clamp(26px,6vw,31px);width:auto}
+.topline .lang{
+  font-size:.72rem;font-weight:700;color:var(--faint);
+  display:flex;align-items:center;gap:.42rem
+}
+.topline .lang b{color:var(--ink);font-weight:800}
+.hero h1{font-size:clamp(1.85rem,6.6vw,3.05rem);margin-bottom:1.05rem}
+.hero h1 .hl{
+  background:linear-gradient(180deg,transparent 62%,rgba(255,193,54,.5) 62%);
+  -webkit-box-decoration-break:clone;box-decoration-break:clone
+}
+.hero .lead{font-size:clamp(1.02rem,2.6vw,1.14rem)}
+.herogrid{display:grid;grid-template-columns:1fr;gap:clamp(1.9rem,5vw,2.6rem)}
+@media (min-width:860px){
+  .herogrid{grid-template-columns:1fr 292px;align-items:start;gap:2.8rem}
+}
+#slot{display:flex;flex-direction:column;gap:.62rem}
+.slot-label{
+  font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--faint)
+}
+#slotcard{
+  width:100%;max-width:292px;
+  transform:rotate(-1.6deg);opacity:0;transition:opacity .4s;
+  padding:.95rem 1rem;
+  box-shadow:0 1px 2px rgba(3,3,41,.1),0 10px 26px rgba(3,3,41,.16)
+}
+#slotcard.on{opacity:1}
+#slotcard .card-txt{font-size:.8rem;line-height:1.46}
+#slotcard .card-sign{font-size:.94rem}
+#slotcard .card-qr{width:32px;height:32px}
+/* op een telefoon landt de kaart bovenaan, en leest de kop eronder */
+@media (max-width:859px){
+  #slot{order:-1}
+  #slotcard{max-width:244px;padding:.8rem .85rem}
+  #slotcard .card-txt{font-size:.67rem;line-height:1.5}
+  #slotcard .card-sign{font-size:.8rem}
+  #slotcard .card-qr{width:26px;height:26px}
+}
+.validity{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:1.55rem;
+  background:rgba(255,255,255,.72);border:1px solid var(--line);
+  border-radius:99px;padding:.42rem .9rem;font-size:.775rem;font-weight:600;color:var(--muted)
+}
+.validity svg{width:14px;height:14px;flex:none;color:var(--blue)}
+
+/* ─── generieke kop ────────────────────────────────────── */
+.genform{display:none;margin-top:1.9rem;max-width:400px}
+body.generiek .genform{display:block}
+.genform label{display:block;font-size:.74rem;font-weight:700;color:var(--muted);margin-bottom:.32rem}
+.genform input{
+  font:inherit;width:100%;background:var(--white);border:1px solid var(--line);
+  border-radius:10px;padding:.68rem .85rem;color:var(--ink);margin-bottom:.85rem
+}
+.genform input:focus{outline:0;border-color:var(--blue)}
+.genform .gbtn{
+  font:inherit;font-weight:700;font-size:.9rem;background:var(--navy);color:var(--white);
+  border:0;border-radius:10px;padding:.72rem 1.3rem;cursor:pointer
+}
+body.generiek .p-only{display:none}
+/* het id wint van de klasse, dus de kaartkolom moet apart weg */
+body.generiek #slot{display:none}
+body.generiek .herogrid{grid-template-columns:1fr}
+
+/* ─── video ────────────────────────────────────────────── */
+.video{
+  position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;
+  background:linear-gradient(145deg,#0d3550 0%,#030329 100%);
+  display:grid;place-items:center;box-shadow:var(--shadow-lg);margin-top:1.8rem
+}
+.video::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(420px 260px at 30% 22%,rgba(24,157,217,.32) 0%,rgba(24,157,217,0) 70%)
+}
+.video .play{
+  position:relative;width:64px;height:64px;border-radius:50%;
+  background:rgba(255,255,255,.95);display:grid;place-items:center;
+  box-shadow:0 8px 30px rgba(3,3,41,.4)
+}
+.video .play::after{
+  content:'';border-left:17px solid var(--navy);
+  border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px
+}
+.video .cap{
+  position:absolute;left:1.1rem;bottom:1.05rem;color:rgba(255,255,255,.82);
+  font-size:.79rem;font-weight:600
+}
+.video .stamp{
+  position:absolute;right:1.1rem;top:1.05rem;color:var(--navy);background:var(--amber);
+  font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:.24rem .6rem;border-radius:99px
+}
+
+/* ─── status ───────────────────────────────────────────── */
+.rows{margin-top:1.9rem;border-top:1px solid var(--line)}
+.row{
+  display:grid;grid-template-columns:1fr auto;gap:.9rem 1.2rem;align-items:baseline;
+  padding:1.02rem 0;border-bottom:1px solid var(--line)
+}
+.row .k{font-weight:700;font-size:.97rem;color:var(--navy)}
+.row .v{font-size:.9rem;color:var(--muted);text-align:right}
+.row .v .ok{color:var(--green);font-weight:700}
+.row .v .open{color:#C9762B;font-weight:700}
+.row .sub{grid-column:1/-1;font-size:.845rem;color:var(--faint);margin-top:-.34rem}
+@media (max-width:540px){
+  .row{grid-template-columns:1fr}
+  .row .v{text-align:left}
+}
+
+/* ─── pakketten ────────────────────────────────────────── */
+.pk{display:grid;gap:.85rem;margin-top:1.9rem}
+@media (min-width:760px){.pk{grid-template-columns:repeat(3,1fr);gap:.9rem}}
+.p{
+  background:var(--white);border:1px solid var(--line);border-radius:14px;
+  padding:1.35rem 1.25rem 1.2rem;display:flex;flex-direction:column;gap:.62rem;
+  position:relative;transition:border-color .2s,transform .2s,box-shadow .2s
+}
+.p:hover{border-color:var(--blue-2);transform:translateY(-2px);box-shadow:var(--shadow)}
+.p.best{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.p .badge{
+  position:absolute;top:-9px;left:1.25rem;background:var(--blue);color:var(--white);
+  font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  padding:.23rem .58rem;border-radius:99px
+}
+.p .nm{font-weight:800;font-size:1.02rem;color:var(--navy)}
+.p .pr{font-size:1.52rem;font-weight:800;color:var(--navy);letter-spacing:-.03em;line-height:1}
+.p .pr small{font-size:.76rem;font-weight:600;color:var(--faint);letter-spacing:0}
+.p ul{list-style:none;display:flex;flex-direction:column;gap:.34rem;margin-top:.15rem}
+.p li{font-size:.855rem;color:var(--muted);padding-left:1.16rem;position:relative;line-height:1.5}
+.p li::before{
+  content:'';position:absolute;left:0;top:.5em;width:9px;height:5px;
+  border-left:2px solid var(--green);border-bottom:2px solid var(--green);
+  transform:rotate(-45deg)
+}
+.p .why{
+  font-size:.815rem;color:var(--ink);background:var(--blue-soft);
+  border-radius:9px;padding:.56rem .7rem;line-height:1.5;margin-top:.15rem
+}
+.p .pbtn{
+  font:inherit;font-weight:700;font-size:.87rem;margin-top:auto;
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;
+  padding:.63rem 1rem;cursor:pointer;color:var(--navy);transition:background .2s,border-color .2s
+}
+.p.best .pbtn{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.p .pbtn:hover{border-color:var(--blue)}
+.disclaim{font-size:.775rem;color:var(--faint);margin-top:1rem}
+
+/* ─── cheque ───────────────────────────────────────────── */
+.chq-sec{background:var(--navy);color:rgba(255,255,255,.88)}
+.chq-sec h2{color:var(--white);font-size:clamp(1.42rem,4.6vw,2.05rem)}
+.chq-sec .eyebrow{color:var(--amber)}
+.chq-sec .eyebrow::before{background:var(--amber)}
+.chq-sec .lead{color:rgba(255,255,255,.62)}
+.cheque{
+  margin-top:2.1rem;background:linear-gradient(140deg,#FFFDF4 0%,#FDF6E2 100%);
+  border-radius:9px;padding:clamp(1.25rem,4.4vw,1.75rem);color:var(--ink);
+  box-shadow:0 22px 56px rgba(0,0,0,.38);position:relative;overflow:hidden
+}
+.cheque::before{
+  content:'';position:absolute;right:-42px;top:-42px;width:186px;height:186px;
+  border-radius:50%;background:rgba(151,192,61,.12)
+}
+.cheque-top{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  padding-bottom:1.05rem;border-bottom:1.5px dashed rgba(10,44,69,.22);position:relative
+}
+.cheque-top .lbl{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.cheque-top .nm{font-family:var(--hand);font-size:clamp(1.42rem,5vw,1.88rem);color:var(--navy);line-height:1.15;margin-top:.15rem}
+.cheque-top .amt{font-size:clamp(1.65rem,5.6vw,2.25rem);font-weight:800;color:var(--navy);letter-spacing:-.035em;text-align:right;line-height:1}
+.cheque-top .amt small{display:block;font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-bottom:.22rem}
+.cheque-mid{padding:1.05rem 0;font-size:.93rem;line-height:1.6;position:relative}
+.cheque-bot{
+  display:flex;flex-wrap:wrap;gap:.75rem 1.4rem;align-items:center;justify-content:space-between;
+  padding-top:1.05rem;border-top:1.5px dashed rgba(10,44,69,.22);position:relative
+}
+.cheque-bot .meta{font-size:.76rem;color:var(--faint);font-weight:600}
+.cheque-bot .meta b{color:var(--ink);font-weight:800;letter-spacing:.06em}
+.wa{
+  font:inherit;font-weight:700;font-size:.93rem;background:#25D366;color:#053d20;
+  border:0;border-radius:11px;padding:.76rem 1.25rem;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.5rem;transition:transform .15s,filter .2s;
+  text-decoration:none
+}
+.wa:hover{filter:brightness(1.05)}
+.wa:active{transform:scale(.98)}
+.wa svg{width:17px;height:17px;flex:none}
+.trace-l{
+  margin-top:2.1rem;font-size:.72rem;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:rgba(255,255,255,.42)
+}
+.trace{
+  margin-top:.7rem;display:flex;flex-wrap:wrap;gap:.4rem
+}
+.trace span{
+  font-size:.7rem;font-weight:700;color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);
+  border-radius:99px;padding:.3rem .68rem
+}
+.trace span.done{color:var(--navy);background:var(--green);border-color:var(--green)}
+
+/* ─── adviseur ─────────────────────────────────────────── */
+.adv{
+  display:flex;gap:1.15rem;align-items:center;background:var(--white);
+  border:1px solid var(--line);border-radius:16px;padding:1.3rem;margin-top:1.8rem;
+  flex-wrap:wrap;box-shadow:var(--shadow)
+}
+.adv .ph{
+  width:62px;height:62px;border-radius:50%;flex:none;
+  background:linear-gradient(140deg,var(--blue-2),var(--blue));
+  display:grid;place-items:center;color:var(--white);font-weight:800;font-size:1.2rem
+}
+.adv .tx{flex:1 1 210px;min-width:0}
+.adv .tx b{display:block;font-size:1rem;color:var(--navy)}
+.adv .tx span{font-size:.86rem;color:var(--muted)}
+.adv .tel{
+  font-weight:700;font-size:.93rem;color:var(--navy);text-decoration:none;
+  border:1px solid var(--line);border-radius:10px;padding:.6rem 1.05rem;white-space:nowrap
+}
+.adv .tel:hover{border-color:var(--blue)}
+
+/* ─── footer ───────────────────────────────────────────── */
+.foot{
+  border-top:1px solid var(--line);padding:2.3rem 0 3rem;
+  font-size:.79rem;color:var(--faint);line-height:1.65
+}
+.foot .brands{
+  display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.1rem
+}
+.foot .brands span{
+  background:var(--white);border:1px solid var(--line);border-radius:6px;
+  padding:.24rem .55rem;font-size:.7rem;font-weight:700;color:var(--muted)
+}
+
+/* ─── pijnpaneel ───────────────────────────────────────── */
+.pain{
+  position:fixed;right:0;bottom:0;z-index:350;width:min(94vw,392px);
+  background:var(--white);border-radius:16px 0 0 0;
+  box-shadow:-2px 0 0 var(--amber),0 -20px 70px rgba(3,3,41,.26);
+  transform:translateY(102%);transition:transform .5s cubic-bezier(.66,0,.24,1);
+  max-height:min(78vh,620px);display:flex;flex-direction:column
+}
+.pain.on{transform:translateY(0)}
+.pain-hd{
+  padding:1.05rem 1.25rem .8rem;border-bottom:1px solid var(--line-2);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;flex:none
+}
+.pain-hd b{font-size:.94rem;color:var(--navy);line-height:1.35;display:block}
+.pain-hd .x{
+  background:none;border:0;cursor:pointer;color:var(--faint);font-size:1.3rem;
+  line-height:1;padding:.1rem .25rem;flex:none
+}
+.pain-bd{padding:1rem 1.25rem 1.3rem;overflow-y:auto;font-size:.855rem;line-height:1.6;color:var(--muted)}
+.pain-bd ul{list-style:none;margin:.75rem 0 1rem}
+.pain-bd li{
+  padding:.44rem 0 .44rem 1.5rem;position:relative;color:var(--ink);
+  border-bottom:1px solid var(--line-2)
+}
+.pain-bd li::before{
+  content:'';position:absolute;left:.25rem;top:.95em;width:11px;height:1.5px;
+  background:#D0505A;transform:rotate(-10deg)
+}
+.pain-bd .kick{
+  background:var(--amber-soft);border-radius:10px;padding:.8rem .9rem;
+  color:var(--ink);font-weight:600;margin-top:.3rem
+}
+
+/* ─── datapaneel ───────────────────────────────────────── */
+.data{
+  position:fixed;inset:var(--bar) 0 0 0;z-index:360;background:rgba(3,3,41,.72);
+  backdrop-filter:blur(3px);display:grid;place-items:end center;padding:1rem;
+  opacity:0;visibility:hidden;transition:opacity .34s,visibility .34s
+}
+.data.on{opacity:1;visibility:visible}
+.data-in{
+  background:var(--white);border-radius:16px;width:min(100%,660px);
+  max-height:84vh;overflow:auto;padding:1.5rem;margin-bottom:1rem
+}
+.data-in h3{font-size:1.05rem;margin-bottom:.42rem}
+.data-in p{font-size:.855rem;color:var(--muted);margin-bottom:1.15rem}
+.data-in table{width:100%;border-collapse:collapse;font-size:.79rem}
+.data-in td{padding:.42rem .5rem;border-bottom:1px solid var(--line-2);vertical-align:top}
+.data-in td:first-child{
+  color:var(--faint);font-weight:700;white-space:nowrap;width:1%;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.74rem
+}
+.data-in td:last-child{color:var(--navy);font-weight:600}
+.data-in .close{
+  font:inherit;font-weight:700;font-size:.88rem;background:var(--navy);color:var(--white);
+  border:0;border-radius:10px;padding:.66rem 1.2rem;cursor:pointer;margin-top:1.2rem
+}
+
+/* alleen verbergen als het script draait, anders blijft de pagina leeg bij een fout */
+body.js .reveal{opacity:0;transform:translateY(16px)}
+body.js .reveal.in{opacity:1;transform:none;transition:opacity .68s ease,transform .68s cubic-bezier(.2,.7,.3,1)}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ══ demobalk ══ -->
+<div class="demobar">
+  <span class="tag">Concept</span>
+  <span class="who grow">Voorbeeldpagina voor Domek Group · Pique voor Lightr</span>
+  <div class="ctrl">
+    <div class="seg warn" role="group" aria-label="Paginaversie">
+      <button id="m-p" aria-pressed="true">Persoonlijk</button>
+      <button id="m-g" aria-pressed="false">Generiek</button>
+    </div>
+    <div class="seg" role="group" aria-label="Taal">
+      <button id="l-nl" aria-pressed="true">NL</button>
+      <button id="l-pl" aria-pressed="false">PL</button>
+    </div>
+    <button class="linkbtn" id="showdata">De data</button>
+  </div>
+</div>
+
+<!-- ══ codepoort ══ -->
+<div class="gate" id="gate">
+  <div class="gate-in">
+    <svg class="gate-mark" viewBox="0 0 256.42 74.8" fill="none" aria-hidden="true">
+      <path fill="#189dd9" d="M41.35 68.26h26.12v6.2H41.35z"/>
+      <path fill="#4eb4e2" d="M54.4 2.1 2.6 40.9h13.9v33.5h24.8V45.6h27v28.8h24.9V40.9h13.9z"/>
+      <path fill="#97c03d" d="M96.5 8.9h22.4v11.8H96.5z"/>
+    </svg>
+    <h2 data-t="gate_h">Deze pagina hoort bij je kaart</h2>
+    <p data-t="gate_p">Vul de vier tekens in die op de kaart staan, dan zie je wat we voor je hebben klaargezet.</p>
+    <form class="gate-form" id="gateform" autocomplete="off">
+      <input id="code" maxlength="4" placeholder="••••" aria-label="Code van de kaart" inputmode="text" spellcheck="false">
+      <button class="gate-btn" type="submit" data-t="gate_btn">Open</button>
+    </form>
+    <p class="gate-note" data-t="gate_note">De pagina is 30 dagen geldig en staat niet in Google.</p>
+    <p class="gate-hint" data-t="gate_hint">Voor deze demo is de code <b>K7M2</b>.</p>
+  </div>
+</div>
+
+<!-- ══ kaartlaag ══ -->
+<div class="cardlayer gone" id="cardlayer">
+  <div class="card" id="card">
+    <div class="card-txt" id="cardtxt"></div>
+    <div class="card-foot">
+      <div class="card-sign" id="cardsign">Agnieszka</div>
+      <svg class="card-qr" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true">
+        <rect width="29" height="29" fill="#fff"/>
+        <g fill="#0A2C45">
+          <path d="M1 1h7v7H1zm1 1v5h5V2z"/><path d="M3 3h3v3H3z"/>
+          <path d="M21 1h7v7h-7zm1 1v5h5V2z"/><path d="M23 3h3v3h-3z"/>
+          <path d="M1 21h7v7H1zm1 1v5h5v-5z"/><path d="M3 23h3v3H3z"/>
+          <path d="M10 1h1v2h-1zm2 0h1v1h-1zm2 1h1v2h-1zm2-1h1v3h-1zm2 2h1v1h-1z"/>
+          <path d="M10 5h2v1h-2zm3 0h1v2h-1zm3 1h2v1h-2z"/>
+          <path d="M1 10h2v1H1zm3 0h1v2H4zm3-1h1v2H7zm3 1h2v1h-2zm4 0h1v1h-1zm2-1h1v2h-1zm3 1h2v1h-2zm4 0h1v2h-1zm3-1h1v2h-1z"/>
+          <path d="M2 13h1v1H2zm3 1h2v1H5zm4-1h1v2H9zm3 1h1v1h-1zm3-1h2v1h-2zm4 1h1v1h-1zm3-1h1v2h-1zm3 1h2v1h-2z"/>
+          <path d="M1 16h2v1H1zm4 0h1v2H5zm3 1h2v1H8zm4-1h1v2h-1zm3 1h1v1h-1zm3-1h2v1h-2zm4 1h1v1h-1zm3-1h1v2h-1z"/>
+          <path d="M10 19h1v2h-1zm3 1h2v1h-2zm4-1h1v2h-1zm3 1h1v1h-1zm3-1h2v1h-2z"/>
+          <path d="M10 22h2v1h-2zm4 0h1v2h-1zm3 1h1v1h-1zm3-1h1v2h-1zm4 1h2v1h-2z"/>
+          <path d="M10 25h1v2h-1zm3 1h2v1h-2zm4-1h1v2h-1zm3 1h1v1h-1zm3-1h1v2h-1zm3 1h1v1h-1z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ══ hero ══ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="topline">
+      <svg class="mark" viewBox="0 0 256.42 74.8" aria-label="Domek">
+        <path fill="#4eb4e2" d="M54.4 2.1 2.6 40.9h13.9v33.5h24.8V45.6h27v28.8h24.9V40.9h13.9z"/>
+        <path fill="#97c03d" d="M41.35 68.26h26.12v6.2H41.35z"/>
+        <text x="118" y="56" font-family="Plus Jakarta Sans,sans-serif" font-size="42" font-weight="800" fill="#030329" letter-spacing="-1.5">Domek</text>
+      </svg>
+      <div class="lang"><span data-t="lang_lbl">Jouw taal</span> <b data-t="lang_val">Pools</b></div>
+    </div>
+
+    <div class="herogrid">
+      <div>
+        <h1 data-t="hero_h"></h1>
+        <p class="lead" data-t="hero_p"></p>
+
+        <div class="validity p-only">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span data-t="valid"></span>
+        </div>
+
+        <form class="genform" onsubmit="return false">
+          <label data-t="gf_l1">Je naam</label>
+          <input type="text" placeholder="Voornaam en achternaam">
+          <label data-t="gf_l2">Je e-mailadres</label>
+          <input type="email" placeholder="naam@voorbeeld.nl">
+          <label data-t="gf_l3">Je klantnummer, als je dat bij de hand hebt</label>
+          <input type="text" placeholder="DMK-000000">
+          <button class="gbtn" data-t="gf_btn">Versturen</button>
+        </form>
+      </div>
+
+      <div id="slot" class="p-only">
+        <span class="slot-label" data-t="slot_lbl">De kaart die je kreeg</span>
+        <div id="slotcard" class="card"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ══ video ══ -->
+<section class="sec p-only" id="s-video">
+  <div class="wrap reveal">
+    <div class="eyebrow" data-t="vid_eye">Van je adviseur</div>
+    <h2 data-t="vid_h"></h2>
+    <p class="lead" data-t="vid_p"></p>
+    <div class="video">
+      <span class="stamp">Voorbeeld</span>
+      <div class="play" aria-hidden="true"></div>
+      <span class="cap" data-t="vid_cap"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ status ══ -->
+<section class="sec" id="s-status" style="background:var(--white);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)">
+  <div class="wrap reveal">
+    <div class="eyebrow" data-t="st_eye">Je dossier</div>
+    <h2 data-t="st_h"></h2>
+    <p class="lead" data-t="st_p"></p>
+    <div class="rows" id="statusrows"></div>
+  </div>
+</section>
+
+<!-- ══ pakketten ══ -->
+<section class="sec" id="s-pk">
+  <div class="wrap reveal">
+    <div class="eyebrow" data-t="pk_eye">Wat nog open staat</div>
+    <h2 data-t="pk_h"></h2>
+    <p class="lead" data-t="pk_p"></p>
+    <div class="pk" id="pkgrid"></div>
+    <p class="disclaim" data-t="pk_dis"></p>
+  </div>
+</section>
+
+<!-- ══ cheque ══ -->
+<section class="sec chq-sec" id="s-chq">
+  <div class="wrap reveal">
+    <div class="eyebrow" data-t="cq_eye">Voor wie jij kent</div>
+    <h2 data-t="cq_h"></h2>
+    <p class="lead" data-t="cq_p"></p>
+
+    <div class="cheque">
+      <div class="cheque-top">
+        <div>
+          <div class="lbl" data-t="cq_for">Op naam van</div>
+          <div class="nm" data-t="cq_name"></div>
+        </div>
+        <div class="amt"><small data-t="cq_amt_l">Jouw cashback</small><span data-t="cq_amt"></span></div>
+      </div>
+      <div class="cheque-mid" data-t="cq_body"></div>
+      <div class="cheque-bot">
+        <div class="meta"><span data-t="cq_meta"></span></div>
+        <a class="wa" id="walink" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.4.3.1.5.1.6-.1l.9-1c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3.1.1.1.6-.1 1.1Z"/></svg>
+          <span data-t="cq_wa"></span>
+        </a>
+      </div>
+    </div>
+
+    <p class="trace-l" data-t="cq_trace_l"></p>
+    <div class="trace" id="trace"></div>
+  </div>
+</section>
+
+<!-- ══ adviseur ══ -->
+<section class="sec p-only" id="s-adv" style="background:var(--white);border-top:1px solid var(--line-2)">
+  <div class="wrap reveal">
+    <div class="eyebrow" data-t="ad_eye">Vragen</div>
+    <h2 data-t="ad_h"></h2>
+    <div class="adv">
+      <div class="ph" id="advini">AK</div>
+      <div class="tx">
+        <b data-t="ad_name"></b>
+        <span data-t="ad_role"></span>
+      </div>
+      <a class="tel" id="advtel" href="#"></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="brands">
+      <span>Domek</span><span>Polisa</span><span>Nederlandse Assuradeuren</span><span>Kredyt</span>
+    </div>
+    <p data-t="ft_1"></p>
+    <p data-t="ft_2" style="margin-top:.5rem"></p>
+  </div>
+</footer>
+
+</main>
+
+<!-- ══ pijnpaneel ══ -->
+<aside class="pain" id="pain">
+  <div class="pain-hd">
+    <b data-t="pn_h">Dit is wat er van de pagina af ging</b>
+    <button class="x" id="painx" aria-label="Sluiten">&times;</button>
+  </div>
+  <div class="pain-bd">
+    <ul id="painlist"></ul>
+    <div class="kick" data-t="pn_kick"></div>
+  </div>
+</aside>
+
+<!-- ══ datapaneel ══ -->
+<div class="data" id="data">
+  <div class="data-in">
+    <h3 data-t="dt_h">Eén regel uit jullie export</h3>
+    <p data-t="dt_p">Alles op deze pagina komt hier vandaan. Dezelfde regel die naar Lightr gaat voor de kaart, vult ook de pagina achter de QR-code.</p>
+    <table id="datatbl"></table>
+    <button class="close" id="dataclose" data-t="dt_btn">Sluiten</button>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   1. DE DATA. Eén regel, zoals hij uit een CRM-export komt.
+   ═══════════════════════════════════════════════════════ */
+const D = {
+  klant_id:        'DMK-24815',
+  voornaam:        'Kamil',
+  achternaam:      'Wójcik',
+  taal:            'pl',
+  adres:           'Populierstraat 14',
+  plaats:          'Tilburg',
+  passeerdatum:    '2026-08-14',
+  woningtype:      'rijwoning',
+  bouwjaar:        '1968',
+  oppervlakte:     '94 m²',
+  bewoners:        '2',
+  geldverstrekker: 'ABN AMRO',
+  hypotheekbedrag: 312000,
+  rentevast_tot:   '2046-09-01',
+  opstal_via:      'de geldverstrekker',
+  opstal_tot:      '2027-09-01',
+  inboedel:        'niet geregistreerd',
+  woonlasten:      'niet geregistreerd',
+  adviseur:        'Agnieszka Kowalska',
+  adviseur_tel:    '+31 88 102 1512',
+  cashback:        200,
+  korting_vriend:  100,
+  code:            'K7M2',
+  geldig_tot:      '2026-12-31'
+};
+
+/* Datums en bedragen staan als ruwe waarde in de regel en worden per taal
+   opgemaakt. Anders staat er '14 augustus' midden in een Poolse zin. */
+const MAAND = {
+  nl:['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'],
+  pl:['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia']
+};
+const DATUMVELD = ['passeerdatum','rentevast_tot','opstal_tot','geldig_tot'];
+const GELDVELD  = ['hypotheekbedrag','cashback','korting_vriend'];
+
+function fmtDatum(iso, l){
+  const [y,m,d] = iso.split('-').map(Number);
+  return d + ' ' + MAAND[l][m-1] + ' ' + y;
+}
+function fmtGeld(n, l){
+  return l === 'pl'
+    ? n.toLocaleString('pl-PL') + ' €'
+    : '€' + n.toLocaleString('nl-NL');
+}
+function view(l){
+  const v = Object.assign({}, D);
+  DATUMVELD.forEach(k => v[k] = fmtDatum(D[k], l));
+  GELDVELD.forEach(k  => v[k] = fmtGeld(D[k], l));
+  v.straat = D.adres.replace(/\s+\d.*$/, '');   /* kop zonder huisnummer */
+  return v;
+}
+
+/* ═══════════════════════════════════════════════════════
+   2. DE TEKST. Per taal, en per versie van de pagina.
+   ═══════════════════════════════════════════════════════ */
+const T = {
+  nl: {
+    persoonlijk: {
+      gate_h:'Deze pagina hoort bij je kaart',
+      gate_p:'Vul de vier tekens in die op de kaart staan, dan zie je wat we voor je hebben klaargezet.',
+      gate_btn:'Open',
+      gate_note:'De pagina is 30 dagen geldig en staat niet in Google.',
+      gate_hint:'Voor deze demo is de code <b>K7M2</b>.',
+      card:'{voornaam}, gefeliciteerd met je huis aan de {adres}. Ik heb iets voor je klaargezet.\nScan de code hiernaast.',
+      lang_lbl:'Je kaart kwam in het', lang_val:'Pools',
+      hero_h:'Gefeliciteerd met de <span class="hl">{straat},</span> {voornaam}',
+      hero_p:'Op {passeerdatum} is je hypotheek gepasseerd. {adviseur} heeft je dossier begeleid, en zij schreef ook de kaart die deze week op je mat lag.',
+      valid:'Deze pagina staat tot {geldig_tot} voor je klaar',
+      slot_lbl:'De kaart die je kreeg',
+      vid_eye:'Van je adviseur', vid_h:'{adviseur} heeft iets voor je ingesproken',
+      vid_p:'Een minuut, in het Pools, over wat er nu geregeld is en wat er nog open staat.',
+      vid_cap:'1:04 · Pools gesproken',
+      st_eye:'Je dossier', st_h:'Waar je nu staat',
+      st_p:'Dit is wat wij van je woning weten, en wat je zelf bij ons hebt achtergelaten. Klopt er iets niet, bel dan {adviseur}.',
+      pk_eye:'Wat nog open staat', pk_h:'Drie manieren om het af te maken',
+      pk_p:'De bedragen hieronder horen bij jouw woning. Een {woningtype} van {oppervlakte} uit {bouwjaar}, met {bewoners} bewoners.',
+      pk_dis:'Voorbeeldbedragen voor deze demopagina. In het echt rekent Polisa ze per dossier uit.',
+      cq_eye:'Voor wie jij kent', cq_h:'De cheque die je vroeger van ons kreeg, staat nu hier',
+      cq_p:'Ken je iemand die ook een huis wil kopen in Nederland? Stuur deze cheque door.',
+      cq_for:'Op naam van', cq_amt_l:'Jouw cashback',
+      cq_body:'Wie deze cheque van jou krijgt, betaalt {korting_vriend} minder advieskosten bij Domek. Zodra hun hypotheek passeert, maken wij {cashback} aan jou over. Er zit geen maximum op het aantal cheques.',
+      cq_meta:'Cheque {code} · geldig tot {geldig_tot}',
+      cq_wa:'Stuur de cheque via WhatsApp',
+      wa_text:'Hoi, ik heb mijn huis via Domek gekocht en ik heb een cheque van {korting_vriend} voor je advieskosten. Hier staat hij: ',
+      cq_trace_l:'Wat je hiervan terugziet',
+      trace:['Kaart bezorgd','QR gescand','Pagina geopend','Cheque verstuurd','Cheque geopend','Hypotheek gepasseerd'],
+      ad_eye:'Vragen', ad_h:'{adviseur} spreekt Pools en Nederlands',
+      ad_name:'{adviseur}', ad_role:'Hypotheekadviseur bij Domek, 7 dagen per week bereikbaar',
+      ft_1:'Deze pagina is gemaakt voor {voornaam} {achternaam}, klantnummer {klant_id}, en is tot {geldig_tot} bereikbaar. Daarna vervalt hij.',
+      ft_2:'Domek Group · Burgemeesters Godschalxstraat 59, 5235 AB ’s-Hertogenbosch · 088 102 1500',
+      pn_h:'Dit is wat er van de pagina af ging',
+      pn_kick:''
+    },
+    generiek: {
+      hero_h:'Welkom bij Domek',
+      hero_p:'Bedankt voor het scannen van onze kaart. Laat hieronder je gegevens achter, dan zoeken wij je dossier erbij en neemt een adviseur contact met je op.',
+      gf_l1:'Je naam', gf_l2:'Je e-mailadres', gf_l3:'Je klantnummer, als je dat bij de hand hebt', gf_btn:'Versturen',
+      lang_lbl:'Taal', lang_val:'Nederlands',
+      st_eye:'Onze diensten', st_h:'Wat Domek voor je kan doen',
+      st_p:'Wij regelen hypotheken, verzekeringen en leningen voor internationale klanten in Nederland, België en Duitsland.',
+      pk_eye:'Verzekeringen', pk_h:'Onze pakketten',
+      pk_p:'Domek werkt samen met Polisa. Vraag een offerte aan en je hoort binnen twee werkdagen wat het voor jouw situatie kost.',
+      pk_dis:'Prijzen vanaf, afhankelijk van je situatie.',
+      cq_eye:'Actie', cq_h:'Member get member',
+      cq_p:'Ken je iemand die een huis wil kopen? Vraag naar onze member-get-member actie.',
+      cq_for:'Op naam van', cq_amt_l:'Cashback', cq_name:'de klant',
+      cq_body:'Wie via jou klant wordt bij Domek, betaalt minder advieskosten. Jij krijgt een cashback zodra de hypotheek passeert. Vraag je adviseur naar de voorwaarden.',
+      cq_meta:'Vraag naar de voorwaarden', cq_wa:'Deel deze pagina',
+      cq_trace_l:'Wat je hiervan terugziet',
+      wa_text:'Kijk eens naar Domek voor je hypotheek: ',
+      trace:['Kaart bezorgd','QR gescand'],
+      ft_1:'Domek helpt internationale klanten in Nederland met hypotheken, verzekeringen en leningen.',
+      ft_2:'Domek Group · Burgemeesters Godschalxstraat 59, 5235 AB ’s-Hertogenbosch · 088 102 1500'
+    }
+  },
+
+  pl: {
+    persoonlijk: {
+      gate_h:'Ta strona należy do Twojej kartki',
+      gate_p:'Wpisz cztery znaki, które znajdziesz na kartce, a zobaczysz, co dla Ciebie przygotowaliśmy.',
+      gate_btn:'Otwórz',
+      gate_note:'Strona jest ważna 30 dni i nie znajdziesz jej w Google.',
+      gate_hint:'W tej wersji demo kod to <b>K7M2</b>.',
+      card:'{voornaam}, gratulacje z okazji domu przy {adres}. Przygotowałam coś dla Ciebie.\nZeskanuj kod obok.',
+      lang_lbl:'Kartka przyszła po', lang_val:'polsku',
+      hero_h:'{voornaam}, gratulacje z okazji domu przy <span class="hl">{straat}</span>',
+      hero_p:'{passeerdatum} podpisaliście akt notarialny. {adviseur} prowadziła Twoją sprawę i to ona napisała kartkę, którą dostałeś w tym tygodniu.',
+      valid:'Ta strona czeka na Ciebie do {geldig_tot}',
+      slot_lbl:'Kartka, którą dostałeś',
+      vid_eye:'Od Twojego doradcy', vid_h:'{adviseur} nagrała dla Ciebie wiadomość',
+      vid_p:'Minuta po polsku o tym, co jest już załatwione i co jeszcze zostało.',
+      vid_cap:'1:04 · po polsku',
+      st_eye:'Twoja sprawa', st_h:'Jak wygląda Twoja sytuacja',
+      st_p:'To jest to, co wiemy o Twoim domu i co sam u nas zostawiłeś. Jeśli coś się nie zgadza, zadzwoń do {adviseur}.',
+      pk_eye:'Co jeszcze zostało', pk_h:'Trzy sposoby, żeby to dokończyć',
+      pk_p:'Kwoty poniżej dotyczą Twojego domu. Dom szeregowy o powierzchni {oppervlakte} z {bouwjaar} roku, {bewoners} mieszkańców.',
+      pk_dis:'Kwoty przykładowe na potrzeby tej strony demo. W rzeczywistości Polisa wylicza je dla każdej sprawy osobno.',
+      cq_eye:'Dla kogoś, kogo znasz', cq_h:'Czek, który kiedyś dostawałeś od nas, jest teraz tutaj',
+      cq_p:'Znasz kogoś, kto też chce kupić dom w Holandii? Prześlij ten czek dalej.',
+      cq_for:'Wystawiony na', cq_amt_l:'Twój zwrot',
+      cq_body:'Osoba, która dostanie od Ciebie ten czek, zapłaci {korting_vriend} mniej za doradztwo w Domek. Kiedy jej kredyt zostanie uruchomiony, przelewamy Tobie {cashback}. Liczba czeków nie jest ograniczona.',
+      cq_meta:'Czek {code} · ważny do {geldig_tot}',
+      cq_wa:'Wyślij czek przez WhatsApp',
+      wa_text:'Cześć, kupiłem dom przez Domek i mam dla Ciebie czek na {korting_vriend} na koszty doradztwa. Tutaj jest: ',
+      cq_trace_l:'Co z tego zobaczysz',
+      trace:['Kartka dostarczona','Kod zeskanowany','Strona otwarta','Czek wysłany','Czek otwarty','Kredyt uruchomiony'],
+      ad_eye:'Pytania', ad_h:'{adviseur} mówi po polsku i po niderlandzku',
+      ad_name:'{adviseur}', ad_role:'Doradca kredytowy w Domek, dostępna 7 dni w tygodniu',
+      ft_1:'Ta strona została przygotowana dla {voornaam} {achternaam}, numer klienta {klant_id}, i jest dostępna do {geldig_tot}. Potem wygasa.',
+      ft_2:'Domek Group · Burgemeesters Godschalxstraat 59, 5235 AB ’s-Hertogenbosch · 088 102 1500',
+      pn_h:'Dit is wat er van de pagina af ging',
+      pn_kick:''
+    },
+    generiek: {
+      hero_h:'Witamy w Domek',
+      hero_p:'Dziękujemy za zeskanowanie naszej kartki. Zostaw poniżej swoje dane, a my odszukamy Twoją sprawę i doradca się z Tobą skontaktuje.',
+      gf_l1:'Imię i nazwisko', gf_l2:'Adres e-mail', gf_l3:'Numer klienta, jeśli go masz', gf_btn:'Wyślij',
+      lang_lbl:'Język', lang_val:'polski',
+      st_eye:'Nasze usługi', st_h:'Co Domek może dla Ciebie zrobić',
+      st_p:'Załatwiamy kredyty hipoteczne, ubezpieczenia i pożyczki dla klientów międzynarodowych w Holandii, Belgii i Niemczech.',
+      pk_eye:'Ubezpieczenia', pk_h:'Nasze pakiety',
+      pk_p:'Domek współpracuje z Polisa. Poproś o ofertę, a w ciągu dwóch dni roboczych dowiesz się, ile to kosztuje w Twojej sytuacji.',
+      pk_dis:'Ceny od, zależnie od Twojej sytuacji.',
+      cq_eye:'Promocja', cq_h:'Member get member',
+      cq_p:'Znasz kogoś, kto chce kupić dom? Zapytaj o naszą promocję member get member.',
+      cq_for:'Wystawiony na', cq_amt_l:'Zwrot', cq_name:'klienta',
+      cq_body:'Osoba, która zostanie klientem Domek dzięki Tobie, zapłaci mniej za doradztwo. Ty dostaniesz zwrot, kiedy kredyt zostanie uruchomiony. Zapytaj doradcę o warunki.',
+      cq_meta:'Zapytaj o warunki', cq_wa:'Udostępnij tę stronę',
+      cq_trace_l:'Co z tego zobaczysz',
+      wa_text:'Zobacz Domek, jeśli szukasz kredytu hipotecznego: ',
+      trace:['Kartka dostarczona','Kod zeskanowany'],
+      ft_1:'Domek pomaga klientom międzynarodowym w Holandii z kredytami, ubezpieczeniami i pożyczkami.',
+      ft_2:'Domek Group · Burgemeesters Godschalxstraat 59, 5235 AB ’s-Hertogenbosch · 088 102 1500'
+    }
+  }
+};
+
+/* rijen in het dossier */
+const ROWS = {
+  nl:{
+    persoonlijk:[
+      {k:'Hypotheek', v:'{hypotheekbedrag} via {geldverstrekker}', s:'Rente vast tot {rentevast_tot}. Wij vergeleken 40 geldverstrekkers voor je.', t:'ok'},
+      {k:'Opstalverzekering', v:'Loopt via {opstal_via}', s:'Tot {opstal_tot}. Daarna moet je zelf kiezen, en dan bellen wij je.', t:'ok'},
+      {k:'Inboedelverzekering', v:'Staat nog open', s:'Bij ons is hier niets van geregistreerd. Als er morgen brand is, valt je inboedel buiten de dekking.', t:'open'},
+      {k:'Woonlastenverzekering', v:'Staat nog open', s:'Bij twee inkomens op één hypotheek is dit het risico waar de meeste mensen niet bij stilstaan.', t:'open'}
+    ],
+    generiek:[
+      {k:'Hypotheek', v:'Wij vergelijken 40 geldverstrekkers', s:'Vraag een adviesgesprek aan.', t:''},
+      {k:'Verzekeringen', v:'Via onze partner Polisa', s:'Opstal, inboedel, aansprakelijkheid en meer.', t:''},
+      {k:'Leningen', v:'Via Kredyt', s:'Persoonlijke leningen en verbouwingsleningen.', t:''}
+    ]
+  },
+  pl:{
+    persoonlijk:[
+      {k:'Kredyt hipoteczny', v:'{hypotheekbedrag} w {geldverstrekker}', s:'Oprocentowanie stałe do {rentevast_tot}. Porównaliśmy dla Ciebie 40 banków.', t:'ok'},
+      {k:'Ubezpieczenie budynku', v:'Prowadzone przez bank', s:'Do {opstal_tot}. Potem wybierasz sam, a my wtedy zadzwonimy.', t:'ok'},
+      {k:'Ubezpieczenie mieszkania', v:'Jeszcze nie załatwione', s:'Nie mamy tego u nas zarejestrowanego. Jeśli jutro będzie pożar, Twoje rzeczy nie są objęte ochroną.', t:'open'},
+      {k:'Ubezpieczenie rat kredytu', v:'Jeszcze nie załatwione', s:'Przy dwóch dochodach na jeden kredyt to ryzyko, o którym większość osób nie myśli.', t:'open'}
+    ],
+    generiek:[
+      {k:'Kredyt hipoteczny', v:'Porównujemy 40 banków', s:'Umów się na rozmowę z doradcą.', t:''},
+      {k:'Ubezpieczenia', v:'Przez naszego partnera Polisa', s:'Budynek, mieszkanie, OC i inne.', t:''},
+      {k:'Pożyczki', v:'Przez Kredyt', s:'Pożyczki osobiste i remontowe.', t:''}
+    ]
+  }
+};
+
+/* pakketten */
+const PK = {
+  nl:{
+    persoonlijk:[
+      {nm:'Basis',pr:'€7,20',pe:'per maand',li:['Inboedel tot €60.000','Schade door brand, water en inbraak','Opzegbaar per maand'],why:'Dekt de spullen die je net in de {adres} hebt gezet.',btn:'Kies Basis'},
+      {nm:'Compleet',pr:'€14,80',pe:'per maand',best:'Meest gekozen',li:['Alles uit Basis','Aansprakelijkheid voor je gezin','Rechtsbijstand bij burenruzie','Glasdekking'],why:'In een {woningtype} uit {bouwjaar} deel je je muur met de buren. Rechtsbijstand is dan zelden overbodig.',btn:'Kies Compleet'},
+      {nm:'Compleet plus',pr:'€31,50',pe:'per maand',li:['Alles uit Compleet','Woonlasten bij arbeidsongeschiktheid','Woonlasten bij werkloosheid','Maandlast gedekt tot 24 maanden'],why:'Je maandlast loopt door tot {rentevast_tot}. Dit dekt hem als een van jullie twee uitvalt.',btn:'Kies Compleet plus'}
+    ],
+    generiek:[
+      {nm:'Basis',pr:'vanaf €7',pe:'per maand',li:['Inboedelverzekering','Basisdekking'],why:'',btn:'Offerte aanvragen'},
+      {nm:'Compleet',pr:'vanaf €15',pe:'per maand',li:['Inboedel en aansprakelijkheid','Rechtsbijstand'],why:'',btn:'Offerte aanvragen'},
+      {nm:'Compleet plus',pr:'vanaf €32',pe:'per maand',li:['Alles uit Compleet','Woonlastenverzekering'],why:'',btn:'Offerte aanvragen'}
+    ]
+  },
+  pl:{
+    persoonlijk:[
+      {nm:'Podstawowy',pr:'7,20 €',pe:'miesięcznie',li:['Mienie do 60.000 €','Szkody od ognia, wody i włamania','Możliwość rezygnacji co miesiąc'],why:'Obejmuje rzeczy, które właśnie wniosłeś do domu przy {adres}.',btn:'Wybieram Podstawowy'},
+      {nm:'Kompletny',pr:'14,80 €',pe:'miesięcznie',best:'Najczęściej wybierany',li:['Wszystko z pakietu Podstawowy','OC dla całej rodziny','Pomoc prawna przy sporach z sąsiadami','Ubezpieczenie szyb'],why:'W domu szeregowym z {bouwjaar} roku dzielisz ścianę z sąsiadem. Pomoc prawna rzadko bywa wtedy zbędna.',btn:'Wybieram Kompletny'},
+      {nm:'Kompletny plus',pr:'31,50 €',pe:'miesięcznie',li:['Wszystko z pakietu Kompletny','Raty przy niezdolności do pracy','Raty przy utracie pracy','Rata pokryta do 24 miesięcy'],why:'Twoja rata biegnie do {rentevast_tot}. To ją pokrywa, jeśli jedno z Was wypadnie.',btn:'Wybieram Kompletny plus'}
+    ],
+    generiek:[
+      {nm:'Podstawowy',pr:'od 7 €',pe:'miesięcznie',li:['Ubezpieczenie mieszkania','Ochrona podstawowa'],why:'',btn:'Poproś o ofertę'},
+      {nm:'Kompletny',pr:'od 15 €',pe:'miesięcznie',li:['Mienie i OC','Pomoc prawna'],why:'',btn:'Poproś o ofertę'},
+      {nm:'Kompletny plus',pr:'od 32 €',pe:'miesięcznie',li:['Wszystko z pakietu Kompletny','Ubezpieczenie rat'],why:'',btn:'Poproś o ofertę'}
+    ]
+  }
+};
+
+/* wat er verdwijnt, altijd in het Nederlands want dit leest Domek */
+const PAIN = [
+  'Zijn naam, en het adres waar hij net is gaan wonen',
+  'De taal waarin hij de kaart kreeg',
+  'Wie hem geholpen heeft, en dat zij Pools spreekt',
+  'Wat er al geregeld is, en wat er nog open staat',
+  'Het aanbod dat bij zijn huis hoort, in plaats van vanafprijzen',
+  'De cheque op zijn naam, en daarmee ook het meetpunt'
+];
+const PAIN_KICK = 'De kaart kost hetzelfde en de scan kost hetzelfde. Het moment waarop Kamil zijn sleutel krijgt komt één keer. Op deze pagina moet je hem eerst vragen wie hij is, en dan heb je een handgeschreven kaart uitgegeven om een formulier te laten invullen.';
+
+/* ═══════════════════════════════════════════════════════
+   3. RENDEREN
+   ═══════════════════════════════════════════════════════ */
+let taal = 'nl';
+let modus = 'persoonlijk';
+let V = view('nl');
+
+/* de QR op de kaart, één keer vastgelegd zodat we hem kunnen hergebruiken */
+const QR = document.querySelector('.card-qr').outerHTML;
+
+const fill = (s) => String(s||'').replace(/\{(\w+)\}/g, (m,k) => V[k] !== undefined ? V[k] : m);
+const $  = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+function copy(){
+  const base = T[taal].persoonlijk;
+  return modus === 'persoonlijk' ? base : Object.assign({}, base, T[taal].generiek);
+}
+
+function render(){
+  V = view(taal);
+  const c = copy();
+
+  $$('[data-t]').forEach(el => {
+    const v = c[el.dataset.t];
+    if(v === undefined) return;
+    el.innerHTML = fill(v);
+  });
+
+  document.documentElement.lang = taal;
+  document.body.classList.toggle('generiek', modus === 'generiek');
+
+  /* dossierrijen */
+  const rows = ROWS[taal][modus === 'persoonlijk' ? 'persoonlijk' : 'generiek'];
+  $('#statusrows').innerHTML = rows.map(r => `
+    <div class="row">
+      <div class="k">${fill(r.k)}</div>
+      <div class="v">${r.t ? `<span class="${r.t}">${fill(r.v)}</span>` : fill(r.v)}</div>
+      <div class="sub">${fill(r.s)}</div>
+    </div>`).join('');
+
+  /* pakketten */
+  const pk = PK[taal][modus === 'persoonlijk' ? 'persoonlijk' : 'generiek'];
+  $('#pkgrid').innerHTML = pk.map(p => `
+    <div class="p${p.best ? ' best' : ''}">
+      ${p.best ? `<span class="badge">${p.best}</span>` : ''}
+      <span class="nm">${p.nm}</span>
+      <span class="pr">${p.pr} <small>${p.pe}</small></span>
+      <ul>${p.li.map(l => `<li>${fill(l)}</li>`).join('')}</ul>
+      ${p.why ? `<div class="why">${fill(p.why)}</div>` : ''}
+      <button class="pbtn">${p.btn}</button>
+    </div>`).join('');
+
+  /* cheque op naam */
+  if(modus === 'persoonlijk'){
+    $('[data-t="cq_name"]').textContent = D.voornaam + ' ' + D.achternaam;
+    $('[data-t="cq_amt"]').textContent  = V.cashback;
+  } else {
+    $('[data-t="cq_amt"]').textContent  = taal === 'pl' ? '... €' : '€ ...';
+  }
+
+  /* whatsapp */
+  $('#walink').href = 'https://wa.me/?text=' + encodeURIComponent(fill(c.wa_text) + location.href);
+
+  /* meetpunten. Lightr meet de scan, alles daarna meet Domek zelf */
+  const gehaald = modus === 'persoonlijk' ? 3 : 2;
+  $('#trace').innerHTML = c.trace.map((t,i) =>
+    `<span class="${i < gehaald ? 'done' : ''}">${t}</span>`).join('');
+
+  /* adviseur */
+  $('#advini').textContent = D.adviseur.split(' ').map(w => w[0]).join('');
+  $('#advtel').textContent = D.adviseur_tel;
+  $('#advtel').href = 'tel:' + D.adviseur_tel.replace(/\s/g,'');
+
+  /* pijnpaneel */
+  $('#painlist').innerHTML = PAIN.map(p => `<li>${p}</li>`).join('');
+  $('[data-t="pn_kick"]').textContent = PAIN_KICK;
+  $('#pain').classList.toggle('on', modus === 'generiek');
+}
+
+/* ═══════════════════════════════════════════════════════
+   4. DE KAART DIE IN DE PAGINA LANDT
+   ═══════════════════════════════════════════════════════ */
+function schrijfKaart(){
+  const txt   = fill(copy().card);
+  const holder = $('#cardtxt');
+  $('#cardsign').textContent = D.adviseur.split(' ')[0];
+  holder.innerHTML = txt.split('').map(ch =>
+    ch === '\n' ? '<br>' : `<span class="ch">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');
+  const chars = holder.querySelectorAll('.ch');
+  let i = 0;
+  const tick = setInterval(() => {
+    if(i >= chars.length){ clearInterval(tick); setTimeout(vliegNaarSlot, 620); return; }
+    chars[i].classList.add('on'); i++;
+  }, 26);
+}
+
+function vliegNaarSlot(){
+  const card = $('#card');
+  const slot = $('#slotcard');
+  const a = card.getBoundingClientRect();
+  const b = slot.getBoundingClientRect();
+
+  if(b.width < 20){ afronden(); return; }
+
+  card.classList.add('card-flying');
+  card.style.left = a.left + 'px';
+  card.style.top  = a.top + 'px';
+  card.style.width  = a.width + 'px';
+  card.style.height = a.height + 'px';
+
+  requestAnimationFrame(() => {
+    const s  = b.width / a.width;
+    const dx = (b.left + b.width/2) - (a.left + a.width/2);
+    const dy = (b.top  + b.height/2) - (a.top  + a.height/2);
+    card.style.transform = `translate(${dx}px,${dy}px) scale(${s}) rotate(-1.6deg)`;
+    card.style.boxShadow = '0 1px 2px rgba(3,3,41,.1), 0 10px 26px rgba(3,3,41,.16)';
+    $('#cardlayer').style.background = 'rgba(3,3,41,0)';
+    $('#cardlayer').style.backdropFilter = 'blur(0px)';
+  });
+
+  setTimeout(() => {
+    slot.innerHTML = card.innerHTML;
+    slot.classList.add('on');
+    afronden();
+  }, 1060);
+}
+
+function afronden(){
+  $('#cardlayer').classList.add('gone');
+  document.body.classList.remove('locked');
+  setTimeout(() => $('#cardlayer').remove(), 620);
+  startReveals();
+}
+
+/* ═══════════════════════════════════════════════════════
+   5. POORT, KNOPPEN, REVEALS
+   ═══════════════════════════════════════════════════════ */
+$('#gateform').addEventListener('submit', e => {
+  e.preventDefault();
+  const in_ = $('#code');
+  if(in_.value.trim().toUpperCase() === D.code){
+    $('#gate').classList.add('gone');
+    $('#cardlayer').classList.remove('gone');
+    setTimeout(schrijfKaart, 340);
+  } else {
+    $('#gateform').classList.add('shake');
+    setTimeout(() => $('#gateform').classList.remove('shake'), 420);
+    in_.value = ''; in_.focus();
+  }
+});
+
+/* de kaart in de hero zonder animatie neerleggen, en meeschakelen met de taal */
+function kaartInSlot(){
+  const slot = $('#slotcard');
+  if(!slot) return;
+  const txt = fill(copy().card).replace(/\n/g,'<br>');
+  slot.innerHTML =
+    `<div class="card-txt">${txt}</div>` +
+    `<div class="card-foot"><div class="card-sign">${D.adviseur.split(' ')[0]}</div>${QR}</div>`;
+  slot.classList.add('on');
+}
+
+function zetModus(m){
+  modus = m;
+  $('#m-p').setAttribute('aria-pressed', m === 'persoonlijk');
+  $('#m-g').setAttribute('aria-pressed', m === 'generiek');
+  render();
+  if(m === 'persoonlijk') kaartInSlot();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function zetTaal(l){
+  taal = l;
+  $('#l-nl').setAttribute('aria-pressed', l === 'nl');
+  $('#l-pl').setAttribute('aria-pressed', l === 'pl');
+  render();
+  if(modus === 'persoonlijk' && $('#slotcard').classList.contains('on')) kaartInSlot();
+}
+
+$('#m-p').onclick = () => zetModus('persoonlijk');
+$('#m-g').onclick = () => zetModus('generiek');
+$('#l-nl').onclick = () => zetTaal('nl');
+$('#l-pl').onclick = () => zetTaal('pl');
+$('#painx').onclick = () => $('#pain').classList.remove('on');
+
+function toonData(){
+  $('#datatbl').innerHTML = Object.keys(D).map(k =>
+    `<tr><td>${k}</td><td>${D[k]}</td></tr>`).join('');
+  $('#data').classList.add('on');
+}
+$('#showdata').onclick = toonData;
+$('#dataclose').onclick = () => $('#data').classList.remove('on');
+$('#data').addEventListener('click', e => { if(e.target.id === 'data') $('#data').classList.remove('on'); });
+
+function startReveals(){
+  /* wat al in beeld staat komt meteen tevoorschijn, de rest bij het scrollen */
+  $$('.reveal').forEach(el => {
+    if(el.getBoundingClientRect().top < innerHeight * .96) el.classList.add('in');
+  });
+  if(!('IntersectionObserver' in window)){
+    $$('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  $$('.reveal').forEach(el => io.observe(el));
+}
+
+/* URL-parameters, zodat je iemand direct naar één versie kunt sturen:
+   ?open        slaat de codepoort over
+   ?taal=pl     opent de Poolse versie
+   ?modus=generiek  opent de versie zonder personalisatie
+   ?data        opent meteen de regel waar de pagina uit is opgebouwd
+   ?kaal        verbergt de demobalk, voor een schone schermopname     */
+document.body.classList.add('js');
+
+const P = new URLSearchParams(location.search);
+if(P.get('taal') === 'pl')        taal = 'pl';
+if(P.get('modus') === 'generiek') modus = 'generiek';
+if(P.has('kaal')){
+  document.querySelector('.demobar').style.display = 'none';
+  document.documentElement.style.setProperty('--bar','0px');
+}
+
+$('#l-nl').setAttribute('aria-pressed', taal === 'nl');
+$('#l-pl').setAttribute('aria-pressed', taal === 'pl');
+$('#m-p').setAttribute('aria-pressed', modus === 'persoonlijk');
+$('#m-g').setAttribute('aria-pressed', modus === 'generiek');
+
+render();
+
+if(modus === 'generiek'){
+  /* een generieke pagina heeft geen kaart die landt, dus die slaan we over */
+  $('#gate').classList.add('gone');
+  $('#cardlayer').remove();
+  document.body.classList.remove('locked');
+  startReveals();
+} else if(P.has('open')){
+  $('#gate').classList.add('gone');
+  $('#cardlayer').classList.remove('gone');
+  setTimeout(schrijfKaart, 300);
+} else {
+  setTimeout(() => $('#code').focus(), 500);
+}
+
+if(P.has('data')) setTimeout(toonData, 200);
+</script>
+</body>
+</html>
