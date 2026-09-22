@@ -587,14 +587,16 @@ body.generiek .herogrid{grid-template-columns:1fr}
 
 /* Alles zweeft binnen in plaats van er te staan. Alleen verbergen als het
    script draait, anders blijft de pagina leeg zodra er iets misgaat. */
+/* Geen blur meer. Die is duur om te tekenen en, belangrijker, tekst die uit
+   een waas scherp wordt leest als iets dat nog staat te laden. Nu alleen een
+   korte opkomst van onderaf. */
 body.js .fx{
-  opacity:0;transform:translateY(26px) scale(.99);filter:blur(6px);
+  opacity:0;transform:translateY(14px);
   transition:
-    opacity .5s ease var(--d,0ms),
-    transform .62s cubic-bezier(.16,.84,.34,1) var(--d,0ms),
-    filter .5s ease var(--d,0ms)
+    opacity .28s ease var(--d,0ms),
+    transform .38s cubic-bezier(.2,.9,.3,1) var(--d,0ms)
 }
-body.js .fx.in{opacity:1;transform:none;filter:none}
+body.js .fx.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important}
   body.js .fx{opacity:1;transform:none;filter:none}
@@ -1503,8 +1505,8 @@ $('#data').addEventListener('click', e => { if(e.target.id === 'data') $('#data'
 /* Elementen zweven één voor één binnen in plaats van allemaal tegelijk.
    Na afloop halen we de klasse er weer af, anders blijft die trage
    overgang op de hover van de pakketkaarten zitten. */
-const STAP = 120;    /* tijd tussen twee onderdelen */
-const MAXD = 1500;    /* niemand wacht langer dan dit op het laatste */
+const STAP = 65;     /* tijd tussen twee onderdelen */
+const MAXD = 600;     /* niemand wacht langer dan dit op het laatste */
 
 function floatIn(scope, start){
   /* Een verborgen element telde mee in de rij en liet een gat van een tel
@@ -1512,15 +1514,19 @@ function floatIn(scope, start){
      in de generieke versie bestaat. */
   const els = Array.from(scope.querySelectorAll('.fx'))
                    .filter(e => !e.classList.contains('in') && e.getClientRects().length);
+  /* Eerst alle vertragingen zetten, dan één reflow, dan pas de klassen. Per
+     onderdeel een reflow forceren laat de lay-out bij elke stap opnieuw
+     rekenen en dat kost merkbaar tijd op een volle pagina. */
+  els.forEach((el, i) => el.style.setProperty('--d', Math.min(start + i * STAP, MAXD) + 'ms'));
+  if(els.length) void els[0].offsetWidth;
+
   els.forEach((el, i) => {
     const d = Math.min(start + i * STAP, MAXD);
-    el.style.setProperty('--d', d + 'ms');
-    void el.offsetWidth;
     el.classList.add('in');
     setTimeout(() => {
       el.classList.remove('fx', 'in');
       el.style.removeProperty('--d');
-    }, d + 800);
+    }, d + 500);
   });
   return Math.min(start + els.length * STAP, MAXD);
 }
@@ -1533,7 +1539,7 @@ function reveals(){
   let d = 0;
   $$('header.hero, main section, footer.foot').forEach(sec => {
     const r = sec.getBoundingClientRect();
-    if(r.top < innerHeight * .9 && r.bottom > 0) d = floatIn(sec, d);
+    if(r.top < innerHeight * .96 && r.bottom > 0) d = floatIn(sec, d);
   });
 }
 
@@ -1550,7 +1556,7 @@ function parallax(){
 let laatst = 0;
 function opScroll(){
   const nu = Date.now();
-  if(nu - laatst < 50) return;
+  if(nu - laatst < 25) return;
   laatst = nu;
   reveals();
   parallax();
