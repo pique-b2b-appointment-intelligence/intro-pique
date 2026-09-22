@@ -160,7 +160,7 @@ a{color:inherit}
 }
 .cardlayer.gone{opacity:0;visibility:hidden;pointer-events:none}
 
-.stage{position:relative;width:min(88vw,424px);margin-bottom:5.6rem}
+.stage{position:relative;width:min(88vw,424px);margin-bottom:6.2rem}
 
 .env{
   position:relative;width:100%;aspect-ratio:1.46/1;z-index:3;
@@ -201,32 +201,43 @@ a{color:inherit}
 }
 .env-addr b{display:block;font-weight:600}
 .env-foot{
-  position:absolute;left:0;right:0;bottom:-5.6rem;
+  position:absolute;left:0;right:0;bottom:-3.2rem;
   display:flex;flex-direction:column;align-items:center;gap:.9rem;
   opacity:0;transform:translateY(11px);pointer-events:none;z-index:6;
   transition:opacity .6s ease,transform .6s ease
 }
 .env-foot.in{opacity:1;transform:none;pointer-events:auto}
 .env-cap{color:rgba(255,255,255,.72);font-size:.86rem;font-weight:600;text-align:center}
-.env-btn{
-  font:inherit;font-weight:700;font-size:.95rem;
+/* De keuze komt ná de brief, zoals op de bestaande klantpagina's */
+.keuze{
+  position:absolute;left:0;right:0;bottom:-5.9rem;z-index:6;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .6s ease,transform .6s cubic-bezier(.16,.84,.34,1)
+}
+.keuze.in{opacity:1;transform:none;pointer-events:auto}
+.kz-btn{
+  font:inherit;font-weight:700;font-size:.97rem;
   background:var(--amber);color:var(--navy);
-  border:0;border-radius:99px;padding:.74rem 1.7rem;cursor:pointer;
+  border:0;border-radius:99px;padding:.78rem 1.8rem;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.55rem;
   box-shadow:0 8px 26px rgba(255,193,54,.3);
   transition:transform .18s ease,box-shadow .18s ease
 }
-.env-btn:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(255,193,54,.4)}
-.env-btn:active{transform:scale(.97)}
-.env-skip{
-  position:absolute;left:0;right:0;bottom:-3.4rem;margin:0 auto;width:max-content;
-  font:inherit;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.38);
-  background:none;border:0;cursor:pointer;padding:.4rem .9rem;
-  text-decoration:underline;text-underline-offset:3px;
-  opacity:0;visibility:hidden;z-index:6;
-  transition:opacity .5s ease .5s,visibility .5s,color .2s
+.kz-btn:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(255,193,54,.4)}
+.kz-btn:active{transform:scale(.97)}
+.kz-btn .arw{transition:transform .18s ease}
+.kz-btn:hover .arw{transform:translateX(3px)}
+.kz-sub{font-size:.76rem;font-weight:600;color:rgba(255,255,255,.44)}
+.kz-lees{
+  margin-top:.35rem;font:inherit;font-size:.83rem;font-weight:600;
+  color:rgba(255,255,255,.44);background:none;border:0;cursor:pointer;
+  padding:.35rem .8rem;text-decoration:underline;text-underline-offset:3px;
+  transition:color .2s
 }
-.env-skip.in{opacity:1;visibility:visible}
-.env-skip:hover{color:rgba(255,255,255,.78)}
+.kz-lees:hover{color:rgba(255,255,255,.82)}
+/* elke zin een eigen regel, zodat er tussen de zinnen gepauzeerd kan worden */
+.card-line{display:block}
 
 .card{
   position:absolute;top:0;left:3%;width:94%;aspect-ratio:1.5/1;z-index:2;
@@ -251,7 +262,7 @@ a{color:inherit}
 }
 .card-txt{
   font-family:var(--hand);font-size:clamp(1.02rem,3.6vw,1.24rem);
-  line-height:1.5;color:#1d3a56;white-space:pre-wrap;letter-spacing:.005em;
+  line-height:1.5;color:#1d3a56;letter-spacing:.005em;
   overflow-wrap:break-word;hyphens:none;min-width:0
 }
 .card-txt .ch{opacity:0}
@@ -669,9 +680,13 @@ body.js .fx.in{opacity:1;transform:none;filter:none}
 
     <div class="env-foot" id="envfoot">
       <p class="env-cap" id="envcap"></p>
-      <button class="env-btn" id="envbtn" type="button"></button>
     </div>
-    <button class="env-skip" id="envskip" type="button"></button>
+
+    <div class="keuze" id="keuze">
+      <button class="kz-btn" id="kzbtn" type="button"><span></span><span class="arw">&#8594;</span></button>
+      <span class="kz-sub" id="kzsub"></span>
+      <button class="kz-lees" id="kzlees" type="button"></button>
+    </div>
   </div>
 </div>
 
@@ -887,6 +902,7 @@ function view(l){
   DATUMVELD.forEach(k => v[k] = fmtDatum(D[k], l));
   GELDVELD.forEach(k  => v[k] = fmtGeld(D[k], l));
   v.straat = D.adres.replace(/\s+\d.*$/, '');   /* kop zonder huisnummer */
+  v.adviseur_vnm = D.adviseur.split(' ')[0];
   return v;
 }
 
@@ -902,8 +918,15 @@ const T = {
       gate_note:'De pagina is 30 dagen geldig en staat niet in Google.',
       gate_hint:'Voor deze demo is de code <b>K7M2</b>.',
       env_cap:'Dit lag deze week bij je in de bus',
-      env_btn:'Maak open', env_skip:'Overslaan',
-      card:'{voornaam}, gefeliciteerd met je huis aan de {straat}. Ik heb je dossier nog eens nagelopen.\nBij ons staat je inboedel nog niet verzekerd, en er ligt {cashback} voor je klaar. Wil je het zien?',
+      regels:[
+        '{voornaam}, gefeliciteerd met je huis|aan de {straat}.',
+        'Ik heb je dossier nog eens nagelopen.',
+        'Je inboedel is nog niet verzekerd,|en er ligt {cashback} voor je klaar.',
+        'Wil je het zien?'
+      ],
+      kz_btn:'Ja, laat maar zien',
+      kz_sub:'Video van {adviseur_vnm} · 1 min',
+      kz_lees:'Ik lees liever eerst',
       lang_lbl:'Je kaart kwam in het', lang_val:'Pools',
       hero_h:'Gefeliciteerd met de <span class="hl">{straat},</span> {voornaam}',
       hero_p:'Op {passeerdatum} is je hypotheek gepasseerd. {adviseur} heeft je dossier begeleid, en zij schreef ook de kaart die deze week op je mat lag.',
@@ -964,8 +987,15 @@ const T = {
       gate_note:'Strona jest ważna 30 dni i nie znajdziesz jej w Google.',
       gate_hint:'W tej wersji demo kod to <b>K7M2</b>.',
       env_cap:'To leżało w tym tygodniu w Twojej skrzynce',
-      env_btn:'Otwórz', env_skip:'Pomiń',
-      card:'{voornaam}, gratulacje z okazji domu przy {straat}. Jeszcze raz przejrzałam Twoją sprawę.\nTwoje mieszkanie nie jest u nas ubezpieczone, a czeka na Ciebie {cashback}. Chcesz zobaczyć?',
+      regels:[
+        '{voornaam}, gratulacje z okazji|domu przy {straat}.',
+        'Jeszcze raz przejrzałam Twoją sprawę.',
+        'Twoje mieszkanie nie jest ubezpieczone,|a czeka na Ciebie {cashback}.',
+        'Chcesz zobaczyć?'
+      ],
+      kz_btn:'Tak, pokaż mi',
+      kz_sub:'Film od {adviseur_vnm} · 1 min',
+      kz_lees:'Wolę najpierw poczytać',
       lang_lbl:'Kartka przyszła po', lang_val:'polsku',
       hero_h:'{voornaam}, gratulacje z okazji domu przy <span class="hl">{straat}</span>',
       hero_p:'{passeerdatum} podpisaliście akt notarialny. {adviseur} prowadziła Twoją sprawę i to ona napisała kartkę, którą dostałeś w tym tygodniu.',
@@ -1204,8 +1234,9 @@ function postBezorgen(){
   $('#envaddr').innerHTML =
     `<b>${D.voornaam} ${D.achternaam}</b>${D.adres}<br>${D.plaats}`;
   $('#envcap').textContent  = fill(c.env_cap);
-  $('#envbtn').textContent  = fill(c.env_btn);
-  $('#envskip').textContent = fill(c.env_skip);
+  $('#kzbtn').firstElementChild.textContent = fill(c.kz_btn);
+  $('#kzsub').textContent  = fill(c.kz_sub);
+  $('#kzlees').textContent = fill(c.kz_lees);
   $('#cardsign').textContent = D.adviseur.split(' ')[0];
 
   /* Geen requestAnimationFrame om de overgang te starten. Die callback gaat
@@ -1215,6 +1246,10 @@ function postBezorgen(){
   void $('#env').offsetWidth;
   $('#env').classList.add('in');
   later(() => $('#envfoot').classList.add('in'), 480);
+  /* De envelop gaat vanzelf open. De keuze hoort niet hier maar na de brief,
+     zoals op de bestaande klantpagina's. Wie niet wil wachten tikt de
+     envelop aan, dat gaat dan meteen. */
+  later(openMaken, 1600);
 }
 
 function openMaken(){
@@ -1228,41 +1263,93 @@ function openMaken(){
   later(() => {
     $('#env').classList.add('weg');
     $('#card').classList.add('midden');
-    $('#envskip').classList.add('in');
   }, 640);
-  later(schrijfKaart, 1200);
+  later(schrijfKaart, 1240);
+}
+
+const TEMPO = 26;    /* milliseconde per teken */
+const PAUZE = 400;   /* stilte tussen twee zinnen */
+
+/* Elke zin is een eigen regel met een pauze erachter. Eerst liep de hele
+   tekst als één lap door en dan is er niets bij te houden. Spaties blijven
+   gewone tekstknopen, anders kan de regel nergens afbreken. */
+function bouwKaart(){
+  const holder = $('#cardtxt');
+  const regels = copy().regels.map(fill);
+  holder.innerHTML = '';
+  const plan = [];
+  let klok = 0;
+
+  regels.forEach((tekst, r) => {
+    const lijn = document.createElement('span');
+    lijn.className = 'card-line';
+    tekst.split('|').forEach((deel, di) => {
+      if(di > 0) lijn.appendChild(document.createElement('br'));
+      for(const teken of deel){
+        if(teken === ' '){
+          lijn.appendChild(document.createTextNode(' '));
+          klok += Math.round(TEMPO * .45);
+          continue;
+        }
+        const s = document.createElement('span');
+        s.className = 'ch';
+        s.textContent = teken;
+        lijn.appendChild(s);
+        plan.push({s: s, t: klok});
+        klok += TEMPO;
+      }
+    });
+    holder.appendChild(lijn);
+    if(r < regels.length - 1) klok += PAUZE;
+  });
+  return plan;
 }
 
 function schrijfKaart(){
-  const txt   = fill(copy().card);
-  const holder = $('#cardtxt');
-  /* De spatie blijft een gewone spatie buiten de span. Zet je er een span met
-     &nbsp; omheen, dan kan de regel nergens meer afbreken en loopt de tekst
-     het kaartje uit. Onzichtbaar zijn spaties toch, dus ze hoeven niet mee
-     geschreven te worden. */
-  holder.innerHTML = txt.split('').map(ch =>
-      ch === '\n' ? '<br>'
-    : ch === ' '  ? ' '
-    : `<span class="ch">${ch === '<' ? '&lt;' : ch === '&' ? '&amp;' : ch}</span>`
-  ).join('');
-  const chars = holder.querySelectorAll('.ch');
-  let i = 0;
-  const tick = setInterval(() => {
-    if(i >= chars.length){ clearInterval(tick); later(vliegNaarSlot, 480); return; }
-    chars[i].classList.add('on'); i++;
-  }, 26);
-  klokken.push(tick);
+  const plan = bouwKaart();
+  if(!plan.length){ keuzeTonen(); return; }
+
+  /* Eén lus die met het beeldscherm meeloopt in plaats van een timer per
+     teken. Na een traag frame haalt hij de achterstand in, zodat het tempo
+     gelijk blijft. */
+  const start = performance.now();
+  let i = 0, afgebroken = false;
+
+  (function frame(nu){
+    if(afgebroken) return;
+    const verstreken = (nu || performance.now()) - start;
+    while(i < plan.length && plan[i].t <= verstreken){ plan[i].s.classList.add('on'); i++; }
+    if(i < plan.length){ requestAnimationFrame(frame); return; }
+    keuzeTonen();
+  })();
+
+  /* Vangnet voor als er geen beelden komen, bijvoorbeeld in een tabblad op
+     de achtergrond. Dan staat de tekst er alsnog en verschijnt de keuze. */
+  klokken.push(setTimeout(() => {
+    if(i >= plan.length) return;
+    afgebroken = true;
+    plan.forEach(o => o.s.classList.add('on'));
+    keuzeTonen();
+  }, plan[plan.length - 1].t + 2500));
 }
 
-/* wie de rest niet wil afwachten, drukt op overslaan */
-function doorspoelen(){
-  if(!geopend || $('#slotcard').classList.contains('on')) return;
-  klokken.forEach(clearTimeout); klokken.forEach(clearInterval); klokken = [];
+function keuzeTonen(){
+  const k = $('#keuze');
+  if(!k || k.classList.contains('in')) return;
   $('#envfoot').classList.remove('in');
-  $('#envskip').classList.remove('in');
-  $('#env').classList.add('weg');
-  $('#card').classList.add('uit','midden');
-  $('#cardtxt').innerHTML = fill(copy().card).replace(/\n/g,'<br>');
+  void k.offsetWidth;
+  k.classList.add('in');
+}
+
+/* De twee knoppen onder de brief. Beide brengen je naar de pagina, de
+   eerste zet je meteen bij de video. */
+let gesloten = false;
+let naarVideo = false;
+function sluit(metVideo){
+  if(gesloten || !geopend) return;
+  gesloten = true;
+  naarVideo = metVideo;
+  $('#keuze').classList.remove('in');
   vliegNaarSlot();
 }
 
@@ -1300,8 +1387,10 @@ function vliegNaarSlot(){
   }
 
   setTimeout(() => {
-    slot.innerHTML = card.innerHTML;
-    slot.classList.add('on');
+    /* De kaart in de hero opnieuw opbouwen uit de tekst, niet de geschreven
+       kaart overnemen. Was er iets misgegaan tijdens het schrijven, dan stond
+       er anders een halve zin in de hero. */
+    kaartInSlot();
     afronden();
   }, 1060);
 }
@@ -1313,6 +1402,12 @@ function afronden(){
   /* De donkere laag eerst laten wegtrekken. Kwam de tekst op hetzelfde moment
      op, dan ging de brief in één klap over in de pagina. */
   setTimeout(() => { podium = true; reveals(); }, 450);
+  if(naarVideo){
+    setTimeout(() => {
+      const v = document.getElementById('s-video');
+      if(v) v.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 1100);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1336,7 +1431,9 @@ $('#gateform').addEventListener('submit', e => {
 function kaartInSlot(){
   const slot = $('#slotcard');
   if(!slot) return;
-  const txt = fill(copy().card).replace(/\n/g,'<br>');
+  const txt = copy().regels.map(fill)
+                .map(r => '<span class="card-line">' + r.replace(/\|/g,'<br>') + '</span>')
+                .join('');
   slot.innerHTML =
     `<div class="card-txt">${txt}</div>` +
     `<div class="card-foot"><div class="card-sign">${D.adviseur.split(' ')[0]}</div>${QR}</div>`;
@@ -1364,9 +1461,9 @@ $('#m-g').onclick = () => zetModus('generiek');
 $('#l-nl').onclick = () => zetTaal('nl');
 $('#l-pl').onclick = () => zetTaal('pl');
 $('#painx').onclick = () => $('#pain').classList.remove('on');
-$('#envbtn').onclick  = openMaken;
-$('#env').onclick     = openMaken;
-$('#envskip').onclick = doorspoelen;
+$('#env').onclick    = openMaken;          /* ongeduldig? tik de envelop aan */
+$('#kzbtn').onclick  = () => sluit(true);
+$('#kzlees').onclick = () => sluit(false);
 
 function toonData(){
   $('#datatbl').innerHTML = Object.keys(D).map(k =>
