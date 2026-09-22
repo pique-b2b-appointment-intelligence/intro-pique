@@ -160,7 +160,7 @@ a{color:inherit}
 }
 .cardlayer.gone{opacity:0;visibility:hidden;pointer-events:none}
 
-.stage{position:relative;width:min(88vw,424px)}
+.stage{position:relative;width:min(88vw,424px);margin-bottom:5.6rem}
 
 .env{
   position:relative;width:100%;aspect-ratio:1.46/1;z-index:3;
@@ -170,7 +170,8 @@ a{color:inherit}
   opacity:0;transform:translateY(64px) scale(.93);filter:blur(12px);
   transition:opacity .9s ease,transform 1s cubic-bezier(.16,.84,.34,1),filter .9s ease
 }
-.env.in{opacity:1;transform:none;filter:none}
+.env.in{opacity:1;transform:none;filter:none;cursor:pointer}
+.env.open{cursor:default}
 .env.weg{
   opacity:0;transform:translateY(54px) scale(.96);filter:blur(4px);
   transition:opacity .6s ease,transform .75s ease,filter .6s ease
@@ -199,14 +200,33 @@ a{color:inherit}
   line-height:1.4;color:#1d3a56
 }
 .env-addr b{display:block;font-weight:600}
-.env-cap{
-  position:absolute;left:0;right:0;bottom:-2.9rem;text-align:center;
-  color:rgba(255,255,255,.74);font-size:.86rem;font-weight:600;
-  opacity:0;transform:translateY(9px);
-  transition:opacity .65s ease .3s,transform .65s ease .3s
+.env-foot{
+  position:absolute;left:0;right:0;bottom:-5.6rem;
+  display:flex;flex-direction:column;align-items:center;gap:.9rem;
+  opacity:0;transform:translateY(11px);pointer-events:none;z-index:6;
+  transition:opacity .6s ease,transform .6s ease
 }
-.env-cap.in{opacity:1;transform:none}
-.env-cap.weg{opacity:0;transform:translateY(-7px);transition:opacity .4s ease,transform .4s ease}
+.env-foot.in{opacity:1;transform:none;pointer-events:auto}
+.env-cap{color:rgba(255,255,255,.72);font-size:.86rem;font-weight:600;text-align:center}
+.env-btn{
+  font:inherit;font-weight:700;font-size:.95rem;
+  background:var(--amber);color:var(--navy);
+  border:0;border-radius:99px;padding:.74rem 1.7rem;cursor:pointer;
+  box-shadow:0 8px 26px rgba(255,193,54,.3);
+  transition:transform .18s ease,box-shadow .18s ease
+}
+.env-btn:hover{transform:translateY(-1px);box-shadow:0 12px 32px rgba(255,193,54,.4)}
+.env-btn:active{transform:scale(.97)}
+.env-skip{
+  position:absolute;left:0;right:0;bottom:-3.4rem;margin:0 auto;width:max-content;
+  font:inherit;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.38);
+  background:none;border:0;cursor:pointer;padding:.4rem .9rem;
+  text-decoration:underline;text-underline-offset:3px;
+  opacity:0;visibility:hidden;z-index:6;
+  transition:opacity .5s ease .5s,visibility .5s,color .2s
+}
+.env-skip.in{opacity:1;visibility:visible}
+.env-skip:hover{color:rgba(255,255,255,.78)}
 
 .card{
   position:absolute;top:0;left:3%;width:94%;aspect-ratio:1.5/1;z-index:2;
@@ -647,7 +667,11 @@ body.js .fx.in{opacity:1;transform:none;filter:none}
       </div>
     </div>
 
-    <p class="env-cap" id="envcap"></p>
+    <div class="env-foot" id="envfoot">
+      <p class="env-cap" id="envcap"></p>
+      <button class="env-btn" id="envbtn" type="button"></button>
+    </div>
+    <button class="env-skip" id="envskip" type="button"></button>
   </div>
 </div>
 
@@ -878,6 +902,7 @@ const T = {
       gate_note:'De pagina is 30 dagen geldig en staat niet in Google.',
       gate_hint:'Voor deze demo is de code <b>K7M2</b>.',
       env_cap:'Dit lag deze week bij je in de bus',
+      env_btn:'Maak open', env_skip:'Overslaan',
       card:'{voornaam}, gefeliciteerd met je huis aan de {straat}. Ik heb je dossier nog eens nagelopen.\nBij ons staat je inboedel nog niet verzekerd, en er ligt {cashback} voor je klaar. Wil je het zien?',
       lang_lbl:'Je kaart kwam in het', lang_val:'Pools',
       hero_h:'Gefeliciteerd met de <span class="hl">{straat},</span> {voornaam}',
@@ -939,6 +964,7 @@ const T = {
       gate_note:'Strona jest ważna 30 dni i nie znajdziesz jej w Google.',
       gate_hint:'W tej wersji demo kod to <b>K7M2</b>.',
       env_cap:'To leżało w tym tygodniu w Twojej skrzynce',
+      env_btn:'Otwórz', env_skip:'Pomiń',
       card:'{voornaam}, gratulacje z okazji domu przy {straat}. Jeszcze raz przejrzałam Twoją sprawę.\nTwoje mieszkanie nie jest u nas ubezpieczone, a czeka na Ciebie {cashback}. Chcesz zobaczyć?',
       lang_lbl:'Kartka przyszła po', lang_val:'polsku',
       hero_h:'{voornaam}, gratulacje z okazji domu przy <span class="hl">{straat}</span>',
@@ -1151,26 +1177,60 @@ function render(){
 let klokken = [];
 const later = (fn, ms) => klokken.push(setTimeout(fn, ms));
 
-/* De envelop komt binnen met zijn naam erop, de kaart komt eruit omhoog,
-   en pas daarna wordt er geschreven. Zonder die envelop is het maar een
-   kaartje op een donker scherm en zegt het niets. */
-function postBezorgen(){
-  const env = $('#env'), cap = $('#envcap'), card = $('#card');
+let geopend = false;
 
+/* Caveat komt van Google Fonts. Begint de intro voordat dat schrift binnen is,
+   dan wordt de kaart opgemeten met een vervangend lettertype en verspringt de
+   tekst halverwege. Vandaar dit wachtje, met een noodrem van 2,5 seconde voor
+   het geval het schrift helemaal niet komt. */
+function startIntro(vertraging){
+  const gaan = () => later(postBezorgen, vertraging);
+  if(document.fonts && document.fonts.ready){
+    Promise.race([
+      document.fonts.ready,
+      new Promise(r => setTimeout(r, 2500))
+    ]).then(gaan);
+  } else {
+    gaan();
+  }
+}
+
+/* De envelop komt binnen met zijn naam erop en blijft daar liggen. Hij gaat
+   pas open als je hem zelf opent. Eerder liep dat op een rij timers door,
+   en dan kijk je naar iets wat al besloten is in plaats van dat je post
+   opent. De envelop zelf is ook aanklikbaar, niet alleen de knop. */
+function postBezorgen(){
+  const c = copy();
   $('#envaddr').innerHTML =
     `<b>${D.voornaam} ${D.achternaam}</b>${D.adres}<br>${D.plaats}`;
-  cap.textContent = fill(copy().env_cap);
+  $('#envcap').textContent  = fill(c.env_cap);
+  $('#envbtn').textContent  = fill(c.env_btn);
+  $('#envskip').textContent = fill(c.env_skip);
   $('#cardsign').textContent = D.adviseur.split(' ')[0];
 
-  requestAnimationFrame(() => env.classList.add('in'));
-  later(() => cap.classList.add('in'), 350);
-  later(() => card.classList.add('uit'), 1050);
+  /* Geen requestAnimationFrame om de overgang te starten. Die callback gaat
+     niet af zolang de browser geen beeld tekent, bijvoorbeeld in een tabblad
+     op de achtergrond, en dan blijft de envelop op blur staan. Een reflow
+     legt de begintoestand vast en daarna start de overgang gewoon. */
+  void $('#env').offsetWidth;
+  $('#env').classList.add('in');
+  later(() => $('#envfoot').classList.add('in'), 480);
+}
+
+function openMaken(){
+  if(geopend) return;
+  geopend = true;
+
+  $('#envfoot').classList.remove('in');
+  $('#env').classList.add('open');
+  $('#card').classList.add('uit');
+
   later(() => {
-    env.classList.add('weg');
-    cap.classList.add('weg');
-    card.classList.add('midden');
-  }, 1780);
-  later(schrijfKaart, 2380);
+    $('#env').classList.add('weg');
+    $('#card').classList.add('midden');
+    $('#envskip').classList.add('in');
+  }, 640);
+  later(schrijfKaart, 1200);
 }
 
 function schrijfKaart(){
@@ -1194,12 +1254,13 @@ function schrijfKaart(){
   klokken.push(tick);
 }
 
-/* wie het niet wil afwachten, klikt hem weg */
+/* wie de rest niet wil afwachten, drukt op overslaan */
 function doorspoelen(){
-  if($('#slotcard').classList.contains('on')) return;
+  if(!geopend || $('#slotcard').classList.contains('on')) return;
   klokken.forEach(clearTimeout); klokken.forEach(clearInterval); klokken = [];
+  $('#envfoot').classList.remove('in');
+  $('#envskip').classList.remove('in');
   $('#env').classList.add('weg');
-  $('#envcap').classList.add('weg');
   $('#card').classList.add('uit','midden');
   $('#cardtxt').innerHTML = fill(copy().card).replace(/\n/g,'<br>');
   vliegNaarSlot();
@@ -1213,13 +1274,22 @@ function vliegNaarSlot(){
 
   if(b.width < 20){ afronden(); return; }
 
+  /* De gemeten rechthoek zit al inclusief de transform van 'midden'. Laat je
+     die klasse staan, dan wordt hij er bij het vastzetten een tweede keer
+     bovenop gelegd en springt de kaart één beeld. Dus eerst de overgang uit,
+     de transform schoon, het kader vastzetten, en pas daarna weer animeren. */
   card.classList.add('card-flying');
-  card.style.left = a.left + 'px';
-  card.style.top  = a.top + 'px';
+  card.classList.remove('uit', 'midden');
+  card.style.transition = 'none';
+  card.style.left   = a.left + 'px';
+  card.style.top    = a.top + 'px';
   card.style.width  = a.width + 'px';
   card.style.height = a.height + 'px';
+  card.style.transform = 'none';
+  void card.offsetWidth;
+  card.style.transition = '';
 
-  requestAnimationFrame(() => {
+  {
     const s  = b.width / a.width;
     const dx = (b.left + b.width/2) - (a.left + a.width/2);
     const dy = (b.top  + b.height/2) - (a.top  + a.height/2);
@@ -1227,7 +1297,7 @@ function vliegNaarSlot(){
     card.style.boxShadow = '0 1px 2px rgba(3,3,41,.1), 0 10px 26px rgba(3,3,41,.16)';
     $('#cardlayer').style.background = 'rgba(3,3,41,0)';
     $('#cardlayer').style.backdropFilter = 'blur(0px)';
-  });
+  }
 
   setTimeout(() => {
     slot.innerHTML = card.innerHTML;
@@ -1253,7 +1323,7 @@ $('#gateform').addEventListener('submit', e => {
   if(in_.value.trim().toUpperCase() === D.code){
     $('#gate').classList.add('gone');
     $('#cardlayer').classList.remove('gone');
-    later(postBezorgen, 260);
+    startIntro(260);
   } else {
     $('#gateform').classList.add('shake');
     setTimeout(() => $('#gateform').classList.remove('shake'), 420);
@@ -1293,7 +1363,9 @@ $('#m-g').onclick = () => zetModus('generiek');
 $('#l-nl').onclick = () => zetTaal('nl');
 $('#l-pl').onclick = () => zetTaal('pl');
 $('#painx').onclick = () => $('#pain').classList.remove('on');
-$('#cardlayer').addEventListener('click', doorspoelen);
+$('#envbtn').onclick  = openMaken;
+$('#env').onclick     = openMaken;
+$('#envskip').onclick = doorspoelen;
 
 function toonData(){
   $('#datatbl').innerHTML = Object.keys(D).map(k =>
@@ -1313,7 +1385,8 @@ function floatIn(scope){
   els.forEach((el, i) => {
     const d = i * 70;
     el.style.setProperty('--d', d + 'ms');
-    requestAnimationFrame(() => el.classList.add('in'));
+    void el.offsetWidth;
+    el.classList.add('in');
     setTimeout(() => {
       el.classList.remove('fx', 'in');
       el.style.removeProperty('--d');
@@ -1337,11 +1410,15 @@ function parallax(){
   }
 }
 
-let bezig = false;
+/* Op tijd geknepen in plaats van op een frame. Blijft requestAnimationFrame
+   uit, dan bleef de vlag hangen en stopte het invliegen bij het scrollen. */
+let laatst = 0;
 function opScroll(){
-  if(bezig) return;
-  bezig = true;
-  requestAnimationFrame(() => { reveals(); parallax(); bezig = false; });
+  const nu = Date.now();
+  if(nu - laatst < 50) return;
+  laatst = nu;
+  reveals();
+  parallax();
 }
 addEventListener('scroll', opScroll, {passive:true});
 addEventListener('resize', opScroll);
@@ -1379,7 +1456,7 @@ if(modus === 'generiek'){
 } else if(P.has('open')){
   $('#gate').classList.add('gone');
   $('#cardlayer').classList.remove('gone');
-  later(postBezorgen, 240);
+  startIntro(240);
 } else {
   setTimeout(() => $('#code').focus(), 500);
 }
