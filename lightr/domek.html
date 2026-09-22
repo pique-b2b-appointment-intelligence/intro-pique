@@ -1250,7 +1250,7 @@ function schrijfKaart(){
   const tick = setInterval(() => {
     if(i >= chars.length){ clearInterval(tick); later(vliegNaarSlot, 480); return; }
     chars[i].classList.add('on'); i++;
-  }, 21);
+  }, 26);
   klokken.push(tick);
 }
 
@@ -1310,8 +1310,9 @@ function afronden(){
   $('#cardlayer').classList.add('gone');
   document.body.classList.remove('locked');
   setTimeout(() => { const l = $('#cardlayer'); if(l) l.remove(); }, 700);
-  podium = true;
-  reveals();
+  /* De donkere laag eerst laten wegtrekken. Kwam de tekst op hetzelfde moment
+     op, dan ging de brief in één klap over in de pagina. */
+  setTimeout(() => { podium = true; reveals(); }, 450);
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1379,26 +1380,37 @@ $('#data').addEventListener('click', e => { if(e.target.id === 'data') $('#data'
 /* Elementen zweven één voor één binnen in plaats van allemaal tegelijk.
    Na afloop halen we de klasse er weer af, anders blijft die trage
    overgang op de hover van de pakketkaarten zitten. */
-function floatIn(scope){
+const STAP = 180;    /* tijd tussen twee onderdelen */
+const MAXD = 1500;    /* niemand wacht langer dan dit op het laatste */
+
+function floatIn(scope, start){
+  /* Een verborgen element telde mee in de rij en liet een gat van een tel
+     vallen waarin je niets zag gebeuren. Denk aan het formulier dat alleen
+     in de generieke versie bestaat. */
   const els = Array.from(scope.querySelectorAll('.fx'))
-                   .filter(e => !e.classList.contains('in'));
+                   .filter(e => !e.classList.contains('in') && e.getClientRects().length);
   els.forEach((el, i) => {
-    const d = i * 70;
+    const d = Math.min(start + i * STAP, MAXD);
     el.style.setProperty('--d', d + 'ms');
     void el.offsetWidth;
     el.classList.add('in');
     setTimeout(() => {
       el.classList.remove('fx', 'in');
       el.style.removeProperty('--d');
-    }, d + 1250);
+    }, d + 1300);
   });
+  return Math.min(start + els.length * STAP, MAXD);
 }
 
+/* Eén teller die doorloopt over alle secties samen. Begon elke sectie weer
+   op nul, dan kwam de kop van het blok eronder tegelijk met de eerste zin
+   van de hero binnen, en dat leest als één willekeurige stortvloed. */
 function reveals(){
   if(!podium) return;
+  let d = 0;
   $$('header.hero, main section, footer.foot').forEach(sec => {
     const r = sec.getBoundingClientRect();
-    if(r.top < innerHeight * .9 && r.bottom > 0) floatIn(sec);
+    if(r.top < innerHeight * .9 && r.bottom > 0) d = floatIn(sec, d);
   });
 }
 
