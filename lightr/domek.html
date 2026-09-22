@@ -147,23 +147,83 @@ a{color:inherit}
 .gate-hint b{color:var(--amber);font-weight:800;letter-spacing:.1em}
 .gate-note{font-size:.76rem;color:rgba(255,255,255,.36);margin-top:.5rem}
 
-/* ─── kaartlaag ────────────────────────────────────────── */
+/* ─── de post ──────────────────────────────────────────
+   Iemand houdt een kaart vast en scant hem. Deze laag moet
+   in één oogopslag zeggen: dit is die kaart, van ons, bij jou
+   bezorgd. Daarom eerst de envelop met zijn naam erop, en pas
+   daarna de kaart die eruit omhoog komt.                    */
 .cardlayer{
   position:fixed;inset:0;z-index:280;display:grid;place-items:center;
-  background:rgba(3,3,41,.82);backdrop-filter:blur(3px);
-  transition:opacity .55s ease,visibility .55s
+  background:rgba(3,3,41,.88);backdrop-filter:blur(5px);
+  transition:opacity .6s ease,visibility .6s;
+  padding:1.2rem
 }
 .cardlayer.gone{opacity:0;visibility:hidden;pointer-events:none}
+
+.stage{position:relative;width:min(88vw,424px)}
+
+.env{
+  position:relative;width:100%;aspect-ratio:1.46/1;z-index:3;
+  background:linear-gradient(152deg,#FFFDF6 0%,#FBF5E7 54%,#F3EAD6 100%);
+  border-radius:3px;
+  box-shadow:0 2px 4px rgba(3,3,41,.22),0 34px 74px rgba(3,3,41,.52);
+  opacity:0;transform:translateY(64px) scale(.93);filter:blur(12px);
+  transition:opacity .9s ease,transform 1s cubic-bezier(.16,.84,.34,1),filter .9s ease
+}
+.env.in{opacity:1;transform:none;filter:none}
+.env.weg{
+  opacity:0;transform:translateY(54px) scale(.96);filter:blur(4px);
+  transition:opacity .6s ease,transform .75s ease,filter .6s ease
+}
+/* de naad van de dichtgeplakte flap */
+.env::after{
+  content:'';position:absolute;left:0;right:0;top:0;height:56%;
+  background:linear-gradient(180deg,rgba(164,131,72,.09),rgba(164,131,72,0));
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  border-bottom:1px solid rgba(164,131,72,.22);
+  pointer-events:none
+}
+.env-in{
+  position:absolute;inset:0;z-index:2;
+  padding:clamp(1rem,4.2vw,1.45rem);
+  display:flex;flex-direction:column;justify-content:space-between
+}
+.env-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.env-logo{height:clamp(16px,4.4vw,19px);width:auto;opacity:.9}
+.env-stamp{
+  width:clamp(38px,10.5vw,47px);height:auto;flex:none;
+  filter:drop-shadow(0 1px 2px rgba(3,3,41,.18))
+}
+.env-addr{
+  font-family:var(--hand);font-size:clamp(.92rem,3.3vw,1.14rem);
+  line-height:1.4;color:#1d3a56
+}
+.env-addr b{display:block;font-weight:600}
+.env-cap{
+  position:absolute;left:0;right:0;bottom:-2.9rem;text-align:center;
+  color:rgba(255,255,255,.74);font-size:.86rem;font-weight:600;
+  opacity:0;transform:translateY(9px);
+  transition:opacity .65s ease .3s,transform .65s ease .3s
+}
+.env-cap.in{opacity:1;transform:none}
+.env-cap.weg{opacity:0;transform:translateY(-7px);transition:opacity .4s ease,transform .4s ease}
+
 .card{
-  width:min(87vw,392px);aspect-ratio:1.5/1;
+  position:absolute;top:0;left:3%;width:94%;aspect-ratio:1.5/1;z-index:2;
   background:
     radial-gradient(120% 90% at 12% 6%,#fffefb 0%,#fdfaf1 46%,#f8f2e4 100%);
   border-radius:4px;
   box-shadow:0 2px 3px rgba(3,3,41,.16),0 26px 60px rgba(3,3,41,.42);
-  padding:clamp(1.15rem,4.4vw,1.7rem);
-  position:relative;transform-origin:center center;
-  display:flex;flex-direction:column;justify-content:space-between
+  padding:clamp(1.05rem,4.2vw,1.55rem);
+  transform-origin:center center;
+  display:flex;flex-direction:column;justify-content:space-between;
+  opacity:0;
+  transition:opacity .45s ease,transform 1s cubic-bezier(.16,.84,.34,1)
 }
+/* komt omhoog uit de envelop, blijft er nog half in steken */
+.card.uit{opacity:1;transform:translateY(-44%)}
+/* envelop is weg, de kaart komt naar je toe */
+.card.midden{z-index:5;transform:translateY(-22%) scale(1.06)}
 .card::after{
   content:'';position:absolute;inset:0;border-radius:4px;pointer-events:none;
   background:repeating-linear-gradient(94deg,rgba(10,44,69,.022) 0 1px,transparent 1px 3px);
@@ -181,7 +241,8 @@ a{color:inherit}
   width:clamp(46px,13vw,58px);height:clamp(46px,13vw,58px);flex:none;
   background:#fff;padding:3px;border-radius:2px;box-shadow:0 1px 3px rgba(3,3,41,.14)
 }
-.card-flying{position:fixed;z-index:281;margin:0;transition:transform 1.05s cubic-bezier(.66,0,.24,1),box-shadow 1.05s}
+.card.card-flying{position:fixed;z-index:281;margin:0;left:auto;
+  transition:transform 1.05s cubic-bezier(.66,0,.24,1),box-shadow 1.05s}
 
 /* ─── hero ─────────────────────────────────────────────── */
 .hero{
@@ -218,8 +279,10 @@ a{color:inherit}
   color:var(--faint)
 }
 #slotcard{
-  width:100%;max-width:292px;
-  transform:rotate(-1.6deg);opacity:0;transition:opacity .4s;
+  position:relative;top:auto;left:auto;
+  width:100%;max-width:292px;opacity:0;
+  transform:rotate(-1.6deg) translateY(var(--py,0px));
+  transition:opacity .5s ease;
   padding:.95rem 1rem;
   box-shadow:0 1px 2px rgba(3,3,41,.1),0 10px 26px rgba(3,3,41,.16)
 }
@@ -487,12 +550,20 @@ body.generiek .herogrid{grid-template-columns:1fr}
   border:0;border-radius:10px;padding:.66rem 1.2rem;cursor:pointer;margin-top:1.2rem
 }
 
-/* alleen verbergen als het script draait, anders blijft de pagina leeg bij een fout */
-body.js .reveal{opacity:0;transform:translateY(16px)}
-body.js .reveal.in{opacity:1;transform:none;transition:opacity .68s ease,transform .68s cubic-bezier(.2,.7,.3,1)}
+/* Alles zweeft binnen in plaats van er te staan. Alleen verbergen als het
+   script draait, anders blijft de pagina leeg zodra er iets misgaat. */
+body.js .fx{
+  opacity:0;transform:translateY(34px) scale(.985);filter:blur(8px);
+  transition:
+    opacity .9s ease var(--d,0ms),
+    transform 1.05s cubic-bezier(.16,.84,.34,1) var(--d,0ms),
+    filter .9s ease var(--d,0ms)
+}
+body.js .fx.in{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important}
-  .reveal{opacity:1;transform:none}
+  body.js .fx{opacity:1;transform:none;filter:none}
+  .env,.card{opacity:1;filter:none}
 }
 </style>
 </head>
@@ -536,7 +607,23 @@ body.js .reveal.in{opacity:1;transform:none;transition:opacity .68s ease,transfo
 
 <!-- ══ kaartlaag ══ -->
 <div class="cardlayer gone" id="cardlayer">
-  <div class="card" id="card">
+  <div class="stage">
+
+    <div class="env" id="env">
+      <div class="env-in">
+        <div class="env-top">
+          <svg class="env-logo" viewBox="0 0 256.42 74.8" aria-label="Domek">
+            <path fill="#4eb4e2" d="M54.4 2.1 2.6 40.9h13.9v33.5h24.8V45.6h27v28.8h24.9V40.9h13.9z"/>
+            <path fill="#97c03d" d="M41.35 68.26h26.12v6.2H41.35z"/>
+            <text x="118" y="56" font-family="Plus Jakarta Sans,sans-serif" font-size="42" font-weight="800" fill="#1d3a56" letter-spacing="-1.5">Domek</text>
+          </svg>
+          <svg class="env-stamp" viewBox="0 0 44 54" aria-hidden="true"><rect x="4.0" y="4.0" width="36.0" height="46.0" fill="url(#zg)"/><defs><linearGradient id="zg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4eb4e2"/><stop offset="1" stop-color="#1189c7"/></linearGradient></defs><rect x="6.6" y="6.6" width="30.8" height="40.8" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".7"/><path d="M22 19.5 29.5 26v8h-15v-8z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><path d="M19.9 34v-4.6h4.2V34" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><text x="22.0" y="45" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="5.2" font-weight="800" fill="rgba(255,255,255,.85)" letter-spacing=".4">NL</text><g fill="#FBF5E7"><circle cx="4.0" cy="4.0" r="2.15"/><circle cx="4.0" cy="50.0" r="2.15"/><circle cx="8.5" cy="4.0" r="2.15"/><circle cx="8.5" cy="50.0" r="2.15"/><circle cx="13.0" cy="4.0" r="2.15"/><circle cx="13.0" cy="50.0" r="2.15"/><circle cx="17.5" cy="4.0" r="2.15"/><circle cx="17.5" cy="50.0" r="2.15"/><circle cx="22.0" cy="4.0" r="2.15"/><circle cx="22.0" cy="50.0" r="2.15"/><circle cx="26.5" cy="4.0" r="2.15"/><circle cx="26.5" cy="50.0" r="2.15"/><circle cx="31.0" cy="4.0" r="2.15"/><circle cx="31.0" cy="50.0" r="2.15"/><circle cx="35.5" cy="4.0" r="2.15"/><circle cx="35.5" cy="50.0" r="2.15"/><circle cx="40.0" cy="4.0" r="2.15"/><circle cx="40.0" cy="50.0" r="2.15"/><circle cx="4.0" cy="4.0" r="2.15"/><circle cx="40.0" cy="4.0" r="2.15"/><circle cx="4.0" cy="8.6" r="2.15"/><circle cx="40.0" cy="8.6" r="2.15"/><circle cx="4.0" cy="13.2" r="2.15"/><circle cx="40.0" cy="13.2" r="2.15"/><circle cx="4.0" cy="17.8" r="2.15"/><circle cx="40.0" cy="17.8" r="2.15"/><circle cx="4.0" cy="22.4" r="2.15"/><circle cx="40.0" cy="22.4" r="2.15"/><circle cx="4.0" cy="27.0" r="2.15"/><circle cx="40.0" cy="27.0" r="2.15"/><circle cx="4.0" cy="31.6" r="2.15"/><circle cx="40.0" cy="31.6" r="2.15"/><circle cx="4.0" cy="36.2" r="2.15"/><circle cx="40.0" cy="36.2" r="2.15"/><circle cx="4.0" cy="40.8" r="2.15"/><circle cx="40.0" cy="40.8" r="2.15"/><circle cx="4.0" cy="45.4" r="2.15"/><circle cx="40.0" cy="45.4" r="2.15"/><circle cx="4.0" cy="50.0" r="2.15"/><circle cx="40.0" cy="50.0" r="2.15"/></g><g fill="none" stroke="rgba(29,58,86,.32)" stroke-width="1.1"><circle cx="37" cy="12" r="9.5"/><circle cx="37" cy="12" r="6.6"/></g></svg>
+        </div>
+        <div class="env-addr" id="envaddr"></div>
+      </div>
+    </div>
+
+    <div class="card" id="card">
     <div class="card-txt" id="cardtxt"></div>
     <div class="card-foot">
       <div class="card-sign" id="cardsign">Agnieszka</div>
@@ -556,7 +643,10 @@ body.js .reveal.in{opacity:1;transform:none;transition:opacity .68s ease,transfo
           <path d="M10 25h1v2h-1zm3 1h2v1h-2zm4-1h1v2h-1zm3 1h1v1h-1zm3-1h1v2h-1zm3 1h1v1h-1z"/>
         </g>
       </svg>
+      </div>
     </div>
+
+    <p class="env-cap" id="envcap"></p>
   </div>
 </div>
 
@@ -574,15 +664,15 @@ body.js .reveal.in{opacity:1;transform:none;transition:opacity .68s ease,transfo
 
     <div class="herogrid">
       <div>
-        <h1 data-t="hero_h"></h1>
-        <p class="lead" data-t="hero_p"></p>
+        <h1 class="fx" data-t="hero_h"></h1>
+        <p class="lead fx" data-t="hero_p"></p>
 
-        <div class="validity p-only">
+        <div class="validity p-only fx">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
           <span data-t="valid"></span>
         </div>
 
-        <form class="genform" onsubmit="return false">
+        <form class="genform fx" onsubmit="return false">
           <label data-t="gf_l1">Je naam</label>
           <input type="text" placeholder="Voornaam en achternaam">
           <label data-t="gf_l2">Je e-mailadres</label>
@@ -605,11 +695,11 @@ body.js .reveal.in{opacity:1;transform:none;transition:opacity .68s ease,transfo
 
 <!-- ══ video ══ -->
 <section class="sec p-only" id="s-video">
-  <div class="wrap reveal">
-    <div class="eyebrow" data-t="vid_eye">Van je adviseur</div>
-    <h2 data-t="vid_h"></h2>
-    <p class="lead" data-t="vid_p"></p>
-    <div class="video">
+  <div class="wrap">
+    <div class="eyebrow fx" data-t="vid_eye">Van je adviseur</div>
+    <h2 class="fx" data-t="vid_h"></h2>
+    <p class="lead fx" data-t="vid_p"></p>
+    <div class="video fx">
       <span class="stamp">Voorbeeld</span>
       <div class="play" aria-hidden="true"></div>
       <span class="cap" data-t="vid_cap"></span>
@@ -619,33 +709,33 @@ body.js .reveal.in{opacity:1;transform:none;transition:opacity .68s ease,transfo
 
 <!-- ══ status ══ -->
 <section class="sec" id="s-status" style="background:var(--white);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)">
-  <div class="wrap reveal">
-    <div class="eyebrow" data-t="st_eye">Je dossier</div>
-    <h2 data-t="st_h"></h2>
-    <p class="lead" data-t="st_p"></p>
+  <div class="wrap">
+    <div class="eyebrow fx" data-t="st_eye">Je dossier</div>
+    <h2 class="fx" data-t="st_h"></h2>
+    <p class="lead fx" data-t="st_p"></p>
     <div class="rows" id="statusrows"></div>
   </div>
 </section>
 
 <!-- ══ pakketten ══ -->
 <section class="sec" id="s-pk">
-  <div class="wrap reveal">
-    <div class="eyebrow" data-t="pk_eye">Wat nog open staat</div>
-    <h2 data-t="pk_h"></h2>
-    <p class="lead" data-t="pk_p"></p>
+  <div class="wrap">
+    <div class="eyebrow fx" data-t="pk_eye">Wat nog open staat</div>
+    <h2 class="fx" data-t="pk_h"></h2>
+    <p class="lead fx" data-t="pk_p"></p>
     <div class="pk" id="pkgrid"></div>
-    <p class="disclaim" data-t="pk_dis"></p>
+    <p class="disclaim fx" data-t="pk_dis"></p>
   </div>
 </section>
 
 <!-- ══ cheque ══ -->
 <section class="sec chq-sec" id="s-chq">
-  <div class="wrap reveal">
-    <div class="eyebrow" data-t="cq_eye">Voor wie jij kent</div>
-    <h2 data-t="cq_h"></h2>
-    <p class="lead" data-t="cq_p"></p>
+  <div class="wrap">
+    <div class="eyebrow fx" data-t="cq_eye">Voor wie jij kent</div>
+    <h2 class="fx" data-t="cq_h"></h2>
+    <p class="lead fx" data-t="cq_p"></p>
 
-    <div class="cheque">
+    <div class="cheque fx">
       <div class="cheque-top">
         <div>
           <div class="lbl" data-t="cq_for">Op naam van</div>
@@ -663,17 +753,17 @@ body.js .reveal.in{opacity:1;transform:none;transition:opacity .68s ease,transfo
       </div>
     </div>
 
-    <p class="trace-l" data-t="cq_trace_l"></p>
+    <p class="trace-l fx" data-t="cq_trace_l"></p>
     <div class="trace" id="trace"></div>
   </div>
 </section>
 
 <!-- ══ adviseur ══ -->
 <section class="sec p-only" id="s-adv" style="background:var(--white);border-top:1px solid var(--line-2)">
-  <div class="wrap reveal">
-    <div class="eyebrow" data-t="ad_eye">Vragen</div>
-    <h2 data-t="ad_h"></h2>
-    <div class="adv">
+  <div class="wrap">
+    <div class="eyebrow fx" data-t="ad_eye">Vragen</div>
+    <h2 class="fx" data-t="ad_h"></h2>
+    <div class="adv fx">
       <div class="ph" id="advini">AK</div>
       <div class="tx">
         <b data-t="ad_name"></b>
@@ -686,11 +776,11 @@ body.js .reveal.in{opacity:1;transform:none;transition:opacity .68s ease,transfo
 
 <footer class="foot">
   <div class="wrap">
-    <div class="brands">
+    <div class="brands fx">
       <span>Domek</span><span>Polisa</span><span>Nederlandse Assuradeuren</span><span>Kredyt</span>
     </div>
-    <p data-t="ft_1"></p>
-    <p data-t="ft_2" style="margin-top:.5rem"></p>
+    <p class="fx" data-t="ft_1"></p>
+    <p class="fx" data-t="ft_2" style="margin-top:.5rem"></p>
   </div>
 </footer>
 
@@ -786,6 +876,7 @@ const T = {
       gate_btn:'Open',
       gate_note:'De pagina is 30 dagen geldig en staat niet in Google.',
       gate_hint:'Voor deze demo is de code <b>K7M2</b>.',
+      env_cap:'Dit lag deze week bij je in de bus',
       card:'{voornaam}, gefeliciteerd met je huis aan de {adres}. Ik heb iets voor je klaargezet.\nScan de code hiernaast.',
       lang_lbl:'Je kaart kwam in het', lang_val:'Pools',
       hero_h:'Gefeliciteerd met de <span class="hl">{straat},</span> {voornaam}',
@@ -846,6 +937,7 @@ const T = {
       gate_btn:'Otwórz',
       gate_note:'Strona jest ważna 30 dni i nie znajdziesz jej w Google.',
       gate_hint:'W tej wersji demo kod to <b>K7M2</b>.',
+      env_cap:'To leżało w tym tygodniu w Twojej skrzynce',
       card:'{voornaam}, gratulacje z okazji domu przy {adres}. Przygotowałam coś dla Ciebie.\nZeskanuj kod obok.',
       lang_lbl:'Kartka przyszła po', lang_val:'polsku',
       hero_h:'{voornaam}, gratulacje z okazji domu przy <span class="hl">{straat}</span>',
@@ -974,6 +1066,7 @@ const PAIN_KICK = 'De kaart kost hetzelfde en de scan kost hetzelfde. Het moment
    ═══════════════════════════════════════════════════════ */
 let taal = 'nl';
 let modus = 'persoonlijk';
+let podium = false;   /* pas invliegen nadat de post binnen is */
 let V = view('nl');
 
 /* de QR op de kaart, één keer vastgelegd zodat we hem kunnen hergebruiken */
@@ -1004,7 +1097,7 @@ function render(){
   /* dossierrijen */
   const rows = ROWS[taal][modus === 'persoonlijk' ? 'persoonlijk' : 'generiek'];
   $('#statusrows').innerHTML = rows.map(r => `
-    <div class="row">
+    <div class="row fx">
       <div class="k">${fill(r.k)}</div>
       <div class="v">${r.t ? `<span class="${r.t}">${fill(r.v)}</span>` : fill(r.v)}</div>
       <div class="sub">${fill(r.s)}</div>
@@ -1013,7 +1106,7 @@ function render(){
   /* pakketten */
   const pk = PK[taal][modus === 'persoonlijk' ? 'persoonlijk' : 'generiek'];
   $('#pkgrid').innerHTML = pk.map(p => `
-    <div class="p${p.best ? ' best' : ''}">
+    <div class="p fx${p.best ? ' best' : ''}">
       ${p.best ? `<span class="badge">${p.best}</span>` : ''}
       <span class="nm">${p.nm}</span>
       <span class="pr">${p.pr} <small>${p.pe}</small></span>
@@ -1036,7 +1129,7 @@ function render(){
   /* meetpunten. Lightr meet de scan, alles daarna meet Domek zelf */
   const gehaald = modus === 'persoonlijk' ? 3 : 2;
   $('#trace').innerHTML = c.trace.map((t,i) =>
-    `<span class="${i < gehaald ? 'done' : ''}">${t}</span>`).join('');
+    `<span class="fx ${i < gehaald ? 'done' : ''}">${t}</span>`).join('');
 
   /* adviseur */
   $('#advini').textContent = D.adviseur.split(' ').map(w => w[0]).join('');
@@ -1047,23 +1140,61 @@ function render(){
   $('#painlist').innerHTML = PAIN.map(p => `<li>${p}</li>`).join('');
   $('[data-t="pn_kick"]').textContent = PAIN_KICK;
   $('#pain').classList.toggle('on', modus === 'generiek');
+
+  reveals();
 }
 
 /* ═══════════════════════════════════════════════════════
    4. DE KAART DIE IN DE PAGINA LANDT
    ═══════════════════════════════════════════════════════ */
+let klokken = [];
+const later = (fn, ms) => klokken.push(setTimeout(fn, ms));
+
+/* De envelop komt binnen met zijn naam erop, de kaart komt eruit omhoog,
+   en pas daarna wordt er geschreven. Zonder die envelop is het maar een
+   kaartje op een donker scherm en zegt het niets. */
+function postBezorgen(){
+  const env = $('#env'), cap = $('#envcap'), card = $('#card');
+
+  $('#envaddr').innerHTML =
+    `<b>${D.voornaam} ${D.achternaam}</b>${D.adres}<br>${D.plaats}`;
+  cap.textContent = fill(copy().env_cap);
+  $('#cardsign').textContent = D.adviseur.split(' ')[0];
+
+  requestAnimationFrame(() => env.classList.add('in'));
+  later(() => cap.classList.add('in'), 350);
+  later(() => card.classList.add('uit'), 1050);
+  later(() => {
+    env.classList.add('weg');
+    cap.classList.add('weg');
+    card.classList.add('midden');
+  }, 1780);
+  later(schrijfKaart, 2380);
+}
+
 function schrijfKaart(){
   const txt   = fill(copy().card);
   const holder = $('#cardtxt');
-  $('#cardsign').textContent = D.adviseur.split(' ')[0];
   holder.innerHTML = txt.split('').map(ch =>
     ch === '\n' ? '<br>' : `<span class="ch">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');
   const chars = holder.querySelectorAll('.ch');
   let i = 0;
   const tick = setInterval(() => {
-    if(i >= chars.length){ clearInterval(tick); setTimeout(vliegNaarSlot, 620); return; }
+    if(i >= chars.length){ clearInterval(tick); later(vliegNaarSlot, 480); return; }
     chars[i].classList.add('on'); i++;
-  }, 26);
+  }, 21);
+  klokken.push(tick);
+}
+
+/* wie het niet wil afwachten, klikt hem weg */
+function doorspoelen(){
+  if($('#slotcard').classList.contains('on')) return;
+  klokken.forEach(clearTimeout); klokken.forEach(clearInterval); klokken = [];
+  $('#env').classList.add('weg');
+  $('#envcap').classList.add('weg');
+  $('#card').classList.add('uit','midden');
+  $('#cardtxt').innerHTML = fill(copy().card).replace(/\n/g,'<br>');
+  vliegNaarSlot();
 }
 
 function vliegNaarSlot(){
@@ -1100,8 +1231,9 @@ function vliegNaarSlot(){
 function afronden(){
   $('#cardlayer').classList.add('gone');
   document.body.classList.remove('locked');
-  setTimeout(() => $('#cardlayer').remove(), 620);
-  startReveals();
+  setTimeout(() => { const l = $('#cardlayer'); if(l) l.remove(); }, 700);
+  podium = true;
+  reveals();
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1113,7 +1245,7 @@ $('#gateform').addEventListener('submit', e => {
   if(in_.value.trim().toUpperCase() === D.code){
     $('#gate').classList.add('gone');
     $('#cardlayer').classList.remove('gone');
-    setTimeout(schrijfKaart, 340);
+    later(postBezorgen, 260);
   } else {
     $('#gateform').classList.add('shake');
     setTimeout(() => $('#gateform').classList.remove('shake'), 420);
@@ -1153,6 +1285,7 @@ $('#m-g').onclick = () => zetModus('generiek');
 $('#l-nl').onclick = () => zetTaal('nl');
 $('#l-pl').onclick = () => zetTaal('pl');
 $('#painx').onclick = () => $('#pain').classList.remove('on');
+$('#cardlayer').addEventListener('click', doorspoelen);
 
 function toonData(){
   $('#datatbl').innerHTML = Object.keys(D).map(k =>
@@ -1163,20 +1296,47 @@ $('#showdata').onclick = toonData;
 $('#dataclose').onclick = () => $('#data').classList.remove('on');
 $('#data').addEventListener('click', e => { if(e.target.id === 'data') $('#data').classList.remove('on'); });
 
-function startReveals(){
-  /* wat al in beeld staat komt meteen tevoorschijn, de rest bij het scrollen */
-  $$('.reveal').forEach(el => {
-    if(el.getBoundingClientRect().top < innerHeight * .96) el.classList.add('in');
+/* Elementen zweven één voor één binnen in plaats van allemaal tegelijk.
+   Na afloop halen we de klasse er weer af, anders blijft die trage
+   overgang op de hover van de pakketkaarten zitten. */
+function floatIn(scope){
+  const els = Array.from(scope.querySelectorAll('.fx'))
+                   .filter(e => !e.classList.contains('in'));
+  els.forEach((el, i) => {
+    const d = i * 70;
+    el.style.setProperty('--d', d + 'ms');
+    requestAnimationFrame(() => el.classList.add('in'));
+    setTimeout(() => {
+      el.classList.remove('fx', 'in');
+      el.style.removeProperty('--d');
+    }, d + 1250);
   });
-  if(!('IntersectionObserver' in window)){
-    $$('.reveal').forEach(el => el.classList.add('in'));
-    return;
-  }
-  const io = new IntersectionObserver(es => {
-    es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
-  $$('.reveal').forEach(el => io.observe(el));
 }
+
+function reveals(){
+  if(!podium) return;
+  $$('header.hero, main section, footer.foot').forEach(sec => {
+    const r = sec.getBoundingClientRect();
+    if(r.top < innerHeight * .9 && r.bottom > 0) floatIn(sec);
+  });
+}
+
+/* de kaart in de hero loopt iets achter op de scroll, dat geeft diepte */
+function parallax(){
+  const c = $('#slotcard');
+  if(c && c.classList.contains('on')){
+    c.style.setProperty('--py', (Math.min(scrollY, 760) * .055).toFixed(1) + 'px');
+  }
+}
+
+let bezig = false;
+function opScroll(){
+  if(bezig) return;
+  bezig = true;
+  requestAnimationFrame(() => { reveals(); parallax(); bezig = false; });
+}
+addEventListener('scroll', opScroll, {passive:true});
+addEventListener('resize', opScroll);
 
 /* URL-parameters, zodat je iemand direct naar één versie kunt sturen:
    ?open        slaat de codepoort over
@@ -1206,11 +1366,12 @@ if(modus === 'generiek'){
   $('#gate').classList.add('gone');
   $('#cardlayer').remove();
   document.body.classList.remove('locked');
-  startReveals();
+  podium = true;
+  reveals();
 } else if(P.has('open')){
   $('#gate').classList.add('gone');
   $('#cardlayer').classList.remove('gone');
-  setTimeout(schrijfKaart, 300);
+  later(postBezorgen, 240);
 } else {
   setTimeout(() => $('#code').focus(), 500);
 }
