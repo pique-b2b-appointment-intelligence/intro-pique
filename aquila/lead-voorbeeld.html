@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<!--
+  AQUILA LP — lead-nurture (leads onder score 7), gebouwd op Pique lp-v2 component.
+  Alleen thema (thema-aquila.css) + inhoud. Vorm zit in lp.css / lp-v2.js / lp-intro.js.
+  Lead-gegevens, observaties, video en member-foto's zijn FICTIEF / placeholder (demo).
+-->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aquila voor Nordveld</title>
+<meta name="description" content="Een persoonlijke pagina voor Nordveld Bouwgroep.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="thema-aquila.css">
+<link rel="stylesheet" href="lp-lead.css">
+<style>
+  /* pagina-eigen elementen. Gebruikt alleen thema-tokens + Aquila-navy literals. */
+  .brand-aq{font-family:var(--serif);font-weight:600;font-size:1.25rem;letter-spacing:.03em;color:var(--ink);text-decoration:none}
+  nav.solid .brand-aq{color:var(--ink)}
+
+  /* vraag-lijst in 'waarom dit ertoe doet' */
+  .qlist{list-style:none;margin:1.3rem 0 1.5rem;padding:0;display:grid;gap:.6rem}
+  .qlist li{position:relative;padding-left:1.5rem;font-family:var(--serif);font-size:1.12rem;line-height:1.4;color:var(--ink)}
+  .qlist li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent-l)}
+
+  /* ── MATRIX ── */
+  .amx-sec{padding:clamp(3.5rem,8vh,6.5rem) 24px}
+  .amx-wrap{max-width:920px;margin:0 auto}
+  .amx-eyebrow{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:1rem}
+  .amx-h{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,3.2vw,2.6rem);text-align:center;color:var(--ink);letter-spacing:-.02em;margin-bottom:.7rem}
+  .amx-sub{text-align:center;color:var(--ink2);max-width:50ch;margin:0 auto 2.2rem;font-size:1rem;line-height:1.6}
+  .amx{border:1px solid var(--line);border-radius:var(--r-kaart);overflow:hidden;background:var(--pap-0)}
+  .amx-r{display:grid;grid-template-columns:1.15fr 1.15fr 1.15fr}
+  .amx-r+.amx-r{border-top:1px solid var(--line)}
+  .amx-r>div{padding:1.05rem 1.35rem;font-size:.92rem;line-height:1.45}
+  .amx-r .c{color:var(--ink);font-weight:500}
+  .amx-r .a{background:rgba(var(--accent-rgb),.09);color:var(--ink);border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .amx-r .o{color:var(--ink3)}
+  .amx-head>div{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.95rem 1.35rem}
+  .amx-head .a{color:var(--accent);background:rgba(var(--accent-rgb),.13);font-weight:700;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .amx-head .c,.amx-head .o{color:var(--ink3)}
+  .amx .amx-r{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+  .amx.in .amx-r{opacity:1;transform:none}
+  .amx.in .amx-r:nth-child(2){transition-delay:.08s}
+  .amx.in .amx-r:nth-child(3){transition-delay:.16s}
+  .amx.in .amx-r:nth-child(4){transition-delay:.24s}
+  .amx.in .amx-r:nth-child(5){transition-delay:.32s}
+  @media(max-width:640px){.amx-r{grid-template-columns:1fr}.amx-head{display:none}.amx-r .a,.amx-r .o{border:none;border-top:1px solid var(--line)}.amx-r .a::before{content:"Aquila: ";color:var(--accent);font-weight:700}.amx-r .o::before{content:"Traditioneel: ";color:var(--ink3);font-weight:600}}
+  .tp-rn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:4rem;color:var(--accent);opacity:.9}
+
+  /* ── LEDEN: verhaal-switcher op papier (geen donker vlak) ── */
+  .mem{position:relative;padding:clamp(3.5rem,8vh,6.5rem) 24px}
+  .mem-in{max-width:1000px;margin:0 auto}
+  .mem-eyebrow{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:1.1rem}
+  .mem-h{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,3.6vw,2.8rem);letter-spacing:-.02em;line-height:1.12;text-align:center;max-width:22ch;margin:0 auto .9rem;color:var(--ink)}
+  .mem-sub{font-size:1.02rem;line-height:1.6;color:var(--ink2);max-width:56ch;margin:0 auto;text-align:center}
+  .mem-stage{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(1.4rem,3.5vw,2.8rem);align-items:stretch;
+    margin-top:2.8rem;background:var(--pap-0);border:1px solid var(--line);border-radius:22px;
+    padding:clamp(1.2rem,2.6vw,1.8rem);box-shadow:0 30px 70px rgba(var(--ink-rgb),.08);
+    opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+  .mem.in .mem-stage{opacity:1;transform:none}
+  .mem-portrait{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#0d1524;
+    outline:1px solid rgba(var(--accent-rgb),.25);outline-offset:-1px;min-height:280px}
+  .mem-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(1px) contrast(.98);opacity:0;transition:opacity .7s ease,transform 6s ease}
+  .mem-portrait img.on{opacity:1;transform:scale(1.06)}
+  .plock{position:absolute;top:12px;right:12px;z-index:2;display:inline-flex;align-items:center;gap:.35rem;font-family:var(--sans);font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,238,227,.92);background:rgba(13,21,36,.55);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(4px);border-radius:100px;padding:.32rem .6rem}
+  .plock::before{content:"";width:8px;height:8px;border:1.4px solid #C9A24E;border-bottom:none;border-radius:4px 4px 0 0;margin-bottom:-1px}
+  .pinfo{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.1rem 1.1rem .95rem;background:linear-gradient(transparent,rgba(10,15,27,.82))}
+  .pinfo .sec{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C9A24E;margin-bottom:.25rem}
+  .pinfo .fase{font-family:var(--sans);font-size:.86rem;color:rgba(243,238,227,.85)}
+  .mem-story{display:flex;flex-direction:column;justify-content:center;padding:.4rem .3rem;transition:opacity .4s ease}
+  .mem-story.fade{opacity:.18}
+  .ms-eyebrow{font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+  .ms-situatie{font-family:var(--sans);font-size:.95rem;line-height:1.5;color:var(--ink2);margin-bottom:1.15rem}
+  .ms-quote{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2.3vw,1.72rem);line-height:1.32;letter-spacing:-.01em;color:var(--ink);margin:0 0 1.3rem;position:relative}
+  .ms-quote::before{content:"\201C";position:absolute;left:-.06em;top:-.55em;font-size:2.4em;line-height:1;color:rgba(var(--accent-rgb),.2)}
+  .ms-change{border-top:1px solid var(--line);padding-top:1.05rem}
+  .ms-change .lbl{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+  .ms-change .lbl::before{content:"";width:14px;height:1.5px;background:var(--accent-l)}
+  .ms-change p{font-family:var(--sans);font-size:.95rem;line-height:1.5;color:var(--ink)}
+  .mem-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.1rem}
+  .mp-btn{display:flex;align-items:center;gap:.75rem;text-align:left;padding:.65rem .7rem;border:1px solid var(--line);border-radius:14px;background:var(--pap-0);cursor:pointer;transition:border-color .3s,background .3s,transform .3s;font:inherit}
+  .mp-btn:hover{transform:translateY(-2px);border-color:rgba(var(--accent-rgb),.4)}
+  .mp-btn.on{border-color:var(--accent-l);background:rgba(var(--accent-rgb),.07)}
+  .mp-thumb{width:42px;height:42px;border-radius:50%;overflow:hidden;flex:0 0 auto;position:relative;background:#0d1524}
+  .mp-thumb img{width:100%;height:100%;object-fit:cover;filter:blur(2.5px) contrast(.98)}
+  .mp-btn.on .mp-thumb{box-shadow:0 0 0 2px var(--accent-l)}
+  .mp-txt{min-width:0}
+  .mp-txt b{display:block;font-family:var(--sans);font-size:.78rem;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mp-txt span{font-family:var(--sans);font-size:.7rem;color:var(--ink3)}
+  .mem-foot{font-family:var(--sans);font-size:.88rem;color:var(--ink3);max-width:52ch;margin:2rem auto 0;line-height:1.55;text-align:center}
+  @media(max-width:720px){.mem-stage{grid-template-columns:1fr}.mem-portrait{aspect-ratio:16/10;min-height:0}.mem-portrait img.on{transform:none}}
+  @media(max-width:520px){.mem-picker{grid-template-columns:1fr}.mp-txt b{white-space:normal}}
+  @media(prefers-reduced-motion:reduce){.mem-portrait img,.mem-story{transition:none}}
+
+  /* ── BELEVING: het leven binnen Aquila (donkere band) ── */
+  .exp{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#16223a 0%,#0d1524 60%,#0a0f1b 100%);color:#F3EEE3;padding:clamp(4rem,9vh,7rem) 0}
+  .exp-in{max-width:1080px;margin:0 auto;padding:0 24px}
+  .exp-eyebrow{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#C9A24E;text-align:center;margin-bottom:1.1rem}
+  .exp-h{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,3.8vw,2.9rem);letter-spacing:-.02em;line-height:1.12;text-align:center;max-width:20ch;margin:0 auto .9rem}
+  .exp-sub{font-size:1.02rem;line-height:1.6;color:rgba(243,238,227,.66);max-width:54ch;margin:0 auto;text-align:center}
+  /* stats */
+  .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(1.5rem,5vw,4rem);margin:2.6rem auto 0;padding:1.8rem 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);max-width:840px}
+  .stat{text-align:center}
+  .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.5vw,3rem);color:#C9A24E;line-height:1;letter-spacing:-.01em}
+  .stat span{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;color:rgba(243,238,227,.6);margin-top:.5rem}
+  /* activiteiten-ribbon */
+  .ribbon{position:relative;margin:3rem 0;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .ribbon-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:rib 32s linear infinite}
+  .ribbon-track span{font-family:var(--serif);font-size:1.15rem;color:rgba(243,238,227,.7);padding:0 1.4rem;display:inline-flex;align-items:center;gap:2.8rem}
+  .ribbon-track span::after{content:"";width:5px;height:5px;border-radius:50%;background:#C9A24E;opacity:.8}
+  @keyframes rib{to{transform:translateX(-50%)}}
+  /* tegels */
+  .exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(.9rem,2vw,1.4rem)}
+  .etile{position:relative;overflow:hidden;border-radius:18px;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem;border:1px solid rgba(255,255,255,.09);isolation:isolate;opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+  .exp.in .etile{opacity:1;transform:none}
+  .exp.in .etile:nth-child(2){transition-delay:.1s}
+  .exp.in .etile:nth-child(3){transition-delay:.2s}
+  .exp.in .etile:nth-child(4){transition-delay:.3s}
+  .etile::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--tint,radial-gradient(90% 90% at 30% 20%,#1c2b46,#0e1728));transition:transform 1.2s cubic-bezier(.22,.61,.36,1)}
+  .etile:hover::before{transform:scale(1.06)}
+  .etile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,15,27,.1) 0%,rgba(10,15,27,.72) 100%)}
+  .etile.wide{grid-column:span 2;min-height:280px}
+  .etag{font-family:var(--sans);font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#C9A24E;margin-bottom:.7rem}
+  .etile h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-.01em;margin-bottom:.5rem;line-height:1.1}
+  .etile p{font-family:var(--sans);font-size:.94rem;line-height:1.5;color:rgba(243,238,227,.72);max-width:44ch}
+  @media(max-width:640px){.exp-grid{grid-template-columns:1fr}.etile.wide{grid-column:span 1}}
+  @media(prefers-reduced-motion:reduce){.ribbon-track{animation:none}}
+
+  /* founder: echte foto van de twee oprichters (vierkant, afgerond i.p.v. cirkel) */
+  .fo-duo{width:clamp(170px,24vw,215px)!important;height:auto!important;aspect-ratio:1/1;border-radius:18px!important;object-fit:cover}
+  .fo-cap{font-family:var(--sans);font-size:.74rem;color:var(--ink3);margin-top:.6rem;line-height:1.4}
+</style>
+
+<script>
+  window.PQ_BEDRIJF      = 'Nordveld Bouwgroep';
+  window.PQ_KLANT        = 'aquila';
+  window.PQ_CAMPAGNE     = 'lead-motor';
+  window.PQ_CAL          = 'aquila/kennismaking';        /* placeholder cal-link */
+  window.PQ_VIDEO        = 'aquila-alvinho.mp4';         /* PLACEHOLDER: gebrande clip, vervangen door echte Alvinho-opname */
+  window.PQ_POSTER       = 'aquila-video-poster.png';    /* PLACEHOLDER */
+  window.PQ_TRACK_URL    = '';
+  window.PQ_TERUGBEL_URL = '';                           /* demo */
+  window.PIQUE_INTRO     = {
+    voornaam: 'Thomas',
+    bedrijf:  'Nordveld Bouwgroep',
+    merk:     false,
+    label:    'Persoonlijk',
+    regels: [
+      'Hoi {voornaam}.',
+      'Je liet je gegevens achter|bij Aquila.',
+      'Dus voordat we je bellen,|keken we naar {bedrijf}.',
+      '*Wil je zien wat ons opviel?*'
+    ],
+    cta:      'Ja, laat maar zien',
+    ctaSub:   'Video van Alvinho &middot; 40 sec',
+    lezen:    'Ik lees liever eerst'
+  };
+</script>
+<script src="lp-intro.js"></script>
+</head>
+<body>
+<div class="mbar" id="mbar"></div>
+
+<nav id="nav">
+  <a href="#top" class="brand-aq" aria-label="Aquila">Aquila</a>
+  <button class="nav-cta" data-open="sheet" data-tab="plan">Plan een kennismaking</button>
+</nav>
+
+<div class="rail" id="rail">
+  <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
+  <a href="#s2"><span class="rd"></span><span class="rl">Wat we zagen</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">De optelsom</span></a>
+  <a href="#s4"><span class="rd"></span><span class="rl">Wat Aquila is</span></a>
+  <a href="#gesprek"><span class="rd"></span><span class="rl">Kennismaken</span></a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Hoi Thomas.<br>We hebben even naar <em>Nordveld</em> gekeken.</div>
+          <div class="sig">Alvinho</div>
+        </div>
+        <span class="slot-tag">Je aanvraag</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1 class="hero-h1">We hebben even naar <span class="u">Nordveld</span> gekeken.</h1>
+      <p class="hero-sub">Je liet je gegevens achter bij Aquila. Dus voordat we je bellen, wilden we eerst een ding uitzoeken: waarom zou iemand als jij eigenlijk bij Aquila passen? Dit is wat ons opviel.</p>
+      <div class="hero-meta">
+        <span class="chip"><i></i>Persoonlijk voor Nordveld</span>
+        <span class="chip">140+ ondernemers</span>
+        <span class="chip">2 minuten lezen</span>
+      </div>
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="aquila-video-poster.png" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Alvinho vertelt het je in 40 seconden</span>
+      </button>
+      <div class="scrollcue"><i></i><span>Scroll</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path>
+    <path class="jp-prog" id="jp-prog"></path>
+  </svg>
+
+  <section class="chapter left" id="s1">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom jij</div>
+        <h2 class="ch-kop">Je bent duidelijk nog niet klaar met bouwen.</h2>
+        <p class="ch-text">Een tweede vestiging. Nieuwe mensen. Een naam die steeds steviger staat in de regio. Nordveld is voorbij de fase waarin je vooral probeert iets van de grond te krijgen.</p>
+        <p class="ch-text"><strong>Je bent aan het bouwen aan wat hierna komt.</strong> En precies daar wordt iets anders belangrijk. Het gaat dan niet meer alleen om je volgende stap, maar ook om met wie je hem bespreekt.</p>
+        <div class="ch-sign">De Senaat, Aquila</div>
+      </div>
+      <div class="note">3 dingen, in deze volgorde
+        <svg class="arw" viewBox="0 0 52 26"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find" id="s2">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">Wat we zagen</div></div>
+        <h2 class="f-kop">Je kiest voor groei.</h2>
+        <p class="ch-text">Je opende dit jaar een tweede locatie. Terwijl genoeg ondernemers in een onzekere markt liever even afwachten, breid jij uit.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">Nordveld opent tweede vestiging om de groei in de regio op te vangen.</p>
+          <div class="f-meta"><span class="dom">nordveld.nl</span><span class="sep"></span><span>voorbeeld &middot; 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter left find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">Wat we zagen</div></div>
+        <h2 class="f-kop">Je bouwt niet alleen omzet. Je bouwt een organisatie.</h2>
+        <p class="ch-text">De afgelopen periode kwamen er meerdere mensen bij, onder andere een werkvoorbereider en een projectleider. Dat zegt iets. Je organiseert Nordveld niet voor hoe het bedrijf vandaag is, maar voor waar je naartoe wilt.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">Drie nieuwe vacatures, waaronder een werkvoorbereider en een projectleider.</p>
+          <div class="f-meta"><span class="dom">Vacature &middot; voorbeeld</span><span class="sep"></span><span>2026</span></div>
+        </div>
+      </div>
+      <div class="note">en dit maakt het derde zwaar</div>
+    </div>
+  </section>
+
+  <section class="chapter right find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat we zagen</div></div>
+        <h2 class="f-kop">Eén eigenaar. Eén eindverantwoordelijke.</h2>
+        <p class="ch-text">Er staat geen mede-DGA naast je, geen compagnon die automatisch dezelfde belangen, risico's en verantwoordelijkheid draagt. Je kunt mensen om advies vragen, maar de beslissing blijft van jou.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">Nordveld Bouwgroep B.V., enig aandeelhouder en bestuurder.</p>
+          <div class="f-meta"><span class="dom">KVK &middot; voorbeeld</span><span class="sep"></span><span>2026</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center pivot" id="s3">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">De optelsom</div>
+        <h2 class="ch-kop" style="margin-bottom:1.4rem">Je bedrijf groeit. Je beslissingen groeien mee.</h2>
+        <div class="tl">
+          <div class="tl-rail">
+            <div class="tl-i" style="--dl:.2s"><span class="d"></span><b>toen</b><span>zelf beginnen</span></div>
+            <div class="tl-i" style="--dl:.45s"><span class="d"></span><b>nu</b><span>twee vestigingen, een groeiende ploeg</span></div>
+            <div class="tl-i" style="--dl:.7s"><span class="d"></span><b>straks</b><span>meer mensen, meer kapitaal, zwaardere keuzes</span></div>
+            <div class="tl-i nu" style="--dl:.95s"><span class="d"></span><b>de vraag</b><span>met wie bespreek je het?</span></div>
+          </div>
+        </div>
+        <p class="ch-pivot" style="margin-top:1.8rem">Met wie bespreek jij de dingen die je niet met je team kunt bespreken? Hoe hoger je klimt, hoe kleiner de kring van mensen die werkelijk begrijpen wat er op tafel ligt. <strong>Aquila bouwt precies die kring.</strong></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="ask" id="ask">
+  <div class="ask-in">
+    <p class="ask-hand">Zal ik je uitnodigen voor een kennismaking?</p>
+    <p class="ask-sub">Vijftien minuten, vrijblijvend. We kijken eerst samen of het überhaupt past.</p>
+    <div class="ask-btns">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een kennismaking</button>
+      <button class="btn-b" id="askread">Ik lees eerst verder</button>
+    </div>
+    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en we bellen je.</p>
+  </div>
+</section>
+
+<section class="mem reveal" id="peers">
+  <div class="mem-in">
+    <div class="mem-eyebrow">Leden zoals jij</div>
+    <h2 class="mem-h">Ondernemers die deze fase herkennen.</h2>
+    <p class="mem-sub">Binnen Aquila zit je met ondernemers die zelf iets serieus hebben opgebouwd. Dit zijn drie leden die instapten met vraagstukken die opvallend dicht bij die van jou lagen. Kies er een en lees zijn verhaal.</p>
+    <div class="mem-stage">
+      <div class="mem-portrait" id="memPortrait">
+        <span class="plock">Anoniem</span>
+        <div class="pinfo"><div class="sec" id="memSec"></div><div class="fase" id="memFase"></div></div>
+      </div>
+      <div class="mem-story" id="memStory">
+        <div class="ms-eyebrow">In zijn woorden</div>
+        <p class="ms-situatie" id="memSit"></p>
+        <blockquote class="ms-quote" id="memQuote"></blockquote>
+        <div class="ms-change"><span class="lbl">Wat er veranderde</span><p id="memChange"></p></div>
+      </div>
+    </div>
+    <div class="mem-picker" id="memPicker" role="tablist" aria-label="Kies een lid"></div>
+    <p class="mem-foot">We gebruiken namen van leden alleen met hun akkoord. Tijdens een kennismaking vertellen we je meer over wie er binnen Aquila zitten.</p>
+  </div>
+</section>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
+
+  <section class="chapter left">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom dit ertoe doet</div>
+        <h2 class="ch-kop">Het probleem is niet dat je niemand om advies kunt vragen.</h2>
+        <p class="ch-text">Je hebt waarschijnlijk genoeg mensen om je heen. Een accountant voor de cijfers. Medewerkers die hun vak kennen. Misschien andere ondernemers die je af en toe spreekt. Maar naarmate Nordveld groeit, ontstaan er vragen waarvoor dat niet hetzelfde is.</p>
+        <ul class="qlist">
+          <li>Neem ik deze persoon aan?</li>
+          <li>Openen we nog een locatie?</li>
+          <li>Moet ik juist consolideren?</li>
+          <li>Hoe bouw ik een managementlaag zonder grip te verliezen?</li>
+          <li>Waar ligt mijn volgende plafond?</li>
+        </ul>
+        <p class="ch-text"><strong>Op dat niveau wil je niet méér meningen.</strong> Je wilt een paar goede mensen die begrijpen wat er op het spel staat.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Hoe het anders kan</div>
+        <h2 class="ch-kop">Stel dat je die mensen niet iedere keer opnieuw hoeft te zoeken.</h2>
+        <p class="ch-text">Een vaste groep ondernemers. Ze kennen jou. Ze kennen Nordveld. Ze weten welke keuzes eraan voorafgingen en kunnen je dus ook aanspreken als je jezelf voor de gek houdt. Ze hebben geen belang in jouw bedrijf, wel ervaring met de problemen waar jij tegenaan loopt.</p>
+        <p class="ch-pull">Dat noemen we binnen Aquila je Senaat.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center phase" id="s4">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat Aquila is</div>
+        <h2 class="ch-kop ch-head">Een besloten kring voor ondernemers die verder zijn dan netwerken.</h2>
+        <p class="ch-sub">Aquila brengt ondernemers bij elkaar die iets hebben opgebouwd en bereid zijn daar open over te praten. Je komt er niet om zoveel mogelijk mensen te ontmoeten. Je komt er om de juiste mensen vaak genoeg te spreken dat er echte scherpte ontstaat.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- MATRIX -->
+<section class="amx-sec">
+  <div class="amx-wrap">
+    <div class="amx-eyebrow reveal">Eerlijk vergeleken</div>
+    <h2 class="amx-h reveal">Aquila tegenover een traditionele netwerkclub</h2>
+    <p class="amx-sub reveal">Misschien heb je minder goede ervaringen met netwerkclubs. Terecht. Dit is waar wij bewust van afwijken.</p>
+    <div class="amx reveal">
+      <div class="amx-r amx-head"><div class="c">&nbsp;</div><div class="a">Aquila</div><div class="o">Traditioneel</div></div>
+      <div class="amx-r"><div class="c">Toelating</div><div class="a">Streng geselecteerd op niveau én karakter</div><div class="o">Vaak toegankelijk zodra je lid wordt</div></div>
+      <div class="amx-r"><div class="c">Niveau</div><div class="a">Bedrijven van 6 tot 8 cijfers, gemiddeld circa €9 miljoen omzet</div><div class="o">Brede mix van starters tot gevestigde ondernemers</div></div>
+      <div class="amx-r"><div class="c">De vorm</div><div class="a">Een vaste Senaat die jou en je bedrijf leert kennen</div><div class="o">Losse bijeenkomsten met wisselende gezichten</div></div>
+      <div class="amx-r"><div class="c">De bedoeling</div><div class="a">Moeilijke ondernemersvragen beter kunnen bespreken</div><div class="o">Vooral nieuwe contacten leggen</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WAT HET JE GEEFT -->
+<section class="toon" id="toon">
+  <div class="toon-rij">
+    <article class="tp" style="--dl:.05s">
+      <div class="tp-vis"><div class="tp-rn">I</div></div>
+      <div class="tp-num">01</div>
+      <h3>Je eigen Senaat</h3>
+      <p>Een vaste groep ondernemers die jouw context kent. Daardoor hoef je niet iedere keer vanaf nul uit te leggen wat er speelt voordat het interessante gesprek begint.</p>
+    </article>
+    <article class="tp" style="--dl:.22s">
+      <div class="tp-vis"><div class="tp-rn">II</div></div>
+      <div class="tp-num">02</div>
+      <h3>Mensen die zelf bouwen</h3>
+      <p>Ondernemers uit onder andere bouw, techniek, handel en productie. Ze geven je praktijkantwoorden, in plaats van theorie vanaf de zijlijn.</p>
+    </article>
+    <article class="tp" style="--dl:.39s">
+      <div class="tp-vis"><div class="tp-rn">III</div></div>
+      <div class="tp-num">03</div>
+      <h3>Eerst kijken of het klopt</h3>
+      <p>Aquila werkt alleen als de mensen in de kamer bij elkaar passen. Daarom begint het niet met een lidmaatschap, maar met een gesprek.</p>
+    </article>
+  </div>
+
+  <div class="vw">
+    <div style="--dl:.55s"><span>&#10003;</span><b>Streng geselecteerd</b><p>Lang niet iedereen die binnen wil, komt er ook echt in. Het niveau van de groep staat voorop.</p></div>
+    <div style="--dl:.68s"><span>&#10003;</span><b>Brengen én halen</b><p>Wie alleen komt halen, past er niet. Openheid en wederkerigheid zijn de basis.</p></div>
+    <div style="--dl:.81s"><span>&#10003;</span><b>Op niveau</b><p>Gesprekken met ondernemers die de verantwoordelijkheid zelf kennen.</p></div>
+  </div>
+</section>
+
+<!-- BELEVING: het leven binnen Aquila -->
+<section class="exp reveal" id="beleving">
+  <div class="exp-in">
+    <div class="exp-eyebrow">Meer dan advies</div>
+    <h2 class="exp-h">Je komt voor de mensen. Je blijft voor wat je samen doet.</h2>
+    <p class="exp-sub">Aquila is geen agenda vol verplichte borrels. Het is een club die je opzoekt omdat het de moeite waard is. Sparren met gelijkgestemden, op de plekken waar het echte gesprek pas op gang komt.</p>
+
+    <div class="stats">
+      <div class="stat"><b data-count="140" data-suffix="+">0</b><span>ondernemers lid</span></div>
+      <div class="stat"><b data-count="9" data-prefix="€" data-suffix="M">0</b><span>gemiddelde omzet</span></div>
+      <div class="stat"><b>6&ndash;8</b><span>cijfers per bedrijf</span></div>
+    </div>
+
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon-track">
+        <span>Diners</span><span>Sprekersavonden</span><span>Samen de Ardennen in</span><span>Wintersport</span><span>Masterclasses</span><span>Kennisdeling</span><span>Borrels</span><span>Sparren</span><span>Diners</span><span>Sprekersavonden</span><span>Samen de Ardennen in</span><span>Wintersport</span><span>Masterclasses</span><span>Kennisdeling</span><span>Borrels</span><span>Sparren</span>
+      </div>
+    </div>
+
+    <div class="exp-grid">
+      <article class="etile wide" style="--tint:radial-gradient(90% 120% at 25% 15%,#20344a,#0c1626)">
+        <div class="etag">Samen weg</div>
+        <h3>De Ardennen in met de groep</h3>
+        <p>Een paar dagen weg met leden. Wandelen, eten, praten. Daar ontstaan de gesprekken die op kantoor nooit komen, en de banden die daarna blijven.</p>
+      </article>
+      <article class="etile" style="--tint:radial-gradient(90% 120% at 70% 10%,#1b2c48,#0b1524)">
+        <div class="etag">Op de piste</div>
+        <h3>Op wintersport</h3>
+        <p>Eén keer per jaar de bergen in. Ondernemen even opzij, de mensen erachter des te dichterbij.</p>
+      </article>
+      <article class="etile" style="--tint:radial-gradient(90% 120% at 30% 20%,#2a2338,#0e1424)">
+        <div class="etag">Kennisdeling</div>
+        <h3>Sprekers &amp; masterclasses</h3>
+        <p>Ondernemers en experts die delen wat werkte en wat niet. Concreet, uit de praktijk, zonder de gladde verhalen.</p>
+      </article>
+      <article class="etile wide" style="--tint:radial-gradient(90% 120% at 60% 15%,#23324a,#0b1424)">
+        <div class="etag">Bijeenkomsten</div>
+        <h3>Diners, borrels en avonden</h3>
+        <p>De vaste momenten waar het echte gesprek pas na de borrel begint. Kleine setting, hoog niveau, mensen die je jaar na jaar beter leert kennen.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <div class="fr" style="text-align:center">
+    <img class="fo-photo fo-duo" src="jeff-alvinho.jpg" alt="Jeff en Alvinho, oprichters van Aquila" loading="lazy" decoding="async">
+    <div class="fo-cap">Jeff en Alvinho, oprichters van Aquila</div>
+  </div>
+  <div class="fr">
+    <div class="fo-eyebrow">De personen achter Aquila</div>
+    <div class="fo-text">
+      <p>Ik ben Alvinho. Samen met Jeff begon ik Aquila vanuit een simpele observatie: hoe groter het bedrijf wordt, hoe kleiner de groep mensen met wie je echt vrij kunt praten.</p>
+      <p>Je team kijkt naar jou. Adviseurs kijken vanuit hun vakgebied. Mensen thuis kennen jou, maar niet altijd de wereld waarin je iedere dag beslissingen neemt. Dus wilden we een plek bouwen waar ondernemers elkaar wél begrijpen.</p>
+      <p>Het moest geen netwerkclub worden, maar een kring waarin je kunt zeggen wat er werkelijk speelt, en waar de mensen tegenover je genoeg hebben meegemaakt om daar iets zinnigs over terug te zeggen. Daarom maakten we deze pagina ook niet voor ondernemers in het algemeen. We maakten hem voor jou.</p>
+    </div>
+    <img class="fo-sig" src="handtekening-alvinho.png" alt="Handtekening Alvinho" width="560" height="208">
+    <p class="fo-name">Alvinho &amp; Jeff, oprichters van Aquila</p>
+  </div>
+</section>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Thomas, zullen we vijftien minuten kennismaken?</h2>
+    <p class="cta-sub reveal">Dan laten we je zien wie er binnen Aquila zitten, hoe een Senaat werkt en waarom we dachten dat Nordveld interessant genoeg was om verder naar te kijken. Daarna weet jij waarschijnlijk vrij snel of dit jouw soort mensen zijn.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
+      <button class="btn-b" style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+    </div>
+    <p class="cta-alt reveal">Liever eerst iets vragen? <a href="mailto:info@joinaquila.nl?subject=Nordveld%20%C3%97%20Aquila">Mail Alvinho.</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo"><span class="brand-aq" style="color:var(--accent-l)">Aquila</span></div>
+  <div class="ft-meta">Aquila &middot; Staten Bolwerk 1, Haarlem<br>Legioen &middot; Imperium &middot; Senaat</div>
+</footer>
+
+<div class="dock" id="dock">
+  <span class="dock-t"><b>Even kennismaken?</b> 15 minuten.</span>
+  <button class="dock-b" data-open="sheet" data-tab="plan">Plannen</button>
+  <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
+</div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Plan een kennismaking">
+    <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
+    <div class="sheet-host">
+      <img src="alvinho-avatar.png" alt="" loading="lazy" decoding="async">
+      <div><div class="n">15 minuten met Aquila</div><div class="s">Video of telefoon, jij kiest.</div></div>
+    </div>
+    <div class="sheet-tabs">
+      <button class="on" data-tab="plan">Zelf een moment kiezen</button>
+      <button data-tab="bel">Laat mij terugbellen</button>
+    </div>
+    <div class="panes">
+    <div class="pane on" id="pane-plan">
+      <div id="cal-wrap">
+        <div id="cal-embed"></div>
+        <div class="cal-skel" id="calskel">
+          <div class="kop"></div>
+          <div class="grid"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u><u class="o"></u><u></u><u></u><u class="o"></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u></div>
+          <div class="glans"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pane" id="pane-bel">
+      <form id="belform">
+        <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" value="Thomas" required></div>
+        <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.35rem">Wanneer schikt het?</label>
+        <div class="slots" id="slots">
+          <button type="button" data-v="Vandaag, later vanmiddag">Later vanmiddag</button>
+          <button type="button" data-v="Morgenochtend">Morgenochtend</button>
+          <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
+          <button type="button" data-v="Deze week, maakt niet uit">Deze week, maakt niet uit</button>
+        </div>
+        <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
+        <p class="sheet-note">We bellen zelf. Je nummer gaat nergens anders heen.</p>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script src="lp-v2.js"></script>
+<script>
+/* Tellers in de belevingsband. Telt op zodra de band in beeld komt. */
+(function(){
+  var traag = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function tel(el){
+    var doel = parseFloat(el.dataset.count), pre = el.dataset.prefix||'', suf = el.dataset.suffix||'';
+    if (traag){ el.textContent = pre+doel+suf; return; }
+    var start = null, dur = 1300;
+    function stap(t){
+      if(!start) start = t;
+      var p = Math.min((t-start)/dur, 1), e = 1-Math.pow(1-p,3);
+      el.textContent = pre + Math.round(doel*e) + suf;
+      if(p<1) requestAnimationFrame(stap);
+    }
+    requestAnimationFrame(stap);
+  }
+  var band = document.getElementById('beleving');
+  if(!band) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        band.querySelectorAll('.stat b[data-count]').forEach(tel);
+        io.disconnect();
+      }
+    });
+  }, {threshold:.4});
+  io.observe(band);
+})();
+
+/* Verhaal-switcher bij de leden. */
+(function(){
+  var leden = [
+    { img:'lid-1.png', sec:'Imperium · Bouw & vastgoed', fase:'Opende vorig jaar een tweede vestiging',
+      kort:'Bouw & vastgoed', tier:'Imperium',
+      sit:'Groeide hard, en nam elke grote keuze in zijn eentje.',
+      quote:'Ik dacht lang dat ik het alleen moest kunnen. Nu zit ik tussen mensen die bepaalde keuzes al vóór mij hebben gemaakt.',
+      change:'Legde zijn plan voor een tweede vestiging eerst voor aan zijn Senaat. Tekende drie maanden later, met een scherper plan.' },
+    { img:'lid-2.png', sec:'Legioen · Techniek & installatie', fase:'Groeide in twee jaar van 8 naar 20 mensen',
+      kort:'Techniek & installatie', tier:'Legioen',
+      sit:'Zijn team groeide sneller dan zijn manier van leidinggeven.',
+      quote:'Voor het eerst kon ik een grote beslissing bespreken met mensen die er zelf ook echt iets van begrepen.',
+      change:'Bouwde een managementlaag met input van leden die dat al hadden gedaan.' },
+    { img:'lid-3.png', sec:'Imperium · Handel & productie', fase:'Staat, net als jij, alleen aan het roer',
+      kort:'Handel & productie', tier:'Imperium',
+      sit:'Eén eigenaar, met behoefte aan een klankbord op niveau.',
+      quote:'Ik zocht geen netwerk, maar mensen bij wie ik niets hoefde uit te leggen voordat het gesprek kon beginnen.',
+      change:'Heeft nu een vaste groep die zijn cijfers én zijn twijfels kent.' }
+  ];
+  var portret = document.getElementById('memPortrait');
+  var picker  = document.getElementById('memPicker');
+  var story   = document.getElementById('memStory');
+  if(!portret || !picker || !story) return;
+  var traag = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sec = document.getElementById('memSec'), fase = document.getElementById('memFase'),
+      sit = document.getElementById('memSit'), quote = document.getElementById('memQuote'),
+      change = document.getElementById('memChange');
+  var lock = portret.querySelector('.plock');
+
+  var imgs = leden.map(function(l,i){
+    var im = document.createElement('img');
+    im.src = l.img; im.alt = 'Afgeschermd Aquila-lid'; im.loading = 'lazy';
+    portret.insertBefore(im, lock);
+    return im;
+  });
+  var btns = leden.map(function(l,i){
+    var b = document.createElement('button');
+    b.className = 'mp-btn'; b.type = 'button'; b.setAttribute('role','tab');
+    b.innerHTML = '<span class="mp-thumb"><img src="'+l.img+'" alt="" loading="lazy"></span>' +
+      '<span class="mp-txt"><b>'+l.kort+'</b><span>'+l.tier+'</span></span>';
+    b.addEventListener('click', function(){ ga(i, true); });
+    picker.appendChild(b);
+    return b;
+  });
+
+  var actief = -1, timer = null, autoAan = !traag;
+  function toon(i){
+    var l = leden[i];
+    sec.textContent = l.sec; fase.textContent = l.fase;
+    sit.textContent = l.sit; quote.textContent = l.quote; change.textContent = l.change;
+    imgs.forEach(function(im,k){ im.classList.toggle('on', k===i); });
+    btns.forEach(function(b,k){ b.classList.toggle('on', k===i); b.setAttribute('aria-selected', k===i?'true':'false'); });
+  }
+  function ga(i, doorKlik){
+    if(i===actief) return;
+    if(doorKlik){ autoAan = false; if(timer){ clearInterval(timer); timer=null; } }
+    if(traag){ actief=i; toon(i); return; }
+    story.classList.add('fade');
+    setTimeout(function(){ actief=i; toon(i); story.classList.remove('fade'); }, 200);
+  }
+  function start(){
+    if(!autoAan || timer) return;
+    timer = setInterval(function(){ ga((actief+1)%leden.length, false); }, 6500);
+  }
+  picker.addEventListener('mouseenter', function(){ if(timer){ clearInterval(timer); timer=null; } });
+  portret.addEventListener('click', function(){ ga((actief+1)%leden.length, true); });
+
+  actief = 0; toon(0);
+  var io2 = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ start(); } else if(timer){ clearInterval(timer); timer=null; } });
+  }, {threshold:.35});
+  io2.observe(document.getElementById('peers'));
+})();
+</script>
+</body>
+</html>

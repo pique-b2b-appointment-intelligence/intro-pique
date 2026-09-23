@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aquila × Pique — Lead-motor</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FAF9F6'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23B07C33'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;600&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#FAF9F6;--ink:#151A22;--tekst:#2C323C;--grijs:#5C6472;--gold:#B07C33;
+  --stil:rgba(21,26,34,.42);--lijn:rgba(21,26,34,.16);--haar:rgba(21,26,34,.09);--vlak:#EFECE5;
+  --kras:#35477A;
+  --sans:'Instrument Sans','Inter',system-ui,sans-serif;--mono:'DM Mono',ui-monospace,monospace;--hand:'Caveat',cursive;
+}
+html,body{-webkit-font-smoothing:antialiased;background:#E7E4DD}
+body{font-family:var(--sans);color:var(--tekst);line-height:1.6;letter-spacing:-.002em}
+body.scroll-mode{overflow-y:auto}
+body.present-mode{overflow:hidden;height:100vh}
+em,i{font-style:normal}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0}
+.slide.is-active .anim,.slide.in-view .anim{animation:fadeUp .5s cubic-bezier(.22,1,.36,1) forwards}
+.a1{animation-delay:.03s}.a2{animation-delay:.1s}.a3{animation-delay:.17s}.a4{animation-delay:.24s}.a5{animation-delay:.31s}.a6{animation-delay:.38s}
+
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:48px;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:0 1.2rem;background:rgba(250,249,246,.95);border-bottom:1px solid var(--haar);backdrop-filter:blur(14px)}
+.tb-left{position:absolute;left:1.4rem;font-family:var(--mono);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--stil)}
+.tb-right{position:absolute;right:1.4rem;font-family:var(--mono);font-size:.46rem;letter-spacing:.1em;color:var(--stil)}
+.toolbar button{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .85rem;border-radius:6px;border:1px solid var(--lijn);background:transparent;color:var(--grijs);cursor:pointer;transition:.15s}
+.toolbar button:hover{color:var(--ink);border-color:var(--grijs)}
+.toolbar button.on{border-color:var(--gold);color:var(--gold)}
+
+#deck{max-width:1180px;margin:0 auto;padding:60px 20px 50px}
+body.present-mode #deck{padding:48px 0 0;width:min(100vw,1240px);height:calc(100vh - 48px);position:relative}
+.slide{position:relative;width:100%;aspect-ratio:16/10;background:var(--paper);overflow:hidden;display:flex;flex-direction:column;margin-bottom:22px;border-radius:4px;box-shadow:0 12px 44px rgba(21,26,34,.1)}
+body.present-mode .slide{position:absolute;inset:0;margin:0;border-radius:0;box-shadow:none;display:none;aspect-ratio:auto;height:100%}
+body.present-mode .slide.is-active{display:flex}
+
+.pad{position:relative;z-index:2;padding:clamp(2.2rem,4.6vw,4.2rem) clamp(2.4rem,5.2vw,5rem);display:flex;flex-direction:column;justify-content:center;height:100%}
+.sn{position:absolute;bottom:1.1rem;right:1.5rem;font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;color:var(--stil);z-index:5}
+
+.eyebrow{font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;display:flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);opacity:.6}
+h1{font-family:var(--sans);font-weight:600;font-size:clamp(2rem,3.6vw,3rem);line-height:1.08;letter-spacing:-.03em;color:var(--ink);max-width:20ch}
+h1 em{color:var(--gold)}
+h2{font-family:var(--sans);font-weight:600;font-size:clamp(1.6rem,2.7vw,2.3rem);line-height:1.12;letter-spacing:-.025em;color:var(--ink);max-width:24ch;margin-bottom:1.2rem}
+h2 em{color:var(--gold)}
+.lead{font-size:clamp(1rem,1.15vw,1.12rem);line-height:1.6;color:var(--tekst);max-width:60ch}
+.lead b,.lead strong{color:var(--ink);font-weight:600}
+.wm{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.wm span{color:var(--stil)}
+
+/* handschrift */
+.kras{position:absolute;z-index:4;color:var(--kras);font-family:var(--hand);font-weight:600;font-size:clamp(1.15rem,1.5vw,1.5rem);line-height:1.15;transform:rotate(-2deg);transform-origin:left top}
+.kras.g{color:var(--gold)}
+.kras svg{display:block;margin:-2px 0 2px -2px;overflow:visible}
+
+/* lijstjes minimaal */
+.rows{display:flex;flex-direction:column;margin-top:1.6rem}
+.row{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;padding:.85rem 0;border-top:1px solid var(--haar)}
+.row:last-child{border-bottom:1px solid var(--haar)}
+.row .ix{font-family:var(--mono);font-size:.62rem;color:var(--gold);padding-top:.28rem;letter-spacing:.08em}
+.row .bd b{display:block;font-weight:600;color:var(--ink);font-size:.98rem;margin-bottom:.12rem}
+.row .bd span{font-size:.86rem;color:var(--grijs);line-height:1.5}
+
+/* twee kolommen minimaal */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:1.6rem}
+.duo>div{padding:.2rem 2.4rem}
+.duo>div:first-child{padding-left:0}
+.duo>div+div{border-left:1px solid var(--haar)}
+.col-h{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.col-t{font-weight:600;color:var(--ink);font-size:1.15rem;margin-bottom:.9rem;letter-spacing:-.01em}
+.col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.col li{font-size:.88rem;color:var(--grijs);line-height:1.5;padding-left:.95rem;position:relative}
+.col li::before{content:'';position:absolute;left:0;top:.62em;width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.col li strong{color:var(--ink);font-weight:600}
+
+/* datapunten 2x2 */
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:1.4rem}
+.quad>div{padding:1.1rem 2.2rem 1.1rem 0;border-top:1px solid var(--haar)}
+.quad>div:nth-child(even){padding-left:2.2rem;border-left:1px solid var(--haar)}
+.quad .qh{font-family:var(--mono);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.quad ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.quad li{font-size:.83rem;color:var(--grijs);line-height:1.45}
+
+/* stappen 7 */
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem;margin-top:1.4rem}
+.st{display:grid;grid-template-columns:auto 1fr;gap:.9rem;padding:.6rem 0;border-top:1px solid var(--haar)}
+.st .n{font-family:var(--mono);font-size:.6rem;color:var(--gold);padding-top:.2rem}
+.st b{font-weight:600;color:var(--ink);font-size:.9rem}
+.st span{display:block;font-size:.78rem;color:var(--grijs);line-height:1.4}
+
+/* prijs */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:1.5rem}
+.pr{padding:.2rem 1.8rem}
+.pr:first-child{padding-left:0}
+.pr+.pr{border-left:1px solid var(--haar)}
+.pr .t{font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.pr .amt{font-family:var(--sans);font-size:2.2rem;font-weight:600;color:var(--ink);line-height:1;letter-spacing:-.03em}
+.pr .per{font-size:.82rem;color:var(--grijs);margin:.4rem 0 1rem}
+.pr ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.pr li{font-size:.84rem;color:var(--grijs);line-height:1.45;padding-left:.95rem;position:relative}
+.pr li::before{content:'';position:absolute;left:0;top:.6em;width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.roi{margin-top:1.8rem;padding-top:1.1rem;border-top:1px solid var(--lijn);font-size:.98rem;color:var(--ink);max-width:60ch}
+.roi em{color:var(--gold)}
+
+/* cover + close */
+.cv-top{position:absolute;top:clamp(2.2rem,4.6vw,4.2rem);left:clamp(2.4rem,5.2vw,5rem);display:flex;align-items:center;gap:.7rem}
+.close-steps{display:flex;gap:0;margin-top:1.8rem}
+.close-steps>div{padding:0 1.6rem;border-left:1px solid var(--haar);font-size:.86rem;color:var(--grijs);display:flex;gap:.5rem;align-items:baseline}
+.close-steps>div:first-child{padding-left:0;border-left:none}
+.close-steps b{font-family:var(--mono);font-size:.56rem;color:var(--gold)}
+
+.pnav{position:fixed;bottom:1.2rem;right:1.3rem;display:none;flex-direction:column;gap:.38rem;z-index:2000}
+body.present-mode .pnav{display:flex}
+.pnav button{width:38px;height:38px;border-radius:8px;border:1px solid var(--lijn);background:var(--paper);color:var(--ink);cursor:pointer;font-size:1rem}
+#pcount{position:fixed;bottom:1.3rem;left:1.5rem;font-family:var(--mono);font-size:.5rem;color:var(--stil);z-index:2000;display:none}
+body.present-mode #pcount{display:block}
+.mark{position:absolute;top:1.5rem;left:1.6rem;z-index:6;display:inline-flex;align-items:center;gap:.75rem;background:#111722;border-radius:10px;padding:9px 18px;box-shadow:0 6px 18px rgba(21,26,34,.18)}
+.mark .aq{height:18px;display:block}.mark .pq{height:16px;display:block}.mark .mx{color:rgba(255,255,255,.35);font-size:.85rem;line-height:1}
+</style>
+</head>
+<body class="scroll-mode">
+
+<div class="toolbar">
+  <div class="tb-left">Aquila × Pique · Lead-motor</div>
+  <button id="btnScroll" class="on" onclick="setMode('scroll')">Alle slides</button>
+  <button id="btnPresent" onclick="setMode('present')">Presenteer</button>
+  <div class="tb-right">Sep 2026</div>
+</div>
+
+<div id="deck">
+
+<!-- 1 COVER -->
+<section class="slide is-active">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a2">Inbound lead-motor</div>
+    <h1 class="anim a3">Een <em>ervaring</em> voor elke lead<br>die binnenkomt.</h1>
+    <p class="lead anim a4" style="margin-top:1.4rem">Elke inbound-lead krijgt een score. De toppers een handgeschreven brief, de rest een automatische persoonlijke ervaring. Zo daalt je kost per lid.</p>
+  </div>
+  <div class="kras anim a5" style="right:5rem;bottom:5.5rem;text-align:left">
+    <svg width="120" height="26" viewBox="0 0 120 26" fill="none" stroke="#35477A" stroke-width="2" stroke-linecap="round"><path d="M4 20 C 30 8, 70 8, 116 15"/><path d="M104 8 L116 15 L106 20"/></svg>
+    <span>spoor 2, naast de brieven</span>
+  </div>
+  <span class="sn">01 / 11</span>
+</section>
+
+<!-- 2 DE KANS -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">De kans</div>
+    <h2 class="anim a2">Een goede lead verdient meer dan<br>een <em>standaard mailtje.</em></h2>
+    <p class="lead anim a3">Nu gaat de opvolging met de hand. Dat kost het salesteam tijd en jou geld per gesprek. Straks krijgt elke gekwalificeerde lead binnen enkele minuten een pagina, e-mail en dossier op maat.</p>
+    <div class="duo anim a4">
+      <div class="col"><div class="col-h">Vandaag</div><ul><li>Uren sales aan opvolging die geautomatiseerd kan</li><li>Hoge kost per gesprek</li><li>Geen consistente premium eerste indruk</li></ul></div>
+      <div class="col"><div class="col-h">Met de lead-motor</div><ul><li>Centen per lead in plaats van salesuren</li><li>Iedere lead een ervaring op niveau</li><li><strong>Kost per lid gaat hard omlaag</strong></li></ul></div>
+    </div>
+  </div>
+  <div class="kras g anim a5" style="right:4.5rem;top:3.4rem"><span>dit is de kern</span></div>
+  <span class="sn">02 / 11</span>
+</section>
+
+<!-- 3 TWEE SPOREN -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">Het idee</div>
+    <h2 class="anim a2">Niet elke lead dezelfde <em>behandeling.</em></h2>
+    <p class="lead anim a3">Elke lead die binnenkomt krijgt een score. Die score bepaalt wat hij krijgt, zodat je je duurste aandacht bewaart voor de beste leads.</p>
+    <div class="duo anim a4">
+      <div class="col"><div class="col-h">Score 7 en hoger · de toppers</div><div class="col-t">Een handgeschreven brief</div><ul><li>De volledige fysieke Pique-ervaring</li><li>Brief, video en persoonlijke pagina</li><li>Voor de leads die het meest waard zijn</li></ul></div>
+      <div class="col"><div class="col-h">Gekwalificeerd onder 7 · de rest</div><div class="col-t">Een digitale ervaring</div><ul><li>Automatische e-mail met persoonlijke pagina</li><li>Plus een dossier om te bewaren</li><li>Schaalbaar, centen per lead</li></ul></div>
+    </div>
+  </div>
+  <div class="kras anim a5" style="left:5rem;bottom:3.4rem"><span>de score stuurt alles</span></div>
+  <span class="sn">03 / 11</span>
+</section>
+
+<!-- 4 WAT DE LEAD KRIJGT -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">De digitale ervaring · onder 7</div>
+    <h2 class="anim a2">Alsof iemand er echt <em>naar keek.</em></h2>
+    <div class="duo anim a3">
+      <div class="col"><div class="col-h">De dragers</div><ul><li>Een professionele e-mail vanuit jullie eigen GHL</li><li>Die leidt naar een persoonlijke pagina in Aquila-stijl, met video's</li><li>Met een dossier om te downloaden en te bewaren</li></ul></div>
+      <div class="col"><div class="col-h">Wat het bijzonder maakt</div><ul><li>Eén echte observatie over zijn eigen bedrijf</li><li>Geanonimiseerde leden die op hem lijken</li><li>De matrix: waarom Aquila anders is</li></ul></div>
+    </div>
+  </div>
+  <div class="kras g anim a4" style="right:5rem;bottom:4.5rem"><span>zelfde lat als<br>de voordracht-pagina</span></div>
+  <span class="sn">04 / 11</span>
+</section>
+
+<!-- 5 WAT DE AI OPHAALT -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">Onder de motorkap · 1</div>
+    <h2 class="anim a2">Wat het systeem per lead <em>ophaalt.</em></h2>
+    <div class="quad anim a3">
+      <div><div class="qh">Uit het leadformulier</div><ul><li>Naam, bedrijf, contact</li><li>Fase, omzet, met of zonder compagnon</li><li>De leadscore</li></ul></div>
+      <div><div class="qh">Uit de bedrijfsdata</div><ul><li>Sector, grootte, rechtsvorm, regio</li><li>Alleen aan het roer, ja of nee</li><li>Welke tier past</li></ul></div>
+      <div><div class="qh">Uit site en LinkedIn</div><ul><li>Wat ze doen, recente ontwikkeling</li><li>Compagnons en groei-signalen</li></ul></div>
+      <div><div class="qh">Wat de AI eruit maakt</div><ul><li>De observatie voor de herkenning</li><li>De drie best passende leden</li><li>De redenen die voor hem tellen</li></ul></div>
+    </div>
+  </div>
+  <span class="sn">05 / 11</span>
+</section>
+
+<!-- 6 DE OPBOUW -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">Onder de motorkap · 2</div>
+    <h2 class="anim a2">De opbouw van de <em>boodschap.</em></h2>
+    <div class="rows anim a3">
+      <div class="row"><div class="ix">01</div><div class="bd"><b>Herkenning</b><span>Die ene observatie over zijn bedrijf, meteen persoonlijk.</span></div></div>
+      <div class="row"><div class="ix">02</div><div class="bd"><b>De spanning die bij hem past</b><span>Alleen aan het roer of met compagnon. Hoe hoger je klimt, hoe kleiner de kring.</span></div></div>
+      <div class="row"><div class="ix">03</div><div class="bd"><b>Peer-proof</b><span>Geanonimiseerde leden die op hem lijken, plus drie video-testimonials.</span></div></div>
+      <div class="row"><div class="ix">04</div><div class="bd"><b>Waarom Aquila anders is</b><span>De matrix: duurder omdat de mensen beter zijn, senaten, streng selectieproces.</span></div></div>
+      <div class="row"><div class="ix">05</div><div class="bd"><b>De volgende stap</b><span>Een kennismaking van 15 minuten. Geen verkooppraatje.</span></div></div>
+    </div>
+  </div>
+  <span class="sn">06 / 11</span>
+</section>
+
+<!-- 7 HOE HET WERKT -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">Hoe het werkt</div>
+    <h2 class="anim a2">Eén flow, de score stuurt de <em>splitsing.</em></h2>
+    <div class="steps anim a3">
+      <div class="st"><div class="n">01</div><div><b>Lead komt binnen</b><span>Webhook uit de ads of GHL</span></div></div>
+      <div class="st"><div class="n">02</div><div><b>Verrijking</b><span>Bedrijfsdata, site, LinkedIn</span></div></div>
+      <div class="st"><div class="n">03</div><div><b>Lead scoring</b><span>Een score van 0 tot 10</span></div></div>
+      <div class="st"><div class="n">04</div><div><b>De splitsing</b><span>7 en hoger naar de brief, de rest digitaal</span></div></div>
+      <div class="st"><div class="n">05</div><div><b>Generatie</b><span>AI schrijft de brief of de pagina</span></div></div>
+      <div class="st"><div class="n">06</div><div><b>Verzending</b><span>Brief de deur uit, of e-mail plus pagina via GHL</span></div></div>
+      <div class="st"><div class="n">07</div><div><b>Terugschrijven</b><span>Naar GHL, sales ziet het</span></div></div>
+    </div>
+  </div>
+  <div class="kras g anim a4" style="right:4.5rem;bottom:4rem"><span>in n8n,<br>motorkap open</span></div>
+  <span class="sn">07 / 11</span>
+</section>
+
+<!-- 8 FASERING -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">Aanpak</div>
+    <h2 class="anim a2">Eerst een scherpe MVP,<br>dan de volledige <em>generator.</em></h2>
+    <div class="duo anim a3">
+      <div class="col"><div class="col-h">Fase 1 · MVP</div><div class="col-t">E-mail plus dossier</div><ul><li>Gepersonaliseerde e-mail met PDF en paginalink</li><li>Op de beste leads, vaste testimonial-bibliotheek</li><li>De kwaliteit staat, resultaat meteen zichtbaar</li></ul></div>
+      <div class="col"><div class="col-h">Fase 2 · Volledig</div><div class="col-t">De generator</div><ul><li>Volledig dynamische pagina per lead</li><li>A/B-testen op testimonials en invalshoeken</li><li>Koppeling met CRM en leadscoring</li></ul></div>
+    </div>
+  </div>
+  <div class="kras anim a4" style="left:5rem;bottom:4rem"><span>klein en goed beginnen</span></div>
+  <span class="sn">08 / 11</span>
+</section>
+
+<!-- 9 WAT NODIG -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">Wat we van elkaar nodig hebben</div>
+    <h2 class="anim a2">Jullie de <em>inhoud,</em> wij de <em>motor.</em></h2>
+    <div class="duo anim a3">
+      <div class="col"><div class="col-h">Aquila levert</div><ul><li>De leadbron en de scoringslogica</li><li>Zes tot tien video-testimonials met toestemming</li><li>De matrix en de redenen om lid te worden</li><li>Welke leden geanonimiseerd getoond mogen worden</li><li>Toegang tot jullie GHL en het domein</li></ul></div>
+      <div class="col"><div class="col-h">Pique bouwt</div><ul><li>De volledige flow in n8n</li><li>Verrijking, generatie en assemblage</li><li>Pagina en dossier in Aquila-stijl</li><li>Beheer en doorontwikkeling</li></ul></div>
+    </div>
+  </div>
+  <span class="sn">09 / 11</span>
+</section>
+
+<!-- 10 INVESTERING -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">Investering</div>
+    <h2 class="anim a2">Helder geprijsd, alles <em>inbegrepen.</em></h2>
+    <p class="lead anim a3">De brieven per stuk, de lead-motor met een eenmalige opzet en een vast maandbedrag voor beheer en optimalisatie.</p>
+    <div class="prices anim a4">
+      <div class="pr"><div class="t">Brieven · outbound</div><div class="amt">€6,50<span style="font-size:1rem;font-weight:500;color:var(--grijs)"> / brief</span></div><div class="per">alles inbegrepen</div><ul><li>Druk, verzending en research</li><li>Persoonlijke pagina en video</li><li>Schaalt met het volume dat je kiest</li></ul></div>
+      <div class="pr"><div class="t">Lead-motor · opzet</div><div class="amt">€2.500</div><div class="per">eenmalig</div><ul><li>De volledige flow in n8n plus GHL</li><li>Pagina en dossier in Aquila-stijl</li><li>Data en AI ingericht</li></ul></div>
+      <div class="pr"><div class="t">Lead-motor · beheer</div><div class="amt">€750<span style="font-size:1rem;font-weight:500;color:var(--grijs)"> / mnd</span></div><div class="per">beheer en optimalisatie</div><ul><li>Hosting, credits en tokens inbegrepen</li><li>Monitoring en doorontwikkeling</li><li>Geen verrassingen per lead</li></ul></div>
+    </div>
+    <div class="roi anim a5">Per lead ben je centen kwijt in plaats van salesuren. <em>Eén extra lid dekt het maandbedrag ruimschoots.</em></div>
+  </div>
+  <div class="kras g anim a5" style="right:4.5rem;top:3.2rem"><span>1 extra lid<br>= terugverdiend</span></div>
+  <span class="sn">10 / 11</span>
+</section>
+
+<!-- 11 CLOSE -->
+<section class="slide">
+  <div class="mark"><img class="aq" src="aquila-pique-media/aquila-logo.svg" alt="Aquila"><span class="mx">×</span><img class="pq" src="aquila-pique-media/pique-logo-wit.png" alt="Pique"></div>
+  <div class="pad">
+    <div class="eyebrow anim a1">De volgende stap</div>
+    <h1 class="anim a2">Deze week de scope,<br>dan <em>bouwen.</em></h1>
+    <div class="close-steps anim a3">
+      <div><b>01</b> Scope vastzetten</div>
+      <div><b>02</b> Assets aanleveren</div>
+      <div><b>03</b> Live en meten</div>
+    </div>
+  </div>
+  <div class="kras anim a4" style="right:5rem;bottom:5rem"><span>let's get it done</span></div>
+  <span class="sn">11 / 11</span>
+</section>
+
+</div>
+
+<div class="pnav"><button onclick="nav(-1)">↑</button><button onclick="nav(1)">↓</button></div>
+<span id="pcount"></span>
+
+<script>
+(function(){
+  var slides=Array.from(document.querySelectorAll('.slide'));var cur=0;
+  function reset(s){s.querySelectorAll('.anim').forEach(function(el){el.style.animation='none';void el.offsetHeight;el.style.animation='';el.style.opacity='0';});}
+  function goTo(n){cur=Math.max(0,Math.min(slides.length-1,n));slides.forEach(function(s,i){var a=i===cur;if(!a&&s.classList.contains('is-active'))reset(s);s.classList.toggle('is-active',a);});document.getElementById('pcount').textContent=(cur+1)+' / '+slides.length;}
+  function nav(d){goTo(cur+d);}window.nav=nav;
+  function setMode(m){var p=m==='present';document.body.classList.toggle('scroll-mode',!p);document.body.classList.toggle('present-mode',p);document.getElementById('btnScroll').classList.toggle('on',!p);document.getElementById('btnPresent').classList.toggle('on',p);if(p)goTo(cur);}window.setMode=setMode;
+  document.addEventListener('keydown',function(e){if(!document.body.classList.contains('present-mode'))return;if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();nav(1);}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();nav(-1);}if(e.key==='Escape')setMode('scroll');});
+  if(typeof IntersectionObserver!=='undefined'){var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in-view');});},{threshold:.12});slides.forEach(function(s){ob.observe(s);});}
+  goTo(0);
+})();
+</script>
+</body>
+</html>
