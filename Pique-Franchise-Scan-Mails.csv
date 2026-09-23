@@ -1,0 +1,121 @@
+voornaam,achternaam,bedrijf,functie,email,email_confidence,email_bron,onderwerp,mailtekst,notitie
+Mark,Hendriksen,Abemec,Commercieel Manager,mark.hendriksen@abemec.nl,PATROON,"abemec.nl/contact (formaat voornaam.achternaam, ~80%)","Je keek even, Mark","Hoi Mark,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Abemec omdat me iets opviel: hoe elke vestiging zijn eigen agrarische klanten binnenhaalt. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",Adres geconstrueerd uit geverifieerd bedrijfsformaat; niet 1-op-1 bevestigd.
+Annet,Kosse,Atalian Nederland,Salesmanager,Annet.Kosse@atalianworld.com,PATROON,"atalianworld.com (formaat Voornaam.Achternaam, bevestigd via 2 echte adressen)","Je keek even, Annet","Hoi Annet,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina zelfs een paar keer hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Atalian omdat me iets opviel: hoe nieuwe schoonmaak- en facilitaire contracten per regio binnenkomen. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",Personeelsmail via atalianworld.com (niet atalian.nl). Adres geconstrueerd uit bevestigd formaat.
+Gerald,Merkus,OBN Ongedierte Bestrijding Nederland,Directeur,gerald@obn.eu,PATROON,obn.eu/contact (formaat voornaam@),"Je keek even, Gerald","Hoi Gerald,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor OBN omdat me iets opviel: hoe elke vestiging zijn eigen klanten in de regio wint. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",Officieel domein is obn.eu (niet obn.nl). Adres geconstrueerd uit bedrijfsformaat.
+Joris,Janssen,Glaspunt,Marketing Manager / mede-aandeelhouder,joris@glas.nl,PATROON,"glas.nl/contact (formaat voornaam@, 100%)","Je keek even, Joris","Hoi Joris,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Glaspunt omdat me iets opviel: hoe elke vestiging zijn lokale opdrachten binnenhaalt. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",glaspunt.nl leidt door naar glas.nl (het echte maildomein). Adres geconstrueerd uit bedrijfsformaat.
+Rianne,van Koot,Gio Coffee,Teamlead Marketing,rianne.vankoot@giocoffee.nl,PATROON,giocoffee.nl (formaat voornaam.achternaam),"Je keek even, Rianne","Hoi Rianne,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Gio Coffee omdat me iets opviel: hoe nieuwe zakelijke koffieklanten per regio binnenkomen. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",Eigen site toont alleen info@. Alternatief: rianne.koot@giocoffee.nl.
+Emiel,de Bruin,TSNed (Traffic Service Nederland),Algemeen Directeur,emieldebruin@tsned.nl,PATROON,"tsned.nl/contact (formaat voornaamachternaam aaneen, bevestigd via echte adressen)","Je keek even, Emiel","Hoi Emiel,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor TSNed omdat me iets opviel: hoe jullie per regio nieuwe opdrachtgevers vinden. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",Formaat hard afgeleid van echte medewerkeradressen op de eigen site.
+Lisanne,de Gier-Valken,Oranjedak,Management Assistent,l.degier@oranjedak.nl,PATROON,"oranjedak.nl (formaat voorletter.achternaam, ~94%, bevestigd via a.schrauwen@/e.stevenaar@)","Je keek even, Lisanne","Hoi Lisanne,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Oranjedak omdat me iets opviel: hoe elke vestiging zijn eigen dakopdrachten binnenhaalt. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",Gecorrigeerd na bounce (was voornaam.achternaam). Alt bij bounce: l.gier@ of ldegier@oranjedak.nl.
+Peet,Ceelen,Kemkens,Hoofd Verkoop,peet.ceelen@kemkens.nl,PATROON,kemkens.nl/contact (formaat voornaam.achternaam),"Je keek even, Peet","Hoi Peet,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Kemkens omdat me iets opviel: hoe elke vestiging zijn klanten in de regio wint. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",Eigen site toont alleen verkoop@/klantenservice@. Adres geconstrueerd uit bedrijfsformaat.
+Walter,van der Velden Jonkers,Van der Velden Rioleringsbeheer,Business Unit Directeur,walter.vanderveldenjonkers@vandervelden.com,PATROON,"vandervelden.com (formaat voornaam.achternaam, volledige familienaam aaneen; bevestigd via marleen.delaat@)","Je keek even, Walter","Hoi Walter,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Van der Velden omdat me iets opviel: hoe nieuwe opdrachtgevers per regio bij jullie terechtkomen. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",Gecorrigeerd na bounce (Jonkers ontbrak). Alt: walter.jonkers@ of w.vanderveldenjonkers@vandervelden.com.
+Daan,van der Veen,Dutch Quality Gardens,Voorzitter coöperatie,,GEEN,dutchqualitygardens.nl/contact,"Je keek even, Daan","Hoi Daan,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Dutch Quality Gardens omdat me iets opviel: hoe de aangesloten hoveniers per regio aan nieuwe opdrachten komen. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon","GEEN persoonlijk adres: heeft geen eigen bedrijf meer, coöperatie voert enkel info@. daan@ bouncte. Bellen: 085-222 0392. Speculatieve gok: daan@dqghoveniers.nl."
+Marcel,de Waal,Mondial Movers,Algemeen Directeur,marcel@mondial-movers.nl,GOK,mondial-movers.nl/contact,"Je keek even, Marcel","Hoi Marcel,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Mondial Movers omdat me iets opviel: hoe de grote zakelijke verhuizingen per aangesloten verhuizer binnenkomen. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon","Domein met koppelteken. Voornaam@-adres, onbevestigd. Bounce = bellen. Alt: m.dewaal@ of mdewaal@."
+Rebecca,Koelemeijer,Nedflex,Sales Manager Franchise & White Label,r.koelemeijer@nedflex.nl,GEVONDEN,nedflex.nl/dit-zijn-wij (direct adres op teampagina),"Je keek even, Rebecca","Hoi Rebecca,
+
+Ik stuurde je laatst een handgeschreven kaart met een QR-code. Ik zag dat je 'm hebt gescand en de pagina hebt bekeken. Leuk, daar werd ik nieuwsgierig van.
+
+Die pagina maakte ik voor Nedflex omdat me iets opviel: hoe nieuwe white-label- en franchisepartners binnenkomen. Daar zou ik het graag eens kort met je over hebben.
+
+Zullen we een keer vijftien minuten bellen? Dan laat ik zien wat ik precies bedoel. Komt bellen niet uit, dan hoor ik het gewoon.
+
+Groet,
+Simon",Direct adres van de eigen teampagina.

@@ -1,0 +1,302 @@
+// BCS Batch 2 - persoonlijke landingspagina's generator
+// Output: bcs2/[slug].html  ->  intro-pique.agency/bcs2/[slug]
+// Bron: bcs-batch2-base.json + bcs-batch2-research.json
+// Video Jeffrey staat direct onder de header. Personalisatie via de geverifieerde trigger/observatie per bedrijf.
+// Schrijfregels: geen em-dashes, geen zin die met "Geen" begint, geen emojis/symbolen.
+
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+
+const base = JSON.parse(readFileSync(new URL('./bcs-batch2-base.json', import.meta.url)));
+const research = JSON.parse(readFileSync(new URL('./bcs-batch2-research.json', import.meta.url)));
+const oldDrop = new Set(['Amsterdenim', 'Posie Beauty', 'Willicroft', 'The Limonaderij']);
+
+const clean = s => (s || '')
+  .replace(/⚠️?\s*/g, 'Let op: ')
+  .replace(/\s*—\s*/g, ', ')
+  .replace(/–/g, '-')
+  .replace(/\s*[↗→›►]\s*/g, ' ')
+  .replace(/\s{2,}/g, ' ')
+  .trim();
+const esc = s => clean(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const slug = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’'.]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+const rows = base
+  .filter(p => !oldDrop.has(p.bedrijf))
+  .map(p => ({ ...p, r: research[p.bedrijf] || null }))
+  .filter(p => p.r && p.r.conf !== 'DROP');
+
+// monogram uit bedrijfsnaam
+const mono = n => n.replace(/[^A-Za-z ]/g, '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
+
+// voornaam van de beslisser (leeg bij initialen of geen naam)
+const firstName = naam => {
+  if (!naam) return '';
+  const t = naam.trim().split(/[\s,&]+/)[0];
+  if (/^[A-Za-z]\.?$/.test(t)) return '';
+  return t;
+};
+
+// S1 opening per pijnprofiel
+const opening = (naam, pp) => {
+  if (pp === 'B') {
+    return `
+  <p class="r d1" style="margin-top:24px;">Bij veel D2C-merken draait de klantenservice op een of twee mensen die het ernaast doen, of op een wisselende parttime-bezetting.</p>
+  <p class="r d2">Zolang het rustig is werkt dat prima. Bij drukte, ziekte of vakantie is de klantenservice vaak het eerste dat gaat wankelen.</p>
+  <p class="r d3">Toen we naar <strong>${esc(naam)}</strong> keken, kregen we het gevoel dat jullie precies tegen die kwetsbaarheid aan kunnen lopen. Daarom namen we de tijd om te kijken hoe het klantcontact er nu bij staat.</p>`;
+  }
+  return `
+  <p class="r d1" style="margin-top:24px;">De meeste groeiende D2C-merken hebben in het begin geen apart klantenserviceprobleem. Vragen komen binnen, iemand beantwoordt ze, het werkt.</p>
+  <p class="r d2">Vaak is die iemand de oprichter zelf, of een vaste kracht die het erbij doet. Tot het merk groeit. Dan wordt datzelfde klantcontact langzaam een dagtaak, precies op het moment dat er honderd andere dingen spelen.</p>
+  <p class="r d3">Toen we naar <strong>${esc(naam)}</strong> keken, kregen we het gevoel dat jullie dicht tegen dat punt aan zitten. Daarom namen we de tijd om te kijken hoe het klantcontact er nu bij staat.</p>`;
+};
+
+const pivot = (naam, pp) => pp === 'B'
+  ? `Bij ${esc(naam)} hangt de klantenservice op te weinig mensen om betrouwbaar te blijven zodra het druk wordt.`
+  : `${esc(naam)} is inmiddels groot genoeg dat klantenservice niet langer iets is dat er losjes bij kan.`;
+
+const page = p => {
+  const r = p.r;
+  const naam = p.bedrijf;
+  const fn = firstName(r.naam);
+  const h1 = fn
+    ? `Hé ${esc(fn)},<br>dit is waarom je m'n brief hebt ontvangen.`
+    : `Dit is waarom je<br>m'n brief hebt ontvangen.`;
+  const meta = [p.stad, p.vert, '2026'].filter(Boolean).map(esc).join(' &middot; ');
+  return `<!DOCTYPE html>
+<html lang="nl">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NVMXNZ26');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backbone CS - Voorbereid voor ${esc(naam)}</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F6F5F2;--paper:#FFFFFF;--ink:#161614;--body:#383834;--muted:#888880;--faint:#AEADA6;--line:rgba(0,0,0,0.07);--line2:rgba(0,0,0,0.12);--accent:#1F3D35;--sans:'Inter',system-ui,sans-serif;--serif:'Lora',Georgia,serif;--r:8px}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 28px}
+.topbar{background:var(--ink);padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:20}
+.tb-brand{font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.9)}
+.tb-label{font-size:0.68rem;color:rgba(255,255,255,0.35);letter-spacing:0.04em}
+h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3rem);font-weight:500;color:var(--ink);line-height:1.12;letter-spacing:-0.03em}
+h2{font-family:var(--serif);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:500;color:var(--ink);line-height:1.2;letter-spacing:-0.025em}
+p{font-size:0.96rem;line-height:1.82;color:var(--body);margin-bottom:18px}
+p:last-child{margin-bottom:0}
+p strong{color:var(--ink);font-weight:600}
+.sec{padding:72px 0;border-bottom:1px solid var(--line)}
+.sec:last-of-type{border-bottom:none}
+.lbl{display:inline-flex;align-items:center;gap:8px;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.lbl::before{content:'';width:18px;height:1px;background:var(--faint);flex-shrink:0}
+.pull{font-family:var(--serif);font-size:clamp(1.18rem,2.5vw,1.45rem);color:var(--ink);line-height:1.55;border-left:2px solid var(--ink);padding:4px 0 4px 22px;margin:36px 0}
+.callout{background:var(--paper);border:1px solid var(--line2);border-radius:var(--r);padding:20px 24px;margin:28px 0}
+.callout .co-lbl{font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.callout p{font-size:0.9rem;color:var(--body);margin:0}
+.prospect-mark{display:flex;align-items:center;gap:14px;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.pm-logo{width:44px;height:44px;background:var(--ink);border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:1rem;font-weight:600;letter-spacing:0.02em}
+.pm-name{font-size:0.78rem;font-weight:600;color:var(--ink);display:block;margin-bottom:1px}
+.pm-meta{font-size:0.68rem;color:var(--muted)}
+.video-hero{padding:26px 0 4px}
+.video-el{width:100%;border-radius:var(--r);border:1px solid var(--line2);box-shadow:0 6px 24px rgba(0,0,0,0.10);background:#000;display:block}
+.video-cap{font-size:0.72rem;color:var(--muted);margin-top:12px;text-align:center;letter-spacing:0.01em}
+.pivot{padding:52px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:48px 0;text-align:center}
+.pivot-pre{font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.pivot h2{text-align:center;max-width:500px;margin:0 auto}
+.bb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line2);border-radius:var(--r);overflow:hidden;margin-top:32px}
+.bb-item{background:var(--paper);padding:24px 22px}
+.bb-tag{font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.bb-title{font-size:0.9rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.bb-desc{font-size:0.82rem;color:var(--muted);line-height:1.6}
+.team-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--paper);border:1px solid var(--line2);border-radius:14px;overflow:hidden;margin-top:32px}
+.tc-photo{position:relative;overflow:hidden;background:#2A2A27;min-height:340px}
+.tc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%}
+.tc-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,20,0.6) 0%,transparent 50%)}
+.tc-photo-names{position:absolute;bottom:18px;left:20px;color:#fff}
+.tc-photo-names strong{display:block;font-size:1rem;font-weight:600;margin-bottom:3px}
+.tc-photo-names span{font-size:0.66rem;color:rgba(255,255,255,0.55);letter-spacing:0.05em;text-transform:uppercase}
+.tc-body{padding:28px 26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.tc-bio{font-size:0.86rem;color:var(--body);line-height:1.75}
+.tc-facts{display:flex;flex-direction:column;gap:14px;margin-top:auto}
+.tf-item{border-left:2px solid var(--line2);padding-left:12px}
+.tf-val{font-size:0.86rem;font-weight:600;color:var(--ink);margin-bottom:1px}
+.tf-lbl{font-size:0.68rem;color:var(--muted)}
+.cta-sec{background:var(--ink);border-radius:14px;padding:44px 40px;margin:48px 0;color:#fff}
+.cta-eyebrow{font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px}
+.cta-sec h2{color:#fff;margin-bottom:14px}
+.cta-sec>p{color:rgba(255,255,255,0.6);font-size:0.9rem;margin-bottom:0}
+.cta-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;align-items:start}
+.cta-col-label{font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:14px}
+.cf{display:flex;flex-direction:column;gap:9px}
+.cf input,.cf textarea{width:100%;padding:11px 13px;border-radius:7px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:#fff;font-family:var(--sans);font-size:0.84rem;outline:none;transition:border-color 0.2s}
+.cf input::placeholder,.cf textarea::placeholder{color:rgba(255,255,255,0.28)}
+.cf input:focus,.cf textarea:focus{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.09)}
+.cf textarea{height:100px;resize:none}
+.cf-btn{width:100%;padding:12px;border-radius:7px;background:#fff;color:var(--ink);font-family:var(--sans);font-size:0.84rem;font-weight:700;border:none;cursor:pointer;transition:opacity 0.18s}
+.cf-btn:hover{opacity:0.9}
+.cal-wrap{border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,0.1);min-height:420px;background:rgba(255,255,255,0.04)}
+#my-cal-inline-30min{width:100%;min-height:420px}
+.footer{padding:28px 0 44px;text-align:center}
+.footer p{font-size:0.68rem;color:var(--faint);margin:0}
+.r{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.r.v{opacity:1;transform:translateY(0)}
+.r.d1{transition-delay:0.08s}.r.d2{transition-delay:0.16s}.r.d3{transition-delay:0.24s}
+@media(max-width:600px){.wrap{padding:0 20px}.sec{padding:52px 0}.bb-grid{grid-template-columns:1fr}.team-card{grid-template-columns:1fr}.tc-photo{min-height:240px}.cta-cols{grid-template-columns:1fr}.cta-sec{padding:32px 22px}.topbar{padding:12px 20px}}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVMXNZ26" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="topbar">
+  <span class="tb-brand">Backbone Customer Service</span>
+  <span class="tb-label">Vertrouwelijk &middot; Voorbereid voor ${esc(naam)}</span>
+</div>
+
+<div class="wrap">
+
+  <!-- Video Jeffrey, direct onder de header -->
+  <div class="video-hero r">
+    <video class="video-el" controls preload="metadata" playsinline>
+      <source src="video.mp4#t=0.1" type="video/mp4">
+    </video>
+    <div class="video-cap">Jeffrey, mede-oprichter van Backbone, over wat we bij ${esc(naam)} zagen.</div>
+  </div>
+
+  <!-- S1: OPENING -->
+  <section class="sec" style="padding-top:44px;">
+    <div class="prospect-mark r">
+      <div class="pm-logo">${esc(mono(naam))}</div>
+      <div>
+        <span class="pm-name">${esc(naam)}</span>
+        <span class="pm-meta">${meta}</span>
+      </div>
+    </div>
+    <h1 class="r">${h1}</h1>
+    ${opening(naam, r.pp)}
+  </section>
+
+  <!-- S2: WAT WE ZAGEN -->
+  <section class="sec">
+    <div class="lbl r">Hoe we naar ${esc(naam)} keken</div>
+    <p class="r">Wanneer we een merk onderzoeken, kijken we naar de plekken waar het klantcontact zichtbaar wordt: de contactpagina, de kanalen die je aanbiedt en wat klanten publiek terugkoppelen.</p>
+    <p class="r d1">${esc(r.trigger)}</p>
+    <div class="callout r d1">
+      <div class="co-lbl">Wat we op jullie kanalen zagen</div>
+      <p>${esc(r.kanalen)}</p>
+    </div>
+    <div class="pull r d2">${esc(r.obs)}</div>
+  </section>
+
+  <!-- PIVOT -->
+  <div class="pivot r">
+    <div class="pivot-pre">Waar het op uitkomt</div>
+    <h2>${pivot(naam, r.pp)}</h2>
+  </div>
+
+  <!-- S3: WAT WE DENKEN -->
+  <section class="sec" style="padding-top:0;border-top:none;">
+    <div class="lbl r">Wat we denken dat hierachter zit</div>
+    <p class="r">Bij vrijwel ieder groeiend D2C-merk zien we hetzelfde patroon. Het gaat er zelden om dat klantenservice slecht is. Die wordt juist belangrijker.</p>
+    <p class="r">Meer klanten, meer verwachtingen, meer kanalen. Op een gegeven moment is de vraag hoe je klantenservice inricht die past bij de omvang van het merk, en bij de toon die je wilt voeren.</p>
+    <div class="pull r">'Dat is het moment waarop founders zich afvragen: houden we dit intern, of besteden we het uit?'</div>
+    <p class="r">Dat is precies het vraagstuk waar <strong>Backbone</strong> dagelijks mee bezig is.</p>
+  </section>
+
+  <!-- S4: BACKBONE -->
+  <section class="sec">
+    <div class="lbl r">Backbone Customer Service</div>
+    <h2 class="r">Wat wij doen.</h2>
+    <p class="r" style="margin-top:14px;">Wij verzorgen klantenservice voor D2C-merken. Volledig uitbesteed, zo ingericht dat het klinkt alsof het intern bij jou zit. <strong>Jouw toon. Jouw naam. Jouw tempo.</strong></p>
+    <div class="bb-grid r d1">
+      <div class="bb-item">
+        <div class="bb-tag">Merkidentiteit</div>
+        <div class="bb-title">Jouw toon, altijd</div>
+        <div class="bb-desc">We leren het merk kennen voor het eerste ticket. Voor ${esc(naam)} klinkt het als ${esc(naam)}, klanten merken het verschil niet met een intern team.</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-tag">Transparantie</div>
+        <div class="bb-title">Volledig inzicht</div>
+        <div class="bb-desc">Vier portals: live ticketdashboard, meelezen, disputes en refunds. Je ziet altijd wat er gebeurt, geen black box.</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-tag">Team</div>
+        <div class="bb-title">Vaste EU-agents</div>
+        <div class="bb-desc">Mensen die de merken kennen waarvoor ze werken. Meerdere talen, in Zendesk.</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-tag">Aanpak</div>
+        <div class="bb-title">Snel en menselijk</div>
+        <div class="bb-desc">AI waar het kan voor snelheid, mensen waar het telt voor de tickets die er echt toe doen.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5: MENSEN -->
+  <section class="sec">
+    <div class="lbl r">De mensen achter Backbone</div>
+    <p class="r">Jeffrey en Dylan richtten Backbone op vanuit hun achtergrond als Zendesk-specialisten. Ze werken uitsluitend met D2C-merken en houden het team bewust klein genoeg om kwaliteit te garanderen.</p>
+    <div class="team-card r d1">
+      <div class="tc-photo">
+        <img src="jeff-dylan.jpg" alt="Jeffrey en Dylan, mede-oprichters Backbone Customer Service">
+        <div class="tc-photo-overlay"></div>
+        <div class="tc-photo-names">
+          <strong>Jeffrey &amp; Dylan</strong>
+          <span>Mede-oprichters &middot; Backbone CS &middot; Woerden</span>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="tc-bio">Twee Zendesk-professionals die hun e-commerce-ervaring omzetten in een sterke D2C-klantenservice. Snelheid waar het kan, mensen waar het telt.</div>
+        <div class="tc-facts">
+          <div class="tf-item"><div class="tf-val">1M+ tickets</div><div class="tf-lbl">afgehandeld</div></div>
+          <div class="tf-item"><div class="tf-val">20+ agents</div><div class="tf-lbl">EU-based, meerdere talen</div></div>
+          <div class="tf-item"><div class="tf-val">Vaste prijs</div><div class="tf-lbl">per ticket, geen verrassingen</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6: CTA -->
+  <section class="sec" style="border-bottom:none;padding-bottom:0;">
+    <div class="cta-sec r">
+      <div class="cta-eyebrow">Volgende stap</div>
+      <h2>Plan een kennismaking in.</h2>
+      <p>Als je benieuwd bent hoe wij hiernaar kijken: kies hieronder direct een moment dat past. Een kort gesprek van dertig minuten, vrijblijvend.</p>
+      <div class="cal-wrap" style="margin-top:32px;"><div id="my-cal-inline-30min"></div></div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <p>Backbone Customer Service &middot; Voorbereid voor ${esc(naam)} &middot; Vertrouwelijk</p>
+</footer>
+
+<script>
+(function(){var els=document.querySelectorAll('.r');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('v')});return}var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{rootMargin:'0px 0px -32px 0px',threshold:0.04});els.forEach(function(el){io.observe(el)})})();
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
+Cal("init","30min",{origin:"https://app.cal.com"});
+Cal.ns["30min"]("inline",{elementOrSelector:"#my-cal-inline-30min",config:{"layout":"month_view","useSlotsViewOnSmallScreen":"true"},calLink:"jeffrey-backbone-cs/30min"});
+Cal.ns["30min"]("ui",{"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</body>
+</html>`;
+};
+
+// genereren
+mkdirSync(new URL('./bcs2/', import.meta.url), { recursive: true });
+const index = [];
+const seen = new Set();
+for (const p of rows) {
+  let s = slug(p.bedrijf);
+  while (seen.has(s)) s += '-2';
+  seen.add(s);
+  writeFileSync(new URL(`./bcs2/${s}.html`, import.meta.url), page(p));
+  index.push({ bedrijf: p.bedrijf, slug: s, url: `intro-pique.agency/bcs2/${s}`, beslisser: p.r.naam || '', verificatie: p.r.conf });
+}
+writeFileSync(new URL('./bcs2-index.json', import.meta.url), JSON.stringify(index, null, 1));
+console.log(`Gegenereerd: ${rows.length} landingspagina's in bcs2/. Index: bcs2-index.json`);

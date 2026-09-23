@@ -1,0 +1,290 @@
+[
+ {
+  "bedrijf": "Yummygums",
+  "web": "yummygums.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://www.yummygums.com/en/pages/about-yummygums",
+  "toelichting": "Leiding is volledig founder-gedreven: de vier oprichters bezetten de CFO/CMO/creative/UX-rollen (Ruben, Frank, Michel, Luuk). Klantenservice draait op community-medewerkers (Julian, Daan) zonder manager-titel of beslissingsbevoegdheid, dus er is geen functionele CS/ops-laag boven de founder. Ruben Balian blijft contact."
+ },
+ {
+  "bedrijf": "Free Choice Benelux",
+  "web": "vitamine.shop",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://nl.linkedin.com/company/free-choice",
+  "toelichting": "Geen verifieerbare functionele CS-, ops-, e-commerce- of commerciele laag te vinden via LinkedIn of de site; het bedrijf oogt eigenaar/founder-gedreven. Hein Kleinveld blijft het contact."
+ },
+ {
+  "bedrijf": "Perfect Age",
+  "web": "perfect-age.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://denationalefranchisegids.nl/alle-franchises/dienstverlening/persoonlijke-verzorging/perfect-age-beauty-center/",
+  "toelichting": "Merk draait om cosmetisch arts/oprichter Robert Schoemacher (beautycenter-franchise plus webshop). Enige niet-founder-contact is franchise-accountmanager Bram Wijnen, gericht op verkooppunt-werving, niet op klantenservice/operatie. Geen functionele CS/ops-laag; Robert Schoemacher blijft contact."
+ },
+ {
+  "bedrijf": "Supergreens.nl",
+  "web": "supergreens.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://werkenbij.superfoodies.nl/vacatures/",
+  "toelichting": "Er bestaat aantoonbaar een functionele laag (Head of eCommerce plus een Customer Happiness-team, ~22 fte in Landsmeer), maar via harde bronnen was geen naam van die operationele/e-commerce-verantwoordelijke te verifieren. Founder Jesse van der Velde blijft contact; de Head of eCommerce is bij benadering wel het echte aanspreekpunt om te achterhalen."
+ },
+ {
+  "bedrijf": "CIME",
+  "web": "cime-skincare.com",
+  "gevonden": "JA",
+  "func_naam": "Loes Christiaens",
+  "func_rol": "Operations Manager, CÎME Skincare",
+  "func_bron": "https://www.linkedin.com/in/loes-christiaens-58226a27/",
+  "toelichting": "Loes Christiaens staat op LinkedIn als Operations Manager bij CÎME Skincare en gaat feitelijk over operatie/klantenservice, waar de twee juristen-founders (Anke De Boeck, Isabel Coppens) op de merk-/directierol zitten. Primair contact voor CS-uitbesteding; founder blijft fallback. (Team-interview noemt daarnaast 'Carolien' als operations manager, zonat er een echte ops-laag is.)"
+ },
+ {
+  "bedrijf": "The Alpha Men",
+  "web": "thealphamen.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://thealphamen.nl/pages/over-ons",
+  "toelichting": "Bedrijf wordt gerund door founder Cedric van Dijken samen met zijn moeder Anja; klantenservice is een naamloos team (klantenservice@thealphamen.nl) zonder publiek herkenbare CS-/ops-/commercieel-manager. Founder blijft contact."
+ },
+ {
+  "bedrijf": "Happy Earth",
+  "web": "happyearthcare.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://nl.linkedin.com/in/nielsbrouwer1",
+  "toelichting": "Echt founder-run: opgezet door Martijn Bruijning en Niels Brouwer (via hun bureau Orange-Sheep); geen aparte CS-/ops-/commercieel-laag met een verifieerbare naam te vinden. Founder blijft contact."
+ },
+ {
+  "bedrijf": "HappySoaps",
+  "web": "happysoaps.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://nl.linkedin.com/company/thehappysoaps",
+  "toelichting": "Enige publiek zichtbare managementlaag naast founder Marco Koers is Elke Van Looveren (Head of Marketing a.i.), wat geen CS-/ops-/commercieel-rol is; e-commerce- en operations-rollen staan open in vacatures maar er is geen zittende, met naam verifieerbare functionele beslisser. Founder blijft contact."
+ },
+ {
+  "bedrijf": "CIME Skincare",
+  "web": "cime-skincare.com",
+  "gevonden": "JA",
+  "func_naam": "Loes Christiaens",
+  "func_rol": "Operations Manager",
+  "func_bron": "https://www.linkedin.com/in/loes-christiaens-58226a27/",
+  "toelichting": "Loes Christiaens is Operations Manager bij CÎME en verantwoordelijk voor o.a. supply chain, voorraad en het afhandelen van klantvragen, klachten en escalaties, precies de operationele/CS-scope voor een uitbestedingsgesprek. Founders (Isabel Coppens/Anke De Boeck) blijven fallback."
+ },
+ {
+  "bedrijf": "SUE Food",
+  "web": "sue-food.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://sue-food.nl/pages/ons-team",
+  "toelichting": "SUE is een fysieke bakkerij/lunchroom (Rotterdam/Amsterdam) gerund door founder Kim Sue Palm; team bestaat uit bakkers, een lunchchef en locatiemanager Lynn, plus Rita voor administratie/website/support, maar er is geen D2C-CS-/ops-/commercieel-beslisser. Founder blijft contact."
+ },
+ {
+  "bedrijf": "De Bonte Koe",
+  "web": "debontekoe.nl",
+  "gevonden": "JA",
+  "func_naam": "Tomas van Klaveren",
+  "func_rol": "Operationeel manager",
+  "func_bron": "https://rocketreach.co/tomas-van-klaveren-email_261641034",
+  "toelichting": "Feitelijke operationeel manager, los van de eigenaren-familie Klein; gaat over de dagelijkse operatie en is het logische functionele aanspreekpunt voor een CS/operatie-uitbesteding. Ook bevestigd via persbericht heropening winkel Schiedam 2025."
+ },
+ {
+  "bedrijf": "Giraffe Coffee Roasters",
+  "web": "giraffecoffee.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://www.start2create.nl/geen-sales-wel-groei-het-koffiegeheim-van-giraffe-coffee/",
+  "toelichting": "Founder-run door duo Mark Jordaan en Maarten van der Jagt; bedrijf heeft bewust geen aparte sales-/CS-laag (accountmanagers zijn koffie-mensen, 'de Kwallies'). Geen functionele operatie-/klantenservicebeslisser aanwezig, founder blijft contact."
+ },
+ {
+  "bedrijf": "Stooker Specialty Coffee",
+  "web": "stookerspecialtycoffee.com",
+  "gevonden": "JA",
+  "func_naam": "Yoshka Stooker",
+  "func_rol": "E-commerce / Webshop Manager",
+  "func_bron": "https://www.linkedin.com/posts/yoshka-stooker-b921302a_join-our-e-commerce-team-activity-6665958916775641088-L2BG",
+  "toelichting": "Runt e-commerce/webshop (incl. het D2C-klantcontact en fulfilment) en is benaderbaarder dan mede-oprichter Onno van Zanten. Wel familie (Stooker), maar functioneel het e-commerce-/klantcontact-aanspreekpunt; borderline, founder blijft fallback."
+ },
+ {
+  "bedrijf": "Blommers Coffee Roasters",
+  "web": "blommers.coffee",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://misterbarish.be/blommers-koffiebranderij-gelderland-nijmegen/",
+  "toelichting": "Micro-branderij uit Nijmegen, gerund door de broers Robert en Berend Blommers; recent van B2B naar B2C gegaan maar geen zichtbare aparte operatie-/CS-laag. Echt founder-run, founder blijft contact."
+ },
+ {
+  "bedrijf": "FitPreps",
+  "web": "fitpreps.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://nl.linkedin.com/company/fit-preps",
+  "toelichting": "Jong bedrijf (opgericht 2022), geleid door eigenaren Boy Hardenberg en Ray Drisdale plus een eigen chef-kok voor de keuken; geen verifieerbare functionele operatie-/klantenservice-/e-commercemanager gevonden. Founder blijft contact."
+ },
+ {
+  "bedrijf": "What a Pasta",
+  "web": "whatapasta.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": null,
+  "toelichting": "Klein founder-run pasta/horeca-concept (Giuseppe Di Modica + Patrizio, ontstaan naast restaurant Belcapo). Geen publiek verifieerbare CS-/operatie-/commercieel-laag onder de oprichters; founder blijft contact."
+ },
+ {
+  "bedrijf": "Eat Dust",
+  "web": "eatdustclothing.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": null,
+  "toelichting": "Antwerps denimmerk (~10-25 fte) opgericht en geleid door Rob Harmsen en Keith Hioco; klantcontact loopt via shop@eatdustclothing.com. Geen naam of functietitel van een operationele/CS-manager publiek te verifieren; echt founder-run."
+ },
+ {
+  "bedrijf": "Gray Label",
+  "web": "graylabel.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": null,
+  "toelichting": "Er bestaat wel een functionele CS-laag (Gray Label werft een 'Customer Service & RNTD Service Manager' die schakelt tussen klant, logistiek en e-commerce), maar geen enkele naam van de huidige vervuller is publiek verifieerbaar; alleen PR-contact 'Lena' staat op de site. Founder Emily Gray blijft contact; service@gray-label.com is het CS-kanaal."
+ },
+ {
+  "bedrijf": "Undiemeister",
+  "web": "undiemeister.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": null,
+  "toelichting": "CEO Jeroen Adriaans runt meerdere bedrijven parallel (ex-Bamigo), dus dagelijkse operatie is waarschijnlijk gedelegeerd, maar publiek zijn alleen team-voornamen te vinden (Remko - e-commerce marketing, Cynthia - design, Michiel - social); geen verifieerbare CS-/ops-beslisser met functietitel. Founder blijft contact."
+ },
+ {
+  "bedrijf": "Joe Merino",
+  "web": "joemerino.com",
+  "gevonden": "JA",
+  "func_naam": "Yvo Batenburg",
+  "func_rol": "E-commerce Manager",
+  "func_bron": "https://theorg.com/org/joe-merino",
+  "toelichting": "Grootste bedrijf van de set (~25-35 fte). Naast eigenaar Ron Beckers noemt het org-overzicht Yvo Batenburg als E-commerce Manager (en Danielle S. Willems als Retail Manager); de E-commerce Manager is de meest logische functionele ingang voor een CS-uitbesteding van de webshop. Ron Beckers blijft fallback."
+ },
+ {
+  "bedrijf": "Camps en Camps",
+  "web": "campsencamps.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://nl.linkedin.com/in/ine-hoevenaar-camps-035a7641",
+  "toelichting": "Bedrijfsregisters (Creditsafe/bedrijvenopdekaart) tonen slechts 5-9 medewerkers en enkel Ine Hoevenaar-Camps als directeur/eigenaar. Geen aparte klantenservice-, operations- of commercieel-functionaris publiek vindbaar; echt founder-run, founder blijft contact."
+ },
+ {
+  "bedrijf": "Dick Moby",
+  "web": "dickmoby.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://nl.linkedin.com/company/dick-moby",
+  "toelichting": "LinkedIn vermeldt 2-10 medewerkers; leiding bestaat uit de twee oprichters Robbert Wefers Bettink (design/inkoop) en Tim Holland/Broekhuizen (marketing/algemeen management). Geen aparte CS/ops/e-commerce-laag verifieerbaar, founder blijft contact."
+ },
+ {
+  "bedrijf": "Webkarpet",
+  "web": "webkarpet.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://drimble.nl/bedrijf/genemuiden/22633324/webkarpet.html",
+  "toelichting": "Kleine webshop in Genemuiden; alleen algemene klantenservice-contactgegevens en Katinka Kroon (eigenaar/directeur via holding) publiek bekend. Geen benoemde klantenservice-, operationeel- of commercieel manager te vinden; founder blijft contact."
+ },
+ {
+  "bedrijf": "DesignSpiegels.nl",
+  "web": "designspiegels.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://companyinfo.nl/organisatieprofiel/detailhandel-via-internet-in-overige-non-food/de-spiegelfabriek-b-v-naarden-69107661-000004998677",
+  "toelichting": "Onderdeel van De Spiegelfabriek (Naarden); enige benoemde leiding is A.S. Sijmons (algemeen directeur/DGA), en het sollicitatie-/vacature-contact loopt via stephan@designspiegels.nl wat naar diezelfde eigenaar wijst. Geen aparte functionele CS/ops-laag verifieerbaar; founder blijft contact."
+ },
+ {
+  "bedrijf": "Spikes en Sparrow",
+  "web": "spikesandsparrow.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://www.linkedin.com/in/kris-venetis-b7a1ab1/",
+  "toelichting": "Enige publiek herleidbare leiding is Kris Venetis (managing director/mede-eigenaar). Dutch Dream Group dook op maar dat betreft M&A-adviseur John Geenen, geen operationele rol bij het merk. Geen aparte klantenservice-, operations- of commercieel manager vindbaar; founder blijft contact."
+ },
+ {
+  "bedrijf": "Fraenck",
+  "web": "fraenck.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://nl.linkedin.com/company/fraenck",
+  "toelichting": "Social-enterprise atelier in Arnhem met ~13 medewerkers; LinkedIn toont geen benoemde CS/ops/e-commerce-laag. De enige gevonden extra naam (Robert Derksen) is lid van de Raad van Advies/fiscaal jurist, geen operationele rol. Ratna Ho (oprichter) blijft het contact."
+ },
+ {
+  "bedrijf": "BEARLifestyle",
+  "web": "bearlifestyle.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://nl.linkedin.com/company/bear-lifestyle",
+  "toelichting": "Familie-mkb (Beernink) rond Bear Bags/Bear Design met eigen kantoor+warehouse in Druten; geen publiek verifieerbare Head of Customer Care/Ops/commercieel naast de eigenaar te vinden. Cas Beernink blijft het contact."
+ },
+ {
+  "bedrijf": "Bear Design",
+  "web": "beardesign.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://nl.linkedin.com/company/beardesigntassen",
+  "toelichting": "Zelfde Beernink-familiebedrijf als BEARLifestyle; leerwaren-merk gerund door oprichter Willem-Jan Beernink, geen aparte functionele CS/ops-manager publiek te verifieren. Founder blijft contact."
+ },
+ {
+  "bedrijf": "The Good Brand",
+  "web": "thegoodbrand.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://companyinfo.nl/organisatieprofiel/vervaardiging-van-zeep-was-reinigings-en-polijstmiddelen/natutrade-b-v-bergen-op-zoom-81877242-000048141542",
+  "toelichting": "Merk van Natutrade B.V. (Bergen op Zoom); algemeen directeur is holding PSI Holland B.V., geen benoemde persoon of aparte CS/ops/commercieel-laag publiek verifieerbaar. Founder/eigenaar blijft contact."
+ },
+ {
+  "bedrijf": "Pretty Curly Girl",
+  "web": "prettycurlygirl.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://www.linkedin.com/in/hanan-el-fizazi-b44278356/",
+  "toelichting": "Curly-hair-merk uit Rotterdam, 100% eigendom en gerund door oprichter Hanan el Fizazi; geen verifieerbare Head of Customer Care/Ops/COO of commercieel directeur naast haar gevonden. Founder blijft contact."
+ },
+ {
+  "bedrijf": "WIJCK.",
+  "web": "wijck.com",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://wijck.com/en/contact",
+  "toelichting": "Klein founder-run merk (10-25 fte); contactpagina en LinkedIn tonen geen CS-, operations- of commercieel-managementlaag, alleen een generiek info@wijck.com. De enige 'van Wijck / Head of Customer'-treffer is een toevallige naamsgelijkenis, geen medewerker van dit merk. Founder Rutger Diemel blijft het contact."
+ },
+ {
+  "bedrijf": "Fleurdirect",
+  "web": "fleurdirect.nl",
+  "gevonden": "NEE",
+  "func_naam": null,
+  "func_rol": null,
+  "func_bron": "https://www.fleurdirect.nl/over-ons/",
+  "toelichting": "Team-pagina noemt alleen voornamen zonder functietitels; enige gevonden klantcontactpersoon is Melanie Bakker ('Klantcontact en Binnendienst', https://nl.linkedin.com/in/melanie-bakker-6aa388139), een uitvoerende rol en geen CS-/operations-manager met beslisbevoegdheid. Bij dit door twee oprichters gerunde bedrijf (15-25 fte) blijft founder Christian Stolk het contact."
+ }
+]

@@ -1,0 +1,2011 @@
+[
+ {
+  "bedrijf": "Nutribites",
+  "slug": "nutribites",
+  "url": "intro-pique.agency/bcs3/nutribites",
+  "beslisser": "Bnar Falx",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Plantpowders",
+  "slug": "plantpowders",
+  "url": "intro-pique.agency/bcs3/plantpowders",
+  "beslisser": "Remi Scharroo",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Beofit",
+  "slug": "beofit",
+  "url": "intro-pique.agency/bcs3/beofit",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Overload Worldwide",
+  "slug": "overload-worldwide",
+  "url": "intro-pique.agency/bcs3/overload-worldwide",
+  "beslisser": "Coen Luiken",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Amacx",
+  "slug": "amacx",
+  "url": "intro-pique.agency/bcs3/amacx",
+  "beslisser": "Gino Vierhouten",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Lightning Endurance",
+  "slug": "lightning-endurance",
+  "url": "intro-pique.agency/bcs3/lightning-endurance",
+  "beslisser": "Maarten Nieuwstraten",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Natusport",
+  "slug": "natusport",
+  "url": "intro-pique.agency/bcs3/natusport",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Cabau Lifestyle",
+  "slug": "cabau-lifestyle",
+  "url": "intro-pique.agency/bcs3/cabau-lifestyle",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Vital Nutrition",
+  "slug": "vital-nutrition",
+  "url": "intro-pique.agency/bcs3/vital-nutrition",
+  "beslisser": "",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Eclat (Eclatant Beauty)",
+  "slug": "eclat-eclatant-beauty",
+  "url": "intro-pique.agency/bcs3/eclat-eclatant-beauty",
+  "beslisser": "Gamze Ulker",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Vitiv",
+  "slug": "vitiv",
+  "url": "intro-pique.agency/bcs3/vitiv",
+  "beslisser": "Martin Hullekes",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Viv Support",
+  "slug": "viv-support",
+  "url": "intro-pique.agency/bcs3/viv-support",
+  "beslisser": "Vivian Reijs",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Yummygums",
+  "slug": "yummygums",
+  "url": "intro-pique.agency/bcs3/yummygums",
+  "beslisser": "Ruben Balian",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Laveen Femme",
+  "slug": "laveen-femme",
+  "url": "intro-pique.agency/bcs3/laveen-femme",
+  "beslisser": "Jo Kho",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Natural Women Care",
+  "slug": "natural-women-care",
+  "url": "intro-pique.agency/bcs3/natural-women-care",
+  "beslisser": "Tanja den Dunnen & Sabine Verhallen",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Smeets en Graas",
+  "slug": "smeets-en-graas",
+  "url": "intro-pique.agency/bcs3/smeets-en-graas",
+  "beslisser": "Sofie Graas",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Free Choice Benelux",
+  "slug": "free-choice-benelux",
+  "url": "intro-pique.agency/bcs3/free-choice-benelux",
+  "beslisser": "Hein Kleinveld",
+  "wwk": false
+ },
+ {
+  "bedrijf": "VitaminFit",
+  "slug": "vitaminfit",
+  "url": "intro-pique.agency/bcs3/vitaminfit",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Perfect Age",
+  "slug": "perfect-age",
+  "url": "intro-pique.agency/bcs3/perfect-age",
+  "beslisser": "Robert Schoemacher",
+  "wwk": true
+ },
+ {
+  "bedrijf": "De Groene Vrouw",
+  "slug": "de-groene-vrouw",
+  "url": "intro-pique.agency/bcs3/de-groene-vrouw",
+  "beslisser": "Nienke Gottenbos",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Foodsporen",
+  "slug": "foodsporen",
+  "url": "intro-pique.agency/bcs3/foodsporen",
+  "beslisser": "Mart Stoffele",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Prohemp",
+  "slug": "prohemp",
+  "url": "intro-pique.agency/bcs3/prohemp",
+  "beslisser": "",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Unlimited Health",
+  "slug": "unlimited-health",
+  "url": "intro-pique.agency/bcs3/unlimited-health",
+  "beslisser": "Helen Beliën",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Viteezy",
+  "slug": "viteezy",
+  "url": "intro-pique.agency/bcs3/viteezy",
+  "beslisser": "Frans Peters",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Vitae Max",
+  "slug": "vitae-max",
+  "url": "intro-pique.agency/bcs3/vitae-max",
+  "beslisser": "drs. L.N. Schulpen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Smartblend",
+  "slug": "smartblend",
+  "url": "intro-pique.agency/bcs3/smartblend",
+  "beslisser": "Lennart van der Krogt",
+  "wwk": false
+ },
+ {
+  "bedrijf": "SUPP24",
+  "slug": "supp24",
+  "url": "intro-pique.agency/bcs3/supp24",
+  "beslisser": "Marcel Butter",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Supergreens.nl",
+  "slug": "supergreensnl",
+  "url": "intro-pique.agency/bcs3/supergreensnl",
+  "beslisser": "Jesse van der Velde",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Microdose",
+  "slug": "microdose",
+  "url": "intro-pique.agency/bcs3/microdose",
+  "beslisser": "Hein Pijnnaken",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Next Level Smart",
+  "slug": "next-level-smart",
+  "url": "intro-pique.agency/bcs3/next-level-smart",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Dutch Balance",
+  "slug": "dutch-balance",
+  "url": "intro-pique.agency/bcs3/dutch-balance",
+  "beslisser": "Martijn",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Cellics",
+  "slug": "cellics",
+  "url": "intro-pique.agency/bcs3/cellics",
+  "beslisser": "Isabel van Genugten",
+  "wwk": false
+ },
+ {
+  "bedrijf": "SiWell",
+  "slug": "siwell",
+  "url": "intro-pique.agency/bcs3/siwell",
+  "beslisser": "Amber",
+  "wwk": false
+ },
+ {
+  "bedrijf": "CBD-producten.nl",
+  "slug": "cbd-productennl",
+  "url": "intro-pique.agency/bcs3/cbd-productennl",
+  "beslisser": "Stephan van Went",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Fair Leaf",
+  "slug": "fair-leaf",
+  "url": "intro-pique.agency/bcs3/fair-leaf",
+  "beslisser": "Brian Winkel",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Reishi-extract",
+  "slug": "reishi-extract",
+  "url": "intro-pique.agency/bcs3/reishi-extract",
+  "beslisser": "R. van Hartog",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Zechsal",
+  "slug": "zechsal",
+  "url": "intro-pique.agency/bcs3/zechsal",
+  "beslisser": "Mercedes Prinsen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "VitaCura",
+  "slug": "vitacura",
+  "url": "intro-pique.agency/bcs3/vitacura",
+  "beslisser": "Gert de Visser",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Biobey",
+  "slug": "biobey",
+  "url": "intro-pique.agency/bcs3/biobey",
+  "beslisser": "Marha Akhmatova",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Erica",
+  "slug": "erica",
+  "url": "intro-pique.agency/bcs3/erica",
+  "beslisser": "Cornelis P. Zijerveld",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Ginger Life",
+  "slug": "ginger-life",
+  "url": "intro-pique.agency/bcs3/ginger-life",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Paulies Ginger",
+  "slug": "paulies-ginger",
+  "url": "intro-pique.agency/bcs3/paulies-ginger",
+  "beslisser": "Paul Opdam",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Blend New Day",
+  "slug": "blend-new-day",
+  "url": "intro-pique.agency/bcs3/blend-new-day",
+  "beslisser": "Daniel ten Vergert",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Squalan",
+  "slug": "squalan",
+  "url": "intro-pique.agency/bcs3/squalan",
+  "beslisser": "Leslie van der Meijden & Monique Hugen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Botanical Beauty",
+  "slug": "botanical-beauty",
+  "url": "intro-pique.agency/bcs3/botanical-beauty",
+  "beslisser": "Catharine van Everdingen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Witlof Skincare",
+  "slug": "witlof-skincare",
+  "url": "intro-pique.agency/bcs3/witlof-skincare",
+  "beslisser": "Caroline van Eeuwijk",
+  "wwk": false
+ },
+ {
+  "bedrijf": "SMPL Skincare",
+  "slug": "smpl-skincare",
+  "url": "intro-pique.agency/bcs3/smpl-skincare",
+  "beslisser": "Evi van Splunder",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Abloom",
+  "slug": "abloom",
+  "url": "intro-pique.agency/bcs3/abloom",
+  "beslisser": "Josephine Alofs",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Dutch Heritage Cosmetics",
+  "slug": "dutch-heritage-cosmetics",
+  "url": "intro-pique.agency/bcs3/dutch-heritage-cosmetics",
+  "beslisser": "Bianca Jessica van Unen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Aphyta",
+  "slug": "aphyta",
+  "url": "intro-pique.agency/bcs3/aphyta",
+  "beslisser": "Eva Nouhet",
+  "wwk": false
+ },
+ {
+  "bedrijf": "CIME",
+  "slug": "cime",
+  "url": "intro-pique.agency/bcs3/cime",
+  "beslisser": "Loes Christiaens",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Botma en van Bennekom",
+  "slug": "botma-en-van-bennekom",
+  "url": "intro-pique.agency/bcs3/botma-en-van-bennekom",
+  "beslisser": "Rianne Botma",
+  "wwk": false
+ },
+ {
+  "bedrijf": "The Alpha Men",
+  "slug": "the-alpha-men",
+  "url": "intro-pique.agency/bcs3/the-alpha-men",
+  "beslisser": "Cedric van Dijken",
+  "wwk": false
+ },
+ {
+  "bedrijf": "MUZE Skincare",
+  "slug": "muze-skincare",
+  "url": "intro-pique.agency/bcs3/muze-skincare",
+  "beslisser": "Liesbeth Kleermaker",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Chi Natural Life",
+  "slug": "chi-natural-life",
+  "url": "intro-pique.agency/bcs3/chi-natural-life",
+  "beslisser": "Kai Beljon",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Petit en Jolie",
+  "slug": "petit-en-jolie",
+  "url": "intro-pique.agency/bcs3/petit-en-jolie",
+  "beslisser": "Esther Keddeman",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Happy Earth",
+  "slug": "happy-earth",
+  "url": "intro-pique.agency/bcs3/happy-earth",
+  "beslisser": "Martijn Bruijning",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Mineralissima",
+  "slug": "mineralissima",
+  "url": "intro-pique.agency/bcs3/mineralissima",
+  "beslisser": "Kati Launonen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Creative Cosmetics",
+  "slug": "creative-cosmetics",
+  "url": "intro-pique.agency/bcs3/creative-cosmetics",
+  "beslisser": "Fabienne Bulman",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Ellis Faas",
+  "slug": "ellis-faas",
+  "url": "intro-pique.agency/bcs3/ellis-faas",
+  "beslisser": "Thijs Faas",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Loveli",
+  "slug": "loveli",
+  "url": "intro-pique.agency/bcs3/loveli",
+  "beslisser": "Linda Bot",
+  "wwk": false
+ },
+ {
+  "bedrijf": "HappySoaps",
+  "slug": "happysoaps",
+  "url": "intro-pique.agency/bcs3/happysoaps",
+  "beslisser": "Marco Koers",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Lekker Company",
+  "slug": "lekker-company",
+  "url": "intro-pique.agency/bcs3/lekker-company",
+  "beslisser": "Dewi van de Waeter",
+  "wwk": false
+ },
+ {
+  "bedrijf": "La Rhode",
+  "slug": "la-rhode",
+  "url": "intro-pique.agency/bcs3/la-rhode",
+  "beslisser": "Rhodé van den Boogaart",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Wellmark",
+  "slug": "wellmark",
+  "url": "intro-pique.agency/bcs3/wellmark",
+  "beslisser": "Marleen van den Bogaart",
+  "wwk": false
+ },
+ {
+  "bedrijf": "We Love the Planet",
+  "slug": "we-love-the-planet",
+  "url": "intro-pique.agency/bcs3/we-love-the-planet",
+  "beslisser": "Eva Klomp",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Natural Self",
+  "slug": "natural-self",
+  "url": "intro-pique.agency/bcs3/natural-self",
+  "beslisser": "Isabelle Ulenaers",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Rheine",
+  "slug": "rheine",
+  "url": "intro-pique.agency/bcs3/rheine",
+  "beslisser": "Kyria Cateau",
+  "wwk": false
+ },
+ {
+  "bedrijf": "SKIN by Dings",
+  "slug": "skin-by-dings",
+  "url": "intro-pique.agency/bcs3/skin-by-dings",
+  "beslisser": "Ciska Dings",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Kopje Thee",
+  "slug": "kopje-thee",
+  "url": "intro-pique.agency/bcs3/kopje-thee",
+  "beslisser": "Tina Vancampenhout",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Delcon Petfood",
+  "slug": "delcon-petfood",
+  "url": "intro-pique.agency/bcs3/delcon-petfood",
+  "beslisser": "Brecht De Rouck",
+  "wwk": false
+ },
+ {
+  "bedrijf": "MIGLOT Parfums",
+  "slug": "miglot-parfums",
+  "url": "intro-pique.agency/bcs3/miglot-parfums",
+  "beslisser": "Kristof Lefebre",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Four Roses",
+  "slug": "four-roses",
+  "url": "intro-pique.agency/bcs3/four-roses",
+  "beslisser": "Lien De Vroe",
+  "wwk": false
+ },
+ {
+  "bedrijf": "LN KNITS",
+  "slug": "ln-knits",
+  "url": "intro-pique.agency/bcs3/ln-knits",
+  "beslisser": "Ellen Kegels",
+  "wwk": false
+ },
+ {
+  "bedrijf": "STROM Clothing",
+  "slug": "strom-clothing",
+  "url": "intro-pique.agency/bcs3/strom-clothing",
+  "beslisser": "Charly Straatman",
+  "wwk": false
+ },
+ {
+  "bedrijf": "SUE Food",
+  "slug": "sue-food",
+  "url": "intro-pique.agency/bcs3/sue-food",
+  "beslisser": "Kim Sue Palm",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Dalicious",
+  "slug": "dalicious",
+  "url": "intro-pique.agency/bcs3/dalicious",
+  "beslisser": "Muriël Schueler",
+  "wwk": false
+ },
+ {
+  "bedrijf": "De Bonte Koe",
+  "slug": "de-bonte-koe",
+  "url": "intro-pique.agency/bcs3/de-bonte-koe",
+  "beslisser": "Tomas van Klaveren",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Friandries",
+  "slug": "friandries",
+  "url": "intro-pique.agency/bcs3/friandries",
+  "beslisser": "Dries Michels",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Mani Vivendi",
+  "slug": "mani-vivendi",
+  "url": "intro-pique.agency/bcs3/mani-vivendi",
+  "beslisser": "Kees Hoksbergen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Juicebrothers",
+  "slug": "juicebrothers",
+  "url": "intro-pique.agency/bcs3/juicebrothers",
+  "beslisser": "Cécile Michels",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Gnger (G'nger)",
+  "slug": "gnger-gnger",
+  "url": "intro-pique.agency/bcs3/gnger-gnger",
+  "beslisser": "Samantha van der Leest",
+  "wwk": false
+ },
+ {
+  "bedrijf": "De Chocopastawinkel",
+  "slug": "de-chocopastawinkel",
+  "url": "intro-pique.agency/bcs3/de-chocopastawinkel",
+  "beslisser": "Michiel Vos",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Food2Smile",
+  "slug": "food2smile",
+  "url": "intro-pique.agency/bcs3/food2smile",
+  "beslisser": "Menno Snijders",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Hoeksche Branders",
+  "slug": "hoeksche-branders",
+  "url": "intro-pique.agency/bcs3/hoeksche-branders",
+  "beslisser": "Demi Bakhuizen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Giraffe Coffee Roasters",
+  "slug": "giraffe-coffee-roasters",
+  "url": "intro-pique.agency/bcs3/giraffe-coffee-roasters",
+  "beslisser": "Mark Jordaan",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Roast.nl",
+  "slug": "roastnl",
+  "url": "intro-pique.agency/bcs3/roastnl",
+  "beslisser": "Shenol Pishori",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Stooker Specialty Coffee",
+  "slug": "stooker-specialty-coffee",
+  "url": "intro-pique.agency/bcs3/stooker-specialty-coffee",
+  "beslisser": "Yoshka Stooker",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Blommers Coffee Roasters",
+  "slug": "blommers-coffee-roasters",
+  "url": "intro-pique.agency/bcs3/blommers-coffee-roasters",
+  "beslisser": "Robert Blommers",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Koffiemakers",
+  "slug": "koffiemakers",
+  "url": "intro-pique.agency/bcs3/koffiemakers",
+  "beslisser": "Laurent Destrooper",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Cross Roast",
+  "slug": "cross-roast",
+  "url": "intro-pique.agency/bcs3/cross-roast",
+  "beslisser": "Tom Helsen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "De Theebaron",
+  "slug": "de-theebaron",
+  "url": "intro-pique.agency/bcs3/de-theebaron",
+  "beslisser": "Guus van Herwaarden",
+  "wwk": true
+ },
+ {
+  "bedrijf": "PURITEA",
+  "slug": "puritea",
+  "url": "intro-pique.agency/bcs3/puritea",
+  "beslisser": "Asoka Groen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Joy of Matcha",
+  "slug": "joy-of-matcha",
+  "url": "intro-pique.agency/bcs3/joy-of-matcha",
+  "beslisser": "Ronny Weltens",
+  "wwk": false
+ },
+ {
+  "bedrijf": "The Matcha Man",
+  "slug": "the-matcha-man",
+  "url": "intro-pique.agency/bcs3/the-matcha-man",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Matcha-IRO",
+  "slug": "matcha-iro",
+  "url": "intro-pique.agency/bcs3/matcha-iro",
+  "beslisser": "François Van den Brulle",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Hey Matcha",
+  "slug": "hey-matcha",
+  "url": "intro-pique.agency/bcs3/hey-matcha",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Mr.MATCHA",
+  "slug": "mrmatcha",
+  "url": "intro-pique.agency/bcs3/mrmatcha",
+  "beslisser": "Erwin Koeneman",
+  "wwk": true
+ },
+ {
+  "bedrijf": "YOON Matcha",
+  "slug": "yoon-matcha",
+  "url": "intro-pique.agency/bcs3/yoon-matcha",
+  "beslisser": "Rani Stein",
+  "wwk": false
+ },
+ {
+  "bedrijf": "OME Matcha",
+  "slug": "ome-matcha",
+  "url": "intro-pique.agency/bcs3/ome-matcha",
+  "beslisser": "Nanou Van Dyck",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Smart Meals",
+  "slug": "smart-meals",
+  "url": "intro-pique.agency/bcs3/smart-meals",
+  "beslisser": "Hugo Weijermars",
+  "wwk": false
+ },
+ {
+  "bedrijf": "FitPreps",
+  "slug": "fitpreps",
+  "url": "intro-pique.agency/bcs3/fitpreps",
+  "beslisser": "Boy Hardenberg",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Olijfolie Concurrent",
+  "slug": "olijfolie-concurrent",
+  "url": "intro-pique.agency/bcs3/olijfolie-concurrent",
+  "beslisser": "Fabio Ganau",
+  "wwk": true
+ },
+ {
+  "bedrijf": "De Olijfolie Shop",
+  "slug": "de-olijfolie-shop",
+  "url": "intro-pique.agency/bcs3/de-olijfolie-shop",
+  "beslisser": "Nico van Donkelaar",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Baltazar",
+  "slug": "baltazar",
+  "url": "intro-pique.agency/bcs3/baltazar",
+  "beslisser": "Bas Houweling",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Aardig Wijntje",
+  "slug": "aardig-wijntje",
+  "url": "intro-pique.agency/bcs3/aardig-wijntje",
+  "beslisser": "Jurre Ham",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Cheese In A Box",
+  "slug": "cheese-in-a-box",
+  "url": "intro-pique.agency/bcs3/cheese-in-a-box",
+  "beslisser": "Herriaan Franssen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Hello Cheese",
+  "slug": "hello-cheese",
+  "url": "intro-pique.agency/bcs3/hello-cheese",
+  "beslisser": "Robin Hennekam",
+  "wwk": false
+ },
+ {
+  "bedrijf": "The Spice Club",
+  "slug": "the-spice-club",
+  "url": "intro-pique.agency/bcs3/the-spice-club",
+  "beslisser": "Gijs Schuilingh",
+  "wwk": false
+ },
+ {
+  "bedrijf": "The Good Spice",
+  "slug": "the-good-spice",
+  "url": "intro-pique.agency/bcs3/the-good-spice",
+  "beslisser": "Iona Mulder",
+  "wwk": false
+ },
+ {
+  "bedrijf": "What a Pasta",
+  "slug": "what-a-pasta",
+  "url": "intro-pique.agency/bcs3/what-a-pasta",
+  "beslisser": "Giuseppe Di Modica",
+  "wwk": false
+ },
+ {
+  "bedrijf": "BROK",
+  "slug": "brok",
+  "url": "intro-pique.agency/bcs3/brok",
+  "beslisser": "Kenneth De Roose",
+  "wwk": false
+ },
+ {
+  "bedrijf": "BugsforPets",
+  "slug": "bugsforpets",
+  "url": "intro-pique.agency/bcs3/bugsforpets",
+  "beslisser": "Irene en Isabelle van Benthem",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Petfood.nl (Brouwers Quality Petfood)",
+  "slug": "petfoodnl-brouwers-quality-petfood",
+  "url": "intro-pique.agency/bcs3/petfoodnl-brouwers-quality-petfood",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Snoepdog",
+  "slug": "snoepdog",
+  "url": "intro-pique.agency/bcs3/snoepdog",
+  "beslisser": "Charlotte",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Bellobox",
+  "slug": "bellobox",
+  "url": "intro-pique.agency/bcs3/bellobox",
+  "beslisser": "Jeffrey Tukker",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Snuffelbox",
+  "slug": "snuffelbox",
+  "url": "intro-pique.agency/bcs3/snuffelbox",
+  "beslisser": "Tjeerd Korse",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Dogahaves",
+  "slug": "dogahaves",
+  "url": "intro-pique.agency/bcs3/dogahaves",
+  "beslisser": "Shirley en Lynn van de Laar",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Teym",
+  "slug": "teym",
+  "url": "intro-pique.agency/bcs3/teym",
+  "beslisser": "Maxime Cartens",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Unrobe",
+  "slug": "unrobe",
+  "url": "intro-pique.agency/bcs3/unrobe",
+  "beslisser": "Daan Ubachs",
+  "wwk": false
+ },
+ {
+  "bedrijf": "GOAT Organic Apparel",
+  "slug": "goat-organic-apparel",
+  "url": "intro-pique.agency/bcs3/goat-organic-apparel",
+  "beslisser": "Abigail en Lavinia Bakker",
+  "wwk": false
+ },
+ {
+  "bedrijf": "SKOT Fashion",
+  "slug": "skot-fashion",
+  "url": "intro-pique.agency/bcs3/skot-fashion",
+  "beslisser": "Ruben van Veen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Peers",
+  "slug": "peers",
+  "url": "intro-pique.agency/bcs3/peers",
+  "beslisser": "Peer van Gestel",
+  "wwk": false
+ },
+ {
+  "bedrijf": "De Koffiemeester",
+  "slug": "de-koffiemeester",
+  "url": "intro-pique.agency/bcs3/de-koffiemeester",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Little Roastery",
+  "slug": "little-roastery",
+  "url": "intro-pique.agency/bcs3/little-roastery",
+  "beslisser": "Gijs Jansen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Single Estate Coffee Roasters",
+  "slug": "single-estate-coffee-roasters",
+  "url": "intro-pique.agency/bcs3/single-estate-coffee-roasters",
+  "beslisser": "Bas Burghoorn",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Friedhats Coffee Roasters",
+  "slug": "friedhats-coffee-roasters",
+  "url": "intro-pique.agency/bcs3/friedhats-coffee-roasters",
+  "beslisser": "Lex Wenneker",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Tommie the Cat",
+  "slug": "tommie-the-cat",
+  "url": "intro-pique.agency/bcs3/tommie-the-cat",
+  "beslisser": "Jesse Luk",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Treasure Pet Box",
+  "slug": "treasure-pet-box",
+  "url": "intro-pique.agency/bcs3/treasure-pet-box",
+  "beslisser": "Anthonie Cornelis Bolle",
+  "wwk": false
+ },
+ {
+  "bedrijf": "FluffyChamp",
+  "slug": "fluffychamp",
+  "url": "intro-pique.agency/bcs3/fluffychamp",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Exclusief Dier",
+  "slug": "exclusief-dier",
+  "url": "intro-pique.agency/bcs3/exclusief-dier",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Dogs en Co",
+  "slug": "dogs-en-co",
+  "url": "intro-pique.agency/bcs3/dogs-en-co",
+  "beslisser": "",
+  "wwk": true
+ },
+ {
+  "bedrijf": "The Dog Musthaves",
+  "slug": "the-dog-musthaves",
+  "url": "intro-pique.agency/bcs3/the-dog-musthaves",
+  "beslisser": "Femke",
+  "wwk": false
+ },
+ {
+  "bedrijf": "ICNK-Amsterdam",
+  "slug": "icnk-amsterdam",
+  "url": "intro-pique.agency/bcs3/icnk-amsterdam",
+  "beslisser": "Karin Blankespoor",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Another Label",
+  "slug": "another-label",
+  "url": "intro-pique.agency/bcs3/another-label",
+  "beslisser": "Lotte Lampe",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Bonne Suits",
+  "slug": "bonne-suits",
+  "url": "intro-pique.agency/bcs3/bonne-suits",
+  "beslisser": "Bonne Reijn",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Minimalism Fashion",
+  "slug": "minimalism-fashion",
+  "url": "intro-pique.agency/bcs3/minimalism-fashion",
+  "beslisser": "Marloes Warnaar",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Stricters",
+  "slug": "stricters",
+  "url": "intro-pique.agency/bcs3/stricters",
+  "beslisser": "Jaron Rijven",
+  "wwk": false
+ },
+ {
+  "bedrijf": "FOS Amsterdam",
+  "slug": "fos-amsterdam",
+  "url": "intro-pique.agency/bcs3/fos-amsterdam",
+  "beslisser": "Zalman Evers",
+  "wwk": false
+ },
+ {
+  "bedrijf": "The Room Antwerp",
+  "slug": "the-room-antwerp",
+  "url": "intro-pique.agency/bcs3/the-room-antwerp",
+  "beslisser": "Noemie Haverhals",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Facon Jacmin",
+  "slug": "facon-jacmin",
+  "url": "intro-pique.agency/bcs3/facon-jacmin",
+  "beslisser": "Segolene Jacmin",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Ame Antwerp",
+  "slug": "ame-antwerp",
+  "url": "intro-pique.agency/bcs3/ame-antwerp",
+  "beslisser": "Ysaline Grange",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Eat Dust",
+  "slug": "eat-dust",
+  "url": "intro-pique.agency/bcs3/eat-dust",
+  "beslisser": "Rob Harmsen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Daily Brat",
+  "slug": "daily-brat",
+  "url": "intro-pique.agency/bcs3/daily-brat",
+  "beslisser": "Jermaine Reawaruw",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Ammehoela",
+  "slug": "ammehoela",
+  "url": "intro-pique.agency/bcs3/ammehoela",
+  "beslisser": "Anouk Bindels",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Maed for mini",
+  "slug": "maed-for-mini",
+  "url": "intro-pique.agency/bcs3/maed-for-mini",
+  "beslisser": "Maerle Mulder",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Repose AMS",
+  "slug": "repose-ams",
+  "url": "intro-pique.agency/bcs3/repose-ams",
+  "beslisser": "In-Yeo Couperus",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Gray Label",
+  "slug": "gray-label",
+  "url": "intro-pique.agency/bcs3/gray-label",
+  "beslisser": "Emily Gray",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Ziloen",
+  "slug": "ziloen",
+  "url": "intro-pique.agency/bcs3/ziloen",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Lillemoon",
+  "slug": "lillemoon",
+  "url": "intro-pique.agency/bcs3/lillemoon",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Twensies",
+  "slug": "twensies",
+  "url": "intro-pique.agency/bcs3/twensies",
+  "beslisser": "Anja Jansen",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Kidz In Color",
+  "slug": "kidz-in-color",
+  "url": "intro-pique.agency/bcs3/kidz-in-color",
+  "beslisser": "Bianca Hummel",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Zebrapaardje",
+  "slug": "zebrapaardje",
+  "url": "intro-pique.agency/bcs3/zebrapaardje",
+  "beslisser": "Ellen Mullenders",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Undiemeister",
+  "slug": "undiemeister",
+  "url": "intro-pique.agency/bcs3/undiemeister",
+  "beslisser": "Jeroen Adriaans",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Pavo Couture",
+  "slug": "pavo-couture",
+  "url": "intro-pique.agency/bcs3/pavo-couture",
+  "beslisser": "Elise van Twillert",
+  "wwk": false
+ },
+ {
+  "bedrijf": "La Fille d'O",
+  "slug": "la-fille-do",
+  "url": "intro-pique.agency/bcs3/la-fille-do",
+  "beslisser": "Murielle Scherre",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Knapman",
+  "slug": "knapman",
+  "url": "intro-pique.agency/bcs3/knapman",
+  "beslisser": "Max Kramer",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Feelou",
+  "slug": "feelou",
+  "url": "intro-pique.agency/bcs3/feelou",
+  "beslisser": "Noor Figdor",
+  "wwk": false
+ },
+ {
+  "bedrijf": "TET Swimwear",
+  "slug": "tet-swimwear",
+  "url": "intro-pique.agency/bcs3/tet-swimwear",
+  "beslisser": "Lieke van Hulsbergen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Soque",
+  "slug": "soque",
+  "url": "intro-pique.agency/bcs3/soque",
+  "beslisser": "Saskia Overzet",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Joe Merino",
+  "slug": "joe-merino",
+  "url": "intro-pique.agency/bcs3/joe-merino",
+  "beslisser": "Yvo Batenburg",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Ollies Fashion",
+  "slug": "ollies-fashion",
+  "url": "intro-pique.agency/bcs3/ollies-fashion",
+  "beslisser": "Dennis Oldenburg",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Acelera",
+  "slug": "acelera",
+  "url": "intro-pique.agency/bcs3/acelera",
+  "beslisser": "Jurrian van der Mannen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Velor Cycling",
+  "slug": "velor-cycling",
+  "url": "intro-pique.agency/bcs3/velor-cycling",
+  "beslisser": "Peter Roozemond",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Belgian Crew",
+  "slug": "belgian-crew",
+  "url": "intro-pique.agency/bcs3/belgian-crew",
+  "beslisser": "Stijn Van Canneyt",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Bodhi Cycling",
+  "slug": "bodhi-cycling",
+  "url": "intro-pique.agency/bcs3/bodhi-cycling",
+  "beslisser": "Duncan Dilissen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Cois Cycling Legacy",
+  "slug": "cois-cycling-legacy",
+  "url": "intro-pique.agency/bcs3/cois-cycling-legacy",
+  "beslisser": "Tom Cools",
+  "wwk": false
+ },
+ {
+  "bedrijf": "The Vandal",
+  "slug": "the-vandal",
+  "url": "intro-pique.agency/bcs3/the-vandal",
+  "beslisser": "Toon Claessens",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Boldwill",
+  "slug": "boldwill",
+  "url": "intro-pique.agency/bcs3/boldwill",
+  "beslisser": "Erik de Groot",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Athleezy",
+  "slug": "athleezy",
+  "url": "intro-pique.agency/bcs3/athleezy",
+  "beslisser": "Sybren van Daalen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Pure Sportswear",
+  "slug": "pure-sportswear",
+  "url": "intro-pique.agency/bcs3/pure-sportswear",
+  "beslisser": "Duvan Couvée",
+  "wwk": false
+ },
+ {
+  "bedrijf": "RX Wear",
+  "slug": "rx-wear",
+  "url": "intro-pique.agency/bcs3/rx-wear",
+  "beslisser": "Jeffrey Beijen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Hoessee",
+  "slug": "hoessee",
+  "url": "intro-pique.agency/bcs3/hoessee",
+  "beslisser": "Tessa Wagenvoort",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Little by Little",
+  "slug": "little-by-little",
+  "url": "intro-pique.agency/bcs3/little-by-little",
+  "beslisser": "Tom Merlevede",
+  "wwk": false
+ },
+ {
+  "bedrijf": "MarathonR",
+  "slug": "marathonr",
+  "url": "intro-pique.agency/bcs3/marathonr",
+  "beslisser": "Joeri Grevers",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Sisi Swimwear",
+  "slug": "sisi-swimwear",
+  "url": "intro-pique.agency/bcs3/sisi-swimwear",
+  "beslisser": "Yasmina Ibrahimi",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Cortazu",
+  "slug": "cortazu",
+  "url": "intro-pique.agency/bcs3/cortazu",
+  "beslisser": "Wiebe Poelmann",
+  "wwk": false
+ },
+ {
+  "bedrijf": "MIAB Jewels",
+  "slug": "miab-jewels",
+  "url": "intro-pique.agency/bcs3/miab-jewels",
+  "beslisser": "Joyce Plokkaar",
+  "wwk": false
+ },
+ {
+  "bedrijf": "GAEV Dutch Design",
+  "slug": "gaev-dutch-design",
+  "url": "intro-pique.agency/bcs3/gaev-dutch-design",
+  "beslisser": "Mary Stelling",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Madewithlove",
+  "slug": "madewithlove",
+  "url": "intro-pique.agency/bcs3/madewithlove",
+  "beslisser": "Jordi Bolle",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Uniekje",
+  "slug": "uniekje",
+  "url": "intro-pique.agency/bcs3/uniekje",
+  "beslisser": "Marjolein Viscer",
+  "wwk": false
+ },
+ {
+  "bedrijf": "KAYA Sieraden",
+  "slug": "kaya-sieraden",
+  "url": "intro-pique.agency/bcs3/kaya-sieraden",
+  "beslisser": "Tanja Rakhou",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Gepersonaliseerde Sieraden (ByYVet)",
+  "slug": "gepersonaliseerde-sieraden-byyvet",
+  "url": "intro-pique.agency/bcs3/gepersonaliseerde-sieraden-byyvet",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Shanti Jewels",
+  "slug": "shanti-jewels",
+  "url": "intro-pique.agency/bcs3/shanti-jewels",
+  "beslisser": "Shanti Besseling",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Mijn Juweeltjes",
+  "slug": "mijn-juweeltjes",
+  "url": "intro-pique.agency/bcs3/mijn-juweeltjes",
+  "beslisser": "Liane",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Jenelry",
+  "slug": "jenelry",
+  "url": "intro-pique.agency/bcs3/jenelry",
+  "beslisser": "",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Solitude the Label",
+  "slug": "solitude-the-label",
+  "url": "intro-pique.agency/bcs3/solitude-the-label",
+  "beslisser": "Amber van der Hulst",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Aurore Jewelry",
+  "slug": "aurore-jewelry",
+  "url": "intro-pique.agency/bcs3/aurore-jewelry",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Wildthings Collectables",
+  "slug": "wildthings-collectables",
+  "url": "intro-pique.agency/bcs3/wildthings-collectables",
+  "beslisser": "Leanne Jacometti",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Camps en Camps",
+  "slug": "camps-en-camps",
+  "url": "intro-pique.agency/bcs3/camps-en-camps",
+  "beslisser": "Ine Hoevenaar-Camps",
+  "wwk": false
+ },
+ {
+  "bedrijf": "UrbanAce",
+  "slug": "urbanace",
+  "url": "intro-pique.agency/bcs3/urbanace",
+  "beslisser": "Ruben Albers",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Dick Moby",
+  "slug": "dick-moby",
+  "url": "intro-pique.agency/bcs3/dick-moby",
+  "beslisser": "Robbert Wefers Bettink",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Atelier de Groot",
+  "slug": "atelier-de-groot",
+  "url": "intro-pique.agency/bcs3/atelier-de-groot",
+  "beslisser": "Jan Gerhard de Groot",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Gftd Jewelry",
+  "slug": "gftd-jewelry",
+  "url": "intro-pique.agency/bcs3/gftd-jewelry",
+  "beslisser": "Bo Tijskens",
+  "wwk": false
+ },
+ {
+  "bedrijf": "I.Ma.Gi.N jewels",
+  "slug": "imagin-jewels",
+  "url": "intro-pique.agency/bcs3/imagin-jewels",
+  "beslisser": "Gilles van Gestel",
+  "wwk": false
+ },
+ {
+  "bedrijf": "SUITE702",
+  "slug": "suite702",
+  "url": "intro-pique.agency/bcs3/suite702",
+  "beslisser": "Olaf Arkauer",
+  "wwk": false
+ },
+ {
+  "bedrijf": "DoubleDry",
+  "slug": "doubledry",
+  "url": "intro-pique.agency/bcs3/doubledry",
+  "beslisser": "N.A.G. Leenders",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Texelana",
+  "slug": "texelana",
+  "url": "intro-pique.agency/bcs3/texelana",
+  "beslisser": "Willem Jan Kraanen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Oscar Luxury",
+  "slug": "oscar-luxury",
+  "url": "intro-pique.agency/bcs3/oscar-luxury",
+  "beslisser": "Marc Lendfers",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Webkarpet",
+  "slug": "webkarpet",
+  "url": "intro-pique.agency/bcs3/webkarpet",
+  "beslisser": "Katinka J.A. Kroon",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Bink Bedding",
+  "slug": "bink-bedding",
+  "url": "intro-pique.agency/bcs3/bink-bedding",
+  "beslisser": "Bart Komin",
+  "wwk": false
+ },
+ {
+  "bedrijf": "ZusenZomer",
+  "slug": "zusenzomer",
+  "url": "intro-pique.agency/bcs3/zusenzomer",
+  "beslisser": "Martine Siebelink & Petra Siebelink",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Oxious",
+  "slug": "oxious",
+  "url": "intro-pique.agency/bcs3/oxious",
+  "beslisser": "Esther Smit",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Nel",
+  "slug": "nel",
+  "url": "intro-pique.agency/bcs3/nel",
+  "beslisser": "Jorrit Tol",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Kairos Furniture",
+  "slug": "kairos-furniture",
+  "url": "intro-pique.agency/bcs3/kairos-furniture",
+  "beslisser": "Thijs van Bemmel",
+  "wwk": false
+ },
+ {
+  "bedrijf": "HOUTR",
+  "slug": "houtr",
+  "url": "intro-pique.agency/bcs3/houtr",
+  "beslisser": "Raymond Smulders",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Zwaartafelen",
+  "slug": "zwaartafelen",
+  "url": "intro-pique.agency/bcs3/zwaartafelen",
+  "beslisser": "Frank van Reij",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Woodshape",
+  "slug": "woodshape",
+  "url": "intro-pique.agency/bcs3/woodshape",
+  "beslisser": "Ferry Kops",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Houtenmeubelshop",
+  "slug": "houtenmeubelshop",
+  "url": "intro-pique.agency/bcs3/houtenmeubelshop",
+  "beslisser": "Krijn van der Burgt",
+  "wwk": false
+ },
+ {
+  "bedrijf": "BEUK Meubels",
+  "slug": "beuk-meubels",
+  "url": "intro-pique.agency/bcs3/beuk-meubels",
+  "beslisser": "Andrew Vafi",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Arbrini",
+  "slug": "arbrini",
+  "url": "intro-pique.agency/bcs3/arbrini",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Dutch Garden",
+  "slug": "dutch-garden",
+  "url": "intro-pique.agency/bcs3/dutch-garden",
+  "beslisser": "Jered Beumer",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Blij Design",
+  "slug": "blij-design",
+  "url": "intro-pique.agency/bcs3/blij-design",
+  "beslisser": "Remco van Woudenberg",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Het Lichtlab",
+  "slug": "het-lichtlab",
+  "url": "intro-pique.agency/bcs3/het-lichtlab",
+  "beslisser": "Erwin Greive",
+  "wwk": false
+ },
+ {
+  "bedrijf": "DMQ",
+  "slug": "dmq",
+  "url": "intro-pique.agency/bcs3/dmq",
+  "beslisser": "Gerard de Zeeuw",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Val Pottery",
+  "slug": "val-pottery",
+  "url": "intro-pique.agency/bcs3/val-pottery",
+  "beslisser": "Valérie Van Heyghen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Sweet Living Shop",
+  "slug": "sweet-living-shop",
+  "url": "intro-pique.agency/bcs3/sweet-living-shop",
+  "beslisser": "Paul Bos",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Puur Wonen Sophie",
+  "slug": "puur-wonen-sophie",
+  "url": "intro-pique.agency/bcs3/puur-wonen-sophie",
+  "beslisser": "Sophie Bertels",
+  "wwk": false
+ },
+ {
+  "bedrijf": "House of Posters",
+  "slug": "house-of-posters",
+  "url": "intro-pique.agency/bcs3/house-of-posters",
+  "beslisser": "",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Spiegelshop",
+  "slug": "spiegelshop",
+  "url": "intro-pique.agency/bcs3/spiegelshop",
+  "beslisser": "",
+  "wwk": true
+ },
+ {
+  "bedrijf": "DesignSpiegels.nl",
+  "slug": "designspiegelsnl",
+  "url": "intro-pique.agency/bcs3/designspiegelsnl",
+  "beslisser": "A.S. Sijmons",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Spikes en Sparrow",
+  "slug": "spikes-en-sparrow",
+  "url": "intro-pique.agency/bcs3/spikes-en-sparrow",
+  "beslisser": "Kris Venetis",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Fraenck",
+  "slug": "fraenck",
+  "url": "intro-pique.agency/bcs3/fraenck",
+  "beslisser": "Ratna Ho",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Denise Roobol",
+  "slug": "denise-roobol",
+  "url": "intro-pique.agency/bcs3/denise-roobol",
+  "beslisser": "Denise Roobol",
+  "wwk": false
+ },
+ {
+  "bedrijf": "DUN Wallets",
+  "slug": "dun-wallets",
+  "url": "intro-pique.agency/bcs3/dun-wallets",
+  "beslisser": "Sjoerd van Dam",
+  "wwk": false
+ },
+ {
+  "bedrijf": "LeonDesign",
+  "slug": "leondesign",
+  "url": "intro-pique.agency/bcs3/leondesign",
+  "beslisser": "Léon Huver",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Mozz Bags",
+  "slug": "mozz-bags",
+  "url": "intro-pique.agency/bcs3/mozz-bags",
+  "beslisser": "Natalja en Paul (achternaam onbekend)",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Brisby",
+  "slug": "brisby",
+  "url": "intro-pique.agency/bcs3/brisby",
+  "beslisser": "Erik Veldt",
+  "wwk": false
+ },
+ {
+  "bedrijf": "BEARLifestyle",
+  "slug": "bearlifestyle",
+  "url": "intro-pique.agency/bcs3/bearlifestyle",
+  "beslisser": "Cas Beernink",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Keecie",
+  "slug": "keecie",
+  "url": "intro-pique.agency/bcs3/keecie",
+  "beslisser": "Klaartje de Hartog",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Monk en Anna",
+  "slug": "monk-en-anna",
+  "url": "intro-pique.agency/bcs3/monk-en-anna",
+  "beslisser": "Simone",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Chabo Bags",
+  "slug": "chabo-bags",
+  "url": "intro-pique.agency/bcs3/chabo-bags",
+  "beslisser": "Vera Dekens",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Bear Design",
+  "slug": "bear-design",
+  "url": "intro-pique.agency/bcs3/bear-design",
+  "beslisser": "Willem-Jan Beernink",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Nanami",
+  "slug": "nanami",
+  "url": "intro-pique.agency/bcs3/nanami",
+  "beslisser": "Marieke",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Snoozebaby",
+  "slug": "snoozebaby",
+  "url": "intro-pique.agency/bcs3/snoozebaby",
+  "beslisser": "Marleen Rameckers",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Kidywolf",
+  "slug": "kidywolf",
+  "url": "intro-pique.agency/bcs3/kidywolf",
+  "beslisser": "Nicolas Wauters",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Wobbel",
+  "slug": "wobbel",
+  "url": "intro-pique.agency/bcs3/wobbel",
+  "beslisser": "Hannelore Blaauw",
+  "wwk": false
+ },
+ {
+  "bedrijf": "ByKay",
+  "slug": "bykay",
+  "url": "intro-pique.agency/bcs3/bykay",
+  "beslisser": "Kay Poelen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Pure Baby Love",
+  "slug": "pure-baby-love",
+  "url": "intro-pique.agency/bcs3/pure-baby-love",
+  "beslisser": "Marjolein Hendriksma",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Shuuske",
+  "slug": "shuuske",
+  "url": "intro-pique.agency/bcs3/shuuske",
+  "beslisser": "Suzie Johannes Andreas Halbersma",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Koter Kado",
+  "slug": "koter-kado",
+  "url": "intro-pique.agency/bcs3/koter-kado",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Bee Nature",
+  "slug": "bee-nature",
+  "url": "intro-pique.agency/bcs3/bee-nature",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Vulpes Goods",
+  "slug": "vulpes-goods",
+  "url": "intro-pique.agency/bcs3/vulpes-goods",
+  "beslisser": "Tomas Vos",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Cottonbaby",
+  "slug": "cottonbaby",
+  "url": "intro-pique.agency/bcs3/cottonbaby",
+  "beslisser": "Kim Kramer",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Washgiant",
+  "slug": "washgiant",
+  "url": "intro-pique.agency/bcs3/washgiant",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "The Good Brand",
+  "slug": "the-good-brand",
+  "url": "intro-pique.agency/bcs3/the-good-brand",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Ecopods",
+  "slug": "ecopods",
+  "url": "intro-pique.agency/bcs3/ecopods",
+  "beslisser": "Raf Schoonbaert",
+  "wwk": false
+ },
+ {
+  "bedrijf": "YouSea",
+  "slug": "yousea",
+  "url": "intro-pique.agency/bcs3/yousea",
+  "beslisser": "Paul Brugmans",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Kinfill",
+  "slug": "kinfill",
+  "url": "intro-pique.agency/bcs3/kinfill",
+  "beslisser": "Reda Jouahri",
+  "wwk": false
+ },
+ {
+  "bedrijf": "BIOnyx",
+  "slug": "bionyx",
+  "url": "intro-pique.agency/bcs3/bionyx",
+  "beslisser": "Arnout Noteboom",
+  "wwk": false
+ },
+ {
+  "bedrijf": "The Green Lab Co",
+  "slug": "the-green-lab-co",
+  "url": "intro-pique.agency/bcs3/the-green-lab-co",
+  "beslisser": "Jos Zonneveld",
+  "wwk": false
+ },
+ {
+  "bedrijf": "BubbleTabs",
+  "slug": "bubbletabs",
+  "url": "intro-pique.agency/bcs3/bubbletabs",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Bamboozy",
+  "slug": "bamboozy",
+  "url": "intro-pique.agency/bcs3/bamboozy",
+  "beslisser": "Jason Toesan Wen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Cute Cotton",
+  "slug": "cute-cotton",
+  "url": "intro-pique.agency/bcs3/cute-cotton",
+  "beslisser": "Nienke Tode-Gottenbos",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Moi et Marie",
+  "slug": "moi-et-marie",
+  "url": "intro-pique.agency/bcs3/moi-et-marie",
+  "beslisser": "Charlotte Therssen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Beesha",
+  "slug": "beesha",
+  "url": "intro-pique.agency/bcs3/beesha",
+  "beslisser": "Ben Bos",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Loofys",
+  "slug": "loofys",
+  "url": "intro-pique.agency/bcs3/loofys",
+  "beslisser": "Dorien Beijk",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Paper en Boo",
+  "slug": "paper-en-boo",
+  "url": "intro-pique.agency/bcs3/paper-en-boo",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Werfzeep",
+  "slug": "werfzeep",
+  "url": "intro-pique.agency/bcs3/werfzeep",
+  "beslisser": "Evelien van Zonneveld",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Happy Tabs",
+  "slug": "happy-tabs",
+  "url": "intro-pique.agency/bcs3/happy-tabs",
+  "beslisser": "Jonathan Berhani",
+  "wwk": false
+ },
+ {
+  "bedrijf": "HappyBear Diapers",
+  "slug": "happybear-diapers",
+  "url": "intro-pique.agency/bcs3/happybear-diapers",
+  "beslisser": "Jeffrey Scholten",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Ray",
+  "slug": "ray",
+  "url": "intro-pique.agency/bcs3/ray",
+  "beslisser": "Thomas Kindermans",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Sentir Parfum",
+  "slug": "sentir-parfum",
+  "url": "intro-pique.agency/bcs3/sentir-parfum",
+  "beslisser": "Thomas van Oosterom",
+  "wwk": false
+ },
+ {
+  "bedrijf": "L'ARIN",
+  "slug": "larin",
+  "url": "intro-pique.agency/bcs3/larin",
+  "beslisser": "Rinata Sizova",
+  "wwk": false
+ },
+ {
+  "bedrijf": "IVY Hair Care",
+  "slug": "ivy-hair-care",
+  "url": "intro-pique.agency/bcs3/ivy-hair-care",
+  "beslisser": "Annelies Kamphof",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Pretty Curly Girl",
+  "slug": "pretty-curly-girl",
+  "url": "intro-pique.agency/bcs3/pretty-curly-girl",
+  "beslisser": "Hanan el Fizazi",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Get Curly",
+  "slug": "get-curly",
+  "url": "intro-pique.agency/bcs3/get-curly",
+  "beslisser": "Farida Choukoud-Türkoglu",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Nailday",
+  "slug": "nailday",
+  "url": "intro-pique.agency/bcs3/nailday",
+  "beslisser": "Naomi & Kristina",
+  "wwk": false
+ },
+ {
+  "bedrijf": "BIMA Nails",
+  "slug": "bima-nails",
+  "url": "intro-pique.agency/bcs3/bima-nails",
+  "beslisser": "Bianca Machiela",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Pretty Polish",
+  "slug": "pretty-polish",
+  "url": "intro-pique.agency/bcs3/pretty-polish",
+  "beslisser": "Esther Giessenburg",
+  "wwk": true
+ },
+ {
+  "bedrijf": "vanBAARD",
+  "slug": "vanbaard",
+  "url": "intro-pique.agency/bcs3/vanbaard",
+  "beslisser": "Joris van Baar",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Simpel Zeep",
+  "slug": "simpel-zeep",
+  "url": "intro-pique.agency/bcs3/simpel-zeep",
+  "beslisser": "",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Blokzeep",
+  "slug": "blokzeep",
+  "url": "intro-pique.agency/bcs3/blokzeep",
+  "beslisser": "Sofia Abramtsjoek",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Oy Care",
+  "slug": "oy-care",
+  "url": "intro-pique.agency/bcs3/oy-care",
+  "beslisser": "Inge Louf",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Silkyway",
+  "slug": "silkyway",
+  "url": "intro-pique.agency/bcs3/silkyway",
+  "beslisser": "Susan van Oosterhout",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Planbooks",
+  "slug": "planbooks",
+  "url": "intro-pique.agency/bcs3/planbooks",
+  "beslisser": "Kevin Priem",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Planjeweek",
+  "slug": "planjeweek",
+  "url": "intro-pique.agency/bcs3/planjeweek",
+  "beslisser": "Stefanie Kooter-Hogendoorn",
+  "wwk": true
+ },
+ {
+  "bedrijf": "WIJCK.",
+  "slug": "wijck",
+  "url": "intro-pique.agency/bcs3/wijck",
+  "beslisser": "Rutger Diemel",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Kunst in Kaart",
+  "slug": "kunst-in-kaart",
+  "url": "intro-pique.agency/bcs3/kunst-in-kaart",
+  "beslisser": "Jorick van Raalten",
+  "wwk": true
+ },
+ {
+  "bedrijf": "Urban Jngl",
+  "slug": "urban-jngl",
+  "url": "intro-pique.agency/bcs3/urban-jngl",
+  "beslisser": "T.H.H. Coolen",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Belle Flora",
+  "slug": "belle-flora",
+  "url": "intro-pique.agency/bcs3/belle-flora",
+  "beslisser": "Michiel De Buck",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Fleurdirect",
+  "slug": "fleurdirect",
+  "url": "intro-pique.agency/bcs3/fleurdirect",
+  "beslisser": "Christian Stolk (C.J. Stolk)",
+  "wwk": false
+ },
+ {
+  "bedrijf": "B2C Telecom",
+  "slug": "b2c-telecom",
+  "url": "intro-pique.agency/bcs3/b2c-telecom",
+  "beslisser": "Shafi Mahfuzi",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Gamer Gift",
+  "slug": "gamer-gift",
+  "url": "intro-pique.agency/bcs3/gamer-gift",
+  "beslisser": "F. van Terpelle",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Hobby Painter",
+  "slug": "hobby-painter",
+  "url": "intro-pique.agency/bcs3/hobby-painter",
+  "beslisser": "Daan Kanbier",
+  "wwk": false
+ },
+ {
+  "bedrijf": "Doezelf",
+  "slug": "doezelf",
+  "url": "intro-pique.agency/bcs3/doezelf",
+  "beslisser": "Danny Den Hartigh-Joppe",
+  "wwk": true
+ },
+ {
+  "bedrijf": "SlimSpul",
+  "slug": "slimspul",
+  "url": "intro-pique.agency/bcs3/slimspul",
+  "beslisser": "J.R. in 't Veld",
+  "wwk": false
+ }
+]

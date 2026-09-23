@@ -1,0 +1,653 @@
+[
+ {
+  "bedrijf": "Florèz",
+  "slug": "florez",
+  "url": "intro-pique.agency/bcs2/florez",
+  "beslisser": "Marilène Oldert",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "denim.lab",
+  "slug": "denimlab",
+  "url": "intro-pique.agency/bcs2/denimlab",
+  "beslisser": "Sander van de Vecht",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Benzak Denim Developers",
+  "slug": "benzak-denim-developers",
+  "url": "intro-pique.agency/bcs2/benzak-denim-developers",
+  "beslisser": "Lennaert Nijgh",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Lotties Period",
+  "slug": "lotties-period",
+  "url": "intro-pique.agency/bcs2/lotties-period",
+  "beslisser": "Milou van Dalen",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Savara Intimates",
+  "slug": "savara-intimates",
+  "url": "intro-pique.agency/bcs2/savara-intimates",
+  "beslisser": "Michelle Jamoneau",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Boru Bamboo",
+  "slug": "boru-bamboo",
+  "url": "intro-pique.agency/bcs2/boru-bamboo",
+  "beslisser": "",
+  "verificatie": "GEEN"
+ },
+ {
+  "bedrijf": "Swaens Bamboo Underwear",
+  "slug": "swaens-bamboo-underwear",
+  "url": "intro-pique.agency/bcs2/swaens-bamboo-underwear",
+  "beslisser": "",
+  "verificatie": "GEEN"
+ },
+ {
+  "bedrijf": "Unrecorded",
+  "slug": "unrecorded",
+  "url": "intro-pique.agency/bcs2/unrecorded",
+  "beslisser": "Jolle van der Mast",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Rhea",
+  "slug": "rhea",
+  "url": "intro-pique.agency/bcs2/rhea",
+  "beslisser": "Roos Fleuren",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Loop.a life",
+  "slug": "loopa-life",
+  "url": "intro-pique.agency/bcs2/loopa-life",
+  "beslisser": "Ellen Mensink",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Lofty Manner",
+  "slug": "lofty-manner",
+  "url": "intro-pique.agency/bcs2/lofty-manner",
+  "beslisser": "Michael Vinke",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Girav",
+  "slug": "girav",
+  "url": "intro-pique.agency/bcs2/girav",
+  "beslisser": "Arné Imming",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Plantsome",
+  "slug": "plantsome",
+  "url": "intro-pique.agency/bcs2/plantsome",
+  "beslisser": "Axel Persoon",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Urban Nature Culture",
+  "slug": "urban-nature-culture",
+  "url": "intro-pique.agency/bcs2/urban-nature-culture",
+  "beslisser": "Marel Paus",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Passion for Linen",
+  "slug": "passion-for-linen",
+  "url": "intro-pique.agency/bcs2/passion-for-linen",
+  "beslisser": "Barbara Sprengers",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "By Mölle",
+  "slug": "by-molle",
+  "url": "intro-pique.agency/bcs2/by-molle",
+  "beslisser": "Lucienne Dunnewijk",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Casa Comodo",
+  "slug": "casa-comodo",
+  "url": "intro-pique.agency/bcs2/casa-comodo",
+  "beslisser": "Joanna Vervoort",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "UrbanSofa",
+  "slug": "urbansofa",
+  "url": "intro-pique.agency/bcs2/urbansofa",
+  "beslisser": "Ronald Arissen",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Yumeko",
+  "slug": "yumeko",
+  "url": "intro-pique.agency/bcs2/yumeko",
+  "beslisser": "Rob van den Dool",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Sfeer aan de Muur",
+  "slug": "sfeer-aan-de-muur",
+  "url": "intro-pique.agency/bcs2/sfeer-aan-de-muur",
+  "beslisser": "Lieke Theresia den Braanker",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "BedAffair",
+  "slug": "bedaffair",
+  "url": "intro-pique.agency/bcs2/bedaffair",
+  "beslisser": "Marjolein Vaders",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "DEENS.NL",
+  "slug": "deensnl",
+  "url": "intro-pique.agency/bcs2/deensnl",
+  "beslisser": "Nicole Loos",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "The Souks",
+  "slug": "the-souks",
+  "url": "intro-pique.agency/bcs2/the-souks",
+  "beslisser": "Sandra van Aanholt",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Kalani",
+  "slug": "kalani",
+  "url": "intro-pique.agency/bcs2/kalani",
+  "beslisser": "Bruno Van Steenberghe",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Meroda Cosmetics",
+  "slug": "meroda-cosmetics",
+  "url": "intro-pique.agency/bcs2/meroda-cosmetics",
+  "beslisser": "Micha Medendorp",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Velveux",
+  "slug": "velveux",
+  "url": "intro-pique.agency/bcs2/velveux",
+  "beslisser": "Ali Abbas",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Dr. Jetske Ultee",
+  "slug": "dr-jetske-ultee",
+  "url": "intro-pique.agency/bcs2/dr-jetske-ultee",
+  "beslisser": "Amber V.",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Kaerel Skincare",
+  "slug": "kaerel-skincare",
+  "url": "intro-pique.agency/bcs2/kaerel-skincare",
+  "beslisser": "Ton Severrien",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Queen Tarzi",
+  "slug": "queen-tarzi",
+  "url": "intro-pique.agency/bcs2/queen-tarzi",
+  "beslisser": "Manizha Nabizada",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "LOOkX Cosmetics",
+  "slug": "lookx-cosmetics",
+  "url": "intro-pique.agency/bcs2/lookx-cosmetics",
+  "beslisser": "Cindy van der Peet",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "WONDR",
+  "slug": "wondr",
+  "url": "intro-pique.agency/bcs2/wondr",
+  "beslisser": "Tibbe Verschaffel",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Loïs Lee SkinCare",
+  "slug": "lois-lee-skincare",
+  "url": "intro-pique.agency/bcs2/lois-lee-skincare",
+  "beslisser": "Debbie van Weelden",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "IK Skin Perfection",
+  "slug": "ik-skin-perfection",
+  "url": "intro-pique.agency/bcs2/ik-skin-perfection",
+  "beslisser": "Petra Sanderman",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Food for Skin",
+  "slug": "food-for-skin",
+  "url": "intro-pique.agency/bcs2/food-for-skin",
+  "beslisser": "Angela Ursem",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Skin for Skin",
+  "slug": "skin-for-skin",
+  "url": "intro-pique.agency/bcs2/skin-for-skin",
+  "beslisser": "Mardien Radewalt-Brouwer",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Superfoodies",
+  "slug": "superfoodies",
+  "url": "intro-pique.agency/bcs2/superfoodies",
+  "beslisser": "Patricia van Noord",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Orangefit",
+  "slug": "orangefit",
+  "url": "intro-pique.agency/bcs2/orangefit",
+  "beslisser": "Rens Slik",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Nutramin",
+  "slug": "nutramin",
+  "url": "intro-pique.agency/bcs2/nutramin",
+  "beslisser": "Mischa Strijder",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Natuurlijk Presteren",
+  "slug": "natuurlijk-presteren",
+  "url": "intro-pique.agency/bcs2/natuurlijk-presteren",
+  "beslisser": "Jochum Smid",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Ergomax",
+  "slug": "ergomax",
+  "url": "intro-pique.agency/bcs2/ergomax",
+  "beslisser": "Samuel Zonneveld",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Plent",
+  "slug": "plent",
+  "url": "intro-pique.agency/bcs2/plent",
+  "beslisser": "Bas Hoeve",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Vitals",
+  "slug": "vitals",
+  "url": "intro-pique.agency/bcs2/vitals",
+  "beslisser": "Patricia Bakker",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "LUTO Supplements",
+  "slug": "luto-supplements",
+  "url": "intro-pique.agency/bcs2/luto-supplements",
+  "beslisser": "Tobian van der Aa",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Consiouz",
+  "slug": "consiouz",
+  "url": "intro-pique.agency/bcs2/consiouz",
+  "beslisser": "",
+  "verificatie": "GEEN"
+ },
+ {
+  "bedrijf": "Mr. & Mrs. Green",
+  "slug": "mr-mrs-green",
+  "url": "intro-pique.agency/bcs2/mr-mrs-green",
+  "beslisser": "Tamara Elbaz",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Green Fuel",
+  "slug": "green-fuel",
+  "url": "intro-pique.agency/bcs2/green-fuel",
+  "beslisser": "Nick Admiraal",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Oot Granola",
+  "slug": "oot-granola",
+  "url": "intro-pique.agency/bcs2/oot-granola",
+  "beslisser": "Wisal El Mathari",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Jimmy Joy",
+  "slug": "jimmy-joy",
+  "url": "intro-pique.agency/bcs2/jimmy-joy",
+  "beslisser": "Daniel de Niet",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "De Pindakaaswinkel",
+  "slug": "de-pindakaaswinkel",
+  "url": "intro-pique.agency/bcs2/de-pindakaaswinkel",
+  "beslisser": "Frank Duivenvoorde",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Boerschappen",
+  "slug": "boerschappen",
+  "url": "intro-pique.agency/bcs2/boerschappen",
+  "beslisser": "Marlous Spaven",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Ekomenu",
+  "slug": "ekomenu",
+  "url": "intro-pique.agency/bcs2/ekomenu",
+  "beslisser": "Chris de Vries",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Pit&Pit",
+  "slug": "pit-pit",
+  "url": "intro-pique.agency/bcs2/pit-pit",
+  "beslisser": "Boris De Bruyn",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Aard'g",
+  "slug": "aardg",
+  "url": "intro-pique.agency/bcs2/aardg",
+  "beslisser": "Max Rood",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Bocca Coffee",
+  "slug": "bocca-coffee",
+  "url": "intro-pique.agency/bcs2/bocca-coffee",
+  "beslisser": "Jeroen Bol",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Funky Fat Foods",
+  "slug": "funky-fat-foods",
+  "url": "intro-pique.agency/bcs2/funky-fat-foods",
+  "beslisser": "Louisa Mesquita Bakker",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Tea Bar",
+  "slug": "tea-bar",
+  "url": "intro-pique.agency/bcs2/tea-bar",
+  "beslisser": "Britt Kramer",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "BoxBites",
+  "slug": "boxbites",
+  "url": "intro-pique.agency/bcs2/boxbites",
+  "beslisser": "Larissa Renée S.",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "ByNouck Jewelry",
+  "slug": "bynouck-jewelry",
+  "url": "intro-pique.agency/bcs2/bynouck-jewelry",
+  "beslisser": "Anouck Goudsmit",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Eline Rosina",
+  "slug": "eline-rosina",
+  "url": "intro-pique.agency/bcs2/eline-rosina",
+  "beslisser": "Hanna Pranger",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "ARLIZI",
+  "slug": "arlizi",
+  "url": "intro-pique.agency/bcs2/arlizi",
+  "beslisser": "Liz Meijs",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "SILK Jewellery",
+  "slug": "silk-jewellery",
+  "url": "intro-pique.agency/bcs2/silk-jewellery",
+  "beslisser": "Maarten Smetsers",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Smaak Amsterdam",
+  "slug": "smaak-amsterdam",
+  "url": "intro-pique.agency/bcs2/smaak-amsterdam",
+  "beslisser": "André Grundmann",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "MYoMY",
+  "slug": "myomy",
+  "url": "intro-pique.agency/bcs2/myomy",
+  "beslisser": "Marja Baas",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "O My Bag",
+  "slug": "o-my-bag",
+  "url": "intro-pique.agency/bcs2/o-my-bag",
+  "beslisser": "Paulien Wesselink",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "The Chesterfield Brand",
+  "slug": "the-chesterfield-brand",
+  "url": "intro-pique.agency/bcs2/the-chesterfield-brand",
+  "beslisser": "Maikel Wiegertjes",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Berba",
+  "slug": "berba",
+  "url": "intro-pique.agency/bcs2/berba",
+  "beslisser": "Berry Kuckelkorn",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "dR Amsterdam",
+  "slug": "dr-amsterdam",
+  "url": "intro-pique.agency/bcs2/dr-amsterdam",
+  "beslisser": "",
+  "verificatie": "GEEN"
+ },
+ {
+  "bedrijf": "WoodWatch",
+  "slug": "woodwatch",
+  "url": "intro-pique.agency/bcs2/woodwatch",
+  "beslisser": "Kevin van der Veer, Daniel Salimian, Jeroen Westerbeek",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Castelijn & Beerens",
+  "slug": "castelijn-beerens",
+  "url": "intro-pique.agency/bcs2/castelijn-beerens",
+  "beslisser": "Rick Dingenouts",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Bag2Bag",
+  "slug": "bag2bag",
+  "url": "intro-pique.agency/bcs2/bag2bag",
+  "beslisser": "Daphne Cuypers",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Nixnut",
+  "slug": "nixnut",
+  "url": "intro-pique.agency/bcs2/nixnut",
+  "beslisser": "Lieveke Ligtenberg",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Phil & Phae",
+  "slug": "phil-phae",
+  "url": "intro-pique.agency/bcs2/phil-phae",
+  "beslisser": "Barbara de Jonge",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Minis Only",
+  "slug": "minis-only",
+  "url": "intro-pique.agency/bcs2/minis-only",
+  "beslisser": "Mieke Jakobs",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "A Little Lovely Company",
+  "slug": "a-little-lovely-company",
+  "url": "intro-pique.agency/bcs2/a-little-lovely-company",
+  "beslisser": "Judith de Ruijter",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Studio Ditte",
+  "slug": "studio-ditte",
+  "url": "intro-pique.agency/bcs2/studio-ditte",
+  "beslisser": "Marieke Dirks",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Noubased",
+  "slug": "noubased",
+  "url": "intro-pique.agency/bcs2/noubased",
+  "beslisser": "Anita van Luijk-Groenendijk",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Lodger",
+  "slug": "lodger",
+  "url": "intro-pique.agency/bcs2/lodger",
+  "beslisser": "Tristan Gerding",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Little Indians",
+  "slug": "little-indians",
+  "url": "intro-pique.agency/bcs2/little-indians",
+  "beslisser": "Kelly (Backoffice B2C)",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Mies & Co",
+  "slug": "mies-co",
+  "url": "intro-pique.agency/bcs2/mies-co",
+  "beslisser": "",
+  "verificatie": "GEEN"
+ },
+ {
+  "bedrijf": "Love2Wait",
+  "slug": "love2wait",
+  "url": "intro-pique.agency/bcs2/love2wait",
+  "beslisser": "Mark de Jong",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "ELLIE Studio",
+  "slug": "ellie-studio",
+  "url": "intro-pique.agency/bcs2/ellie-studio",
+  "beslisser": "Lisanne Klep",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "DogSuppy",
+  "slug": "dogsuppy",
+  "url": "intro-pique.agency/bcs2/dogsuppy",
+  "beslisser": "Yentel van Hemert",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Maats Cycling Culture",
+  "slug": "maats-cycling-culture",
+  "url": "intro-pique.agency/bcs2/maats-cycling-culture",
+  "beslisser": "Rob Schoof & Joost Hiemstra",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Dog with a Mission",
+  "slug": "dog-with-a-mission",
+  "url": "intro-pique.agency/bcs2/dog-with-a-mission",
+  "beslisser": "Kim Koopman & Eugenie Verbiest",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Rogelli",
+  "slug": "rogelli",
+  "url": "intro-pique.agency/bcs2/rogelli",
+  "beslisser": "Melvin Wagtmans",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Q1905",
+  "slug": "q1905",
+  "url": "intro-pique.agency/bcs2/q1905",
+  "beslisser": "R. van Trigt",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Urban Goddess",
+  "slug": "urban-goddess",
+  "url": "intro-pique.agency/bcs2/urban-goddess",
+  "beslisser": "Marlene Smits",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Renske Natural Petfood",
+  "slug": "renske-natural-petfood",
+  "url": "intro-pique.agency/bcs2/renske-natural-petfood",
+  "beslisser": "Annemijn Arts",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "The Nomad Company",
+  "slug": "the-nomad-company",
+  "url": "intro-pique.agency/bcs2/the-nomad-company",
+  "beslisser": "Mitchell Kruithof",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Bobiotics / Pure Bob",
+  "slug": "bobiotics-pure-bob",
+  "url": "intro-pique.agency/bcs2/bobiotics-pure-bob",
+  "beslisser": "Lowie Verschelden",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "JUSS7 Sportswear",
+  "slug": "juss7-sportswear",
+  "url": "intro-pique.agency/bcs2/juss7-sportswear",
+  "beslisser": "Justin Kunst",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Vieux Jeu",
+  "slug": "vieux-jeu",
+  "url": "intro-pique.agency/bcs2/vieux-jeu",
+  "beslisser": "Claudia Storme",
+  "verificatie": "HARD"
+ },
+ {
+  "bedrijf": "Clarijs Fietstassen",
+  "slug": "clarijs-fietstassen",
+  "url": "intro-pique.agency/bcs2/clarijs-fietstassen",
+  "beslisser": "Frank Koppenol",
+  "verificatie": "HARD"
+ }
+]

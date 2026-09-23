@@ -1,0 +1,802 @@
+[
+ {
+  "bedrijf": "Florèz",
+  "web": "florez.nl",
+  "stad": "Eemnes",
+  "vert": "Fashion · denim",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in \"Florez\" (operations OR \"customer service\" OR ecommerce) Eemnes"
+ },
+ {
+  "bedrijf": "Amsterdenim",
+  "web": "amsterdenim.com",
+  "stad": "Amsterdam",
+  "vert": "Fashion · denim",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Amsterdenim\" (operations OR ecommerce OR \"customer service\")"
+ },
+ {
+  "bedrijf": "denim.lab",
+  "web": "denimlab.nl",
+  "stad": "Nijkerkerveen",
+  "vert": "Fashion · denim",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in (\"denim.lab\" OR \"denim lab\") Nijkerkerveen (operations OR ecommerce)"
+ },
+ {
+  "bedrijf": "Benzak Denim Developers",
+  "web": "benzakdenimdevelopers.com",
+  "stad": "Amsterdam",
+  "vert": "Fashion · denim",
+  "omzet": "€500K–1,5M",
+  "hoek": "site:linkedin.com/in (\"Benzak Denim\" OR BDD) Amsterdam (operations OR ecommerce)"
+ },
+ {
+  "bedrijf": "Lotties Period",
+  "web": "lottiesperiod.com",
+  "stad": "Amsterdam",
+  "vert": "Fashion · underwear",
+  "omzet": "€1–3M",
+  "hoek": "Op de officiële teampagina staat Milou als enige onder 'Klantenservice'. 2e ingang: Mariëlle Pietersen (Office Manager)"
+ },
+ {
+  "bedrijf": "Savara Intimates",
+  "web": "savaraintimates.com",
+  "stad": "Utrecht",
+  "vert": "Fashion · lingerie",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Savara Intimates\" (operations OR customer OR ecommerce). Pasvorm-/maatvragen = groot deel CS"
+ },
+ {
+  "bedrijf": "Boru Bamboo",
+  "web": "borubamboo.nl",
+  "stad": "Zuidbroek",
+  "vert": "Fashion · underwear",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Boru Bamboo\" (operations OR customer OR klantenservice)"
+ },
+ {
+  "bedrijf": "Swaens Bamboo Underwear",
+  "web": "swaens.nl",
+  "stad": "Obbicht",
+  "vert": "Fashion · underwear",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Swaens\" Obbicht (operations OR customer OR klantenservice)"
+ },
+ {
+  "bedrijf": "Unrecorded",
+  "web": "unrecorded.co",
+  "stad": "Amsterdam",
+  "vert": "Fashion · basics",
+  "omzet": "€2–6M",
+  "hoek": "site:linkedin.com/in \"Unrecorded\" (operations OR customer OR \"e-commerce\") Amsterdam"
+ },
+ {
+  "bedrijf": "Rhea",
+  "web": "rheastore.co",
+  "stad": "Amsterdam",
+  "vert": "Fashion · knitwear",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Rhea\" (operations OR \"customer service\" OR fulfilment) Amsterdam knitwear"
+ },
+ {
+  "bedrijf": "New Optimist",
+  "web": "newoptimist.nl",
+  "stad": "Amsterdam",
+  "vert": "Fashion · knitwear",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"New Optimist\" (operations OR customer OR webshop) Amsterdam"
+ },
+ {
+  "bedrijf": "Loop.a life",
+  "web": "loopalife.com",
+  "stad": "Amsterdam",
+  "vert": "Fashion · knitwear",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Loop.a life\" (operations OR customer OR \"e-commerce\") Amsterdam"
+ },
+ {
+  "bedrijf": "Lofty Manner",
+  "web": "loftymanner.com",
+  "stad": "Amsterdam",
+  "vert": "Fashion · womenswear",
+  "omzet": "€3–7M",
+  "hoek": "Retourpiek per collectie-drop loopt via klein e-commerce team (profiel verifiëren via live LinkedIn)"
+ },
+ {
+  "bedrijf": "Girav",
+  "web": "girav.com",
+  "stad": "Ouderkerk a/d Amstel",
+  "vert": "Fashion · menswear",
+  "omzet": "€3–6M",
+  "hoek": "site:linkedin.com/in \"Girav\" (\"customer service\" OR klantenservice OR operations). NB: angle = overflow/piek, niet 'geen CS'"
+ },
+ {
+  "bedrijf": "Plantsome",
+  "web": "plantsome.nl",
+  "stad": "Honselersdijk",
+  "vert": "Home · planten",
+  "omzet": "€8–15M",
+  "hoek": "nl.linkedin.com/company/plantsome/people filter 'plantenservice'/'customer'/'operations'"
+ },
+ {
+  "bedrijf": "Urban Nature Culture",
+  "web": "urbannatureculture.com",
+  "stad": "Amsterdam",
+  "vert": "Home · decor & servies",
+  "omzet": "€3–10M",
+  "hoek": "nl.linkedin.com/company/urban-nature-culture/people filter 'customer'/'operations'"
+ },
+ {
+  "bedrijf": "Passion for Linen",
+  "web": "passionforlinen.com",
+  "stad": "Venlo",
+  "vert": "Home · linnen textiel",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in (\"Passion for Linen\" OR \"Homelinen Labels\") (klantenservice OR operations) Venlo"
+ },
+ {
+  "bedrijf": "By Mölle",
+  "web": "bymolle.com",
+  "stad": "Dalfsen",
+  "vert": "Home · woontextiel",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"By Mölle\" Dalfsen (operations OR customer service)"
+ },
+ {
+  "bedrijf": "Casa Comodo",
+  "web": "casacomodo.nl",
+  "stad": "Oisterwijk",
+  "vert": "Home · linnen beddengoed",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"Casa Comodo\" (customer service OR operations). NB mogelijk te klein voor aparte rol"
+ },
+ {
+  "bedrijf": "UrbanSofa",
+  "web": "urbansofa.nl",
+  "stad": "Noord-Brabant",
+  "vert": "Home · meubels",
+  "omzet": "€5–15M",
+  "hoek": "linkedin.com/company/urbansofa People-tab op huidige CS/Operations Manager"
+ },
+ {
+  "bedrijf": "Yumeko",
+  "web": "yumeko.nl",
+  "stad": "Amsterdam",
+  "vert": "Home · eco bedtextiel",
+  "omzet": "€5–12M",
+  "hoek": "nl.linkedin.com/company/yumeko/people filter 'customer care'. Zwakke lead: Stephanie Xenakis (seniority onbekend)"
+ },
+ {
+  "bedrijf": "Sfeer aan de Muur",
+  "web": "sfeeraandemuur.nl",
+  "stad": "Goirle",
+  "vert": "Home · wall art",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"Sfeer aan de Muur\" (operations OR e-commerce OR klantenservice)"
+ },
+ {
+  "bedrijf": "BedAffair",
+  "web": "bedaffair.nl",
+  "stad": "Heemstede",
+  "vert": "Home · matrassen",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"Bedaffair\" (operations OR klantenservice). Mogelijk te klein voor aparte rol"
+ },
+ {
+  "bedrijf": "DEENS.NL",
+  "web": "deens.nl",
+  "stad": "Online (NL)",
+  "vert": "Home · Scandinavisch wonen",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in \"Deens.nl\" (klantenservice OR operations OR e-commerce)"
+ },
+ {
+  "bedrijf": "The Souks",
+  "web": "thesouks.nl",
+  "stad": "Roelofarendsveen",
+  "vert": "Home · Berber-tapijten",
+  "omzet": "€500K–1,5M",
+  "hoek": "site:linkedin.com/in \"The Souks\" (customer service OR operations). Mogelijk te vroeg voor aparte rol"
+ },
+ {
+  "bedrijf": "Kalani",
+  "web": "kalani-home.com",
+  "stad": "Genval (BE)",
+  "vert": "Home · linnen textiel",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in \"Kalani\" (\"customer service\" OR \"service client\" OR operations) Genval"
+ },
+ {
+  "bedrijf": "Meroda Cosmetics",
+  "web": "merodacosmetics.nl",
+  "stad": "Berkel-Enschot",
+  "vert": "Beauty · make-up",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in \"Meroda\" (operations OR customer OR klantenservice). Check Blake Crawford (Head of Operations)"
+ },
+ {
+  "bedrijf": "Velveux",
+  "web": "velveux.com",
+  "stad": "Nederland",
+  "vert": "Beauty · vegan skincare",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in \"Velveux\" (customer OR operations). Check entiteit via KVK"
+ },
+ {
+  "bedrijf": "Dr. Jetske Ultee",
+  "web": "dr-jetskeultee-skincare.nl",
+  "stad": "Rotterdam",
+  "vert": "Beauty · skincare",
+  "omzet": "€3–8M",
+  "hoek": "site:linkedin.com/in \"Jetske Ultee\" (klantenservice OR \"customer service\" OR \"customer care\")"
+ },
+ {
+  "bedrijf": "Kaerel Skincare",
+  "web": "kaerelskincare.com",
+  "stad": "Utrecht",
+  "vert": "Beauty · men's grooming",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"Kaerel\" (operations OR e-commerce OR customer)"
+ },
+ {
+  "bedrijf": "Queen Tarzi",
+  "web": "queentarzi.com",
+  "stad": "Nieuw-Vennep",
+  "vert": "Beauty · vegan make-up",
+  "omzet": "€2–6M",
+  "hoek": "site:linkedin.com/in \"Queen Tarzi\" (customer OR operations OR klantenservice). Vermijd founder Manizha Nabizada"
+ },
+ {
+  "bedrijf": "LOOkX Cosmetics",
+  "web": "lookx.com",
+  "stad": "Nederland",
+  "vert": "Beauty · skincare/make-up",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in \"LOOkX\" (customer OR operations OR klantenservice)"
+ },
+ {
+  "bedrijf": "WONDR",
+  "web": "wondr.planetb.care",
+  "stad": "Amsterdam",
+  "vert": "Beauty · plasticvrij",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in \"WONDR\" (operations OR e-commerce OR customer) amsterdam. Filter op 'planetb'"
+ },
+ {
+  "bedrijf": "Loïs Lee SkinCare",
+  "web": "loislee.nl",
+  "stad": "Amsterdam",
+  "vert": "Beauty · natuurlijke skincare",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in (\"Loïs Lee\" OR \"Lois Lee\") (\"customer care\" OR \"customer service\")"
+ },
+ {
+  "bedrijf": "IK Skin Perfection",
+  "web": "ik-skinperfection.nl",
+  "stad": "Nederland",
+  "vert": "Beauty · cosmeceutical",
+  "omzet": "€2–6M",
+  "hoek": "site:linkedin.com/in (\"IK Skin Perfection\" OR \"Summery Cosmedical\") (customer OR operations)"
+ },
+ {
+  "bedrijf": "Food for Skin",
+  "web": "foodforskin.nl",
+  "stad": "Nederland",
+  "vert": "Beauty · natuurlijke skincare",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Food for Skin\" (operations OR customer OR e-commerce). Verifieer entiteit via KVK"
+ },
+ {
+  "bedrijf": "Posie Beauty",
+  "web": "posiebeauty.com",
+  "stad": "Nederland",
+  "vert": "Beauty · clean beauty",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Posie\" beauty nederland (operations OR customer). Sluit founder Demi uit"
+ },
+ {
+  "bedrijf": "Skin for Skin",
+  "web": "skinforskin.nl",
+  "stad": "Urk",
+  "vert": "Beauty · collageen/supplementen",
+  "omzet": "€500K–4M",
+  "hoek": "site:linkedin.com/in \"Skin for Skin\" Urk (operations OR customer). Niet oprichter Mardien Radewalt"
+ },
+ {
+  "bedrijf": "Superfoodies",
+  "web": "superfoodies.nl",
+  "stad": "Landsmeer",
+  "vert": "Supplements · superfoods",
+  "omzet": "€4,1M",
+  "hoek": "nl.linkedin.com/company/superfoodiesnl People-tab. Niet founder Michel Norbruis"
+ },
+ {
+  "bedrijf": "Orangefit",
+  "web": "orangefit.com",
+  "stad": "Alkmaar",
+  "vert": "Supplements · vegan sportvoeding",
+  "omzet": "€1–5M",
+  "hoek": "Klantcontact (telefoon+e-mail+social) tegelijk met beperkte bezetting; founders Rens Slik/Max Blaauboer uitgesloten"
+ },
+ {
+  "bedrijf": "Nutramin",
+  "web": "nutramin.nl",
+  "stad": "Amersfoort",
+  "vert": "Supplements · orthomoleculair",
+  "omzet": "€1–3M",
+  "hoek": "Servicekwaliteit consistent houden over 6 merken nu volume/kanalen toenemen; eigenaar Mischa Strijder uitgesloten"
+ },
+ {
+  "bedrijf": "Natuurlijk Presteren",
+  "web": "natuurlijkpresteren.nl",
+  "stad": "Raamsdonksveer",
+  "vert": "Supplements · performance",
+  "omzet": "€2–5M",
+  "hoek": "nl.linkedin.com/company/natuurlijkpresteren. Niet founder Jochum Smid"
+ },
+ {
+  "bedrijf": "Ergomax",
+  "web": "ergomax.nl",
+  "stad": "Nijmegen",
+  "vert": "Supplements · biohacking",
+  "omzet": "€1–4M",
+  "hoek": "Wig tussen ambitie (CS als nieuwe koers) en 3u/dag bereikbaarheid; check company People-tab handmatig"
+ },
+ {
+  "bedrijf": "Plent",
+  "web": "plent.nl",
+  "stad": "Schagen",
+  "vert": "Supplements · vegan",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in \"Plent\" (klantenservice OR operations OR e-commerce). Niet co-founder Bas Hoeve"
+ },
+ {
+  "bedrijf": "Vitals",
+  "web": "vitals.nl",
+  "stad": "Zaandam",
+  "vert": "Supplements · orthomoleculair",
+  "omzet": "€2–6M",
+  "hoek": "site:linkedin.com/in \"Patricia Bakker\" Vitals. Eigenaar Bolke Koster uitgesloten"
+ },
+ {
+  "bedrijf": "LUTO Supplements",
+  "web": "luto-supplements.nl",
+  "stad": "Zwolle",
+  "vert": "Supplements · sport",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in \"Luto Supplements\" (customer OR operations OR klantenservice). Niet mede-eigenaren"
+ },
+ {
+  "bedrijf": "TakeDaily",
+  "web": "takedaily.nl",
+  "stad": "Amsterdam",
+  "vert": "Supplements · abonnement",
+  "omzet": "€1–5M",
+  "hoek": "site:linkedin.com/in TakeDaily (operations OR customer OR klantenservice). Niet oprichter Marc Lucas"
+ },
+ {
+  "bedrijf": "Consiouz",
+  "web": "consiouz.nl",
+  "stad": "Eindhoven",
+  "vert": "Supplements · slaap",
+  "omzet": "€500K–3M",
+  "hoek": "site:linkedin.com/in Consiouz (operations OR customer OR klantenservice) Eindhoven"
+ },
+ {
+  "bedrijf": "Mr. & Mrs. Green",
+  "web": "mrandmrs-green.com",
+  "stad": "Hengelo",
+  "vert": "Supplements · natuurlijk",
+  "omzet": "€500K–3M",
+  "hoek": "site:linkedin.com/in \"Mr. and Mrs. Green\" Hengelo. Algemeen Directeur T. Elbaz uitgesloten"
+ },
+ {
+  "bedrijf": "Green Fuel",
+  "web": "greenfuel.shop",
+  "stad": "Beverwijk",
+  "vert": "Supplements · vegan sport",
+  "omzet": "€500K–3M",
+  "hoek": "site:linkedin.com/in \"Green Fuel\" Beverwijk (operations OR customer OR e-commerce)"
+ },
+ {
+  "bedrijf": "Oot Granola",
+  "web": "oot.nl",
+  "stad": "Amsterdam",
+  "vert": "Food · granola/abonnement",
+  "omzet": "€3–6M",
+  "hoek": "E-commerce Manager bezit klantbeleving/CS bij abonnementsmerk; huidige rol via LinkedIn bevestigen"
+ },
+ {
+  "bedrijf": "Jimmy Joy",
+  "web": "jimmyjoy.com",
+  "stad": "Amsterdam",
+  "vert": "Food · maaltijdvervangers",
+  "omzet": "€5–8M",
+  "hoek": "Head of Customer Care = exacte beslisser voor overflow/uitbesteding; huidige rol verifiëren"
+ },
+ {
+  "bedrijf": "De Pindakaaswinkel",
+  "web": "depindakaaswinkel.nl",
+  "stad": "Amsterdam",
+  "vert": "Food · pindakaas",
+  "omzet": "€3–6M",
+  "hoek": "Head of Operations (10+ jr) = beslisser voor CS-outsourcing; webshop-CS ontlasten zodat ops op groei focust"
+ },
+ {
+  "bedrijf": "Boerschappen",
+  "web": "boerschappen.nl",
+  "stad": "Breda",
+  "vert": "Food · maaltijdbox",
+  "omzet": "€4–8M",
+  "hoek": "site:linkedin.com/in Boerschappen (customer service OR klantenservice)"
+ },
+ {
+  "bedrijf": "Ekomenu",
+  "web": "ekomenu.nl",
+  "stad": "Almere",
+  "vert": "Food · biologische maaltijdbox",
+  "omzet": "€3–7M",
+  "hoek": "site:linkedin.com/in Ekomenu (klantenservice OR operations OR customer)"
+ },
+ {
+  "bedrijf": "Pit&Pit",
+  "web": "pit-pit.com",
+  "stad": "Tessenderlo (BE)",
+  "vert": "Food · natuurvoeding",
+  "omzet": "€4–8M",
+  "hoek": "site:linkedin.com/in Pit&Pit (customer service OR operations). NB deels BE-gebaseerd"
+ },
+ {
+  "bedrijf": "Aard'g",
+  "web": "aardg.nl",
+  "stad": "Alkmaar",
+  "vert": "Food · kombucha/abonnement",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in Aard'g (operations OR customer). Zoek operationele rechterhand, niet de DGA"
+ },
+ {
+  "bedrijf": "Willicroft",
+  "web": "willicroft.com",
+  "stad": "Amsterdam",
+  "vert": "Food · plantaardige kaas",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in Willicroft (operations OR e-commerce OR customer)"
+ },
+ {
+  "bedrijf": "Bocca Coffee",
+  "web": "bocca.nl",
+  "stad": "Amsterdam",
+  "vert": "Food · specialty koffie",
+  "omzet": "€3–7M",
+  "hoek": "site:linkedin.com/in Bocca Coffee Amsterdam (operations OR customer service)"
+ },
+ {
+  "bedrijf": "Funky Fat Foods",
+  "web": "funkyfatfoods.com",
+  "stad": "Amsterdam",
+  "vert": "Food · keto chocolade",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in \"Funky Fat Foods\" Amsterdam (operations OR e-commerce OR customer)"
+ },
+ {
+  "bedrijf": "Tea Bar",
+  "web": "teabar.nl",
+  "stad": "Nederland",
+  "vert": "Food · losse thee",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"Tea Bar\" thee (operations OR e-commerce OR customer) Nederland"
+ },
+ {
+  "bedrijf": "BoxBites",
+  "web": "boxbites.nl",
+  "stad": "Nederland",
+  "vert": "Food · snackbox",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in BoxBites (operations OR customer). Oprichters Tom/Mark uitgesloten"
+ },
+ {
+  "bedrijf": "The Limonaderij",
+  "web": "limonaderij.nl",
+  "stad": "Nederland",
+  "vert": "Food · limonadesiroop",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Limonaderij\" (operations OR e-commerce). Founder uitsluiten"
+ },
+ {
+  "bedrijf": "ByNouck Jewelry",
+  "web": "bynouck.com",
+  "stad": "Haarlem",
+  "vert": "Accessoires · sieraden",
+  "omzet": "€3–6M",
+  "hoek": "site:linkedin.com/in \"ByNouck\" (\"customer service\" OR klantenservice OR operations)"
+ },
+ {
+  "bedrijf": "Eline Rosina",
+  "web": "elinerosina.com",
+  "stad": "Nederland",
+  "vert": "Accessoires · sieraden",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in \"Eline Rosina\" (customer OR operations OR e-commerce). Niet founder Hanna Pranger"
+ },
+ {
+  "bedrijf": "ARLIZI",
+  "web": "arlizi.com",
+  "stad": "Laren",
+  "vert": "Accessoires · sieraden",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"ARLIZI\". Vermijd eigenaar/DGA"
+ },
+ {
+  "bedrijf": "SILK Jewellery",
+  "web": "silkjewellery.com",
+  "stad": "Nederland",
+  "vert": "Accessoires · sieraden",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in \"SILK Jewellery\" (\"customer service\" OR operations). Niet CEO Maarten Smetsers"
+ },
+ {
+  "bedrijf": "Smaak Amsterdam",
+  "web": "smaakamsterdam.com",
+  "stad": "Amsterdam",
+  "vert": "Accessoires · leren tassen",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in \"Smaak Amsterdam\" (operations OR e-commerce OR customer). Niet founder Andre Grundmann"
+ },
+ {
+  "bedrijf": "MYoMY",
+  "web": "myomy.nl",
+  "stad": "Amsterdam",
+  "vert": "Accessoires · leren tassen",
+  "omzet": "€3–7M",
+  "hoek": "site:linkedin.com/in \"MYoMY\" (customer OR operations OR e-commerce)"
+ },
+ {
+  "bedrijf": "O My Bag",
+  "web": "omybagamsterdam.com",
+  "stad": "Amsterdam",
+  "vert": "Accessoires · leren tassen",
+  "omzet": "€4–8M",
+  "hoek": "site:linkedin.com/in \"O My Bag\" (\"customer service\" OR e-commerce OR operations)"
+ },
+ {
+  "bedrijf": "The Chesterfield Brand",
+  "web": "chesterfieldbags.com",
+  "stad": "Nederland",
+  "vert": "Accessoires · leren tassen",
+  "omzet": "€3–7M",
+  "hoek": "site:linkedin.com/in \"Chesterfield Brand\" (customer OR operations OR e-commerce)"
+ },
+ {
+  "bedrijf": "Berba",
+  "web": "berba.nl",
+  "stad": "Nederland",
+  "vert": "Accessoires · leren tassen",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in \"Berba\" (customer OR operations OR e-commerce)"
+ },
+ {
+  "bedrijf": "dR Amsterdam",
+  "web": "dramsterdam.nl",
+  "stad": "Amsterdam",
+  "vert": "Accessoires · leren tassen",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in \"dR Amsterdam\" (customer OR operations OR e-commerce)"
+ },
+ {
+  "bedrijf": "WoodWatch",
+  "web": "woodwatch.com",
+  "stad": "Amsterdam",
+  "vert": "Accessoires · horloges",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in \"WoodWatch\" (customer OR operations OR e-commerce)"
+ },
+ {
+  "bedrijf": "Castelijn & Beerens",
+  "web": "castelijnenbeerens.com",
+  "stad": "Waalwijk",
+  "vert": "Accessoires · lederwaren",
+  "omzet": "€4–8M",
+  "hoek": "site:linkedin.com/in \"Castelijn & Beerens\" (customer OR operations OR e-commerce). Vermijd familie-eigenaar"
+ },
+ {
+  "bedrijf": "Bag2Bag",
+  "web": "bag2bag.nl",
+  "stad": "Nederland",
+  "vert": "Accessoires · leren tassen",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"Bag2Bag\". Founders Heidi/Daphne uitsluiten"
+ },
+ {
+  "bedrijf": "Nixnut",
+  "web": "nixnut.nl",
+  "stad": "Breda",
+  "vert": "Kids · fashion",
+  "omzet": "€1–3M",
+  "hoek": "Groeiende D2C + wholesale draait op 1 support/backoffice-persoon met beperkte kantoortijden"
+ },
+ {
+  "bedrijf": "Phil & Phae",
+  "web": "philandphae.com",
+  "stad": "Almere",
+  "vert": "Kids · organic kidswear",
+  "omzet": "€1–2M",
+  "hoek": "site:linkedin.com/in (\"Phil&Phae\" OR \"PHAE\") (operations OR \"customer service\" OR fulfillment)"
+ },
+ {
+  "bedrijf": "Minis Only",
+  "web": "minisonly.nl",
+  "stad": "Horst",
+  "vert": "Kids · streetwear",
+  "omzet": "€1–3M",
+  "hoek": "linkedin.com/company/minis-only People-tab; \"Minis Only\" Horst (operations OR klantenservice)"
+ },
+ {
+  "bedrijf": "A Little Lovely Company",
+  "web": "alittlelovelycompany.com",
+  "stad": "Groningen",
+  "vert": "Kids · lifestyle/decor",
+  "omzet": "€2–6M",
+  "hoek": "site:linkedin.com/in \"A Little Lovely Company\" (operations OR \"customer service\" OR logistics)"
+ },
+ {
+  "bedrijf": "Studio Ditte",
+  "web": "studioditte.nl",
+  "stad": "Breda",
+  "vert": "Kids · interieur/decor",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in \"Studio Ditte\" (operations OR e-commerce OR klantenservice)"
+ },
+ {
+  "bedrijf": "Noubased",
+  "web": "noubased.com",
+  "stad": "Nederland",
+  "vert": "Maternity · voedingskleding",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Noubased\" (operations OR customer)"
+ },
+ {
+  "bedrijf": "Lodger",
+  "web": "lodger.com",
+  "stad": "Woerden",
+  "vert": "Baby · mobiliteit/verzorging",
+  "omzet": "€3–7M",
+  "hoek": "site:linkedin.com/in \"Lodger\" Woerden (\"customer service\" OR \"customer success\" OR operations)"
+ },
+ {
+  "bedrijf": "Little Indians",
+  "web": "little-indians.nl",
+  "stad": "Rotterdam",
+  "vert": "Baby/kids · fashion",
+  "omzet": "€1–5M",
+  "hoek": "site:linkedin.com/in \"Little Indians\" Rotterdam (operations OR logistics OR \"customer service\")"
+ },
+ {
+  "bedrijf": "Mies & Co",
+  "web": "miesenco.nl",
+  "stad": "Rijssen",
+  "vert": "Baby · textiel/verzorging",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in (\"Mies & Co\" OR miesenco) (operations OR klantenservice) Rijssen"
+ },
+ {
+  "bedrijf": "Love2Wait",
+  "web": "love2wait.nl",
+  "stad": "Dronten",
+  "vert": "Maternity · positiekleding",
+  "omzet": "€2–6M",
+  "hoek": "site:linkedin.com/in Love2Wait OR Brands2Love (customer service OR e-commerce). GM Mark de Jong = niet ideale CS-rol"
+ },
+ {
+  "bedrijf": "ELLIE Studio",
+  "web": "ellie-studio.nl",
+  "stad": "Nederland",
+  "vert": "Kids · interieur/decor",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"ELLIE Studio\" (operations OR klantenservice OR ecommerce). Mogelijk nog geen aparte rol"
+ },
+ {
+  "bedrijf": "DogSuppy",
+  "web": "dogsuppy.com",
+  "stad": "Amsterdam",
+  "vert": "Pets · supplementen",
+  "omzet": "€2–6M",
+  "hoek": "Telefoon publiek uit 'wegens drukte'; 1-2u responsbelofte 7 dgn/wk moeilijk vol te houden bij verdere expansie. NB één bron noemt ook 'Finance/backoffice' — herbevestigen"
+ },
+ {
+  "bedrijf": "Maats Cycling Culture",
+  "web": "maats.cc",
+  "stad": "Amsterdam",
+  "vert": "Cycling · wielerkleding",
+  "omzet": "€3–6M",
+  "hoek": "CS-volume (orders, retouren, maatvragen) over webshop + 3 winkels komt samen op team gericht op groei/events"
+ },
+ {
+  "bedrijf": "Dog with a Mission",
+  "web": "dogwithamission.com",
+  "stad": "Bergen (NH)",
+  "vert": "Pets · design accessoires",
+  "omzet": "€2–6M",
+  "hoek": "site:linkedin.com/in \"Dog with a Mission\" (customer service OR klantenservice OR operations). Niet co-owners"
+ },
+ {
+  "bedrijf": "Rogelli",
+  "web": "rogelli.com",
+  "stad": "Sint Willebrord",
+  "vert": "Cycling · wielerkleding",
+  "omzet": "€5–8M",
+  "hoek": "site:linkedin.com/in \"Rogelli\" (\"customer service\" OR \"e-commerce\" OR operations). Vermijd eigenaar Wagtmans"
+ },
+ {
+  "bedrijf": "Q1905",
+  "web": "q1905.com",
+  "stad": "Strijen",
+  "vert": "Sport · tennis/padel",
+  "omzet": "€5–8M",
+  "hoek": "site:linkedin.com/in (\"Ferrini\" OR \"Q1905\") (\"customer service\" OR \"e-commerce manager\"). Lage Trustpilot = overbelast team"
+ },
+ {
+  "bedrijf": "Urban Goddess",
+  "web": "urban-goddess.com",
+  "stad": "Amsterdam",
+  "vert": "Sport · yoga/activewear",
+  "omzet": "€2–5M",
+  "hoek": "site:linkedin.com/in (\"Urban Goddess\" OR Blissworkz) (\"customer service\" OR operations). Niet founder Marlene Smits"
+ },
+ {
+  "bedrijf": "Renske Natural Petfood",
+  "web": "natuurlijkrenske.nl",
+  "stad": "Cuijk",
+  "vert": "Pets · diervoeding",
+  "omzet": "€3–8M",
+  "hoek": "site:linkedin.com/in \"Renske\" (klantenservice OR customer care OR commercieel assistent) Cuijk. Niet directeur"
+ },
+ {
+  "bedrijf": "The Nomad Company",
+  "web": "nomad.nl",
+  "stad": "Nootdorp",
+  "vert": "Outdoor · tenten/kleding",
+  "omzet": "€500K–5M",
+  "hoek": "site:linkedin.com/in \"Nomad\" Nootdorp (\"customer service\" OR operations OR e-commerce)"
+ },
+ {
+  "bedrijf": "Bobiotics / Pure Bob",
+  "web": "bobiotics.nl",
+  "stad": "Gent (BE)",
+  "vert": "Pets · supplementen/voer",
+  "omzet": "€500K–3M",
+  "hoek": "site:linkedin.com/in (\"Pure Bob\" OR \"Bobiotics\") (customer OR klantenservice OR operations). Vermijd de founder"
+ },
+ {
+  "bedrijf": "Yogashop / Love Generation",
+  "web": "yogashop.nl",
+  "stad": "Eindhoven",
+  "vert": "Fitness · yoga accessoires",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in (\"Yogashop\" OR \"Love Generation\") Eindhoven (\"customer care\" OR klantenservice). Niet founder"
+ },
+ {
+  "bedrijf": "JUSS7 Sportswear",
+  "web": "juss7.com",
+  "stad": "Hoogeveen",
+  "vert": "Sport · performance kleding",
+  "omzet": "€1–3M",
+  "hoek": "site:linkedin.com/in \"JUSS7\" (\"customer service\" OR operations OR \"e-commerce manager\"). Founders Justin/Donna uitsluiten"
+ },
+ {
+  "bedrijf": "Vieux Jeu",
+  "web": "vieuxjeu.com",
+  "stad": "Oostende (BE)",
+  "vert": "Sport · tennis/padel",
+  "omzet": "€1–4M",
+  "hoek": "site:linkedin.com/in \"Vieux Jeu\" (\"customer service\" OR \"customer experience\" OR operations). Niet founder Claudia Storme"
+ },
+ {
+  "bedrijf": "Clarijs Fietstassen",
+  "web": "clarijs-fietstassen.nl",
+  "stad": "Serooskerke",
+  "vert": "Cycling · fietstassen",
+  "omzet": "€500K–2M",
+  "hoek": "site:linkedin.com/in \"Clarijs\" (\"customer service\" OR klantenservice OR webshop). Vermijd de eigenaar"
+ }
+]
