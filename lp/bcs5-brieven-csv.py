@@ -99,6 +99,10 @@ def main():
     hand = lees(os.path.join(SWEEP, "handwaarnemingen.csv"))
     extra = lees(os.path.join(SWEEP, "extra-feiten.csv"))
     hand2 = lees(os.path.join(SWEEP, "handwaarnemingen2.csv"))
+    # Dubbelpoort. Een prospect die van een andere Pique-klant al een handgeschreven kaart
+    # kreeg met een QR naar hetzelfde domein, ziet bij de tweede kaart het mechanisme.
+    # SCHRAPPEN valt uit de verzendlijst, de rest krijgt een waarschuwing mee.
+    dubbel = lees(os.path.join(BCS, "BCS-Batch5-Dubbelcheck.csv"))
     # De beslisserstand komt uit de beslisserlijst en staat hier niet hardgecodeerd. Stond
     # er eerst wel, en dat is gevaarlijk: de kolom bleef GEVERIFIEERD roepen ongeacht wat
     # er in A-BESLISSERS.csv veranderde.
@@ -117,7 +121,7 @@ def main():
             if d:
                 tw[d] = r
 
-    uit, zonder = [], []
+    uit, zonder, geschrapt = [], [], []
     for r in prospects:
         naam = r["bedrijf"]
         toon = G.toonnaam(naam)
@@ -128,6 +132,11 @@ def main():
                             extra.get(naam), hand2.get(naam))
         if len(wn) < 2:
             zonder.append(naam)
+            continue
+
+        d = dubbel.get(naam)
+        if d and d["advies"] == "SCHRAPPEN":
+            geschrapt.append((naam, d["eerdere_batch"]))
             continue
 
         vol = (r.get("beslisser") or "").strip()
@@ -146,6 +155,8 @@ def main():
         nummer, toevoeging = (m.group(1), (m.group(2) or "").strip()) if m else (hn, "")
 
         notitie = []
+        if d:
+            notitie.append(f"{d['advies']}: kreeg al een kaart via {d['eerdere_batch']}")
         if not voornaam:
             notitie.append("GEEN AANHEF: beslisser niet op voornaam te noemen")
         if "LET OP" in (r.get("adres_gecontroleerd") or ""):
@@ -182,6 +193,9 @@ def main():
     lengtes = [len(x["brieftekst"].split()) for x in uit]
     print(f"  woorden per kaart     : {min(lengtes)} tot {max(lengtes)}, "
           f"gemiddeld {sum(lengtes)//len(lengtes)}")
+    if geschrapt:
+        print(f"  uit de lijst gehaald als dubbele ({len(geschrapt)}):")
+        for n, w in geschrapt: print(f"     {n} - kreeg al een kaart via {w}")
     if zonder:
         print(f"  te weinig feiten voor een opening ({len(zonder)}): {zonder[:10]}")
 
