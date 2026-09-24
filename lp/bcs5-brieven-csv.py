@@ -89,6 +89,53 @@ def kaartzin(w, toon):
     return k.rstrip(".") + "."
 
 
+VERBODEN_OPENING = re.compile(
+    r"^\s*(ik hoop dat het goed gaat|mijn naam is|ik werk bij|ik wilde even contact"
+    r"|ik kwam jullie bedrijf tegen|wellicht interessant)", re.I)
+GERUSTSTELLING = re.compile(r"(geen spam|is veilig|gerust scannen|niets te verkopen|"
+                            r"kost je niets|vrijblijvend)", re.I)
+
+
+def keur(x):
+    """De toetsen uit agents/handgeschrevenbrieven-agent.md, in het script zelf.
+
+    De webadres-toets staat er niet voor de sier: die fout is al een keer door een hele
+    batch heen geglipt omdat niemand de tekst nog las nadat de generator klaar was."""
+    t = x["brieftekst"]; f = []
+    laatste = t.strip().splitlines()[-1].strip()
+    if re.search(r"https?://|www\.|\.nl/|\.com/", t):
+        f.append("webadres in de brieftekst")
+    if len(t.split()) >= 50:
+        f.append(f"te lang: {len(t.split())} woorden")
+    if laatste != "Jeffrey":
+        f.append(f"ondertekening is '{laatste}' en niet alleen de voornaam")
+    if re.search(r"\bGroet|\bMet vriendelijke", t, re.I):
+        f.append("afsluiting voor de naam")
+    if re.search(r"[—;]|[\U0001F300-\U0001FAFF]", t):
+        f.append("em-dash, puntkomma of emoji")
+    # De wij-toets slaat het letterlijke citaat over. Giga Meubel belooft op hun eigen
+    # servicepagina "Ons streven is om binnen 24 uur te reageren" en dat is hun wij, niet
+    # de mijne. Een citaat keuren op onze eigen schrijfregels is een bekende misser.
+    buiten_citaat = re.sub(r"staat:.*?(?=\n|$)", "staat:", t, flags=re.S)
+    if re.search(r"\b(wij|ons|onze)\b", buiten_citaat, re.I):
+        f.append("wij-vorm op een kaart van een mens")
+    for zin in re.split(r"(?<=[.!?])\s+", t):
+        if re.match(r"^\s*(Niet|Geen|Juist|Precies)\b", zin):
+            f.append(f"zin begint met {zin.split()[0]}")
+        if VERBODEN_OPENING.match(zin):
+            f.append("verboden openingszin")
+    if re.search(r"niet\s[^.!?]{0,40},?\smaar\s", t, re.I):
+        f.append("niet X maar Y")
+    if GERUSTSTELLING.search(t):
+        f.append("geruststelling")
+    if not x["aanhef"].startswith("Hoi ") or len(x["aanhef"].split()) != 2:
+        f.append(f"aanhef '{x['aanhef']}'")
+    for veld in ("straatnaam", "huisnummer", "postcode", "plaatsnaam", "link"):
+        if not (x.get(veld) or "").strip():
+            f.append(f"{veld} leeg")
+    return f
+
+
 def main():
     prospects = list(csv.DictReader(
         open(os.path.join(SWEEP, "BCS-Batch5-DEFINITIEF-151.csv"), encoding="utf-8")))
@@ -155,6 +202,14 @@ def main():
         nummer, toevoeging = (m.group(1), (m.group(2) or "").strip()) if m else (hn, "")
 
         notitie = []
+        # De voornaam die ook in de bedrijfsnaam zit. Bij een eponiem bedrijf is dat
+        # normaal, maar het is ook precies het geval waarin de oprichter verkocht heeft en
+        # er allang iemand anders zit. Zie de aanhefpoort en de beslisserpoort.
+        if voornaam and re.search(r"\b" + re.escape(voornaam) + r"\b", toon, re.I):
+            notitie.append(f"LET OP: '{voornaam}' zit ook in de bedrijfsnaam, controleer of "
+                           f"hij er nog zit voordat je schrijft")
+        if voornaam and not achternaam:
+            notitie.append("geen achternaam bekend, aanhef rust op de voornaam alleen")
         if d:
             notitie.append(f"{d['advies']}: kreeg al een kaart via {d['eerdere_batch']}")
         if not voornaam:
@@ -180,6 +235,15 @@ def main():
                                          .strip("/"), {}).get("status") or "ONBEKEND").strip(),
             "notitie": " | ".join(notitie),
         })
+
+    afkeur = [(x["bedrijf"], keur(x)) for x in uit]
+    afkeur = [(b, f) for b, f in afkeur if f]
+    if afkeur:
+        print(f"\n  AFGEKEURD ({len(afkeur)}), CSV niet geschreven:")
+        for b, f in afkeur[:20]:
+            print(f"     {b[:26]:28} {'; '.join(f)}")
+        raise SystemExit(1)
+    print(f"  keuring               : {len(uit)} van {len(uit)} door alle toetsen")
 
     pad = os.path.join(BCS, "BCS-Batch5-Brieven-VERZENDKLAAR.csv")
     with open(pad, "w", encoding="utf-8", newline="") as f:
