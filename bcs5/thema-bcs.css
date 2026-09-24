@@ -1,0 +1,59 @@
+/* ============================================================
+   THEMA — Backbone Customer Service
+   Het enige bestand dat per klant verschilt. Kleuren komen van
+   backbonecustomerservice.com: elektrisch blauw op warm crème,
+   met terracotta als tweede accent. Schibsted Grotesk als merkfont.
+   Elke kleur staat twee keer: als hex en als losse kanalen voor rgba().
+   ============================================================ */
+:root{
+  /* ── accent: het BCS-blauw in plaats van Pique-amber ────── */
+  --accent:#233DFF;        --accent-rgb:35,61,255;     /* lijnen, labels, dots  */
+  --accent-l:#5B72FF;      --accent-l-rgb:91,114,255;  /* knoppen, accent op donker */
+  --accent-h:#8494FF;                                  /* knop bij hover        */
+  --op-accent:#FFFFFF;                                 /* wit op verzadigd blauw */
+  --inkt:#233DFF;          --inkt-rgb:35,61,255;       /* blauwe pen            */
+
+  /* ── vlakken en tekst: warm, want het merk is crème ─────── */
+  --bg:#FAF7F1;            --bg-rgb:250,247,241;       /* de pagina             */
+  --ink:#211A12;           --ink-rgb:33,26,18;         /* tekst                 */
+  --donker:#1A140D;        --donker-rgb:26,20,13;      /* hero, kantelpunt, CTA */
+  --dieper:#120D08;        --dieper-rgb:18,13,8;       /* overlays              */
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.66);
+  --ink3:rgba(var(--ink-rgb),.42);
+  --line:rgba(var(--ink-rgb),.13);
+
+  /* ── papier: crèmetinten uit het merk ───────────────────── */
+  --pap-0:#FFFDF8;
+  --pap-1:#FEFBF4;
+  --pap-2:#F0EADB;
+  --tape-rgb:232,226,212;                              /* het merkcrème #E8E2D4 */
+  --hand-ink:#241C12;      --hand-rgb:36,28,18;
+
+  /* ── overig ─────────────────────────────────────────────── */
+  --goed:#0F8F5F;          --goed-rgb:15,143,95;
+  --chrome:#EFEAE0;
+  --video-bg:#1A140D;
+
+  /* ── typografie: BCS voert Schibsted Grotesk, geen serif ── */
+  --serif:'Schibsted Grotesk',system-ui,sans-serif;
+  --sans:'Schibsted Grotesk',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;                            /* Schibsted heeft geen SOFT/WONK-as */
+
+  /* ── vorm: iets strakker dan Pique, het merk is technisch ─ */
+  --r-pap:4px;
+  --r-kaart:14px;
+  --r-blok:20px;
+  --r-pil:100px;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fs-h:clamp(1.9rem,3vw,2.7rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;
+}
+/* Schibsted Grotesk draagt zwaarder dan Fraunces, dus koppen een tandje lichter
+   en strakker gespatieerd. Zelfde ingreep als bij OGG met Poppins. */
+.hero-h1,.ch-kop,.f-kop,.ch-pivot,.cta-h,.tp h3{font-weight:600;letter-spacing:-.025em}
+.f-quote{font-style:normal}
