@@ -99,6 +99,16 @@ def main():
     hand = lees(os.path.join(SWEEP, "handwaarnemingen.csv"))
     extra = lees(os.path.join(SWEEP, "extra-feiten.csv"))
     hand2 = lees(os.path.join(SWEEP, "handwaarnemingen2.csv"))
+    # De beslisserstand komt uit de beslisserlijst en staat hier niet hardgecodeerd. Stond
+    # er eerst wel, en dat is gevaarlijk: de kolom bleef GEVERIFIEERD roepen ongeacht wat
+    # er in A-BESLISSERS.csv veranderde.
+    bes = {}
+    bpad = os.path.join(SWEEP, "A-BESLISSERS.csv")
+    if os.path.exists(bpad):
+        for b in csv.DictReader(open(bpad, encoding="utf-8")):
+            d = (b.get("domein") or "").lower().replace("www.", "").strip("/")
+            if d:
+                bes[d] = b
     tw = {}
     twpad = os.path.join(SWEEP, "tw-detail.csv")
     if os.path.exists(twpad):
@@ -155,7 +165,8 @@ def main():
             "unieke_url": f"bcs5/{G.slug(naam)}",
             "functie": r.get("rol", ""), "bedrijf": toon,
             "beslisser_bron": r.get("beslisser_bron", ""),
-            "beslisser_status": "GEVERIFIEERD",
+            "beslisser_status": (bes.get((r["domein"] or "").lower().replace("www.", "")
+                                         .strip("/"), {}).get("status") or "ONBEKEND").strip(),
             "notitie": " | ".join(notitie),
         })
 
