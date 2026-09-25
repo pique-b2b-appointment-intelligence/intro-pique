@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>De motor achter de kaart · Domek</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Concept: één pagina die per klant-ID andere blokken toont. Voorbeeldpagina, gemaakt voor Domek Group.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23189DD9'/%3E%3Cpath d='M16 7l8 6.4V25H8V13.4z' fill='none' stroke='white' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#030329; --ink:#0A2C45; --blue:#189DD9; --blue-2:#4EB4E2; --blue-soft:#E7F4FB;
+  --green:#97C03D; --green-soft:#F1F7E4; --amber:#FFC136; --amber-soft:#FFF3D6;
+  --cream:#FEFCEC; --paper:#F7FBFA; --white:#fff;
+  --muted:rgba(10,44,69,.62); --faint:rgba(10,44,69,.42);
+  --line:rgba(10,44,69,.11); --line-2:rgba(10,44,69,.06);
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --hand:'Caveat','Plus Jakarta Sans',cursive;
+  --bar:44px;
+  --shadow:0 1px 2px rgba(3,3,41,.04),0 8px 28px rgba(3,3,41,.07);
+  --shadow-lg:0 2px 6px rgba(3,3,41,.05),0 22px 60px rgba(3,3,41,.13);
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.62;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:var(--bar)}
+img{max-width:100%;display:block}
+h1,h2,h3{letter-spacing:-.028em;line-height:1.12;font-weight:800;color:var(--navy)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:820px;margin:0 auto;padding:0 clamp(1.15rem,5vw,2rem)}
+.sec{padding:clamp(2.8rem,7vw,4.4rem) 0;position:relative}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem}
+.eyebrow::before{content:'';width:18px;height:2px;background:var(--blue);border-radius:2px;flex:none}
+.lead{font-size:clamp(1.02rem,2.4vw,1.12rem);color:var(--muted);max-width:58ch}
+
+/* ─── demobalk ─── */
+.demobar{position:fixed;top:0;left:0;right:0;height:var(--bar);z-index:400;
+  background:var(--navy);color:rgba(255,255,255,.92);display:flex;align-items:center;gap:.9rem;
+  padding:0 clamp(.7rem,3vw,1.1rem);font-size:.74rem;font-weight:600;
+  box-shadow:0 1px 0 rgba(255,255,255,.08);overflow-x:auto;scrollbar-width:none}
+.demobar::-webkit-scrollbar{display:none}
+.demobar .tag{display:inline-flex;align-items:center;gap:.4rem;flex:none;color:var(--amber);
+  letter-spacing:.09em;text-transform:uppercase;font-size:.64rem;font-weight:800}
+.demobar .tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.demobar .grow{flex:1 1 auto;min-width:0;color:rgba(255,255,255,.52);font-weight:500;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ctrl{display:flex;align-items:center;gap:.4rem;flex:none}
+.klabel{color:rgba(255,255,255,.5);font-weight:700;font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;flex:none}
+.seg{display:flex;background:rgba(255,255,255,.1);border-radius:99px;padding:2px}
+.seg button{font:inherit;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.62);
+  background:none;border:0;padding:.3rem .7rem;border-radius:99px;cursor:pointer;
+  transition:background .18s,color .18s;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--white);color:var(--navy)}
+.linkbtn{font:inherit;font-size:.7rem;font-weight:700;color:rgba(255,255,255,.62);background:none;
+  border:0;cursor:pointer;padding:.3rem .2rem;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.linkbtn:hover{color:var(--white)}
+@media (max-width:640px){.demobar .grow{display:none}.klabel{display:none}}
+
+/* ─── hero ─── */
+.hero{background:
+    radial-gradient(760px 420px at 88% -6%,var(--blue-soft) 0%,rgba(231,244,251,0) 66%),
+    radial-gradient(560px 380px at 2% 104%,var(--amber-soft) 0%,rgba(255,243,214,0) 62%),
+    var(--cream);
+  border-bottom:1px solid var(--line-2);padding:clamp(1.6rem,4vw,2.3rem) 0 clamp(2.6rem,7vw,3.6rem)}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding-bottom:clamp(1.8rem,5vw,2.6rem)}
+.mark{height:clamp(26px,6vw,31px);width:auto}
+.topline .lang{font-size:.72rem;font-weight:700;color:var(--faint);display:flex;align-items:center;gap:.42rem}
+.topline .lang b{color:var(--ink);font-weight:800}
+.hero h1{font-size:clamp(1.8rem,6.2vw,2.9rem);margin-bottom:1.05rem}
+.hero h1 .hl{background:linear-gradient(180deg,transparent 62%,rgba(255,193,54,.5) 62%);
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero .lead{font-size:clamp(1.02rem,2.6vw,1.14rem)}
+.herogrid{display:grid;grid-template-columns:1fr;gap:clamp(1.9rem,5vw,2.6rem)}
+@media (min-width:860px){.herogrid{grid-template-columns:1fr 292px;align-items:start;gap:2.8rem}}
+#slot{display:flex;flex-direction:column;gap:.62rem}
+.slot-label{font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.slotcard{position:relative;width:100%;max-width:292px;
+  background:radial-gradient(120% 90% at 12% 6%,#fffefb 0%,#fdfaf1 46%,#f8f2e4 100%);
+  border-radius:4px;transform:rotate(-1.6deg);padding:.95rem 1rem;
+  box-shadow:0 1px 2px rgba(3,3,41,.1),0 10px 26px rgba(3,3,41,.16);
+  display:flex;flex-direction:column;justify-content:space-between;gap:.7rem;min-height:172px}
+.slotcard .card-txt{font-family:var(--hand);font-size:.86rem;line-height:1.5;color:#1d3a56}
+.slotcard .card-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}
+.slotcard .card-sign{font-family:var(--hand);font-size:.98rem;color:#1d3a56}
+.slotcard .qr{width:34px;height:34px;flex:none;background:#fff;padding:2px;border-radius:2px;
+  box-shadow:0 1px 3px rgba(3,3,41,.14)}
+@media (max-width:859px){#slot{order:-1}.slotcard{max-width:250px}}
+.validity{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;
+  background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:99px;
+  padding:.42rem .9rem;font-size:.775rem;font-weight:600;color:var(--muted)}
+.validity svg{width:14px;height:14px;flex:none;color:var(--blue)}
+
+/* ─── de motor ─── */
+.motor{background:var(--white);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.flow{display:grid;gap:.75rem;margin-top:1.9rem}
+@media (min-width:820px){.flow{grid-template-columns:0.9fr 1.3fr 1.1fr;align-items:stretch}}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.15rem 1.15rem 1.2rem;position:relative}
+.step .n{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
+.step.send{background:var(--navy)}
+.step.send .n{color:var(--amber)}
+.step.send .json{color:#fff}
+.json{font-family:var(--mono);font-size:.86rem;line-height:1.7;color:var(--ink);word-break:break-word}
+.json .k{color:var(--blue-2)}
+.json .v{color:#fff;font-weight:600}
+.map{display:flex;flex-direction:column;gap:.6rem}
+.map .r{display:flex;gap:.6rem;font-size:.85rem;line-height:1.4}
+.map .r .lb{flex:none;width:64px;font-size:.63rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);padding-top:.18rem}
+.map .r .vl{color:var(--ink);font-weight:600}
+.map .r .vl.mist{color:#C9762B}
+.chips{display:flex;flex-wrap:wrap;gap:.36rem;margin-top:.2rem}
+.chip{font-size:.72rem;font-weight:700;color:var(--navy);background:var(--blue-soft);
+  border:1px solid rgba(24,157,217,.28);border-radius:99px;padding:.28rem .62rem}
+.chip.lead{background:var(--amber-soft);border-color:rgba(255,193,54,.5)}
+.arrowrow{display:none}
+@media (min-width:820px){
+  .step+.step::before{content:'→';position:absolute;left:-.72rem;top:50%;transform:translateY(-50%);
+    color:var(--faint);font-size:1rem;font-weight:800}
+}
+.catalog{margin-top:1.9rem;border-top:1px dashed var(--line);padding-top:1.3rem}
+.catalog .cl{font-size:.68rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin-bottom:.8rem}
+.blocks{display:flex;flex-wrap:wrap;gap:.4rem}
+.blk{font-size:.73rem;font-weight:700;color:var(--faint);background:var(--paper);
+  border:1px solid var(--line);border-radius:8px;padding:.34rem .64rem;transition:all .2s;opacity:.55}
+.blk.on{color:var(--navy);background:var(--green-soft);border-color:var(--green);opacity:1}
+.motnote{font-size:.8rem;color:var(--muted);margin-top:1.3rem;max-width:60ch}
+.motnote b{color:var(--navy);font-weight:700}
+
+/* ─── video ─── */
+.video{position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;
+  background:linear-gradient(145deg,#0d3550 0%,#030329 100%);display:grid;place-items:center;
+  box-shadow:var(--shadow-lg);margin-top:1.8rem}
+.video::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(420px 260px at 30% 22%,rgba(24,157,217,.32) 0%,rgba(24,157,217,0) 70%)}
+.video .play{position:relative;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.95);
+  display:grid;place-items:center;box-shadow:0 8px 30px rgba(3,3,41,.4)}
+.video .play::after{content:'';border-left:17px solid var(--navy);border-top:10px solid transparent;
+  border-bottom:10px solid transparent;margin-left:5px}
+.video .cap{position:absolute;left:1.1rem;bottom:1.05rem;color:rgba(255,255,255,.82);font-size:.79rem;font-weight:600}
+.video .stamp{position:absolute;right:1.1rem;top:1.05rem;color:var(--navy);background:var(--amber);
+  font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.24rem .6rem;border-radius:99px}
+
+/* ─── dossier ─── */
+.rows{margin-top:1.7rem;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr auto;gap:.5rem 1.2rem;align-items:baseline;
+  padding:.92rem 0;border-bottom:1px solid var(--line)}
+.row .k{font-weight:700;font-size:.97rem;color:var(--navy)}
+.row .v{font-size:.9rem;color:var(--muted);text-align:right}
+.row .v .ok{color:var(--green);font-weight:700}
+.row .v .open{color:#C9762B;font-weight:700}
+@media (max-width:540px){.row{grid-template-columns:1fr}.row .v{text-align:left}}
+
+/* ─── pakketten ─── */
+.pk{display:grid;gap:.85rem;margin-top:1.8rem}
+@media (min-width:760px){.pk{grid-template-columns:repeat(3,1fr);gap:.9rem}}
+.p{background:var(--white);border:1px solid var(--line);border-radius:14px;
+  padding:1.35rem 1.25rem 1.2rem;display:flex;flex-direction:column;gap:.62rem;position:relative;
+  transition:border-color .2s,transform .2s,box-shadow .2s}
+.p:hover{border-color:var(--blue-2);transform:translateY(-2px);box-shadow:var(--shadow)}
+.p.best{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.p .badge{position:absolute;top:-9px;left:1.25rem;background:var(--blue);color:var(--white);
+  font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.23rem .58rem;border-radius:99px}
+.p .nm{font-weight:800;font-size:1.02rem;color:var(--navy)}
+.p ul{list-style:none;display:flex;flex-direction:column;gap:.34rem;margin-top:.1rem}
+.p li{font-size:.855rem;color:var(--muted);padding-left:1.16rem;position:relative;line-height:1.5}
+.p li::before{content:'';position:absolute;left:0;top:.5em;width:9px;height:5px;
+  border-left:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(-45deg)}
+.p .why{font-size:.815rem;color:var(--ink);background:var(--blue-soft);border-radius:9px;
+  padding:.56rem .7rem;line-height:1.5;margin-top:.15rem}
+.p .pbtn{font:inherit;font-weight:700;font-size:.87rem;margin-top:auto;background:var(--paper);
+  border:1px solid var(--line);border-radius:10px;padding:.63rem 1rem;cursor:pointer;color:var(--navy);
+  transition:background .2s,border-color .2s}
+.p.best .pbtn{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.p .pbtn:hover{border-color:var(--blue)}
+.disclaim{font-size:.775rem;color:var(--faint);margin-top:1rem}
+
+/* ─── cheque ─── */
+.chq-sec{background:var(--navy);color:rgba(255,255,255,.88)}
+.chq-sec h2{color:var(--white);font-size:clamp(1.42rem,4.6vw,2.05rem)}
+.chq-sec .eyebrow{color:var(--amber)}
+.chq-sec .eyebrow::before{background:var(--amber)}
+.chq-sec .lead{color:rgba(255,255,255,.62)}
+.cheque{margin-top:2rem;background:linear-gradient(140deg,#FFFDF4 0%,#FDF6E2 100%);border-radius:9px;
+  padding:clamp(1.25rem,4.4vw,1.7rem);color:var(--ink);box-shadow:0 22px 56px rgba(0,0,0,.38);position:relative;overflow:hidden}
+.cheque::before{content:'';position:absolute;right:-42px;top:-42px;width:186px;height:186px;border-radius:50%;background:rgba(151,192,61,.12)}
+.cheque-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  padding-bottom:1.05rem;border-bottom:1.5px dashed rgba(10,44,69,.22);position:relative}
+.cheque-top .lbl{font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.cheque-top .nm{font-family:var(--hand);font-size:clamp(1.42rem,5vw,1.88rem);color:var(--navy);line-height:1.15;margin-top:.15rem}
+.cheque-top .amt{font-size:clamp(1.65rem,5.6vw,2.25rem);font-weight:800;color:var(--navy);letter-spacing:-.035em;text-align:right;line-height:1}
+.cheque-top .amt small{display:block;font-size:.63rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-bottom:.22rem}
+.cheque-mid{padding:1rem 0;font-size:.93rem;line-height:1.6}
+.cheque-bot{display:flex;flex-wrap:wrap;gap:.75rem 1.4rem;align-items:center;justify-content:space-between;
+  padding-top:1.05rem;border-top:1.5px dashed rgba(10,44,69,.22)}
+.cheque-bot .meta{font-size:.76rem;color:var(--faint);font-weight:600}
+.cheque-bot .meta b{color:var(--ink);font-weight:800;letter-spacing:.06em}
+.wa{font:inherit;font-weight:700;font-size:.93rem;background:#25D366;color:#053d20;border:0;border-radius:11px;
+  padding:.76rem 1.25rem;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none}
+.wa svg{width:17px;height:17px;flex:none}
+
+/* ─── adviseur ─── */
+.adv{display:flex;gap:1.15rem;align-items:center;background:var(--white);border:1px solid var(--line);
+  border-radius:16px;padding:1.3rem;margin-top:1.8rem;flex-wrap:wrap;box-shadow:var(--shadow)}
+.adv .ph{width:62px;height:62px;border-radius:50%;flex:none;background:linear-gradient(140deg,var(--blue-2),var(--blue));
+  display:grid;place-items:center;color:var(--white);font-weight:800;font-size:1.2rem}
+.adv .tx{flex:1 1 210px;min-width:0}
+.adv .tx b{display:block;font-size:1rem;color:var(--navy)}
+.adv .tx span{font-size:.86rem;color:var(--muted)}
+.adv .tel{font-weight:700;font-size:.93rem;color:var(--navy);text-decoration:none;border:1px solid var(--line);
+  border-radius:10px;padding:.6rem 1.05rem;white-space:nowrap}
+
+/* ─── footer ─── */
+.foot{border-top:1px solid var(--line);padding:2.2rem 0 3rem;font-size:.79rem;color:var(--faint);line-height:1.65}
+.foot .brands{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.1rem}
+.foot .brands span{background:var(--white);border:1px solid var(--line);border-radius:6px;
+  padding:.24rem .55rem;font-size:.7rem;font-weight:700;color:var(--muted)}
+
+/* zachte opkomst */
+body.js .fx{opacity:0;transform:translateY(12px);transition:opacity .3s ease,transform .4s cubic-bezier(.2,.9,.3,1)}
+body.js .fx.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}body.js .fx{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ══ demobalk ══ -->
+<div class="demobar">
+  <span class="tag">Concept</span>
+  <span class="grow">De motor achter de kaart · Pique voor Lightr</span>
+  <div class="ctrl">
+    <span class="klabel">Klant-ID</span>
+    <div class="seg" id="idseg" role="group" aria-label="Klant-ID"></div>
+  </div>
+</div>
+
+<!-- ══ hero ══ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="topline">
+      <svg class="mark" viewBox="0 0 256.42 74.8" aria-label="Domek">
+        <path fill="#4eb4e2" d="M54.4 2.1 2.6 40.9h13.9v33.5h24.8V45.6h27v28.8h24.9V40.9h13.9z"/>
+        <path fill="#97c03d" d="M41.35 68.26h26.12v6.2H41.35z"/>
+        <text x="118" y="56" font-family="Plus Jakarta Sans,sans-serif" font-size="42" font-weight="800" fill="#030329" letter-spacing="-1.5">Domek</text>
+      </svg>
+      <div class="lang"><span>Jouw taal</span> <b id="taal"></b></div>
+    </div>
+    <div class="herogrid">
+      <div>
+        <h1 class="fx" id="hero_h"></h1>
+        <p class="lead fx" id="hero_p"></p>
+        <div class="validity fx">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Deze pagina is 30 dagen geldig en staat niet in Google.</span>
+        </div>
+      </div>
+      <div id="slot">
+        <span class="slot-label">De kaart die je kreeg</span>
+        <div class="slotcard">
+          <div class="card-txt" id="kaarttxt"></div>
+          <div class="card-foot">
+            <div class="card-sign" id="kaartsign"></div>
+            <svg class="qr" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true">
+              <rect width="29" height="29" fill="#fff"/>
+              <g fill="#0A2C45">
+                <path d="M1 1h7v7H1zm1 1v5h5V2z"/><path d="M3 3h3v3H3z"/>
+                <path d="M21 1h7v7h-7zm1 1v5h5V2z"/><path d="M23 3h3v3h-3z"/>
+                <path d="M1 21h7v7H1zm1 1v5h5v-5z"/><path d="M3 23h3v3H3z"/>
+                <path d="M10 1h1v2h-1zm2 0h1v1h-1zm2 1h1v2h-1zm2-1h1v3h-1zm2 2h1v1h-1z"/>
+                <path d="M10 5h2v1h-2zm3 0h1v2h-1zm3 1h2v1h-2z"/>
+                <path d="M1 10h2v1H1zm3 0h1v2H4zm3-1h1v2H7zm3 1h2v1h-2zm4 0h1v1h-1zm2-1h1v2h-1zm3 1h2v1h-2z"/>
+                <path d="M2 13h1v1H2zm3 1h2v1H5zm4-1h1v2H9zm3 1h1v1h-1zm3-1h2v1h-2zm4 1h1v1h-1zm3-1h1v2h-1z"/>
+                <path d="M1 16h2v1H1zm4 0h1v2H5zm3 1h2v1H8zm4-1h1v2h-1zm3 1h1v1h-1zm3-1h2v1h-2z"/>
+                <path d="M10 19h1v2h-1zm3 1h2v1h-2zm4-1h1v2h-1zm3 1h1v1h-1zm3-1h2v1h-2z"/>
+                <path d="M10 22h2v1h-2zm4 0h1v2h-1zm3 1h1v1h-1zm3-1h1v2h-1zm4 1h2v1h-2z"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ══ de motor ══ -->
+<section class="sec motor">
+  <div class="wrap">
+    <div class="eyebrow fx">Wat er onder de motorkap gebeurt</div>
+    <h2 class="fx">Domek stuurt één ding. Wij bouwen de rest.</h2>
+    <p class="lead fx">Domek geeft ons alleen het klant-ID door. Aan dat ID hangt wat de klant al heeft, en daar leiden wij uit af wat hij mist. De pagina hierboven is daaruit opgebouwd.</p>
+
+    <div class="flow fx">
+      <div class="step send">
+        <div class="n">Domek stuurt ons</div>
+        <div class="json" id="j-send"></div>
+      </div>
+      <div class="step">
+        <div class="n">Wij koppelen daaraan</div>
+        <div class="map" id="j-map"></div>
+      </div>
+      <div class="step">
+        <div class="n">De blokken die je ziet</div>
+        <div class="chips" id="j-chips"></div>
+      </div>
+    </div>
+
+    <div class="catalog fx">
+      <div class="cl">Uit de blokkenbibliotheek, opgelicht wat deze klant krijgt</div>
+      <div class="blocks" id="j-blocks"></div>
+    </div>
+
+    <p class="motnote fx"><b>Zelfde pagina, andere klant, andere blokken.</b> Wissel het klant-ID bovenin en alles hierboven en hieronder verandert mee. Domek hoeft niets te ontwerpen, alleen het ID aan te leveren.</p>
+  </div>
+</section>
+
+<!-- ══ video ══ -->
+<section class="sec" style="background:var(--white);border-bottom:1px solid var(--line-2)">
+  <div class="wrap">
+    <div class="eyebrow fx">Van je adviseur</div>
+    <h2 class="fx" id="vid_h"></h2>
+    <p class="lead fx" id="vid_p"></p>
+    <div class="video fx">
+      <span class="stamp">Voorbeeld</span>
+      <div class="play" aria-hidden="true"></div>
+      <span class="cap" id="vid_cap"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ dossier ══ -->
+<section class="sec" style="background:var(--white);border-bottom:1px solid var(--line-2)">
+  <div class="wrap">
+    <div class="eyebrow fx">Je dossier</div>
+    <h2 class="fx" id="dos_h"></h2>
+    <div class="rows fx" id="rows"></div>
+  </div>
+</section>
+
+<!-- ══ aanbod ══ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="eyebrow fx">Speciaal voor jou klaargezet</div>
+    <h2 class="fx" id="aan_h"></h2>
+    <p class="lead fx" id="aan_p"></p>
+    <div class="pk fx" id="pk"></div>
+    <p class="disclaim fx">Dit is een voorbeeldpagina. De getoonde producten en teksten zijn illustratief.</p>
+  </div>
+</section>
+
+<!-- ══ cheque ══ -->
+<section class="sec chq-sec">
+  <div class="wrap">
+    <div class="eyebrow fx">Ken je iemand?</div>
+    <h2 class="fx" id="chq_h"></h2>
+    <p class="lead fx" id="chq_p"></p>
+    <div class="cheque fx">
+      <div class="cheque-top">
+        <div><span class="lbl">Voor</span><div class="nm" id="chq_nm"></div></div>
+        <div class="amt"><small>Cashback</small><span id="chq_amt"></span></div>
+      </div>
+      <div class="cheque-mid" id="chq_mid"></div>
+      <div class="cheque-bot">
+        <span class="meta">Geldig tot <b id="chq_tot">31-10-2026</b> · Code <b id="chq_code"></b></span>
+        <a class="wa" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.5.1.3.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.6-.1l1.9.9c.3.1.4.2.5.3.1.2.1.7-.1 1.4Z"/></svg><span id="chq_wa"></span></a>
+      </div>
+    </div>
+    <div class="adv fx">
+      <div class="ph" id="adv_ini"></div>
+      <div class="tx"><b id="adv_nm"></b><span id="adv_rol"></span></div>
+      <a class="tel" href="#" onclick="return false">Bel terug</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ footer ══ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="brands"><span>Domek</span><span>Polisa</span><span>Nederlandse Assuradeuren</span><span>Kredyt</span></div>
+    Concept- en voorbeeldpagina, gemaakt door Pique voor Lightr. De ontvangers en gegevens zijn verzonnen, de merkgegevens komen van domek.nl. Geen persoonsgegevens in de URL, alleen een klant-ID.
+  </div>
+</footer>
+
+<script>
+document.body.classList.add('js');
+
+/* ── de blokkenbibliotheek: elk blok bestaat één keer ── */
+const BLOKKEN = ['welkom','video','woonpakket','aansprakelijkheid','overlijdensrisico','rechtsbijstand',
+  'autoverzekering','pechhulp','inzittenden','zorgverzekering','nutsvoorzieningen','toeslagen','lening','cheque','adviseur'];
+
+/* ── drie klanten, drie situaties ── */
+const KLANTEN = {
+  K7M2: {
+    voor:'Kamil', naam:'Kamil Wójcik', taal:'Pools',
+    situatie:'Net een woning gekocht',
+    heeft:['Hypotheek','Betaalrekening'],
+    mist:['Woonhuisverzekering','Inboedel','Aansprakelijkheid','Overlijdensrisico'],
+    hero_h:['Gefeliciteerd met je ','nieuwe woning',', Kamil.'],
+    hero_p:'Nu de hypotheek rond is, zijn er nog een paar dingen die we voor je kunnen regelen. Hieronder alleen wat bij jouw situatie past.',
+    kaart:'Beste Kamil, gefeliciteerd met je nieuwe huis. Ik heb een paar dingen voor je klaargezet die nu handig zijn. Scan de code.',
+    vid:'Een korte hallo nu je het huis rond hebt, en wat handig is om als eerste te regelen.',
+    blokken:['welkom','video','woonpakket','aansprakelijkheid','overlijdensrisico','cheque','adviseur'],
+    dos_h:'Dit hebben we van je woning gezien',
+    rows:[
+      ['Hypotheek','via Domek','ok','Actief'],
+      ['Betaalrekening','gekoppeld','ok','Actief'],
+      ['Woonhuis en inboedel','nog niet geregeld','open','Open'],
+      ['Aansprakelijkheid','nog niet geregeld','open','Open'],
+    ],
+    aan_h:'Wat past bij een nieuw huis',
+    aan_p:'Drie dingen die de meeste mensen vlak na de sleuteloverdracht regelen.',
+    pk:[
+      {nm:'Woonhuis en inboedel', best:true, why:'Je nieuwe huis en alles erin, in één keer gedekt.', li:['Herbouwwaarde van de woning','Inboedel tegen brand en inbraak','In een paar minuten geregeld']},
+      {nm:'Aansprakelijkheid', why:'Voor schade die je per ongeluk aan een ander veroorzaakt.', li:['Geldt voor het hele gezin','Wereldwijd gedekt']},
+      {nm:'Overlijdensrisico', why:'Zodat je hypotheek geen last wordt voor wie achterblijft.', li:['Gekoppeld aan je hypotheek','Vaste premie']},
+    ],
+    chq_h:'Ken je iemand die ook een huis zoekt?', chq_p:'Breng hem aan en jullie krijgen allebei een bedankje.',
+    chq:{amt:'€ 200', code:'K7M2-VR', mid:'Help iemand die je kent aan dezelfde begeleiding die jij hebt gehad. Zodra hij klant wordt, staat dit bedrag voor jullie allebei klaar.', wa:'Deel via WhatsApp'},
+    adv:{ini:'AW', nm:'Agnieszka Wísniewska', rol:'Jouw adviseur bij Domek · spreekt Pools'},
+  },
+  R4T8: {
+    voor:'Andrei', naam:'Andrei Popescu', taal:'Roemeens',
+    situatie:'Autoverzekering loopt bijna af',
+    heeft:['Autoverzekering WA','Hypotheek'],
+    mist:['Allrisk-dekking','Pechhulp','Inzittenden'],
+    hero_h:['Je autoverzekering ','loopt bijna af',', Andrei.'],
+    hero_p:'Over twee maanden verloopt je huidige dekking. Een goed moment om te kijken of het beter en completer kan.',
+    kaart:'Beste Andrei, je autoverzekering loopt bijna af. Ik heb naast je huidige dekking gelegd wat er nog mist. Scan de code.',
+    vid:'Waarom je verzekering nu aandacht verdient, in een halve minuut uitgelegd.',
+    blokken:['welkom','video','autoverzekering','pechhulp','inzittenden','cheque','adviseur'],
+    dos_h:'Dit hebben we van je auto gezien',
+    rows:[
+      ['Autoverzekering WA','verloopt 30-11-2026','open','Verloopt'],
+      ['Hypotheek','via Domek','ok','Actief'],
+      ['Pechhulp','niet inbegrepen','open','Open'],
+      ['Inzittenden','niet inbegrepen','open','Open'],
+    ],
+    aan_h:'Wat je auto beter dekt',
+    aan_p:'Je hebt nu alleen WA. Dit is wat de meeste rijders er nog bij nemen.',
+    pk:[
+      {nm:'Allrisk', best:true, why:'Meer dan WA, ook schade aan je eigen auto.', li:['Schade door eigen toedoen','Diefstal en storm','Vaak maar een paar euro meer']},
+      {nm:'Pechhulp', why:'Hulp langs de weg, in heel Europa.', li:['24 uur bereikbaar','Ook vervangend vervoer']},
+      {nm:'Inzittenden', why:'Je passagiers verzekerd bij een ongeval.', li:['Vast bedrag per persoon','Geldt voor iedereen in de auto']},
+    ],
+    chq_h:'Ken je iemand met een auto?', chq_p:'Breng hem aan en jullie krijgen allebei een bedankje.',
+    chq:{amt:'€ 50', code:'R4T8-VR', mid:'Ken je iemand die zijn autoverzekering ook eens wil laten nakijken? Breng hem aan, en zodra hij overstapt staat dit voor jullie allebei klaar.', wa:'Deel via WhatsApp'},
+    adv:{ini:'EP', nm:'Elena Petrescu', rol:'Jouw adviseur bij Domek · spreekt Roemeens'},
+  },
+  B9X3: {
+    voor:'Zofia', naam:'Zofia Kowalczyk', taal:'Pools',
+    situatie:'Net in Nederland, nog veel te regelen',
+    heeft:['Betaalrekening'],
+    mist:['Zorgverzekering','Nutsvoorzieningen','Toeslagen','Persoonlijke lening'],
+    hero_h:['Welkom in ','Nederland',', Zofia.'],
+    hero_p:'Een nieuw land betekent van alles regelen. We hebben op een rij gezet wat je het eerst nodig hebt, in het Pools als je dat prettig vindt.',
+    kaart:'Beste Zofia, welkom in Nederland. Ik heb op een rij gezet wat je hier als eerste moet regelen. Scan de code.',
+    vid:'Welkom, en wat je in Nederland als eerste regelt. Rustig uitgelegd, in het Pools.',
+    blokken:['welkom','video','zorgverzekering','nutsvoorzieningen','toeslagen','lening','cheque','adviseur'],
+    dos_h:'Wat er voor jou nog openstaat',
+    rows:[
+      ['Betaalrekening','geopend','ok','Actief'],
+      ['Zorgverzekering','verplicht, nog niet geregeld','open','Open'],
+      ['Gas, licht en internet','nog op naam vorige bewoner','open','Open'],
+      ['Toeslagen','recht nog niet gecheckt','open','Open'],
+    ],
+    aan_h:'Wat je hier als eerste regelt',
+    aan_p:'De drie dingen die net na aankomst het meest opleveren.',
+    pk:[
+      {nm:'Zorgverzekering', best:true, why:'In Nederland verplicht vanaf je eerste dag.', li:['Basisdekking geregeld','Wij vergelijken voor je','Ook in het Pools uit te leggen']},
+      {nm:'Gas, licht en internet', why:'In één keer op jouw naam gezet.', li:['Geen dubbele kosten meer','Wij regelen de overstap']},
+      {nm:'Toeslagen en belasting', why:'Kijken of je recht hebt op huur- of zorgtoeslag.', li:['Check binnen een dag','Aanvraag doen we voor je']},
+    ],
+    chq_h:'Ken je iemand die net in Nederland is?', chq_p:'Breng hem aan en jullie krijgen allebei een bedankje.',
+    chq:{amt:'€ 100', code:'B9X3-VR', mid:'Ken je iemand die net hierheen verhuisd is en dit ook allemaal moet regelen? Breng hem aan, en zodra hij klant wordt staat dit voor jullie allebei klaar.', wa:'Deel via WhatsApp'},
+    adv:{ini:'MK', nm:'Marta Kaczmarek', rol:'Jouw adviseur bij Domek · spreekt Pools'},
+  },
+};
+
+const ORDER = ['K7M2','R4T8','B9X3'];
+const $ = s => document.querySelector(s);
+const el = (t,c,h) => { const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e; };
+
+function render(id){
+  const k = KLANTEN[id];
+
+  /* hero */
+  $('#taal').textContent = k.taal;
+  $('#hero_h').innerHTML = k.hero_h[0]+'<span class="hl">'+k.hero_h[1]+'</span>'+k.hero_h[2];
+  $('#hero_p').textContent = k.hero_p;
+  $('#kaarttxt').textContent = k.kaart;
+  $('#kaartsign').textContent = k.adv.nm.split(' ')[0];
+
+  /* video */
+  $('#vid_h').textContent = k.adv.nm.split(' ')[0] + ' nam even een boodschap voor je op';
+  $('#vid_p').textContent = k.vid;
+  $('#vid_cap').textContent = k.adv.nm + ' · ' + k.taal;
+
+  /* de motor */
+  $('#j-send').innerHTML = '{<br>&nbsp;&nbsp;<span class="k">"id"</span>: <span class="v">"'+id+'"</span><br>}';
+  const map = $('#j-map'); map.innerHTML='';
+  map.append(mapRow('Situatie', k.situatie));
+  map.append(mapRow('Taal', k.taal));
+  map.append(mapRow('Heeft', k.heeft.join(', ')));
+  map.append(mapRow('Mist', k.mist.join(', '), true));
+  const chips = $('#j-chips'); chips.innerHTML='';
+  k.blokken.forEach(b => chips.append(el('span','chip'+(b==='welkom'?' lead':''), blokLabel(b))));
+  const blocks = $('#j-blocks'); blocks.innerHTML='';
+  BLOKKEN.forEach(b => blocks.append(el('span','blk'+(k.blokken.includes(b)?' on':''), blokLabel(b))));
+
+  /* dossier */
+  $('#dos_h').textContent = k.dos_h;
+  const rows = $('#rows'); rows.innerHTML='';
+  k.rows.forEach(r => {
+    const row = el('div','row');
+    row.append(el('span','k',r[0]));
+    row.append(el('span','v','<span class="'+r[2]+'">'+r[3]+'</span> · '+r[1]));
+    rows.append(row);
+  });
+
+  /* aanbod */
+  $('#aan_h').textContent = k.aan_h;
+  $('#aan_p').textContent = k.aan_p;
+  const pk = $('#pk'); pk.innerHTML='';
+  k.pk.forEach(p => {
+    const c = el('div','p'+(p.best?' best':''));
+    if(p.best) c.append(el('span','badge','Aangeraden'));
+    c.append(el('div','nm',p.nm));
+    c.append(el('div','why',p.why));
+    const ul = el('ul'); p.li.forEach(x => ul.append(el('li',null,x))); c.append(ul);
+    const btn = el('button','pbtn'); btn.textContent='Bekijk wat bij jou past'; c.append(btn);
+    pk.append(c);
+  });
+
+  /* cheque */
+  $('#chq_h').textContent = k.chq_h;
+  $('#chq_p').textContent = k.chq_p;
+  $('#chq_nm').textContent = k.naam;
+  $('#chq_amt').textContent = k.chq.amt;
+  $('#chq_mid').textContent = k.chq.mid;
+  $('#chq_code').textContent = k.chq.code;
+  $('#chq_wa').textContent = k.chq.wa;
+
+  /* adviseur */
+  $('#adv_ini').textContent = k.adv.ini;
+  $('#adv_nm').textContent = k.adv.nm;
+  $('#adv_rol').textContent = k.adv.rol;
+
+  /* demobalk grow */
+  document.querySelector('.demobar .grow').textContent = 'Voorbeeldpagina voor '+k.naam+' · '+k.situatie;
+
+  /* seg pressed */
+  document.querySelectorAll('#idseg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.id===id));
+
+  /* fx opnieuw */
+  requestAnimationFrame(()=>document.querySelectorAll('.fx').forEach((e,i)=>{
+    e.classList.remove('in'); e.style.transitionDelay=(Math.min(i,10)*22)+'ms';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>e.classList.add('in')));
+  }));
+
+  history.replaceState(null,'','?id='+id);
+}
+
+function mapRow(lb,vl,mist){
+  const r = el('div','r');
+  r.append(el('span','lb',lb));
+  r.append(el('span','vl'+(mist?' mist':''),vl));
+  return r;
+}
+const LABELS = {welkom:'welkom',woonpakket:'woonpakket',aansprakelijkheid:'aansprakelijkheid',
+  overlijdensrisico:'overlijdensrisico',rechtsbijstand:'rechtsbijstand',autoverzekering:'autoverzekering',
+  pechhulp:'pechhulp',inzittenden:'inzittenden',zorgverzekering:'zorgverzekering',
+  nutsvoorzieningen:'nutsvoorzieningen',toeslagen:'toeslagen',lening:'lening',cheque:'cheque',adviseur:'adviseur'};
+const blokLabel = b => LABELS[b]||b;
+
+/* ── demobalk-knoppen ── */
+const seg = $('#idseg');
+ORDER.forEach(id => {
+  const b = el('button',null,id);
+  b.dataset.id = id;
+  b.onclick = () => render(id);
+  seg.append(b);
+});
+
+const start = new URLSearchParams(location.search).get('id');
+render(ORDER.includes(start)?start:'K7M2');
+</script>
+</body>
+</html>
