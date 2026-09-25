@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- LP v3 proefpagina. Vorm in lp3.css / lp3.js, merk in het thema. -->
+<!-- LP v3 proefpagina. Vorm in lp3.css, choreografie in lp3.js. -->
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -12,107 +12,119 @@
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="thema3-wegmetexcel.css">
 <link rel="stylesheet" href="lp3.css">
+<script>
+window.PQ3 = {
+  logo: '<img src="wegmetexcel-logo.svg" alt="WegMetExcel" style="height:19px">',
+  kaart: {
+    regels: ["Hallo,", "Deze kaart lag niet toevallig|op je bureau.", "We keken een tijd naar 247TailorSteel.", "*Wil je weten wat we zagen?*"],
+    ja: 'Ja, laat maar zien', sub: 'Ongeveer twee minuten lezen', lees: 'Ik kijk liever eerst rond'
+  }
+};
+</script>
+<script src="lp3.js"></script>
 </head>
 <body>
+<div class="voortgang" aria-hidden="true"></div>
 
-<nav>
-  <a class="merk" href="#top" aria-label="WegMetExcel"><img src="wegmetexcel-logo.svg" alt="WegMetExcel" style="height:19px"></a>
-  <a class="knop klein" href="https://cal.com/wegmetexcel/15-min-belafspraak-met-patrick">Plan vijftien minuten</a>
-</nav>
-
-<!-- 1. opening: wie het stuurde, en waarom -->
-<header class="hero wrap" id="top">
-  <div class="hero-grid">
-    <div class="portret in-view">
-      <img src="patrick-pelsma.jpg" alt="Patrick Pelsma, oprichter WegMetExcel" width="800" height="1000">
-      <div class="krabbel" aria-hidden="true">
-        <svg viewBox="0 0 215 118">
-          <text class="kt" x="8" y="26">Patrick</text>
-          <path d="M10 40c4 26 22 44 52 52 26 7 62 6 96-2"/>
-          <path d="M148 84l10 4-1 10"/>
-        </svg>
+<!-- 1. het bureau: de kaart landt, de foto ligt ernaast -->
+<header class="bureau wrap" id="top">
+  <div class="bureau-grid">
+    <div class="plek" id="kaartplek">
+      <div class="papier gelande-kaart" id="gelandekaart" style="--tape:-4deg">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="hw">Hallo.<br>We keken een tijd naar <em>247TailorSteel</em>.</div>
+        <div class="ondertekend">Patrick</div>
       </div>
-      <p class="portret-bij">Patrick Pelsma. Hij schreef je kaart.</p>
+      <figure class="polaroid" data-leg="420">
+        <img src="patrick-pelsma.jpg" alt="Patrick Pelsma, oprichter WegMetExcel" width="600" height="600">
+        <figcaption>Patrick</figcaption>
+      </figure>
+      <span class="plek-bij">Patrick Pelsma. Hij schreef je kaart.</span>
     </div>
     <div>
-      <h1 class="op hero-h1">Dit viel ons op bij <span class="mark">247TailorSteel.<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8c44-5 106-7 194-3"/></svg></span></h1>
-      <p class="lead hero-sub">Twee dingen over hoe snel jullie antwoord uit je eigen cijfers halen. Ze hangen met elkaar samen.</p>
-      <div class="hero-acties">
+      <h1 class="op"><span class="los">Dit viel ons op bij</span><span class="markeer">247TailorSteel.<svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7c46-6 108-8 194-4"/></svg></span></h1>
+      <p class="lead">Twee dingen over hoe snel jullie antwoord uit je eigen cijfers halen. Ze hangen met elkaar samen.</p>
+      <div class="acties">
         <a class="knop" href="https://cal.com/wegmetexcel/15-min-belafspraak-met-patrick">Plan vijftien minuten</a>
-        <a class="knop stil" href="#watikvond">Eerst lezen wat we zagen</a>
+        <a class="knop stil" href="#onderzoek">Eerst lezen wat we zagen</a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- 2. wat ik vond: één vel, met de aantekening eronder -->
-<section class="vel-sec wrap" id="watikvond">
-  <div class="vel in-view">
-    <div class="vel-kop">
-      <h2 class="op">Wat we zagen</h2>
-      <span class="datum">Nagekeken op 25 september 2026</span>
-    </div>
-    <div class="feiten"><div class="feit"><span class="tel">1</span><div><h3 class="op">Het dashboard laat zien wat, niet waarom</h3><p>Jullie data staat aardig op orde. Dashboards, Power BI, cijfers die kloppen. Een dashboard vertelt alleen <b>wat</b> er gebeurt, en zelden waarom.</p><div class="bron">Bron: 247tailorsteel.com, over onze techniek, geraadpleegd 25 september 2026</div></div></div><div class="feit"><span class="tel">2</span><div><h3 class="op">Antwoord op een vraag kost al snel dagen</h3><p>Wil je weten waarom een cijfer beweegt, dan ga je rondvragen. Iemand zoekt het uit, een ander weet er meer van, en een week later ligt er een antwoord op een vraag die toen urgent was.</p><div class="bron">Bron: 247tailorsteel.com, vacature data-analist, geraadpleegd 25 september 2026</div></div></div></div>
-    <div class="kantlijn"><svg class="pijl" viewBox="0 0 44 36" aria-hidden="true"><path d="M3 3c2 12 9 20 22 23"/><path d="M25 26l-7 1M25 26l-2-7"/></svg><span class="tekst">Allebei op zich niet erg. Samen zorgen ze dat de vraag blijft liggen.</span></div>
+<!-- 2. het onderzoek: vel voor vel neergelegd, dan de lijn ertussen -->
+<section class="onderzoek wrap" id="onderzoek">
+  <div class="onderzoek-kop">
+    <h2 class="op">Wat we zagen</h2>
+    <p class="klein" style="margin-top:.6rem">Nagekeken op 25 september 2026</p>
+  </div>
+  <div class="stapel">
+    <svg class="verbinding" preserveAspectRatio="none" aria-hidden="true"><path d=""></path></svg>
+    <article class="papier vel" data-leg="0" style="--tape:-4deg"><span class="tape" aria-hidden="true"></span><span class="nr">1</span><h3 class="op">Het dashboard laat zien wat, niet waarom</h3><p>Jullie data staat aardig op orde. Dashboards, Power BI, cijfers die kloppen. Een dashboard vertelt alleen <b>wat</b> er gebeurt, en zelden waarom.</p><div class="bron">Bron: 247tailorsteel.com, over onze techniek, geraadpleegd 25 september 2026</div></article><article class="papier vel" data-leg="130" style="--tape:-1deg"><span class="tape" aria-hidden="true"></span><span class="nr">2</span><h3 class="op">Antwoord op een vraag kost al snel dagen</h3><p>Wil je weten waarom een cijfer beweegt, dan ga je rondvragen. Iemand zoekt het uit, een ander weet er meer van, en een week later ligt er een antwoord op een vraag die toen urgent was.</p><div class="bron">Bron: 247tailorsteel.com, vacature data-analist, geraadpleegd 25 september 2026</div></article>
+  </div>
+  <div class="slotsom" data-leg="0">
+    <svg viewBox="0 0 44 36" aria-hidden="true"><path d="M3 3c2 12 9 20 22 23"/><path d="M25 26l-7 1M25 26l-2-7"/></svg>
+    <span>Allebei op zich niet erg. Samen zorgen ze dat de vraag blijft liggen.</span>
   </div>
 </section>
 
-<!-- 3. het probleem: het enige donkere moment op de pagina -->
-<section class="probleem">
+<!-- 3. de lamp gaat uit -->
+<section class="donker">
   <div class="wrap">
-    <h2 class="op" style="font-size:1rem;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:1.4rem">Waar het op uitkomt</h2>
-    <p class="zwaar">Mensen doen consistent wat makkelijk is. Zolang antwoord uit je data dagen kost, blijft de vraag liggen. Juist als het druk wordt.</p>
+    <p class="aanhef">Waar het op uitkomt</p>
+    <p class="getypt">Mensen doen consistent wat makkelijk is. Zolang antwoord uit je data dagen kost, blijft de vraag liggen. Juist als het druk wordt.</p>
     <p class="uitleg">In productie en operatie draait alles op snelheid en marge. Juist dan wil je binnen seconden weten wat er speelt en waarom. <b>Elke dag dat een inzicht blijft liggen, is een dag waarop je op onderbuik stuurt.</b></p>
-    <div class="gevolg"><div><b>dagen</b><span>Zo lang duurt het nu voordat een vraag antwoord krijgt.</span></div><div><b>10</b><span>Europese productielocaties die allemaal hun eigen cijfers hebben.</span></div><div><b>40.000</b><span>Klantrecords die jullie uit het ERP synchroniseerden.</span></div></div>
+    <div class="klok"><div><b>dagen</b><span>Zo lang duurt het nu voordat een vraag antwoord krijgt.</span></div><div><b>10</b><span>Europese productielocaties die allemaal hun eigen cijfers hebben.</span></div><div><b>40.000</b><span>Klantrecords die jullie uit het ERP synchroniseerden.</span></div></div>
   </div>
 </section>
 
-<!-- 4. van dat probleem naar wat wij eraan doen -->
-<section class="opl wrap">
-  <div class="opl-kop in-view">
+<!-- 4. er wordt iets nieuws neergelegd -->
+<section class="voorstel wrap">
+  <div class="voorstel-kop">
     <h2 class="op">Wat wij daaraan doen</h2>
     <p class="lead" style="margin-top:.9rem">Atlas is een AI-collega die je cijfers en je context allebei kent. Je typt een vraag zoals je die aan een collega zou stellen, en je krijgt antwoord uit je eigen data.</p>
   </div>
-  <div class="rail"><div class="stap in-view"><h3 class="op">Antwoord in je eigen woorden</h3><div><p>Je stelt een vraag zoals je die aan een collega zou stellen, en Atlas antwoordt op basis van jullie eigen cijfers en afspraken.</p><span class="mee"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Werkt vanaf dag één op je bestaande dashboards</span></div></div><div class="stap in-view"><h3 class="op">Cijfers en context in één antwoord</h3><div><p>Atlas leest je dashboards en je BI, en ook je meetings, je mails en je documenten. Zo krijg je het wat en het waarom bij elkaar.</p><span class="mee"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Jullie bepalen zelf welke bronnen erin gaan</span></div></div><div class="stap in-view"><h3 class="op">We beginnen klein</h3><div><p>We koppelen je bestaande dashboards en één bron context aan Atlas. Werkt het, dan bouwen we rustig uit, in jouw tempo.</p><span class="mee"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Met een succesgarantie op de eerste fase</span></div></div></div>
+  <div class="drieluik"><article class="papier kaartje" data-leg="0" style="--tape:-3deg"><span class="tape" aria-hidden="true"></span><div class="stap">1</div><h3 class="op">Antwoord in je eigen woorden</h3><p>Je stelt een vraag zoals je die aan een collega zou stellen, en Atlas antwoordt op basis van jullie eigen cijfers en afspraken.</p><span class="mee"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Werkt vanaf dag één op je bestaande dashboards</span></article><article class="papier kaartje" data-leg="120" style="--tape:0deg"><span class="tape" aria-hidden="true"></span><div class="stap">2</div><h3 class="op">Cijfers en context in één antwoord</h3><p>Atlas leest je dashboards en je BI, en ook je meetings, je mails en je documenten. Zo krijg je het wat en het waarom bij elkaar.</p><span class="mee"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Jullie bepalen zelf welke bronnen erin gaan</span></article><article class="papier kaartje" data-leg="240" style="--tape:3deg"><span class="tape" aria-hidden="true"></span><div class="stap">3</div><h3 class="op">We beginnen klein</h3><p>We koppelen je bestaande dashboards en één bron context aan Atlas. Werkt het, dan bouwen we rustig uit, in jouw tempo.</p><span class="mee"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Met een succesgarantie op de eerste fase</span></article></div>
 </section>
 
-<!-- 5. het aanbod om te bellen, met wat er in die twintig minuten gebeurt -->
-<section class="bel wrap">
-  <div class="bel-kaart in-view">
+<!-- 5. de telefoon -->
+<section class="telefoon wrap">
+  <div class="papier uitnodiging" data-leg="0">
+    <span class="tape" aria-hidden="true"></span>
     <div>
-      <span class="hand">Zullen we dit een keer laten zien?</span>
-      <p style="margin-top:.8rem;color:var(--ink2)">We zetten Atlas naast een vraag die bij jullie nu echt speelt, en je ziet wat eruit komt. Een presentatie hoeft niet.</p>
-      <ul class="wat"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Je stelt een vraag die je vandaag aan je team zou stellen.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Je ziet welke bronnen Atlas daarvoor nodig heeft en welke jullie al hebben.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Past het niet bij jullie inrichting, dan zeggen we dat meteen.</span></li></ul>
+      <span class="hw">Zullen we dit een keer laten zien?</span>
+      <p style="margin-top:.7rem;color:var(--ink2)">We zetten Atlas naast een vraag die bij jullie nu echt speelt, en je ziet wat eruit komt. Een presentatie hoeft niet.</p>
+      <ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Je stelt een vraag die je vandaag aan je team zou stellen.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Je ziet welke bronnen Atlas daarvoor nodig heeft en welke jullie al hebben.</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Past het niet bij jullie inrichting, dan zeggen we dat meteen.</span></li></ul>
     </div>
-    <div class="bel-acties">
+    <div class="acties">
       <a class="knop" href="https://cal.com/wegmetexcel/15-min-belafspraak-met-patrick">Plan vijftien minuten</a>
       <a class="knop stil" href="mailto:patrick@wegmetexcel.nl">Liever eerst mailen</a>
-      <span class="klein">Vijftien minuten, video of telefoon.</span>
+      <span class="klein" style="text-align:center">Vijftien minuten, video of telefoon.</span>
     </div>
   </div>
 </section>
 
-<!-- 6. wat anderen ervan vonden -->
-<section class="proof wrap">
-  <h2 class="op in-view" style="margin-bottom:clamp(1.6rem,3vw,2.4rem)">Wat anderen hiervan vonden</h2>
-  <!-- TODO: hier horen twee echte, na te kijken klantcitaten met naam, functie en bedrijf, plus drie cijfers uit eigen cijfers. Niets invullen zonder bron. -->
-<div class="citaten"><div class="citaat" style="border:1px dashed var(--lijn);border-radius:var(--r-kaart);padding:1.5rem"><p class="klein" style="margin:0">Plek voor twee echte klantcitaten met naam en bedrijf, en drie cijfers uit eigen werk. Zolang die er niet zijn, blijft dit blok leeg: een verzonnen case is hier duurder dan geen case.</p></div></div>
+<!-- 6. wat anderen zeiden -->
+<section class="anderen wrap">
+  <h2 class="op" style="margin-bottom:clamp(1.5rem,3vw,2.2rem)">Wat anderen hiervan vonden</h2>
+  <!-- TODO: twee echte, na te kijken klantcitaten met naam en bedrijf, plus drie eigen cijfers. --><div class="prikbord"><article class="papier briefje" data-leg="0"><span class="tape" aria-hidden="true"></span><p class="klein" style="margin:0">Plek voor twee echte klantcitaten met naam en bedrijf, en drie cijfers uit eigen werk. Zolang die er niet zijn blijft dit leeg: een verzonnen case is hier duurder dan geen case.</p></article></div>
 </section>
 
-<!-- 7. de vragen die iedereen stelt -->
-<section class="faq wrap">
-  <h2 class="op in-view" style="margin-bottom:clamp(1.4rem,2.5vw,2rem)">Wat je waarschijnlijk wilt weten</h2>
-  <div class="faq-lijst"><details open><summary>Waar staat onze data dan?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>Atlas koppelt aan de bronnen die jullie al gebruiken. Wat waar staat en wie erbij kan, leggen we vooraf vast voordat er iets gekoppeld wordt.</p></div></details><details><summary>Moeten we eerst onze data op orde hebben?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>Nee. We beginnen met de dashboards die er al zijn en één bron context. Juist daar zie je het snelst of het werkt.</p></div></details><details><summary>Hoe lang duurt het voordat we iets merken?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>De eerste koppeling staat doorgaans binnen enkele weken. Daarna is het uitbouwen, in jullie tempo.</p></div></details><details><summary>Wat als het niet werkt bij ons?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>We werken met een succesgarantie op de eerste fase. Levert die niet op wat we hebben afgesproken, dan stopt het daar.</p></div></details><details><summary>Wie doet het werk?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>Een klein vast team van dataspecialisten. We werken met een paar bedrijven tegelijk, want we willen jullie processen echt kennen.</p></div></details></div>
+<!-- 7. de vragen -->
+<section class="vragen wrap">
+  <h2 class="op" style="margin-bottom:clamp(1.3rem,2.5vw,1.9rem)">Wat je waarschijnlijk wilt weten</h2>
+  <div class="vragen-lijst"><details class="papier" open><summary>Waar staat onze data dan?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>Atlas koppelt aan de bronnen die jullie al gebruiken. Wat waar staat en wie erbij kan, leggen we vooraf vast voordat er iets gekoppeld wordt.</p></div></details><details class="papier"><summary>Moeten we eerst onze data op orde hebben?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>Nee. We beginnen met de dashboards die er al zijn en één bron context. Juist daar zie je het snelst of het werkt.</p></div></details><details class="papier"><summary>Hoe lang duurt het voordat we iets merken?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>De eerste koppeling staat doorgaans binnen enkele weken. Daarna is het uitbouwen, in jullie tempo.</p></div></details><details class="papier"><summary>Wat als het niet werkt bij ons?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>We werken met een succesgarantie op de eerste fase. Levert die niet op wat we hebben afgesproken, dan stopt het daar.</p></div></details><details class="papier"><summary>Wie doet het werk?<span class="plus" aria-hidden="true"></span></summary><div class="antwoord"><p>Een klein vast team van dataspecialisten. We werken met een paar bedrijven tegelijk, want we willen jullie processen echt kennen.</p></div></details></div>
 </section>
 
-<!-- 8. de enige plek waar het echt om een besluit vraagt -->
-<section class="slot-sec wrap" id="gesprek">
-  <div class="slot-blok in-view">
+<!-- 8. de agenda -->
+<section class="slotsec wrap" id="gesprek">
+  <div class="papier slotblok" data-leg="0">
+    <span class="tape" aria-hidden="true"></span>
     <div>
       <h2 class="op">Vijftien minuten, en je ziet wat Atlas met jullie vraag doet.</h2>
       <p>Je hoeft niets voor te bereiden. Eén vraag die nu speelt is genoeg om te zien of dit bij jullie past.</p>
     </div>
-    <div class="slot-acties">
+    <div class="acties">
       <a class="knop" href="https://cal.com/wegmetexcel/15-min-belafspraak-met-patrick">Plan vijftien minuten</a>
       <span class="klein" style="text-align:center">Of mail Patrick rechtstreeks.</span>
     </div>
@@ -126,7 +138,5 @@
     <span>&copy; 2026 WegMetExcel</span>
   </div>
 </footer>
-
-<script src="lp3.js"></script>
 </body>
 </html>
