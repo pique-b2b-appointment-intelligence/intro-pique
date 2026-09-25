@@ -1,0 +1,43 @@
+/* ============================================================
+   THEMA — Pique (v5)
+   De waarden komen uit de goud-standaard die Simon op 8 juli 2026
+   aanwees: Website/waarom-pique_3 (1).html. Niet opnieuw verzinnen.
+   De tokennamen zijn die van het component, zodat lp5.css geen
+   enkele vaste kleur hoeft te bevatten.
+   ============================================================ */
+:root{
+  /* accent: amber uit het huis */
+  --accent:#D4943A;        --accent-rgb:212,148,58;
+  --accent-l:#E8B06A;      --accent-l-rgb:232,176,106;
+  --accent-h:#BE8330;
+  --op-accent:#231607;
+  --inkt:#92620C;          --inkt-rgb:146,98,12;
+
+  /* vlakken en tekst */
+  --bg:#F8F6F2;            --bg-rgb:248,246,242;
+  --ink:#1E2433;           --ink-rgb:30,36,51;
+  --ink2:rgba(var(--ink-rgb),.72);
+  --ink3:#64748B;          --ink3-rgb:100,116,139;
+  --lijn:rgba(15,23,42,.09);
+  --lijn-h:rgba(15,23,42,.17);
+  --donker:#0F172A;        --donker-rgb:15,23,42;
+  --dieper:#0A101F;        --dieper-rgb:10,16,31;
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+
+  /* papier: het recept uit .hero-letter van de goud-standaard.
+     Staat precies één keer in lp5.css, bij .pap, en wordt geërfd. */
+  --pap-1:#FBF8F1;
+  --pap-2:#F1EADC;
+  --hand-ink:#1B2540;      --hand-rgb:27,37,64;
+
+  /* typografie: Playfair is de huisserif. Fraunces staat op de
+     verbodslijst als standaardkeuze en is in v2 al afgekeurd. */
+  --disp:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --hand:'Caveat',cursive;
+
+  /* vorm */
+  --r-kaart:12px; --r-pap:2px; --r-knop:100px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
