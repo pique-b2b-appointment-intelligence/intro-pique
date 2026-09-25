@@ -521,3 +521,11 @@ footer a:hover{color:rgba(var(--wit-rgb),.8)}
 @media(min-width:1024px){
   .doen .afspraken{grid-template-columns:1fr 1fr;gap:1.6rem}
 }
+
+/* Op een breed scherm houdt de pagina één maat aan. Een tekstkolom die
+   linksboven blijft hangen in een lege breedte leest als een sjabloon. */
+@media(min-width:900px){
+  .vond .wrap,.doen .wrap,.kantel .wrap,.ask .wrap,.bewijs .wrap,.faq .wrap{max-width:760px}
+  .halte p,.vond .aanloop,.doen .aanloop{max-width:52ch}
+  .krul{padding-left:140px}
+}

@@ -340,6 +340,7 @@
     var basis = svg && svg.querySelector('.basis'), voort = svg && svg.querySelector('.voort');
     if (!svg || !basis || !voort) return null;
     var dots = [].slice.call(wrap.querySelectorAll('.dot'));
+    var krul = wrap.querySelector('.krul');
     var totaal = 0;
     function bouw() {
       var pad = wrap.querySelector('.pad'); if (!pad || dots.length < 2) return;
@@ -355,13 +356,18 @@
         var a = pts[i - 1], c = pts[i], my = ((a.y + c.y) / 2).toFixed(1);
         /* De krul: tussen halte 2 en 3 loopt de lijn zichtbaar terug, want daar
            ging Simon terug naar 2023. Dat is de enige plek waar hij dat doet. */
-        if (wrap.dataset.krul && i === Number(wrap.dataset.krul)) {
-          /* De lus loopt zichtbaar naar rechts en weer terug, want dat is de
-             omweg die hij werkelijk liep. Hij blijft links van de tekst. */
-          var hoog = Math.max(70, c.y - a.y);
-          var u = (a.y + hoog * .32).toFixed(1), t = (a.y + hoog * .68).toFixed(1);
-          d += ' C 46 ' + u + ', 88 ' + u + ', 88 ' + ((a.y + c.y) / 2).toFixed(1);
-          d += ' C 88 ' + t + ', 46 ' + t + ', 28 ' + c.y.toFixed(1);
+        if (krul && i === Number(wrap.dataset.krul)) {
+          /* De lus ligt precies over de handgeschreven regel: de lijn zakt
+             eronder, loopt naar rechts weer omhoog tot boven die regel, en
+             gaat dan pas door. Dat is de omweg terug in de tijd, en je ziet
+             hem in plaats van dat je hem moet geloven. */
+          var kr = krul.getBoundingClientRect();
+          var ond = Math.min(c.y - 6, kr.bottom - pr.top - 4);
+          var bov = Math.max(a.y + 6, kr.top - pr.top + 4);
+          if (ond - bov < 40) { bov = (ond + bov) / 2 - 24; ond = bov + 48; }
+          d += ' L 28 ' + ond.toFixed(1);
+          d += ' C 104 ' + ond.toFixed(1) + ', 104 ' + bov.toFixed(1) + ', 28 ' + bov.toFixed(1);
+          d += ' L 28 ' + c.y.toFixed(1);
         } else {
           d += ' C 28 ' + my + ', 28 ' + my + ', 28 ' + c.y.toFixed(1);
         }
