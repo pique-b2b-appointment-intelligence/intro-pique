@@ -92,7 +92,10 @@
     el.innerHTML =
       '<div class="waas"><img src="' + (C.poster || '') + '" alt=""></div>' +
       '<div class="kl-podium">' +
-        '<div class="pap" id="dekaart"><div class="kl-merk">' + (C.logo || '') +
+        /* .klaarzetten wordt hier gezet, dus voordat er iets op het scherm
+           staat. Zonder die klasse is het handschrift gewoon leesbaar: niets
+           verbergt tekst die er anders wel zou staan. */
+        '<div class="pap' + (rust ? '' : ' klaarzetten') + '" id="dekaart"><div class="kl-merk">' + (C.logo || '') +
           '<span>Persoonlijk</span></div><div class="inkt" id="deinkt">' + regels + '</div></div>' +
         '<div class="kl-keuze" id="dekeuze">' +
           '<button class="knop" id="kja" type="button">' + C.kaart.ja + '</button>' +

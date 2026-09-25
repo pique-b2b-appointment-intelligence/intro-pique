@@ -112,9 +112,14 @@ html.kaart-aan,html.kaart-aan body{overflow:hidden;height:100%}
    goud-standaard, bij .hl-line. */
 .inkt{font-family:var(--hand);font-weight:600;font-size:clamp(1.5rem,5.8vw,1.95rem);
   line-height:1.44;color:var(--hand-ink)}
-.rg{display:block;white-space:nowrap;clip-path:inset(0 100% 0 0)}
+/* De regel staat standaard gewoon te lezen. Pas als JavaScript de
+   animatie echt kan draaien wordt hij dichtgeklapt (.klaarzetten), en
+   daarna weer opengeschreven. Zo verbergt niets tekst die er anders
+   wel zou staan. */
+.rg{display:block;white-space:nowrap}
 .rg+.rg{margin-top:.22em}
 .rg .hl{color:var(--inkt)}
+#dekaart.klaarzetten .rg{clip-path:inset(0 100% 0 0)}
 #dekaart.schrijf .rg{animation:schrijf .42s steps(18,end) forwards;
   animation-delay:calc(.2s + var(--i,0) * .34s)}
 @keyframes schrijf{to{clip-path:inset(0 0 0 0)}}
