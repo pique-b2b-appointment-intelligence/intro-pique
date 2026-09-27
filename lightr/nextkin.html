@@ -4,211 +4,207 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nextkin</title>
-<meta name="description" content="Nextkin is het platform voor alles na de verkoop. Jij stuurt een klant-ID, wij bouwen per klant een persoonlijke kaart en pagina, kiezen het juiste vervolgaanbod en leren wat verkoopt. Gebouwd door Lightr en Pique.">
+<meta name="description" content="Handgeschreven post die je klanten opnieuw laat kopen. Nextkin stuurt elke klant een kaart in jouw merk met een persoonlijke pagina, en een motor die kiest en leert wat verkoopt. Door Lightr en Pique.">
 <meta name="robots" content="noindex,nofollow">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F9D6B'/%3E%3Cpath d='M9 22V10l7 8 7-8v12' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2312B37A'/%3E%3Cpath d='M9 22V10l7 8 7-8v12' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Caveat:wght@600&display=swap">
 <style>
 :root{
-  --navy:#0A1230; --navy-2:#111B3D; --navy-3:#1A2650;
-  --emerald:#12B37A; --emerald-dk:#0C8E60; --emerald-soft:#E7F6EF;
-  --amber:#F5A524; --amber-soft:#FCEFD3;
-  --paper:#FAFAF7; --white:#FFFFFF;
-  --ink:#111A33; --muted:#5A6478; --faint:#8A93A6;
-  --line:rgba(10,18,48,.12); --hair:rgba(10,18,48,.07);
-  --on-navy:#EAEEF7; --on-navy-mut:rgba(234,238,247,.62); --on-navy-faint:rgba(234,238,247,.34);
-  --nline:rgba(234,238,247,.13);
+  --navy:#0A1330; --navy-2:#0F1A40; --navy-3:#17234F;
+  --emerald:#12B37A; --emerald-dk:#0C8E60; --emerald-soft:#E6F6EF; --mint:#3ED598;
+  --paper:#F6F8F7; --white:#FFFFFF;
+  --ink:#0D1732; --muted:#586074; --faint:#8A90A2;
+  --line:rgba(13,23,50,.11); --hair:rgba(13,23,50,.06);
+  --on-navy:#EAEEF7; --on-navy-mut:rgba(234,238,247,.60); --on-navy-faint:rgba(234,238,247,.32);
+  --nline:rgba(234,238,247,.12);
   --font:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
   --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --hand:'Caveat','Hanken Grotesk',cursive;
   --ease:cubic-bezier(.16,1,.3,1);
-  --shadow:0 1px 2px rgba(10,18,48,.05),0 12px 34px rgba(10,18,48,.09);
-  --shadow-lg:0 2px 8px rgba(10,18,48,.08),0 30px 70px rgba(10,18,48,.18);
+  --shadow:0 1px 2px rgba(13,23,50,.05),0 14px 40px rgba(13,23,50,.10);
+  --shadow-lg:0 4px 10px rgba(13,23,50,.08),0 40px 90px rgba(13,23,50,.24);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 em,i,cite,address{font-style:normal}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--font);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;letter-spacing:-.003em;overflow-x:hidden}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;letter-spacing:-.004em;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{font-weight:800;line-height:1.07;letter-spacing:-.026em;color:var(--ink);text-wrap:balance}
+h1,h2,h3{font-weight:800;line-height:1.04;letter-spacing:-.032em;color:var(--ink);text-wrap:balance}
 :focus-visible{outline:2px solid var(--emerald);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.2rem)}
-.eyebrow{font-family:var(--mono);font-size:.73rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--emerald);display:inline-flex;align-items:center;gap:.55rem}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.4rem)}
+.eyebrow{font-family:var(--mono);font-size:.73rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--emerald-dk);display:inline-flex;align-items:center;gap:.55rem}
 .eyebrow::before{content:"";width:22px;height:2px;background:var(--emerald)}
-.lead{color:var(--muted);font-size:clamp(1.04rem,2.1vw,1.18rem);max-width:56ch;line-height:1.62}
+.lead{color:var(--muted);font-size:clamp(1.05rem,2vw,1.2rem);max-width:48ch;line-height:1.55}
 
-.btn{font-family:var(--font);font-weight:700;font-size:1rem;border-radius:12px;padding:.9rem 1.65rem;cursor:pointer;
+.btn{font-family:var(--font);font-weight:700;font-size:1rem;border-radius:12px;padding:.9rem 1.7rem;cursor:pointer;
   border:1.5px solid transparent;display:inline-flex;align-items:center;gap:.5rem;
   transition:transform .16s var(--ease),background .2s,border-color .2s,box-shadow .2s}
-.btn:active{transform:translateY(0) scale(.98)}
-.btn-main{background:var(--emerald);color:#fff;box-shadow:0 6px 22px rgba(18,179,122,.28)}
-.btn-main:hover{background:var(--emerald-dk);transform:translateY(-2px);box-shadow:0 12px 32px rgba(18,179,122,.36)}
+.btn:active{transform:scale(.98)}
+.btn-main{background:var(--emerald);color:#fff;box-shadow:0 8px 24px rgba(18,179,122,.3)}
+.btn-main:hover{background:var(--emerald-dk);transform:translateY(-2px);box-shadow:0 14px 34px rgba(18,179,122,.4)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn-ghost:hover{border-color:var(--emerald);color:var(--emerald-dk)}
 .btn .arw{transition:transform .18s}
 .btn-main:hover .arw{transform:translateX(3px)}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:40;transition:background .4s,border-color .4s,backdrop-filter .4s;
-  border-bottom:1px solid transparent}
-.nav.solid{background:rgba(250,250,247,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
-.nav .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 0}
+.nav{position:sticky;top:0;z-index:40;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(246,248,247,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+.nav .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0}
 .brand{display:flex;align-items:baseline;gap:.7rem}
-.wordmark{font-weight:900;font-size:1.42rem;letter-spacing:-.045em;color:var(--ink)}
+.wordmark{font-weight:900;font-size:1.42rem;letter-spacing:-.05em;color:var(--ink)}
 .wordmark .kin{color:var(--emerald)}
-.by{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
-.by b{color:var(--muted);font-weight:500}
+.by{font-family:var(--mono);font-size:.72rem;color:var(--faint)}.by b{color:var(--muted);font-weight:500}
 .nav .btn{padding:.6rem 1.2rem;font-size:.92rem}
 @media(max-width:560px){.nav .by{display:none}}
 
-/* ── HERO (navy) ── */
+/* ── browser mock (herbruikbaar) ── */
+.browser{background:var(--white);border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid rgba(13,23,50,.06)}
+.browser .bar{display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;background:#F2F4F6;border-bottom:1px solid var(--hair)}
+.browser .dots{display:flex;gap:5px}.browser .dots i{width:9px;height:9px;border-radius:50%;background:#D3D8DE}
+.browser .url{flex:1;background:#fff;border:1px solid var(--hair);border-radius:7px;padding:.28rem .7rem;
+  font-family:var(--mono);font-size:.66rem;color:var(--faint);text-align:center}
+.browser .body{padding:1.15rem 1.25rem}
+
+/* persoonlijke pagina in de mock */
+.pp .greet{font-weight:800;font-size:1.05rem;color:var(--navy);letter-spacing:-.02em}
+.pp .subline{font-size:.76rem;color:var(--muted);margin-top:.2rem}
+.pp .offers{margin-top:.95rem;display:flex;flex-direction:column;gap:.5rem}
+.pp .of{display:flex;align-items:center;gap:.65rem;padding:.6rem .7rem;border:1px solid var(--hair);border-radius:10px;background:var(--paper)}
+.pp .of .d{width:26px;height:26px;border-radius:7px;background:var(--emerald-soft);flex:none;display:grid;place-items:center}
+.pp .of .d::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--emerald)}
+.pp .of b{font-size:.82rem;color:var(--ink);font-weight:600;flex:1}
+.pp .of .go{font-family:var(--mono);font-size:.6rem;color:var(--emerald-dk);letter-spacing:.06em;text-transform:uppercase}
+.pp.swap{opacity:0;transform:translateY(8px)}
+.pp{transition:opacity .5s var(--ease),transform .5s var(--ease)}
+
+/* dashboard mock */
+.dash .drow{display:flex;gap:.6rem;margin-bottom:.95rem}
+.dash .tile{flex:1;background:var(--paper);border:1px solid var(--hair);border-radius:10px;padding:.6rem .7rem}
+.dash .tile .t{font-family:var(--mono);font-size:.56rem;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+.dash .tile .v{font-size:1.08rem;font-weight:800;color:var(--navy);margin-top:.15rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.dash .tile .v small{font-size:.6rem;color:var(--emerald-dk);font-weight:700;margin-left:.2rem}
+.dash .chart{background:var(--paper);border:1px solid var(--hair);border-radius:10px;padding:.7rem}
+.dash .chart svg{width:100%;height:96px;display:block}
+.dash .cap{font-family:var(--mono);font-size:.58rem;color:var(--faint);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem}
+.chart path.area{fill:url(#gr);opacity:0}
+.chart path.ln{fill:none;stroke:var(--emerald);stroke-width:2.2;stroke-linecap:round;
+  stroke-dasharray:1;stroke-dashoffset:1}
+.chart.drawn path.ln{transition:stroke-dashoffset 1.6s var(--ease)}
+.chart.drawn path.area{transition:opacity .8s var(--ease) .5s;opacity:1}
+
+/* handgeschreven kaart */
+.card{background:linear-gradient(150deg,#fffefb,#f4f2ea);border-radius:9px;padding:1.1rem 1.2rem;
+  box-shadow:var(--shadow-lg);border:1px solid rgba(13,23,50,.06)}
+.card .hw{font-family:var(--hand);font-size:1.3rem;line-height:1.34;color:#243352}
+.card .sign{font-family:var(--hand);font-size:1.3rem;color:var(--muted);margin-top:.3rem}
+.card .stamp{float:right;background:var(--emerald);color:#fff;font-family:var(--mono);font-size:.55rem;
+  letter-spacing:.11em;text-transform:uppercase;padding:.24rem .48rem;border-radius:4px;margin:-.2rem -.2rem .3rem .5rem}
+
+/* ── HERO ── */
 .hero{background:
-    radial-gradient(900px 520px at 82% -8%,rgba(18,179,122,.16),transparent 60%),
-    radial-gradient(700px 460px at 6% 108%,rgba(245,165,36,.12),transparent 58%),
+    radial-gradient(1000px 560px at 80% -12%,rgba(62,213,152,.18),transparent 58%),
+    radial-gradient(760px 520px at 4% 110%,rgba(18,179,122,.1),transparent 56%),
     linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);
-  color:var(--on-navy);padding:clamp(3rem,7vw,5.5rem) 0 clamp(3rem,7vw,5rem);position:relative;overflow:hidden}
-.hero .grid{display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,5vw,3.5rem);align-items:center}
-@media(min-width:940px){.hero .grid{grid-template-columns:1.02fr .98fr}}
-.hero .eyebrow{color:var(--emerald)}
-.hero h1{font-size:clamp(2.5rem,6.2vw,4.1rem);font-weight:900;color:#fff;margin:1.2rem 0 0;max-width:16ch;
-  letter-spacing:-.035em;line-height:1.02}
-.hero h1 .u{color:var(--amber)}
-.hero .sub{color:var(--on-navy-mut);font-size:clamp(1.05rem,2.1vw,1.2rem);max-width:52ch;margin-top:1.5rem;line-height:1.62}
+  color:var(--on-navy);padding:clamp(3rem,7vw,5.5rem) 0 clamp(3.4rem,8vw,6rem);position:relative;overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1fr;gap:clamp(2.6rem,5vw,3.6rem);align-items:center}
+@media(min-width:960px){.hero .grid{grid-template-columns:1.04fr .96fr}}
+.hero .eyebrow{color:var(--mint)}.hero .eyebrow::before{background:var(--mint)}
+.hero h1{font-size:clamp(2.6rem,6.4vw,4.4rem);font-weight:900;color:#fff;margin:1.2rem 0 0;max-width:15ch;
+  letter-spacing:-.042em;line-height:1.0}
+.hero h1 .g{color:var(--mint)}
+.hero .sub{color:var(--on-navy-mut);font-size:clamp(1.05rem,2vw,1.2rem);max-width:46ch;margin-top:1.5rem;line-height:1.55}
 .hero .cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2.1rem}
-.hero .btn-ghost{color:#fff;border-color:var(--nline)}
-.hero .btn-ghost:hover{border-color:var(--emerald);color:var(--emerald)}
-.hero .trust{margin-top:1.7rem;font-family:var(--mono);font-size:.76rem;color:var(--on-navy-faint);letter-spacing:.03em}
+.hero .btn-ghost{color:#fff;border-color:var(--nline)}.hero .btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
+.hero .trust{margin-top:1.7rem;font-family:var(--mono);font-size:.75rem;color:var(--on-navy-faint)}
 .hero .trust b{color:var(--on-navy-mut);font-weight:500}
+/* hero visual: kaart + persoonlijke pagina */
+.hvis{position:relative}
+.hvis .browser{max-width:400px;margin-left:auto;animation:floaty 7s ease-in-out infinite}
+.hvis .card{position:absolute;left:-6px;bottom:-30px;width:250px;transform:rotate(-4deg);z-index:3;animation:floaty2 8s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes floaty2{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-4deg) translateY(7px)}}
+@media(max-width:520px){.hvis .card{width:200px;left:0;bottom:-20px}}
 
 /* word reveal */
-.wr .w{display:inline-block;opacity:0;filter:blur(6px);transform:translateY(.24em);
-  transition:opacity .4s var(--ease),filter .36s var(--ease),transform .46s var(--ease)}
+.wr .w{display:inline-block;opacity:0;filter:blur(7px);transform:translateY(.26em);
+  transition:opacity .42s var(--ease),filter .38s var(--ease),transform .5s var(--ease)}
 .wr.in .w{opacity:1;filter:blur(0);transform:none}
 
-/* ── platform visual: ID -> motor -> pagina's ── */
-.stage{position:relative;height:400px}
-.chip{position:absolute;left:0;top:46%;transform:translateY(-50%);background:rgba(234,238,247,.06);
-  border:1px solid var(--nline);border-radius:10px;padding:.7rem .85rem;font-family:var(--mono);font-size:.78rem;
-  color:var(--on-navy-mut);z-index:3;box-shadow:var(--shadow-lg)}
-.chip .k{color:var(--emerald)}
-.chip .lbl{display:block;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-faint);margin-bottom:.35rem}
-.engine{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:20px;
-  background:linear-gradient(150deg,var(--emerald),var(--emerald-dk));display:grid;place-items:center;z-index:4;
-  box-shadow:0 10px 30px rgba(18,179,122,.4)}
-.engine svg{width:34px;height:34px;color:#fff}
-.engine::after{content:"";position:absolute;inset:-10px;border-radius:26px;border:1.5px solid rgba(18,179,122,.5);
-  animation:ring 2.8s var(--ease) infinite}
-@keyframes ring{0%{transform:scale(.86);opacity:.9}70%{transform:scale(1.28);opacity:0}100%{opacity:0}}
-.pages{position:absolute;right:0;top:0;width:62%;height:100%}
-.pg{position:absolute;right:0;width:210px;background:var(--white);border-radius:14px;box-shadow:var(--shadow-lg);
-  padding:.9rem;color:var(--ink);border:1px solid rgba(255,255,255,.5)}
-.pg .h{display:flex;align-items:center;gap:.4rem;font-weight:700;font-size:.78rem;color:var(--navy);margin-bottom:.6rem}
-.pg .h .dot{width:9px;height:9px;border-radius:3px;background:var(--emerald);flex:none}
-.pg .b{display:flex;align-items:center;gap:.5rem;padding:.4rem .5rem;border-radius:8px;background:var(--paper);
-  margin-bottom:.34rem;font-size:.68rem;color:var(--muted);font-weight:600}
-.pg .b .d{width:7px;height:7px;border-radius:50%;background:var(--emerald);flex:none}
-.pg .b.a .d{background:var(--amber)}
-.pg .b.c .d{background:var(--navy)}
-.pg1{top:6%;transform:rotate(-6deg);z-index:3;animation:float1 7s ease-in-out infinite}
-.pg2{top:34%;right:8%;transform:rotate(2deg);z-index:2;opacity:.96;animation:float2 8s ease-in-out infinite}
-.pg3{top:63%;right:2%;transform:rotate(-3deg);z-index:1;opacity:.9;animation:float3 9s ease-in-out infinite}
-@keyframes float1{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(-6deg) translateY(-10px)}}
-@keyframes float2{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(2deg) translateY(9px)}}
-@keyframes float3{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-7px)}}
-.wire{position:absolute;inset:0;z-index:1;pointer-events:none}
-.wire path{stroke:rgba(18,179,122,.4);stroke-width:1.4;fill:none;stroke-dasharray:4 5}
-@media(max-width:939px){.stage{height:330px;max-width:460px;margin:0 auto}.pg{width:180px}}
-@media(max-width:520px){.stage{height:300px}.pg{width:158px}.chip{font-size:.7rem}}
+/* trust strip */
+.strip{border-bottom:1px solid var(--hair);background:var(--white)}
+.strip .row{display:flex;flex-wrap:wrap;gap:.9rem 2.6rem;align-items:center;justify-content:space-between;padding:1.1rem 0}
+.strip .item{display:flex;align-items:baseline;gap:.5rem}
+.strip .item b{font-size:1.35rem;font-weight:800;color:var(--navy);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.strip .item span{font-size:.82rem;color:var(--muted)}
 
-/* ── flow connector ── */
-.flow{height:96px;display:flex;justify-content:center;position:relative}
-.flow::before{content:"";position:absolute;top:0;width:2px;height:0;
-  background:linear-gradient(var(--emerald),rgba(18,179,122,.05));transition:height 1.3s var(--ease)}
-.flow.drawn::before{height:100%}
-.flow.on-navy::before{background:linear-gradient(var(--emerald),rgba(18,179,122,.05))}
-
-/* ── secties ── */
-section{padding:clamp(3rem,6.5vw,4.6rem) 0;position:relative}
+/* secties */
+section{padding:clamp(3.4rem,7vw,5.4rem) 0;position:relative}
 .sec-navy{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:var(--on-navy)}
-.sec-navy h2,.sec-navy h3{color:#fff}
-.sec-navy .lead{color:var(--on-navy-mut)}
-.sec-navy .eyebrow{color:var(--amber)}.sec-navy .eyebrow::before{background:var(--amber)}
-.head{max-width:none}
-.head h2{font-size:clamp(1.75rem,4vw,2.7rem);margin-top:.8rem;max-width:20ch}
-.head .lead{margin-top:1.1rem}
+.sec-navy h2,.sec-navy h3{color:#fff}.sec-navy .lead{color:var(--on-navy-mut)}
+.sec-navy .eyebrow{color:var(--mint)}.sec-navy .eyebrow::before{background:var(--mint)}
+.head h2{font-size:clamp(1.9rem,4.4vw,3rem);margin-top:.75rem;max-width:18ch}
+.head .lead{margin-top:1.05rem}
+.center{text-align:center}.center .eyebrow{justify-content:center}.center .lead{margin-left:auto;margin-right:auto}
 
 /* scroll reveal */
-.sr{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.sr{opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
 .sr.on{opacity:1;transform:none}
-.sr-1{transition-delay:.08s}.sr-2{transition-delay:.18s}.sr-3{transition-delay:.28s}.sr-4{transition-delay:.38s}
+.sr-1{transition-delay:.07s}.sr-2{transition-delay:.16s}.sr-3{transition-delay:.25s}.sr-4{transition-delay:.34s}
+.sc{opacity:0;transform:scale(.96);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.sc.on{opacity:1;transform:none}
 
-/* herkenning: probleemkaarten (algemeen B2C) */
-.leak{display:grid;gap:1rem;margin-top:2.4rem}
-@media(min-width:720px){.leak{grid-template-columns:repeat(4,1fr)}}
-.lk{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:1.35rem 1.3rem;position:relative;overflow:hidden}
-.lk .top{font-family:var(--mono);font-size:.64rem;letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}
-.lk .big{font-size:1.6rem;font-weight:800;color:var(--navy);letter-spacing:-.03em;margin:.5rem 0 .1rem;
-  font-variant-numeric:tabular-nums}
-.lk .cap{font-size:.86rem;color:var(--muted);line-height:1.4}
-.lk .bars{display:flex;gap:3px;align-items:flex-end;height:30px;margin-top:.7rem}
-.lk .bars i{flex:1;background:var(--hair);border-radius:2px}
-.lk.miss .big{color:#C24B3A}
-.lk .x{position:absolute;right:1rem;top:1rem;color:#C24B3A;font-weight:800;font-size:1.1rem}
+/* de shift (compact) */
+.shift{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center}
+@media(min-width:820px){.shift{grid-template-columns:1.1fr .9fr}}
+.shift-stat{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:1.7rem 1.8rem;box-shadow:var(--shadow)}
+.shift-stat .big{font-size:3.4rem;font-weight:900;color:var(--navy);letter-spacing:-.05em;line-height:1}
+.shift-stat .lbl{color:var(--muted);font-size:.95rem;margin-top:.4rem}
+.shift-stat .row2{display:flex;gap:1.4rem;margin-top:1.3rem;padding-top:1.2rem;border-top:1px solid var(--hair)}
+.shift-stat .m{flex:1}.shift-stat .m b{display:block;font-size:1.15rem;font-weight:800;color:var(--navy)}
+.shift-stat .m span{font-size:.78rem;color:var(--faint)}
 
-/* motor: stappen + voorbeelden */
-.moes{display:grid;gap:1.4rem 2rem;margin-top:2.4rem;align-items:start}
-@media(min-width:900px){.moes{grid-template-columns:1fr 1fr}}
-.mo-steps{display:flex;flex-direction:column;gap:.2rem}
-.mo-step{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:1.05rem 0;border-bottom:1px solid var(--nline)}
-.mo-step:last-child{border-bottom:none}
-.mo-step .n{font-family:var(--mono);font-size:.9rem;color:var(--navy);background:var(--emerald);width:30px;height:30px;
-  border-radius:9px;display:grid;place-items:center;font-weight:500}
-.sec-navy .mo-step .n{color:#04231a}
-.mo-step b{color:#fff;font-weight:700}
-.mo-step p{color:var(--on-navy-mut);font-size:.92rem;margin-top:.2rem}
-.examples{background:rgba(234,238,247,.04);border:1px solid var(--nline);border-radius:18px;padding:1.4rem 1.5rem}
-.examples .el{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-navy-faint);margin-bottom:1rem}
-.ex{display:grid;grid-template-columns:1fr auto 1fr;gap:.7rem;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--nline)}
-.ex:last-child{border-bottom:none}
-.ex .from{color:var(--on-navy-mut);font-size:.92rem;font-weight:600}
-.ex .to{color:#fff;font-size:.92rem;font-weight:700;text-align:right}
-.ex .ar{color:var(--emerald);font-weight:800}
+/* motor: 3 stappen visueel */
+.motor3{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.6rem}
+@media(min-width:820px){.motor3{grid-template-columns:repeat(3,1fr);gap:0}}
+.m3{position:relative;padding:0 1.6rem}
+@media(min-width:820px){.m3+.m3{border-left:1px solid var(--nline)}}
+.m3 .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--mint)}
+.m3 h3{font-size:1.2rem;margin:.6rem 0 .4rem}
+.m3 p{color:var(--on-navy-mut);font-size:.92rem;line-height:1.5}
+.m3 .chip{margin-top:.9rem;font-family:var(--mono);font-size:.72rem;color:var(--on-navy-mut);
+  background:rgba(234,238,247,.05);border:1px solid var(--nline);border-radius:8px;padding:.5rem .7rem;display:inline-block}
+.m3 .chip .k2{color:var(--mint)}
 
-/* contrast: oude manier vs Nextkin */
-.vs{display:grid;grid-template-columns:1fr;gap:0;border-radius:20px;overflow:hidden;margin-top:2.4rem;
-  border:1px solid var(--line)}
-@media(min-width:760px){.vs{grid-template-columns:1fr 1fr}}
-.vs-col{padding:1.9rem 1.8rem}
-.vs-old{background:var(--white)}
-.vs-new{background:var(--navy);color:var(--on-navy);position:relative}
-.vs-tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase}
-.vs-old .vs-tag{color:var(--faint)}.vs-new .vs-tag{color:var(--emerald)}
-.vs-col h3{font-size:1.28rem;margin:.5rem 0 1.1rem}
-.vs-old h3{color:var(--navy)}.vs-new h3{color:#fff}
-.vs-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
-.vs-col li{position:relative;padding-left:1.7rem;font-size:.94rem;line-height:1.45}
-.vs-old li{color:var(--muted)}.vs-new li{color:var(--on-navy-mut)}
-.vs-old li::before{content:"";position:absolute;left:2px;top:.5em;width:11px;height:1.5px;background:#C24B3A;transform:rotate(-8deg)}
-.vs-new li::before{content:"";position:absolute;left:0;top:.28em;width:15px;height:15px;border-radius:50%;background:rgba(18,179,122,.18)}
-.vs-new li::after{content:"";position:absolute;left:4.5px;top:.52em;width:4px;height:7px;border:solid var(--emerald);border-width:0 2px 2px 0;transform:rotate(42deg)}
+/* feature-rijen (afwisselend, visueel) */
+.feat{display:grid;grid-template-columns:1fr;gap:clamp(1.8rem,4vw,3.2rem);align-items:center}
+@media(min-width:880px){.feat{grid-template-columns:1fr 1fr}.feat.rev .ftext{order:2}}
+.ftext .eyebrow{margin-bottom:.9rem}
+.ftext h2{font-size:clamp(1.6rem,3.4vw,2.3rem);max-width:16ch}
+.ftext p{color:var(--muted);margin-top:.9rem;max-width:42ch;font-size:1.02rem}
+.ftext .mini{margin-top:1.3rem;display:flex;flex-direction:column;gap:.55rem}
+.ftext .mini li{list-style:none;position:relative;padding-left:1.7rem;color:var(--ink);font-size:.95rem}
+.ftext .mini li::before{content:"";position:absolute;left:0;top:.1em;width:18px;height:18px;border-radius:50%;background:var(--emerald-soft)}
+.ftext .mini li::after{content:"";position:absolute;left:5.5px;top:.4em;width:5px;height:8px;border:solid var(--emerald);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.fvis{position:relative}
 
 /* voor wie */
-.who{display:grid;gap:.9rem;margin-top:2.2rem}
+.who{display:grid;gap:.85rem;margin-top:2.4rem}
 @media(min-width:640px){.who{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:960px){.who{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:980px){.who{grid-template-columns:repeat(4,1fr)}}
 .wc{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.3rem 1.25rem}
-.wc .ic{width:34px;height:34px;border-radius:9px;background:var(--emerald-soft);display:grid;place-items:center;margin-bottom:.85rem}
+.wc .ic{width:36px;height:36px;border-radius:10px;background:var(--emerald-soft);display:grid;place-items:center;margin-bottom:.85rem}
 .wc .ic svg{width:19px;height:19px;color:var(--emerald-dk)}
 .wc b{display:block;color:var(--navy);font-size:1rem}
-.wc span{display:block;color:var(--muted);font-size:.87rem;margin-top:.25rem;line-height:1.45}
+.wc span{display:block;color:var(--muted);font-size:.86rem;margin-top:.25rem;line-height:1.4}
 
 /* pakketten */
-.pk{display:grid;gap:1.1rem;margin-top:2.4rem;align-items:stretch}
+.pk{display:grid;gap:1.1rem;margin-top:2.6rem;align-items:stretch}
 @media(min-width:840px){.pk{grid-template-columns:repeat(3,1fr)}}
 .pack{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:1.7rem 1.55rem 1.55rem;
   display:flex;flex-direction:column;position:relative;transition:transform .2s var(--ease),box-shadow .2s}
@@ -219,53 +215,46 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0;position:relative}
 .pack .badge{position:absolute;top:-11px;left:1.55rem;background:var(--emerald);color:#fff;font-family:var(--mono);
   font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .65rem;border-radius:99px}
 .pack .nm{font-size:1.34rem;font-weight:900;color:var(--navy);margin-top:.35rem;letter-spacing:-.03em}
-.pack .desc{font-size:.92rem;color:var(--muted);margin-top:.35rem;min-height:2.6em}
-.pack ul{list-style:none;margin:1.1rem 0 1.3rem;display:flex;flex-direction:column;gap:.6rem}
-.pack li{position:relative;padding-left:1.7rem;font-size:.92rem;color:var(--ink);line-height:1.45}
+.pack .desc{font-size:.9rem;color:var(--muted);margin-top:.35rem;min-height:2.6em}
+.pack ul{list-style:none;margin:1.1rem 0 1.3rem;display:flex;flex-direction:column;gap:.58rem}
+.pack li{position:relative;padding-left:1.7rem;font-size:.9rem;color:var(--ink);line-height:1.4}
 .pack li::before{content:"";position:absolute;left:0;top:.06em;width:18px;height:18px;border-radius:50%;background:var(--emerald-soft)}
 .pack li::after{content:"";position:absolute;left:5.5px;top:.37em;width:5px;height:8px;border:solid var(--emerald);border-width:0 2px 2px 0;transform:rotate(42deg)}
 .pack .price{margin-top:auto;padding-top:1.1rem;border-top:1px solid var(--hair)}
-.pack .price .amt{font-size:1.1rem;font-weight:800;color:var(--navy)}
+.pack .price .amt{font-size:1.08rem;font-weight:800;color:var(--navy)}
 .pack .price .amt small{font-family:var(--mono);font-size:.72rem;font-weight:400;color:var(--faint);display:block;margin-top:.15rem}
 .pack .btn{margin-top:1.15rem;justify-content:center;width:100%}
 .pack:not(.best) .btn{background:var(--paper);color:var(--navy);border-color:var(--line);box-shadow:none}
 .pack:not(.best) .btn:hover{border-color:var(--emerald);color:var(--emerald-dk);transform:translateY(-2px)}
-.pk-note{margin-top:1.5rem;font-size:.9rem;color:var(--muted);text-align:center}
-.pk-note b{color:var(--navy);font-weight:700}
+.pk-note{margin-top:1.5rem;font-size:.9rem;color:var(--muted);text-align:center}.pk-note b{color:var(--navy);font-weight:700}
 
 /* garantie */
-.guarantee{margin-top:2.2rem;display:grid;gap:1.5rem;align-items:center;border:1.5px solid var(--emerald);
-  border-radius:20px;background:var(--emerald-soft);padding:1.9rem 1.9rem}
+.guarantee{margin-top:2.4rem;display:grid;gap:1.5rem;align-items:center;border:1.5px solid var(--emerald);
+  border-radius:20px;background:var(--emerald-soft);padding:1.9rem}
 @media(min-width:720px){.guarantee{grid-template-columns:auto 1fr;gap:1.9rem}}
-.gseal{width:78px;height:78px;border-radius:50%;background:var(--emerald);display:grid;place-items:center;flex:none;
-  box-shadow:0 10px 26px rgba(18,179,122,.34)}
+.gseal{width:78px;height:78px;border-radius:50%;background:var(--emerald);display:grid;place-items:center;flex:none;box-shadow:0 10px 26px rgba(18,179,122,.34)}
 .gseal svg{width:40px;height:40px;color:#fff}
 .guarantee .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--emerald-dk);font-weight:500}
 .guarantee h3{font-size:1.3rem;color:var(--navy);margin-top:.4rem}
-.guarantee p{margin-top:.55rem;color:var(--ink);max-width:64ch;font-size:.98rem}
+.guarantee p{margin-top:.55rem;color:var(--ink);max-width:64ch;font-size:.96rem}
 
-/* cta band */
-.cta-band{background:
-    radial-gradient(700px 400px at 80% -20%,rgba(18,179,122,.2),transparent 60%),
-    linear-gradient(160deg,var(--navy),var(--navy-3));
-  color:#fff;border-radius:24px;padding:clamp(2.4rem,5vw,3.6rem);text-align:center;overflow:hidden}
-.cta-band .eyebrow{color:var(--amber);justify-content:center}.cta-band .eyebrow::before{background:var(--amber)}
-.cta-band h2{color:#fff;font-size:clamp(1.9rem,4vw,2.7rem);margin:1rem auto 0;max-width:20ch}
-.cta-band p{color:var(--on-navy-mut);margin:1rem auto 0;max-width:50ch}
+/* cta */
+.cta-band{background:radial-gradient(800px 440px at 78% -24%,rgba(62,213,152,.24),transparent 58%),linear-gradient(160deg,var(--navy),var(--navy-3));
+  color:#fff;border-radius:24px;padding:clamp(2.6rem,5vw,4rem);text-align:center;overflow:hidden}
+.cta-band .eyebrow{color:var(--mint);justify-content:center}.cta-band .eyebrow::before{background:var(--mint)}
+.cta-band h2{color:#fff;font-size:clamp(2rem,4.2vw,3rem);margin:1rem auto 0;max-width:18ch}
+.cta-band p{color:var(--on-navy-mut);margin:1rem auto 0;max-width:48ch}
 .cta-band .cta-row{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:2rem}
-.cta-band .btn-ghost{color:#fff;border-color:var(--nline)}
-.cta-band .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+.cta-band .btn-ghost{color:#fff;border-color:var(--nline)}.cta-band .btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
 
-/* footer */
 footer{padding:2.4rem 0 3.2rem;border-top:1px solid var(--hair)}
 footer .row{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:baseline}
-footer .meta{font-family:var(--mono);font-size:.74rem;color:var(--faint)}
-footer .meta b{color:var(--muted);font-weight:500}
+footer .meta{font-family:var(--mono);font-size:.74rem;color:var(--faint)}footer .meta b{color:var(--muted);font-weight:500}
 
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important}
-  .sr,.wr .w{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
-  .flow::before{height:100%!important}
+  .sr,.sc,.wr .w{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+  .chart path.ln{stroke-dashoffset:0!important}.chart path.area{opacity:1!important}
 }
 </style>
 </head>
@@ -273,10 +262,8 @@ footer .meta b{color:var(--muted);font-weight:500}
 
 <nav class="nav" id="nav">
   <div class="wrap row">
-    <div class="brand">
-      <span class="wordmark">Next<span class="kin">kin</span></span>
-      <span class="by">by <b>Lightr</b> &amp; <b>Pique</b></span>
-    </div>
+    <div class="brand"><span class="wordmark">Next<span class="kin">kin</span></span>
+      <span class="by">by <b>Lightr</b> &amp; <b>Pique</b></span></div>
     <a class="btn btn-main" href="#demo">Plan een demo</a>
   </div>
 </nav>
@@ -285,205 +272,194 @@ footer .meta b{color:var(--muted);font-weight:500}
 <header class="hero">
   <div class="wrap grid">
     <div>
-      <span class="eyebrow">Het platform voor alles na de verkoop</span>
-      <h1 class="wr">De makkelijkste omzet zit in de klanten die je <span class="u">al hebt</span>.</h1>
-      <p class="sub">Nextkin neemt het moment na de aankoop over. Jij stuurt een klant-ID, wij bouwen per klant een persoonlijke kaart en pagina, kiezen het juiste vervolgaanbod en leren wat verkoopt. Product, dienst of abonnement, in elk merk.</p>
+      <span class="eyebrow">Post die verkoopt</span>
+      <h1 class="wr">Handgeschreven post die je klanten weer laat <span class="g">kopen</span>.</h1>
+      <p class="sub">Elke klant krijgt een kaart in jouw merk, met een persoonlijke pagina die precies het juiste vervolg toont. De motor kiest en leert, jij levert alleen een klant-ID.</p>
       <div class="cta-row">
         <a class="btn btn-main" href="#demo">Plan een demo <span class="arw">&#8594;</span></a>
-        <a class="btn btn-ghost" href="#motor">Zie hoe het werkt</a>
+        <a class="btn btn-ghost" href="#motor">Zie het platform</a>
       </div>
       <p class="trust">Gebouwd door <b>Lightr</b> en <b>Pique</b></p>
     </div>
-
-    <div class="stage sr sr-2" aria-hidden="true">
-      <svg class="wire" viewBox="0 0 500 400" preserveAspectRatio="none">
-        <path d="M120 184 C 190 184, 200 200, 244 200"/>
-        <path d="M300 190 C 360 150, 380 90, 430 74"/>
-        <path d="M300 200 C 360 200, 380 190, 430 190"/>
-        <path d="M300 210 C 360 250, 380 300, 430 300"/>
-      </svg>
-      <div class="chip"><span class="lbl">Domek stuurt</span>{ id: <span class="k">"K7M2"</span> }</div>
-      <div class="engine">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/><circle cx="12" cy="12" r="4"/></svg>
+    <div class="hvis sc sc-2" aria-hidden="true">
+      <div class="browser">
+        <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">nextkin.app/anna</div></div>
+        <div class="body"><div class="pp" id="pp">
+          <div class="greet" data-g>Welkom thuis, Anna</div>
+          <div class="subline" data-s>Een boodschap van je adviseur staat klaar</div>
+          <div class="offers" data-o>
+            <div class="of"><span class="d"></span><b>Woonverzekering</b><span class="go">Bekijk</span></div>
+            <div class="of"><span class="d"></span><b>Inboedel</b><span class="go">Bekijk</span></div>
+            <div class="of"><span class="d"></span><b>&euro; 200 referral</b><span class="go">Deel</span></div>
+          </div>
+        </div></div>
       </div>
-      <div class="pages">
-        <div class="pg pg1"><div class="h"><span class="dot"></span>Welkom thuis, Anna</div><div class="b"><span class="d"></span>Woonverzekering</div><div class="b a"><span class="d"></span>Inboedel</div><div class="b c"><span class="d"></span>&euro; 200 referral</div></div>
-        <div class="pg pg2"><div class="h"><span class="dot"></span>Je matras, compleet</div><div class="b"><span class="d"></span>Topper</div><div class="b a"><span class="d"></span>Hoeslakens</div></div>
-        <div class="pg pg3"><div class="h"><span class="dot"></span>Nog een maand?</div><div class="b"><span class="d"></span>Tweede lijn</div><div class="b a"><span class="d"></span>Cadeau erbij</div></div>
+      <div class="card">
+        <span class="stamp">Jouw merk</span>
+        <div class="hw">Gefeliciteerd, Anna. We hebben iets voor je klaargezet.</div>
+        <div class="sign">Groet, Marta</div>
       </div>
     </div>
   </div>
 </header>
 
-<div class="flow" id="f1"></div>
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap row">
+    <div class="item"><b>1&nbsp;ID</b><span>lever je aan</span></div>
+    <div class="item"><b>12</b><span>talen inbegrepen</span></div>
+    <div class="item"><b>2&nbsp;mnd</b><span>pilot met garantie</span></div>
+    <div class="item"><b>0</b><span>dat je zelf bouwt</span></div>
+  </div>
+</div>
 
-<!-- HERKENNING / PROBLEEM -->
+<!-- HERKENNING + SPANNING (compact, visueel) -->
 <section>
-  <div class="wrap head sr">
-    <span class="eyebrow">Herken je dit</span>
-    <h2>De verkoop is rond. En dan valt het stil.</h2>
-    <p class="lead">Iemand koopt een matras, een verzekering, een abonnement. Je weet precies wat hij nu nog nodig heeft. En je stuurt een nieuwsbrief die niemand opent. Het moment waarop je klant het meest openstaat, laat je voorbijgaan.</p>
-  </div>
-  <div class="wrap">
-    <div class="leak">
-      <div class="lk sr sr-1"><div class="top">Je nieuwsbrief</div><div class="big">2%</div><div class="cap">wordt geopend. De rest ziet het nooit.</div><div class="bars"><i style="height:22%"></i><i style="height:12%"></i><i style="height:30%"></i><i style="height:9%"></i><i style="height:18%"></i><i style="height:6%"></i></div></div>
-      <div class="lk miss sr sr-2"><span class="x">&#215;</span><div class="top">Cross-sell</div><div class="big">niet gedaan</div><div class="cap">Je weet wat hij mist, maar er gaat niks uit.</div><div class="bars"><i style="height:40%"></i><i style="height:8%"></i><i style="height:8%"></i><i style="height:8%"></i><i style="height:8%"></i><i style="height:8%"></i></div></div>
-      <div class="lk miss sr sr-3"><span class="x">&#215;</span><div class="top">Retentie</div><div class="big">op de automaat</div><div class="cap">bij niemand. Ze verlengen of ze verdwijnen.</div><div class="bars"><i style="height:30%"></i><i style="height:26%"></i><i style="height:20%"></i><i style="height:14%"></i><i style="height:9%"></i><i style="height:5%"></i></div></div>
-      <div class="lk miss sr sr-4"><span class="x">&#215;</span><div class="top">Referral</div><div class="big">nooit gevraagd</div><div class="cap">Je blijste klant brengt geen tweede binnen.</div><div class="bars"><i style="height:10%"></i><i style="height:8%"></i><i style="height:10%"></i><i style="height:8%"></i><i style="height:9%"></i><i style="height:7%"></i></div></div>
+  <div class="wrap shift">
+    <div class="sr">
+      <span class="eyebrow">Herken je dit</span>
+      <h2 style="font-size:clamp(1.9rem,4.4vw,3rem);max-width:16ch;margin-top:.7rem">De verkoop is rond. En dan valt het stil.</h2>
+      <p class="lead" style="margin-top:1rem">Je weet wat je klant net kocht en wat hij nu nog nodig heeft. Toch stuur je een nieuwsbrief die niemand opent. Het duurste wat je doet is een klant maar &eacute;&eacute;n keer verkopen.</p>
     </div>
-  </div>
-</section>
-
-<div class="flow on-navy" id="f2"></div>
-
-<!-- SPANNING + GEVOLG -->
-<section class="sec-navy">
-  <div class="wrap head sr">
-    <span class="eyebrow">Wat het kost</span>
-    <h2>De duurste fout in B2C: een klant maar &eacute;&eacute;n keer verkopen.</h2>
-    <p class="lead">Een nieuwe klant winnen kost je een veelvoud van een tweede verkoop aan iemand die je al kent. Toch gaat bijna al je geld en aandacht naar de voorkant. De achterkant, waar de marge zit, laat je op de plank liggen. En de concurrent van je klant zit &eacute;&eacute;n klik verder.</p>
-  </div>
-</section>
-
-<div class="flow" id="f3"></div>
-
-<!-- DE MOTOR (platform) -->
-<section id="motor" class="sec-navy" style="background:linear-gradient(180deg,var(--navy-2),var(--navy))">
-  <div class="wrap head sr">
-    <span class="eyebrow">Het platform</span>
-    <h2>E&eacute;n ID erin. Een persoonlijke verkoop eruit.</h2>
-    <p class="lead">Nextkin is geen campagne die je laat maken. Het is een platform dat draait op jouw data. Je koppelt het &eacute;&eacute;n keer, en vanaf dat moment bouwt de motor voor elke klant zijn eigen kaart en pagina.</p>
-  </div>
-  <div class="wrap">
-    <div class="moes">
-      <div class="mo-steps sr">
-        <div class="mo-step"><span class="n">1</span><div><b>Jij schiet een klant-ID in</b><p>Met wat de klant al heeft en je hele aanbod. Via een koppeling of een bestand.</p></div></div>
-        <div class="mo-step"><span class="n">2</span><div><b>De motor kiest wat relevant is</b><p>Per klant, binnen jouw regels. En hij leert welk aanbod bij welk profiel verkoopt.</p></div></div>
-        <div class="mo-step"><span class="n">3</span><div><b>Kaart en pagina, in jouw merk</b><p>Handgeschreven op de mat, persoonlijk achter de QR, in de taal van de klant.</p></div></div>
-        <div class="mo-step"><span class="n">4</span><div><b>Het platform wordt slimmer</b><p>Elke scan en klik traint de motor. Je conversie klimt maand na maand.</p></div></div>
-      </div>
-      <div class="examples sr sr-2">
-        <div class="el">Zelfde platform, ander moment</div>
-        <div class="ex"><span class="from">Matras gekocht</span><span class="ar">&#8594;</span><span class="to">Topper en garantie</span></div>
-        <div class="ex"><span class="from">Woning gekocht</span><span class="ar">&#8594;</span><span class="to">Opstal en inboedel</span></div>
-        <div class="ex"><span class="from">Box-abonnement</span><span class="ar">&#8594;</span><span class="to">Tweede lijn, cadeau</span></div>
-        <div class="ex"><span class="from">Auto gekocht</span><span class="ar">&#8594;</span><span class="to">Verzekering, onderhoud</span></div>
-        <div class="ex"><span class="from">Software-klant</span><span class="ar">&#8594;</span><span class="to">Upgrade, add-ons</span></div>
+    <div class="shift-stat sr sr-2">
+      <div class="big">2%</div>
+      <div class="lbl">van je nieuwsbrief wordt geopend. De rest van het moment verdampt.</div>
+      <div class="row2">
+        <div class="m"><b>5&#215;</b><span>duurder is een nieuwe klant</span></div>
+        <div class="m"><b>1 klik</b><span>zit de concurrent verderop</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="flow" id="f4"></div>
+<!-- DE MOTOR (helder, navy) -->
+<section id="motor" class="sec-navy">
+  <div class="wrap head center sr">
+    <span class="eyebrow">Zo werkt de motor</span>
+    <h2 style="margin-left:auto;margin-right:auto">Data erin. Een persoonlijke verkoop eruit.</h2>
+    <p class="lead">Nextkin is een platform, geen campagne die je laat maken. Je koppelt het &eacute;&eacute;n keer, en het bouwt voor elke klant zijn eigen kaart en pagina.</p>
+  </div>
+  <div class="wrap">
+    <div class="motor3">
+      <div class="m3 sr sr-1"><div class="k">01 &middot; Ingest</div><h3>Jij schiet een klant-ID in</h3><p>Met wat de klant al heeft en je hele aanbod. Via een koppeling of een bestand.</p><div class="chip">{ id: <span class="k2">"K7M2"</span>, heeft: [hypotheek] }</div></div>
+      <div class="m3 sr sr-2"><div class="k">02 &middot; Motor</div><h3>Hij kiest en leert</h3><p>De motor bepaalt per klant het juiste aanbod, binnen jouw regels, en leert met elke scan wat verkoopt.</p><div class="chip">kies &#8594; <span class="k2">rangschik</span> &#8594; test</div></div>
+      <div class="m3 sr sr-3"><div class="k">03 &middot; Delivery</div><h3>Kaart en pagina, in jouw merk</h3><p>Handgeschreven op de mat, persoonlijk achter de QR, in de taal van de klant.</p><div class="chip">kaart + pagina <span class="k2">&#10003;</span></div></div>
+    </div>
+  </div>
+</section>
 
-<!-- CONTRAST -->
+<!-- FEATURE 1: personalisatie / brandable -->
 <section>
-  <div class="wrap head sr">
-    <span class="eyebrow">Het verschil</span>
-    <h2>De oude manier laat je klant koud. Nextkin niet.</h2>
-  </div>
-  <div class="wrap">
-    <div class="vs sr">
-      <div class="vs-col vs-old">
-        <span class="vs-tag">De oude manier</span>
-        <h3>Eén boodschap voor iedereen</h3>
-        <ul>
-          <li>Een nieuwsbrief die vrijwel niemand opent</li>
-          <li>Hetzelfde aanbod naar je hele bestand</li>
-          <li>Je gokt wat werkt en meet het nooit</li>
-          <li>Je bouwt en onderhoudt het zelf</li>
-        </ul>
-      </div>
-      <div class="vs-col vs-new">
-        <span class="vs-tag">Met Nextkin</span>
-        <h3>Een eigen verkoop per klant</h3>
-        <ul>
-          <li>Een handgeschreven kaart die wel opvalt</li>
-          <li>Per klant het aanbod dat bij hem past</li>
-          <li>De motor test en leert wat verkoopt</li>
-          <li>Wij draaien het platform, jij levert data</li>
-        </ul>
+  <div class="wrap feat">
+    <div class="ftext sr">
+      <span class="eyebrow">Eén platform, elke klant anders</span>
+      <h2>Voor elke klant een eigen pagina.</h2>
+      <p>Zelfde template, andere blokken. De motor vult per klant het juiste vervolgaanbod in, of hij nu een matras kocht, een huis of een abonnement.</p>
+      <ul class="mini"><li>Volledig in jouw merk, kaart en pagina</li><li>Alleen aanbiedingen die bij die klant passen</li><li>Twaalf talen, zonder meerwerk</li></ul>
+    </div>
+    <div class="fvis sc sr-2">
+      <div class="browser">
+        <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url" id="ppurl">nextkin.app/sven</div></div>
+        <div class="body"><div class="pp" id="pp2">
+          <div class="greet" data-g>Je matras, compleet gemaakt</div>
+          <div class="subline" data-s>Uitgezocht op wat je koos</div>
+          <div class="offers" data-o>
+            <div class="of"><span class="d"></span><b>Topper</b><span class="go">Bekijk</span></div>
+            <div class="of"><span class="d"></span><b>Hoeslakens</b><span class="go">Bekijk</span></div>
+            <div class="of"><span class="d"></span><b>Garantie-upgrade</b><span class="go">Bekijk</span></div>
+          </div>
+        </div></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="flow" id="f5"></div>
+<!-- FEATURE 2: leert / dashboard -->
+<section>
+  <div class="wrap feat rev">
+    <div class="ftext sr">
+      <span class="eyebrow">Het leert wat verkoopt</span>
+      <h2>Elke campagne maakt de volgende slimmer.</h2>
+      <p>Je ziet per klant-ID wat er scant, klikt en converteert. De motor optimaliseert de volgorde, de copy en het aanbod, zodat je cijfer maand na maand klimt.</p>
+      <ul class="mini"><li>Scans, klikken en conversie op klant-ID</li><li>Automatische A/B op copy en volgorde</li><li>Terug te koppelen naar je eigen systeem</li></ul>
+    </div>
+    <div class="fvis sc sr-2">
+      <div class="browser">
+        <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">nextkin.app/dashboard</div></div>
+        <div class="body dash">
+          <div class="drow">
+            <div class="tile"><div class="t">Scans</div><div class="v">64%</div></div>
+            <div class="tile"><div class="t">Klik-ratio</div><div class="v">38%<small>&#9650;</small></div></div>
+            <div class="tile"><div class="t">Conversie</div><div class="v">9,5%<small>&#9650;</small></div></div>
+          </div>
+          <div class="chart" id="chart">
+            <div class="cap">Cross-sell conversie, per maand</div>
+            <svg viewBox="0 0 300 96" preserveAspectRatio="none">
+              <defs><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12B37A" stop-opacity=".28"/><stop offset="1" stop-color="#12B37A" stop-opacity="0"/></linearGradient></defs>
+              <path class="area" d="M0,80 L0,72 C40,70 70,60 110,52 C150,44 180,30 220,24 C250,19 280,12 300,8 L300,96 L0,96 Z"/>
+              <path class="ln" d="M0,72 C40,70 70,60 110,52 C150,44 180,30 220,24 C250,19 280,12 300,8"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- VOOR WIE -->
 <section>
-  <div class="wrap head sr">
+  <div class="wrap head center sr">
     <span class="eyebrow">Voor wie</span>
-    <h2>Voor elk merk met klanten en een vervolgaanbod.</h2>
-    <p class="lead">Als je klanten meer dan &eacute;&eacute;n keer bij je kunnen kopen, is Nextkin voor jou gebouwd.</p>
+    <h2 style="margin:.7rem auto 0">Voor elk merk met klanten en een vervolgaanbod.</h2>
   </div>
   <div class="wrap">
     <div class="who">
-      <div class="wc sr sr-1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div><b>Webshops</b><span>Een tweede aankoop uit de eerste. Toppers, accessoires, garantie.</span></div>
-      <div class="wc sr sr-2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5"/><path d="M21 3v6h-6"/></svg></div><b>Abonnementen</b><span>Retentie en upsell op het juiste moment, in plaats van stille churn.</span></div>
-      <div class="wc sr sr-3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.5 8 9 9 5.5-1 9-4 9-9V7z"/></svg></div><b>Financiële diensten</b><span>Cross-sell na een grote beslissing, met advies dat bij jou blijft.</span></div>
-      <div class="wc sr sr-4"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div><b>Consumentenmerken</b><span>Van een koper een fan maken, en van een fan een aanbrenger.</span></div>
+      <div class="wc sr sr-1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div><b>Webshops</b><span>Een tweede aankoop uit de eerste.</span></div>
+      <div class="wc sr sr-2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5"/><path d="M21 3v6h-6"/></svg></div><b>Abonnementen</b><span>Retentie en upsell op tijd.</span></div>
+      <div class="wc sr sr-3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.5 8 9 9 5.5-1 9-4 9-9V7z"/></svg></div><b>Financiële diensten</b><span>Cross-sell na een grote keuze.</span></div>
+      <div class="wc sr sr-4"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div><b>Consumentenmerken</b><span>Van koper naar fan naar aanbrenger.</span></div>
     </div>
   </div>
 </section>
-
-<div class="flow" id="f6"></div>
 
 <!-- PAKKETTEN -->
 <section id="pakketten">
-  <div class="wrap head sr">
+  <div class="wrap head center sr">
     <span class="eyebrow">De pakketten</span>
-    <h2>Begin klein, schaal op als het werkt.</h2>
-    <p class="lead">Je betaalt per benadering, dus per klant die een kaart of e-mail krijgt. De prijs zakt naarmate je groeit. De kaarten en de porto lopen apart via Lightr.</p>
+    <h2 style="margin:.7rem auto 0">Begin klein, schaal op als het werkt.</h2>
+    <p class="lead">Je betaalt per benadering. De prijs zakt naarmate je groeit. Kaarten en porto lopen apart via Lightr.</p>
   </div>
   <div class="wrap">
     <div class="pk">
-      <div class="pack sr sr-1">
-        <span class="tag">Pilot &middot; 2 maanden</span>
-        <div class="nm">Start</div>
-        <p class="desc">Bewijs het op een deel van je bestand, voordat je opschaalt.</p>
-        <ul><li>Handgeschreven kaart in jouw merk</li><li>Persoonlijke pagina per klant</li><li>Relevante aanbiedingen per klant</li><li>Scans en klikken meetbaar</li></ul>
+      <div class="pack sr sr-1"><span class="tag">Pilot &middot; 2 maanden</span><div class="nm">Start</div><p class="desc">Bewijs het op een deel van je bestand.</p>
+        <ul><li>Handgeschreven kaart in jouw merk</li><li>Persoonlijke pagina per klant</li><li>Relevante aanbiedingen</li><li>Scans en klikken meetbaar</li></ul>
         <div class="price"><div class="amt">vanaf &euro; 1,50 <small>per benadering &middot; &euro; 2.500 onboarding</small></div></div>
-        <a class="btn" href="#demo">Start de pilot</a>
-      </div>
-      <div class="pack best sr sr-2">
-        <span class="badge">Aanbevolen</span>
-        <span class="tag">De volle motor</span>
-        <div class="nm">Groei</div>
-        <p class="desc">De motor die het aanbod kiest en leert wat verkoopt.</p>
+        <a class="btn" href="#demo">Start de pilot</a></div>
+      <div class="pack best sr sr-2"><span class="badge">Aanbevolen</span><span class="tag">De volle motor</span><div class="nm">Groei</div><p class="desc">De motor die kiest en leert wat verkoopt.</p>
         <ul><li>Alles uit Start</li><li>Relevantie- en conversie-optimalisatie</li><li>Twaalf talen</li><li>Dashboard op klant-ID</li></ul>
         <div class="price"><div class="amt">tot &euro; 0,40 <small>per benadering, staffel op volume</small></div></div>
-        <a class="btn btn-main" href="#demo">Plan een demo</a>
-      </div>
-      <div class="pack sr sr-3">
-        <span class="tag">Op maat</span>
-        <div class="nm">Schaal</div>
-        <p class="desc">Voor grote bestanden en meerdere momenten in de klantreis.</p>
-        <ul><li>Alles uit Groei</li><li>Meerdere journeys, van aankoop tot verlenging</li><li>E-mail naast de kaart, met A/B</li><li>API-koppeling en SLA</li></ul>
-        <div class="price"><div class="amt">Op maat <small>afgestemd op je volume en journeys</small></div></div>
-        <a class="btn" href="#demo">Praat met ons</a>
-      </div>
+        <a class="btn btn-main" href="#demo">Plan een demo</a></div>
+      <div class="pack sr sr-3"><span class="tag">Op maat</span><div class="nm">Schaal</div><p class="desc">Voor grote bestanden en meerdere momenten.</p>
+        <ul><li>Alles uit Groei</li><li>Meerdere journeys per klant</li><li>E-mail naast de kaart, met A/B</li><li>API-koppeling en SLA</li></ul>
+        <div class="price"><div class="amt">Op maat <small>afgestemd op je volume</small></div></div>
+        <a class="btn" href="#demo">Praat met ons</a></div>
     </div>
-    <p class="pk-note"><b>Onboarding terug.</b> Ga je na de pilot door met minstens hetzelfde volume, dan verrekenen we de &euro; 2.500 volledig met je facturen van de eerste drie maanden.</p>
+    <p class="pk-note"><b>Onboarding terug.</b> Ga je na de pilot door met minstens hetzelfde volume, dan verrekenen we de &euro; 2.500 met je eerste drie maanden.</p>
   </div>
 </section>
 
-<div class="flow" id="f7"></div>
-
 <!-- GARANTIE -->
 <section>
-  <div class="wrap head sr">
+  <div class="wrap head center sr">
     <span class="eyebrow">Onze garantie</span>
-    <h2>Wij bewijzen het eerst, of je betaalt niet door.</h2>
+    <h2 style="margin:.7rem auto 0">Wij bewijzen het eerst, of je betaalt niet door.</h2>
   </div>
   <div class="wrap">
     <div class="guarantee sr">
       <div class="gseal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-      <div>
-        <span class="lbl">Een doel dat wij in de hand hebben</span>
+      <div><span class="lbl">Een doel dat wij in de hand hebben</span>
         <h3>Halen we het scan- en klikdoel niet, dan draaien we gratis door.</h3>
-        <p>We spreken vooraf een scan- en klikdoel af op de pagina, iets wat wij grotendeels zelf sturen. Halen we dat niet binnen de twee pilotmaanden, dan draaien we kosteloos door tot het staat, en je onboarding krijg je terug. Het risico ligt bij ons.</p>
-      </div>
+        <p>We spreken vooraf een scan- en klikdoel af, iets wat wij grotendeels zelf sturen. Halen we dat niet in de twee pilotmaanden, dan draaien we kosteloos door tot het staat, en je onboarding krijg je terug.</p></div>
     </div>
   </div>
 </section>
@@ -494,54 +470,69 @@ footer .meta b{color:var(--muted);font-weight:500}
     <div class="cta-band sr" id="demo">
       <span class="eyebrow">Aan de slag</span>
       <h2>Klaar om te verdienen aan de klanten die je al hebt?</h2>
-      <p>We starten met &eacute;&eacute;n campagne op een deel van je bestand. Werkt het, dan schalen we. Jij levert een klant-ID, wij laten de rest zien.</p>
-      <div class="cta-row">
-        <a class="btn btn-main" href="mailto:hallo@nextkin.nl?subject=Demo%20Nextkin">Plan een demo <span class="arw">&#8594;</span></a>
-        <a class="btn btn-ghost" href="#pakketten">Bekijk de pakketten</a>
-      </div>
+      <p>We starten met &eacute;&eacute;n campagne op een deel van je bestand. Werkt het, dan schalen we.</p>
+      <div class="cta-row"><a class="btn btn-main" href="mailto:hallo@nextkin.nl?subject=Demo%20Nextkin">Plan een demo <span class="arw">&#8594;</span></a><a class="btn btn-ghost" href="#pakketten">Bekijk de pakketten</a></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap row">
-    <span class="wordmark">Next<span class="kin">kin</span></span>
-    <span class="meta">by <b>Lightr</b> &amp; <b>Pique</b> &middot; nextkin.nl</span>
-  </div>
+  <div class="wrap row"><span class="wordmark">Next<span class="kin">kin</span></span>
+    <span class="meta">by <b>Lightr</b> &amp; <b>Pique</b> &middot; nextkin.nl</span></div>
 </footer>
 
 <script>
 (function(){
   var nav=document.getElementById('nav');
-  var onScroll=function(){ nav.classList.toggle('solid', window.scrollY>10); };
-  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  var onScroll=function(){nav.classList.toggle('solid',window.scrollY>10);};
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
-  /* word reveal */
   var h1=document.querySelector('.wr');
-  if(h1){
-    var words=h1.textContent.split(' ');
-    h1.innerHTML='';
-    words.forEach(function(w,i){
-      var span=document.createElement('span'); span.className='w';
-      span.textContent=w+(i<words.length-1?' ':'');
-      span.style.transitionDelay=(i*0.05)+'s';
-      /* behoud de amber-underline op 'al hebt' */
-      if(w==='al'||w==='hebt') span.style.color='var(--amber)';
-      h1.appendChild(span);
+  if(h1){var t=h1.innerHTML;var parts=t.split(/(<[^>]+>)/);var out='';var wi=0;
+    parts.forEach(function(p){
+      if(p.charAt(0)==='<'){out+=p;}
+      else{p.split(' ').forEach(function(w,i,arr){ if(w===''){return;} out+='<span class="w" style="transition-delay:'+(wi*0.05)+'s">'+w+(i<arr.length-1?'&nbsp;':'')+'</span>'; wi++; });}
     });
+    h1.innerHTML=out;
   }
 
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        if(e.target.classList.contains('wr')) e.target.classList.add('in');
-        else e.target.classList.add('on');
-        if(e.target.classList.contains('flow')) e.target.classList.add('drawn');
-        io.unobserve(e.target);
-      }
-    });
-  },{threshold:.16,rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.sr,.wr,.flow').forEach(function(el){io.observe(el);});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){
+      var t=e.target;
+      if(t.classList.contains('wr'))t.classList.add('in'); else t.classList.add('on');
+      if(t.id==='chart')t.classList.add('drawn');
+      io.unobserve(t);
+    }});
+  },{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.sr,.sc,.wr,#chart').forEach(function(el){io.observe(el);});
+
+  /* set line stroke length voor de draw-animatie */
+  var ln=document.querySelector('.chart .ln');
+  if(ln){var L=ln.getTotalLength();ln.style.strokeDasharray=L;ln.style.strokeDashoffset=L;}
+
+  /* hero-pagina cyclet door voorbeelden */
+  var pp=document.getElementById('pp');
+  var scen=[
+    {u:'anna',g:'Welkom thuis, Anna',s:'Een boodschap van je adviseur staat klaar',o:[['Woonverzekering','Bekijk'],['Inboedel','Bekijk'],['€ 200 referral','Deel']]},
+    {u:'sven',g:'Je matras, compleet gemaakt',s:'Uitgezocht op wat je koos',o:[['Topper','Bekijk'],['Hoeslakens','Bekijk'],['Garantie-upgrade','Bekijk']]},
+    {u:'nadia',g:'Nog een maand erbij?',s:'Je abonnement loopt bijna af',o:[['Tweede lijn','Bekijk'],['Cadeau erbij','Bekijk'],['Vriendenkorting','Deel']]}
+  ];
+  var url=pp?pp.closest('.browser').querySelector('.url'):null;
+  var idx=0;
+  function paint(){
+    if(!pp)return;var s=scen[idx];
+    pp.classList.add('swap');
+    setTimeout(function(){
+      pp.querySelector('[data-g]').textContent=s.g;
+      pp.querySelector('[data-s]').textContent=s.s;
+      var oh='';s.o.forEach(function(x){oh+='<div class="of"><span class="d"></span><b>'+x[0]+'</b><span class="go">'+x[1]+'</span></div>';});
+      pp.querySelector('[data-o]').innerHTML=oh;
+      if(url)url.textContent='nextkin.app/'+s.u;
+      pp.classList.remove('swap');
+    },500);
+    idx=(idx+1)%scen.length;
+  }
+  if(pp && !window.matchMedia('(prefers-reduced-motion:reduce)').matches){ setInterval(paint,3200); }
 })();
 </script>
 </body>
