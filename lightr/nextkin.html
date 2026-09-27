@@ -251,8 +251,69 @@ footer{padding:2.4rem 0 3.2rem;border-top:1px solid var(--hair)}
 footer .row{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:baseline}
 footer .meta{font-family:var(--mono);font-size:.74rem;color:var(--faint)}footer .meta b{color:var(--muted);font-weight:500}
 
+/* ── sticky-scroll motor ── */
+.mstick{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:var(--on-navy);
+  padding:clamp(3rem,7vw,5rem) 0 clamp(3.4rem,8vw,5.6rem)}
+.ms-grid{display:grid;grid-template-columns:1fr;gap:1.6rem}
+@media(min-width:900px){.ms-grid{grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,5vw,4rem);align-items:start}}
+.ms-visual{position:relative;margin-top:1.4rem}
+@media(min-width:900px){.ms-visual{position:sticky;top:92px;height:440px;margin-top:0}}
+.ms-stage{position:relative;height:100%;min-height:330px}
+.ms-state{position:absolute;inset:0;opacity:0;transform:translateY(12px);
+  transition:opacity .55s var(--ease),transform .55s var(--ease);
+  display:flex;flex-direction:column;justify-content:center;gap:.85rem}
+.ms-state.on{opacity:1;transform:none}
+.dchip{font-family:var(--mono);font-size:.8rem;color:var(--on-navy-mut);background:rgba(234,238,247,.05);
+  border:1px solid var(--nline);border-radius:10px;padding:.7rem .85rem}
+.dchip .k2{color:var(--mint)}
+.cat{display:flex;flex-direction:column;gap:.42rem}
+.cx{display:flex;align-items:center;gap:.6rem;padding:.62rem .82rem;border:1px solid var(--nline);border-radius:9px;
+  color:var(--on-navy-mut);font-size:.9rem;font-weight:500;transition:all .45s var(--ease)}
+.cx::before{content:"";width:8px;height:8px;border-radius:50%;background:rgba(234,238,247,.2);flex:none}
+.cx.pick{color:#fff;border-color:rgba(18,179,122,.5);background:rgba(18,179,122,.1)}
+.cx.pick::before{background:var(--emerald)}
+.cx span{margin-left:auto;font-family:var(--mono);font-size:.68rem;color:var(--mint)}
+.cx.dim{opacity:.38}
+.mscap{font-size:.85rem;color:var(--on-navy-faint)}
+.ms-state .browser{max-width:330px}
+.ms-state .card{position:absolute;right:0;bottom:-8px;width:205px;transform:rotate(4deg)}
+.ms-steps{display:flex;flex-direction:column}
+.ms-step{padding:1.3rem 0 1.3rem 1.6rem;border-left:2px solid var(--nline);transition:opacity .4s,border-color .4s}
+@media(min-width:900px){.ms-step{min-height:60vh;display:flex;flex-direction:column;justify-content:center;opacity:.34}
+  .ms-step.active{opacity:1}}
+.ms-step.active{border-left-color:var(--emerald)}
+.ms-step .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--mint)}
+.ms-step h3{font-size:clamp(1.4rem,2.6vw,1.95rem);margin:.55rem 0 .5rem;color:#fff}
+.ms-step p{color:var(--on-navy-mut);font-size:1rem;line-height:1.55;max-width:40ch}
+@media(max-width:899px){
+  .ms-state:not([data-state="2"]){display:none}
+  .ms-state[data-state="2"]{position:relative;opacity:1;transform:none}
+  .ms-stage{min-height:auto}
+  .ms-state[data-state="2"] .card{position:relative;right:auto;bottom:auto;margin-top:1rem;transform:rotate(-2deg)}
+}
+
+/* ── wel/geen fit ── */
+.fit{display:grid;grid-template-columns:1fr;gap:1.1rem;margin-top:2.6rem}
+@media(min-width:760px){.fit{grid-template-columns:1fr 1fr}}
+.fit-col{border-radius:18px;padding:1.8rem}
+.fit-col.yes{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:var(--on-navy);box-shadow:var(--shadow-lg)}
+.fit-col.no{background:var(--white);border:1px solid var(--line);color:var(--muted)}
+.fit-h{display:flex;align-items:center;gap:.65rem;font-weight:800;font-size:1.15rem;letter-spacing:-.02em;margin-bottom:1.15rem}
+.fit-col.yes .fit-h{color:#fff}.fit-col.no .fit-h{color:var(--ink)}
+.fit-ic{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex:none;font-size:.9rem;font-weight:800;line-height:1}
+.fit-ic.ok{background:var(--emerald);color:#fff}
+.fit-ic.bad{background:rgba(13,23,50,.08);color:var(--faint)}
+.fit-col ul{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.fit-col li{position:relative;padding-left:1.7rem;font-size:.96rem;line-height:1.45}
+.fit-col.yes li{color:var(--on-navy-mut)}
+.fit-col.yes li::before{content:"";position:absolute;left:0;top:.28em;width:15px;height:15px;border-radius:50%;background:rgba(18,179,122,.2)}
+.fit-col.yes li::after{content:"";position:absolute;left:4.5px;top:.5em;width:4px;height:7px;border:solid var(--mint);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.fit-col.no li{color:var(--muted)}
+.fit-col.no li::before{content:"";position:absolute;left:2px;top:.66em;width:11px;height:1.5px;background:var(--faint)}
+
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important}
+  .ms-state{transition:none!important}
   .sr,.sc,.wr .w{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
   .chart path.ln{stroke-dashoffset:0!important}.chart path.area{opacity:1!important}
 }
@@ -332,18 +393,59 @@ footer .meta{font-family:var(--mono);font-size:.74rem;color:var(--faint)}footer 
   </div>
 </section>
 
-<!-- DE MOTOR (helder, navy) -->
-<section id="motor" class="sec-navy">
+<!-- DE MOTOR (sticky-scroll) -->
+<section id="motor" class="mstick">
   <div class="wrap head center sr">
     <span class="eyebrow">Zo werkt de motor</span>
     <h2 style="margin-left:auto;margin-right:auto">Data erin. Een persoonlijke verkoop eruit.</h2>
-    <p class="lead">Nextkin is een platform, geen campagne die je laat maken. Je koppelt het &eacute;&eacute;n keer, en het bouwt voor elke klant zijn eigen kaart en pagina.</p>
+    <p class="lead">Scroll mee en zie hoe de motor van &eacute;&eacute;n klant-ID een eigen kaart en pagina maakt.</p>
   </div>
-  <div class="wrap">
-    <div class="motor3">
-      <div class="m3 sr sr-1"><div class="k">01 &middot; Ingest</div><h3>Jij schiet een klant-ID in</h3><p>Met wat de klant al heeft en je hele aanbod. Via een koppeling of een bestand.</p><div class="chip">{ id: <span class="k2">"K7M2"</span>, heeft: [hypotheek] }</div></div>
-      <div class="m3 sr sr-2"><div class="k">02 &middot; Motor</div><h3>Hij kiest en leert</h3><p>De motor bepaalt per klant het juiste aanbod, binnen jouw regels, en leert met elke scan wat verkoopt.</p><div class="chip">kies &#8594; <span class="k2">rangschik</span> &#8594; test</div></div>
-      <div class="m3 sr sr-3"><div class="k">03 &middot; Delivery</div><h3>Kaart en pagina, in jouw merk</h3><p>Handgeschreven op de mat, persoonlijk achter de QR, in de taal van de klant.</p><div class="chip">kaart + pagina <span class="k2">&#10003;</span></div></div>
+  <div class="wrap ms-grid">
+    <div class="ms-visual">
+      <div class="ms-stage">
+        <div class="ms-state on" data-state="0">
+          <div class="dchip">{ id: <span class="k2">"K7M2"</span>, taal: "pl", heeft: [hypotheek] }</div>
+          <div class="cat">
+            <div class="cx">Woonverzekering</div>
+            <div class="cx">Inboedel</div>
+            <div class="cx">Aansprakelijkheid</div>
+            <div class="cx">Overlijdensrisico</div>
+            <div class="cx">Referral</div>
+          </div>
+          <div class="mscap">De klant en je hele aanbod komen binnen.</div>
+        </div>
+        <div class="ms-state" data-state="1">
+          <div class="cat">
+            <div class="cx pick">Woonverzekering <span>01</span></div>
+            <div class="cx pick">Inboedel <span>02</span></div>
+            <div class="cx dim">Aansprakelijkheid</div>
+            <div class="cx dim">Overlijdensrisico</div>
+            <div class="cx pick">Referral <span>03</span></div>
+          </div>
+          <div class="mscap">De motor kiest en rangschikt wat voor deze klant verkoopt.</div>
+        </div>
+        <div class="ms-state" data-state="2">
+          <div class="browser">
+            <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">nextkin.app/anna</div></div>
+            <div class="body"><div class="pp">
+              <div class="greet">Welkom thuis, Anna</div>
+              <div class="subline">Een boodschap van je adviseur staat klaar</div>
+              <div class="offers">
+                <div class="of"><span class="d"></span><b>Woonverzekering</b><span class="go">Bekijk</span></div>
+                <div class="of"><span class="d"></span><b>Inboedel</b><span class="go">Bekijk</span></div>
+                <div class="of"><span class="d"></span><b>&euro; 200 referral</b><span class="go">Deel</span></div>
+              </div>
+            </div></div>
+          </div>
+          <div class="card"><span class="stamp">Jouw merk</span><div class="hw">Gefeliciteerd, Anna.</div><div class="sign">Groet, Marta</div></div>
+          <div class="mscap">De kaart en de pagina, klaar om te versturen.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ms-steps">
+      <div class="ms-step active" data-step="0"><div class="k">01 &middot; Ingest</div><h3>Jij schiet &eacute;&eacute;n klant-ID in</h3><p>Met wat de klant al heeft en je hele aanbod. Via een koppeling of een bestand. Meer hebben we niet nodig.</p></div>
+      <div class="ms-step" data-step="1"><div class="k">02 &middot; Motor</div><h3>Hij kiest en leert wat verkoopt</h3><p>De motor bepaalt per klant het juiste aanbod, binnen jouw regels, en leert met elke scan wat aanslaat.</p></div>
+      <div class="ms-step" data-step="2"><div class="k">03 &middot; Delivery</div><h3>Kaart en pagina, in jouw merk</h3><p>Handgeschreven op de mat, persoonlijk achter de QR, in de taal van de klant. Klaar om te versturen.</p></div>
     </div>
   </div>
 </section>
@@ -406,18 +508,32 @@ footer .meta{font-family:var(--mono);font-size:.74rem;color:var(--faint)}footer 
   </div>
 </section>
 
-<!-- VOOR WIE -->
-<section>
+<!-- VOOR WIE: wel/geen fit -->
+<section id="voorwie">
   <div class="wrap head center sr">
     <span class="eyebrow">Voor wie</span>
-    <h2 style="margin:.7rem auto 0">Voor elk merk met klanten en een vervolgaanbod.</h2>
+    <h2 style="margin:.7rem auto 0">Eerlijk: voor wie dit werkt, en voor wie nog niet.</h2>
   </div>
-  <div class="wrap">
-    <div class="who">
-      <div class="wc sr sr-1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div><b>Webshops</b><span>Een tweede aankoop uit de eerste.</span></div>
-      <div class="wc sr sr-2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5"/><path d="M21 3v6h-6"/></svg></div><b>Abonnementen</b><span>Retentie en upsell op tijd.</span></div>
-      <div class="wc sr sr-3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.5 8 9 9 5.5-1 9-4 9-9V7z"/></svg></div><b>Financiële diensten</b><span>Cross-sell na een grote keuze.</span></div>
-      <div class="wc sr sr-4"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div><b>Consumentenmerken</b><span>Van koper naar fan naar aanbrenger.</span></div>
+  <div class="wrap fit">
+    <div class="fit-col yes sr">
+      <div class="fit-h"><span class="fit-ic ok">&#10003;</span> Een fit als</div>
+      <ul>
+        <li>je een klantenbestand hebt dat je mag aanschrijven</li>
+        <li>je klanten meer dan &eacute;&eacute;n keer bij je kopen</li>
+        <li>je meerdere producten of diensten aanbiedt</li>
+        <li>je retentie, cross-sell of referral laat liggen</li>
+        <li>je een webshop, abonnement, dienst of merk bent met marge op een vervolg</li>
+      </ul>
+    </div>
+    <div class="fit-col no sr sr-2">
+      <div class="fit-h"><span class="fit-ic bad">&#8211;</span> Nog geen fit als</div>
+      <ul>
+        <li>je klant &eacute;&eacute;n keer koopt en daarna nooit meer</li>
+        <li>je nog geen bestand hebt om uit te putten</li>
+        <li>je op een handvol enterprise-accounts draait</li>
+        <li>je marge geen vervolgaanbod toelaat</li>
+        <li>je klanten anoniem blijven, zonder adres of contact</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -533,6 +649,23 @@ footer .meta{font-family:var(--mono);font-size:.74rem;color:var(--faint)}footer 
     idx=(idx+1)%scen.length;
   }
   if(pp && !window.matchMedia('(prefers-reduced-motion:reduce)').matches){ setInterval(paint,3200); }
+
+  /* sticky-scroll motor: beeld verandert per stap */
+  var steps=[].slice.call(document.querySelectorAll('.ms-step'));
+  var states=[].slice.call(document.querySelectorAll('.ms-state'));
+  if(steps.length && window.matchMedia('(min-width:900px)').matches){
+    var raf=null;
+    var upd=function(){
+      raf=null;
+      var mid=window.innerHeight*0.42, best=0, bd=1e9;
+      steps.forEach(function(s,i){var r=s.getBoundingClientRect();var c=r.top+r.height/2;var d=Math.abs(c-mid);if(d<bd){bd=d;best=i;}});
+      steps.forEach(function(s,i){s.classList.toggle('active',i===best);});
+      states.forEach(function(s,i){s.classList.toggle('on',i===best);});
+    };
+    window.addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(upd);},{passive:true});
+    window.addEventListener('resize',function(){if(!raf)raf=requestAnimationFrame(upd);},{passive:true});
+    upd();
+  }
 })();
 </script>
 </body>
