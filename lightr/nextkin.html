@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nextkin</title>
+<meta name="description" content="Nextkin verandert je bestaande klantenbestand in nieuwe omzet. Een handgeschreven kaart in jouw merk, een persoonlijke pagina en een motor die leert wat verkoopt. Gebouwd door Lightr en Pique.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F9D6B'/%3E%3Cpath d='M9 22V10l7 8 7-8v12' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Caveat:wght@600&display=swap">
+<style>
+:root{
+  --navy:#0C1533;
+  --ink:#141B33;
+  --emerald:#0F9D6B;
+  --emerald-dk:#0B7E56;
+  --emerald-soft:#E7F5EE;
+  --amber:#F5A524;
+  --amber-soft:#FCEFD3;
+  --paper:#FAFAF7;
+  --white:#FFFFFF;
+  --muted:#5A6473;
+  --faint:#8A93A2;
+  --line:rgba(12,21,51,.12);
+  --hair:rgba(12,21,51,.07);
+  --font:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
+  --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --hand:'Caveat','Hanken Grotesk',cursive;
+  --shadow:0 1px 2px rgba(12,21,51,.05),0 10px 30px rgba(12,21,51,.08);
+  --shadow-lg:0 2px 6px rgba(12,21,51,.06),0 26px 60px rgba(12,21,51,.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+em,i,cite,address{font-style:normal}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);font-size:17px;
+  line-height:1.6;-webkit-font-smoothing:antialiased;letter-spacing:-.003em;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-weight:800;line-height:1.08;letter-spacing:-.024em;color:var(--navy);text-wrap:balance}
+:focus-visible{outline:2px solid var(--emerald);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.2rem)}
+.eyebrow{font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--emerald);display:inline-flex;align-items:center;gap:.55rem}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--emerald)}
+.lead{color:var(--muted);font-size:clamp(1.04rem,2.2vw,1.18rem);max-width:56ch}
+
+/* buttons */
+.btn{font-family:var(--font);font-weight:700;font-size:1rem;border-radius:11px;padding:.85rem 1.55rem;
+  cursor:pointer;border:1.5px solid transparent;display:inline-flex;align-items:center;gap:.5rem;
+  transition:transform .14s,background .18s,border-color .18s}
+.btn:active{transform:scale(.98)}
+.btn-main{background:var(--emerald);color:#fff}
+.btn-main:hover{background:var(--emerald-dk)}
+.btn-ghost{background:transparent;color:var(--navy);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--emerald);color:var(--emerald)}
+.btn .arw{transition:transform .16s}
+.btn-main:hover .arw{transform:translateX(3px)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:30;background:rgba(250,250,247,.85);backdrop-filter:blur(9px);
+  border-bottom:1px solid var(--hair)}
+.nav .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 0}
+.brand{display:flex;align-items:baseline;gap:.7rem}
+.wordmark{font-weight:800;font-size:1.4rem;letter-spacing:-.04em;color:var(--navy)}
+.wordmark .kin{color:var(--emerald)}
+.by{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.05em}
+.by b{color:var(--muted);font-weight:500}
+.nav .btn{padding:.6rem 1.15rem;font-size:.92rem}
+@media(max-width:560px){.nav .by{display:none}}
+
+/* hero */
+.hero{padding:clamp(2.8rem,7vw,5rem) 0 clamp(2.4rem,5vw,3.4rem)}
+.herogrid{display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,3rem);align-items:center}
+@media(min-width:880px){.herogrid{grid-template-columns:1.15fr .85fr}}
+.hero h1{font-size:clamp(2.3rem,6vw,3.7rem);margin:1.1rem 0 0;max-width:15ch}
+.hero h1 .u{background:linear-gradient(180deg,transparent 64%,var(--amber-soft) 64%);
+  box-decoration-break:clone;-webkit-box-decoration-break:clone;padding-bottom:.02em}
+.hero .lead{margin-top:1.4rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.9rem}
+.trust{margin-top:1.6rem;font-family:var(--mono);font-size:.76rem;color:var(--faint);letter-spacing:.04em}
+.trust b{color:var(--muted);font-weight:500}
+
+/* hero visual: kaart + mini-pagina */
+.visual{position:relative;min-height:300px}
+.card{position:relative;z-index:2;max-width:340px;margin-left:auto;
+  background:linear-gradient(150deg,#fffefb,#f6f3ea);border:1px solid var(--line);border-radius:8px;
+  padding:1.3rem 1.35rem;box-shadow:var(--shadow-lg);transform:rotate(-2deg)}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.7rem}
+.card .logo{font-weight:800;font-size:.95rem;letter-spacing:-.03em;color:var(--navy)}
+.card .logo .kin{color:var(--emerald)}
+.card .stamp{background:var(--emerald);color:#fff;font-family:var(--mono);font-size:.58rem;
+  letter-spacing:.12em;text-transform:uppercase;padding:.26rem .5rem;border-radius:4px}
+.card .hw{font-family:var(--hand);font-size:1.42rem;line-height:1.4;color:#20304f}
+.card .sign{font-family:var(--hand);font-size:1.42rem;color:var(--muted);margin-top:.4rem}
+.card .qr{position:absolute;right:1.1rem;bottom:1rem;width:44px;height:44px;background:#fff;
+  border-radius:5px;box-shadow:0 1px 4px rgba(12,21,51,.16);padding:4px}
+.mini{position:absolute;left:0;bottom:-18px;z-index:1;width:220px;background:var(--white);
+  border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:.9rem;
+  transform:rotate(1.5deg)}
+.mini .mh{font-weight:700;font-size:.82rem;color:var(--navy);margin-bottom:.55rem}
+.mini .blk{display:flex;align-items:center;gap:.5rem;padding:.42rem .55rem;border-radius:8px;
+  background:var(--paper);margin-bottom:.36rem;font-size:.72rem;color:var(--muted);font-weight:600}
+.mini .blk .d{width:8px;height:8px;border-radius:50%;background:var(--emerald);flex:none}
+.mini .blk.b2 .d{background:var(--amber)}
+.mini .blk.b3 .d{background:var(--navy)}
+@media(max-width:879px){.visual{min-height:0}.card{margin:0 auto}.mini{position:relative;left:auto;bottom:auto;margin:1.2rem auto 0;transform:rotate(-1deg)}}
+
+/* trust band */
+.band{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);background:var(--white)}
+.band .row{display:flex;flex-wrap:wrap;gap:1rem 2.4rem;align-items:center;justify-content:space-between;
+  padding:1.15rem 0}
+.band .stat{display:flex;flex-direction:column}
+.band .stat b{font-size:1.5rem;font-weight:800;color:var(--navy);letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums}
+.band .stat span{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--faint);margin-top:.15rem}
+
+/* secties */
+section{padding:clamp(2.8rem,6vw,4.2rem) 0}
+.head h2{font-size:clamp(1.6rem,3.6vw,2.3rem);margin-top:.75rem;max-width:22ch}
+.head .lead{margin-top:1rem}
+
+/* stappen */
+.steps{display:grid;gap:1rem;margin-top:2.2rem}
+@media(min-width:720px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.3rem 1.25rem}
+.step .no{font-family:var(--mono);font-weight:500;width:30px;height:30px;border-radius:8px;
+  background:var(--navy);color:#fff;display:grid;place-items:center;font-size:.9rem}
+.step b{display:block;margin-top:.85rem;font-size:1.02rem;color:var(--navy)}
+.step p{margin-top:.35rem;font-size:.9rem;color:var(--muted)}
+
+/* pakketten */
+.pk{display:grid;gap:1.1rem;margin-top:2.3rem;align-items:stretch}
+@media(min-width:840px){.pk{grid-template-columns:repeat(3,1fr)}}
+.pack{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:1.6rem 1.5rem 1.5rem;
+  display:flex;flex-direction:column;position:relative}
+.pack.best{border-color:var(--emerald);box-shadow:0 0 0 3px var(--emerald-soft)}
+.pack .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint)}
+.pack.best .tag{color:var(--emerald)}
+.pack .badge{position:absolute;top:-11px;left:1.5rem;background:var(--emerald);color:#fff;
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.28rem .65rem;border-radius:99px}
+.pack .nm{font-size:1.3rem;font-weight:800;color:var(--navy);margin-top:.35rem;letter-spacing:-.03em}
+.pack .desc{font-size:.92rem;color:var(--muted);margin-top:.35rem;min-height:2.6em}
+.pack ul{list-style:none;margin:1.1rem 0 1.3rem;display:flex;flex-direction:column;gap:.6rem}
+.pack li{position:relative;padding-left:1.7rem;font-size:.92rem;color:var(--ink);line-height:1.45}
+.pack li::before{content:"";position:absolute;left:0;top:.05em;width:18px;height:18px;border-radius:50%;
+  background:var(--emerald-soft)}
+.pack li::after{content:"";position:absolute;left:5.5px;top:.36em;width:5px;height:8px;
+  border:solid var(--emerald);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.pack .price{margin-top:auto;padding-top:1.1rem;border-top:1px solid var(--hair)}
+.pack .price .amt{font-size:1.1rem;font-weight:800;color:var(--navy)}
+.pack .price .amt small{font-family:var(--mono);font-size:.72rem;font-weight:400;color:var(--faint);
+  letter-spacing:.02em;display:block;margin-top:.15rem}
+.pack .btn{margin-top:1.15rem;justify-content:center;width:100%}
+.pack:not(.best) .btn{background:var(--paper);color:var(--navy);border-color:var(--line)}
+.pack:not(.best) .btn:hover{border-color:var(--emerald);color:var(--emerald)}
+.pk-note{margin-top:1.4rem;font-size:.9rem;color:var(--muted);text-align:center}
+.pk-note b{color:var(--navy);font-weight:700}
+
+/* garantie */
+.guarantee{margin-top:1.9rem;display:grid;gap:1.4rem;align-items:center;
+  border:1.5px solid var(--emerald);border-radius:18px;background:var(--emerald-soft);padding:1.7rem 1.7rem}
+@media(min-width:720px){.guarantee{grid-template-columns:auto 1fr;gap:1.7rem}}
+.gseal{width:74px;height:74px;border-radius:50%;background:var(--emerald);display:grid;place-items:center;
+  flex:none;box-shadow:0 8px 22px rgba(15,157,107,.32)}
+.gseal svg{width:38px;height:38px;color:#fff}
+.guarantee .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--emerald-dk);font-weight:500}
+.guarantee h3{font-size:1.25rem;color:var(--navy);margin-top:.35rem}
+.guarantee p{margin-top:.5rem;color:var(--ink);max-width:64ch;font-size:.98rem}
+
+/* cta band */
+.cta-band{background:var(--navy);color:#fff;border-radius:22px;padding:clamp(2.2rem,5vw,3.2rem);
+  margin:clamp(2.6rem,6vw,3.6rem) auto;text-align:center}
+.cta-band .eyebrow{color:var(--amber);justify-content:center}
+.cta-band .eyebrow::before{background:var(--amber)}
+.cta-band h2{color:#fff;font-size:clamp(1.7rem,4vw,2.5rem);margin-top:1rem;max-width:20ch;
+  margin-left:auto;margin-right:auto}
+.cta-band p{color:rgba(255,255,255,.68);margin-top:1rem;max-width:50ch;margin-left:auto;margin-right:auto}
+.cta-band .cta-row{justify-content:center;margin-top:2rem}
+.cta-band .btn-ghost{color:#fff;border-color:rgba(255,255,255,.25)}
+.cta-band .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+
+/* footer */
+footer{border-top:1px solid var(--hair);padding:2.2rem 0 3rem}
+footer .row{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:baseline}
+footer .wordmark{font-size:1.15rem}
+footer .meta{font-family:var(--mono);font-size:.74rem;color:var(--faint);letter-spacing:.04em}
+footer .meta b{color:var(--muted);font-weight:500}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap row">
+    <div class="brand">
+      <span class="wordmark">Next<span class="kin">kin</span></span>
+      <span class="by">by <b>Lightr</b> &amp; <b>Pique</b></span>
+    </div>
+    <a class="btn btn-main" href="#demo">Plan een demo</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap herogrid">
+    <div>
+      <span class="eyebrow">Cross-sell en retentie op de automaat</span>
+      <h1>De makkelijkste omzet zit in de klanten die je <span class="u">al hebt</span>.</h1>
+      <p class="lead">Nextkin verandert je klantenbestand in nieuwe omzet. Een handgeschreven kaart in jouw merk valt op de mat, de QR opent een persoonlijke pagina, en onze motor kiest per klant het juiste aanbod en leert wat verkoopt.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="#demo">Plan een demo <span class="arw">&#8594;</span></a>
+        <a class="btn btn-ghost" href="#pakketten">Bekijk de pakketten</a>
+      </div>
+      <p class="trust">Gebouwd door <b>Lightr</b> en <b>Pique</b></p>
+    </div>
+
+    <div class="visual">
+      <div class="card">
+        <div class="top">
+          <span class="logo">Next<span class="kin">kin</span></span>
+          <span class="stamp">Jouw merk</span>
+        </div>
+        <div class="hw">Gefeliciteerd met je nieuwe woning, Anna. We hebben iets voor je klaargezet.</div>
+        <div class="sign">Groet, Marta</div>
+        <svg class="qr" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true">
+          <rect width="29" height="29" fill="#fff"/>
+          <g fill="#0C1533">
+            <path d="M1 1h7v7H1zm1 1v5h5V2z"/><path d="M3 3h3v3H3z"/>
+            <path d="M21 1h7v7h-7zm1 1v5h5V2z"/><path d="M23 3h3v3h-3z"/>
+            <path d="M1 21h7v7H1zm1 1v5h5v-5z"/><path d="M3 23h3v3H3z"/>
+            <path d="M10 1h1v2h-1zm2 0h1v1h-1zm2 1h1v2h-1zm2-1h1v3h-1z"/>
+            <path d="M10 5h2v1h-2zm3 0h1v2h-1zm3 1h2v1h-2z"/>
+            <path d="M1 10h2v1H1zm3 0h1v2H4zm3-1h1v2H7zm3 1h2v1h-2zm4 0h1v1h-1zm2-1h1v2h-1zm3 1h2v1h-2z"/>
+            <path d="M2 13h1v1H2zm3 1h2v1H5zm4-1h1v2H9zm3 1h1v1h-1zm3-1h2v1h-2zm4 1h1v1h-1z"/>
+            <path d="M1 16h2v1H1zm4 0h1v2H5zm3 1h2v1H8zm4-1h1v2h-1zm3 1h1v1h-1zm3-1h2v1h-2z"/>
+            <path d="M10 19h1v2h-1zm3 1h2v1h-2zm4-1h1v2h-1zm3 1h1v1h-1zm3-1h2v1h-2z"/>
+            <path d="M10 22h2v1h-2zm4 0h1v2h-1zm3 1h1v1h-1zm3-1h1v2h-1z"/>
+          </g>
+        </svg>
+      </div>
+      <div class="mini" aria-hidden="true">
+        <div class="mh">Welkom thuis, Anna</div>
+        <div class="blk b1"><span class="d"></span>Woonverzekering</div>
+        <div class="blk b2"><span class="d"></span>Inboedel</div>
+        <div class="blk b3"><span class="d"></span>&euro; 200 referral</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="band">
+  <div class="wrap row">
+    <div class="stat"><b>1 ID</b><span>is alles wat je aanlevert</span></div>
+    <div class="stat"><b>12</b><span>talen, zonder meerwerk</span></div>
+    <div class="stat"><b>2 mnd</b><span>pilot met garantie</span></div>
+    <div class="stat"><b>5&#215;</b><span>goedkoper dan een nieuwe klant</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap head">
+    <span class="eyebrow">Het probleem</span>
+    <h2>Je duurste klant is de klant die je al binnen hebt.</h2>
+    <p class="lead">Je betaalt fors om nieuwe klanten te winnen, en de klanten die je al hebt laat je links liggen. Je weet wat ze kochten en wat ze nog missen. Toch krijgen ze dezelfde nieuwsbrief als iedereen, en die opent bijna niemand. De makkelijkste omzet die er is, blijft op de plank liggen.</p>
+  </div>
+</section>
+
+<section style="background:var(--white);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+  <div class="wrap head">
+    <span class="eyebrow">Hoe het werkt</span>
+    <h2>Vier stappen. Jij doet er &eacute;&eacute;n.</h2>
+  </div>
+  <div class="wrap">
+    <div class="steps">
+      <div class="step"><span class="no">1</span><b>Jij stuurt een klant-ID</b><p>Met wat de klant al heeft en wat je kunt aanbieden. Meer hebben we niet nodig.</p></div>
+      <div class="step"><span class="no">2</span><b>De motor kiest het aanbod</b><p>Per klant, binnen jouw regels. En hij leert wat bij welk profiel aanslaat.</p></div>
+      <div class="step"><span class="no">3</span><b>De kaart gaat de deur uit</b><p>Handgeschreven in jouw merk, met een persoonlijke pagina achter de QR.</p></div>
+      <div class="step"><span class="no">4</span><b>Elke scan maakt het slimmer</b><p>We meten wat converteert en tillen dat cijfer maand na maand op.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pakketten">
+  <div class="wrap head">
+    <span class="eyebrow">De pakketten</span>
+    <h2>Begin klein, schaal op als het werkt.</h2>
+    <p class="lead">Je betaalt per benadering, dus per klant die een kaart of e-mail krijgt. De prijs zakt naarmate je groeit. De kaarten en de porto lopen apart via Lightr.</p>
+  </div>
+  <div class="wrap">
+    <div class="pk">
+
+      <div class="pack">
+        <span class="tag">Pilot &middot; 2 maanden</span>
+        <div class="nm">Start</div>
+        <p class="desc">Bewijs het op een deel van je bestand, voordat je opschaalt.</p>
+        <ul>
+          <li>Handgeschreven kaart in jouw merk</li>
+          <li>Persoonlijke pagina per klant</li>
+          <li>Relevante aanbiedingen per klant</li>
+          <li>Scans en klikken meetbaar</li>
+        </ul>
+        <div class="price">
+          <div class="amt">vanaf &euro; 1,50 <small>per benadering &middot; &euro; 2.500 onboarding</small></div>
+        </div>
+        <a class="btn" href="#demo">Start de pilot</a>
+      </div>
+
+      <div class="pack best">
+        <span class="badge">Aanbevolen</span>
+        <span class="tag">De volle motor</span>
+        <div class="nm">Groei</div>
+        <p class="desc">De motor die het aanbod kiest en leert wat verkoopt.</p>
+        <ul>
+          <li>Alles uit Start</li>
+          <li>Relevantie- en conversie-optimalisatie</li>
+          <li>Twaalf talen</li>
+          <li>Dashboard op klant-ID</li>
+        </ul>
+        <div class="price">
+          <div class="amt">tot &euro; 0,40 <small>per benadering, staffel op volume</small></div>
+        </div>
+        <a class="btn btn-main" href="#demo">Plan een demo</a>
+      </div>
+
+      <div class="pack">
+        <span class="tag">Op maat</span>
+        <div class="nm">Schaal</div>
+        <p class="desc">Voor grote bestanden en meerdere momenten in de klantreis.</p>
+        <ul>
+          <li>Alles uit Groei</li>
+          <li>Meerdere journeys, van aankoop tot verlenging</li>
+          <li>E-mail naast de kaart, met A/B</li>
+          <li>API-koppeling en SLA</li>
+        </ul>
+        <div class="price">
+          <div class="amt">Op maat <small>afgestemd op je volume en journeys</small></div>
+        </div>
+        <a class="btn" href="#demo">Praat met ons</a>
+      </div>
+
+    </div>
+    <p class="pk-note"><b>Onboarding terug.</b> Ga je na de pilot door met minstens hetzelfde volume, dan verrekenen we de &euro; 2.500 volledig met je facturen van de eerste drie maanden.</p>
+  </div>
+</section>
+
+<section style="background:var(--white);border-top:1px solid var(--hair)">
+  <div class="wrap head">
+    <span class="eyebrow">Onze garantie</span>
+    <h2>Wij bewijzen het eerst, of je betaalt niet door.</h2>
+  </div>
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="gseal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <div>
+        <span class="lbl">Een doel dat wij in de hand hebben</span>
+        <h3>Halen we het scan- en klikdoel niet, dan draaien we gratis door.</h3>
+        <p>We spreken vooraf een scan- en klikdoel af op de pagina, iets wat wij grotendeels zelf sturen. Halen we dat niet binnen de twee pilotmaanden, dan draaien we kosteloos door tot het staat, en je onboarding krijg je terug. Het risico ligt bij ons.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="cta-band" id="demo">
+    <span class="eyebrow">Aan de slag</span>
+    <h2>Klaar om te verdienen aan de klanten die je al hebt?</h2>
+    <p>We starten met &eacute;&eacute;n campagne op een deel van je bestand. Werkt het, dan schalen we. Jij levert een klant-ID, wij laten de rest zien.</p>
+    <div class="cta-row">
+      <a class="btn btn-main" href="mailto:hallo@nextkin.nl?subject=Demo%20Nextkin">Plan een demo <span class="arw">&#8594;</span></a>
+      <a class="btn btn-ghost" href="#pakketten">Bekijk de pakketten</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap row">
+    <span class="wordmark">Next<span class="kin">kin</span></span>
+    <span class="meta">by <b>Lightr</b> &amp; <b>Pique</b> &middot; nextkin.nl</span>
+  </div>
+</footer>
+
+</body>
+</html>
