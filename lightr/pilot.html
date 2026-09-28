@@ -184,8 +184,8 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
   .flowx.pin .fx-viewport{margin-top:1.7rem}
   .flowx.pin .fx-body h3{font-size:clamp(1.4rem,2.9vw,1.95rem)}
   .flowx.pin .fx-vis>*{max-width:310px}
-  .flowx.pin .fx-track{flex-direction:row;gap:0;will-change:transform;transition:transform .12s linear}
-  .flowx.pin .fx-panel{flex:0 0 100%}
+  .flowx.pin .fx-track{flex-direction:row;gap:0;will-change:transform;transition:transform .6s var(--ease)}
+  .flowx.pin .fx-panel{flex:0 0 100%;max-width:none;width:100%;margin:0;padding-left:max(1.6rem,calc((100% - 1000px) / 2));padding-right:max(1.6rem,calc((100% - 1000px) / 2))}
   .flowx.pin .fx-panel .fx-body,.flowx.pin .fx-panel .fx-vis{opacity:.0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
   .flowx.pin .fx-panel.active .fx-body{opacity:1;transform:none;transition-delay:.05s}
   .flowx.pin .fx-panel.active .fx-vis{opacity:1;transform:none;transition-delay:.14s}
@@ -713,8 +713,8 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
       var top=flowx.getBoundingClientRect().top;
       var p=range>0?(-top/range):0; p=p<0?0:(p>1?1:p);
       var vw=fxvp.clientWidth;
-      fxtrack.style.transform='translateX('+(-p*(N-1)*vw)+'px)';
       var idx=Math.round(p*(N-1));
+      fxtrack.style.transform='translateX('+(-idx*vw)+'px)';
       fxdots.forEach(function(d,i){d.classList.toggle('on',i<=idx);});
       fxpanels.forEach(function(pan,i){pan.classList.toggle('active',i===idx);});
       if(fxfill) fxfill.style.width='calc((100% - 40px) * '+p+')';
