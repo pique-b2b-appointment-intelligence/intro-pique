@@ -115,6 +115,41 @@ section{padding:clamp(3rem,6.5vw,4.4rem) 0}
 .step b{display:block;margin-top:.85rem;font-size:1.05rem;color:var(--navy)}
 .step p{margin-top:.35rem;font-size:.92rem;color:var(--muted)}
 
+/* de reis (visuele uitleg) */
+.jrn{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:2.6rem;align-items:start}
+@media(min-width:860px){.jrn{grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:.8rem}}
+.jf{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.1rem}
+.jvis{width:100%;min-height:148px;display:flex;align-items:center;justify-content:center}
+.jf .cap b{display:block;color:var(--navy);font-size:1rem;font-weight:800}
+.jf .cap span{display:block;color:var(--muted);font-size:.88rem;margin-top:.25rem;max-width:26ch;margin-left:auto;margin-right:auto}
+.jarrow{color:var(--faint);font-size:1.5rem;display:flex;align-items:center;justify-content:center;font-weight:800}
+@media(max-width:859px){.jarrow{transform:rotate(90deg);margin:-.5rem 0}}
+.card2{position:relative;width:100%;max-width:240px;background:linear-gradient(150deg,#fffefb,#f4f2ea);border-radius:9px;
+  padding:1rem 1.1rem;box-shadow:var(--shadow);border:1px solid rgba(13,23,50,.06);transform:rotate(-2deg)}
+.card2 .stamp{float:right;background:var(--emerald);color:#fff;font-family:var(--mono);font-size:.52rem;letter-spacing:.11em;
+  text-transform:uppercase;padding:.22rem .44rem;border-radius:4px;margin:-.1rem -.1rem .3rem .5rem}
+.card2 .hw{font-family:var(--hand);font-size:1.16rem;line-height:1.3;color:#243352}
+.card2 .qrow{display:flex;align-items:flex-end;justify-content:space-between;gap:.5rem;margin-top:.55rem}
+.card2 .sign{font-family:var(--hand);font-size:1.16rem;color:var(--muted)}
+.card2 .qr{width:38px;height:38px;flex:none;background:#fff;border-radius:3px;padding:2px;box-shadow:0 1px 3px rgba(13,23,50,.14)}
+.browser.sm{max-width:240px;box-shadow:var(--shadow);margin:0 auto}
+.browser.sm .body{padding:.9rem}
+.browser.sm .pp .greet{font-size:.92rem}
+.browser.sm .pp .subline{font-size:.68rem}
+.browser.sm .pp .of{padding:.42rem .55rem}.browser.sm .pp .of b{font-size:.75rem}
+.browser.sm .pp .of .d{width:20px;height:20px}
+.bought{width:100%;max-width:240px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.5rem 1.2rem;
+  display:flex;flex-direction:column;align-items:center;gap:.7rem;box-shadow:var(--shadow);margin:0 auto}
+.bcheck{width:46px;height:46px;border-radius:50%;background:var(--emerald);color:#fff;display:grid;place-items:center}
+.bcheck svg{width:24px;height:24px}
+.bought b{color:var(--navy);font-size:1rem}
+.bbars{display:flex;align-items:flex-end;gap:5px;height:32px}
+.bbars i{width:11px;background:var(--emerald-soft);border-radius:2px}
+.bbars i:nth-child(1){height:40%}.bbars i:nth-child(2){height:60%}.bbars i:nth-child(3){height:80%}.bbars i:nth-child(4){height:100%;background:var(--emerald)}
+.whycard{text-align:center;max-width:50ch;margin:2.6rem auto 0;font-size:1.14rem;color:var(--ink);line-height:1.5}
+.whycard b{color:var(--navy);font-weight:800}
+.yourside{text-align:center;max-width:52ch;margin:1rem auto 0;font-size:.95rem;color:var(--muted)}
+
 /* value stack */
 .stack{margin-top:2.2rem;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--white)}
 .stack .item{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;padding:1rem 1.4rem;border-bottom:1px solid var(--hair)}
@@ -189,18 +224,58 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
   </div>
 </header>
 
-<!-- zo werkt het -->
+<!-- wat het concreet is: de reis -->
 <section>
   <div class="wrap head center sr">
-    <span class="eyebrow">Zo werkt het</span>
-    <h2 style="margin:.7rem auto 0">Jij levert de data, wij leveren de verkoop.</h2>
+    <span class="eyebrow">Wat het concreet is</span>
+    <h2 style="margin:.7rem auto 0">Van een kaart op de mat naar een tweede verkoop.</h2>
+    <p class="lead">Je klant kocht net iets bij je. Kort daarna gebeurt dit.</p>
   </div>
   <div class="wrap">
-    <div class="steps">
-      <div class="step sr sr-1"><span class="n">1</span><b>Jij levert een klant-ID</b><p>Met wat de klant al kocht en je aanbod. Meer hebben we niet nodig.</p></div>
-      <div class="step sr sr-2"><span class="n">2</span><b>De motor kiest en leert</b><p>Per klant het juiste vervolgaanbod, en het wordt slimmer met elke scan.</p></div>
-      <div class="step sr sr-3"><span class="n">3</span><b>Kaart en pagina, in jouw merk</b><p>Handgeschreven op de mat, persoonlijk achter de QR.</p></div>
+    <div class="jrn sr">
+      <div class="jf">
+        <div class="jvis">
+          <div class="card2">
+            <span class="stamp">Jouw merk</span>
+            <div class="hw">Bedankt voor je bestelling, Anna.</div>
+            <div class="qrow"><span class="sign">Groet, het team</span>
+              <svg class="qr" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true"><rect width="29" height="29" fill="#fff"/><g fill="#0D1732"><path d="M1 1h7v7H1zm1 1v5h5V2z"/><path d="M3 3h3v3H3z"/><path d="M21 1h7v7h-7zm1 1v5h5V2z"/><path d="M23 3h3v3h-3z"/><path d="M1 21h7v7H1zm1 1v5h5v-5z"/><path d="M3 23h3v3H3z"/><path d="M10 2h2v2h-2zm4 0h1v3h-1zm3 1h2v1h-2z"/><path d="M2 12h3v1H2zm5-1h1v2H7zm4 1h2v1h-2zm5-1h1v2h-1z"/><path d="M12 14h1v2h-1zm4 1h2v1h-2zm4-1h1v2h-1z"/><path d="M11 20h2v1h-2zm5 0h1v2h-1zm4 1h2v1h-2z"/><path d="M11 24h2v1h-2zm4 0h1v2h-1zm4-1h1v2h-1z"/></g></svg>
+            </div>
+          </div>
+        </div>
+        <div class="cap"><b>Een handgeschreven kaart op de mat</b><span>In jouw merk. Een echte kaart, geen e-mail.</span></div>
+      </div>
+      <div class="jarrow">&#8594;</div>
+      <div class="jf">
+        <div class="jvis">
+          <div class="browser sm">
+            <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">jouwmerk.nl</div></div>
+            <div class="body"><div class="pp">
+              <div class="greet">Welkom terug, Anna</div>
+              <div class="subline">Uitgezocht op wat je koos</div>
+              <div class="offers">
+                <div class="of"><span class="d"></span><b>Perfect hierbij</b><span class="go">Bekijk</span></div>
+                <div class="of"><span class="d"></span><b>Voor een vriend</b><span class="go">Deel</span></div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+        <div class="cap"><b>Ze scannen de QR</b><span>En zien precies wat bij hen past.</span></div>
+      </div>
+      <div class="jarrow">&#8594;</div>
+      <div class="jf">
+        <div class="jvis">
+          <div class="bought">
+            <div class="bcheck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <b>Tweede verkoop</b>
+            <div class="bbars"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="cap"><b>En kopen opnieuw</b><span>Zonder dat jij iets hoefde te bouwen.</span></div>
+      </div>
     </div>
+    <p class="whycard sr sr-2">Een e-mail wordt genegeerd. Een handgeschreven kaart wordt bewaard en gescand. <b>Dat is waarom dit werkt.</b></p>
+    <p class="yourside sr sr-3">En jouw kant is simpel: je stuurt ons een klant-ID, wij bouwen de kaart, de pagina en het aanbod dat bij elke klant past.</p>
   </div>
 </section>
 
