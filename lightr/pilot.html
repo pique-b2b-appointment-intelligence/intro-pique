@@ -328,6 +328,13 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
 .cta-band .btn-ghost{color:#fff;border-color:var(--nline)}.cta-band .btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
 .cta-band .cobrand{margin-top:2rem}
 
+/* belafspraak */
+.book{background:var(--paper)}
+.cal-card{margin-top:2.2rem;background:var(--white);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:clamp(.5rem,1.6vw,.9rem)}
+#my-cal-inline-belafspraak-pique{min-height:600px;width:100%;overflow:auto;border-radius:14px}
+.book .alt{text-align:center;margin-top:1.4rem;font-size:.92rem;color:var(--muted)}
+.book .alt a{color:var(--emerald-dk);font-weight:700;border-bottom:1px solid rgba(12,142,96,.3)}
+
 footer{padding:2.2rem 0 3rem;border-top:1px solid var(--hair)}
 footer .row{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
 footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
@@ -341,7 +348,7 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
 <nav class="nav" id="nav">
   <div class="wrap row">
     <span class="cobrand"><img src="lightr-logo.webp" alt="Lightr"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique"></span>
-    <a class="btn btn-main" href="#mee">Doe mee aan de pilot</a>
+    <a class="btn btn-main" href="#plan">Doe mee aan de pilot</a>
   </div>
 </nav>
 
@@ -352,7 +359,7 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
       <h1 class="wr"><span class="w">Heractiveer</span> <span class="w">bestaande</span> <span class="w">klanten</span> <span class="w">met</span> <span class="w g">handgeschreven</span> <span class="w g">post.</span></h1>
       <p class="sub">Je klant kocht net iets. Wij sturen kort daarna een <b>handgeschreven kaart of mail</b> in jouw merk, met een persoonlijke pagina en het aanbod dat bij die klant past.</p>
       <div class="cta-row">
-        <a class="btn btn-main" href="#mee">Doe mee aan de pilot <span class="arw">&#8594;</span></a>
+        <a class="btn btn-main" href="#plan">Doe mee aan de pilot <span class="arw">&#8594;</span></a>
         <a class="btn btn-ghost" href="https://evenkennismaken.nl/domek-pagina?k=anna" target="_blank" rel="noopener">Bekijk een voorbeeld</a>
       </div>
       <div class="madeby">
@@ -666,11 +673,26 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
       <h2>We nemen een handvol pilotklanten aan.</h2>
       <p>Zodat we elke campagne persoonlijk kunnen begeleiden. Laat weten dat je erbij wil, dan plannen we een kort gesprek.</p>
       <div class="cta-row">
-        <a class="btn btn-main" href="mailto:hallo@pique.agency?subject=Pilot%20platform%20Lightr%20x%20Pique">Doe mee aan de pilot <span class="arw">&#8594;</span></a>
+        <a class="btn btn-main" href="#plan">Prik een moment <span class="arw">&#8594;</span></a>
         <a class="btn btn-ghost" href="https://evenkennismaken.nl/domek-pagina?k=anna" target="_blank" rel="noopener">Bekijk een voorbeeld</a>
       </div>
       <span class="cobrand cobrand--light"><img src="lightr-logo.webp" alt="Lightr"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique"></span>
     </div>
+  </div>
+</section>
+
+<!-- belafspraak -->
+<section class="book" id="plan">
+  <div class="wrap head center sr">
+    <span class="eyebrow">Plan direct</span>
+    <h2 style="margin:.7rem auto 0">Prik meteen een moment.</h2>
+    <p class="lead" style="margin-top:1rem">Een kort gesprek van twintig minuten. We laten zien hoe het voor jouw klanten werkt.</p>
+  </div>
+  <div class="wrap">
+    <div class="cal-card sr sr-2">
+      <div id="my-cal-inline-belafspraak-pique" style="width:100%;overflow:auto"></div>
+    </div>
+    <p class="alt">Liever mailen? <a href="mailto:hallo@pique.agency?subject=Pilot%20platform%20Lightr%20x%20Pique">hallo@pique.agency</a></p>
   </div>
 </section>
 
@@ -680,6 +702,18 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
     <span class="meta">Concept &middot; platform in aanbouw onder een nieuwe naam</span>
   </div>
 </footer>
+
+<!-- Cal.com inline embed (belafspraak Simon) -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "belafspraak-pique", {origin:"https://app.cal.com"});
+  Cal.ns["belafspraak-pique"]("inline", {
+    elementOrSelector:"#my-cal-inline-belafspraak-pique",
+    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+    calLink: "simon-kempers/belafspraak-pique",
+  });
+  Cal.ns["belafspraak-pique"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
 
 <script>
 (function(){
