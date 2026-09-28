@@ -5,19 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pilot · Lightr &amp; Pique</title>
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Lightr en Pique bouwen een platform voor cross-sell en retentie na de aankoop. Nu in de pilotfase: stap goedkoop in als proof-of-concept-partner.">
+<meta name="description" content="Lightr en Pique bouwen samen een platform voor de omzet na de aankoop: een handgeschreven kaart of mail, een persoonlijke pagina, en een motor die kiest wat jouw klant het volgende koopt. Nu in pilot.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2312B37A'/%3E%3Cpath d='M9 22V10l7 8 7-8v12' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Caveat:wght@600;700&display=swap">
 <style>
 :root{
   --navy:#0A1330; --navy-2:#0F1A40; --navy-3:#17234F;
-  --emerald:#12B37A; --emerald-dk:#0C8E60; --emerald-soft:#E6F6EF; --mint:#3ED598;
+  --emerald:#12B37A; --emerald-dk:#0C8E60; --emerald-soft:#E6F6EF; --mint:#2FD6A6; --mint-2:#00E6BF;
+  --gold:#D99A3E; --gold-dk:#B87A22; --gold-soft:#F7EEDD;
   --paper:#F6F8F7; --white:#FFFFFF;
   --ink:#0D1732; --muted:#586074; --faint:#8A90A2;
   --line:rgba(13,23,50,.11); --hair:rgba(13,23,50,.06);
-  --on-navy:#EAEEF7; --on-navy-mut:rgba(234,238,247,.60); --on-navy-faint:rgba(234,238,247,.32); --nline:rgba(234,238,247,.12);
+  --on-navy:#EAEEF7; --on-navy-mut:rgba(234,238,247,.62); --on-navy-faint:rgba(234,238,247,.34); --nline:rgba(234,238,247,.13);
   --font:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
   --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --hand:'Caveat','Hanken Grotesk',cursive;
@@ -32,12 +33,20 @@ body{font-family:var(--font);background:var(--paper);color:var(--ink);font-size:
   -webkit-font-smoothing:antialiased;letter-spacing:-.004em;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{font-weight:800;line-height:1.06;letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
+img{max-width:100%;display:block}
 :focus-visible{outline:2px solid var(--emerald);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.2rem)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.2rem)}
 .eyebrow{font-family:var(--mono);font-size:.73rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
   color:var(--emerald-dk);display:inline-flex;align-items:center;gap:.55rem}
 .eyebrow::before{content:"";width:22px;height:2px;background:var(--emerald)}
 .lead{color:var(--muted);font-size:clamp(1.04rem,2vw,1.18rem);max-width:52ch;line-height:1.55}
+
+/* co-brand lockup met echte logo's */
+.cobrand{display:inline-flex;align-items:center;gap:.6rem;background:#fff;border-radius:99px;padding:.46rem .9rem;
+  border:1px solid var(--hair);box-shadow:0 2px 12px rgba(13,23,50,.10)}
+.cobrand img{height:18px;width:auto}
+.cobrand .cx{color:var(--faint);font-weight:600;font-size:.85rem;line-height:1}
+.cobrand--bare{background:transparent;box-shadow:none;border:none;padding:0}
 
 .btn{font-family:var(--font);font-weight:700;font-size:1rem;border-radius:12px;padding:.9rem 1.65rem;cursor:pointer;
   border:1.5px solid transparent;display:inline-flex;align-items:center;gap:.5rem;transition:transform .16s var(--ease),background .2s,border-color .2s,box-shadow .2s}
@@ -50,29 +59,35 @@ h1,h2,h3{font-weight:800;line-height:1.06;letter-spacing:-.03em;color:var(--ink)
 
 /* nav */
 .nav{position:sticky;top:0;z-index:40;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
-.nav.solid{background:rgba(246,248,247,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
-.nav .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0}
-.lock{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.1rem;letter-spacing:-.03em;color:var(--ink)}
-.lock .x{color:var(--faint);font-weight:500}
-.lock .tagc{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--emerald-dk);
-  background:var(--emerald-soft);border-radius:99px;padding:.24rem .6rem;font-weight:500;margin-left:.4rem}
-.nav .btn{padding:.6rem 1.2rem;font-size:.92rem}
+.nav.solid{background:rgba(246,248,247,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+.nav .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+.nav .btn{padding:.58rem 1.2rem;font-size:.92rem}
+.tagc{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--emerald-dk);
+  background:var(--emerald-soft);border-radius:99px;padding:.26rem .62rem;font-weight:500}
+@media(max-width:560px){.nav .tagc{display:none}}
 
 /* hero */
 .hero{background:
-  radial-gradient(900px 520px at 84% -12%,rgba(62,213,152,.18),transparent 58%),
+  radial-gradient(920px 540px at 86% -14%,rgba(47,214,166,.20),transparent 58%),
+  radial-gradient(700px 460px at 6% 8%,rgba(217,154,62,.10),transparent 60%),
   linear-gradient(180deg,var(--navy),var(--navy-2));
-  color:var(--on-navy);padding:clamp(2.8rem,7vw,4.6rem) 0 clamp(3rem,7vw,4.6rem);overflow:hidden}
-.hero .grid{display:grid;grid-template-columns:1fr;gap:clamp(2.4rem,5vw,3.4rem);align-items:center}
-@media(min-width:940px){.hero .grid{grid-template-columns:1.06fr .94fr}}
+  color:var(--on-navy);padding:clamp(2.4rem,6vw,3.8rem) 0 clamp(3rem,7vw,4.6rem);overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1fr;gap:clamp(2.6rem,5vw,3.4rem);align-items:center}
+@media(min-width:940px){.hero .grid{grid-template-columns:1.05fr .95fr}}
 .hero .eyebrow{color:var(--mint)}.hero .eyebrow::before{background:var(--mint)}
-.hero h1{font-size:clamp(2.4rem,6vw,3.9rem);font-weight:900;color:#fff;margin:1.1rem 0 0;max-width:15ch;letter-spacing:-.04em;line-height:1.02}
+.hero h1{font-size:clamp(2.5rem,6.2vw,4.15rem);font-weight:900;color:#fff;margin:1.15rem 0 0;max-width:15ch;letter-spacing:-.045em;line-height:1.0}
 .hero h1 .g{color:var(--mint)}
-.hero .sub{color:var(--on-navy-mut);font-size:clamp(1.04rem,2vw,1.18rem);max-width:50ch;margin-top:1.4rem;line-height:1.55}
-.hero .cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.hero .sub{color:var(--on-navy-mut);font-size:clamp(1.04rem,2vw,1.2rem);max-width:46ch;margin-top:1.5rem;line-height:1.55}
+.hero .sub b{color:#fff;font-weight:600}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem;align-items:center}
 .hero .btn-ghost{color:#fff;border-color:var(--nline)}.hero .btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
-.hero .trust{margin-top:1.6rem;font-family:var(--mono);font-size:.75rem;color:var(--on-navy-faint)}
-.hero .trust b{color:var(--on-navy-mut);font-weight:500}
+.hero .madeby{display:flex;align-items:center;gap:.7rem;margin-top:2.2rem;font-family:var(--mono);font-size:.72rem;color:var(--on-navy-faint)}
+
+/* word reveal */
+.wr{display:block}
+.wr .w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(16px);animation:wrin .72s var(--ease) forwards}
+@keyframes wrin{to{opacity:1;filter:blur(0);transform:none}}
+
 /* product mock */
 .hvis{position:relative}
 .browser{background:var(--white);border-radius:15px;box-shadow:var(--shadow-lg);overflow:hidden;max-width:360px;margin-left:auto;animation:fl 7s ease-in-out infinite}
@@ -86,110 +101,196 @@ h1,h2,h3{font-weight:800;line-height:1.06;letter-spacing:-.03em;color:var(--ink)
 .pp .of{display:flex;align-items:center;gap:.65rem;padding:.6rem .7rem;border:1px solid var(--hair);border-radius:10px;background:var(--paper)}
 .pp .of .d{width:24px;height:24px;border-radius:7px;background:var(--emerald-soft);flex:none;display:grid;place-items:center}
 .pp .of .d::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--emerald)}
+.pp .of.gold .d{background:var(--gold-soft)}.pp .of.gold .d::after{background:var(--gold)}
 .pp .of b{font-size:.82rem;color:var(--ink);font-weight:600;flex:1}
 .pp .of .go{font-family:var(--mono);font-size:.58rem;color:var(--emerald-dk);letter-spacing:.06em;text-transform:uppercase}
-.card{position:absolute;left:-6px;bottom:-26px;width:230px;background:linear-gradient(150deg,#fffefb,#f4f2ea);border-radius:9px;
+.card{position:absolute;left:-6px;bottom:-26px;width:236px;background:linear-gradient(150deg,#fffefb,#f4f2ea);border-radius:9px;
   padding:1rem 1.1rem;box-shadow:var(--shadow-lg);border:1px solid rgba(13,23,50,.06);transform:rotate(-4deg);animation:fl2 8s ease-in-out infinite}
 .card .stamp{float:right;background:var(--emerald);color:#fff;font-family:var(--mono);font-size:.54rem;letter-spacing:.11em;text-transform:uppercase;padding:.22rem .46rem;border-radius:4px;margin:-.1rem -.1rem .3rem .5rem}
-.card .hw{font-family:var(--hand);font-size:1.24rem;line-height:1.34;color:#243352}
+.card .hw{font-family:var(--hand);font-weight:700;font-size:1.3rem;line-height:1.32;color:#243352}
 .card .sign{font-family:var(--hand);font-size:1.24rem;color:var(--muted);margin-top:.25rem}
 @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes fl2{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-4deg) translateY(6px)}}
-@media(max-width:520px){.card{width:190px;left:0;bottom:-16px}}
+@media(max-width:520px){.card{width:196px;left:0;bottom:-16px}}
 
 /* secties */
-section{padding:clamp(3rem,6.5vw,4.4rem) 0}
+section{padding:clamp(3rem,6.5vw,4.6rem) 0}
 .sec-navy{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:var(--on-navy)}
 .sec-navy h2{color:#fff}.sec-navy .lead{color:var(--on-navy-mut)}.sec-navy .eyebrow{color:var(--mint)}.sec-navy .eyebrow::before{background:var(--mint)}
-.head h2{font-size:clamp(1.7rem,3.8vw,2.4rem);margin-top:.75rem;max-width:20ch}
+.head h2{font-size:clamp(1.7rem,3.9vw,2.5rem);margin-top:.75rem;max-width:20ch}
 .center{text-align:center}.center .eyebrow{justify-content:center}.center .lead{margin-left:auto;margin-right:auto}
-.sr{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.sr{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .sr.on{opacity:1;transform:none}
-.sr-1{transition-delay:.07s}.sr-2{transition-delay:.16s}.sr-3{transition-delay:.25s}
+.sr-1{transition-delay:.06s}.sr-2{transition-delay:.14s}.sr-3{transition-delay:.22s}
 
-/* 3 stappen */
-.steps{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.4rem}
-@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
-.step{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.3rem}
-.step .n{font-family:var(--mono);font-weight:500;width:30px;height:30px;border-radius:8px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:.9rem}
-.step b{display:block;margin-top:.85rem;font-size:1.05rem;color:var(--navy)}
-.step p{margin-top:.35rem;font-size:.92rem;color:var(--muted)}
+/* context: makkelijkste omzet */
+.ctx{display:grid;grid-template-columns:1fr;gap:2.4rem;align-items:center;margin-top:2.4rem}
+@media(min-width:840px){.ctx{grid-template-columns:1fr 1fr;gap:3.2rem}}
+.barcmp{display:flex;flex-direction:column;gap:1.1rem}
+.brow .btop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.4rem}
+.brow .bname{font-weight:700;font-size:.98rem;color:var(--ink)}
+.brow .btag{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.brow .btrack{height:16px;border-radius:99px;background:var(--hair);overflow:hidden}
+.brow .bfill{height:100%;border-radius:99px;width:0;transition:width 1.1s var(--ease)}
+.brow.cold .bfill{background:linear-gradient(90deg,#C3C9D6,#AEB5C4)}
+.brow.warm .bfill{background:linear-gradient(90deg,var(--emerald),var(--mint))}
+.on .brow.cold .bfill{width:26%}.on .brow.warm .bfill{width:88%}
 
-/* de reis (visuele uitleg) */
-.jrn{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-top:2.6rem;align-items:start}
-@media(min-width:860px){.jrn{grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:.8rem}}
-.jf{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.1rem}
-.jvis{width:100%;min-height:148px;display:flex;align-items:center;justify-content:center}
-.jf .cap b{display:block;color:var(--navy);font-size:1rem;font-weight:800}
-.jf .cap span{display:block;color:var(--muted);font-size:.88rem;margin-top:.25rem;max-width:26ch;margin-left:auto;margin-right:auto}
-.jarrow{color:var(--faint);font-size:1.5rem;display:flex;align-items:center;justify-content:center;font-weight:800}
-@media(max-width:859px){.jarrow{transform:rotate(90deg);margin:-.5rem 0}}
-.card2{position:relative;width:100%;max-width:240px;background:linear-gradient(150deg,#fffefb,#f4f2ea);border-radius:9px;
-  padding:1rem 1.1rem;box-shadow:var(--shadow);border:1px solid rgba(13,23,50,.06);transform:rotate(-2deg)}
-.card2 .stamp{float:right;background:var(--emerald);color:#fff;font-family:var(--mono);font-size:.52rem;letter-spacing:.11em;
-  text-transform:uppercase;padding:.22rem .44rem;border-radius:4px;margin:-.1rem -.1rem .3rem .5rem}
-.card2 .hw{font-family:var(--hand);font-size:1.16rem;line-height:1.3;color:#243352}
-.card2 .qrow{display:flex;align-items:flex-end;justify-content:space-between;gap:.5rem;margin-top:.55rem}
-.card2 .sign{font-family:var(--hand);font-size:1.16rem;color:var(--muted)}
-.card2 .qr{width:38px;height:38px;flex:none;background:#fff;border-radius:3px;padding:2px;box-shadow:0 1px 3px rgba(13,23,50,.14)}
-.browser.sm{max-width:240px;box-shadow:var(--shadow);margin:0 auto}
-.browser.sm .body{padding:.9rem}
-.browser.sm .pp .greet{font-size:.92rem}
-.browser.sm .pp .subline{font-size:.68rem}
-.browser.sm .pp .of{padding:.42rem .55rem}.browser.sm .pp .of b{font-size:.75rem}
-.browser.sm .pp .of .d{width:20px;height:20px}
-.bought{width:100%;max-width:240px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.5rem 1.2rem;
-  display:flex;flex-direction:column;align-items:center;gap:.7rem;box-shadow:var(--shadow);margin:0 auto}
-.bcheck{width:46px;height:46px;border-radius:50%;background:var(--emerald);color:#fff;display:grid;place-items:center}
-.bcheck svg{width:24px;height:24px}
-.bought b{color:var(--navy);font-size:1rem}
-.bbars{display:flex;align-items:flex-end;gap:5px;height:32px}
-.bbars i{width:11px;background:var(--emerald-soft);border-radius:2px}
-.bbars i:nth-child(1){height:40%}.bbars i:nth-child(2){height:60%}.bbars i:nth-child(3){height:80%}.bbars i:nth-child(4){height:100%;background:var(--emerald)}
-.whycard{text-align:center;max-width:50ch;margin:2.6rem auto 0;font-size:1.14rem;color:var(--ink);line-height:1.5}
-.whycard b{color:var(--navy);font-weight:800}
-.yourside{text-align:center;max-width:52ch;margin:1rem auto 0;font-size:.95rem;color:var(--muted)}
+/* de flow (spine) */
+.flow{position:relative;max-width:920px;margin:3rem auto 0}
+.spine-track,.spine-fill{position:absolute;left:50%;transform:translateX(-50%);width:3px;top:14px;bottom:14px;border-radius:3px;z-index:0}
+.spine-track{background:var(--line)}
+.spine-fill{background:linear-gradient(180deg,var(--emerald),var(--gold));bottom:auto;height:0}
+@media(max-width:759px){.spine-track,.spine-fill{left:23px}}
+.fstep{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2.4rem;margin:1.6rem 0;min-height:150px}
+.fbody{max-width:32ch}
+.fstep .fbody{grid-column:1;justify-self:end;text-align:right;padding-right:2.2rem}
+.fstep .fvis{grid-column:2;justify-self:start;padding-left:2.2rem}
+.fstep.rev .fbody{grid-column:2;justify-self:start;text-align:left;padding-right:0;padding-left:2.2rem}
+.fstep.rev .fvis{grid-column:1;justify-self:end;padding-left:0;padding-right:2.2rem}
+.fnode{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;
+  background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:.92rem;color:var(--faint);z-index:2;transition:.5s var(--ease)}
+.fstep.on .fnode{border-color:transparent;color:#fff;background:var(--emerald);box-shadow:0 8px 22px rgba(18,179,122,.32)}
+.fstep.on.g .fnode{background:var(--gold);box-shadow:0 8px 22px rgba(217,154,62,.34)}
+.fk{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--emerald-dk)}
+.fstep.g .fk{color:var(--gold-dk)}
+.fbody h3{font-size:clamp(1.2rem,2.4vw,1.5rem);margin-top:.5rem;color:var(--navy)}
+.fbody p{color:var(--muted);font-size:.98rem;margin-top:.5rem;line-height:1.5}
+.fbody p b{color:var(--ink);font-weight:700}
+@media(max-width:759px){
+  .fstep{grid-template-columns:1fr;gap:1rem;padding-left:60px;margin:2rem 0;min-height:0}
+  .fstep .fbody,.fstep.rev .fbody{grid-column:1;justify-self:start;text-align:left;padding:0;order:1}
+  .fstep .fvis,.fstep.rev .fvis{grid-column:1;justify-self:start;padding:0;order:2}
+  .fnode{left:23px}
+}
+/* flow-visuals */
+.vcard{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);width:100%;max-width:290px}
+.fstep .fvis .vcard{margin-left:0}
+.fstep:not(.rev) .fvis .vcard{margin-right:auto}
+/* order tile */
+.order{padding:1.1rem 1.2rem}
+.order .oh{display:flex;align-items:center;gap:.6rem}
+.order .odot{width:28px;height:28px;border-radius:8px;background:var(--emerald-soft);display:grid;place-items:center;flex:none}
+.order .odot svg{width:15px;height:15px;color:var(--emerald)}
+.order .om{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.order .obig{font-weight:800;color:var(--navy);font-size:1.02rem;letter-spacing:-.02em}
+.order .oline{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);padding:.5rem 0;border-top:1px solid var(--hair);margin-top:.7rem}
+.order .oline b{color:var(--ink);font-weight:600}
+/* motor selector */
+.motor{padding:1.05rem 1.1rem}
+.motor .msrc{font-size:.78rem;color:var(--muted);margin-bottom:.7rem}
+.motor .msrc b{color:var(--navy)}
+.motor .opt{display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;border-radius:9px;border:1px solid var(--hair);margin-top:.4rem;font-size:.82rem;color:var(--muted);transition:.4s}
+.motor .opt .tick{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);flex:none}
+.motor .opt.pick{border-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
+.motor .opt.pick .tick{border-color:transparent;background:var(--gold);position:relative}
+.motor .opt.pick .tick::after{content:"";position:absolute;left:5px;top:3px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg)}
+/* channel toggle (kaart of mail) */
+.chan{width:100%;max-width:300px}
+.chan-pills{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:3px;margin-bottom:.9rem}
+.cp{font-family:var(--font);font-weight:600;font-size:.8rem;border:none;background:transparent;color:var(--muted);
+  padding:.44rem .9rem;border-radius:99px;cursor:pointer;transition:.25s var(--ease);display:inline-flex;align-items:center;gap:.4rem}
+.cp.on{background:var(--white);color:var(--navy);box-shadow:0 2px 8px rgba(13,23,50,.12)}
+.cp .rec{font-family:var(--mono);font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--emerald);padding:.1rem .32rem;border-radius:99px}
+.chan-stage{position:relative;min-height:150px}
+.chan-view{animation:cvin .4s var(--ease)}
+@keyframes cvin{from{opacity:0;transform:translateY(8px)}}
+.ccard{position:relative;background:linear-gradient(150deg,#fffefb,#f4f2ea);border-radius:10px;padding:1rem 1.1rem;box-shadow:var(--shadow);border:1px solid rgba(13,23,50,.06);transform:rotate(-2deg)}
+.ccard .stamp{float:right;background:var(--emerald);color:#fff;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .42rem;border-radius:4px;margin:-.05rem -.05rem .3rem .5rem}
+.ccard .hw{font-family:var(--hand);font-weight:700;font-size:1.22rem;line-height:1.3;color:#243352}
+.ccard .crow{display:flex;align-items:flex-end;justify-content:space-between;gap:.5rem;margin-top:.5rem}
+.ccard .sign{font-family:var(--hand);font-size:1.16rem;color:var(--muted)}
+.ccard .qr{width:36px;height:36px;flex:none;background:#fff;border-radius:3px;padding:2px;box-shadow:0 1px 3px rgba(13,23,50,.14)}
+.mail{background:var(--white);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.mail .mtop{display:flex;align-items:center;gap:.55rem;padding:.7rem .9rem;border-bottom:1px solid var(--hair);background:var(--paper)}
+.mail .mav{width:26px;height:26px;border-radius:7px;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:.7rem;flex:none}
+.mail .mfrom{font-size:.76rem;color:var(--muted)}.mail .mfrom b{color:var(--ink);display:block;font-size:.82rem}
+.mail .mbody{padding:.85rem .95rem}
+.mail .msubj{font-weight:700;color:var(--navy);font-size:.9rem}
+.mail .mprev{font-size:.78rem;color:var(--muted);margin-top:.25rem;line-height:1.4}
+.mail .mbtn{margin-top:.7rem;display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--emerald-dk);background:var(--emerald-soft);padding:.34rem .6rem;border-radius:6px}
+.chan-note{font-size:.82rem;color:var(--muted);margin-top:.9rem;line-height:1.45}
+.chan-note b{color:var(--ink);font-weight:700}
+/* result mini flow */
+.resflow{display:flex;align-items:center;gap:.6rem}
+.resflow .browser.sm{max-width:170px;box-shadow:var(--shadow);margin:0}
+.browser.sm .body{padding:.8rem}
+.browser.sm .pp .greet{font-size:.86rem}.browser.sm .pp .subline{font-size:.64rem}
+.browser.sm .pp .of{padding:.4rem .5rem}.browser.sm .pp .of b{font-size:.7rem}.browser.sm .pp .of .d{width:18px;height:18px}
+.browser.sm .pp .of .go{font-size:.52rem}
+.resarrow{color:var(--faint);flex:none}
+.bought{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:1rem .9rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;box-shadow:var(--shadow);flex:none}
+.bcheck{width:40px;height:40px;border-radius:50%;background:var(--emerald);color:#fff;display:grid;place-items:center}
+.bcheck svg{width:21px;height:21px}
+.bought b{color:var(--navy);font-size:.86rem;text-align:center;line-height:1.1}
+.bbars{display:flex;align-items:flex-end;gap:4px;height:26px}
+.bbars i{width:8px;background:var(--emerald-soft);border-radius:2px}
+.bbars i:nth-child(1){height:38%}.bbars i:nth-child(2){height:58%}.bbars i:nth-child(3){height:78%}.bbars i:nth-child(4){height:100%;background:var(--emerald)}
+
+/* punchline na flow */
+.punch{text-align:center;max-width:46ch;margin:2.8rem auto 0;font-size:clamp(1.14rem,2.4vw,1.34rem);color:var(--ink);line-height:1.45;font-weight:600}
+.punch b{color:var(--emerald-dk)}
+.punch .pg{color:var(--gold-dk)}
+
+/* motor leert */
+.learn{display:grid;grid-template-columns:1fr;gap:2.4rem;align-items:center;margin-top:2.4rem}
+@media(min-width:860px){.learn{grid-template-columns:1.02fr .98fr;gap:3rem}}
+.chart{background:rgba(234,238,247,.04);border:1px solid var(--nline);border-radius:16px;padding:1.4rem 1.5rem}
+.chart .ct{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.2rem}
+.chart .ctl{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-navy-faint)}
+.chart .cv{font-weight:800;color:#fff;font-size:1.5rem;letter-spacing:-.02em}
+.chart .cv em{color:var(--mint);font-size:.9rem;font-weight:600;margin-left:.3rem}
+.chart svg{width:100%;height:auto;margin-top:.6rem;display:block}
+.chart .cx{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;color:var(--on-navy-faint);margin-top:.4rem}
+.lpts{list-style:none;display:flex;flex-direction:column;gap:1rem}
+.lpts li{display:grid;grid-template-columns:auto 1fr;gap:.8rem;align-items:start}
+.lpts .li-i{width:32px;height:32px;border-radius:9px;background:rgba(47,214,166,.14);display:grid;place-items:center;flex:none;color:var(--mint)}
+.lpts .li-i svg{width:17px;height:17px}
+.lpts b{color:#fff;font-size:1rem;display:block}
+.lpts span{color:var(--on-navy-mut);font-size:.9rem;display:block;margin-top:.15rem}
 
 /* value stack */
 .stack{margin-top:2.2rem;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--white)}
-.stack .item{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;padding:1rem 1.4rem;border-bottom:1px solid var(--hair)}
+.stack .item{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;padding:1.05rem 1.4rem;border-bottom:1px solid var(--hair)}
 .stack .item:last-of-type{border-bottom:none}
 .check{width:21px;height:21px;flex:none;border-radius:50%;background:var(--emerald-soft);position:relative;margin-top:.12rem}
 .check::after{content:"";position:absolute;left:6.5px;top:5px;width:5px;height:9px;border:solid var(--emerald);border-width:0 2px 2px 0;transform:rotate(42deg)}
 .stack .item b{font-weight:700}.stack .item span{color:var(--muted);font-size:.92rem;display:block;margin-top:.05rem}
-.stack .foot{padding:1.1rem 1.4rem;background:var(--navy);color:#fff;font-weight:700;font-size:1.02rem}
+.stack .foot{padding:1.1rem 1.4rem;background:var(--navy);color:#fff;font-weight:700;font-size:1.02rem;display:flex;align-items:center;gap:.6rem}
 .stack .foot em{color:var(--mint)}
+.stack .foot .fi{width:22px;height:22px;flex:none;color:var(--mint)}
 
 /* waarom nu */
 .why{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.4rem}
 @media(min-width:820px){.why{grid-template-columns:repeat(3,1fr)}}
-.wc{background:rgba(234,238,247,.04);border:1px solid var(--nline);border-radius:14px;padding:1.4rem 1.35rem}
+.wc{background:rgba(234,238,247,.04);border:1px solid var(--nline);border-radius:14px;padding:1.5rem 1.4rem}
 .wc .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--mint)}
-.wc b{display:block;color:#fff;font-size:1.08rem;margin-top:.55rem}
+.wc b{display:block;color:#fff;font-size:1.1rem;margin-top:.6rem}
 .wc p{color:var(--on-navy-mut);font-size:.92rem;margin-top:.4rem;line-height:1.5}
 
 /* cta */
-.cta-band{background:radial-gradient(700px 400px at 78% -24%,rgba(62,213,152,.22),transparent 58%),linear-gradient(160deg,var(--navy),var(--navy-3));
-  color:#fff;border-radius:24px;padding:clamp(2.4rem,5vw,3.6rem);text-align:center;overflow:hidden}
+.cta-band{background:radial-gradient(700px 400px at 78% -24%,rgba(47,214,166,.22),transparent 58%),linear-gradient(160deg,var(--navy),var(--navy-3));
+  color:#fff;border-radius:24px;padding:clamp(2.6rem,5vw,3.8rem);text-align:center;overflow:hidden}
 .cta-band .eyebrow{color:var(--mint);justify-content:center}.cta-band .eyebrow::before{background:var(--mint)}
-.cta-band h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem);margin:1rem auto 0;max-width:20ch}
-.cta-band p{color:var(--on-navy-mut);margin:1rem auto 0;max-width:48ch}
+.cta-band h2{color:#fff;font-size:clamp(1.9rem,4vw,2.7rem);margin:1rem auto 0;max-width:18ch}
+.cta-band p{color:var(--on-navy-mut);margin:1rem auto 0;max-width:46ch}
 .cta-band .cta-row{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:2rem}
 .cta-band .btn-ghost{color:#fff;border-color:var(--nline)}.cta-band .btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
+.cta-band .cobrand{margin-top:2rem}
 
 footer{padding:2.2rem 0 3rem;border-top:1px solid var(--hair)}
-footer .row{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between;align-items:baseline}
-footer .lock{font-size:1rem}
+footer .row{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
 footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
 
-@media (prefers-reduced-motion:reduce){*{animation:none!important}.sr{opacity:1!important;transform:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.sr{opacity:1!important;transform:none!important;transition:none!important}
+  .wr .w{opacity:1!important;filter:none!important;transform:none!important}}
 </style>
 </head>
 <body>
 
 <nav class="nav" id="nav">
   <div class="wrap row">
-    <div class="lock">Lightr <span class="x">&times;</span> Pique <span class="tagc">Concept</span></div>
+    <span class="cobrand"><img src="lightr-logo.webp" alt="Lightr"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique"></span>
     <a class="btn btn-main" href="#mee">Doe mee aan de pilot</a>
   </div>
 </nav>
@@ -197,14 +298,17 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
 <header class="hero">
   <div class="wrap grid">
     <div>
-      <span class="eyebrow">Concept &middot; pilotfase</span>
-      <h1>Handgeschreven post die je klanten weer laat <span class="g">kopen</span>.</h1>
-      <p class="sub">Lightr en Pique bouwen samen een platform voor het moment na de aankoop: een kaart in jouw merk, een persoonlijke pagina, en een motor die leert wat verkoopt. We zitten in de pilotfase, dus je kunt nu als een van de eersten instappen tegen een scherp proof-of-concept-tarief.</p>
+      <span class="eyebrow">Pilot &middot; proof of concept</span>
+      <h1 class="wr"><span class="w">De</span> <span class="w">tweede</span> <span class="w">verkoop</span> <span class="w">begint</span> <span class="w">op</span> <span class="w g">de&nbsp;deurmat.</span></h1>
+      <p class="sub">Je klant kocht net iets. Wij sturen kort daarna een <b>handgeschreven kaart of mail</b> in jouw merk, met een persoonlijke pagina en het aanbod dat bij die klant past.</p>
       <div class="cta-row">
         <a class="btn btn-main" href="#mee">Doe mee aan de pilot <span class="arw">&#8594;</span></a>
         <a class="btn btn-ghost" href="https://evenkennismaken.nl/domek-pagina?k=anna" target="_blank" rel="noopener">Bekijk een voorbeeld</a>
       </div>
-      <p class="trust">Een gezamenlijk initiatief van <b>Lightr</b> en <b>Pique</b></p>
+      <div class="madeby">
+        <span>Samen gebouwd door</span>
+        <span class="cobrand"><img src="lightr-logo.webp" alt="Lightr"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique"></span>
+      </div>
     </div>
     <div class="hvis sr sr-2" aria-hidden="true">
       <div class="browser">
@@ -214,7 +318,7 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
           <div class="subline">Uitgezocht op wat je koos</div>
           <div class="offers">
             <div class="of"><span class="d"></span><b>Perfect hierbij</b><span class="go">Bekijk</span></div>
-            <div class="of"><span class="d"></span><b>Nog handiger gemaakt</b><span class="go">Bekijk</span></div>
+            <div class="of gold"><span class="d"></span><b>Nog handiger gemaakt</b><span class="go">Bekijk</span></div>
             <div class="of"><span class="d"></span><b>Voor een vriend</b><span class="go">Deel</span></div>
           </div>
         </div></div>
@@ -224,75 +328,201 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
   </div>
 </header>
 
-<!-- wat het concreet is: de reis -->
+<!-- context: makkelijkste omzet -->
 <section>
+  <div class="wrap">
+    <div class="ctx sr">
+      <div>
+        <span class="eyebrow">Het moment dat bijna iedereen overslaat</span>
+        <h2 class="head" style="font-size:clamp(1.7rem,3.9vw,2.5rem);margin-top:.8rem;max-width:16ch">De makkelijkste omzet heb je al binnen.</h2>
+        <p class="lead" style="margin-top:1rem">Een klant die net kocht, koopt veel sneller weer dan een vreemde. Toch stopt na de aankoop bij bijna elk merk alle aandacht. Precies dat gat vullen wij.</p>
+      </div>
+      <div class="barcmp">
+        <div class="brow cold">
+          <div class="btop"><span class="bname">Een nieuwe klant winnen</span><span class="btag">duur &middot; traag</span></div>
+          <div class="btrack"><div class="bfill"></div></div>
+        </div>
+        <div class="brow warm">
+          <div class="btop"><span class="bname">Een klant opnieuw laten kopen</span><span class="btag">goedkoop &middot; snel</span></div>
+          <div class="btrack"><div class="bfill"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- de flow -->
+<section style="background:var(--white);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
   <div class="wrap head center sr">
-    <span class="eyebrow">Wat het concreet is</span>
-    <h2 style="margin:.7rem auto 0">Van een kaart op de mat naar een tweede verkoop.</h2>
-    <p class="lead">Je klant kocht net iets bij je. Kort daarna gebeurt dit.</p>
+    <span class="eyebrow">Zo werkt het, stap voor stap</span>
+    <h2 style="margin:.7rem auto 0">Van één aankoop naar de volgende.</h2>
+    <p class="lead" style="margin-top:1rem">Jij levert alleen een klant. De motor doet de rest.</p>
   </div>
   <div class="wrap">
-    <div class="jrn sr">
-      <div class="jf">
-        <div class="jvis">
-          <div class="card2">
-            <span class="stamp">Jouw merk</span>
-            <div class="hw">Bedankt voor je bestelling, Anna.</div>
-            <div class="qrow"><span class="sign">Groet, het team</span>
-              <svg class="qr" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true"><rect width="29" height="29" fill="#fff"/><g fill="#0D1732"><path d="M1 1h7v7H1zm1 1v5h5V2z"/><path d="M3 3h3v3H3z"/><path d="M21 1h7v7h-7zm1 1v5h5V2z"/><path d="M23 3h3v3h-3z"/><path d="M1 21h7v7H1zm1 1v5h5v-5z"/><path d="M3 23h3v3H3z"/><path d="M10 2h2v2h-2zm4 0h1v3h-1zm3 1h2v1h-2z"/><path d="M2 12h3v1H2zm5-1h1v2H7zm4 1h2v1h-2zm5-1h1v2h-1z"/><path d="M12 14h1v2h-1zm4 1h2v1h-2zm4-1h1v2h-1z"/><path d="M11 20h2v1h-2zm5 0h1v2h-1zm4 1h2v1h-2z"/><path d="M11 24h2v1h-2zm4 0h1v2h-1zm4-1h1v2h-1z"/></g></svg>
+    <div class="flow" id="flow">
+      <div class="spine-track"></div>
+      <div class="spine-fill" id="spinefill"></div>
+
+      <!-- stap 1 -->
+      <div class="fstep sr">
+        <div class="fnode">1</div>
+        <div class="fbody">
+          <span class="fk">De trigger</span>
+          <h3>Een klant koopt iets</h3>
+          <p>Dat is het enige signaal dat we nodig hebben. <b>Jij stuurt ons een klant.</b></p>
+        </div>
+        <div class="fvis">
+          <div class="vcard order">
+            <div class="oh">
+              <span class="odot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <div><div class="om">Nieuwe bestelling</div><div class="obig">Anna &middot; #10428</div></div>
+            </div>
+            <div class="oline"><span>Kocht</span><b>Koffiebonen 1 kg</b></div>
+            <div class="oline"><span>Klant sinds</span><b>vandaag</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- stap 2 -->
+      <div class="fstep rev g sr">
+        <div class="fnode">2</div>
+        <div class="fbody">
+          <span class="fk">De motor</span>
+          <h3>Wij kiezen het juiste vervolg</h3>
+          <p>Op basis van wat die klant net kocht, kiest de motor het aanbod dat past. <b>Per klant anders.</b></p>
+        </div>
+        <div class="fvis">
+          <div class="vcard motor">
+            <div class="msrc">Net gekocht: <b>Koffiebonen 1 kg</b></div>
+            <div class="opt pick"><span class="tick"></span>Vers gemalen &middot; bijpassend filter</div>
+            <div class="opt"><span class="tick"></span>Grote zak thee</div>
+            <div class="opt"><span class="tick"></span>Cadeaubon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- stap 3: kaart of mail -->
+      <div class="fstep sr">
+        <div class="fnode">3</div>
+        <div class="fbody">
+          <span class="fk">De bezorging</span>
+          <h3>Het valt bij ze binnen</h3>
+          <p>Een handgeschreven kaart in jouw merk. Of een mail, als je dat liever hebt. <b>Jij kiest per campagne.</b></p>
+        </div>
+        <div class="fvis">
+          <div class="chan">
+            <div class="chan-pills" role="tablist">
+              <button class="cp on" data-c="kaart" role="tab">Kaart <span class="rec">tip</span></button>
+              <button class="cp" data-c="mail" role="tab">E-mail</button>
+            </div>
+            <div class="chan-stage">
+              <div class="chan-view" data-v="kaart">
+                <div class="ccard">
+                  <span class="stamp">Jouw merk</span>
+                  <div class="hw">Bedankt voor je bestelling, Anna.</div>
+                  <div class="crow"><span class="sign">Groet, het team</span>
+                    <svg class="qr" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true"><rect width="29" height="29" fill="#fff"/><g fill="#0D1732"><path d="M1 1h7v7H1zm1 1v5h5V2z"/><path d="M3 3h3v3H3z"/><path d="M21 1h7v7h-7zm1 1v5h5V2z"/><path d="M23 3h3v3h-3z"/><path d="M1 21h7v7H1zm1 1v5h5v-5z"/><path d="M3 23h3v3H3z"/><path d="M10 2h2v2h-2zm4 0h1v3h-1zm3 1h2v1h-2z"/><path d="M2 12h3v1H2zm5-1h1v2H7zm4 1h2v1h-2zm5-1h1v2h-1z"/><path d="M12 14h1v2h-1zm4 1h2v1h-2zm4-1h1v2h-1z"/><path d="M11 20h2v1h-2zm5 0h1v2h-1zm4 1h2v1h-2z"/><path d="M11 24h2v1h-2zm4 0h1v2h-1zm4-1h1v2h-1z"/></g></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="chan-view" data-v="mail" hidden>
+                <div class="mail">
+                  <div class="mtop"><span class="mav">JM</span><div class="mfrom"><b>Jouw merk</b>aan Anna</div></div>
+                  <div class="mbody">
+                    <div class="msubj">Bedankt voor je bestelling, Anna</div>
+                    <div class="mprev">We zochten alvast iets uit dat perfect bij je koffie past.</div>
+                    <span class="mbtn">Bekijk voor jou &#8594;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="chan-note">Een kaart valt op en wordt bewaard. Een mail is sneller en goedkoper. <b>Jij bepaalt.</b></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- stap 4 -->
+      <div class="fstep rev sr">
+        <div class="fnode">4</div>
+        <div class="fbody">
+          <span class="fk">De tweede verkoop</span>
+          <h3>Ze kopen opnieuw</h3>
+          <p>Ze scannen de QR of klikken, zien hun persoonlijke pagina, en bestellen. <b>Zonder dat jij iets bouwde.</b></p>
+        </div>
+        <div class="fvis">
+          <div class="resflow">
+            <div class="browser sm">
+              <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">jouwmerk.nl</div></div>
+              <div class="body"><div class="pp">
+                <div class="greet">Welkom terug, Anna</div>
+                <div class="subline">Voor jou uitgezocht</div>
+                <div class="offers">
+                  <div class="of"><span class="d"></span><b>Perfect hierbij</b><span class="go">Bekijk</span></div>
+                  <div class="of gold"><span class="d"></span><b>Vers gemalen</b><span class="go">Bekijk</span></div>
+                </div>
+              </div></div>
+            </div>
+            <svg class="resarrow" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <div class="bought">
+              <div class="bcheck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              <b>Tweede<br>verkoop</b>
+              <div class="bbars"><i></i><i></i><i></i><i></i></div>
             </div>
           </div>
         </div>
-        <div class="cap"><b>Een handgeschreven kaart op de mat</b><span>In jouw merk. Een echte kaart, geen e-mail.</span></div>
-      </div>
-      <div class="jarrow">&#8594;</div>
-      <div class="jf">
-        <div class="jvis">
-          <div class="browser sm">
-            <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">jouwmerk.nl</div></div>
-            <div class="body"><div class="pp">
-              <div class="greet">Welkom terug, Anna</div>
-              <div class="subline">Uitgezocht op wat je koos</div>
-              <div class="offers">
-                <div class="of"><span class="d"></span><b>Perfect hierbij</b><span class="go">Bekijk</span></div>
-                <div class="of"><span class="d"></span><b>Voor een vriend</b><span class="go">Deel</span></div>
-              </div>
-            </div></div>
-          </div>
-        </div>
-        <div class="cap"><b>Ze scannen de QR</b><span>En zien precies wat bij hen past.</span></div>
-      </div>
-      <div class="jarrow">&#8594;</div>
-      <div class="jf">
-        <div class="jvis">
-          <div class="bought">
-            <div class="bcheck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-            <b>Tweede verkoop</b>
-            <div class="bbars"><i></i><i></i><i></i><i></i></div>
-          </div>
-        </div>
-        <div class="cap"><b>En kopen opnieuw</b><span>Zonder dat jij iets hoefde te bouwen.</span></div>
       </div>
     </div>
-    <p class="whycard sr sr-2">Een e-mail wordt genegeerd. Een handgeschreven kaart wordt bewaard en gescand. <b>Dat is waarom dit werkt.</b></p>
-    <p class="yourside sr sr-3">En jouw kant is simpel: je stuurt ons een klant-ID, wij bouwen de kaart, de pagina en het aanbod dat bij elke klant past.</p>
+
+    <p class="punch sr">Jij levert een klant. Wij bouwen de <span class="pg">kaart</span>, de <b>pagina</b> en het aanbod.</p>
+  </div>
+</section>
+
+<!-- motor leert -->
+<section class="sec-navy">
+  <div class="wrap head sr">
+    <span class="eyebrow">En het wordt elke keer beter</span>
+    <h2>De motor leert van elke scan.</h2>
+  </div>
+  <div class="wrap">
+    <div class="learn">
+      <div class="chart sr sr-2">
+        <div class="ct"><span class="ctl">Wat een campagne oplevert</span></div>
+        <div class="cv">Meer per ronde <em>&#8599;</em></div>
+        <svg viewBox="0 0 320 150" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2FD6A6" stop-opacity=".34"/><stop offset="1" stop-color="#2FD6A6" stop-opacity="0"/></linearGradient></defs>
+          <line x1="0" y1="120" x2="320" y2="120" stroke="rgba(234,238,247,.14)"/>
+          <line x1="0" y1="80" x2="320" y2="80" stroke="rgba(234,238,247,.08)"/>
+          <line x1="0" y1="40" x2="320" y2="40" stroke="rgba(234,238,247,.08)"/>
+          <path d="M8 112 L86 96 L164 70 L242 44 L312 18 L312 120 L8 120 Z" fill="url(#lg)"/>
+          <path class="cline" d="M8 112 L86 96 L164 70 L242 44 L312 18" fill="none" stroke="#2FD6A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="86" cy="96" r="3.5" fill="#2FD6A6"/><circle cx="164" cy="70" r="3.5" fill="#2FD6A6"/><circle cx="242" cy="44" r="3.5" fill="#2FD6A6"/>
+          <circle cx="312" cy="18" r="5" fill="#2FD6A6" stroke="#0A1330" stroke-width="2"/>
+        </svg>
+        <div class="cx"><span>Ronde 1</span><span>Ronde 2</span><span>Ronde 3</span><span>Ronde 4</span></div>
+      </div>
+      <ul class="lpts sr sr-3">
+        <li><span class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></span><div><b>Het ziet wat werkt</b><span>Welke kaart, welk aanbod en welk moment tot een tweede aankoop leiden.</span></div></li>
+        <li><span class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>De volgende ronde is scherper</b><span>Elke campagne stuurt de keuzes bij. Jij hoeft niets te analyseren.</span></div></li>
+        <li><span class="li-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span><div><b>Jij ziet alleen het resultaat</b><span>Scans, klikken en tweede aankopen, zwart op wit in een simpel overzicht.</span></div></li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- wat je in de pilot krijgt -->
-<section style="background:var(--white);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+<section>
   <div class="wrap head sr">
     <span class="eyebrow">Wat je in de pilot krijgt</span>
     <h2>Een complete campagne, wij draaien 'm.</h2>
   </div>
   <div class="wrap">
     <div class="stack sr sr-2">
-      <div class="item"><span class="check"></span><div><b>Een echte campagne op een deel van je bestand</b><span>Je test het op scherp, niet op een demo.</span></div></div>
-      <div class="item"><span class="check"></span><div><b>Handgeschreven kaart plus persoonlijke pagina per klant</b><span>Volledig in jouw merk.</span></div></div>
-      <div class="item"><span class="check"></span><div><b>Relevante aanbiedingen, per klant gekozen</b><span>De motor kiest wat bij die klant past.</span></div></div>
-      <div class="item"><span class="check"></span><div><b>Scans, klikken en conversie meetbaar</b><span>Je ziet zwart op wit wat het oplevert.</span></div></div>
-      <div class="item"><span class="check"></span><div><b>Wij bouwen en draaien het, jij levert de data</b><span>Geen team, geen bouwwerk aan jouw kant.</span></div></div>
-      <div class="foot">Een scherp pilottarief, <em>ver onder wat het platform straks kost</em>.</div>
+      <div class="item"><span class="check"></span><div><b>Een echte campagne op een deel van je klanten</b><span>Je test het op scherp, niet op een demo.</span></div></div>
+      <div class="item"><span class="check"></span><div><b>Kaart of mail plus persoonlijke pagina per klant</b><span>Volledig in jouw merk, jij kiest het kanaal.</span></div></div>
+      <div class="item"><span class="check"></span><div><b>Aanbiedingen die de motor per klant kiest</b><span>Passend bij wat ze net kochten.</span></div></div>
+      <div class="item"><span class="check"></span><div><b>Scans, klikken en tweede aankopen meetbaar</b><span>Je ziet zwart op wit wat het oplevert.</span></div></div>
+      <div class="item"><span class="check"></span><div><b>Wij bouwen en draaien het, jij levert de klant</b><span>Geen team en geen bouwwerk aan jouw kant.</span></div></div>
+      <div class="foot"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg><span>Een scherp pilottarief, <em>ver onder wat het platform straks kost</em>.</span></div>
     </div>
   </div>
 </section>
@@ -306,7 +536,7 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
   </div>
   <div class="wrap">
     <div class="why">
-      <div class="wc sr sr-1"><div class="k">Prijs</div><b>Proof-of-concept-tarief</b><p>Je stapt in tegen een fractie van wat het platform bij de lancering gaat kosten, en je onboarding verdien je terug als je doorgaat.</p></div>
+      <div class="wc sr sr-1"><div class="k">Prijs</div><b>Proof-of-concept-tarief</b><p>Je stapt in tegen een fractie van wat het platform bij de lancering gaat kosten.</p></div>
       <div class="wc sr sr-2"><div class="k">Invloed</div><b>Je praat mee</b><p>Als een van de eerste klanten bepaal je mee wat we bouwen en hoe het werkt voor jouw situatie.</p></div>
       <div class="wc sr sr-3"><div class="k">Zekerheid</div><b>Wij bewijzen het eerst</b><p>Halen we het afgesproken scan- en klikdoel niet, dan draaien we kosteloos door tot het staat.</p></div>
     </div>
@@ -324,13 +554,14 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
         <a class="btn btn-main" href="mailto:hallo@pique.agency?subject=Pilot%20platform%20Lightr%20x%20Pique">Doe mee aan de pilot <span class="arw">&#8594;</span></a>
         <a class="btn btn-ghost" href="https://evenkennismaken.nl/domek-pagina?k=anna" target="_blank" rel="noopener">Bekijk een voorbeeld</a>
       </div>
+      <span class="cobrand"><img src="lightr-logo.webp" alt="Lightr"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique"></span>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap row">
-    <span class="lock">Lightr <span class="x">&times;</span> Pique</span>
+    <span class="cobrand cobrand--bare"><img src="lightr-logo.webp" alt="Lightr" style="height:20px"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique" style="height:20px"></span>
     <span class="meta">Concept &middot; platform in aanbouw onder een nieuwe naam</span>
   </div>
 </footer>
@@ -338,10 +569,38 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
 <script>
 (function(){
   var nav=document.getElementById('nav');
-  var s=function(){nav.classList.toggle('solid',window.scrollY>10);};s();
-  window.addEventListener('scroll',s,{passive:true});
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+  var onScrollNav=function(){nav.classList.toggle('solid',window.scrollY>10);};onScrollNav();
+  window.addEventListener('scroll',onScrollNav,{passive:true});
+
+  // scroll reveal
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.16,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.sr').forEach(function(el){io.observe(el);});
+
+  // hero word reveal stagger
+  document.querySelectorAll('.wr .w').forEach(function(w,i){w.style.animationDelay=(0.15+i*0.08)+'s';});
+
+  // spine draw
+  var flow=document.getElementById('flow'), fill=document.getElementById('spinefill');
+  if(flow&&fill){
+    var draw=function(){
+      var r=flow.getBoundingClientRect(), vh=window.innerHeight||document.documentElement.clientHeight;
+      var p=(vh*0.56 - r.top)/r.height;
+      p=Math.max(0,Math.min(1,p));
+      fill.style.height=(p*100)+'%';
+    };
+    draw();
+    window.addEventListener('scroll',draw,{passive:true});
+    window.addEventListener('resize',draw);
+  }
+
+  // kanaal-keuze: kaart of mail
+  var pills=document.querySelectorAll('.cp'), views=document.querySelectorAll('.chan-view');
+  pills.forEach(function(p){p.addEventListener('click',function(){
+    pills.forEach(function(x){x.classList.remove('on');});
+    p.classList.add('on');
+    var c=p.getAttribute('data-c');
+    views.forEach(function(v){v.hidden=(v.getAttribute('data-v')!==c);});
+  });});
 })();
 </script>
 </body>
