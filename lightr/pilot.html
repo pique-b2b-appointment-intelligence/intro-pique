@@ -41,12 +41,13 @@ img{max-width:100%;display:block}
 .eyebrow::before{content:"";width:22px;height:2px;background:var(--emerald)}
 .lead{color:var(--muted);font-size:clamp(1.04rem,2vw,1.18rem);max-width:52ch;line-height:1.55}
 
-/* co-brand lockup met echte logo's */
-.cobrand{display:inline-flex;align-items:center;gap:.6rem;background:#fff;border-radius:99px;padding:.46rem .9rem;
-  border:1px solid var(--hair);box-shadow:0 2px 12px rgba(13,23,50,.10)}
+/* co-brand lockup met echte logo's - transparant, geintegreerd */
+.cobrand{display:inline-flex;align-items:center;gap:.6rem}
 .cobrand img{height:18px;width:auto}
 .cobrand .cx{color:var(--faint);font-weight:600;font-size:.85rem;line-height:1}
-.cobrand--bare{background:transparent;box-shadow:none;border:none;padding:0}
+/* op donkere achtergrond: monochroom wit */
+.cobrand--light img{filter:brightness(0) invert(1);opacity:.9}
+.cobrand--light .cx{color:var(--on-navy-faint)}
 
 .btn{font-family:var(--font);font-weight:700;font-size:1rem;border-radius:12px;padding:.9rem 1.65rem;cursor:pointer;
   border:1.5px solid transparent;display:inline-flex;align-items:center;gap:.5rem;transition:transform .16s var(--ease),background .2s,border-color .2s,box-shadow .2s}
@@ -62,6 +63,11 @@ img{max-width:100%;display:block}
 .nav.solid{background:rgba(246,248,247,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
 .nav .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
 .nav .btn{padding:.58rem 1.2rem;font-size:.92rem}
+/* logo's kleuren mee met de scroll: wit boven de hero, in kleur zodra de nav licht wordt */
+.nav .cobrand img{filter:brightness(0) invert(1);opacity:.92;transition:filter .3s,opacity .3s}
+.nav .cobrand .cx{color:var(--on-navy-faint);transition:color .3s}
+.nav.solid .cobrand img{filter:none;opacity:1}
+.nav.solid .cobrand .cx{color:var(--faint)}
 .tagc{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--emerald-dk);
   background:var(--emerald-soft);border-radius:99px;padding:.26rem .62rem;font-weight:500}
 @media(max-width:560px){.nav .tagc{display:none}}
@@ -142,12 +148,16 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
 .spine-track{background:var(--line)}
 .spine-fill{background:linear-gradient(180deg,var(--emerald),var(--gold));bottom:auto;height:0}
 @media(max-width:759px){.spine-track,.spine-fill{left:23px}}
-.fstep{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2.4rem;margin:1.6rem 0;min-height:150px}
-.fbody{max-width:32ch}
-.fstep .fbody{grid-column:1;justify-self:end;text-align:right;padding-right:2.2rem}
-.fstep .fvis{grid-column:2;justify-self:start;padding-left:2.2rem}
-.fstep.rev .fbody{grid-column:2;justify-self:start;text-align:left;padding-right:0;padding-left:2.2rem}
-.fstep.rev .fvis{grid-column:1;justify-self:end;padding-left:0;padding-right:2.2rem}
+.fstep{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;margin:0;min-height:224px}
+.fbody{max-width:34ch}
+.fstep>.fbody{grid-column:1;grid-row:1;justify-self:end;text-align:right;padding-right:3.1rem}
+.fstep>.fvis{grid-column:2;grid-row:1;justify-self:start;padding-left:3.1rem}
+.fstep.rev>.fbody{grid-column:2;grid-row:1;justify-self:start;text-align:left;padding-right:0;padding-left:3.1rem}
+.fstep.rev>.fvis{grid-column:1;grid-row:1;justify-self:end;padding-left:0;padding-right:3.1rem}
+.fvis{width:100%;display:flex}
+.fstep>.fvis{justify-content:flex-start}
+.fstep.rev>.fvis{justify-content:flex-end}
+.fvis>*{width:100%;max-width:296px}
 .fnode{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;
   background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:.92rem;color:var(--faint);z-index:2;transition:.5s var(--ease)}
 .fstep.on .fnode{border-color:transparent;color:#fff;background:var(--emerald);box-shadow:0 8px 22px rgba(18,179,122,.32)}
@@ -164,9 +174,7 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
   .fnode{left:23px}
 }
 /* flow-visuals */
-.vcard{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);width:100%;max-width:290px}
-.fstep .fvis .vcard{margin-left:0}
-.fstep:not(.rev) .fvis .vcard{margin-right:auto}
+.vcard{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);width:100%}
 /* order tile */
 .order{padding:1.1rem 1.2rem}
 .order .oh{display:flex;align-items:center;gap:.6rem}
@@ -212,8 +220,8 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
 .chan-note{font-size:.82rem;color:var(--muted);margin-top:.9rem;line-height:1.45}
 .chan-note b{color:var(--ink);font-weight:700}
 /* result mini flow */
-.resflow{display:flex;align-items:center;gap:.6rem}
-.resflow .browser.sm{max-width:170px;box-shadow:var(--shadow);margin:0}
+.resflow{display:flex;align-items:center;gap:.45rem;justify-content:center}
+.resflow .browser.sm{max-width:150px;box-shadow:var(--shadow);margin:0;flex:1 1 auto}
 .browser.sm .body{padding:.8rem}
 .browser.sm .pp .greet{font-size:.86rem}.browser.sm .pp .subline{font-size:.64rem}
 .browser.sm .pp .of{padding:.4rem .5rem}.browser.sm .pp .of b{font-size:.7rem}.browser.sm .pp .of .d{width:18px;height:18px}
@@ -249,16 +257,41 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
 .lpts b{color:#fff;font-size:1rem;display:block}
 .lpts span{color:var(--on-navy-mut);font-size:.9rem;display:block;margin-top:.15rem}
 
-/* value stack */
-.stack{margin-top:2.2rem;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--white)}
-.stack .item{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;padding:1.05rem 1.4rem;border-bottom:1px solid var(--hair)}
-.stack .item:last-of-type{border-bottom:none}
-.check{width:21px;height:21px;flex:none;border-radius:50%;background:var(--emerald-soft);position:relative;margin-top:.12rem}
-.check::after{content:"";position:absolute;left:6.5px;top:5px;width:5px;height:9px;border:solid var(--emerald);border-width:0 2px 2px 0;transform:rotate(42deg)}
-.stack .item b{font-weight:700}.stack .item span{color:var(--muted);font-size:.92rem;display:block;margin-top:.05rem}
-.stack .foot{padding:1.1rem 1.4rem;background:var(--navy);color:#fff;font-weight:700;font-size:1.02rem;display:flex;align-items:center;gap:.6rem}
-.stack .foot em{color:var(--mint)}
-.stack .foot .fi{width:22px;height:22px;flex:none;color:var(--mint)}
+/* pilot-tabs: horizontaal, klikbaar, uitklappend */
+.ptabs{margin-top:2.4rem;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--white);box-shadow:var(--shadow)}
+.ptabs-strip{display:grid;grid-template-columns:repeat(5,1fr)}
+.ptab{font-family:var(--font);border:none;background:var(--paper);border-right:1px solid var(--hair);border-bottom:1px solid var(--line);
+  padding:1.15rem .8rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:.6rem;text-align:center;
+  color:var(--muted);transition:background .25s var(--ease),color .25s}
+.ptab:last-child{border-right:none}
+.ptab .pti{width:40px;height:40px;border-radius:12px;background:var(--white);border:1px solid var(--line);display:grid;place-items:center;color:var(--faint);
+  transition:.3s var(--ease)}
+.ptab .pti svg{width:20px;height:20px}
+.ptab .ptt{font-size:.83rem;font-weight:700;line-height:1.15;letter-spacing:-.01em}
+.ptab:hover{background:#fbfcfb;color:var(--ink)}
+.ptab.on{background:var(--white);color:var(--navy);border-bottom-color:transparent;position:relative}
+.ptab.on::after{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--emerald)}
+.ptab.on .pti{background:var(--emerald);border-color:transparent;color:#fff;box-shadow:0 7px 18px rgba(18,179,122,.32);transform:translateY(-1px)}
+.ptabs-panel{position:relative}
+.ppv{display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:center;padding:1.9rem 2.1rem;animation:cvin .35s var(--ease)}
+.ppv[hidden]{display:none}
+.ppv .ppi{width:58px;height:58px;border-radius:16px;background:var(--emerald-soft);display:grid;place-items:center;color:var(--emerald);flex:none}
+.ppv .ppi svg{width:29px;height:29px}
+.ppv h3{font-size:clamp(1.12rem,2.2vw,1.32rem);color:var(--navy)}
+.ppv p{color:var(--muted);font-size:.98rem;margin-top:.4rem;line-height:1.55;max-width:62ch}
+.ppv .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.85rem}
+.ppv .chip{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--emerald-dk);
+  background:var(--emerald-soft);padding:.32rem .62rem;border-radius:99px}
+.ptabs .foot{padding:1.15rem 1.6rem;background:var(--navy);color:#fff;font-weight:700;font-size:1.02rem;display:flex;align-items:center;gap:.6rem;border-top:1px solid var(--hair)}
+.ptabs .foot em{color:var(--mint)}
+.ptabs .foot .fi{width:22px;height:22px;flex:none;color:var(--mint)}
+@media(max-width:720px){
+  .ptabs-strip{grid-auto-flow:column;grid-auto-columns:minmax(112px,1fr);grid-template-columns:none;overflow-x:auto;scrollbar-width:none}
+  .ptabs-strip::-webkit-scrollbar{display:none}
+  .ptab{padding:.85rem .6rem}.ptab .ptt{font-size:.72rem}
+  .ppv{grid-template-columns:1fr;justify-items:center;text-align:center;padding:1.6rem 1.4rem}
+  .ppv .chips{justify-content:center}
+}
 
 /* waarom nu */
 .why{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.4rem}
@@ -307,7 +340,7 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
       </div>
       <div class="madeby">
         <span>Samen gebouwd door</span>
-        <span class="cobrand"><img src="lightr-logo.webp" alt="Lightr"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique"></span>
+        <span class="cobrand cobrand--light"><img src="lightr-logo.webp" alt="Lightr"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique"></span>
       </div>
     </div>
     <div class="hvis sr sr-2" aria-hidden="true">
@@ -516,12 +549,72 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
     <h2>Een complete campagne, wij draaien 'm.</h2>
   </div>
   <div class="wrap">
-    <div class="stack sr sr-2">
-      <div class="item"><span class="check"></span><div><b>Een echte campagne op een deel van je klanten</b><span>Je test het op scherp, niet op een demo.</span></div></div>
-      <div class="item"><span class="check"></span><div><b>Kaart of mail plus persoonlijke pagina per klant</b><span>Volledig in jouw merk, jij kiest het kanaal.</span></div></div>
-      <div class="item"><span class="check"></span><div><b>Aanbiedingen die de motor per klant kiest</b><span>Passend bij wat ze net kochten.</span></div></div>
-      <div class="item"><span class="check"></span><div><b>Scans, klikken en tweede aankopen meetbaar</b><span>Je ziet zwart op wit wat het oplevert.</span></div></div>
-      <div class="item"><span class="check"></span><div><b>Wij bouwen en draaien het, jij levert de klant</b><span>Geen team en geen bouwwerk aan jouw kant.</span></div></div>
+    <p class="lead sr" style="margin-top:.4rem;margin-bottom:.4rem">Klik door wat je krijgt.</p>
+    <div class="ptabs sr sr-2">
+      <div class="ptabs-strip" role="tablist">
+        <button class="ptab on" data-i="0" role="tab">
+          <span class="pti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span>
+          <span class="ptt">Echte campagne</span>
+        </button>
+        <button class="ptab" data-i="1" role="tab">
+          <span class="pti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span class="ptt">Kaart of mail</span>
+        </button>
+        <button class="ptab" data-i="2" role="tab">
+          <span class="pti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.7 5.1 5.1 1.7-5.1 1.7L12 16.6l-1.7-5.1L5.2 9.8l5.1-1.7z"/><path d="M18.5 14l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg></span>
+          <span class="ptt">Slim aanbod</span>
+        </button>
+        <button class="ptab" data-i="3" role="tab">
+          <span class="pti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>
+          <span class="ptt">Meetbaar</span>
+        </button>
+        <button class="ptab" data-i="4" role="tab">
+          <span class="pti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.6-5.7L20 8"/><path d="M20 3.5V8h-4.5"/><path d="M20 12a8 8 0 0 1-13.6 5.7L4 16"/><path d="M4 20.5V16h4.5"/></svg></span>
+          <span class="ptt">Wij draaien 'm</span>
+        </button>
+      </div>
+      <div class="ptabs-panel">
+        <div class="ppv" data-i="0">
+          <div class="ppi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></div>
+          <div>
+            <h3>Een echte campagne op een deel van je klanten</h3>
+            <p>Je test het op scherp, niet op een demo. We nemen een afgebakend stuk van je bestand en draaien daar een volledige campagne op. Zo zie je een echt resultaat, geen mockup.</p>
+            <div class="chips"><span class="chip">Afgebakend bestand</span><span class="chip">Live campagne</span></div>
+          </div>
+        </div>
+        <div class="ppv" data-i="1" hidden>
+          <div class="ppi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <div>
+            <h3>Kaart of mail, plus een persoonlijke pagina per klant</h3>
+            <p>Volledig in jouw merk. Per klant een handgeschreven kaart of een mail, met een persoonlijke pagina erachter. Jij kiest het kanaal, wij bouwen ze allebei.</p>
+            <div class="chips"><span class="chip">Jouw merk</span><span class="chip">Jij kiest het kanaal</span></div>
+          </div>
+        </div>
+        <div class="ppv" data-i="2" hidden>
+          <div class="ppi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.7 5.1 5.1 1.7-5.1 1.7L12 16.6l-1.7-5.1L5.2 9.8l5.1-1.7z"/><path d="M18.5 14l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg></div>
+          <div>
+            <h3>Aanbiedingen die de motor per klant kiest</h3>
+            <p>Passend bij wat ze net kochten. De motor kiest per klant het vervolgaanbod met de grootste kans op een tweede aankoop, en stelt die keuze per ronde bij.</p>
+            <div class="chips"><span class="chip">Per klant gekozen</span><span class="chip">Leert bij</span></div>
+          </div>
+        </div>
+        <div class="ppv" data-i="3" hidden>
+          <div class="ppi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+          <div>
+            <h3>Scans, klikken en tweede aankopen, meetbaar</h3>
+            <p>Zwart op wit wat het oplevert. Je ziet per campagne hoeveel mensen scanden, klikten en opnieuw kochten, in een simpel overzicht.</p>
+            <div class="chips"><span class="chip">Scans en klikken</span><span class="chip">Tweede aankopen</span></div>
+          </div>
+        </div>
+        <div class="ppv" data-i="4" hidden>
+          <div class="ppi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.6-5.7L20 8"/><path d="M20 3.5V8h-4.5"/><path d="M20 12a8 8 0 0 1-13.6 5.7L4 16"/><path d="M4 20.5V16h4.5"/></svg></div>
+          <div>
+            <h3>Wij bouwen en draaien het, jij levert de klant</h3>
+            <p>Geen team en geen bouwwerk aan jouw kant. Jij levert een klant-ID, wij regelen de kaart, de pagina, het aanbod en de verzending.</p>
+            <div class="chips"><span class="chip">Geen bouwwerk</span><span class="chip">Wij draaien 'm</span></div>
+          </div>
+        </div>
+      </div>
       <div class="foot"><svg class="fi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg><span>Een scherp pilottarief, <em>ver onder wat het platform straks kost</em>.</span></div>
     </div>
   </div>
@@ -554,14 +647,14 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
         <a class="btn btn-main" href="mailto:hallo@pique.agency?subject=Pilot%20platform%20Lightr%20x%20Pique">Doe mee aan de pilot <span class="arw">&#8594;</span></a>
         <a class="btn btn-ghost" href="https://evenkennismaken.nl/domek-pagina?k=anna" target="_blank" rel="noopener">Bekijk een voorbeeld</a>
       </div>
-      <span class="cobrand"><img src="lightr-logo.webp" alt="Lightr"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique"></span>
+      <span class="cobrand cobrand--light"><img src="lightr-logo.webp" alt="Lightr"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique"></span>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap row">
-    <span class="cobrand cobrand--bare"><img src="lightr-logo.webp" alt="Lightr" style="height:20px"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique" style="height:20px"></span>
+    <span class="cobrand"><img src="lightr-logo.webp" alt="Lightr" style="height:20px"><span class="cx">&times;</span><img src="pique-logo-navy.png" alt="Pique" style="height:20px"></span>
     <span class="meta">Concept &middot; platform in aanbouw onder een nieuwe naam</span>
   </div>
 </footer>
@@ -592,6 +685,15 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
     window.addEventListener('scroll',draw,{passive:true});
     window.addEventListener('resize',draw);
   }
+
+  // pilot-tabs: klik door wat je krijgt
+  var ptabs=document.querySelectorAll('.ptab'), ppvs=document.querySelectorAll('.ppv');
+  ptabs.forEach(function(t){t.addEventListener('click',function(){
+    var i=t.getAttribute('data-i');
+    ptabs.forEach(function(x){x.classList.remove('on');});
+    t.classList.add('on');
+    ppvs.forEach(function(v){v.hidden=(v.getAttribute('data-i')!==i);});
+  });});
 
   // kanaal-keuze: kaart of mail
   var pills=document.querySelectorAll('.cp'), views=document.querySelectorAll('.chan-view');
