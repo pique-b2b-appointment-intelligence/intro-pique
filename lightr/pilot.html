@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilot · Lightr &amp; Pique</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Lightr en Pique bouwen een platform voor cross-sell en retentie na de aankoop. Nu in de pilotfase: stap goedkoop in als proof-of-concept-partner.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2312B37A'/%3E%3Cpath d='M9 22V10l7 8 7-8v12' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Caveat:wght@600&display=swap">
+<style>
+:root{
+  --navy:#0A1330; --navy-2:#0F1A40; --navy-3:#17234F;
+  --emerald:#12B37A; --emerald-dk:#0C8E60; --emerald-soft:#E6F6EF; --mint:#3ED598;
+  --paper:#F6F8F7; --white:#FFFFFF;
+  --ink:#0D1732; --muted:#586074; --faint:#8A90A2;
+  --line:rgba(13,23,50,.11); --hair:rgba(13,23,50,.06);
+  --on-navy:#EAEEF7; --on-navy-mut:rgba(234,238,247,.60); --on-navy-faint:rgba(234,238,247,.32); --nline:rgba(234,238,247,.12);
+  --font:'Hanken Grotesk',system-ui,-apple-system,sans-serif;
+  --mono:'DM Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --hand:'Caveat','Hanken Grotesk',cursive;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --shadow:0 1px 2px rgba(13,23,50,.05),0 14px 40px rgba(13,23,50,.10);
+  --shadow-lg:0 4px 10px rgba(13,23,50,.08),0 36px 80px rgba(13,23,50,.22);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+em,i,cite{font-style:normal}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;letter-spacing:-.004em;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-weight:800;line-height:1.06;letter-spacing:-.03em;color:var(--ink);text-wrap:balance}
+:focus-visible{outline:2px solid var(--emerald);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.2rem)}
+.eyebrow{font-family:var(--mono);font-size:.73rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--emerald-dk);display:inline-flex;align-items:center;gap:.55rem}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--emerald)}
+.lead{color:var(--muted);font-size:clamp(1.04rem,2vw,1.18rem);max-width:52ch;line-height:1.55}
+
+.btn{font-family:var(--font);font-weight:700;font-size:1rem;border-radius:12px;padding:.9rem 1.65rem;cursor:pointer;
+  border:1.5px solid transparent;display:inline-flex;align-items:center;gap:.5rem;transition:transform .16s var(--ease),background .2s,border-color .2s,box-shadow .2s}
+.btn:active{transform:scale(.98)}
+.btn-main{background:var(--emerald);color:#fff;box-shadow:0 8px 24px rgba(18,179,122,.3)}
+.btn-main:hover{background:var(--emerald-dk);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--emerald);color:var(--emerald-dk)}
+.btn .arw{transition:transform .18s}.btn-main:hover .arw{transform:translateX(3px)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:40;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(246,248,247,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+.nav .row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0}
+.lock{display:flex;align-items:center;gap:.6rem;font-weight:800;font-size:1.1rem;letter-spacing:-.03em;color:var(--ink)}
+.lock .x{color:var(--faint);font-weight:500}
+.lock .tagc{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--emerald-dk);
+  background:var(--emerald-soft);border-radius:99px;padding:.24rem .6rem;font-weight:500;margin-left:.4rem}
+.nav .btn{padding:.6rem 1.2rem;font-size:.92rem}
+
+/* hero */
+.hero{background:
+  radial-gradient(900px 520px at 84% -12%,rgba(62,213,152,.18),transparent 58%),
+  linear-gradient(180deg,var(--navy),var(--navy-2));
+  color:var(--on-navy);padding:clamp(2.8rem,7vw,4.6rem) 0 clamp(3rem,7vw,4.6rem);overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1fr;gap:clamp(2.4rem,5vw,3.4rem);align-items:center}
+@media(min-width:940px){.hero .grid{grid-template-columns:1.06fr .94fr}}
+.hero .eyebrow{color:var(--mint)}.hero .eyebrow::before{background:var(--mint)}
+.hero h1{font-size:clamp(2.4rem,6vw,3.9rem);font-weight:900;color:#fff;margin:1.1rem 0 0;max-width:15ch;letter-spacing:-.04em;line-height:1.02}
+.hero h1 .g{color:var(--mint)}
+.hero .sub{color:var(--on-navy-mut);font-size:clamp(1.04rem,2vw,1.18rem);max-width:50ch;margin-top:1.4rem;line-height:1.55}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.hero .btn-ghost{color:#fff;border-color:var(--nline)}.hero .btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
+.hero .trust{margin-top:1.6rem;font-family:var(--mono);font-size:.75rem;color:var(--on-navy-faint)}
+.hero .trust b{color:var(--on-navy-mut);font-weight:500}
+/* product mock */
+.hvis{position:relative}
+.browser{background:var(--white);border-radius:15px;box-shadow:var(--shadow-lg);overflow:hidden;max-width:360px;margin-left:auto;animation:fl 7s ease-in-out infinite}
+.browser .bar{display:flex;align-items:center;gap:.5rem;padding:.7rem .9rem;background:#F2F4F6;border-bottom:1px solid var(--hair)}
+.browser .dots{display:flex;gap:5px}.browser .dots i{width:9px;height:9px;border-radius:50%;background:#D3D8DE}
+.browser .url{flex:1;background:#fff;border:1px solid var(--hair);border-radius:7px;padding:.28rem .7rem;font-family:var(--mono);font-size:.64rem;color:var(--faint);text-align:center}
+.browser .body{padding:1.15rem 1.25rem}
+.pp .greet{font-weight:800;font-size:1.05rem;color:var(--navy);letter-spacing:-.02em}
+.pp .subline{font-size:.76rem;color:var(--muted);margin-top:.2rem}
+.pp .offers{margin-top:.9rem;display:flex;flex-direction:column;gap:.5rem}
+.pp .of{display:flex;align-items:center;gap:.65rem;padding:.6rem .7rem;border:1px solid var(--hair);border-radius:10px;background:var(--paper)}
+.pp .of .d{width:24px;height:24px;border-radius:7px;background:var(--emerald-soft);flex:none;display:grid;place-items:center}
+.pp .of .d::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--emerald)}
+.pp .of b{font-size:.82rem;color:var(--ink);font-weight:600;flex:1}
+.pp .of .go{font-family:var(--mono);font-size:.58rem;color:var(--emerald-dk);letter-spacing:.06em;text-transform:uppercase}
+.card{position:absolute;left:-6px;bottom:-26px;width:230px;background:linear-gradient(150deg,#fffefb,#f4f2ea);border-radius:9px;
+  padding:1rem 1.1rem;box-shadow:var(--shadow-lg);border:1px solid rgba(13,23,50,.06);transform:rotate(-4deg);animation:fl2 8s ease-in-out infinite}
+.card .stamp{float:right;background:var(--emerald);color:#fff;font-family:var(--mono);font-size:.54rem;letter-spacing:.11em;text-transform:uppercase;padding:.22rem .46rem;border-radius:4px;margin:-.1rem -.1rem .3rem .5rem}
+.card .hw{font-family:var(--hand);font-size:1.24rem;line-height:1.34;color:#243352}
+.card .sign{font-family:var(--hand);font-size:1.24rem;color:var(--muted);margin-top:.25rem}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes fl2{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-4deg) translateY(6px)}}
+@media(max-width:520px){.card{width:190px;left:0;bottom:-16px}}
+
+/* secties */
+section{padding:clamp(3rem,6.5vw,4.4rem) 0}
+.sec-navy{background:linear-gradient(180deg,var(--navy),var(--navy-2));color:var(--on-navy)}
+.sec-navy h2{color:#fff}.sec-navy .lead{color:var(--on-navy-mut)}.sec-navy .eyebrow{color:var(--mint)}.sec-navy .eyebrow::before{background:var(--mint)}
+.head h2{font-size:clamp(1.7rem,3.8vw,2.4rem);margin-top:.75rem;max-width:20ch}
+.center{text-align:center}.center .eyebrow{justify-content:center}.center .lead{margin-left:auto;margin-right:auto}
+.sr{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.sr.on{opacity:1;transform:none}
+.sr-1{transition-delay:.07s}.sr-2{transition-delay:.16s}.sr-3{transition-delay:.25s}
+
+/* 3 stappen */
+.steps{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.4rem}
+@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.3rem}
+.step .n{font-family:var(--mono);font-weight:500;width:30px;height:30px;border-radius:8px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:.9rem}
+.step b{display:block;margin-top:.85rem;font-size:1.05rem;color:var(--navy)}
+.step p{margin-top:.35rem;font-size:.92rem;color:var(--muted)}
+
+/* value stack */
+.stack{margin-top:2.2rem;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--white)}
+.stack .item{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;padding:1rem 1.4rem;border-bottom:1px solid var(--hair)}
+.stack .item:last-of-type{border-bottom:none}
+.check{width:21px;height:21px;flex:none;border-radius:50%;background:var(--emerald-soft);position:relative;margin-top:.12rem}
+.check::after{content:"";position:absolute;left:6.5px;top:5px;width:5px;height:9px;border:solid var(--emerald);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.stack .item b{font-weight:700}.stack .item span{color:var(--muted);font-size:.92rem;display:block;margin-top:.05rem}
+.stack .foot{padding:1.1rem 1.4rem;background:var(--navy);color:#fff;font-weight:700;font-size:1.02rem}
+.stack .foot em{color:var(--mint)}
+
+/* waarom nu */
+.why{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2.4rem}
+@media(min-width:820px){.why{grid-template-columns:repeat(3,1fr)}}
+.wc{background:rgba(234,238,247,.04);border:1px solid var(--nline);border-radius:14px;padding:1.4rem 1.35rem}
+.wc .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--mint)}
+.wc b{display:block;color:#fff;font-size:1.08rem;margin-top:.55rem}
+.wc p{color:var(--on-navy-mut);font-size:.92rem;margin-top:.4rem;line-height:1.5}
+
+/* cta */
+.cta-band{background:radial-gradient(700px 400px at 78% -24%,rgba(62,213,152,.22),transparent 58%),linear-gradient(160deg,var(--navy),var(--navy-3));
+  color:#fff;border-radius:24px;padding:clamp(2.4rem,5vw,3.6rem);text-align:center;overflow:hidden}
+.cta-band .eyebrow{color:var(--mint);justify-content:center}.cta-band .eyebrow::before{background:var(--mint)}
+.cta-band h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem);margin:1rem auto 0;max-width:20ch}
+.cta-band p{color:var(--on-navy-mut);margin:1rem auto 0;max-width:48ch}
+.cta-band .cta-row{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-top:2rem}
+.cta-band .btn-ghost{color:#fff;border-color:var(--nline)}.cta-band .btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
+
+footer{padding:2.2rem 0 3rem;border-top:1px solid var(--hair)}
+footer .row{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between;align-items:baseline}
+footer .lock{font-size:1rem}
+footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.sr{opacity:1!important;transform:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap row">
+    <div class="lock">Lightr <span class="x">&times;</span> Pique <span class="tagc">Concept</span></div>
+    <a class="btn btn-main" href="#mee">Doe mee aan de pilot</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow">Concept &middot; pilotfase</span>
+      <h1>Handgeschreven post die je klanten weer laat <span class="g">kopen</span>.</h1>
+      <p class="sub">Lightr en Pique bouwen samen een platform voor het moment na de aankoop: een kaart in jouw merk, een persoonlijke pagina, en een motor die leert wat verkoopt. We zitten in de pilotfase, dus je kunt nu als een van de eersten instappen tegen een scherp proof-of-concept-tarief.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="#mee">Doe mee aan de pilot <span class="arw">&#8594;</span></a>
+        <a class="btn btn-ghost" href="https://evenkennismaken.nl/domek-pagina?k=anna" target="_blank" rel="noopener">Bekijk een voorbeeld</a>
+      </div>
+      <p class="trust">Een gezamenlijk initiatief van <b>Lightr</b> en <b>Pique</b></p>
+    </div>
+    <div class="hvis sr sr-2" aria-hidden="true">
+      <div class="browser">
+        <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">jouwmerk.nl/welkom</div></div>
+        <div class="body"><div class="pp">
+          <div class="greet">Welkom terug, Anna</div>
+          <div class="subline">Uitgezocht op wat je koos</div>
+          <div class="offers">
+            <div class="of"><span class="d"></span><b>Perfect hierbij</b><span class="go">Bekijk</span></div>
+            <div class="of"><span class="d"></span><b>Nog handiger gemaakt</b><span class="go">Bekijk</span></div>
+            <div class="of"><span class="d"></span><b>Voor een vriend</b><span class="go">Deel</span></div>
+          </div>
+        </div></div>
+      </div>
+      <div class="card"><span class="stamp">Jouw merk</span><div class="hw">Bedankt voor je bestelling, Anna.</div><div class="sign">Groet, het team</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- zo werkt het -->
+<section>
+  <div class="wrap head center sr">
+    <span class="eyebrow">Zo werkt het</span>
+    <h2 style="margin:.7rem auto 0">Jij levert de data, wij leveren de verkoop.</h2>
+  </div>
+  <div class="wrap">
+    <div class="steps">
+      <div class="step sr sr-1"><span class="n">1</span><b>Jij levert een klant-ID</b><p>Met wat de klant al kocht en je aanbod. Meer hebben we niet nodig.</p></div>
+      <div class="step sr sr-2"><span class="n">2</span><b>De motor kiest en leert</b><p>Per klant het juiste vervolgaanbod, en het wordt slimmer met elke scan.</p></div>
+      <div class="step sr sr-3"><span class="n">3</span><b>Kaart en pagina, in jouw merk</b><p>Handgeschreven op de mat, persoonlijk achter de QR.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- wat je in de pilot krijgt -->
+<section style="background:var(--white);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+  <div class="wrap head sr">
+    <span class="eyebrow">Wat je in de pilot krijgt</span>
+    <h2>Een complete campagne, wij draaien 'm.</h2>
+  </div>
+  <div class="wrap">
+    <div class="stack sr sr-2">
+      <div class="item"><span class="check"></span><div><b>Een echte campagne op een deel van je bestand</b><span>Je test het op scherp, niet op een demo.</span></div></div>
+      <div class="item"><span class="check"></span><div><b>Handgeschreven kaart plus persoonlijke pagina per klant</b><span>Volledig in jouw merk.</span></div></div>
+      <div class="item"><span class="check"></span><div><b>Relevante aanbiedingen, per klant gekozen</b><span>De motor kiest wat bij die klant past.</span></div></div>
+      <div class="item"><span class="check"></span><div><b>Scans, klikken en conversie meetbaar</b><span>Je ziet zwart op wit wat het oplevert.</span></div></div>
+      <div class="item"><span class="check"></span><div><b>Wij bouwen en draaien het, jij levert de data</b><span>Geen team, geen bouwwerk aan jouw kant.</span></div></div>
+      <div class="foot">Een scherp pilottarief, <em>ver onder wat het platform straks kost</em>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- waarom nu -->
+<section class="sec-navy">
+  <div class="wrap head sr">
+    <span class="eyebrow">Waarom nu instappen</span>
+    <h2>Vroeg erbij, tegen een fractie van de prijs.</h2>
+    <p class="lead">We bouwen dit platform onder een nieuwe naam. Wie nu meedoet aan de pilot pakt het voordeel dat straks weg is.</p>
+  </div>
+  <div class="wrap">
+    <div class="why">
+      <div class="wc sr sr-1"><div class="k">Prijs</div><b>Proof-of-concept-tarief</b><p>Je stapt in tegen een fractie van wat het platform bij de lancering gaat kosten, en je onboarding verdien je terug als je doorgaat.</p></div>
+      <div class="wc sr sr-2"><div class="k">Invloed</div><b>Je praat mee</b><p>Als een van de eerste klanten bepaal je mee wat we bouwen en hoe het werkt voor jouw situatie.</p></div>
+      <div class="wc sr sr-3"><div class="k">Zekerheid</div><b>Wij bewijzen het eerst</b><p>Halen we het afgesproken scan- en klikdoel niet, dan draaien we kosteloos door tot het staat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- cta -->
+<section>
+  <div class="wrap">
+    <div class="cta-band sr" id="mee">
+      <span class="eyebrow">Doe mee</span>
+      <h2>We nemen een handvol pilotklanten aan.</h2>
+      <p>Zodat we elke campagne persoonlijk kunnen begeleiden. Laat weten dat je erbij wil, dan plannen we een kort gesprek.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="mailto:hallo@pique.agency?subject=Pilot%20platform%20Lightr%20x%20Pique">Doe mee aan de pilot <span class="arw">&#8594;</span></a>
+        <a class="btn btn-ghost" href="https://evenkennismaken.nl/domek-pagina?k=anna" target="_blank" rel="noopener">Bekijk een voorbeeld</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <span class="lock">Lightr <span class="x">&times;</span> Pique</span>
+    <span class="meta">Concept &middot; platform in aanbouw onder een nieuwe naam</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var s=function(){nav.classList.toggle('solid',window.scrollY>10);};s();
+  window.addEventListener('scroll',s,{passive:true});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.sr').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
