@@ -142,36 +142,53 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
 .brow.warm .bfill{background:linear-gradient(90deg,var(--emerald),var(--mint))}
 .on .brow.cold .bfill{width:26%}.on .brow.warm .bfill{width:88%}
 
-/* de flow (spine) */
-.flow{position:relative;max-width:920px;margin:3rem auto 0}
-.spine-track,.spine-fill{position:absolute;left:50%;transform:translateX(-50%);width:3px;top:14px;bottom:14px;border-radius:3px;z-index:0}
-.spine-track{background:var(--line)}
-.spine-fill{background:linear-gradient(180deg,var(--emerald),var(--gold));bottom:auto;height:0}
-@media(max-width:759px){.spine-track,.spine-fill{left:23px}}
-.fstep{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;margin:0;min-height:224px}
-.fbody{max-width:34ch}
-.fstep>.fbody{grid-column:1;grid-row:1;justify-self:end;text-align:right;padding-right:3.1rem}
-.fstep>.fvis{grid-column:2;grid-row:1;justify-self:start;padding-left:3.1rem}
-.fstep.rev>.fbody{grid-column:2;grid-row:1;justify-self:start;text-align:left;padding-right:0;padding-left:3.1rem}
-.fstep.rev>.fvis{grid-column:1;grid-row:1;justify-self:end;padding-left:0;padding-right:3.1rem}
-.fvis{width:100%;display:flex}
-.fstep>.fvis{justify-content:flex-start}
-.fstep.rev>.fvis{justify-content:flex-end}
-.fvis>*{width:100%;max-width:296px}
-.fnode{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;
-  background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:.92rem;color:var(--faint);z-index:2;transition:.5s var(--ease)}
-.fstep.on .fnode{border-color:transparent;color:#fff;background:var(--emerald);box-shadow:0 8px 22px rgba(18,179,122,.32)}
-.fstep.on.g .fnode{background:var(--gold);box-shadow:0 8px 22px rgba(217,154,62,.34)}
-.fk{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--emerald-dk)}
-.fstep.g .fk{color:var(--gold-dk)}
-.fbody h3{font-size:clamp(1.2rem,2.4vw,1.5rem);margin-top:.5rem;color:var(--navy)}
-.fbody p{color:var(--muted);font-size:.98rem;margin-top:.5rem;line-height:1.5}
-.fbody p b{color:var(--ink);font-weight:700}
-@media(max-width:759px){
-  .fstep{grid-template-columns:1fr;gap:1rem;padding-left:60px;margin:2rem 0;min-height:0}
-  .fstep .fbody,.fstep.rev .fbody{grid-column:1;justify-self:start;text-align:left;padding:0;order:1}
-  .fstep .fvis,.fstep.rev .fvis{grid-column:1;justify-self:start;padding:0;order:2}
-  .fnode{left:23px}
+/* de flow: horizontaal met sticky-scroll (valt terug op verticaal) */
+.flowx{position:relative;background:var(--white)}
+.flowx-sticky{padding:clamp(2.6rem,6vw,4rem) 0}
+.flowx-head{text-align:center;max-width:1060px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.2rem)}
+/* voortgangsrail (alleen in pinned modus) */
+.fx-rail{display:none}
+.fx-line,.fx-fill{position:absolute;left:20px;top:19px;height:3px;border-radius:3px}
+.fx-line{right:20px;background:var(--line)}
+.fx-fill{background:linear-gradient(90deg,var(--emerald),var(--gold));width:0;transition:width .15s linear}
+.fx-dots{position:relative;display:flex;justify-content:space-between}
+.fx-dot{display:flex;flex-direction:column;align-items:center;gap:.55rem;background:var(--white);padding:0 .3rem}
+.fx-dot .dn{width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;
+  font-family:var(--mono);font-size:.85rem;color:var(--faint);transition:.35s var(--ease)}
+.fx-dot .dl{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);transition:.3s;white-space:nowrap}
+.fx-dot.on .dn{background:var(--emerald);border-color:transparent;color:#fff;box-shadow:0 7px 18px rgba(18,179,122,.3)}
+.fx-dot.on.g .dn{background:var(--gold);box-shadow:0 7px 18px rgba(217,154,62,.32)}
+.fx-dot.on .dl{color:var(--ink)}
+.fx-viewport{overflow:hidden;margin-top:clamp(2.2rem,5vw,3.2rem)}
+.fx-track{display:flex;flex-direction:column;gap:clamp(2.8rem,7vw,4rem)}
+.fx-panel{display:grid;grid-template-columns:1fr;gap:1.6rem;align-items:center;max-width:1000px;margin:0 auto;padding:0 clamp(1.2rem,5vw,2.2rem)}
+.fx-eyb{font-family:var(--mono);font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:var(--emerald-dk);display:flex;align-items:center;gap:.7rem}
+.fx-eyb .num{width:32px;height:32px;border-radius:9px;background:var(--emerald);color:#fff;display:grid;place-items:center;font-size:.86rem}
+.fx-panel.g .fx-eyb{color:var(--gold-dk)}.fx-panel.g .fx-eyb .num{background:var(--gold)}
+.fx-body h3{font-size:clamp(1.5rem,3.4vw,2.15rem);margin-top:1rem;color:var(--navy);letter-spacing:-.03em}
+.fx-body p{color:var(--muted);font-size:clamp(1.02rem,2vw,1.14rem);margin-top:.8rem;line-height:1.55;max-width:42ch}
+.fx-body p b{color:var(--ink);font-weight:700}
+.fx-vis{display:flex;justify-content:center}
+.fx-vis>*{width:100%;max-width:330px}
+@media(min-width:880px){
+  .fx-panel{grid-template-columns:1.04fr .96fr;gap:3.4rem}
+  .fx-vis{justify-content:flex-end}
+}
+/* pinned: sectie staat vast, stappen schuiven horizontaal */
+@media(min-width:880px) and (prefers-reduced-motion:no-preference){
+  .flowx.pin{height:340vh}
+  .flowx.pin .flowx-sticky{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:1.4rem 0}
+  .flowx.pin .flowx-head h2{margin-top:.4rem}
+  .flowx.pin .flowx-head .lead{margin-top:.7rem}
+  .flowx.pin .fx-rail{display:block;position:relative;max-width:660px;margin:1.6rem auto 0;height:56px}
+  .flowx.pin .fx-viewport{margin-top:1.7rem}
+  .flowx.pin .fx-body h3{font-size:clamp(1.4rem,2.9vw,1.95rem)}
+  .flowx.pin .fx-vis>*{max-width:310px}
+  .flowx.pin .fx-track{flex-direction:row;gap:0;will-change:transform;transition:transform .12s linear}
+  .flowx.pin .fx-panel{flex:0 0 100%}
+  .flowx.pin .fx-panel .fx-body,.flowx.pin .fx-panel .fx-vis{opacity:.0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  .flowx.pin .fx-panel.active .fx-body{opacity:1;transform:none;transition-delay:.05s}
+  .flowx.pin .fx-panel.active .fx-vis{opacity:1;transform:none;transition-delay:.14s}
 }
 /* flow-visuals */
 .vcard{background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);width:100%}
@@ -384,27 +401,33 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
   </div>
 </section>
 
-<!-- de flow -->
-<section style="background:var(--white);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
-  <div class="wrap head center sr">
-    <span class="eyebrow">Zo werkt het, stap voor stap</span>
-    <h2 style="margin:.7rem auto 0">Van één aankoop naar de volgende.</h2>
-    <p class="lead" style="margin-top:1rem">Jij levert alleen een klant. De motor doet de rest.</p>
-  </div>
-  <div class="wrap">
-    <div class="flow" id="flow">
-      <div class="spine-track"></div>
-      <div class="spine-fill" id="spinefill"></div>
+<!-- de flow: horizontaal sticky-scroll -->
+<section class="flowx" id="flowx" style="border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+  <div class="flowx-sticky">
+    <div class="flowx-head sr">
+      <span class="eyebrow" style="justify-content:center">Zo werkt het, stap voor stap</span>
+      <h2 style="font-size:clamp(1.7rem,3.9vw,2.5rem);margin:.7rem auto 0;max-width:20ch">Van één aankoop naar de volgende.</h2>
+      <p class="lead" style="margin:1rem auto 0">Jij levert alleen een klant. De motor doet de rest.</p>
+    </div>
+    <div class="fx-rail" aria-hidden="true">
+      <span class="fx-line"></span><span class="fx-fill" id="fxfill"></span>
+      <div class="fx-dots">
+        <div class="fx-dot on"><span class="dn">1</span><span class="dl">Trigger</span></div>
+        <div class="fx-dot g"><span class="dn">2</span><span class="dl">Motor</span></div>
+        <div class="fx-dot"><span class="dn">3</span><span class="dl">Bezorging</span></div>
+        <div class="fx-dot"><span class="dn">4</span><span class="dl">Tweede verkoop</span></div>
+      </div>
+    </div>
+    <div class="fx-viewport">
+      <div class="fx-track" id="fxtrack">
 
-      <!-- stap 1 -->
-      <div class="fstep sr">
-        <div class="fnode">1</div>
-        <div class="fbody">
-          <span class="fk">De trigger</span>
+      <div class="fx-panel active">
+        <div class="fx-body">
+          <span class="fx-eyb"><span class="num">1</span> De trigger</span>
           <h3>Een klant koopt iets</h3>
           <p>Dat is het enige signaal dat we nodig hebben. <b>Jij stuurt ons een klant.</b></p>
         </div>
-        <div class="fvis">
+        <div class="fx-vis">
           <div class="vcard order">
             <div class="oh">
               <span class="odot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
@@ -416,15 +439,13 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
         </div>
       </div>
 
-      <!-- stap 2 -->
-      <div class="fstep rev g sr">
-        <div class="fnode">2</div>
-        <div class="fbody">
-          <span class="fk">De motor</span>
+      <div class="fx-panel g">
+        <div class="fx-body">
+          <span class="fx-eyb"><span class="num">2</span> De motor</span>
           <h3>Wij kiezen het juiste vervolg</h3>
           <p>Op basis van wat die klant net kocht, kiest de motor het aanbod dat past. <b>Per klant anders.</b></p>
         </div>
-        <div class="fvis">
+        <div class="fx-vis">
           <div class="vcard motor">
             <div class="msrc">Net gekocht: <b>Koffiebonen 1 kg</b></div>
             <div class="opt pick"><span class="tick"></span>Vers gemalen &middot; bijpassend filter</div>
@@ -434,15 +455,13 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
         </div>
       </div>
 
-      <!-- stap 3: kaart of mail -->
-      <div class="fstep sr">
-        <div class="fnode">3</div>
-        <div class="fbody">
-          <span class="fk">De bezorging</span>
+      <div class="fx-panel">
+        <div class="fx-body">
+          <span class="fx-eyb"><span class="num">3</span> De bezorging</span>
           <h3>Het valt bij ze binnen</h3>
           <p>Een handgeschreven kaart in jouw merk. Of een mail, als je dat liever hebt. <b>Jij kiest per campagne.</b></p>
         </div>
-        <div class="fvis">
+        <div class="fx-vis">
           <div class="chan">
             <div class="chan-pills" role="tablist">
               <button class="cp on" data-c="kaart" role="tab">Kaart <span class="rec">tip</span></button>
@@ -474,15 +493,13 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
         </div>
       </div>
 
-      <!-- stap 4 -->
-      <div class="fstep rev sr">
-        <div class="fnode">4</div>
-        <div class="fbody">
-          <span class="fk">De tweede verkoop</span>
+      <div class="fx-panel">
+        <div class="fx-body">
+          <span class="fx-eyb"><span class="num">4</span> De tweede verkoop</span>
           <h3>Ze kopen opnieuw</h3>
           <p>Ze scannen de QR of klikken, zien hun persoonlijke pagina, en bestellen. <b>Zonder dat jij iets bouwde.</b></p>
         </div>
-        <div class="fvis">
+        <div class="fx-vis">
           <div class="resflow">
             <div class="browser sm">
               <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">jouwmerk.nl</div></div>
@@ -504,8 +521,13 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
           </div>
         </div>
       </div>
+      </div>
     </div>
+  </div>
+</section>
 
+<section style="background:var(--white);padding:clamp(2rem,5vw,3rem) 0">
+  <div class="wrap">
     <p class="punch sr">Jij levert een klant. Wij bouwen de <span class="pg">kaart</span>, de <b>pagina</b> en het aanbod.</p>
   </div>
 </section>
@@ -672,18 +694,41 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
   // hero word reveal stagger
   document.querySelectorAll('.wr .w').forEach(function(w,i){w.style.animationDelay=(0.15+i*0.08)+'s';});
 
-  // spine draw
-  var flow=document.getElementById('flow'), fill=document.getElementById('spinefill');
-  if(flow&&fill){
-    var draw=function(){
-      var r=flow.getBoundingClientRect(), vh=window.innerHeight||document.documentElement.clientHeight;
-      var p=(vh*0.56 - r.top)/r.height;
-      p=Math.max(0,Math.min(1,p));
-      fill.style.height=(p*100)+'%';
+  // flow: horizontaal sticky-scroll, met verticale fallback
+  var flowx=document.getElementById('flowx');
+  if(flowx){
+    var fxtrack=document.getElementById('fxtrack');
+    var fxvp=flowx.querySelector('.fx-viewport');
+    var fxsticky=flowx.querySelector('.flowx-sticky');
+    var fxdots=flowx.querySelectorAll('.fx-dot');
+    var fxpanels=flowx.querySelectorAll('.fx-panel');
+    var fxfill=document.getElementById('fxfill');
+    var N=fxpanels.length;
+    var mq=window.matchMedia('(min-width:880px)');
+    var rm=window.matchMedia('(prefers-reduced-motion:reduce)');
+    var pinned=false;
+    var fxRender=function(){
+      if(!pinned) return;
+      var range=flowx.offsetHeight - fxsticky.offsetHeight;
+      var top=flowx.getBoundingClientRect().top;
+      var p=range>0?(-top/range):0; p=p<0?0:(p>1?1:p);
+      var vw=fxvp.clientWidth;
+      fxtrack.style.transform='translateX('+(-p*(N-1)*vw)+'px)';
+      var idx=Math.round(p*(N-1));
+      fxdots.forEach(function(d,i){d.classList.toggle('on',i<=idx);});
+      fxpanels.forEach(function(pan,i){pan.classList.toggle('active',i===idx);});
+      if(fxfill) fxfill.style.width='calc((100% - 40px) * '+p+')';
     };
-    draw();
-    window.addEventListener('scroll',draw,{passive:true});
-    window.addEventListener('resize',draw);
+    var fxSetup=function(){
+      var want=mq.matches && !rm.matches;
+      if(want&&!pinned){flowx.classList.add('pin');pinned=true;}
+      else if(!want&&pinned){flowx.classList.remove('pin');pinned=false;fxtrack.style.transform='';fxpanels.forEach(function(pan){pan.classList.remove('active');});}
+      fxRender();
+    };
+    fxSetup();
+    window.addEventListener('scroll',fxRender,{passive:true});
+    window.addEventListener('resize',fxSetup);
+    if(mq.addEventListener){mq.addEventListener('change',fxSetup);}else if(mq.addListener){mq.addListener(fxSetup);}
   }
 
   // pilot-tabs: klik door wat je krijgt
