@@ -75,7 +75,7 @@ img{max-width:100%;display:block}
 /* hero */
 .hero{background:
   radial-gradient(920px 540px at 86% -14%,rgba(47,214,166,.20),transparent 58%),
-  radial-gradient(700px 460px at 6% 8%,rgba(217,154,62,.10),transparent 60%),
+  radial-gradient(680px 460px at 4% 6%,rgba(47,214,166,.07),transparent 60%),
   linear-gradient(180deg,var(--navy),var(--navy-2));
   color:var(--on-navy);padding:clamp(2.4rem,6vw,3.8rem) 0 clamp(3rem,7vw,4.6rem);overflow:hidden}
 .hero .grid{display:grid;grid-template-columns:1fr;gap:clamp(2.6rem,5vw,3.4rem);align-items:center}
@@ -107,7 +107,7 @@ img{max-width:100%;display:block}
 .pp .of{display:flex;align-items:center;gap:.65rem;padding:.6rem .7rem;border:1px solid var(--hair);border-radius:10px;background:var(--paper)}
 .pp .of .d{width:24px;height:24px;border-radius:7px;background:var(--emerald-soft);flex:none;display:grid;place-items:center}
 .pp .of .d::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--emerald)}
-.pp .of.gold .d{background:var(--gold-soft)}.pp .of.gold .d::after{background:var(--gold)}
+.pp .of.gold .d{background:var(--emerald-soft)}.pp .of.gold .d::after{background:var(--emerald)}
 .pp .of b{font-size:.82rem;color:var(--ink);font-weight:600;flex:1}
 .pp .of .go{font-family:var(--mono);font-size:.58rem;color:var(--emerald-dk);letter-spacing:.06em;text-transform:uppercase}
 .card{position:absolute;left:-6px;bottom:-26px;width:236px;background:linear-gradient(150deg,#fffefb,#f4f2ea);border-radius:9px;
@@ -150,7 +150,7 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
 .fx-rail{display:none}
 .fx-line,.fx-fill{position:absolute;left:12.5%;top:19px;height:3px;border-radius:3px}
 .fx-line{right:12.5%;background:var(--line)}
-.fx-fill{background:linear-gradient(90deg,var(--emerald),var(--gold));width:0;transition:width .15s linear}
+.fx-fill{background:linear-gradient(90deg,var(--emerald),var(--mint));width:0;transition:width .15s linear}
 .fx-dots{position:relative;display:flex}
 .fx-dot{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:.55rem}
 .fx-dot .dn{width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;
@@ -207,8 +207,8 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
 .motor .msrc b{color:var(--navy)}
 .motor .opt{display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;border-radius:9px;border:1px solid var(--hair);margin-top:.4rem;font-size:.82rem;color:var(--muted);transition:.4s}
 .motor .opt .tick{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);flex:none}
-.motor .opt.pick{border-color:var(--gold);background:var(--gold-soft);color:var(--ink);font-weight:600}
-.motor .opt.pick .tick{border-color:transparent;background:var(--gold);position:relative}
+.motor .opt.pick{border-color:var(--emerald);background:var(--emerald-soft);color:var(--ink);font-weight:600}
+.motor .opt.pick .tick{border-color:transparent;background:var(--emerald);position:relative}
 .motor .opt.pick .tick::after{content:"";position:absolute;left:5px;top:3px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg)}
 /* channel toggle (kaart of mail) */
 .chan{width:100%;max-width:300px}
@@ -255,7 +255,7 @@ section{padding:clamp(3rem,6.5vw,4.6rem) 0}
 /* punchline na flow */
 .punch{text-align:center;max-width:46ch;margin:0 auto;font-size:clamp(1.14rem,2.4vw,1.34rem);color:var(--ink);line-height:1.45;font-weight:600}
 .punch b{color:var(--emerald-dk)}
-.punch .pg{color:var(--gold-dk)}
+.punch .pg{color:var(--emerald-dk)}
 
 /* motor leert */
 .learn{display:grid;grid-template-columns:1fr;gap:2.4rem;align-items:center;margin-top:2.4rem}
@@ -426,7 +426,7 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
       <span class="fx-line"></span><span class="fx-fill" id="fxfill"></span>
       <div class="fx-dots">
         <div class="fx-dot on"><span class="dn">1</span><span class="dl">Trigger</span></div>
-        <div class="fx-dot g"><span class="dn">2</span><span class="dl">Motor</span></div>
+        <div class="fx-dot"><span class="dn">2</span><span class="dl">Motor</span></div>
         <div class="fx-dot"><span class="dn">3</span><span class="dl">Bezorging</span></div>
         <div class="fx-dot"><span class="dn">4</span><span class="dl">2e verkoop</span></div>
       </div>
@@ -452,7 +452,7 @@ footer .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
         </div>
       </div>
 
-      <div class="fx-panel g">
+      <div class="fx-panel">
         <div class="fx-body">
           <span class="fx-eyb"><span class="num">2</span> De motor</span>
           <h3>Wij kiezen het juiste vervolg</h3>
