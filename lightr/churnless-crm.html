@@ -86,9 +86,42 @@ nav .row{max-width:1600px;margin:0 auto;padding:0 clamp(16px,3vw,28px);min-heigh
 
 .note{max-width:1600px;margin:0 auto;padding:0 clamp(16px,3vw,28px) 40px;color:var(--muted);font-size:12.5px}
 @media (max-width:640px){ .board{grid-auto-columns:minmax(240px,86vw)} }
+
+/* login-slot */
+#gate{position:fixed;inset:0;z-index:100;background:var(--desk);display:grid;place-items:center;padding:24px}
+#gate[hidden]{display:none}
+.gate-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 60px rgba(29,39,102,.14);width:min(400px,100%);padding:30px 30px 28px}
+.gate-card .glogo{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.gate-card .glogo svg{width:32px;height:32px;border-radius:9px}
+.gate-card .glogo b{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.03em}
+.gate-card h2{margin:0 0 4px;color:var(--ink);font-size:21px;font-weight:800;letter-spacing:-.02em}
+.gate-card .lead{margin:0 0 20px;color:var(--muted);font-size:14px}
+.gate-card label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin:0 0 6px}
+.gate-card input{width:100%;font:inherit;font-size:15px;border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;color:var(--ink);background:#fff;margin-bottom:14px}
+.gate-card input:focus{outline:none;border-color:var(--ink)}
+.gate-card button{width:100%;min-height:48px;border:0;border-radius:999px;background:var(--green);color:var(--green-ink);font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+.gate-card button:hover{background:#19b95d}
+.gate-err{color:#b4543f;font-size:13px;font-weight:600;margin:0 0 12px;min-height:16px}
+.logout{font:inherit;font-size:13px;font-weight:600;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.logout:hover{border-color:var(--ink);color:var(--ink)}
+.navbtns{display:flex;align-items:center;gap:8px}
 </style>
 </head>
 <body>
+
+<div id="gate" hidden>
+  <form class="gate-card" id="gateForm">
+    <div class="glogo"><svg viewBox="0 0 96 96" aria-hidden="true"><rect width="96" height="96" rx="22" fill="#1d2766"/><g transform="translate(16,16) scale(0.8)"><path d="M61.4 22 A28 28 0 1 0 61.4 58" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/><circle cx="67" cy="40" r="7" fill="#1fcf6a"/></g></svg><b>Churnless</b></div>
+    <h2>Inloggen</h2>
+    <p class="lead">Alleen voor het Churnless-team.</p>
+    <label for="gEmail">E-mailadres</label>
+    <input id="gEmail" type="email" autocomplete="username" placeholder="jij@bedrijf.nl" required>
+    <label for="gPass">Wachtwoord</label>
+    <input id="gPass" type="password" autocomplete="current-password" required>
+    <p class="gate-err" id="gErr"></p>
+    <button type="submit">Inloggen</button>
+  </form>
+</div>
 
 <nav>
   <div class="row">
@@ -96,7 +129,10 @@ nav .row{max-width:1600px;margin:0 auto;padding:0 clamp(16px,3vw,28px);min-heigh
       <svg viewBox="0 0 96 96" aria-hidden="true"><rect width="96" height="96" rx="22" fill="#1d2766"/><g transform="translate(16,16) scale(0.8)"><path d="M61.4 22 A28 28 0 1 0 61.4 58" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/><circle cx="67" cy="40" r="7" fill="#1fcf6a"/></g></svg>
       <b>Churnless</b><span class="tag">Pipeline</span>
     </a>
-    <button class="reset" id="reset" title="Zet de kaarten terug op de beginverdeling">Herstel volgorde</button>
+    <div class="navbtns">
+      <button class="reset" id="reset" title="Zet de kaarten terug op de beginverdeling">Herstel volgorde</button>
+      <button class="logout" id="logout" hidden>Uitloggen</button>
+    </div>
   </div>
 </nav>
 
@@ -284,7 +320,47 @@ document.getElementById("reset").addEventListener("click", () => {
   try { localStorage.removeItem(KEY); } catch(e){}
   state = loadState(); render();
 });
-render();
+
+/* login-slot: alleen voor het team. Licht slot: gegevens staan wel in de broncode. */
+const AUTH_KEY = "churnless-auth";
+const ALLOWED = ["maas@lightr.nl","simon@pique.agency"];
+const PASS_HASH = "336aeb5f025891f4b6acd1d7943db1aaf734fcd6c9673e115901e2d2f24719df";
+const gate = document.getElementById("gate");
+const logoutBtn = document.getElementById("logout");
+let rendered = false;
+
+async function sha256hex(str){
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,"0")).join("");
+}
+function unlock(){
+  gate.hidden = true;
+  logoutBtn.hidden = false;
+  if(!rendered){ render(); rendered = true; }
+}
+document.getElementById("gateForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const email = document.getElementById("gEmail").value.trim().toLowerCase();
+  const pass = document.getElementById("gPass").value;
+  const err = document.getElementById("gErr");
+  err.textContent = "";
+  if(!ALLOWED.includes(email)){ err.textContent = "Dit mailadres heeft geen toegang."; return; }
+  let hash;
+  try { hash = await sha256hex(pass); }
+  catch(_){ err.textContent = "Kan hier niet verifiëren (open de live-pagina)."; return; }
+  if(hash !== PASS_HASH){ err.textContent = "Wachtwoord klopt niet."; return; }
+  try { localStorage.setItem(AUTH_KEY, JSON.stringify({email, ts:Date.now()})); } catch(_){}
+  unlock();
+});
+logoutBtn.addEventListener("click", () => {
+  try { localStorage.removeItem(AUTH_KEY); } catch(_){}
+  location.reload();
+});
+
+let authed = false;
+try { authed = !!localStorage.getItem(AUTH_KEY); } catch(_){}
+if(authed){ unlock(); }
+else { gate.hidden = false; document.getElementById("gEmail").focus(); }
 </script>
 </body>
 </html>
