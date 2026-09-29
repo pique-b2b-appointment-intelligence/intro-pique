@@ -54,21 +54,6 @@
   @media(max-width:640px){.amx-r{grid-template-columns:1fr}.amx-head{display:none}.amx-r .a,.amx-r .o{border:none;border-top:1px solid var(--line)}.amx-r .a::before{content:"Aquila: ";color:var(--accent);font-weight:700}.amx-r .o::before{content:"Traditioneel: ";color:var(--ink3);font-weight:600}}
   .tp-rn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:4rem;color:var(--accent);opacity:.9}
 
-  /* ── MATCH: score-onthulling na de hero ── */
-  .match{padding:clamp(3rem,7vh,5.5rem) 24px;text-align:center}
-  .match-in{max-width:620px;margin:0 auto}
-  .match-eyebrow{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem}
-  .match-ring{position:relative;width:180px;height:180px;margin:0 auto 1.8rem}
-  .match-ring svg{width:100%;height:100%}
-  .mr-base{fill:none;stroke:rgba(var(--ink-rgb),.1);stroke-width:6}
-  .mr-prog{fill:none;stroke:var(--accent-l);stroke-width:6;stroke-linecap:round;transform:rotate(-90deg);transform-origin:center}
-  .match-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:.12em}
-  .match-num b{font-family:var(--serif);font-weight:400;font-size:3.1rem;color:var(--ink);line-height:1;letter-spacing:-.02em}
-  .match-num span{font-family:var(--sans);font-size:.95rem;color:var(--ink3);transform:translateY(-.55em)}
-  .match-h{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3vw,2.3rem);letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin-bottom:.8rem}
-  .match-sub{font-size:1.02rem;line-height:1.6;color:var(--ink2);max-width:52ch;margin:0 auto}
-  @media(prefers-reduced-motion:reduce){.mr-prog{transition:none}}
-
   /* ── LEDEN: verhaal-switcher op papier (geen donker vlak) ── */
   .mem{position:relative;padding:clamp(3.5rem,8vh,6.5rem) 24px}
   .mem-in{max-width:1000px;margin:0 auto}
@@ -162,7 +147,6 @@
   window.PQ_POSTER       = 'aquila-video-poster.png';    /* PLACEHOLDER */
   window.PQ_TRACK_URL    = '';
   window.PQ_TERUGBEL_URL = '';                           /* demo */
-  window.PQ_SCORE        = 9.4;                          /* matchscore uit de lead-scoring (demo) */
   window.PIQUE_INTRO     = {
     voornaam: 'Thomas',
     bedrijf:  'Nordveld Bouwgroep',
@@ -225,21 +209,6 @@
     </div>
   </div>
 </header>
-
-<section class="match" id="match">
-  <div class="match-in">
-    <div class="match-eyebrow">Op basis van je aanvraag</div>
-    <div class="match-ring">
-      <svg viewBox="0 0 180 180" aria-hidden="true">
-        <circle class="mr-base" cx="90" cy="90" r="80"></circle>
-        <circle class="mr-prog" cx="90" cy="90" r="80"></circle>
-      </svg>
-      <div class="match-num"><b id="matchNum">0,0</b><span>/ 10</span></div>
-    </div>
-    <h2 class="match-h">Je kwam er bij ons uit als een 9,4 op 10.</h2>
-    <p class="match-sub">Dat vraagt niets van je. Je hoeft jezelf niet opnieuw te bewijzen. We wilden je verhaal alleen begrijpen voordat we bellen. Hieronder lees je waarom je zo goed bij Aquila past.</p>
-  </div>
-</section>
 
 <main class="journey" id="journey">
   <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true">
@@ -687,31 +656,6 @@
     es.forEach(function(e){ if(e.isIntersecting){ start(); } else if(timer){ clearInterval(timer); timer=null; } });
   }, {threshold:.35});
   io2.observe(document.getElementById('peers'));
-})();
-
-/* Matchscore-onthulling: ring vult en teller loopt op zodra hij in beeld komt. */
-(function(){
-  var sec = document.getElementById('match'); if(!sec) return;
-  var score = (typeof window.PQ_SCORE === 'number') ? window.PQ_SCORE : 9.4;
-  var num  = document.getElementById('matchNum');
-  var prog = sec.querySelector('.mr-prog');
-  var C = 2 * Math.PI * 80;
-  var traag = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prog){ prog.style.strokeDasharray = C; prog.style.strokeDashoffset = C;
-    if(!traag) prog.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.22,.61,.36,1)'; }
-  function komma(v){ return v.toFixed(1).replace('.', ','); }
-  function run(){
-    if (prog) prog.style.strokeDashoffset = C * (1 - score/10);
-    if (traag){ if(num) num.textContent = komma(score); return; }
-    var start=null, dur=1400;
-    function stap(t){ if(!start)start=t; var p=Math.min((t-start)/dur,1), e=1-Math.pow(1-p,3);
-      if(num) num.textContent = komma(score*e); if(p<1) requestAnimationFrame(stap); }
-    requestAnimationFrame(stap);
-  }
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ run(); io.disconnect(); } });
-  }, {threshold:.4});
-  io.observe(sec);
 })();
 </script>
 </body>
