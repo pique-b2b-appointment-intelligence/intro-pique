@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Voorstel voor Ditto | Churnless</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2096%2096%22%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2222%22%20fill%3D%22%231d2766%22/%3E%3Cg%20transform%3D%22translate%2816%2016%29%20scale%280.8%29%22%3E%3Cpath%20d%3D%22M61.4%2022%20A28%2028%200%201%200%2061.4%2058%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2267%22%20cy%3D%2240%22%20r%3D%227%22%20fill%3D%22%231fcf6a%22/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1d2766; --text:#454b5e; --muted:#656c80; --desk:#eef1f6; --paper:#fff;
+  --line:#dde2ec; --green:#1fcf6a; --green-ink:#07361c; --warm:#fff6dc;
+  --hand:"Nothing You Could Do",cursive;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,"Segoe UI",sans-serif;color:var(--text);background:var(--paper);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+h1,h2,h3{color:var(--ink);margin:0;letter-spacing:-.025em;text-wrap:balance}
+h1{font-size:clamp(42px,6vw,76px);line-height:1;font-weight:800}
+h2{font-size:clamp(30px,3.8vw,48px);line-height:1.05;font-weight:800}
+h3{font-size:20px;line-height:1.25;font-weight:700}
+p{margin:0;text-wrap:pretty}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;font:inherit;font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;border:0}
+.btn.go{background:var(--green);color:var(--green-ink)}
+.btn.go:hover{background:#19b95d}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:100px 0}
+.desk{background:var(--desk)}
+
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;min-height:64px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.brand b{font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.03em}
+.brand small{font-size:13px;color:var(--muted)}
+nav .btn{min-height:42px;padding:0 18px;font-size:15px}
+
+/* Hero */
+.hero{background:var(--desk);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:88px 0 100px}
+.hero p.sub{font-size:20px;margin:24px 0 34px;max-width:540px}
+.hero p.sub b{color:var(--ink)}
+.stage{position:relative;height:560px}
+.stage .card{position:absolute;left:0;top:70px;transform:rotate(-5deg)}
+.stage .phone{position:absolute;right:0;top:0}
+
+
+/* Kaart en telefoon */
+.card{width:380px;max-width:100%;aspect-ratio:148/105;background:var(--paper);border-radius:4px;box-shadow:0 1px 1px rgba(29,39,102,.08),0 18px 40px rgba(29,39,102,.16);display:grid;grid-template-columns:1.3fr 1fr;padding:20px;gap:16px}
+.card .msg{font-family:var(--hand);color:var(--ink);font-size:16.5px;line-height:1.55;border-right:1px solid var(--line);padding-right:14px}
+.card .side{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end}
+.stamp{width:44px;height:52px;border:2px dashed #b9c2d6;border-radius:3px;display:grid;place-items:center}
+.stamp svg{width:22px;height:22px;color:var(--ink)}
+.addr{align-self:stretch;display:flex;flex-direction:column;gap:9px}
+.addr i{display:block;height:1px;background:var(--line)}
+.qr{width:58px;height:58px}
+.phone{width:270px;background:var(--paper);border-radius:30px;padding:10px;box-shadow:0 0 0 1.5px var(--ink),0 24px 48px rgba(29,39,102,.18)}
+.screen{border-radius:22px;background:#f7f8fb;scrollbar-width:thin;scrollbar-color:#c3c9dc transparent}
+.screen::-webkit-scrollbar{width:6px}.screen::-webkit-scrollbar-thumb{background:#c3c9dc;border-radius:3px}
+.screen.fixed{height:450px;overflow:hidden}
+.screen.long{height:560px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#c3c9dc transparent}
+.screen.long::-webkit-scrollbar{width:6px}.screen.long::-webkit-scrollbar-thumb{background:#c3c9dc;border-radius:3px}
+.screen.long .top{position:sticky;top:0;z-index:1}
+@media (min-width:921px){.screen.long{overscroll-behavior:contain}}
+.show .scrollhint{position:static;width:auto;margin-top:12px}
+.scrollhint{position:absolute;right:0;width:270px;text-align:center;font-size:13px;color:var(--muted);display:flex;justify-content:center;gap:6px;align-items:center;margin:0}
+.scrollhint svg{width:14px;height:14px}
+.s-note{font-size:10.5px;color:var(--muted);padding:2px 2px 6px}
+.screen .top{background:var(--ink);color:#fff;padding:18px 16px 16px}
+.screen .top small{display:block;font-size:11px;opacity:.75}
+.screen .top b{display:block;font-size:18px;line-height:1.2;margin-top:4px;font-weight:700}
+.screen .body{padding:12px;display:flex;flex-direction:column;gap:8px}
+.s-label{font-size:11px;font-weight:600;color:var(--muted);margin:4px 2px 0}
+.s-item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 11px;font-size:12.5px;line-height:1.35;color:var(--ink);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.s-item span{display:block;color:var(--muted);font-size:11px}
+.s-item em{font-style:normal;font-size:11px;font-weight:700;color:var(--green-ink);background:#dff8e9;border-radius:999px;padding:3px 8px;white-space:nowrap}
+.s-btn{background:var(--green);color:var(--green-ink);text-align:center;border-radius:999px;font-size:12.5px;font-weight:700;padding:9px}
+.s-q{background:#fff;border:1px solid var(--ink);border-radius:12px;padding:10px 11px;font-size:12.5px;color:var(--ink)}
+.s-q b{display:block;margin-bottom:7px}
+.s-chips{display:flex;flex-wrap:wrap;gap:5px}
+.s-chips span{border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;background:#f7f8fb}
+.s-cheque{background:var(--warm);border:1px dashed #d8c27a;border-radius:12px;padding:10px 11px;font-size:12.5px;color:var(--ink)}
+.s-cheque b{display:block;font-size:20px}
+.s-video{height:72px;border-radius:12px;background:linear-gradient(140deg,#2c3a86,var(--ink));display:grid;place-items:center;color:#fff;font-size:11px}
+
+/* Herken je dit */
+.pains{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:48px}
+.pain{padding:28px;border-radius:18px;border:1.5px solid var(--line)}
+.pain h3{margin-bottom:8px}
+.pain p{font-size:16.5px}
+.fix{margin-top:44px;font-size:clamp(24px,2.8vw,34px);line-height:1.2;color:var(--ink);font-weight:800;letter-spacing:-.02em}
+.fix span{display:block;color:var(--muted);font-weight:500;font-size:.6em;letter-spacing:0;margin-top:10px}
+
+/* Zo werkt het */
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:48px}
+.how > div{background:var(--paper);border-radius:18px;padding:30px}
+.how .who{display:inline-block;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;margin-bottom:16px}
+.how .you{background:var(--warm);color:#6b5210}
+.how .we{background:#dff8e9;color:var(--green-ink)}
+.how h3{margin-bottom:8px}
+.how p{font-size:16px}
+.outcome{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.outcome > div{border-radius:18px;padding:28px 30px;background:var(--ink);color:#d9def0}
+.outcome > div.alt{background:var(--paper);color:var(--text)}
+.outcome h3{color:#fff;margin-bottom:6px}
+.outcome .alt h3{color:var(--ink)}
+
+/* Voorbeelden */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.tabs button{border:0;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line);font:inherit;font-weight:700;font-size:15.5px;color:var(--ink);padding:0 18px;border-radius:999px;cursor:pointer;min-height:46px}
+.tabs button[aria-selected="true"]{background:var(--ink);color:#fff;box-shadow:none}
+.show{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start;margin-top:36px;background:var(--desk);border-radius:24px;padding:44px}
+.show .facts{position:sticky;top:110px}
+.show .visual{display:flex;flex-direction:column;align-items:center}
+.show .visual .card{width:100%;max-width:480px;transform:rotate(-2deg)}
+.show .visual .phone{position:relative;z-index:1;margin-top:-36px;width:320px;max-width:100%}
+.show .visual .screen .s-item,.show .visual .screen .s-q,.show .visual .screen .s-cheque{font-size:13.5px}
+.show .visual .label{align-self:stretch;max-width:480px;margin:0 auto 10px;font-size:14px;font-weight:600;color:var(--muted)}
+.facts{display:flex;flex-direction:column;gap:22px}
+.facts div b{display:block;font-size:14px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.facts div p{font-size:18px;color:var(--ink)}
+
+/* Antwoorden */
+.answers{margin-top:20px;background:var(--desk);border-radius:24px;padding:36px 44px 44px}
+.answers h3{font-size:22px;margin-bottom:22px}
+.acols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.acol{background:var(--paper);border-radius:18px;padding:20px;border-top:6px solid}
+.acol.hard{border-top-color:var(--green)}
+.acol.mid{border-top-color:#f2c14e}
+.acol.stop{border-top-color:#9aa3b8}
+.ahead{margin-bottom:12px}
+.ahead b{display:block;color:var(--ink);font-size:17px}
+.ahead span{font-size:14px;color:var(--muted)}
+.ans{padding:12px 0;border-top:1px solid var(--line)}
+.ans q{display:block;font-family:var(--hand);font-size:20px;line-height:1.25;color:var(--ink);quotes:none}
+.ans p{font-size:14.5px;margin-top:4px}
+/* Bewijs */
+.proof{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:44px;border-top:2px solid var(--ink);padding-top:28px}
+.proof strong{display:block;font-size:44px;line-height:1;color:var(--ink);letter-spacing:-.03em;font-weight:800}
+.proof p{margin-top:10px;font-size:15.5px}
+
+.case{margin-top:32px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:var(--paper);border-radius:20px;padding:26px 30px;box-shadow:inset 4px 0 0 var(--green)}
+.case strong{font-size:56px;line-height:1;color:var(--ink);font-weight:800;letter-spacing:-.03em}
+.case p{font-size:17.5px;max-width:720px}
+.case b{color:var(--ink)}
+/* Rekenen */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;align-items:start}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+label{font-size:14px;font-weight:600;color:var(--ink)}
+input{font:inherit;font-size:17px;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--ink);background:#fff;width:100%}
+input:focus{outline:none;border-color:var(--ink)}
+.result{background:var(--ink);color:#d9def0;border-radius:20px;padding:30px}
+.result .cost{font-size:15px;margin:18px 0 10px}
+.funnel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.funnel div{background:rgba(255,255,255,.08);border-radius:12px;padding:12px}
+.funnel span{display:block;font-size:12.5px;color:#aab3d4}
+.funnel b{display:block;color:#fff;font-size:22px;line-height:1.2;font-variant-numeric:tabular-nums}
+.staffel tr.on td{background:rgba(127,240,173,.12)}
+.field.range,.field.full{grid-column:1/-1}
+.combo{display:grid;grid-template-columns:1fr auto;gap:8px}
+select{font:inherit;font-size:16px;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--ink);background:#fff}
+select:focus{outline:none;border-color:var(--ink)}
+input:disabled{background:var(--desk);color:var(--muted)}
+.field.range label{display:flex;justify-content:space-between;gap:12px}
+.field.range output{font-weight:800;color:var(--ink)}
+.ends{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+input[type=range]{padding:0;border:0;accent-color:var(--green);height:28px}
+.hint{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.result .cost b{color:#fff}
+.staffel{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:15.5px}
+.staffel th{text-align:right;font-weight:600;color:#aab3d4;font-size:13px;padding:0 0 8px;border-bottom:1px solid rgba(255,255,255,.2)}
+.staffel td{text-align:right;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.08);color:#fff}
+.staffel th:first-child,.staffel td:first-child{text-align:left}
+.staffel td.neg{color:#ffb4a8}
+.staffel td.pos{color:#7ff0ad;font-weight:700}
+
+/* Pilot */
+.pilot{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;margin-top:44px;align-items:start}
+.pilot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.pilot li{display:grid;grid-template-columns:24px 1fr;gap:12px;font-size:17px}
+.pilot li svg{width:22px;height:22px;color:var(--green);margin-top:2px}
+.pilot li b{color:var(--ink)}
+.price{background:var(--paper);border-radius:20px;padding:30px;box-shadow:inset 0 0 0 2px var(--ink)}
+.price p{font-size:16px}
+.price .big{font-size:22px;color:var(--ink);font-weight:700;margin-bottom:10px}
+.price .small{margin-top:14px;font-size:14px;color:var(--muted)}
+.fill{border-bottom:2px dashed var(--green);padding:0 2px;font-weight:700}
+
+.closing{background:var(--ink);color:#d9def0}
+.closing h2{color:#fff;max-width:760px}
+.closing p{margin:20px 0 34px;max-width:560px;font-size:19px}
+.closing .btn.ghost{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.spots{margin-top:22px;font-size:15px;color:#aab3d4}
+footer{padding:28px 0;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+@media (max-width:920px){
+  .hero .wrap,.show,.calc,.pilot,.outcome{grid-template-columns:1fr}
+  .hero .wrap{padding:56px 0 64px}
+  .stage{height:640px;max-width:440px;width:100%;margin:0 auto}
+  .stage .card{top:0;left:0;right:0;margin:0 auto;transform:rotate(-3deg)}
+  .stage .phone{top:170px;left:50%;right:auto;transform:translateX(-50%)}
+  .show .facts{position:static}
+  .pains,.how{grid-template-columns:1fr}
+  .acols{grid-template-columns:1fr}
+  .answers{padding:24px}
+  .proof{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .show{padding:24px}
+  .show .visual{max-width:440px;width:100%}
+  section{padding:72px 0}
+}
+@media (max-width:480px){
+  .card{padding:14px;gap:10px}
+  .card .msg{font-size:13.5px}
+  .phone{width:250px}
+  .fields,.proof,.case{grid-template-columns:1fr}
+  .funnel{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .brand small{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.hero.prop .wrap{grid-template-columns:1fr;padding:80px 0 72px}
+.hero.prop h1{max-width:900px}
+.forwho{display:inline-block;font-size:14px;font-weight:700;color:var(--green-ink);background:#dff8e9;border-radius:999px;padding:6px 12px;margin-bottom:20px}
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:36px;max-width:900px}
+.keys div{background:var(--paper);border-radius:16px;padding:18px 20px}
+.keys b{display:block;font-size:13px;color:var(--muted);font-weight:600}
+.keys span{display:block;color:var(--ink);font-size:17px;font-weight:600;margin-top:2px}
+.see{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:40px}
+.see div{border:1.5px solid var(--line);border-radius:18px;padding:24px}
+.see p{font-size:16.5px;color:var(--ink)}
+.see.learn b{display:block;color:var(--ink);font-size:18px;margin-bottom:6px}
+.see.learn p{color:var(--text);font-size:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.box{border-radius:18px;padding:28px;background:var(--desk)}
+.box.ink{background:var(--ink);color:#d9def0}
+.box.ink h3{color:#fff}
+.box h3{margin-bottom:12px}
+.box ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
+.group{border-radius:18px;padding:24px;background:var(--paper)}
+.group.c{box-shadow:inset 0 0 0 2px var(--ink)}
+.group b{display:block;font-size:14px;color:var(--muted)}
+.group h3{margin:6px 0 4px}
+.kpi{margin-top:14px;background:var(--paper);border-radius:18px;padding:24px 28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.kpi b{display:block;font-size:13px;color:var(--muted);font-weight:600}
+.kpi p{color:var(--ink);font-size:16.5px}
+.note2{margin-top:18px;font-size:14px;color:var(--muted);max-width:760px}
+
+.rhead{font-size:13px;color:#aab3d4;margin:0 0 8px;font-weight:600}
+.tierbox{margin-top:16px;background:rgba(127,240,173,.1);border:1px solid rgba(127,240,173,.35);border-radius:14px;padding:14px 16px}
+.tierbox > span{display:block;font-size:12.5px;color:#aab3d4}
+.tierbox > b{display:block;color:#7ff0ad;font-size:24px;line-height:1.2}
+.tierbox p{margin-top:4px;font-size:14.5px}
+.tierbox p b{color:#fff}
+.result .tiers{font-size:12.5px;color:#aab3d4;margin-top:12px}
+
+.dash{margin-top:32px;background:var(--paper);border-radius:20px;padding:26px 28px}
+.dhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.dhead b{color:var(--ink)}.dhead span{font-size:14px;color:var(--muted)}
+.dbar{display:flex;height:22px;border-radius:999px;overflow:hidden;gap:2px}
+.dbar span{display:block;height:100%}
+.dlist{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 28px}
+.dlist li{display:grid;grid-template-columns:12px 1fr auto auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink)}
+.dlist i{width:12px;height:12px;border-radius:3px}
+.dlist small{font-size:12.5px;color:var(--muted)}
+.dlist b{font-variant-numeric:tabular-nums;min-width:40px;text-align:right}
+.fsteps{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:f}
+.fsteps li{background:var(--desk);border-radius:18px;padding:22px;counter-increment:f}
+.fsteps li:before{content:counter(f);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink);font-weight:700;margin-bottom:12px}
+.fsteps b{display:block;color:var(--ink);margin-bottom:6px}
+.fsteps p{font-size:15.5px}
+@media (max-width:920px){.dlist,.fsteps{grid-template-columns:1fr}}
+
+.roibox{margin-top:12px;border-radius:14px;padding:14px 16px;background:rgba(255,255,255,.06)}
+.roibox p{font-size:14.5px}.roibox b{color:#fff}
+.roibox .big{margin-top:6px;font-size:20px;color:#fff}.roibox .big b{font-size:30px}
+.prices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 6px}
+.prices div{border-radius:14px;padding:16px;background:var(--desk);text-align:left}
+.prices b{display:block;color:var(--ink);font-size:15px}
+.prices strong{display:block;color:var(--ink);font-size:28px;line-height:1.1;margin:4px 0}
+.prices span{font-size:13.5px;color:var(--muted)}
+.incl{font-size:14.5px;margin-top:10px}
+@media (max-width:480px){.prices{grid-template-columns:1fr}}
+
+.see.use{margin-top:14px}.see.use div{background:var(--paper)}
+.see.use b{display:block;color:var(--ink);margin-bottom:6px}.see.use p{font-size:15.5px;color:var(--text)}
+.demo{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:start;margin-top:32px}
+.demo .screen.long{height:560px}
+.bubble{background:#e7f6ec;color:#0f3d24;border-radius:14px 14px 14px 4px;padding:10px 12px;font-size:13px;line-height:1.4}
+.s-plain{font-size:12.5px;color:var(--ink);margin:2px}
+.s-chips.d button{font:inherit;font-size:11.5px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 9px;cursor:pointer;color:var(--ink)}
+.s-chips.d button:hover{border-color:var(--ink)}.s-chips.d button.on{background:var(--ink);color:#fff}
+.s-form{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.s-form label{font-size:11.5px;display:flex;flex-direction:column;gap:3px;color:var(--ink)}
+.s-form input,.s-form select{font:inherit;font-size:12.5px;padding:6px 8px;border:1px solid var(--line);border-radius:8px}
+.s-form .s-btn{border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:700}
+.syslog{background:var(--ink);color:#d9def0;border-radius:20px;padding:24px;min-height:300px}
+.syslog .shead{font-size:14px;color:#aab3d4;font-weight:600;margin-bottom:10px}
+.syslog ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:6px}
+.syslog li{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:10px 12px;background:rgba(255,255,255,.07);border-radius:10px;font-size:15px}
+.syslog li span{color:#aab3d4}.syslog li b{color:#fff}.syslog li.muted{display:block;color:#aab3d4}
+.syslog .btn.ghost{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+@media (max-width:920px){.demo{grid-template-columns:1fr;justify-items:center}.syslog{width:100%}.syslog li{grid-template-columns:1fr;gap:2px}}
+
+.s-btn2{display:block;width:100%;border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:700;border-radius:999px;padding:8px;background:var(--green);color:var(--green-ink);margin-top:-2px}
+.s-btn2.alt{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.s-item.herh{border-color:#1fcf6a}
+.s-form .ft{font-size:12.5px;color:var(--ink)}.s-form .fs{font-size:11px;color:var(--muted)}
+.prof{background:rgba(255,255,255,.06);border-radius:14px;padding:14px}
+.pid b{display:block;color:#fff;font-size:17px}.pid span{font-size:13px;color:#aab3d4}
+.prof dl{margin:12px 0 0;display:flex;flex-direction:column;gap:4px}
+.prof dl div{display:grid;grid-template-columns:140px 1fr;gap:10px;padding:7px 8px;border-radius:8px;font-size:14px;transition:background .4s}
+.prof dt{color:#aab3d4}.prof dd{margin:0;color:#fff}
+.prof dl div.hl{background:rgba(127,240,173,.18)}
+.syslog li{grid-template-columns:52px 1fr !important}
+.dact{display:flex;gap:10px;flex-wrap:wrap}
+@media (max-width:920px){.prof dl div{grid-template-columns:1fr;gap:0}}
+@media (prefers-reduced-motion:reduce){.prof dl div{transition:none}}
+.warn{margin-top:18px;background:var(--warm);border-radius:14px;padding:16px 20px;font-size:15px;color:#5b4a12;max-width:860px}
+@media (max-width:920px){.keys,.see,.two,.groups,.kpi{grid-template-columns:1fr}}
+.brand .lus{width:28px;height:28px;align-self:center;color:var(--ink);flex:none;margin-right:-2px}
+</style></head><body>
+<nav><div class="wrap"><a class="brand" href="#top"><svg class="lus" viewBox="4 4 72 72" aria-hidden="true"><path d="M61.4 22 A28 28 0 1 0 61.4 58" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/><circle cx="67" cy="40" r="7" fill="#1fcf6a"/></svg><b>Churnless</b><small>voorstel voor Ditto</small></a><a class="btn go" href="#start">Laten we starten</a></div></nav>
+
+<header class="hero prop" id="top"><div class="wrap"><div>
+  <span class="forwho">Pilotvoorstel voor Ditto</span>
+  <h1>35% scande al. Nu nog het juiste antwoord erachter.</h1>
+  <p class="sub">Jullie kaart aan ontvangers van de blije doos werd door ruim een derde gescand. Daarna kwam iedereen op dezelfde pagina om de app te downloaden. Met een persoonlijke pagina laat je in een paar seconden zien waarom Ditto juist tijdens de zwangerschap zo handig is.</p>
+  <div class="btns"><a class="btn go" href="#start">Laten we starten</a><a class="btn ghost" href="#voorbeeld">Bekijk hoe het eruitziet</a></div>
+  <div class="keys"><div><b>Het moment</b><span>Tijdens de zwangerschap, na aanmelding voor de blije doos</span></div><div><b>Het doel</b><span>App-registraties, en weten wie afhaakt</span></div><div><b>Eerste kaarten</b><span>Binnen vier weken</span></div></div>
+</div></div></header>
+
+<main>
+<section><div class="wrap">
+  <h2>Wat we zien.</h2>
+  <div class="see"><div><p>35% van de ontvangers scande de kaart. Voor een eerste kennismaking is dat heel sterk.</p></div><div><p>Maar iedereen landde op dezelfde algemene pagina om de app te downloaden.</p></div><div><p>Een aanstaande moeder kent Ditto nog niet. Ze moet direct zien wat het haar oplevert bij de verloskundige.</p></div></div>
+  <p class="fix">Churnless lost dit op.<span>Dezelfde kaart, met een pagina die haar persoonlijk welkom heet en laat zien hoe Ditto haar helpt bij de afspraken in haar zwangerschap.</span></p>
+</div></section>
+
+<section class="desk" id="voorbeeld"><div class="wrap">
+  <h2>Zo ziet het eruit voor jullie klant.</h2>
+  <div class="show" style="margin-top:36px;background:var(--paper)">
+    <div class="facts">
+      <div><b>Het moment</b><p>Lotte heeft zich aangemeld voor de blije doos. Een paar weken later valt de kaart van Ditto op de mat.</p></div>
+      <div><b>Op de pagina</b><p>Hoe Ditto haar helpt bij de afspraken met de verloskundige, delen met haar partner, en een persoonlijke link naar de app.</p></div>
+      <div><b>Wat het oplevert</b><p>Lotte downloadt Ditto via haar persoonlijke link en neemt haar volgende afspraak bij de verloskundige op.</p></div>
+    </div>
+    <div class="visual">
+      <p class="label">Op de mat, en na het scannen:</p>
+      <div class="card" aria-hidden="true"><div class="msg">Hoi Lotte, we hebben iets voor je klaargezet dat je de komende maanden goed kunt gebruiken. Scan de code, dan zie je het meteen. Liefs, het team van Ditto</div><div class="side"><div class="stamp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7l8 6 8-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div><div class="addr"><i></i><i></i><i></i></div><svg class="qr" data-qr viewBox="0 0 21 21"></svg></div></div>
+      <div class="phone"><div class="screen long" tabindex="0" role="region" aria-label="Voorbeeld van een persoonlijke pagina, scrollbaar"><div class="top"><small>dittocare.com</small><b>Hoi Lotte, dit is voor jou</b></div><div class="body"><div class="s-label">Nooit meer vergeten wat de verloskundige zei</div><div class="s-item"><div>Neem je afspraak op<span>En krijg een duidelijke samenvatting om thuis terug te lezen</span></div></div><div class="s-item"><div>Bereid je vragen voor<span>Ditto stelt vragen voor, voor je volgende afspraak</span></div></div><div class="s-item"><div>Deel het met je partner<span>Via WhatsApp of e-mail, jij bepaalt</span></div></div><div class="s-btn">Download Ditto gratis</div><div class="s-q"><b>Wanneer is je volgende afspraak?</b><div class="s-chips"><span>Deze week</span><span>Deze maand</span><span>Weet ik nog niet</span></div></div><div class="s-q"><b>Mogen we je later nog iets sturen?</b><div class="s-chips"><span>Ja, graag</span><span>Liever niet</span></div></div><div class="s-note">Ditto is gratis. Je adres hebben we via de blije doos van WIJ Special Media. Afmelden kan altijd, met één klik.</div></div></div></div>
+      <p class="scrollhint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Scroll door de pagina van jullie klant</p>
+    </div>
+  </div>
+  <div class="answers">
+        <h3>Wat jullie klant kan antwoorden. Ook een nee levert iets op.</h3>
+        <div class="acols">
+          <div class="acol hard"><div class="ahead"><b>Harde conversie</b><span>Omzet of een lead</span></div><div class="ans"><q>Ik download Ditto</q><p>Registratie via haar persoonlijke link, dus meetbaar.</p></div><div class="ans"><q>Ik neem mijn afspraak op</q><p>Direct actief gebruik van de app.</p></div></div>
+          <div class="acol mid"><div class="ahead"><b>Zachte conversie</b><span>Inzicht, en de relatie blijft warm</span></div><div class="ans"><q>Mijn afspraak is deze week</q><p>Het juiste moment voor een herinnering in de app.</p></div><div class="ans"><q>Ik gebruik al een andere app</q><p>Jullie weten waar je tegen concurreert.</p></div><div class="ans"><q>Later nog iets sturen: ja</q><p>Toestemming voor een volgend moment, van jullie zelf.</p></div></div>
+          <div class="acol stop"><div class="ahead"><b>Geen interesse meer</b><span>Schoon klantenbestand, geen verspilde kaarten</span></div><div class="ans"><q>Liever niet</q><p>Afgemeld, ook bij volgende lijsten.</p></div><div class="ans"><q>Situatie veranderd</q><p>Alles stopt direct en stil, zonder vragen en zonder verdere berichten.</p></div></div>
+        </div></div>
+</div></section>
+<section><div class="wrap">
+  <h2>Wat jullie er extra van leren.</h2>
+  <p class="sublead" style="font-size:19px;margin-top:14px;max-width:720px">Bij gekochte adressen weten jullie weinig van de ontvanger. De pagina vult dat aan, alleen met wat zij zelf wil delen, en nooit met medische gegevens.</p>
+  <div class="see learn"><div><b>A. Een eigen relatie</b><p>Wie de app downloadt of toestemming geeft voor later, wordt van een gehuurd adres een eigen gebruiker van Ditto.</p></div><div><b>B. Het goede moment</b><p>Wie aangeeft dat haar afspraak deze week is, kan precies dan een herinnering krijgen om hem op te nemen.</p></div><div><b>C. Betere volgende campagnes</b><p>Jullie zien hoeveel er scannen en downloaden, en waarom mensen afhaken. De volgende kaart wordt scherper.</p></div></div>
+</div></section>
+
+
+<section class="desk"><div class="wrap">
+  <h2>Niet alleen conversie. Ook het waarom.</h2>
+  <p class="sublead" style="font-size:19px;margin-top:14px;max-width:760px">Nu zie je na een campagne alleen de conversie. Is die laag, dan lijkt de campagne mislukt. Maar achter elke niet-koper zit een reden.</p>
+  <div class="dash">
+    <div class="dhead"><b>Voorbeeld: uitkomst van een campagne</b><span>Van iedereen die de kaart scande</span></div>
+    <div class="dbar"><span style="width:15%;background:#1fcf6a" title="Downloadt de app 15%"></span><span style="width:8%;background:#f2c14e" title="Afspraak deze week 8%"></span><span style="width:6%;background:#f2c14e" title="Gebruikt al een andere app 6%"></span><span style="width:9%;background:#f2c14e" title="Mag later iets sturen 9%"></span><span style="width:4%;background:#9aa3b8" title="Liever niet 4%"></span><span style="width:1%;background:#9aa3b8" title="Situatie veranderd 1%"></span><span style="width:57%;background:#dde2ec" title="Geen reactie 57%"></span></div>
+    <ul class="dlist"><li><i style="background:#1fcf6a"></i><span>Downloadt de app</span><small>Harde conversie</small><b>15%</b></li><li><i style="background:#f2c14e"></i><span>Afspraak deze week</span><small>Zachte conversie</small><b>8%</b></li><li><i style="background:#f2c14e"></i><span>Gebruikt al een andere app</span><small>Zachte conversie</small><b>6%</b></li><li><i style="background:#f2c14e"></i><span>Mag later iets sturen</span><small>Zachte conversie</small><b>9%</b></li><li><i style="background:#9aa3b8"></i><span>Liever niet</span><small>Geen interesse meer</small><b>4%</b></li><li><i style="background:#9aa3b8"></i><span>Situatie veranderd</span><small>Geen interesse meer</small><b>1%</b></li><li><i style="background:#dde2ec"></i><span>Geen reactie</span><small>Geen reactie</small><b>57%</b></li></ul>
+  </div>
+  <h3 style="margin-top:36px">Wat jullie met die antwoorden doen</h3>
+  <div class="see use"><div><b>Niet meer benaderen</b><p>Wie geen interesse meer heeft, haal je van de lijst. Dat scheelt kaarten, mails en ergernis, en je klantenbestand wordt schoner.</p></div><div><b>Gericht opvolgen</b><p>Een reden als te duur of nog niet zeker vraagt om een ander aanbod of een ander moment. Je weet nu welk.</p></div><div><b>Beter voorspellen</b><p>Met elke reden leer je welke klanten blijven en welke afhaken. Zo zet je je budget in waar het iets oplevert.</p></div></div>
+  <p class="note2">Voorbeeldcijfers. In de pilot maken we dit overzicht voor jullie met de hand. Daarna krijgen jullie een eigen dashboard, waar je per campagne live ziet wie kocht, wie afhaakte, en waarom.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Wat jullie doen, en wat wij doen.</h2>
+  <div class="two">
+    <div class="box"><h3>Jullie leveren</h3><ul><li>De adreslijst, en wat jullie licentie toestaat: personaliseren, een persoonlijke pagina, en welke velden (zoals uitgerekende datum) je mag gebruiken</li><li>Wat er achter de verrassing zit</li><li>Een persoonlijke app-link of code, zodat we registraties per kaart kunnen meten</li><li>Het ontwerp van jullie huidige kaart</li><li>Iemand die kaart en teksten goedkeurt</li><li>Iemand die aanvragen opvolgt</li><li>Optioneel: welke nieuwe gebruikers na een maand nog actief zijn</li></ul></div>
+    <div class="box ink"><h3>Wij doen</h3><ul><li>Kaartontwerp en een persoonlijke tekst per klant</li><li>De kaart laten schrijven met een echte pen en versturen</li><li>Per klant de persoonlijke pagina met het passende aanbod</li><li>Opvolging: aanvragen en afmeldingen direct naar jullie</li><li>Meten tegen de vergelijkingsgroep, en de volgende ronde verbeteren</li></ul></div>
+  </div>
+</div></section>
+
+<section class="desk"><div class="wrap">
+  <h2>De pilot.</h2>
+  <p class="sublead" style="font-size:19px;margin-top:14px;max-width:700px">De vorige campagne is de nulmeting. Bij de volgende lijst verdelen we de ontvangers willekeurig over twee groepen, met exact dezelfde kaart.</p>
+  <div class="groups">
+    <div class="group"><b>Groep 1</b><h3>De huidige pagina om de app te downloaden</h3><p>Zoals bij de vorige campagne, met 35% scans als vergelijking.</p></div>
+    <div class="group c"><b>Groep 2</b><h3>Dezelfde kaart, met een persoonlijke pagina</h3><p>Met haar naam, de verrassing, inhoud per fase en een persoonlijke app-link.</p></div>
+  </div>
+  <div class="kpi">
+    <div><b>Wat we meten</b><p>App-registraties per 100 kaarten</p></div>
+    <div><b>Wat we zelf zien</b><p>Scans, bezoeken, klikken, aanvragen en redenen</p></div>
+    <div><b>Wat jullie terugmelden</b><p>Hoeveel nieuwe gebruikers na een maand nog actief zijn</p></div>
+  </div>
+  <p class="warn">Deze doelgroep vraagt extra zorg. Op de kaart staat niets over zwangerschap: huisgenoten en de postbode lezen mee. Op de pagina vragen we nooit naar medische gegevens; die blijven in de app. De pagina noemt de herkomst van het adres, we gebruiken de meest recente lijst met afmeldingen, en &quot;situatie veranderd&quot; stopt alles direct. Check vooraf of jullie licentie op de adressen personalisatie en een persoonlijke pagina toestaat.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Reken het uit.</h2>
+  <div class="calc">
+    <div class="fields">
+      <div class="field full"><label for="n">Klanten per maand op dit moment</label><input id="n" type="number" min="1" value="1000" inputmode="numeric"></div>
+      <div class="field full"><label for="w">Wat een actieve gebruiker jullie waard is (€)</label><div class="combo"><input id="w" type="number" min="1" value="30" inputmode="decimal"><select id="per" aria-label="Per"><option value="12">per maand</option><option value="4">per kwartaal</option><option value="1" selected>per jaar</option><option value="0">eenmalig</option></select></div></div>
+      <div class="field"><label for="y">Hoe lang blijft een klant (jaren)</label><input id="y" type="number" min="1" max="30" value="2" inputmode="numeric"></div>
+      <div class="field range"><label for="sr">Hoeveel mensen scannen de kaart <output id="srOut"></output></label><input id="sr" type="range" min="5" max="45" step="1" value="35"><div class="ends"><span>5% laag</span><span>45% hoog</span></div></div>
+      <div class="field range"><label for="cv">Hoeveel scanners Ditto downloaden en een account maken <output id="cvOut"></output></label><input id="cv" type="range" min="2" max="25" step="1" value="15"><div class="ends"><span>2% laag</span><span>25% hoog</span></div></div>
+      <p class="hint">De scanrate staat op jullie gemeten 35%. De waarde per gebruiker is een aanname; pas die aan.</p>
+    </div>
+    <div class="result" role="status" aria-live="polite">
+      <p class="rhead">Per maand</p>
+      <div class="funnel"><div><span>Kaarten</span><b id="fN"></b></div><div><span>Scans</span><b id="fS"></b></div><div><span>Nieuwe klanten</span><b id="fK"></b></div><div><span>Kosten</span><b id="fC"></b></div></div>
+      <div class="tierbox"><span>Jouw prijs, alles inbegrepen</span><b><span id="tierP"></span> per kaart</b><p>Pakket <b id="tier"></b>, <span id="tierMax"></span>.</p></div>
+      <div class="roibox"><p>Een nieuwe klant is <b id="kw"></b> waard. De klanten van één maand leveren samen <b id="val"></b> op.</p><p class="big">Dat is <b id="roi"></b> wat je betaalt.</p></div>
+      <p class="cost">Per jaar: <b id="yN"></b> kaarten, <b id="yK"></b> nieuwe klanten. Je betaalt <b id="yC"></b>, en die klanten zijn samen <b id="yV"></b> waard.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="desk" id="pilot"><div class="wrap">
+  <h2>Prijs en planning.</h2>
+  <div class="pilot">
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><span><b>Week 1–2:</b> adreslijst en licentie checken, verrassing en inhoud per fase inrichten, persoonlijke app-links koppelen.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><span><b>Week 3:</b> jullie keuren kaart en pagina's goed.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><span><b>Week 4:</b> de eerste kaarten gaan de deur uit.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><span><b>Daarna:</b> tussenstand na vier weken, eindrapport na de meetperiode.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><span><b>Jullie data blijft van jullie.</b> Verwerkersovereenkomst, hosting in de EU, pagina's niet in Google.</span></li>
+    </ul>
+    <div class="price">
+      <p class="big">Eén prijs per kaart, alles inbegrepen</p>
+      <div class="prices"><div><b>Start</b><strong>€3,50</strong><span>tot 500 kaarten per maand</span></div><div><b>Groei</b><strong>€2,95</strong><span>tot 2.500 per maand</span></div><div><b>Scale</b><strong>€2,45</strong><span>tot 10.000 per maand</span></div></div>
+      <p class="incl">De kaart met een echte pen geschreven, versturen, de persoonlijke pagina, opvolging en het dashboard. Geen opstartkosten in de pilot. Prijzen exclusief btw.</p>
+      <p class="small">Churnless is gebouwd door Lightr, dat kaarten schrijft met een echte pen op eigen machines, en Pique, dat pagina's en teksten maakt die converteren.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="closing" id="start"><div class="wrap">
+  <h2>Zullen we de volgende lijst persoonlijk maken?</h2>
+  <p>Plan twintig minuten. Dan kiezen we samen het moment, en laten we de eerste kaart en pagina voor jullie klanten zien.</p>
+  <div class="btns"><a class="btn go" href="mailto:info@pique.agency?subject=Ditto%20x%20Churnless%20pilot">Plan een gesprek</a></div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>Voorstel voor Ditto. Teksten, acties en bedragen op de pagina zijn voorbeelden; de invulling bepalen we samen.</span><a href="mailto:info@pique.agency">info@pique.agency</a></div></footer>
+<script>function qr(svg,seed){let s=seed,o="";const r=()=>(s=(s*9301+49297)%233280)/233280;const f=(x,y)=>`<rect x="${x}" y="${y}" width="7" height="7" fill="#1d2766"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3" fill="#1d2766"/>`;for(let y=0;y<21;y++)for(let x=0;x<21;x++){const i=(x<8&&y<8)||(x>12&&y<8)||(x<8&&y>12);if(!i&&r()>.52)o+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#1d2766"/>`;}svg.innerHTML=o+f(0,0)+f(14,0)+f(0,14);}
+document.querySelectorAll("[data-qr]").forEach((e,i)=>qr(e,11+i*13));
+const TIERS=[{max:500,name:"Start",p:3.50},{max:2500,name:"Groei",p:2.95},{max:10000,name:"Scale",p:2.45}];
+const nf=new Intl.NumberFormat("nl-NL",{maximumFractionDigits:0});const pf=new Intl.NumberFormat("nl-NL",{maximumFractionDigits:1});
+const cur=new Intl.NumberFormat("nl-NL",{style:"currency",currency:"EUR",maximumFractionDigits:0});const cur2=new Intl.NumberFormat("nl-NL",{style:"currency",currency:"EUR",minimumFractionDigits:2});
+function calc(){const v=id=>+document.getElementById(id).value||0;
+const n=Math.max(1,Math.round(v("n")));const per=+document.getElementById("per").value,yEl=document.getElementById("y");yEl.disabled=per===0;
+const a=Math.max(0,v("w")),yr=Math.max(1,v("y"));const w=per===0?a:a*per*yr;
+const sr=v("sr"),cv=v("cv");document.getElementById("srOut").textContent=sr+"%";document.getElementById("cvOut").textContent=cv+"%";
+const t=TIERS.find(t=>n<=t.max)||{name:"Op maat",p:2.45,maat:true};
+const cost=n*t.p,sc=n*sr/100,k=sc*cv/100,val=k*w,roi=cost>0?val/cost:0;
+const set=(id,x)=>document.getElementById(id).textContent=x;
+set("fN",nf.format(n));set("fS",nf.format(sc));set("fK",pf.format(k));set("fC",cur.format(cost));
+set("tier",t.name);set("tierP",(t.maat?"vanaf ":"")+cur2.format(t.p));set("tierMax",t.maat?"meer dan 10.000 kaarten per maand":"tot "+nf.format(t.max)+" kaarten per maand");
+set("kw",cur.format(w)+(per===0?"":` over ${yr} jaar`));set("val",cur.format(val));
+const R=document.getElementById("roi");R.textContent=pf.format(roi)+"x";R.style.color=roi<1?"#ffb4a8":"#7ff0ad";
+set("yN",nf.format(n*12));set("yK",nf.format(k*12));set("yC",cur.format(cost*12));set("yV",cur.format(val*12));}
+["n","w","sr","cv","y","per"].forEach(id=>{const e=document.getElementById(id);e.addEventListener("input",calc);e.addEventListener("change",calc)});calc();
+
+(function(){const S=document.getElementById("kScreen");if(!S)return;const W=document.getElementById("kWrap"),L=document.getElementById("kLog"),P=document.getElementById("kProf");
+const init=()=>({"Status":"Net verhuisd, passering 2 weken geleden","Taal":"Pools","Adviseur":"Ewa","Cheque":"Nog niet gedeeld","Doorverwijzing":"-","Verzekering":"-","Energie":"-","Belasting":"-","Review":"-","Campagne-actie":"-","Volgend moment":"Over 1 jaar: kaart met woningwaardecheck"});
+let prof=init(),events=[],banner="",shared=false;
+const now=()=>new Date().toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"});
+function drawProf(ch){P.innerHTML=Object.entries(prof).map(([k,v])=>`<div class="${ch&&ch.includes(k)?"hl":""}"><dt>${k}</dt><dd>${v}</dd></div>`).join("");}
+function ev(t,upd){Object.assign(prof,upd||{});events.push([now(),t]);if(L.querySelector(".muted"))L.innerHTML="";const li=document.createElement("li");li.innerHTML=`<span>${now()}</span><b>${t}</b>`;L.prepend(li);drawProf(Object.keys(upd||{}));}
+const chips=(t,o,id)=>`<div class="s-q"><b>${t}</b><div class="s-chips d" data-q="${id}">${o.map((x,i)=>`<button type="button" data-i="${i}">${x}</button>`).join("")}</div></div>`;
+const bub=t=>`<div class="bubble">${t}</div>`;
+const it=(n,sub,tag)=>`<div class="s-item"><div>${n}<span>${sub}</span></div>${tag?`<em>${tag}</em>`:""}</div>`;
+const b2=(act,lab,alt)=>`<button type="button" class="s-btn2${alt?" alt":""}" data-act="${act}">${lab}</button>`;
+function render(st){let h=banner?bub(banner):"";banner="";
+ if(st==="start"){h+=`<div class="s-video">▶ Ewa heeft een boodschap voor je</div>`
+  +`<div class="s-cheque">Ken je iemand die ook wil kopen? Jij krijgt<b>€200</b></div>`+b2("share",shared?"Nog iemand uitnodigen":"Deel via WhatsApp")+(shared?b2("friend","Bekijk: je vriend meldt zich aan",true):"")
+  +`<div class="s-label">Handig om nu te regelen</div>`+it("Woning en inboedel verzekeren","Uitgelegd in jouw taal, via Polisa")+b2("ins","Bel me hierover terug",true)
+  +it("Gas, licht en internet","Snel op jouw naam")+b2("energy","Regel het voor me",true)
+  +it("Hypotheekrenteaftrek per maand","Met een voorlopige aanslag")+b2("tax","Help me aanvragen",true)
+  +chips("Hoe was je ervaring met Domek?",["Top","Goed","Kan beter"],"exp")
+  +chips("In welke taal wil je contact?",["Polski","Nederlands","English"],"lang")
+  +chips("Liever niet?",["Energie is al geregeld","Geen interesse","Liever geen post"],"no")
+  +`<div class="s-note">Algemene informatie, geen persoonlijk advies. Cheque onder voorwaarden.</div>`;}
+ if(st==="ins"){h+=bub("Ewa belt je graag, in het Pools of Nederlands. Wanneer komt het je uit?")+chips("Terugbelmoment",["Morgen ochtend","Morgen middag","Deze week 's avonds"],"call")+b2("back","Terug",true);}
+ if(st==="review"){h+=bub("Wat fijn om te horen! Wil je dat ook even delen? Het helpt anderen die een huis zoeken enorm.")+b2("rev","Schrijf een review op Google")+b2("back","Misschien later",true);}
+ if(st==="better"){h+=bub("Dank je voor je eerlijkheid. Wat kon er beter? Dan kijken we er persoonlijk naar.")+chips("",["Bereikbaarheid","Snelheid","Uitleg","Iets anders"],"fb");}
+ if(st==="done"){h+=`<div class="s-plain" style="text-align:center;padding:20px 0">Je hoort niets meer van ons. Veel woonplezier!</div>`;}
+ S.innerHTML=h;W.scrollTop=0;}
+function sel(q,i,l){
+ if(q==="exp"){if(i===2){ev("Ervaring: kan beter",{"Review":"Kan beter","Campagne-actie":"Geen reviewverzoek, eerst opvolgen"});render("better");}else{ev(`Ervaring: ${l}`,{"Review":`Ervaring ${l.toLowerCase()}`});render("review");}}
+ if(q==="fb"){ev(`Verbeterpunt: ${l}`,{"Review":`Kan beter: ${l.toLowerCase()}`,"Campagne-actie":"Teamleider belt binnen 2 dagen"});banner="Dank je. Een teamleider neemt persoonlijk contact met je op.";render("start");}
+ if(q==="lang"){const t={"Polski":"Pools","Nederlands":"Nederlands","English":"Engels"}[l];ev(`Voorkeurstaal: ${t}`,{"Taal":t});banner=`Genoteerd. We spreken je voortaan in het ${t}.`;render("start");}
+ if(q==="call"){ev(`Terugbelverzoek woonverzekering: ${l}`,{"Verzekering":`Terugbellen ${l.toLowerCase()}, door Ewa`,"Campagne-actie":"Lead naar adviseur"});banner=`Ewa belt je ${l.toLowerCase()}.`;render("start");}
+ if(q==="no"){if(i===0){ev("Energie al geregeld",{"Energie":"Al geregeld, niet meer tonen"});banner="Top, dan laten we dat voortaan weg.";render("start");}
+  if(i===1){ev("Geen interesse in aanbod",{"Campagne-actie":"Geen aanbod meer, wel jubileumkaart"});banner="Helder. We sturen je alleen nog een kaart als je een jaar in je huis woont.";render("start");}
+  if(i===2){ev("Liever geen post",{"Campagne-actie":"Afgemeld voor kaarten","Volgend moment":"-"});render("done");}}}
+function act(a){
+ if(a==="share"){shared=true;ev("Cheque gedeeld via WhatsApp",{"Cheque":"Gedeeld via WhatsApp"});banner="Je link is gedeeld. Als je vriend via Domek koopt, krijg jij €200.";render("start");}
+ if(a==="friend"){ev("Doorverwijzing: Pieter meldt zich aan via Sofia's link",{"Doorverwijzing":"Pieter, aangemeld, aanbrenger Sofia","Campagne-actie":"Lead naar adviseur, cheque gekoppeld"});banner="Pieter heeft zich aangemeld via jouw link. Zodra hij koopt, ontvang je je €200.";render("start");}
+ if(a==="ins")render("ins");if(a==="back")render("start");
+ if(a==="energy"){ev("Energie en internet: aanvraag",{"Energie":"Aanvraag gas, licht en internet","Campagne-actie":"Doorgezet naar energiepartner"});banner="Geregeld. We nemen contact op om het op jouw naam te zetten.";render("start");}
+ if(a==="tax"){ev("Hulp bij voorlopige aanslag",{"Belasting":"Hulp gevraagd bij voorlopige aanslag"});banner="We helpen je met de aanvraag, zodat je het voordeel elke maand krijgt.";render("start");}
+ if(a==="rev"){ev("Review geschreven op Google",{"Review":"Review gegeven","Campagne-actie":"Bedankkaart sturen"});banner="Dank je wel! We sturen je nog een klein bedankje.";render("start");}}
+S.addEventListener("click",e=>{const c=e.target.closest(".s-chips.d button");if(c){c.parentElement.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===c));sel(c.parentElement.dataset.q,+c.dataset.i,c.textContent);return;}const b=e.target.closest("[data-act]");if(b)act(b.dataset.act);});
+document.getElementById("kReset").addEventListener("click",()=>{prof=init();events=[];shared=false;L.innerHTML='<li class="muted">Nog geen actie. Klik links iets aan.</li>';drawProf();render("start");});
+document.getElementById("kCsv").addEventListener("click",()=>{const q=v=>`"${String(v).replace(/"/g,'""')}"`;const rows=[["veld","waarde"],["klant_id","D-48210"],...Object.entries(prof),[],["tijd","gebeurtenis"],...events];const csv=rows.map(r=>r.map(q).join(";")).join("\n");const x=document.createElement("a");x.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));x.download="raak_domek_D-48210.csv";x.click();});
+drawProf();render("start");})();
+
+(function(){const S=document.getElementById("bScreen");if(!S)return;const W=document.getElementById("bWrap"),L=document.getElementById("bLog"),P=document.getElementById("bProf");
+const init=()=>({"Status":"Nieuwe BBQ-eigenaar","BBQ":"Kamado, gekocht 3 weken geleden","Niveau":"Onbekend","Kookstijl":"Onbekend","Workshop":"-","Bestelling":"-","Reden":"-","Campagne-actie":"-","Volgend moment":"-"});
+let prof=init(),events=[],banner="";
+const now=()=>new Date().toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"});
+function drawProf(ch){P.innerHTML=Object.entries(prof).map(([k,v])=>`<div class="${ch&&ch.includes(k)?"hl":""}"><dt>${k}</dt><dd>${v}</dd></div>`).join("");}
+function ev(t,upd){Object.assign(prof,upd||{});events.push([now(),t]);if(L.querySelector(".muted"))L.innerHTML="";const li=document.createElement("li");li.innerHTML=`<span>${now()}</span><b>${t}</b>`;L.prepend(li);drawProf(Object.keys(upd||{}));}
+const chips=(t,opts,id)=>`<div class="s-q"><b>${t}</b><div class="s-chips d" data-q="${id}">${opts.map((o,i)=>`<button type="button" data-i="${i}">${o}</button>`).join("")}</div></div>`;
+const bub=t=>`<div class="bubble">${t}</div>`;
+const prod=(n,sub,tag,act,lab)=>`<div class="s-item"><div>${n}<span>${sub}</span></div>${tag?`<em>${tag}</em>`:""}</div><button type="button" class="s-btn2" data-act="${act}">${lab}</button>`;
+function render(st){let h=banner?bub(banner):"";banner="";
+ if(st==="start"){h+=`<div class="s-label">Haal alles uit je kamado</div>`+prod("Workshop Kamado basis","5 uur zelf koken met een chef, 4 gangen","Voor jou","ws","Kies een datum")
+  +`<div class="s-label">Past bij jouw kamado</div>`+prod("Hoes voor je kamado","Beschermt hem de hele winter","","order:Kamadohoes","In winkelmand")+prod("Premium houtskool, 10 kg","Brandt lang en schoon","Vaak samen gekocht","order:Houtskool 10 kg","In winkelmand")
+  +`<div class="s-form"><b class="ft">Wat voor BBQ'er ben je?</b><span class="fs">Dan tippen we recepten en workshops die bij je passen.</span><label>Niveau<select id="bNiv"><option>Beginner</option><option>Gevorderd</option><option>Pitmaster</option></select></label><label>Liefst op de BBQ<select id="bStijl"><option>Vlees</option><option>Low &amp; slow en roken</option><option>Vis</option><option>Groente en vega</option></select></label><button type="button" class="s-btn" data-act="profiel">Opslaan</button></div>`
+  +chips("Hoe bevalt je kamado?",["Top, al vaak gebruikt","Nog niet aan toegekomen","Temperatuur blijft lastig","Ik heb hem teruggebracht"],"how")
+  +`<button type="button" class="s-btn2 alt" data-act="gift">Workshop cadeau geven</button>`;}
+ if(st==="ws"){h+=bub("Leuk! In welke showroom wil je de workshop doen?")+chips("Locatie",["Roosendaal","Nunspeet","Leuven"],"loc")+`<button type="button" class="s-btn2 alt" data-act="back">Terug</button>`;}
+ if(st==="date"){h+=bub("Kies een datum. Na afloop krijg je een schort mee naar huis.")+chips("Datum",["Za 17 okt","Zo 25 okt","Za 7 nov"],"date")+`<button type="button" class="s-btn2 alt" data-act="back">Terug</button>`;}
+ if(st==="lastig"){h+=bub("Dat is heel normaal bij een kamado. Twee dingen die helpen:")+`<div class="s-item"><div>Video: temperatuur regelen in 3 minuten<span>Door een van onze chefs</span></div></div>`+prod("Workshop Kamado basis","Leer het in één middag, zelf aan de knoppen","","ws","Kies een datum");}
+ if(st==="nog"){h+=bub("Geen probleem. Zullen we je helpen met een eerste keer die gegarandeerd lukt?")+`<div class="s-item"><div>Recept: je eerste pulled pork<span>Stap voor stap, met boodschappenlijst</span></div></div>`+chips("Wanneer ga je hem gebruiken?",["Dit weekend","Volgende maand","In het voorjaar"],"when");}
+ if(st==="gift"){h+=bub("Leuk cadeau! Voor wie is de workshop?")+`<div class="s-form"><label>Naam ontvanger<input id="bGift" placeholder="Bijvoorbeeld je schoonvader"></label><label>Voor welke gelegenheid<select id="bOcc"><option>Verjaardag</option><option>Vaderdag</option><option>Kerst</option><option>Zomaar</option></select></label><button type="button" class="s-btn" data-act="giftok">Bestel de cadeaubon</button></div>`;}
+ if(st==="done"){h+=`<div class="s-plain" style="text-align:center;padding:20px 0">Je hoort niets meer van ons over je BBQ.</div>`;}
+ S.innerHTML=h;W.scrollTop=0;}
+function sel(q,i,label){
+ if(q==="how"){if(i===0){ev("Kamado bevalt goed",{"Status":"Enthousiaste gebruiker","Campagne-actie":"Verdiepingsworkshop en rubs tonen"});banner="Top! Klaar voor de volgende stap? Kijk eens naar low & slow.";render("start");}
+  if(i===1){ev("Nog niet gebruikt",{"Reden":"Nog niet aan toegekomen","Campagne-actie":"Startrecept en herinnering"});render("nog");}
+  if(i===2){ev("Temperatuur blijft lastig",{"Reden":"Temperatuur regelen lastig","Campagne-actie":"Uitlegvideo en basisworkshop"});render("lastig");}
+  if(i===3){ev("BBQ teruggebracht",{"Status":"Geen BBQ meer","Reden":"Teruggebracht","Campagne-actie":"Uitsluiten van BBQ-campagnes"});banner="Jammer dat hij niet paste. We sturen je niets meer over deze BBQ.";render("done");}}
+ if(q==="loc"){prof._loc=label;render("date");}
+ if(q==="date"){const loc=prof._loc;ev(`Workshop geboekt: Kamado basis, ${loc}, ${label}`,{"Workshop":`Kamado basis, ${loc}, ${label}`,"Status":"Workshopdeelnemer","Volgend moment":"Na de workshop: kaart met recepten en rubs"});delete prof._loc;drawProf(["Workshop","Status","Volgend moment"]);banner=`Geboekt! Tot ${label} in ${loc}. Neem gerust iemand mee.`;render("start");}
+ if(q==="when"){const m=["Dit weekend","Volgende maand","In het voorjaar"][i];ev(`Eerste keer gepland: ${m}`,{"Volgend moment":m==="In het voorjaar"?"Maart: seizoensstart-kaart":`${m}: herinnering met recept`});banner="Genoteerd. We sturen je op tijd een herinnering met recept.";render("start");}}
+function act(a){
+ if(a.startsWith("order:")){const n=a.slice(6);ev(`Bestelling: ${n}`,{"Bestelling":prof["Bestelling"]==="-"?n:prof["Bestelling"]+", "+n,"Campagne-actie":"Accessoire verkocht"});banner=`${n} zit in je winkelmand.`;render("start");}
+ if(a==="ws")render("ws");if(a==="back")render("start");if(a==="gift")render("gift");
+ if(a==="profiel"){const n=document.getElementById("bNiv").value,st=document.getElementById("bStijl").value;ev(`Profiel: ${n}, ${st}`,{"Niveau":n,"Kookstijl":st,"Campagne-actie":st.startsWith("Low")?"Rookworkshop tonen":n==="Beginner"?"Basisworkshop tonen":"Verdiepingsworkshop tonen"});banner="Dank je! We tippen je voortaan wat bij jou past.";render("start");}
+ if(a==="giftok"){const r=(document.getElementById("bGift").value||"").trim()||"een vriend",o=document.getElementById("bOcc").value;ev(`Workshop cadeau gegeven aan ${r} (${o})`,{"Bestelling":prof["Bestelling"]==="-"?"Cadeaubon workshop":prof["Bestelling"]+", cadeaubon workshop","Volgend moment":`Nieuwe klant via cadeaubon: ${r}`});banner=`Leuk! De cadeaubon voor ${r} is onderweg.`;render("start");}}
+S.addEventListener("click",e=>{const c=e.target.closest(".s-chips.d button");if(c){c.parentElement.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===c));sel(c.parentElement.dataset.q,+c.dataset.i,c.textContent);return;}const b=e.target.closest("[data-act]");if(b)act(b.dataset.act);});
+document.getElementById("bReset").addEventListener("click",()=>{prof=init();events=[];L.innerHTML='<li class="muted">Nog geen actie. Klik links iets aan.</li>';drawProf();render("start");});
+document.getElementById("bCsv").addEventListener("click",()=>{const q=v=>`"${String(v).replace(/"/g,'""')}"`;const rows=[["veld","waarde"],["klant_id","B-2291"],...Object.entries(prof).filter(([k])=>!k.startsWith("_")),[],["tijd","gebeurtenis"],...events];const csv=rows.map(r=>r.map(q).join(";")).join("\n");const x=document.createElement("a");x.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));x.download="raak_bbq_B-2291.csv";x.click();});
+drawProf();render("start");})();
+
+(function(){const S=document.getElementById("dScreen");if(!S)return;const W=document.getElementById("dWrap"),L=document.getElementById("dLog"),P=document.getElementById("dProf");
+const init=()=>({"Status":"Afgehaakt, 92 dagen geen bestelling","Hond":"Onbekend (koopt hondenvoer, groot ras)","Verjaardag":"Onbekend","Bestelling":"-","Medpets Herhaal":"Nee","Reden":"-","Campagne-actie":"-","Volgend moment":"-"});
+let prof=init(),events=[],cart=[],banner="";
+const now=()=>new Date().toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"});
+function drawProf(ch){P.innerHTML=Object.entries(prof).map(([k,v])=>`<div class="${ch&&ch.includes(k)?"hl":""}"><dt>${k}</dt><dd>${v}</dd></div>`).join("");}
+function ev(t,ch,upd){Object.assign(prof,upd||{});events.push([now(),t]);if(L.querySelector(".muted"))L.innerHTML="";const li=document.createElement("li");li.innerHTML=`<span>${now()}</span><b>${t}</b>`;L.prepend(li);drawProf(Object.keys(upd||{}));}
+const chips=(t,opts,id)=>`<div class="s-q"><b>${t}</b><div class="s-chips d" data-q="${id}">${opts.map((o,i)=>`<button type="button" data-i="${i}">${o}</button>`).join("")}</div></div>`;
+const bub=t=>`<div class="bubble">${t}</div>`;
+const prod=(n,sub,tag,act,lab)=>`<div class="s-item"><div>${n}<span>${sub}</span></div>${tag?`<em>${tag}</em>`:""}</div><button type="button" class="s-btn2" data-act="${act}">${lab}</button>`;
+function render(state){let h=banner?bub(banner):"";banner="";
+ if(state==="start"){h+=`<div class="s-label">Jullie vaste keuze</div>`+prod("Hondenvoer voor grote rassen","12 kg, zoals je altijd bestelde","15% korting","order:Hondenvoer grote rassen 12 kg","Bestel met 15% korting")
+  +`<div class="s-item herh"><div>Nooit meer zonder<span>Zet het op Medpets Herhaal: 6% korting op elke levering</span></div><em>Herhaal</em></div><button type="button" class="s-btn2 alt" data-act="herhaal">Kies je levermoment</button>`
+  +`<div class="s-label">Of probeer eens</div>`+prod("Graanvrije eend","12 kg, voor gevoelige magen","","order:Graanvrije eend 12 kg","In winkelmand")+prod("Zelfde voer, grotere zak","15 kg, voordeliger per kilo","","order:Hondenvoer grote rassen 15 kg","In winkelmand")
+  +`<div class="s-form"><b class="ft">Hoe heet je hond, en wanneer is hij jarig?</b><span class="fs">Dan sturen we hem op zijn verjaardag iets leuks.</span><label>Naam<input id="dNaam" placeholder="Bijvoorbeeld Bobby"></label><label>Verjaardag<input id="dDag" type="date" value="2021-03-14"></label><button type="button" class="s-btn" data-act="dog">Opslaan</button></div>`
+  +chips("Hoe gaat het met je hond?",["Goed, nog steeds fan","Te duur","Ander voer via de dierenarts","Hij is er niet meer"],"how");}
+ if(state==="herhaal"){h+=bub("Hoe vaak wil je het voer ontvangen? Je krijgt 6% korting op elke levering, en je kunt altijd pauzeren.")+chips("Elke",["4 weken","6 weken","8 weken"],"freq")+`<button type="button" class="s-btn2 alt" data-act="back">Terug</button>`;}
+ if(state==="duur"){h+=bub("Dat snappen we. Deze opties zijn voordeliger:")+prod("Zelfde voer, grotere zak","15 kg, voordeliger per kilo","","order:Hondenvoer grote rassen 15 kg","In winkelmand")+`<button type="button" class="s-btn2 alt" data-act="herhaal">Of: 6% korting met Medpets Herhaal</button><button type="button" class="s-btn2 alt" data-act="back">Terug</button>`;}
+ if(state==="vet"){h+=bub("Goed dat je dierenarts meekijkt. Welk voer is het geworden? Dan tonen we alleen nog wat past.")+`<div class="s-form"><label>Voer<input id="dVoer" placeholder="Bijvoorbeeld een dieetvoer voor de nieren"></label><button type="button" class="s-btn" data-act="voer">Opslaan</button></div>`;}
+ if(state==="loss"){h+=bub("Wat verdrietig, Mark. Gecondoleerd met het verlies van je hond. Een hond is echt een gezinslid.")+`<p class="s-plain">We willen je niet steeds herinneren aan dit verlies. Wat wil je dat we doen?</p>`+chips("",["Haal me van de lijst","Ik neem later misschien weer een hond","Ik heb al een nieuwe hond"],"loss");}
+ if(state==="later"){h+=bub("Dank je. Mogen we je over een paar maanden eens vragen hoe het gaat?")+chips("",["Ja, dat is goed","Nee, liever niet"],"later");}
+ if(state==="new"){h+=bub("Wat fijn dat er een nieuwe hond is. Vertel je iets over hem? Dan sturen we tips die bij hem passen.")+`<div class="s-form"><label>Naam<input id="dN" value="Max"></label><label>Ras<select id="dR"><option value="groot">Labrador (groot ras)</option><option value="middel">Middelgroot ras</option><option value="klein">Klein ras</option></select></label><label>Geboren<input id="dB" type="month" value="2026-06"></label><button type="button" class="s-btn" data-act="newdog">Verstuur</button></div>`;}
+ if(state==="done"){h+=`<div class="s-plain" style="text-align:center;padding:20px 0">Je hoort niets meer van ons.</div>`;}
+ S.innerHTML=h;W.scrollTop=0;}
+function sel(q,i){
+ if(q==="how"){if(i===0){ev("Reden: nog steeds fan",["Reden"],{"Reden":"Geen, nog steeds fan"});banner="Wat fijn! Bestel hieronder met je welkom-terug-korting.";render("start");}
+  if(i===1){ev("Reden: te duur",null,{"Reden":"Te duur","Campagne-actie":"Toon voordeliger formaat en Herhaal"});render("duur");}
+  if(i===2){ev("Reden: ander voer via de dierenarts",null,{"Reden":"Voer via dierenarts","Campagne-actie":"Geen standaardvoer meer tonen"});render("vet");}
+  if(i===3){ev("Hond overleden",null,{"Status":"Hond overleden","Reden":"Hond overleden","Campagne-actie":"Uitsluiten van voercampagnes"});render("loss");}}
+ if(q==="freq"){const f=["4","6","8"][i];ev(`Op Medpets Herhaal gezet, elke ${f} weken`,null,{"Status":"Actieve klant","Medpets Herhaal":`Ja, elke ${f} weken, 6% korting`,"Campagne-actie":"Geen terugwin-kaarten meer nodig"});banner=`Geregeld. Elke ${f} weken komt het voer vanzelf, met 6% korting.`;render("start");}
+ if(q==="loss"){if(i===0){ev("Van de lijst gehaald",null,{"Campagne-actie":"Nooit meer benaderen"});banner="Dat hebben we geregeld. Heel veel sterkte.";render("done");}if(i===1)render("later");if(i===2)render("new");}
+ if(q==="later"){if(i===0){ev("Toestemming voor later contact",null,{"Campagne-actie":"Pauze","Volgend moment":"Over 6 maanden: kaart, hoe gaat het?"});banner="Afgesproken. Tot dan, en sterkte.";render("done");}else{ev("Van de lijst gehaald",null,{"Campagne-actie":"Nooit meer benaderen"});banner="Dat hebben we geregeld. Heel veel sterkte.";render("done");}}}
+function act(a){
+ if(a.startsWith("order:")){const n=a.slice(6);ev(`Bestelling: ${n}, 15% korting (code WELKOM-M4R)`,null,{"Status":"Weer actief","Bestelling":n+", 15% korting","Campagne-actie":"Terugwinnen geslaagd"});banner=`${n} zit in je winkelmand, met 15% korting. Morgen in huis als je voor 21:30 bestelt.`;render("start");}
+ if(a==="herhaal")render("herhaal");if(a==="back")render("start");
+ if(a==="dog"){const n=(document.getElementById("dNaam").value||"").trim()||"Bobby";const dd=document.getElementById("dDag").value||"2021-03-14";const [y,m,dg]=dd.split("-").map(Number);const md=new Date(y,m-1,dg).toLocaleDateString("nl-NL",{day:"numeric",month:"long"});const age=2026-y;
+  ev(`Naam en verjaardag gedeeld: ${n}, ${md}`,null,{"Hond":`${n}, ${age} jaar, groot ras`,"Verjaardag":md,"Volgend moment":`${md}: verjaardagskaart met cadeautje`});banner=`Dank je! We sturen ${n} op ${md} iets leuks.`;render("start");}
+ if(a==="voer"){const v=(document.getElementById("dVoer").value||"").trim()||"dieetvoer via de dierenarts";ev(`Voer via dierenarts: ${v}`,null,{"Reden":"Voer via dierenarts: "+v});banner="Dank je. We tonen je voortaan alleen nog wat bij dit voer past.";render("start");}
+ if(a==="newdog"){const n=document.getElementById("dN").value||"je hond",r=document.getElementById("dR"),bd=document.getElementById("dB").value||"2026-06";const [y,m]=bd.split("-").map(Number);const sen=r.value==="groot"?7:r.value==="middel"?8:10;const mn=["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"][m-1];
+  ev(`Nieuwe hond: ${n}`,null,{"Status":"Weer actief, nieuwe hond","Hond":`${n}, ${r.options[r.selectedIndex].text}, geboren ${mn} ${y}`,"Verjaardag":`${mn}`,"Campagne-actie":"Puppycampagne","Volgend moment":`${mn} ${y+1}: eerste verjaardag. Rond ${y+sen}: seniorfase`});
+  banner=`Welkom, ${n}! We sturen je tips voor de eerste maanden, en op zijn eerste verjaardag een cadeautje.`;render("start");}}
+S.addEventListener("click",e=>{const c=e.target.closest(".s-chips.d button");if(c){c.parentElement.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===c));sel(c.parentElement.dataset.q,+c.dataset.i);return;}const b=e.target.closest("[data-act]");if(b)act(b.dataset.act);});
+document.getElementById("dReset").addEventListener("click",()=>{prof=init();events=[];L.innerHTML='<li class="muted">Nog geen actie. Klik links iets aan.</li>';drawProf();render("start");});
+document.getElementById("dCsv").addEventListener("click",()=>{const q=v=>`"${String(v).replace(/"/g,'""')}"`;const rows=[["veld","waarde"],["klant_id","C-10428"],...Object.entries(prof),[],["tijd","gebeurtenis"],...events];const csv=rows.map(r=>r.map(q).join(";")).join("\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));a.download="raak_medpets_C-10428.csv";a.click();});
+drawProf();render("start");})();
+</script>
+</body></html>
