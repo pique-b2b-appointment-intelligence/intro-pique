@@ -21,9 +21,8 @@ a{color:var(--ink);text-decoration:none}
 h1{margin:0;color:var(--ink);font-weight:800;letter-spacing:-.025em}
 :focus-visible{outline:3px solid var(--green);outline-offset:2px;border-radius:6px}
 
-/* nav */
 nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .row{max-width:1500px;margin:0 auto;padding:0 clamp(16px,3vw,28px);min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+nav .row{max-width:1600px;margin:0 auto;padding:0 clamp(16px,3vw,28px);min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:14px}
 .brand{display:flex;align-items:center;gap:11px}
 .brand svg{width:32px;height:32px;display:block;border-radius:9px}
 .brand b{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.03em}
@@ -33,15 +32,13 @@ nav .row{max-width:1500px;margin:0 auto;padding:0 clamp(16px,3vw,28px);min-heigh
   border-radius:999px;padding:7px 14px;cursor:pointer}
 .reset:hover{border-color:var(--ink);color:var(--ink)}
 
-/* head */
-.head{max-width:1500px;margin:0 auto;padding:clamp(20px,3vw,30px) clamp(16px,3vw,28px) 6px}
+.head{max-width:1600px;margin:0 auto;padding:clamp(20px,3vw,30px) clamp(16px,3vw,28px) 6px}
 .head h1{font-size:clamp(24px,3.2vw,32px)}
-.head p{margin:8px 0 0;color:var(--muted);font-size:15px;max-width:70ch}
+.head p{margin:8px 0 0;color:var(--muted);font-size:15px;max-width:78ch}
 .head p b{color:var(--text);font-weight:600}
 
-/* board */
-.board{max-width:1500px;margin:0 auto;padding:22px clamp(16px,3vw,28px) 60px;
-  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(268px,1fr);gap:16px;overflow-x:auto;align-items:start}
+.board{max-width:1600px;margin:0 auto;padding:22px clamp(16px,3vw,28px) 60px;
+  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(272px,1fr);gap:16px;overflow-x:auto;align-items:start}
 .board::-webkit-scrollbar{height:10px}
 .board::-webkit-scrollbar-thumb{background:#c9d0dc;border-radius:6px}
 .col{background:#e6eaf1;border-radius:16px;padding:10px;min-height:140px;display:flex;flex-direction:column;gap:10px;transition:background .15s,box-shadow .15s}
@@ -54,35 +51,41 @@ nav .row{max-width:1500px;margin:0 auto;padding:0 clamp(16px,3vw,28px);min-heigh
 .drop{display:flex;flex-direction:column;gap:10px;min-height:60px;flex:1}
 .empty{border:1.5px dashed #c2cbdb;border-radius:12px;color:#97a1b6;font-size:12.5px;text-align:center;padding:16px 8px;font-weight:500}
 
-/* card */
 .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:13px 13px 11px;cursor:grab;
-  box-shadow:0 1px 2px rgba(29,39,102,.05);transition:box-shadow .15s,transform .05s;position:relative}
+  box-shadow:0 1px 2px rgba(29,39,102,.05);transition:box-shadow .15s;position:relative}
 .card:hover{box-shadow:0 4px 14px rgba(29,39,102,.12)}
 .card:active{cursor:grabbing}
 .card.dragging{opacity:.45;box-shadow:0 10px 26px rgba(29,39,102,.22)}
-.card .top{display:flex;align-items:center;gap:10px}
+.card .top{display:flex;align-items:flex-start;gap:10px}
 .avatar{width:34px;height:34px;flex:none;border-radius:9px;background:var(--desk);border:1px solid var(--line);
   display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
 .card .co{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.2}
-.card .line{color:var(--muted);font-size:12.5px;margin-top:7px;line-height:1.4}
-.moment{display:inline-flex;align-items:center;gap:6px;margin-top:9px;font-size:11.5px;font-weight:600;color:var(--ink);
-  background:var(--warm);border:1px solid #eddca6;border-radius:999px;padding:4px 9px}
-.moment svg{width:12px;height:12px;color:#b98a1e}
-.card .foot{margin-top:11px;padding-top:10px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.card .foot a{font-size:12.5px;font-weight:700;color:var(--green-ink);display:inline-flex;align-items:center;gap:5px}
-.card .foot a:hover{color:var(--ink)}
-.card .foot a svg{width:13px;height:13px}
-.card .move{display:flex;gap:4px}
+.person{display:block;color:var(--muted);font-size:12px;font-weight:500;margin-top:1px}
+.card .line{color:var(--muted);font-size:12.5px;margin-top:8px;line-height:1.4}
+.chip{display:inline-flex;align-items:center;gap:6px;margin-top:9px;font-size:11.5px;font-weight:600;border-radius:999px;padding:4px 9px;line-height:1.2}
+.chip.moment{color:var(--ink);background:var(--warm);border:1px solid #eddca6}
+.chip.moment svg{width:12px;height:12px;color:#b98a1e;flex:none}
+.chip.fit.sterk{color:#07361c;background:#dff8e9;border:1px solid #b6ebc9}
+.chip.fit.twijfel{color:#6b5210;background:var(--warm);border:1px solid #eddca6}
+.chip.fit.zwak{color:#5b6472;background:var(--desk);border:1px solid var(--line)}
+.contact{margin-top:10px;display:flex;flex-direction:column;gap:5px}
+.contact a{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);font-weight:500;overflow:hidden}
+.contact a span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.contact a:hover{color:var(--ink)}
+.contact svg{width:13px;height:13px;flex:none;color:#9aa3b8}
+.card .foot{margin-top:11px;padding-top:10px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card .foot .vp{font-size:12.5px;font-weight:700;color:var(--green-ink);display:inline-flex;align-items:center;gap:5px}
+.card .foot .vp:hover{color:var(--ink)}
+.card .foot .vp svg{width:13px;height:13px}
+.card .move{display:flex;gap:4px;margin-left:auto}
 .card .move button{border:1px solid var(--line);background:var(--paper);border-radius:7px;width:26px;height:24px;
   cursor:pointer;color:var(--muted);display:grid;place-items:center;padding:0}
 .card .move button:hover{border-color:var(--ink);color:var(--ink)}
 .card .move button:disabled{opacity:.3;cursor:default}
 .card .move svg{width:13px;height:13px}
 
-.note{max-width:1500px;margin:0 auto;padding:0 clamp(16px,3vw,28px) 40px;color:var(--muted);font-size:12.5px}
-@media (max-width:640px){
-  .board{grid-auto-columns:minmax(240px,86vw)}
-}
+.note{max-width:1600px;margin:0 auto;padding:0 clamp(16px,3vw,28px) 40px;color:var(--muted);font-size:12.5px}
+@media (max-width:640px){ .board{grid-auto-columns:minmax(240px,86vw)} }
 </style>
 </head>
 <body>
@@ -99,12 +102,12 @@ nav .row{max-width:1500px;margin:0 auto;padding:0 clamp(16px,3vw,28px);min-heigh
 
 <div class="head">
   <h1>Pipeline</h1>
-  <p>Sleep een kaart naar de volgende fase, of gebruik de pijltjes. Klik op <b>Voorstel</b> voor de persoonlijke pagina van die lead. <b>Je verdeling wordt in deze browser bewaard.</b></p>
+  <p>Sleep een kaart naar de volgende fase, of gebruik de pijltjes. Kaarten met een voorstelpagina hebben een <b>Voorstel</b>-link, jouw eigen leads hebben contact en een fit-label. <b>Je verdeling wordt in deze browser bewaard.</b></p>
 </div>
 
 <div class="board" id="board" aria-label="Pipeline-fases"></div>
 
-<p class="note">Beginverdeling is een voorzet. Echte status? Sleep 'm naar de juiste kolom. Voor een gedeeld bord over meerdere mensen is een kleine back-end nodig, dat kan later.</p>
+<p class="note">Beginverdeling is een voorzet. Sleep de kaarten naar de echte status. Voor een gedeeld bord over meerdere mensen is een kleine back-end nodig, dat kan later.</p>
 
 <script>
 const STAGES = [
@@ -114,33 +117,81 @@ const STAGES = [
   { id:"voorstel",  name:"Voorstel",         dot:"#22b1a0" },
   { id:"pilot",     name:"Pilotklant",       dot:"#1fcf6a" },
 ];
+const FIT = { sterk:"Sterke fit", twijfel:"Twijfel", zwak:"Zwakke fit" };
+
 const LEADS = [
-  { id:"domek", co:"Domek", av:"DM", stage:"pilot",
+  // Voorstelpagina's live onder /churnless/<id>
+  { id:"domek", co:"Domek", av:"DM", stage:"pilot", page:true,
     line:"Verzekeringen en hypotheken voor nieuwe huiseigenaren.",
     moment:"Na de huisaankoop, doorverwijzing" },
-  { id:"ditto", co:"Ditto", av:"DI", stage:"gesprek",
+  { id:"ditto", co:"Ditto", av:"DI", stage:"gesprek", page:true,
     line:"Kaarten bij ontvangers van de Blije Doos lopen al.",
     moment:"35% scant al, pagina achter de QR" },
-  { id:"medpets", co:"Medpets", av:"MP", stage:"voorstel",
+  { id:"medpets", co:"Medpets", av:"MP", stage:"voorstel", page:true,
     line:"Online dierenapotheek en petshop.",
     moment:"Trouwe klant valt uit zijn bestelritme" },
-  { id:"snelstart", co:"SnelStart", av:"SS", stage:"voorstel",
+  { id:"snelstart", co:"SnelStart", av:"SS", stage:"voorstel", page:true,
     line:"Boekhoudsoftware voor ondernemers.",
     moment:"Van proefperiode naar klant die blijft" },
-  { id:"broekhuis-lease", co:"Broekhuis Lease", av:"BL", stage:"brief",
+  { id:"broekhuis-lease", co:"Broekhuis Lease", av:"BL", stage:"brief", page:true,
     line:"Private en zakelijke autolease.",
     moment:"Drie maanden voor het contracteinde" },
-  { id:"bbq-experience-center", co:"BBQ Experience Center", av:"BQ", stage:"brief",
+  { id:"bbq-experience-center", co:"BBQ Experience Center", av:"BQ", stage:"brief", page:true,
     line:"BBQ-retail en workshops.",
     moment:"Drie weken na de aankoop van een BBQ" },
-  { id:"dtc", co:"DTC", av:"DT", stage:"benaderen",
+  { id:"dtc", co:"DTC", av:"DT", stage:"benaderen", page:true,
     line:"Occasions en financial lease, 70.000+ auto's.",
     moment:"Vlak voordat lease of lening afloopt" },
+
+  // Eigen leads
+  { id:"cloudpillo", co:"Cloudpillo", av:"CP", stage:"benaderen", fit:"sterk",
+    line:"D2C ergonomische kussens, eigen webshop, 100 nachten proefslapen.",
+    site:"https://cloudpillo.com" },
+  { id:"limitless", co:"Studio Limitless", person:"Samuel van Gelder", av:"SL", stage:"benaderen", fit:"sterk",
+    line:"Fitness: personal en small-group training (Diemen).",
+    email:"info@studiolimitless.nl", phone:"+31 6 46466569" },
+  { id:"nagtzaam", co:"Fysiotherapie Nagtzaam", person:"Ronaldo Nagtzaam", av:"FN", stage:"benaderen", fit:"sterk",
+    line:"Fysio, training en leefstijl (Den Haag, 3 locaties).",
+    email:"ronaldo@fysiotherapienagtzaam.nl", phone:"+31 6 21690773" },
+  { id:"fysioplan", co:"FYSIOPLAN", person:"Bernard Heijting", av:"FP", stage:"benaderen", fit:"sterk",
+    line:"Fysiotherapie, dezelfde dag terecht (Rotterdam, 3 locaties).",
+    email:"bernard@fysioplan.nl", phone:"+31 6 42663955" },
+  { id:"geldgids", co:"Geldgids", person:"Rick Pouw", av:"GG", stage:"benaderen", fit:"sterk",
+    line:"Persoonlijk vermogensplan, 1-op-1 (Alphen aan den Rijn).",
+    email:"info@geldgids.online", phone:"+31 6 39878194" },
+  { id:"productsforhome", co:"Products for Home", person:"Thomas Gerasimou", av:"PH", stage:"benaderen", fit:"sterk",
+    line:"Griekse deli-webshop: honing, olijfolie, Gia giamas.",
+    email:"thomasgerasimou@hotmail.nl", phone:"+31 6 55742601" },
+  { id:"aarnoutse", co:"Slagerij Aarnoutse", person:"Roob Aarnoutse", av:"SA", stage:"benaderen", fit:"twijfel",
+    line:"Slagerij en traiteur, maaltijden en catering (Gennep).",
+    phone:"+31 485 511862", site:"https://slagerijgennep.nl" },
+  { id:"jade", co:"Jade", person:"Jeffrey Huang", av:"JA", stage:"benaderen", fit:"twijfel",
+    line:"Chinees restaurant, bezorgen en catering (Uithoorn).",
+    email:"heldhoeker01@live.nl", phone:"+31 6 81030618" },
+  { id:"brightmania", co:"BrightMania", person:"Arshad Oemar", av:"BM", stage:"benaderen", fit:"twijfel",
+    line:"E-commerce gadgets, eigen webshop plus Bol.",
+    email:"Arshad@brightmania.com", phone:"+31 6 52245889" },
+  { id:"bollinos", co:"Bollino's", person:"Robbert Wassink", av:"BO", stage:"benaderen", fit:"zwak",
+    line:"Fast-casual: broodjes, burgers en fries.",
+    email:"administratie@bollinos.nl", phone:"+31 6 34420047" },
+  { id:"quim", co:"QUIM (Jumbo Bodegraven)", person:"Quint Langerak", av:"QU", stage:"benaderen", fit:"zwak",
+    line:"Twee Jumbo-supermarkten, 250 medewerkers.",
+    email:"quintlangerak@hotmail.com", phone:"+31 6 30122593" },
+  { id:"hondjeuitlaten", co:"Hondjeuitlaten.nl", person:"Lars Berends", av:"HU", stage:"benaderen", fit:"zwak",
+    line:"Community-platform voor uitlaten en oppassen.",
+    email:"Aquila@larsberends.nl", phone:"+31 6 55928892" },
+  { id:"foodcrib", co:"FoodCrib", person:"Randy Wielhouwer", av:"FC", stage:"benaderen", fit:"zwak",
+    line:"Foodkiosk voor passanten (Museumplein Amsterdam).",
+    phone:"+31 6 13772288" },
 ];
 
-const KEY = "churnless-crm-v1";
+const KEY = "churnless-crm-v2";
 const board = document.getElementById("board");
+const esc = t => String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const clockIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+const mailIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
+const phoneIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>';
+const globeIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>';
 const arrowIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 const chevL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>';
 const chevR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
@@ -148,31 +199,39 @@ const chevR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 function loadState(){
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){}
-  const state = {};
-  LEADS.forEach(l => state[l.id] = saved[l.id] || l.stage);
-  return state;
+  const st = {};
+  LEADS.forEach(l => st[l.id] = saved[l.id] || l.stage);
+  return st;
 }
-function saveState(state){
-  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
-}
+function saveState(st){ try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e){} }
 let state = loadState();
 
 function cardHTML(l){
   const idx = STAGES.findIndex(s => s.id === state[l.id]);
+  const chip = l.page
+    ? `<span class="chip moment">${clockIcon}${esc(l.moment)}</span>`
+    : `<span class="chip fit ${l.fit}">${FIT[l.fit]}</span>`;
+  const person = l.person ? `<span class="person">${esc(l.person)}</span>` : "";
+  let contacts = "";
+  if(!l.page){
+    const rows = [];
+    if(l.email) rows.push(`<a href="mailto:${esc(l.email)}">${mailIcon}<span>${esc(l.email)}</span></a>`);
+    if(l.phone) rows.push(`<a href="tel:${esc(l.phone.replace(/\s/g,""))}">${phoneIcon}<span>${esc(l.phone)}</span></a>`);
+    if(l.site) rows.push(`<a href="${esc(l.site)}" target="_blank" rel="noopener">${globeIcon}<span>${esc(l.site.replace(/^https?:\/\//,""))}</span></a>`);
+    if(rows.length) contacts = `<div class="contact">${rows.join("")}</div>`;
+  }
+  const left = l.page
+    ? `<a class="vp" href="churnless/${l.id}" target="_blank" rel="noopener">Voorstel ${arrowIcon}</a>`
+    : "";
   return `<article class="card" draggable="true" data-id="${l.id}">
-    <div class="top">
-      <span class="avatar">${l.av}</span>
-      <span class="co">${l.co}</span>
-    </div>
-    <p class="line">${l.line}</p>
-    <span class="moment">${clockIcon}${l.moment}</span>
-    <div class="foot">
-      <a href="churnless/${l.id}" target="_blank" rel="noopener">Voorstel ${arrowIcon}</a>
-      <span class="move">
-        <button data-dir="-1" ${idx===0?"disabled":""} aria-label="Fase terug">${chevL}</button>
-        <button data-dir="1" ${idx===STAGES.length-1?"disabled":""} aria-label="Fase vooruit">${chevR}</button>
-      </span>
-    </div>
+    <div class="top"><span class="avatar">${esc(l.av)}</span><div><span class="co">${esc(l.co)}</span>${person}</div></div>
+    <p class="line">${esc(l.line)}</p>
+    ${chip}
+    ${contacts}
+    <div class="foot">${left}<span class="move">
+      <button data-dir="-1" ${idx===0?"disabled":""} aria-label="Fase terug">${chevL}</button>
+      <button data-dir="1" ${idx===STAGES.length-1?"disabled":""} aria-label="Fase vooruit">${chevR}</button>
+    </span></div>
   </article>`;
 }
 
@@ -182,36 +241,21 @@ function render(){
       <div class="col-h"><span class="dot" style="background:${s.dot}"></span><b>${s.name}</b><span class="count" data-count="${s.id}">0</span></div>
       <div class="drop" data-stage="${s.id}"></div>
     </section>`).join("");
-
-  LEADS.forEach(l => {
-    const drop = board.querySelector(`.drop[data-stage="${state[l.id]}"]`);
-    drop.insertAdjacentHTML("beforeend", cardHTML(l));
-  });
-  refresh();
-  wire();
+  LEADS.forEach(l => board.querySelector(`.drop[data-stage="${state[l.id]}"]`).insertAdjacentHTML("beforeend", cardHTML(l)));
+  refresh(); wire();
 }
-
 function refresh(){
   STAGES.forEach(s => {
     const drop = board.querySelector(`.drop[data-stage="${s.id}"]`);
     const n = drop.querySelectorAll(".card").length;
     board.querySelector(`[data-count="${s.id}"]`).textContent = n;
-    if(n === 0 && !drop.querySelector(".empty")){
-      drop.insertAdjacentHTML("beforeend", '<div class="empty">Sleep hier</div>');
-    }
     const empty = drop.querySelector(".empty");
-    if(empty && n > 0) empty.remove();
+    if(n===0 && !empty) drop.insertAdjacentHTML("beforeend", '<div class="empty">Sleep hier</div>');
+    if(empty && n>0) empty.remove();
   });
 }
-
-function moveCard(id, stageId){
-  state[id] = stageId;
-  saveState(state);
-  render();
-}
-
+function moveCard(id, stageId){ state[id] = stageId; saveState(state); render(); }
 function wire(){
-  // drag
   board.querySelectorAll(".card").forEach(card => {
     card.addEventListener("dragstart", e => {
       e.dataTransfer.setData("text/plain", card.dataset.id);
@@ -219,16 +263,12 @@ function wire(){
       requestAnimationFrame(() => card.classList.add("dragging"));
     });
     card.addEventListener("dragend", () => card.classList.remove("dragging"));
-    // arrows
-    card.querySelectorAll(".move button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const idx = STAGES.findIndex(s => s.id === state[card.dataset.id]);
-        const next = idx + (+btn.dataset.dir);
-        if(next >= 0 && next < STAGES.length) moveCard(card.dataset.id, STAGES[next].id);
-      });
-    });
+    card.querySelectorAll(".move button").forEach(btn => btn.addEventListener("click", () => {
+      const idx = STAGES.findIndex(s => s.id === state[card.dataset.id]);
+      const next = idx + (+btn.dataset.dir);
+      if(next>=0 && next<STAGES.length) moveCard(card.dataset.id, STAGES[next].id);
+    }));
   });
-  // drop zones
   board.querySelectorAll(".col").forEach(col => {
     const stage = col.dataset.stage;
     col.addEventListener("dragover", e => { e.preventDefault(); e.dataTransfer.dropEffect="move"; col.classList.add("over"); });
@@ -240,13 +280,10 @@ function wire(){
     });
   });
 }
-
 document.getElementById("reset").addEventListener("click", () => {
   try { localStorage.removeItem(KEY); } catch(e){}
-  state = loadState();
-  render();
+  state = loadState(); render();
 });
-
 render();
 </script>
 </body>
