@@ -1,18 +1,22 @@
 /* ============================================================
    THEMA — Volle Gym
-   Het enige bestand dat per klant verschilt. De kleuren komen van
-   vollegym.nl: bijna-zwart op warm gebroken wit, met het gedempte
-   goud uit hun groeiplan als accent. Inter als merkfont, want hun
-   site is strak en zonder franje.
+   Het enige bestand dat per klant verschilt. Alle waarden komen uit
+   hun eigen stylesheet (vollegym.nl/assets/index-RZa4NEgo.css):
+   --color-accent #ff3500, --color-background #faf8f5,
+   --color-primary #0a0a0a, en Inter als --font-heading en --font-sans.
+   Het oranjerood is dus niet gekozen maar overgenomen; het staat ook
+   in hun merkteken, de halter uit /favicon.svg.
    Elke kleur staat twee keer: als hex en als losse kanalen voor rgba().
    ============================================================ */
 :root{
-  /* ── accent: het gedempte goud in plaats van Pique-amber ── */
-  --accent:#9C854A;        --accent-rgb:156,133,74;    /* lijnen, labels, dots  */
-  --accent-l:#BFA867;      --accent-l-rgb:191,168,103; /* knoppen, accent op donker */
-  --accent-h:#D2BE86;                                  /* knop bij hover        */
-  --op-accent:#141311;                                 /* donker op goud        */
-  --inkt:#6E5A26;          --inkt-rgb:110,90,38;       /* pen in goudbruin      */
+  /* ── accent: hun --color-accent, met hun eigen donkere trappen ── */
+  --accent:#FF3500;        --accent-rgb:255,53,0;      /* lijnen, labels, dots  */
+  --accent-l:#FF5A2B;      --accent-l-rgb:255,90,43;   /* knoppen, accent op donker */
+  --accent-h:#E03000;                                  /* knop bij hover, van hen */
+  --op-accent:#FFFFFF;                                 /* wit op het oranjerood */
+  /* De pen mag niet meeschreeuwen met de knoppen, dus de handschriftkleur
+     is hun donkerste trap (#B02200) en niet het accent zelf. */
+  --inkt:#B02200;          --inkt-rgb:176,34,0;
 
   /* ── vlakken en tekst: hun eigen #FAF8F5 en #0A0A0A ────── */
   --bg:#FAF8F5;            --bg-rgb:250,248,245;       /* de pagina             */
