@@ -1,249 +1,348 @@
 <!DOCTYPE html>
-<!-- Gebouwd met Componenten/lp-v5/bouw5.py. De vorm zit in lp5.css en lp5.js.
-     Pas het component aan, niet deze pagina. -->
+<!--
+  Volle Gym — persoonlijke pagina voor Healthy Bastards
+  Vorm: Componenten/lp-v2 (ongewijzigd). Hier staat alleen thema plus inhoud.
+  Gegenereerd door Klanten/VolleGym/lp/vollegym-lp-generator.py
+-->
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Volle Gym voor Healthy Bastards</title>
-<meta name="description" content="Wat mij opviel bij Healthy Bastards, met de bronnen erbij.">
+<meta name="description" content="Een persoonlijke bevinding over het klantcontact van Healthy Bastards.">
 <meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
-<link rel="preload" href="caveat-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="favicon.svg">
-<link rel="stylesheet" href="thema5-vollegym.css">
-<link rel="stylesheet" href="lp5.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="thema-vollegym.css">
+<link rel="stylesheet" href="lp.css">
+
 <script>
-window.PQ5 = {
-  "slug": "healthy-bastards",
-  "bedrijf": "Healthy Bastards",
-  "klant": "vollegym",
-  "campagne": "batch1",
-  "cal": "",
-  "video": "bas-staand.mp4",
-  "video540": "bas-staand-540.mp4",
-  "poster": "bas-staand-poster.jpg",
-  "terugbelUrl": "https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec",
-  "kaart": {
-    "regels": [
-      "Hoi Hidde.",
-      "Deze kaart lag niet",
-      "toevallig op je balie.",
-      "*Ik keek bij jullie rond.*"
-    ],
-    "ja": "Ja, laat maar zien",
-    "sub": "Bas, 1 min 20",
-    "lees": "Ik lees liever"
-  },
-  "logo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 620 100\" role=\"img\" aria-label=\"Volle Gym\"><text x=\"0\" y=\"74\" fill=\"currentColor\" font-family=\"Inter,system-ui,-apple-system,sans-serif\" font-size=\"82\" font-weight=\"700\" letter-spacing=\"2\">VOLLE</text><text x=\"292\" y=\"74\" fill=\"currentColor\" font-family=\"Inter,system-ui,-apple-system,sans-serif\" font-size=\"82\" font-weight=\"300\" letter-spacing=\"2\">GYM</text></svg>"
-};
+  window.PQ_BEDRIJF      = 'Healthy Bastards';
+  window.PQ_KLANT        = 'vollegym';
+  window.PQ_CAMPAGNE     = 'vollegym-batch1';
+  window.PQ_CAL          = '';
+  window.PQ_VIDEO        = 'bas-staand-540.mp4';
+  window.PQ_POSTER       = 'bas-staand-poster.jpg';
+  window.PQ_TRACK_URL    = '/api/t';
+  window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
+  window.PIQUE_INTRO     = { voornaam: 'Hidde', bedrijf: 'Healthy Bastards', ctaSub: 'Video van Bas &middot; 1 min 23', regels: ['Hoi {voornaam}.', 'Deze kaart lag niet toevallig|op je bureau.', 'Ik keek een tijd|naar {bedrijf}.', '*Wil je weten wat ik zag?*'],  merk: false };
 </script>
+<script src="lp-intro.js"></script>
 </head>
 <body>
+<div class="mbar" id="mbar"></div>
 
-<nav>
-  <a class="merk" href="#top" aria-label="Volle Gym"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 100" role="img" aria-label="Volle Gym"><text x="0" y="74" fill="currentColor" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="82" font-weight="700" letter-spacing="2">VOLLE</text><text x="292" y="74" fill="currentColor" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="82" font-weight="300" letter-spacing="2">GYM</text></svg></a>
-  <button class="navcta knop klein" type="button" data-open="sheet" data-tab="plan" data-doel="nav">Plan een gesprek</button>
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="Volle Gym" style="gap:.55rem">
+    <img class="op-donker" src="vollegym-logo-licht.png" alt="" width="22" height="22">
+    <img class="op-licht" src="vollegym-logo.png" alt="" width="22" height="22">
+    <span style="font:600 1.02rem/1 'Inter',system-ui,sans-serif;letter-spacing:-.02em">Volle Gym</span>
+  </a>
+  <button class="nav-cta" data-open="sheet" data-tab="plan">Bel me terug</button>
 </nav>
 
-<!-- ── 1. de map ligt dicht ───────────────────────────────── -->
+<div class="rail" id="rail">
+  <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
+  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">Wat dat betekent</span></a>
+  <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
+  <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
+</div>
+
 <header class="hero" id="top">
-  <div class="wrap">
-    <div class="op">
-      <h1>Negen trainers op twee locaties. En een small group van vijf voor zes euro vijftig.</h1>
-      <p class="bron"><b>healthy-bastards.nl</b> &middot; 30 september 2026</p>
-      <p class="aanloop">Twee regels van je eigen site, naast elkaar gelegd.</p>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Hoi Hidde.<br>Ik keek even naar <em>Healthy Bastards</em>.</div>
+          <div class="sig">Bas</div>
+        </div>
+        <span class="slot-tag">Bas Nagel, Volle Gym</span>
+      </div>
     </div>
-    <div class="mapwrap">
-      <div class="map pap">
-        <div class="map-tab">
-          <span class="tab-nu">Healthy Bastards</span>
-          <s class="tab-oud">Hidde, in zijn eentje</s>
-        </div>
-        <div class="map-klep"></div>
+    <div class="hero-right">
+      <h1 class="hero-h1">Drie dingen over Healthy Bastards.</h1>
+      <p class="hero-sub">Wat mij opviel toen ik naar je zaak keek, met de bronnen erbij.</p>
+      <div class="hero-meta">
+        <span class="chip"><i></i>3 bevindingen</span>
+        <span class="chip">Ik lees liever</span>
+        <span class="chip">Alleen voor <b>Healthy Bastards</b> geschreven</span>
       </div>
-      <div id="slot">
-        <div id="slotcard" class="pap">
-          <p class="h">Hoi Hidde. Ik keek naar <em>Healthy Bastards</em>.</p>
-          <p class="sig">Bas</p>
-        </div>
-      </div>
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="bas-staand-poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Bas vat het samen in 1 minuut</span>
+      </button>
+      <div class="scrollcue"><i></i><span>Scroll</span></div>
     </div>
   </div>
 </header>
 
-<!-- ── 2. het dossier, gepind ─────────────────────────────── -->
-<section class="vond" id="dossier">
-  <div class="pin-box">
-    <div class="dosmap">
-      <div class="velstapel">
-        <article class="vel vel-1">
-          <p class="nr">01</p>
-          <p>Amsterdamstraat en Zijlweg, negen personal trainers en een operations manager. De levering staat.</p>
-          <p class="bron"><b>healthy-bastards.nl</b> &middot; 30 september 2026</p>
-        </article>
-        <article class="vel vel-2">
-          <p class="nr">02</p>
-          <div class="knip"><div class="knip-vel">
-            <p class="citaat">&lsquo;Full Body 45, max. 5 personen, &euro;6,50 per les. Elite, max. 5 personen, &euro;13 per les.&rsquo;</p>
-          </div></div>
-          <p class="bron"><b>healthy-bastards.nl</b> &middot; 30 september 2026</p>
-          <p class="kantnoot">zelfde ruimte, halve prijs</p>
-        </article>
+<main class="journey" id="journey">
+  <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path>
+    <path class="jp-prog" id="jp-prog"></path>
+  </svg>
+
+  <section class="chapter left" id="s1">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom jij</div>
+        <h2 class="ch-kop">Je levering is meegegroeid. Je voorkant staat er nog als in 2019.</h2>
+        <p class="ch-text">Ik keek een half uur naar je site en naar hoe iemand bij jou binnenkomt. Wat ik zag gaat over capaciteit en over de weg naar binnen. Over je trainingen zeg ik niets, want daar weet jij alles van en ik niets.</p>
+        <p class="ch-text"><strong>Dit is wat ik vond.</strong></p>
+        <div class="ch-sign">Bas, Volle Gym</div>
+      </div>
+      <div class="note">3 dingen, in deze volgorde
+        <svg class="arw" viewBox="0 0 52 26"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg>
       </div>
     </div>
-    <div>
-      <p class="slotzin">Twee vondsten van dezelfde pagina. En een zin uit 2019.</p>
-      <p class="bron tabbron"><b>healthy-bastards.nl/over-ons</b> &middot; 30 september 2026</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── 3. het kantelpunt en de vraag ──────────────────────── -->
-<section class="kantel" id="kantel">
-  <div class="wrap op">
-    <div class="knikwrap">
-      <div class="knikvel"><div class="knikvel-in">
-        <p class="hand">In 2019 trok je in je eentje je stoute schoenen aan. Die versie heb je zelf doorgehaald door negen mensen aan te nemen en een tweede zaal te openen. Alleen je instroom draait nog op de oude versie.</p>
-        <p class="sig">Bas</p>
-      </div></div>
-    </div>
-    <p class="naast">de levering is meegegroeid. de voorkant nog niet.</p>
-    <h2 class="vraag">Wie loopt er deze maand voor het eerst binnen, en waar heeft hij zich op ingeschreven?</h2>
-    <div class="askwrap">
-      <div class="askkaart pap">
-        <p class="hand">Zal ik je hier even over bellen?</p>
-        <div class="acties">
-          <button class="knop" type="button" data-open="sheet" data-tab="plan" data-doel="ask">Kies een moment</button>
-          <button class="knop stil" type="button" data-open="sheet" data-tab="bel" data-doel="ask-bel">Laat je nummer achter</button>
+  <section class="chapter l find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">01<span class="of">/ 3</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Twee zalen in Haarlem, negen trainers.</h2>
+        <p class="ch-text">Amsterdamstraat en Zijlweg, met negen personal trainers en een operations manager erboven. Dat is een organisatie die mensen aankan.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">'Amsterdamstraat 37, 2032 PN Haarlem. Zijlweg 2, 2015 BK Haarlem.'</p>
+          <div class="f-meta"><span class="dom">healthy-bastards.nl</span><span class="sep"></span><span>30 september 2026</span></div>
         </div>
-        <p class="klein">Twintig minuten. Ik ben zelf gymeigenaar geweest, dus ik weet wat er op een maandagochtend op je afkomt.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── 4. wat ik zou doen, de lade kleeft ─────────────────── -->
-<section class="doen" id="doen">
-  <div class="wrap">
-    <div class="stappen">
-        <p class="stap"><b>Eerst je cijfers.</b>Hoeveel intakes je nu doet en wat er van blijft hangen.</p>
-        <p class="stap"><b>Dan een instapprogramma.</b>Zes weken betaald, met begeleiding, als opstap naar een lidmaatschap.</p>
-        <p class="stap"><b>Daarna vullen.</b>Advertenties erop, en jij voert de gesprekken. Wij bouwen het systeem.</p>
-    </div>
-    <div class="ladewrap">
-      <div class="lade" data-stap="0">
-        <div class="tabrij" style="--i:0;--t:12px"></div>
-        <div class="tabrij" style="--i:1;--t:25px"></div>
-        <div class="tabrij benoemd" style="--i:2;--t:38px"><span class="tabnaam">SON COACHING &AMP; TRAINING</span></div>
-        <div class="tabrij" style="--i:3;--t:65px"></div>
-        <div class="tabrij" style="--i:4;--t:78px"></div>
-        <div class="tabrij benoemd" style="--i:5;--t:91px"><span class="tabnaam">FUNDAMENTALS</span></div>
-        <div class="tabrij" style="--i:6;--t:118px"></div>
-        <div class="tabrij" style="--i:7;--t:131px"></div>
-        <div class="tabrij benoemd" style="--i:8;--t:144px"><span class="tabnaam">FANTASTIC FIT</span></div>
-        <div class="tabrij" style="--i:9;--t:171px"></div>
-        <div class="tabrij" style="--i:10;--t:184px"></div>
-        <div class="tabrij benoemd" style="--i:11;--t:197px"><span class="tabnaam">TEAM BENJI</span></div>
-        <div class="tabrij" style="--i:12;--t:224px"></div>
-        <div class="tabrij leeg" style="--i:13;--t:237px"><span class="tabnaam">&nbsp;<i class="cursor"></i></span></div>
-        <i class="vlag" style="--t:25px;--n:0"></i>
-        <i class="vlag" style="--t:65px;--n:1"></i>
-        <i class="vlag" style="--t:78px;--n:2"></i>
-        <i class="vlag" style="--t:118px;--n:3"></i>
-        <i class="vlag" style="--t:171px;--n:4"></i>
-        <i class="vlag" style="--t:224px;--n:5"></i>
-        <div class="ladekaart pap"><span class="l"></span><span class="l"></span><span class="l"></span><span class="s">{vn_afz}</span></div>
-      </div>
-    </div>
-    <div class="onder">
-        <p class="bron">Vijfendertig gyms werken op dit moment met ons &middot; ruim achtduizend intakegesprekken &middot; bijna drieduizend nieuwe leden (vollegym.nl, september 2026)</p>
-        <p class="bron">Vijfenveertig leden in negentig dagen, zwart op wit. Halen we dat niet, dan betalen we &euro;150 terug per lid dat tekortkomt.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ── 5. de achterkant ───────────────────────────────────── -->
-<section class="slot-sec" id="sluit">
-  <div class="wrap op">
-    <div class="afdrukwrap">
-      <figure class="afdruk">
-        <img src="bas.png" alt="Bas Nagel" width="170" height="212">
-        <figcaption>Bas Nagel, Volle Gym</figcaption>
-      </figure>
-    </div>
-    <div class="achterwrap">
-      <div class="achterblad">
-        <div class="map-tab">
-          <span class="tab-nu">Healthy Bastards</span>
-          <s class="tab-oud">Hidde, in zijn eentje</s>
+  <section class="chapter r find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">02<span class="of">/ 3</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Twee small groups, allebei maximaal vijf.</h2>
+        <p class="ch-text">Full Body 45 en Elite draaien met dezelfde groepsgrootte, en de een kost de helft van de ander. Wie voor het eerst binnenloopt, kiest daar zelf tussen.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">'Full Body 45, max. 5 personen, €6,50 per les. Elite, max. 5 personen, €13 per les.'</p>
+          <div class="f-meta"><span class="dom">healthy-bastards.nl</span><span class="sep"></span><span>30 september 2026</span></div>
         </div>
-        <div class="map-tab leeg"><span class="hand">komt Healthy Bastards hier?</span></div>
-        <p class="kantrand">mijn eerste gym zat ook halve dagen leeg. daar is dit uit ontstaan.</p>
-        <p>Ik begon Volle Gym omdat ik het zelf heb meegemaakt: een zaal die klaar is en een rooster dat niet vol loopt. Ik bel zelf, en Thijs ook.</p>
-        <p class="disp">Een gym die vol zit is niet alleen een betere zaak. Het is ook een paar honderd mensen die zijn blijven komen.</p>
       </div>
     </div>
-    <div class="open-v">
-        <div><b>Wat moet ik er zelf voor doen?</b><span>Tien uur per week bellen met mensen die zich aanmelden. Dat deel nemen wij niet over.</span></div>
-        <div><b>En als het niet werkt?</b><span>Dan krijg je per lid dat we tekortkomen honderdvijftig euro terug. Dat staat op papier.</span></div>
+  </section>
+
+  <section class="chapter l find">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">03<span class="of">/ 3</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Wat er nergens staat, is hoe je begint.</h2>
+        <p class="ch-text">Ik zag lidmaatschappen en losse lessen, en geen betaald instapprogramma met een startdatum. Iemand die vandaag besluit dat het anders moet, moet bij jou zelf bedenken waar hij instapt.</p>
+      </div>
     </div>
-    <div class="acties">
-      <a class="tekstlink" href="mailto:bas@vollegym.nl?subject=Healthy%20Bastards%20x%20Volle%20Gym">Of mail me een korte vraag</a>
+  </section>
+
+  <section class="chapter center pivot" id="s3">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dat betekent</div>
+        <p class="ch-pivot">In 2019 trok je in je eentje je stoute schoenen aan. Die versie heb je zelf doorgehaald door negen mensen aan te nemen en een tweede zaal te openen. Alleen de weg naar binnen is nog die van 2019.</p>
+      </div>
     </div>
+  </section>
+</main>
+
+<section class="ask" id="ask">
+  <div class="ask-in">
+    <p class="ask-hand">Zal ik je hier gewoon even over bellen?</p>
+    <p class="ask-sub">Twintig minuten, en ik doe het gesprek zelf.</p>
+    <div class="ask-btns">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
+      <button class="btn-b" id="askread">Liever eerst lezen? Scroll gerust door.</button>
+    </div>
+    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
+  </div>
+</section>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
+
+  <section class="chapter left">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dit kost</div>
+        <h2 class="ch-kop">Wat een lege plek kost.</h2>
+        <p class="ch-text">Je hebt twee zalen en negen trainers. Stel dat er per zaal drie small-group momenten per week half vol staan, dan zijn dat vijftien lege plekken per week. Bij een lidmaatschap dat een jaar meegaat is dat geen gemiste les, dat is een gemist jaar.</p>
+        <p class="ch-pull">Een plek die leeg blijft is iemand die thuis op de bank zit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Hoe het anders kan</div>
+        <p class="ch-text">Wij leveren geen leads. Wij bouwen het instapprogramma, zetten de advertenties eronder en leren je het systeem zelf te draaien. De gesprekken voer jij, want die kan niemand van je overnemen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center phase" id="s4">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Het voorstel</div>
+        <h2 class="ch-kop ch-head">Wat ik voorstel.</h2>
+        <p class="ch-sub">Negentig dagen, en aan het eind draait Healthy Bastards het zelf.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="toon" id="toon">
+  <div class="toon-rij">
+    <article class="tp" style="--dl:.05s">
+      <div class="tp-vis">
+        <div class="ma">
+          <div class="ma-top">
+            <div class="ma-dag"><b>45</b><span>leden</span></div>
+            <div><strong>In 90 dagen</strong><em>zwart op wit</em></div>
+          </div>
+          <div class="ma-rij"><span class="v"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Anders €150 terug per lid</div>
+          <div class="ma-hand">dat staat in het contract</div>
+        </div>
+      </div>
+      <div class="tp-num">01</div>
+      <h3>Een garantie op papier</h3>
+      <p>Vijfenveertig leden in negentig dagen. Halen we dat niet, dan betalen we honderdvijftig euro terug per lid dat tekortkomt.</p>
+    </article>
+    <article class="tp" style="--dl:.22s">
+      <div class="tp-vis">
+        <div class="ma">
+          <div class="ma-top">
+            <div class="ma-dag"><b>6</b><span>weken</span></div>
+            <div><strong>Instapprogramma</strong><em>betaald</em></div>
+          </div>
+          <div class="ma-rij"><span class="v"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Opstap naar een lidmaatschap</div>
+          <div class="ma-hand">hier komt iemand binnen</div>
+        </div>
+      </div>
+      <div class="tp-num">02</div>
+      <h3>Een deur om door te lopen</h3>
+      <p>Een betaald programma van zes weken met begeleiding, als opstap naar een lidmaatschap. Dat is waar advertenties op landen.</p>
+    </article>
+    <article class="tp" style="--dl:.39s">
+      <div class="tp-vis">
+        <div class="ma">
+          <div class="ma-top">
+            <div class="ma-dag"><b>35</b><span>gyms</span></div>
+            <div><strong>Draaien het</strong><em>vandaag</em></div>
+          </div>
+          <div class="ma-rij"><span class="v"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>8.000+ intakegesprekken</div>
+          <div class="ma-hand">en bijna 3.000 nieuwe leden</div>
+        </div>
+      </div>
+      <div class="tp-num">03</div>
+      <h3>Een systeem dat je zelf draait</h3>
+      <p>Vijfendertig gyms werken op dit moment met ons. Aan het eind van de negentig dagen draai je het zonder ons.</p>
+    </article>
+  </div>
+
+  <div class="vw">
+    <div style="--dl:.55s"><span>&#10003;</span><b>Jij voert de gesprekken</b><p>Tien uur per week bellen met mensen die zich aanmelden. Dat deel nemen wij niet over.</p></div>
+    <div style="--dl:.68s"><span>&#10003;</span><b>Wij bouwen het systeem</b><p>Het instapprogramma, de advertenties en de opvolging. Daarna is het van jou.</p></div>
+    <div style="--dl:.81s"><span>&#10003;</span><b>Advertentiebudget apart</b><p>Reken op tweeduizend euro over negentig dagen, bovenop het traject.</p></div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <img class="fo-photo fr" src="bas-thijs.jpg" alt="Bas Nagel van Volle Gym">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Ik ben Bas Nagel. Volle Gym is ontstaan omdat ik het zelf heb meegemaakt: een zaal die klaar is en een rooster dat niet vol loopt.</p>
+      <p>Samen met Thijs begeleid ik vijfendertig gyms. Ik bel zelf, en hij ook.</p>
+    </div>
+    <p class="fo-name">Bas, Volle Gym</p>
+  </div>
+</section>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Zal ik je hier even over bellen?</h2>
+    <p class="cta-sub reveal">Twintig minuten over de voorkant van Healthy Bastards. Zonder verkooppraat.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
+      <button class="btn-b" style="color:rgba(var(--wit-rgb),.75);border-color:rgba(var(--wit-rgb),.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+    </div>
+    <p class="cta-alt reveal">Liever schrijven? <a href="mailto:bas@vollegym.nl?subject=Healthy%20Bastards%20x%20Volle%20Gym">Mail me een korte vraag.</a></p>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <span class="merk"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 100" role="img" aria-label="Volle Gym"><text x="0" y="74" fill="currentColor" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="82" font-weight="700" letter-spacing="2">VOLLE</text><text x="292" y="74" fill="currentColor" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="82" font-weight="300" letter-spacing="2">GYM</text></svg></span>
-    <a href="mailto:bas@vollegym.nl">bas@vollegym.nl</a>
-    <span>&copy; 2026 Volle Gym</span>
-  </div>
+  <div class="ft-logo"><img src="vollegym-logo.png" alt="Volle Gym" width="24" height="24"></div>
+  <div class="ft-meta">Volle Gym &nbsp;&middot;&nbsp; <a href="mailto:bas@vollegym.nl">bas@vollegym.nl</a><br>&copy; 2026 Volle Gym</div>
 </footer>
 
-<!-- ── de sheet ───────────────────────────────────────────── -->
-<div class="sheet" id="sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Een moment plannen">
+<div class="dock" id="dock">
+  <span class="dock-t">Bel me terug</span>
+  <button class="dock-b" data-open="sheet" data-tab="plan">Plannen</button>
+  <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
+</div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
   <div class="sheet-bg" data-close></div>
-  <div class="sheet-in">
-    <button class="sheet-x" type="button" data-close aria-label="Sluiten">&times;</button>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Plan een gesprek">
+    <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
     <div class="sheet-host">
-      <span class="hndt" role="img" aria-label="Handtekening van Bas Nagel"></span>
-      <div><p class="n">Twintig minuten met Bas</p><p class="s">Video of telefoon, jij kiest.</p></div>
+      <img src="bas-avatar.jpg" alt="">
+      <div><div class="n">20 minuten met Bas</div><div class="s">Video of telefoon, jij kiest.</div></div>
     </div>
-    <div class="sheet-tabs" role="tablist">
-      <button type="button" data-tab="plan" class="on">Zelf een moment kiezen</button>
-      <button type="button" data-tab="bel">Laat mij terugbellen</button>
+    <div class="sheet-tabs">
+      <button class="on" data-tab="plan">Zelf een moment kiezen</button>
+      <button data-tab="bel">Laat mij terugbellen</button>
     </div>
     <div class="panes">
-      <div class="pane on" id="pane-plan">
-        <div id="cal-wrap">
-          <div id="cal-embed"></div>
-          <div class="cal-skel" id="calskel">Agenda wordt geladen</div>
+    <div class="pane on" id="pane-plan">
+      <div id="cal-wrap">
+        <div id="cal-embed"></div>
+        <div class="cal-skel" id="calskel">
+          <div class="kop"></div>
+          <div class="grid"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u><u class="o"></u><u></u><u></u><u class="o"></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u></div>
+          <div class="glans"></div>
         </div>
       </div>
-      <div class="pane" id="pane-bel">
-        <form id="belform" novalidate>
-          <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" type="text" autocomplete="name"></div>
-          <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" inputmode="tel" autocomplete="tel" required></div>
-          <p class="fld"><label>Wanneer schikt het?</label></p>
-          <div class="slots" id="slots">
-            <button type="button" data-v="Later vanmiddag">Later vanmiddag</button>
-            <button type="button" data-v="Morgenochtend">Morgenochtend</button>
-            <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
-            <button type="button" data-v="Deze week">Deze week, maakt niet uit</button>
-          </div>
-          <button class="knop" type="submit" style="width:100%">Bel me terug</button>
-          <p class="sheet-note">Ik bel zelf. Je nummer gaat nergens anders heen en komt op geen enkele lijst.</p>
-        </form>
-      </div>
+    </div>
+    <div class="pane" id="pane-bel">
+      <form id="belform">
+        <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" value="Hidde" required></div>
+        <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.35rem">Wanneer schikt het?</label>
+        <div class="slots" id="slots">
+          <button type="button" data-v="Vandaag, later vanmiddag">Later vanmiddag</button>
+          <button type="button" data-v="Morgenochtend">Morgenochtend</button>
+          <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
+          <button type="button" data-v="Deze week, maakt niet uit">Deze week, maakt niet uit</button>
+        </div>
+        <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
+        <p class="sheet-note">Ik bel zelf. Je nummer gaat nergens anders heen en komt op geen enkele lijst.</p>
+      </form>
+    </div>
     </div>
   </div>
 </div>
 
-<script src="lp5.js"></script>
+<script src="lp-v2.js"></script>
 </body>
 </html>
