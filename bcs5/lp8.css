@@ -1,0 +1,204 @@
+/* ============================================================
+   PIQUE LP v8
+   Zes elementen. De kaart heeft het bewijs al geleverd, dus de
+   pagina herhaalt niets en begint midden in de zin die de kaart
+   begon.
+
+   Wat er beweegt, compleet: een balk die kleeft, een bron die
+   opengaat als je hem aanraakt, en een convergentie. Verder niets.
+
+   Geen namaakvoorwerpen. Dat is zeven versies lang geprobeerd en
+   het blijft een beige rechthoek met een kleinere erop.
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);
+  font-size:15px;line-height:1.6;overflow-x:clip}
+img,svg{max-width:100%;display:block}
+::selection{background:rgba(var(--accent-rgb),.18)}
+
+.wrap{width:100%;max-width:640px;margin:0 auto;padding-inline:24px}
+.disp{font-family:var(--disp);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  line-height:1.12;color:var(--ink)}
+/* De bronregel is waar het vakwerk zichtbaar wordt: tabulaire cijfers,
+   domein zwaarder dan de datum, een dunne punt ertussen. */
+.bron{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink3);
+  font-variant-numeric:tabular-nums;line-height:1.5}
+.bron b{color:var(--ink2);font-weight:600;letter-spacing:.01em}
+.bron .punt{opacity:.5;padding-inline:.35em}
+
+/* ── 1. DE OPENING ────────────────────────────────────────── */
+/* Geen nav, geen logo, geen kop. Hij leest zijn eigen zin, groot. */
+.opening{padding-block:34svh clamp(5rem,16svh,9rem)}
+.opening .cit{position:relative;font-family:var(--disp);font-weight:var(--disp-w);
+  font-size:clamp(1.9rem,8.7vw,2.6rem);line-height:1.14;letter-spacing:var(--disp-ls);
+  max-width:19ch}
+/* het enige amber op dit scherm, en het hangt buiten de kolom */
+.opening .cit::before{content:'\201C';position:absolute;left:-.42em;top:-.04em;
+  font-size:1.35em;line-height:1;color:rgba(var(--accent-rgb),.55)}
+.opening .bron{margin-top:1.1rem}
+.opening .nareactie{margin-top:1.6rem;font-size:15px;color:var(--ink2);max-width:26ch}
+
+/* ── 2. DE VRAAG, het enige dat kleeft ────────────────────── */
+.vraagbalk{position:sticky;top:0;z-index:40;background:rgba(var(--bg-rgb),.96);
+  border-bottom:1px solid var(--lijn);
+  padding-top:env(safe-area-inset-top,0px);
+  opacity:0;pointer-events:none;transition:opacity .35s ease}
+.vraagbalk.er{opacity:1;pointer-events:auto}
+.vraagbalk .wrap{display:flex;align-items:center;min-height:56px;padding-block:.6rem}
+.vraagbalk p{font-size:15px;font-weight:500;line-height:1.35;color:var(--ink)}
+
+/* ── 3. HET BEWIJS ────────────────────────────────────────── */
+.bewijs{padding-bottom:clamp(4rem,12svh,7rem)}
+.vondst{position:relative;padding-top:clamp(3rem,9svh,4.5rem)}
+.vondst .nr{position:absolute;left:0;top:calc(clamp(3rem,9svh,4.5rem) + 4px);
+  font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--accent);
+  font-variant-numeric:tabular-nums}
+.vondst .binnen{padding-left:34px}
+.vondst h2{font-family:var(--disp);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  font-size:1.26rem;line-height:1.25;margin-bottom:.5rem}
+.vondst p{color:var(--ink2);max-width:34ch}
+
+/* de bron die opengaat: het enige wat op hem reageert in plaats van op scroll */
+.bronknop{display:inline-block;margin-top:.9rem;font:inherit;background:none;border:none;
+  padding:0 0 2px;cursor:pointer;text-align:left;color:inherit;
+  border-bottom:1px dashed rgba(var(--accent-rgb),.42);transition:border-color .2s}
+.bronknop:hover{border-bottom-color:var(--accent)}
+.bronknop:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.uitklap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s var(--ease)}
+.uitklap.open{grid-template-rows:1fr}
+.uitklap>div{overflow:hidden}
+.letterlijk{margin-top:.8rem;background:var(--vlak);border-left:2px solid var(--accent);
+  padding:.9rem 1rem}
+.letterlijk q{display:block;font-family:var(--disp);font-weight:400;font-size:1rem;
+  line-height:1.4;color:var(--ink);quotes:'\201C' '\201D'}
+.letterlijk .wanneer{display:block;margin-top:.55rem;font-size:10px;font-weight:600;
+  letter-spacing:.07em;color:var(--ink3);font-variant-numeric:tabular-nums}
+
+/* ── 4. DE CONVERGENTIE ───────────────────────────────────── */
+/* Het enige gescrubde moment. Twee fragmenten schuiven naar elkaar
+   toe en de conclusie landt ertussen. Alleen transform, en de
+   eindtoestand is compleet voor wie erdoorheen veegt. */
+.samen{position:relative;height:170svh}
+.samen-pin{position:sticky;top:0;height:100svh;display:grid;place-content:center;
+  overflow:clip}
+.samen-rij{display:flex;align-items:baseline;justify-content:center;gap:0;
+  white-space:nowrap}
+.samen-rij span{font-family:var(--disp);font-weight:var(--disp-w);
+  letter-spacing:var(--disp-ls);font-size:clamp(1.3rem,6vw,1.9rem);
+  will-change:transform}
+.samen-rij .a{transform:translateX(calc(var(--uit,1) * -42vw))}
+.samen-rij .b{transform:translateX(calc(var(--uit,1) * 42vw))}
+.samen-rij .en{opacity:calc(1 - var(--uit,1));padding-inline:.4em;color:var(--ink3)}
+.samen-slot{margin-top:1.8rem;text-align:center;font-family:var(--disp);
+  font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  font-size:clamp(1.55rem,7.4vw,2.2rem);line-height:1.16;max-width:19ch;
+  text-wrap:balance;
+  margin-inline:auto;opacity:calc(1 - var(--uit,1) * 1.6);
+  transform:translateY(calc(var(--uit,1) * 14px))}
+
+/* ── 5. DE ASK ────────────────────────────────────────────── */
+.ask{padding-block:clamp(4rem,12svh,7rem) clamp(3rem,9svh,5rem)}
+.askblok{position:relative;padding-left:22px}
+.askblok::before{content:'';position:absolute;left:0;top:3px;bottom:3px;width:2px;
+  background:var(--accent)}
+.askblok h2{font-family:var(--disp);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  font-size:clamp(1.45rem,6.4vw,1.9rem);line-height:1.2}
+.askblok .wat{margin-top:.9rem;color:var(--ink2);max-width:34ch}
+.askblok .cat{margin-top:1.1rem;font-size:14px;color:var(--ink3);max-width:36ch}
+.knop{display:inline-flex;align-items:center;justify-content:center;width:100%;
+  min-height:50px;margin-top:1.6rem;font:inherit;font-size:15px;font-weight:600;
+  border:none;border-radius:100px;cursor:pointer;
+  background:var(--accent);color:var(--op-accent);
+  transition:filter .2s ease,transform .12s ease}
+.knop:hover{filter:brightness(1.08)}
+.knop:active{transform:translateY(1px)}
+.tweede{display:inline-block;margin-top:.9rem;font:inherit;font-size:14px;font-weight:600;
+  background:none;border:none;padding:0 0 2px;cursor:pointer;color:var(--ink);
+  box-shadow:inset 0 -1px 0 0 var(--accent)}
+.videorij{display:flex;align-items:center;gap:.65rem;margin-top:1.8rem;padding-top:1.1rem;
+  border-top:1px solid var(--lijn);background:none;border-left:0;border-right:0;
+  border-bottom:0;width:100%;font:inherit;text-align:left;cursor:pointer;color:inherit}
+.videorij .rond{flex:0 0 auto;width:44px;height:44px;border-radius:50%;overflow:hidden;
+  position:relative;background:var(--ink)}
+.videorij .rond img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;opacity:.8}
+.videorij .rond::after{content:'';position:absolute;left:50%;top:50%;width:0;height:0;
+  margin:-5px 0 0 -3px;border-left:9px solid var(--wit);
+  border-top:6px solid transparent;border-bottom:6px solid transparent}
+.videorij span{font-size:14px;color:var(--ink3)}
+.videorij b{display:block;font-weight:600;color:var(--ink)}
+
+/* ── 6. DE VOET ───────────────────────────────────────────── */
+/* Hier pas het merk. Op een persoonlijke brief staat het briefhoofd
+   aan het eind. */
+footer{border-top:1px solid var(--lijn);padding-block:2rem
+  calc(2.4rem + env(safe-area-inset-bottom,0px))}
+footer .sig{height:40px;width:auto;opacity:.75;margin-bottom:1.1rem}
+footer .merk{height:14px;width:auto;opacity:.45;margin-bottom:.7rem}
+footer p{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink3)}
+footer a{color:inherit}
+
+@media(min-width:720px){
+  .opening{padding-block:28svh 10rem}
+  .vondst .binnen{padding-left:44px}
+}
+@media(prefers-reduced-motion:reduce){
+  .samen{height:auto}
+  .samen-pin{position:static;height:auto;padding-block:5rem}
+  .samen-rij .a,.samen-rij .b{transform:none}
+  .samen-rij .en{opacity:1}
+  .samen-slot{opacity:1;transform:none}
+  .vraagbalk{opacity:1}
+  .uitklap{grid-template-rows:1fr}
+}
+
+/* ── de sheet en de videolaag ─────────────────────────────── */
+.sheet{position:fixed;inset:0;z-index:200;display:flex;align-items:flex-end;
+  justify-content:center;pointer-events:none}
+.sheet-bg{position:absolute;inset:0;background:rgba(var(--zwart-rgb),.42);opacity:0;
+  transition:opacity .4s ease}
+.sheet-in{position:relative;width:min(640px,100%);max-height:92svh;overflow-y:auto;
+  background:var(--bg);border-radius:18px 18px 0 0;
+  padding:1.5rem 1.25rem calc(2rem + env(safe-area-inset-bottom,0px));
+  transform:translateY(102%);transition:transform .5s var(--ease)}
+.sheet.open{pointer-events:auto}
+.sheet.open .sheet-bg{opacity:1}
+.sheet.open .sheet-in{transform:none}
+.sheet-x{position:absolute;top:.8rem;right:.8rem;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--lijn);background:var(--wit);color:var(--ink2);cursor:pointer;
+  font-size:1.05rem}
+.sheet-in h3{font-family:var(--disp);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  font-size:1.2rem;margin-bottom:1rem}
+.tabs{display:flex;gap:.3rem;background:rgba(var(--ink-rgb),.05);border-radius:100px;
+  padding:.25rem;margin-bottom:1.1rem}
+.tabs button{flex:1;font:inherit;font-size:13px;font-weight:600;color:var(--ink3);
+  background:none;border:none;border-radius:100px;padding:.55rem;cursor:pointer}
+.tabs button.on{background:var(--wit);color:var(--ink)}
+.pane{display:none}.pane.on{display:block}
+#cal-wrap{position:relative;min-height:480px}
+#cal-embed{width:100%;min-height:480px;border-radius:12px;overflow:hidden;background:var(--wit)}
+.calskel{position:absolute;inset:0;display:grid;place-items:center;background:var(--wit);
+  border:1px solid var(--lijn);border-radius:12px;font-size:13px;color:var(--ink3);
+  transition:opacity .4s}
+.calskel.weg{opacity:0;pointer-events:none}
+.fld{margin-bottom:.8rem}
+.fld label{display:block;font-size:12px;font-weight:600;color:var(--ink2);margin-bottom:.3rem}
+.fld input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--wit);
+  border:1px solid var(--lijn);border-radius:10px;padding:.75rem .85rem}
+.fld input:focus{outline:none;border-color:var(--accent)}
+.slots{display:flex;flex-wrap:wrap;gap:.4rem;margin:.2rem 0 1rem}
+.slots button{font:inherit;font-size:13px;color:var(--ink2);background:var(--wit);
+  border:1px solid var(--lijn);border-radius:100px;padding:.5rem .9rem;cursor:pointer}
+.slots button.on{border-color:var(--accent);background:rgba(var(--accent-rgb),.08);
+  color:var(--ink);font-weight:600}
+.sheet .knop{margin-top:.4rem}
+.note{font-size:12px;color:var(--ink3);margin-top:.8rem;line-height:1.5}
+.ok{text-align:center;padding:2.2rem 1rem}
+.ok .disp{font-family:var(--disp);font-weight:var(--disp-w);font-size:1.3rem;margin-bottom:.5rem}
+.ok p{color:var(--ink2)}
+.vlaag{position:fixed;inset:0;z-index:300;background:rgba(var(--zwart-rgb),.94);
+  display:flex;align-items:center;justify-content:center}
+.vlaag video{width:100%;height:100%;object-fit:contain}
+.vdicht{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:12px;
+  width:44px;height:44px;border-radius:50%;border:1px solid rgba(var(--wit-rgb),.3);
+  background:rgba(var(--wit-rgb),.12);color:var(--wit);font-size:1.2rem;cursor:pointer}
