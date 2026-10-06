@@ -1,0 +1,328 @@
+/* ============================================================
+   PIQUE LP v10 — een scherm, een ding.
+
+   De volgorde is die van 6 oktober 2026:
+     kaart, video, herkenning met kader, het dossier in een
+     oogopslag, de bevinding die ertoe doet, het kantelpunt, de ask.
+     Daaronder: de VSL, bewijs, bezwaren, slot.
+
+   Boven de waterlijn klikt elke sectie vast op het scherm, want je
+   hoort nooit twee dingen tegelijk te zien. Daar hoort een harde eis
+   bij: elke sectie past in een scherm, anders breekt het snappen.
+   Onder de waterlijn is het naslag en scrollt het gewoon door.
+   ============================================================ */
+@font-face{font-family:'Caveat';font-style:normal;font-weight:600;font-display:block;
+  src:url(caveat-latin.woff2) format('woff2')}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;
+  scroll-snap-type:y proximity}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;
+  line-height:1.6;overflow-x:clip}
+img,svg,video{max-width:100%;display:block}
+::selection{background:rgba(var(--accent-rgb),.2)}
+
+.wrap{width:100%;max-width:620px;margin:0 auto;padding-inline:44px 24px}
+@media(min-width:720px){.wrap{padding-inline:64px 32px}}
+.disp{font-family:var(--disp);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  line-height:1.14}
+h1,h2{font-family:var(--disp);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  line-height:1.14}
+.bron{font-size:11px;font-weight:600;letter-spacing:.05em;color:var(--ink3);
+  font-variant-numeric:tabular-nums}
+.bron b{color:var(--ink2);font-weight:600;letter-spacing:normal}
+
+/* elke sectie boven de waterlijn vult het scherm en klikt vast */
+.s{min-height:100svh;scroll-snap-align:start;scroll-snap-stop:always;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-block:calc(env(safe-area-inset-top,0px) + 68px) 2rem;position:relative}
+
+/* ── de rail: waar ben ik ─────────────────────────────────── */
+.rail{position:fixed;left:18px;top:0;bottom:0;z-index:30;width:2px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  pointer-events:none;opacity:0;transition:opacity .4s ease}
+.rail.er{opacity:1}
+.rail .spoor{position:absolute;top:22svh;bottom:22svh;width:1px;
+  background:rgba(var(--ink-rgb),.14)}
+.rail .vol{position:absolute;top:22svh;width:1px;background:var(--accent);
+  height:0;transition:height .35s var(--ease)}
+.rail i{position:absolute;width:7px;height:7px;border-radius:50%;
+  background:var(--bg);border:1px solid rgba(var(--ink-rgb),.22);
+  transform:translateX(-3px);transition:background .3s,border-color .3s,transform .3s}
+.rail i.aan{background:var(--accent);border-color:var(--accent)}
+.rail i.nu{transform:translateX(-3px) scale(1.5)}
+
+/* ── nav ──────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:40;height:56px;display:flex;
+  align-items:center;justify-content:space-between;padding-inline:18px 16px;
+  padding-top:env(safe-area-inset-top,0px);box-sizing:content-box;
+  background:rgba(var(--bg-rgb),.9);backdrop-filter:blur(10px);
+  border-bottom:1px solid transparent;transition:border-color .3s}
+nav.vast{border-bottom-color:var(--lijn)}
+nav .merk svg{height:16px;width:auto;color:var(--ink)}
+.knop{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+  font:inherit;font-size:14px;font-weight:600;border:none;border-radius:100px;
+  cursor:pointer;padding:.6rem 1.15rem;min-height:40px;white-space:nowrap;
+  background:var(--accent);color:var(--op-accent);transition:filter .2s,transform .12s}
+.knop:hover{filter:brightness(1.07)} .knop:active{transform:translateY(1px)}
+.knop.groot{width:100%;min-height:52px;font-size:15px;padding:.9rem 1.5rem}
+.knop.stil{background:transparent;color:var(--ink);border:1px solid var(--lijn)}
+
+/* ── 2. herkenning en kader ───────────────────────────────── */
+.herken .kaartplek{width:min(260px,72vw);aspect-ratio:5/4;position:relative;
+  margin-bottom:1.6rem}
+.pap{background:linear-gradient(170deg,var(--pap-1),var(--pap-2));border-radius:3px;
+  color:var(--hand-ink);
+  box-shadow:0 1px 2px rgba(var(--ink-rgb),.12),0 22px 44px -24px rgba(var(--zwart-rgb),.4)}
+#slotcard{position:absolute;inset:0;padding:1.1rem 1rem;display:flex;flex-direction:column;
+  justify-content:center;transform:rotate(-2.4deg);opacity:0;transition:opacity .4s}
+#slotcard.toon{opacity:1}
+#slotcard .h{font-family:var(--hand);font-weight:600;font-size:1rem;line-height:1.4}
+#slotcard .h em{font-style:normal;color:var(--accent)}
+#slotcard .sig{font-family:var(--hand);font-size:1rem;opacity:.65;margin-top:.5rem}
+.herken .tag{font-size:10px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:1.5rem}
+.herken h1{font-size:clamp(1.5rem,6.4vw,2.1rem);max-width:17ch}
+.herken .kader{margin-top:.9rem;color:var(--ink2);max-width:32ch}
+
+/* ── 3. het dossier in een oogopslag ──────────────────────── */
+/* Drie regels met hun datum. Geen drie blokken: dit is de index, niet
+   de inhoud. Hier ging eerder drie schermen aan op. */
+.dossier .kop{font-size:11px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.4rem}
+.index{border-top:1px solid var(--lijn)}
+.index div{display:grid;grid-template-columns:auto 1fr;gap:.2rem .9rem;
+  padding-block:1.05rem;border-bottom:1px solid var(--lijn);align-items:baseline}
+.index .nr{font-size:11px;font-weight:600;color:var(--accent);
+  font-variant-numeric:tabular-nums}
+.index .wat{font-family:var(--disp);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  font-size:1.08rem;line-height:1.25}
+.index .bron{grid-column:2;margin-top:.2rem}
+.dossier .na{margin-top:1.5rem;color:var(--ink2);max-width:30ch}
+
+/* ── 4. de bevinding die ertoe doet ───────────────────────── */
+.vondst .merk{font-size:11px;font-weight:600;letter-spacing:.05em;color:var(--accent);
+  font-variant-numeric:tabular-nums;margin-bottom:.8rem}
+.vondst h2{font-size:clamp(1.35rem,5.8vw,1.8rem);max-width:19ch}
+.vondst .tekst{margin-top:.8rem;color:var(--ink2);max-width:33ch}
+/* het enige dat op hem reageert in plaats van op scroll */
+.bronknop{display:inline-block;margin-top:1.2rem;font:inherit;background:none;border:none;
+  padding:0 0 2px;cursor:pointer;text-align:left;color:inherit;
+  border-bottom:1px dashed rgba(var(--accent-rgb),.45);transition:border-color .2s}
+.bronknop:hover{border-bottom-color:var(--accent)}
+.bronknop:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.uitklap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s var(--ease)}
+.uitklap.open{grid-template-rows:1fr}
+.uitklap>div{overflow:hidden}
+.letterlijk{margin-top:.9rem;background:var(--vlak);border-left:2px solid var(--accent);
+  padding:.9rem 1rem;max-width:34ch}
+.letterlijk q{display:block;font-family:var(--disp);font-weight:400;font-size:1rem;
+  line-height:1.4;color:var(--ink);quotes:'\201C' '\201D'}
+.letterlijk figcaption{margin-top:.55rem;font-size:10px;font-weight:600;letter-spacing:.06em;
+  color:var(--ink3);font-variant-numeric:tabular-nums}
+
+/* ── 5. het kantelpunt ────────────────────────────────────── */
+.kantel .inz{font-family:var(--hand);font-weight:600;font-size:1.3rem;line-height:1.4;
+  color:var(--accent);max-width:24ch;margin-bottom:1.3rem}
+.kantel h2{font-size:clamp(1.7rem,7.6vw,2.5rem);max-width:15ch}
+
+/* ── 6. de ask ────────────────────────────────────────────── */
+.ask .binnen{position:relative;padding-left:20px}
+.ask .binnen::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:2px;
+  background:var(--accent)}
+.ask h2{font-size:clamp(1.35rem,5.8vw,1.8rem)}
+.ask .wat{margin-top:.85rem;color:var(--ink2);max-width:33ch}
+.ask .cat{margin-top:1rem;font-size:14px;color:var(--ink3);max-width:34ch}
+.ask .acties{margin-top:1.5rem;display:grid;gap:.7rem;max-width:330px}
+.ask .later{font:inherit;font-size:14px;font-weight:600;background:none;border:none;
+  padding:0;cursor:pointer;color:var(--ink);box-shadow:inset 0 -1px 0 0 var(--accent);
+  justify-self:start}
+
+/* ════ WATERLIJN ════ hierboven bewijs, hieronder naslag.
+   Geen snap meer: dit is materiaal om doorheen te scrollen. */
+.onder{scroll-snap-align:none}
+.onder section{padding-block:clamp(3rem,8svh,4.5rem);border-top:1px solid var(--lijn)}
+
+/* ── 7. hoe het werkt: de VSL ─────────────────────────────── */
+.hoe .kop{font-size:11px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1rem}
+.hoe h2{font-size:clamp(1.3rem,5.4vw,1.7rem);max-width:20ch;margin-bottom:1.3rem}
+.vslbox{position:relative;border-radius:10px;overflow:hidden;background:var(--dieper);
+  aspect-ratio:16/9;cursor:pointer;border:none;padding:0;width:100%;display:block}
+.vslbox img{width:100%;height:100%;object-fit:cover;opacity:.88;transition:opacity .25s}
+.vslbox:hover img{opacity:1}
+.vslbox .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:56px;height:56px;border-radius:50%;background:rgba(var(--wit-rgb),.92);
+  display:grid;place-items:center}
+.vslbox .play::after{content:'';width:0;height:0;margin-left:3px;
+  border-left:15px solid var(--ink);border-top:10px solid transparent;
+  border-bottom:10px solid transparent}
+.vslbox .duur{position:absolute;right:10px;bottom:10px;font-size:11px;font-weight:600;
+  color:var(--wit);background:rgba(var(--zwart-rgb),.55);border-radius:4px;
+  padding:.2rem .45rem;font-variant-numeric:tabular-nums}
+.hoe .onderschrift{margin-top:.9rem;font-size:13px;color:var(--ink3);max-width:34ch}
+
+/* ── 8. bewijs ────────────────────────────────────────────── */
+.bewijs .kop{font-size:11px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:1rem}
+.namen{display:grid;border-top:1px solid var(--lijn);margin-bottom:1.8rem}
+.namen span{padding-block:.72rem;border-bottom:1px solid var(--lijn);
+  font-family:var(--disp);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);
+  font-size:1.1rem;color:var(--ink2)}
+.trechter div{display:grid;grid-template-columns:3.2rem 1fr;gap:0 .9rem;
+  align-items:baseline;padding-block:.65rem}
+.trechter b{font-family:var(--disp);font-weight:var(--disp-w);font-size:1.35rem;
+  letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.trechter span{font-size:14px;color:var(--ink2)}
+.trechter i{grid-column:1/-1;display:block;height:2px;margin-top:.5rem;width:var(--w,100%);
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .65s var(--ease) var(--dl,0ms)}
+.bewijs.in .trechter i{transform:scaleX(1)}
+.bewijs .bron{margin-top:1rem;max-width:46ch}
+
+/* ── 9. bezwaren ──────────────────────────────────────────── */
+.vragen div{padding-block:1.1rem;border-bottom:1px solid var(--lijn)}
+.vragen div:first-child{border-top:1px solid var(--lijn)}
+.vragen b{display:block;font-family:var(--disp);font-weight:var(--disp-w);
+  letter-spacing:var(--disp-ls);font-size:1.02rem;margin-bottom:.25rem}
+.vragen span{display:block;font-size:14px;line-height:1.55;color:var(--ink2);max-width:44ch}
+
+/* ── 10. slot ─────────────────────────────────────────────── */
+.slot{background:var(--donker);color:var(--wit);border-top:none!important}
+.slot h2{color:var(--wit);font-size:clamp(1.4rem,6vw,1.9rem);max-width:16ch}
+.slot p{margin-top:.9rem;color:rgba(var(--wit-rgb),.62);max-width:36ch}
+.slot .acties{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.9rem 1.4rem;align-items:center}
+.slot .later{color:var(--wit);box-shadow:inset 0 -1px 0 0 var(--accent)}
+.slot .hndt{width:120px;margin-top:1.8rem;opacity:.8;filter:invert(1)}
+footer{background:var(--donker);color:rgba(var(--wit-rgb),.4);font-size:11px;
+  font-weight:600;letter-spacing:.05em;
+  padding-block:1.2rem calc(1.8rem + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;align-items:center}
+footer svg{height:13px;width:auto;color:rgba(var(--wit-rgb),.4)}
+footer a{color:inherit}
+
+/* ── de reveal, een recept ────────────────────────────────── */
+.op>*{opacity:0;transform:translateY(10px);
+  transition:opacity .6s var(--ease) var(--dl,0ms),transform .6s var(--ease) var(--dl,0ms)}
+.op.in>*{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-snap-type:none}
+  .s{min-height:auto;padding-block:3rem}
+  .op>*{opacity:1!important;transform:none!important}
+  .trechter i{transform:scaleX(1)!important}
+  .rail{display:none}
+  #slotcard{opacity:1}
+}
+
+/* ── 0. de kaartlaag ──────────────────────────────────────── */
+html.kaart-aan,html.kaart-aan body{overflow:hidden;height:100%}
+#kl{position:fixed;inset:0;z-index:900;display:grid;place-items:center;padding:22px 18px;
+  background:var(--donker);overflow-y:auto;overscroll-behavior:contain;
+  transition:opacity .5s ease}
+#kl::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(76% 50% at 22% 14%,rgba(var(--wit-rgb),.07),transparent 68%)}
+#kl.weg{opacity:0}
+.kl-mid{position:relative;width:100%;max-width:330px}
+#dekaart{padding:26px 22px 28px;opacity:0;border-radius:3px;
+  transform:rotate(-1.6deg) translateY(14px) scale(.97);
+  transition:opacity .7s var(--ease),transform .85s var(--ease)}
+#dekaart.er{opacity:1;transform:rotate(-1.6deg)}
+#dekaart::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;
+  border-radius:3px 3px 0 0;background:linear-gradient(90deg,var(--accent-l),var(--accent))}
+.kl-merk{display:flex;align-items:center;gap:.5rem;margin-bottom:20px;opacity:0;
+  transition:opacity .6s ease .12s}
+#dekaart.er .kl-merk{opacity:1}
+.kl-merk svg{height:13px;width:auto;color:var(--hand-ink)}
+.kl-merk span{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(var(--hand-rgb),.42);padding-left:.5rem;
+  border-left:1px solid rgba(var(--hand-rgb),.16)}
+.inkt{font-family:var(--hand);font-weight:600;font-size:clamp(1.4rem,5.4vw,1.75rem);
+  line-height:1.46;color:var(--hand-ink)}
+.rg{display:block;white-space:nowrap}
+.rg+.rg{margin-top:.2em} .rg .hl{color:var(--accent)}
+#dekaart.klaarzetten .rg{clip-path:inset(0 100% 0 0)}
+#dekaart.schrijf .rg{animation:schrijf .42s steps(18,end) forwards;
+  animation-delay:calc(.2s + var(--i,0) * .34s)}
+@keyframes schrijf{to{clip-path:inset(0 0 0 0)}}
+.kl-keuze{margin-top:22px;text-align:center;opacity:0;transform:translateY(8px);
+  pointer-events:none;transition:opacity .5s,transform .5s var(--ease)}
+.kl-keuze.er{opacity:1;transform:none;pointer-events:auto}
+.kl-sub{display:block;margin-top:.6rem;font-size:11px;color:rgba(var(--wit-rgb),.42)}
+.kl-lees{display:block;margin:.4rem auto 0;padding:.7rem 1.2rem;font:inherit;font-size:13px;
+  color:rgba(var(--wit-rgb),.42);background:none;border:none;cursor:pointer;opacity:0;
+  transition:opacity .5s,color .3s}
+.kl-lees.er{opacity:1} .kl-lees:hover{color:rgba(var(--wit-rgb),.8)}
+
+/* ── 1. de videolaag ──────────────────────────────────────── */
+#vl{position:fixed;inset:0;z-index:890;background:var(--dieper);opacity:0;
+  transition:opacity .45s ease;display:grid;place-items:center}
+#vl.er{opacity:1}
+#vl video{width:100%;height:100%;object-fit:cover;background:var(--dieper)}
+@media(min-width:760px){#vl video{width:auto;height:86svh;aspect-ratio:9/16;border-radius:14px}}
+.v-bed{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;align-items:center;
+  gap:.8rem;
+  padding:14px calc(env(safe-area-inset-right,0px) + 16px) calc(env(safe-area-inset-bottom,0px) + 16px)
+          calc(env(safe-area-inset-left,0px) + 16px);
+  background:linear-gradient(transparent,rgba(var(--zwart-rgb),.6));opacity:0;
+  transition:opacity .4s ease .8s}
+#vl.er .v-bed{opacity:1}
+.v-bed .tel{font-size:12px;font-variant-numeric:tabular-nums;color:rgba(var(--wit-rgb),.72)}
+.v-bed .rek{flex:1}
+.v-over{min-height:44px;display:inline-flex;align-items:center;font:inherit;font-size:13px;
+  font-weight:600;color:rgba(var(--wit-rgb),.85);background:rgba(var(--wit-rgb),.12);
+  border:1px solid rgba(var(--wit-rgb),.22);border-radius:100px;padding:.5rem 1rem;
+  cursor:pointer;backdrop-filter:blur(10px)}
+.v-balk{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent);z-index:4}
+.v-geluid{position:absolute;inset:0;z-index:5;display:none;place-items:center;
+  background:rgba(var(--dieper-rgb),.5);border:none;cursor:pointer}
+.v-geluid.er{display:grid}
+.v-geluid span{font-size:14px;font-weight:600;color:var(--op-accent);background:var(--accent);
+  border-radius:100px;padding:.8rem 1.4rem}
+#vlaag{position:fixed;inset:0;z-index:300;background:rgba(var(--zwart-rgb),.95);
+  display:grid;place-items:center}
+#vlaag video{width:100%;max-height:100%;object-fit:contain}
+.vdicht{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:12px;
+  width:44px;height:44px;border-radius:50%;border:1px solid rgba(var(--wit-rgb),.3);
+  background:rgba(var(--wit-rgb),.12);color:var(--wit);font-size:1.2rem;cursor:pointer}
+
+/* ── de sheet ─────────────────────────────────────────────── */
+.sheet{position:fixed;inset:0;z-index:200;display:flex;align-items:flex-end;
+  justify-content:center;pointer-events:none}
+.sheet-bg{position:absolute;inset:0;background:rgba(var(--donker-rgb),.5);opacity:0;
+  transition:opacity .4s}
+.sheet-in{position:relative;width:min(620px,100%);max-height:92svh;overflow-y:auto;
+  background:var(--bg);border-radius:18px 18px 0 0;
+  padding:1.5rem 1.25rem calc(2rem + env(safe-area-inset-bottom,0px));
+  transform:translateY(102%);transition:transform .5s var(--ease)}
+.sheet.open{pointer-events:auto}
+.sheet.open .sheet-bg{opacity:1} .sheet.open .sheet-in{transform:none}
+.sheet-x{position:absolute;top:.8rem;right:.8rem;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--lijn);background:var(--wit);color:var(--ink2);cursor:pointer}
+.sheet-in h3{font-family:var(--disp);font-weight:var(--disp-w);font-size:1.2rem;
+  letter-spacing:var(--disp-ls);margin-bottom:1rem}
+.tabs{display:flex;gap:.3rem;background:rgba(var(--ink-rgb),.05);border-radius:100px;
+  padding:.25rem;margin-bottom:1.1rem}
+.tabs button{flex:1;font:inherit;font-size:13px;font-weight:600;color:var(--ink3);
+  background:none;border:none;border-radius:100px;padding:.55rem;cursor:pointer}
+.tabs button.on{background:var(--wit);color:var(--ink)}
+.pane{display:none}.pane.on{display:block}
+#cal-wrap{position:relative;min-height:470px}
+#cal-embed{width:100%;min-height:470px;border-radius:10px;overflow:hidden;background:var(--wit)}
+.calskel{position:absolute;inset:0;display:grid;place-items:center;background:var(--wit);
+  border:1px solid var(--lijn);border-radius:10px;font-size:13px;color:var(--ink3);
+  transition:opacity .4s}
+.calskel.weg{opacity:0;pointer-events:none}
+.fld{margin-bottom:.8rem}
+.fld label{display:block;font-size:12px;font-weight:600;color:var(--ink2);margin-bottom:.3rem}
+.fld input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--wit);
+  border:1px solid var(--lijn);border-radius:10px;padding:.75rem .85rem}
+.fld input:focus{outline:none;border-color:var(--accent)}
+.slots{display:flex;flex-wrap:wrap;gap:.4rem;margin:.2rem 0 1rem}
+.slots button{font:inherit;font-size:13px;color:var(--ink2);background:var(--wit);
+  border:1px solid var(--lijn);border-radius:100px;padding:.5rem .9rem;cursor:pointer}
+.slots button.on{border-color:var(--accent);background:rgba(var(--accent-rgb),.08);
+  color:var(--ink);font-weight:600}
+.note{font-size:12px;color:var(--ink3);margin-top:.8rem;line-height:1.5}
+.sheet .ok{text-align:center;padding:2rem 1rem}
+.sheet .ok .d{font-family:var(--hand);font-size:1.6rem;color:var(--ink)}
