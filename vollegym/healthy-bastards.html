@@ -78,6 +78,19 @@
   border-radius:inherit;color:rgba(var(--wit-rgb),.6);font-size:.82rem;text-align:center;
   padding:1.2rem}
 .vslleeg b{color:var(--wit);font-size:.9rem}
+/* ── de stappenrij op het midden ───────────────────────────────────────────
+   In lp12.css staat de bolletjes links in elke kolom van de vier. De bolletjes
+   lopen daardoor van de linkerrand tot driekwart, terwijl alles erboven op het
+   midden staat, en dan leest de hele rij als verschoven. Op telefoonbreedte is
+   het een verticale lijst en klopt links juist wel, dus dit geldt alleen op
+   het brede scherm. */
+@media(min-width:901px){
+  .hoeband .flow{text-align:center}
+  .hoeband .fl{padding-top:3.1rem}
+  .hoeband .fl-n{left:50%;transform:translateX(-50%)}
+  .hoeband .fl::before{left:calc(50% + 17px);right:calc(-50% + 17px)}
+  .hoeband .fl-t{margin-left:auto;margin-right:auto;max-width:21ch}
+}
 </style>
 </head>
 <body>
@@ -113,7 +126,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Hé <span class="u">Hidde</span>, daarom kreeg je mijn kaart.</h1>
+      <h1 class="hero-h1">Dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Drie dingen die me opvielen aan Healthy Bastards, met de bron erbij.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>3 bevindingen</span>
@@ -137,7 +150,7 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Voor jou</div>
-        <h2 class="ch-kop">Waarom ik je schrijf.</h2>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">Ik heb zelf een gym gehad, dus over trainen ga ik je niets vertellen. Ik keek naar iets anders: hoe iemand voor het eerst bij je binnenkomt, en of daar sinds deze zomer iets aan is veranderd.</p>
         <div class="watdit">
           <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we alleen voor Healthy Bastards hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
@@ -217,7 +230,7 @@
   <section class="chapter center phase" id="s4">
     <div class="ch-inner">
       <div class="ch-body"><div class="ch-eyebrow">Het voorstel</div><h2 class="ch-kop ch-head">Wat wij zouden doen.</h2>
-        <p class="ch-sub">Je zoekt een trainer omdat je groeit. Dan is de kans groot dat je ook leden zoekt. Als dat klopt, is dit het.</p></div>
+        <p class="ch-sub">Een trainer erbij is capaciteit, en die uren moeten gevuld worden. Dat gebeurt nu via een gratis proefles met daarachter alleen een lidmaatschap. Dit is wat wij ertussen zouden zetten.</p></div>
     </div>
   </section>
 </main>
@@ -235,8 +248,8 @@
           </div>
       </div>
       <div class="tp-num">01</div>
-      <h3>Een betaalde eerste stap</h3>
-      <p>Zes weken met begeleiding, betaald op de dag dat iemand ja zegt. Wie twijfelt tussen een proefles en een lidmaatschap kan hier wel in.</p>
+      <h3>Iets tussen de proefles en het lidmaatschap</h3>
+      <p>Zes weken met een trainer, vooraf betaald. Wie nu afhaakt bij de vraag of hij lid wil worden, zegt hier wel ja, en jij hebt het geld binnen voordat de eerste training begint.</p>
     </article>
     <article class="tp" style="--dl:0.22s">
       <div class="tp-vis">
@@ -247,8 +260,8 @@
           </div>
       </div>
       <div class="tp-num">02</div>
-      <h3>Advertenties die het vullen</h3>
-      <p>Er staat al een Meta-pixel en een TikTok-pixel op je site. Wij zetten er advertenties op die naar dat programma leiden.</p>
+      <h3>Advertenties die daarheen wijzen</h3>
+      <p>Je pixels draaien al. In de advertentie staat dat programma, met de prijs erbij, zodat wie klikt weet wat hij koopt voordat hij je belt.</p>
     </article>
     <article class="tp" style="--dl:0.39s">
       <div class="tp-vis">
@@ -262,8 +275,8 @@
           </div>
       </div>
       <div class="tp-num">03</div>
-      <h3>Gesprekken in je agenda</h3>
-      <p>De aanvragen komen bij jou binnen en jij belt ze. Dat deel nemen we niet over, want jij verkoopt je eigen club beter.</p>
+      <h3>Een agenda die jij zelf nabelt</h3>
+      <p>De aanvragen komen bij jou binnen en niet bij ons. Reken op een uur of tien bellen per week. Dat deel kunnen we niet van je overnemen.</p>
     </article>
   </div>
 </section>
