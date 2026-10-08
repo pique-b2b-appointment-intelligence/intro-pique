@@ -20,6 +20,7 @@
 <link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="thema-pique.css">
 <link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="lp12.css">
 
 <script>
   window.PQ_BEDRIJF      = "Stipte";
@@ -30,7 +31,7 @@
   window.PQ_POSTER       = 'simon-staand-poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';   /* leesdiepte, zie lp-v2.js */
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';   /* zie Dashboard/Terugbelverzoek.gs */
-  window.PIQUE_INTRO     = {"voornaam": "Matthijs", "bedrijf": "Stipte"};
+  window.PIQUE_INTRO     = { tempo: 33, pauze: 420,"voornaam": "Matthijs", "bedrijf": "Stipte"};
 </script>
 <script src="lp-intro.js"></script>
 </head>
@@ -45,7 +46,7 @@
 <!-- voortgangsrail: waar ben ik, hoeveel komt er nog -->
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
-  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#dossier"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
   <a href="#s3"><span class="rd"></span><span class="rl">De optelsom</span></a>
   <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
@@ -64,7 +65,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Een over-ons-pagina, een team, een vacature: geen van de drie bestaat op de site van Stipte. Wel de claim <span class="u">'één aanspreekpunt'</span> voor zakelijke klanten.</h1>
+      <h1 class="hero-h1">H&eacute; <span class="u">'één aanspreekpunt'</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Ik zocht een over-ons-pagina, een team of een vacature en vond alleen productpagina's.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>3 bevindingen</span>
@@ -90,55 +91,62 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">de zakelijke pagina</div>
-        <h2 class="ch-kop">Een site zonder gezicht</h2>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">Ik keek eerst op de zakelijke pagina, op zoek naar klantnamen of cases achter de belofte van 'één aanspreekpunt voor connectiviteit, software en security'.
 
 /over-ons en /werken-bij gaven allebei een 404. Ook via de contactpagina en een zoekopdracht vond ik geen link naar bedrijfsinformatie.
 
 Daardoor kwam ik op de regiopagina van Lelystad terecht, waar wel concrete cijfers over de uitrol stonden.</p>
+        
+        <div class="watdit">
+          <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we voor Stipte hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">We willen je spreken. Dit is acquisitie, we hebben je nooit eerder gesproken, en we doen het op een kaart omdat een mail van ons niet zou zijn opgevallen.</span></div>
+          <div><span class="wd-l">Wat we erom vragen</span><span class="wd-v">Een belletje van twintig minuten. Verder vragen we niets.</span></div>
+        </div>
         <div class="ch-sign">Simon, oprichter Pique</div>
       </div>
     </div>
   </section>
-  <section class="chapter right find" id="s2">
+  <section class="chapter right" id="dossier">
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">de bedrijfspagina's</div></div>
-        <h2 class="f-kop">Nergens een over-ons, team, vacature- of nieuwspagina te vinden</h2>
-        <p class="ch-text">De volledige site bestaat uit productpagina's, een postcodecheck en klantenservice. Er is geen enkele pagina met bedrijfsgeschiedenis, teamleden, vacatures of nieuws, ook niet via directe link-pogingen of een zoekopdracht.</p>
-        <div class="f-bewijs">
-          <div class="f-meta"><span class="dom">stipte.nl, volledige site gecontroleerd op over-ons, team, vacatures en nieuws</span><span class="sep"></span><span>september 2026</span></div>
+        <div class="ch-eyebrow">Het dossier</div>
+        <h2 class="ch-kop">Drie dingen, in de volgorde waarin ik ze tegenkwam.</h2>
+        <div class="dosveld" id="dosveld">
+          <button class="dv-bar" type="button" aria-expanded="false" aria-controls="dvlijst">
+            <span class="dv-t">Dit is wat ik vond</span>
+            <span class="dv-n">3 bevindingen<i class="dv-pijl"></i></span>
+          </button>
+          <div class="dv-lijst" id="dvlijst"><div>
+            <div class="dv-rij">
+              <span class="dv-nr">01</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Nergens een over-ons, team, vacature- of nieuwspagina te vinden</span>
+                <span class="dv-bron"><i></i><b>stipte.nl, volledige site gecontroleerd op over-ons, team, vacatures en nieuws</b> &middot; september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">02</span>
+              <div class="dv-kol">
+                <span class="dv-wat">35.000 adressen krijgen gigabit via partner FiberCrew</span>
+                <q class="dv-cit">Fiber Crew gaat ervoor zorgen dat Gigabit beschikbaar wordt in het grootste deel van Lelystad op 35.000 adressen.</q>
+                <span class="dv-bron"><i></i><b>stipte.nl</b> &middot; september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">03</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Vijf wijken in de eigen stad blijven voorlopig zonder glasvezel</span>
+                <q class="dv-cit">Helaas kunnen wij u geen glasvezelabonnement aanbieden in de volgende wijken: Landstrekenwijk, Lelystad haven, Bataviahaven, Golfresort en Warande.</q>
+                <span class="dv-bron"><i></i><b>stipte.nl</b> &middot; september 2026</span>
+              </div>
+            </div>
+          </div></div>
         </div>
+        <p class="brug"><i></i>Op basis hiervan kwam ik tot &eacute;&eacute;n conclusie.</p>
       </div>
-    </div>
-  </section>
-  <section class="chapter left find" id="s3">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">de uitrol in lelystad</div></div>
-        <h2 class="f-kop">35.000 adressen krijgen gigabit via partner FiberCrew</h2>
-        <p class="ch-text">Stipte rolt glasvezel in Lelystad uit via een samenwerking met FiberCrew, die gigabitinternet beschikbaar maakt op 35.000 adressen in het grootste deel van de stad.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Fiber Crew gaat ervoor zorgen dat Gigabit beschikbaar wordt in het grootste deel van Lelystad op 35.000 adressen.&rsquo;</p>
-          <div class="f-meta"><span class="dom">stipte.nl</span><span class="sep"></span><span>september 2026</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="chapter right find" id="s4">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">de uitgesloten wijken</div></div>
-        <h2 class="f-kop">Vijf wijken in de eigen stad blijven voorlopig zonder glasvezel</h2>
-        <p class="ch-text">In de eigen stad Lelystad sluit Stipte vijf wijken expliciet uit van het glasvezelaanbod: Landstrekenwijk, Lelystad Haven, Bataviahaven, Golfresort en Warande. Bataviahaven is vernoemd naar de VOC-scheepsreplica die in Lelystad ligt.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Helaas kunnen wij u geen glasvezelabonnement aanbieden in de volgende wijken: Landstrekenwijk, Lelystad haven, Bataviahaven, Golfresort en Warande.&rsquo;</p>
-          <div class="f-meta"><span class="dom">stipte.nl</span><span class="sep"></span><span>september 2026</span></div>
-        </div>
-      </div>
+      <p class="note">Klik het dossier open.<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
     </div>
   </section>
   <section class="chapter center pivot" id="s3">
@@ -150,27 +158,6 @@ Daardoor kwam ik op de regiopagina van Lelystad terecht, waar wel concrete cijfe
       </div>
     </div>
   </section>
-
-</main>
-
-<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
-<section class="ask" id="ask">
-  <div class="ask-in">
-    <p class="ask-hand">Zitten er bedrijventerreinen tussen die vijf wijken?</p>
-    <p class="ask-sub">Ik weet niet hoeveel zakelijke adressen daar precies liggen. Dat is met je eigen postcodecheck in een paar minuten na te gaan.</p>
-    <div class="ask-btns">
-      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
-      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
-    </div>
-    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
-  </div>
-</section>
-
-<main class="journey" id="journey2">
-  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
-    <path class="jp-base" id="jp-base2"></path>
-    <path class="jp-prog" id="jp-prog2"></path>
-  </svg>
   <section class="chapter left">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -181,6 +168,13 @@ Daardoor kwam ik op de regiopagina van Lelystad terecht, waar wel concrete cijfe
       </div>
     </div>
   </section>
+</main>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
   <section class="chapter right">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -231,10 +225,8 @@ Daardoor kwam ik op de regiopagina van Lelystad terecht, waar wel concrete cijfe
       </div>
     </div>
   </section>
-
 </main>
 
-<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 <section class="toon" id="toon">
   <div class="toon-rij">
     <article class="tp" style="--dl:.05s">
@@ -288,6 +280,45 @@ Daardoor kwam ik op de regiopagina van Lelystad terecht, waar wel concrete cijfe
     <div style="--dl:.81s"><span>&#10003;</span><b>Een afgebakende start</b><p>We doen één groep accounts. Wat het oplevert zie je binnen die ronde.</p></div>
   </div>
 </section>
+
+<section class="hoeband reveal" id="hoe">
+  <div class="hb-in">
+    <span class="hb-eyebrow">Hoe het werkt</span>
+    <h2 class="hb-h">Zo komt die kaart op je bureau.</h2>
+    <div class="hb-stage">
+      <div class="vslhouder">
+        <button class="vslbox" type="button" aria-label="Speel de video van 1 minuut af">
+          <img src="vsl-poster.jpg" alt="">
+          <span class="vslplay"></span><span class="vslduur">1:01</span>
+        </button>
+      </div>
+    </div>
+    <p class="hb-bij">Een minuut over hoe dit in de praktijk gaat. Dezelfde volgorde, bij een ander bedrijf.</p>
+    <ol class="flow">
+      <li class="fl"><span class="fl-n">01</span><b class="fl-k">Onderzoek</b><span class="fl-t">We lezen jullie eigen berichten, vacatures en jaarstukken tot er iets staat dat ergens over gaat.</span></li>
+      <li class="fl"><span class="fl-n">02</span><b class="fl-k">Kaart</b><span class="fl-t">Met de hand geschreven, met twee dingen erop die alleen over jullie kunnen gaan.</span></li>
+      <li class="fl"><span class="fl-n">03</span><b class="fl-k">Deze pagina</b><span class="fl-t">Wat er niet op een kaart past, met de bron eronder.</span></li>
+      <li class="fl"><span class="fl-n">04</span><b class="fl-k">Bellen</b><span class="fl-t">Een paar dagen later, door ons.</span></li>
+    </ol>
+    <div class="merken">
+      <span class="mk-label">Vertrouwd door o.a.</span>
+      <div class="mk-rij">
+        <i class="mkl mkl-taco" role="img" aria-label="Taco Mundo"></i>
+        <i class="mkl mkl-dorp" role="img" aria-label="Van Dorp"></i>
+        <i class="mkl mkl-tsned" role="img" aria-label="TSNed"></i>
+        <i class="mkl mkl-dwd" role="img" aria-label="Drukwerkdeal"></i>
+        <i class="mkl mkl-otto" role="img" aria-label="OTTO Work Force"></i>
+        <i class="mkl mkl-fortune" role="img" aria-label="Fortune Coffee"></i>
+        <i class="mkl mkl-wonder" role="img" aria-label="Wonder Group"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
+
+
+<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 
 <section class="founder" id="founder">
   <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique" loading="lazy" decoding="async">
@@ -371,5 +402,6 @@ Daardoor kwam ik op de regiopagina van Lelystad terecht, waar wel concrete cijfe
 </div>
 
 <script src="lp-v2.js"></script>
+<script src="lp12.js" defer></script>
 </body>
 </html>

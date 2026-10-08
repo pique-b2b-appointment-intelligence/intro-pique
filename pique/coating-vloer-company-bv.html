@@ -20,6 +20,7 @@
 <link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="thema-pique.css">
 <link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="lp12.css">
 
 <script>
   window.PQ_BEDRIJF      = "Coating Vloer & Company BV";
@@ -30,7 +31,7 @@
   window.PQ_POSTER       = 'simon-staand-poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';   /* leesdiepte, zie lp-v2.js */
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';   /* zie Dashboard/Terugbelverzoek.gs */
-  window.PIQUE_INTRO     = {"bedrijf": "Coating Vloer & Company BV"};
+  window.PIQUE_INTRO     = { tempo: 33, pauze: 420,"bedrijf": "Coating Vloer & Company BV"};
 </script>
 <script src="lp-intro.js"></script>
 </head>
@@ -45,7 +46,7 @@
 <!-- voortgangsrail: waar ben ik, hoeveel komt er nog -->
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
-  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#dossier"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
   <a href="#s3"><span class="rd"></span><span class="rl">De optelsom</span></a>
   <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
@@ -64,7 +65,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Twee vacatures, twee compleet verschillende klanten: <span class="u">consument en bedrijfsvloer</span>.</h1>
+      <h1 class="hero-h1">H&eacute; <span class="u">consument en bedrijfsvloer</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Ik keek naar Coatingvloer.nl en zag twee werelden naast elkaar staan.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>3 bevindingen</span>
@@ -90,53 +91,60 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Waar ik begon</div>
-        <h2 class="ch-kop">Vier vacatures, niet nul</h2>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">De briefing meldde geen commerciële vacatures, dus checkte ik de vacaturepagina zelf. Die toont alleen vier titels zonder tekst, elk met een eigen, inconsistent genummerde URL.
 Ik klikte ze stuk voor stuk door. Er stonden vier vacatures open, terwijl de briefing nul meldde. Twee daarvan zijn overduidelijk commercieel: een voor de industriële markt en een voor de particuliere markt, met compleet verschillende functieomschrijvingen.</p>
+        
+        <div class="watdit">
+          <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we voor Coating Vloer &amp; Company BV hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">We willen je spreken. Dit is acquisitie, we hebben je nooit eerder gesproken, en we doen het op een kaart omdat een mail van ons niet zou zijn opgevallen.</span></div>
+          <div><span class="wd-l">Wat we erom vragen</span><span class="wd-v">Een belletje van twintig minuten. Verder vragen we niets.</span></div>
+        </div>
         <div class="ch-sign">Simon, oprichter Pique</div>
       </div>
     </div>
   </section>
-  <section class="chapter right find" id="s2">
+  <section class="chapter right" id="dossier">
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">De twee vacatures</div></div>
-        <h2 class="f-kop">Consumenten en bedrijfsdoelstellingen, in twee aparte teksten</h2>
-        <p class="ch-text">De vacature voor Accountmanager Interieur spreekt over samenwerken met consumenten en stijl- en kleuradvies bij woninginrichting. De vacature voor Technisch Commercieel Adviseur gaat over bedrijfsdoelstellingen en het verkopen van industriële epoxyvloeren op locatie, en valt direct onder de directie.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;We zoeken een jong, fris en enthousiast persoon die goed met consumenten kan samenwerken en het leuk vindt om samen met de klant te kijken waar de behoeften liggen.&rsquo;</p>
-          <div class="f-meta"><span class="dom">coatingvloer.nl</span><span class="sep"></span><span>gecontroleerd september 2026</span></div>
+        <div class="ch-eyebrow">Het dossier</div>
+        <h2 class="ch-kop">Drie dingen, in de volgorde waarin ik ze tegenkwam.</h2>
+        <div class="dosveld" id="dosveld">
+          <button class="dv-bar" type="button" aria-expanded="false" aria-controls="dvlijst">
+            <span class="dv-t">Dit is wat ik vond</span>
+            <span class="dv-n">3 bevindingen<i class="dv-pijl"></i></span>
+          </button>
+          <div class="dv-lijst" id="dvlijst"><div>
+            <div class="dv-rij">
+              <span class="dv-nr">01</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Consumenten en bedrijfsdoelstellingen, in twee aparte teksten</span>
+                <q class="dv-cit">We zoeken een jong, fris en enthousiast persoon die goed met consumenten kan samenwerken en het leuk vindt om samen met de klant te kijken waar de behoeften liggen.</q>
+                <span class="dv-bron"><i></i><b>coatingvloer.nl</b> &middot; gecontroleerd september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">02</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Abarth, Otolift en een brandweerkazerne, zonder verder verhaal</span>
+                <q class="dv-cit">grindvloer Abarth</q>
+                <span class="dv-bron"><i></i><b>coatingvloer.nl</b> &middot; gecontroleerd september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">03</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Persoonlijk advies als onderscheidend vermogen</span>
+                <q class="dv-cit">Als account manager vind ik het fijn om voor Coatingvloer.nl te werken. Ik haal voldoening uit het persoonlijke contact met de klanten. Elke klant is uniek en heeft zijn eigen wensen. De kracht van Coatingvloer.nl is volgens mij dan ook ons uitgebreide en persoonlijke advies en de service en kwaliteit die we leveren.</q>
+                <span class="dv-bron"><i></i><b>coatingvloer.nl</b> &middot; gecontroleerd september 2026</span>
+              </div>
+            </div>
+          </div></div>
         </div>
+        <p class="brug"><i></i>Op basis hiervan kwam ik tot &eacute;&eacute;n conclusie.</p>
       </div>
-    </div>
-  </section>
-  <section class="chapter left find" id="s3">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">De projectengalerij</div></div>
-        <h2 class="f-kop">Abarth, Otolift en een brandweerkazerne, zonder verder verhaal</h2>
-        <p class="ch-text">Tussen de woonprojecten staan ook een grindvloer bij autobedrijf Abarth, meerdere vloeren bij trapliftfabrikant Otolift en een vloer bij een brandweerkazerne. Bij geen van de drie staat een toelichting of een citaat.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;grindvloer Abarth&rsquo;</p>
-          <div class="f-meta"><span class="dom">coatingvloer.nl</span><span class="sep"></span><span>gecontroleerd september 2026</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="chapter right find" id="s4">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat er over jou op de site staat</div></div>
-        <h2 class="f-kop">Persoonlijk advies als onderscheidend vermogen</h2>
-        <p class="ch-text">Op de over-ons-pagina staat een citaat over wat de kracht van het bedrijf is, in de eerste persoon.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Als account manager vind ik het fijn om voor Coatingvloer.nl te werken. Ik haal voldoening uit het persoonlijke contact met de klanten. Elke klant is uniek en heeft zijn eigen wensen. De kracht van Coatingvloer.nl is volgens mij dan ook ons uitgebreide en persoonlijke advies en de service en kwaliteit die we leveren.&rsquo;</p>
-          <div class="f-meta"><span class="dom">coatingvloer.nl</span><span class="sep"></span><span>gecontroleerd september 2026</span></div>
-        </div>
-      </div>
+      <p class="note">Klik het dossier open.<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
     </div>
   </section>
   <section class="chapter center pivot" id="s3">
@@ -148,27 +156,6 @@ Ik klikte ze stuk voor stuk door. Er stonden vier vacatures open, terwijl de bri
       </div>
     </div>
   </section>
-
-</main>
-
-<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
-<section class="ask" id="ask">
-  <div class="ask-in">
-    <p class="ask-hand">Zelfde klant, of loopt de zakelijke kant achter?</p>
-    <p class="ask-sub">Dat kan ik van hier niet beoordelen. De twee vacatureteksten spreken in elk geval niet dezelfde taal.</p>
-    <div class="ask-btns">
-      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
-      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
-    </div>
-    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
-  </div>
-</section>
-
-<main class="journey" id="journey2">
-  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
-    <path class="jp-base" id="jp-base2"></path>
-    <path class="jp-prog" id="jp-prog2"></path>
-  </svg>
   <section class="chapter left">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -179,6 +166,13 @@ Ik klikte ze stuk voor stuk door. Er stonden vier vacatures open, terwijl de bri
       </div>
     </div>
   </section>
+</main>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
   <section class="chapter right">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -219,10 +213,8 @@ Ik klikte ze stuk voor stuk door. Er stonden vier vacatures open, terwijl de bri
       </div>
     </div>
   </section>
-
 </main>
 
-<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 <section class="toon" id="toon">
   <div class="toon-rij">
     <article class="tp" style="--dl:.05s">
@@ -276,6 +268,45 @@ Ik klikte ze stuk voor stuk door. Er stonden vier vacatures open, terwijl de bri
     <div style="--dl:.81s"><span>&#10003;</span><b>Eén ronde als bewijs</b><p>We beginnen met één groep. Levert het niets op, dan weet je dat na één ronde.</p></div>
   </div>
 </section>
+
+<section class="hoeband reveal" id="hoe">
+  <div class="hb-in">
+    <span class="hb-eyebrow">Hoe het werkt</span>
+    <h2 class="hb-h">Zo komt die kaart op je bureau.</h2>
+    <div class="hb-stage">
+      <div class="vslhouder">
+        <button class="vslbox" type="button" aria-label="Speel de video van 1 minuut af">
+          <img src="vsl-poster.jpg" alt="">
+          <span class="vslplay"></span><span class="vslduur">1:01</span>
+        </button>
+      </div>
+    </div>
+    <p class="hb-bij">Een minuut over hoe dit in de praktijk gaat. Dezelfde volgorde, bij een ander bedrijf.</p>
+    <ol class="flow">
+      <li class="fl"><span class="fl-n">01</span><b class="fl-k">Onderzoek</b><span class="fl-t">We lezen jullie eigen berichten, vacatures en jaarstukken tot er iets staat dat ergens over gaat.</span></li>
+      <li class="fl"><span class="fl-n">02</span><b class="fl-k">Kaart</b><span class="fl-t">Met de hand geschreven, met twee dingen erop die alleen over jullie kunnen gaan.</span></li>
+      <li class="fl"><span class="fl-n">03</span><b class="fl-k">Deze pagina</b><span class="fl-t">Wat er niet op een kaart past, met de bron eronder.</span></li>
+      <li class="fl"><span class="fl-n">04</span><b class="fl-k">Bellen</b><span class="fl-t">Een paar dagen later, door ons.</span></li>
+    </ol>
+    <div class="merken">
+      <span class="mk-label">Vertrouwd door o.a.</span>
+      <div class="mk-rij">
+        <i class="mkl mkl-taco" role="img" aria-label="Taco Mundo"></i>
+        <i class="mkl mkl-dorp" role="img" aria-label="Van Dorp"></i>
+        <i class="mkl mkl-tsned" role="img" aria-label="TSNed"></i>
+        <i class="mkl mkl-dwd" role="img" aria-label="Drukwerkdeal"></i>
+        <i class="mkl mkl-otto" role="img" aria-label="OTTO Work Force"></i>
+        <i class="mkl mkl-fortune" role="img" aria-label="Fortune Coffee"></i>
+        <i class="mkl mkl-wonder" role="img" aria-label="Wonder Group"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
+
+
+<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 
 <section class="founder" id="founder">
   <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique" loading="lazy" decoding="async">
@@ -359,5 +390,6 @@ Ik klikte ze stuk voor stuk door. Er stonden vier vacatures open, terwijl de bri
 </div>
 
 <script src="lp-v2.js"></script>
+<script src="lp12.js" defer></script>
 </body>
 </html>

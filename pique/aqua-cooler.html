@@ -20,6 +20,7 @@
 <link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="thema-pique.css">
 <link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="lp12.css">
 
 <script>
   window.PQ_BEDRIJF      = "Aqua Cooler";
@@ -30,7 +31,7 @@
   window.PQ_POSTER       = 'simon-staand-poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';   /* leesdiepte, zie lp-v2.js */
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';   /* zie Dashboard/Terugbelverzoek.gs */
-  window.PIQUE_INTRO     = {"voornaam": "Leon", "bedrijf": "Aqua Cooler"};
+  window.PIQUE_INTRO     = { tempo: 33, pauze: 420,"voornaam": "Leon", "bedrijf": "Aqua Cooler"};
 </script>
 <script src="lp-intro.js"></script>
 </head>
@@ -45,7 +46,7 @@
 <!-- voortgangsrail: waar ben ik, hoeveel komt er nog -->
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
-  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#dossier"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
   <a href="#s3"><span class="rd"></span><span class="rl">De optelsom</span></a>
   <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
@@ -64,7 +65,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Remarketing-advertenties, <span class="u">naar een webshop zonder kantorenpagina</span>.</h1>
+      <h1 class="hero-h1">H&eacute; <span class="u">naar een webshop zonder kantorenpagina</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Ik zocht de zakelijke kant van Aqua Cooler en kwam alleen een winkelwagen tegen.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>3 bevindingen</span>
@@ -90,52 +91,59 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Waar ik ben begonnen</div>
-        <h2 class="ch-kop">Remarketing, zonder bestemming voor kantoren</h2>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">Op aquacooler.nl draait een Google Ads remarketing-tag. Ik zocht naar waar die bezoekers naartoe worden teruggetrokken, en naar een aparte pagina voor kantoren. Die pagina bestaat niet: de hele site is een webshop met een winkelwagen en klantenservice-FAQ's, zonder één zakelijke klantnaam of case.</p>
+        
+        <div class="watdit">
+          <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we voor Aqua Cooler hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">We willen je spreken. Dit is acquisitie, we hebben je nooit eerder gesproken, en we doen het op een kaart omdat een mail van ons niet zou zijn opgevallen.</span></div>
+          <div><span class="wd-l">Wat we erom vragen</span><span class="wd-v">Een belletje van twintig minuten. Verder vragen we niets.</span></div>
+        </div>
         <div class="ch-sign">Simon, oprichter Pique</div>
       </div>
     </div>
   </section>
-  <section class="chapter right find" id="s2">
+  <section class="chapter right" id="dossier">
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">Wat er op de homepage staat</div></div>
-        <h2 class="f-kop">Een van Nederlands grootste, zonder cijfer erbij</h2>
-        <p class="ch-text">Aqua Cooler noemt zichzelf op de homepage een van de grootste onafhankelijke spelers in de Nederlandse watercoolermarkt, zonder klant- of omzetcijfer.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;een van Nederlands grootste onafhankelijke watercoolerbedrijven&rsquo;</p>
-          <div class="f-meta"><span class="dom">aquacooler.nl</span><span class="sep"></span><span>september 2026</span></div>
+        <div class="ch-eyebrow">Het dossier</div>
+        <h2 class="ch-kop">Drie dingen, in de volgorde waarin ik ze tegenkwam.</h2>
+        <div class="dosveld" id="dosveld">
+          <button class="dv-bar" type="button" aria-expanded="false" aria-controls="dvlijst">
+            <span class="dv-t">Dit is wat ik vond</span>
+            <span class="dv-n">3 bevindingen<i class="dv-pijl"></i></span>
+          </button>
+          <div class="dv-lijst" id="dvlijst"><div>
+            <div class="dv-rij">
+              <span class="dv-nr">01</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Een van Nederlands grootste, zonder cijfer erbij</span>
+                <q class="dv-cit">een van Nederlands grootste onafhankelijke watercoolerbedrijven</q>
+                <span class="dv-bron"><i></i><b>aquacooler.nl</b> &middot; september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">02</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Zonder contract, tegenover een markt die dat wel doet</span>
+                <q class="dv-cit">Je bent niet vast aan een duur huurcontract of verplichte afname</q>
+                <span class="dv-bron"><i></i><b>aquacooler.nl</b> &middot; september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">03</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Geen team-, klant- of vacaturepagina op de hele site</span>
+                <q class="dv-cit">Ja, Ik Wil Graag Een GRATIS Waterkoeler</q>
+                <span class="dv-bron"><i></i><b>aquacooler.nl</b> &middot; gecontroleerd september 2026</span>
+              </div>
+            </div>
+          </div></div>
         </div>
+        <p class="brug"><i></i>Op basis hiervan kwam ik tot &eacute;&eacute;n conclusie.</p>
       </div>
-    </div>
-  </section>
-  <section class="chapter left find" id="s3">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">Hoe je jezelf tegenover de markt zet</div></div>
-        <h2 class="f-kop">Zonder contract, tegenover een markt die dat wel doet</h2>
-        <p class="ch-text">Het bedrijf positioneert zich expliciet tegen dure huurcontracten en verplichte afname, wat impliceert dat andere aanbieders klanten wel aan langdurige contracten binden.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Je bent niet vast aan een duur huurcontract of verplichte afname&rsquo;</p>
-          <div class="f-meta"><span class="dom">aquacooler.nl</span><span class="sep"></span><span>september 2026</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="chapter right find" id="s4">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat er nergens op de site staat</div></div>
-        <h2 class="f-kop">Geen team-, klant- of vacaturepagina op de hele site</h2>
-        <p class="ch-text">De volledige navigatie bestaat uit shop-categorieën, klantenservice en een offerte/gratis-proefplaatsing-formulier. Nergens staat een teamlid, klantnaam of vacature.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Ja, Ik Wil Graag Een GRATIS Waterkoeler&rsquo;</p>
-          <div class="f-meta"><span class="dom">aquacooler.nl</span><span class="sep"></span><span>gecontroleerd september 2026</span></div>
-        </div>
-      </div>
+      <p class="note">Klik het dossier open.<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
     </div>
   </section>
   <section class="chapter center pivot" id="s3">
@@ -147,27 +155,6 @@
       </div>
     </div>
   </section>
-
-</main>
-
-<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
-<section class="ask" id="ask">
-  <div class="ask-in">
-    <p class="ask-hand">Loopt het zakelijke deel elders, of is het blijven liggen?</p>
-    <p class="ask-sub">Ik vermoed het laatste. Maar zes jaar stilte is een lange tijd om daar zeker van te zijn.</p>
-    <div class="ask-btns">
-      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
-      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
-    </div>
-    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
-  </div>
-</section>
-
-<main class="journey" id="journey2">
-  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
-    <path class="jp-base" id="jp-base2"></path>
-    <path class="jp-prog" id="jp-prog2"></path>
-  </svg>
   <section class="chapter left">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -178,6 +165,13 @@
       </div>
     </div>
   </section>
+</main>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
   <section class="chapter right">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -218,10 +212,8 @@
       </div>
     </div>
   </section>
-
 </main>
 
-<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 <section class="toon" id="toon">
   <div class="toon-rij">
     <article class="tp" style="--dl:.05s">
@@ -275,6 +267,45 @@
     <div style="--dl:.81s"><span>&#10003;</span><b>Klein beginnen</b><p>Een eerste ronde waarvan de uitkomst ook tegen mag vallen. Dan weet je dat ook.</p></div>
   </div>
 </section>
+
+<section class="hoeband reveal" id="hoe">
+  <div class="hb-in">
+    <span class="hb-eyebrow">Hoe het werkt</span>
+    <h2 class="hb-h">Zo komt die kaart op je bureau.</h2>
+    <div class="hb-stage">
+      <div class="vslhouder">
+        <button class="vslbox" type="button" aria-label="Speel de video van 1 minuut af">
+          <img src="vsl-poster.jpg" alt="">
+          <span class="vslplay"></span><span class="vslduur">1:01</span>
+        </button>
+      </div>
+    </div>
+    <p class="hb-bij">Een minuut over hoe dit in de praktijk gaat. Dezelfde volgorde, bij een ander bedrijf.</p>
+    <ol class="flow">
+      <li class="fl"><span class="fl-n">01</span><b class="fl-k">Onderzoek</b><span class="fl-t">We lezen jullie eigen berichten, vacatures en jaarstukken tot er iets staat dat ergens over gaat.</span></li>
+      <li class="fl"><span class="fl-n">02</span><b class="fl-k">Kaart</b><span class="fl-t">Met de hand geschreven, met twee dingen erop die alleen over jullie kunnen gaan.</span></li>
+      <li class="fl"><span class="fl-n">03</span><b class="fl-k">Deze pagina</b><span class="fl-t">Wat er niet op een kaart past, met de bron eronder.</span></li>
+      <li class="fl"><span class="fl-n">04</span><b class="fl-k">Bellen</b><span class="fl-t">Een paar dagen later, door ons.</span></li>
+    </ol>
+    <div class="merken">
+      <span class="mk-label">Vertrouwd door o.a.</span>
+      <div class="mk-rij">
+        <i class="mkl mkl-taco" role="img" aria-label="Taco Mundo"></i>
+        <i class="mkl mkl-dorp" role="img" aria-label="Van Dorp"></i>
+        <i class="mkl mkl-tsned" role="img" aria-label="TSNed"></i>
+        <i class="mkl mkl-dwd" role="img" aria-label="Drukwerkdeal"></i>
+        <i class="mkl mkl-otto" role="img" aria-label="OTTO Work Force"></i>
+        <i class="mkl mkl-fortune" role="img" aria-label="Fortune Coffee"></i>
+        <i class="mkl mkl-wonder" role="img" aria-label="Wonder Group"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
+
+
+<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 
 <section class="founder" id="founder">
   <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique" loading="lazy" decoding="async">
@@ -358,5 +389,6 @@
 </div>
 
 <script src="lp-v2.js"></script>
+<script src="lp12.js" defer></script>
 </body>
 </html>

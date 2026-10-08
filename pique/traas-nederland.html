@@ -20,6 +20,7 @@
 <link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="thema-pique.css">
 <link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="lp12.css">
 
 <script>
   window.PQ_BEDRIJF      = "Traas Nederland";
@@ -30,7 +31,7 @@
   window.PQ_POSTER       = 'simon-staand-poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';   /* leesdiepte, zie lp-v2.js */
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';   /* zie Dashboard/Terugbelverzoek.gs */
-  window.PIQUE_INTRO     = {"voornaam": "Stefan", "bedrijf": "Traas Nederland"};
+  window.PIQUE_INTRO     = { tempo: 33, pauze: 420,"voornaam": "Stefan", "bedrijf": "Traas Nederland"};
 </script>
 <script src="lp-intro.js"></script>
 </head>
@@ -45,7 +46,7 @@
 <!-- voortgangsrail: waar ben ik, hoeveel komt er nog -->
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
-  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#dossier"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
   <a href="#s3"><span class="rd"></span><span class="rl">De optelsom</span></a>
   <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
@@ -64,7 +65,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Retail, voeding, horeca en overheid als doelgroep, en op de site <span class="u">één testimonial van een particulier</span>.</h1>
+      <h1 class="hero-h1">H&eacute; <span class="u">één testimonial van een particulier</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Ik ging kijken wie er via de advertenties binnenkomt, en vond op de site maar één testimonial: van een particulier, niet van een zakelijke klant.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>3 bevindingen</span>
@@ -90,53 +91,60 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Waar de advertentie heen leidt</div>
-        <h2 class="ch-kop">Zakelijke doelgroep, particuliere stem</h2>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">Traas zet Google Ads in om klanten te trekken, meldde de briefing. Op de eigen site staat de overname door Anticimex er alleen als kale link bij, dus ging ik verder kijken wie er precies op afkomt.
 
 De enige klantgetuigenis die ik vond komt van een particulier, terwijl Traas zichzelf presenteert als leverancier voor retail, voeding, horeca, overheid en woningcorporaties. Bij geen van die sectoren vond ik een bedrijfsnaam terug, ook niet tussen de 80 medewerkers en vier bedrijfsonderdelen die de site wel noemt.</p>
+        
+        <div class="watdit">
+          <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we voor Traas Nederland hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">We willen je spreken. Dit is acquisitie, we hebben je nooit eerder gesproken, en we doen het op een kaart omdat een mail van ons niet zou zijn opgevallen.</span></div>
+          <div><span class="wd-l">Wat we erom vragen</span><span class="wd-v">Een belletje van twintig minuten. Verder vragen we niets.</span></div>
+        </div>
         <div class="ch-sign">Simon, oprichter Pique</div>
       </div>
     </div>
   </section>
-  <section class="chapter right find" id="s2">
+  <section class="chapter right" id="dossier">
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">Wat Peter Traas er zelf over zei</div></div>
-        <h2 class="f-kop">Geen opvolger, dus een Zweedse koper</h2>
-        <p class="ch-text">In april 2024 verkocht oprichter Peter Traas het bedrijf aan Anticimex omdat er geen familieopvolger was. <strong>Op de site staat nu, ruim twee jaar later, nog steeds dat Traas zijn eigen naam en identiteit behoudt</strong>, precies zoals bij de overname beloofd.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Helaas is er geen opvolger in de familie en het werd tijd om een stapje terug te doen&rsquo;</p>
-          <div class="f-meta"><span class="dom">omroepzeeland.nl</span><span class="sep"></span><span>april 2024</span></div>
+        <div class="ch-eyebrow">Het dossier</div>
+        <h2 class="ch-kop">Drie dingen, in de volgorde waarin ik ze tegenkwam.</h2>
+        <div class="dosveld" id="dosveld">
+          <button class="dv-bar" type="button" aria-expanded="false" aria-controls="dvlijst">
+            <span class="dv-t">Dit is wat ik vond</span>
+            <span class="dv-n">3 bevindingen<i class="dv-pijl"></i></span>
+          </button>
+          <div class="dv-lijst" id="dvlijst"><div>
+            <div class="dv-rij">
+              <span class="dv-nr">01</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Geen opvolger, dus een Zweedse koper</span>
+                <q class="dv-cit">Helaas is er geen opvolger in de familie en het werd tijd om een stapje terug te doen</q>
+                <span class="dv-bron"><i></i><b>omroepzeeland.nl</b> &middot; april 2024</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">02</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Eén testimonial, en die komt van een particulier</span>
+                <q class="dv-cit">Vriendelijk en professioneel. Snel met reageren en komen afspraken na. Ik beveel Traas van harte aan.</q>
+                <span class="dv-bron"><i></i><b>traasnederland.nl</b> &middot; gecontroleerd september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">03</span>
+              <div class="dv-kol">
+                <span class="dv-wat">80 medewerkers, nul opdrachtgevers bij naam</span>
+                <span class="dv-bron"><i></i><b>traasnederland.nl/over-traas</b> &middot; gecontroleerd september 2026</span>
+              </div>
+            </div>
+          </div></div>
         </div>
+        <p class="brug"><i></i>Op basis hiervan kwam ik tot &eacute;&eacute;n conclusie.</p>
       </div>
-    </div>
-  </section>
-  <section class="chapter left find" id="s3">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">Wie er tot nu toe iets over jullie zei</div></div>
-        <h2 class="f-kop">Eén testimonial, en die komt van een particulier</h2>
-        <p class="ch-text">Jullie noemen retail, voeding, horeca, overheid en woningcorporaties als doelgroep. De enige klantuitspraak die ik op de site vond komt van een particulier die tevreden is over de afspraken die worden nagekomen.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Vriendelijk en professioneel. Snel met reageren en komen afspraken na. Ik beveel Traas van harte aan.&rsquo;</p>
-          <div class="f-meta"><span class="dom">traasnederland.nl</span><span class="sep"></span><span>gecontroleerd september 2026</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="chapter right find" id="s4">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat de overname bracht</div></div>
-        <h2 class="f-kop">80 medewerkers, nul opdrachtgevers bij naam</h2>
-        <p class="ch-text">Traas heeft volgens de eigen site zo'n 80 medewerkers verdeeld over meerdere vestigingen. Ik heb geen van de zakelijke sectoren die jullie zelf noemen kunnen terugvinden als concrete klant, ook niet in de vier bedrijfsonderdelen die apart worden genoemd.</p>
-        <div class="f-bewijs">
-          <div class="f-meta"><span class="dom">traasnederland.nl/over-traas</span><span class="sep"></span><span>gecontroleerd september 2026</span></div>
-        </div>
-      </div>
+      <p class="note">Klik het dossier open.<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
     </div>
   </section>
   <section class="chapter center pivot" id="s3">
@@ -148,27 +156,6 @@ De enige klantgetuigenis die ik vond komt van een particulier, terwijl Traas zic
       </div>
     </div>
   </section>
-
-</main>
-
-<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
-<section class="ask" id="ask">
-  <div class="ask-in">
-    <p class="ask-hand">Wie van je zakelijke klanten zou jij zelf durven bellen voor een quote?</p>
-    <p class="ask-sub">Ik weet het niet. Maar de site geeft nu geen antwoord.</p>
-    <div class="ask-btns">
-      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
-      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
-    </div>
-    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
-  </div>
-</section>
-
-<main class="journey" id="journey2">
-  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
-    <path class="jp-base" id="jp-base2"></path>
-    <path class="jp-prog" id="jp-prog2"></path>
-  </svg>
   <section class="chapter left">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -179,6 +166,13 @@ De enige klantgetuigenis die ik vond komt van een particulier, terwijl Traas zic
       </div>
     </div>
   </section>
+</main>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
   <section class="chapter right">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -219,10 +213,8 @@ De enige klantgetuigenis die ik vond komt van een particulier, terwijl Traas zic
       </div>
     </div>
   </section>
-
 </main>
 
-<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 <section class="toon" id="toon">
   <div class="toon-rij">
     <article class="tp" style="--dl:.05s">
@@ -276,6 +268,45 @@ De enige klantgetuigenis die ik vond komt van een particulier, terwijl Traas zic
     <div style="--dl:.81s"><span>&#10003;</span><b>Een afgebakende start</b><p>We doen één groep accounts. Wat het oplevert zie je binnen die ronde.</p></div>
   </div>
 </section>
+
+<section class="hoeband reveal" id="hoe">
+  <div class="hb-in">
+    <span class="hb-eyebrow">Hoe het werkt</span>
+    <h2 class="hb-h">Zo komt die kaart op je bureau.</h2>
+    <div class="hb-stage">
+      <div class="vslhouder">
+        <button class="vslbox" type="button" aria-label="Speel de video van 1 minuut af">
+          <img src="vsl-poster.jpg" alt="">
+          <span class="vslplay"></span><span class="vslduur">1:01</span>
+        </button>
+      </div>
+    </div>
+    <p class="hb-bij">Een minuut over hoe dit in de praktijk gaat. Dezelfde volgorde, bij een ander bedrijf.</p>
+    <ol class="flow">
+      <li class="fl"><span class="fl-n">01</span><b class="fl-k">Onderzoek</b><span class="fl-t">We lezen jullie eigen berichten, vacatures en jaarstukken tot er iets staat dat ergens over gaat.</span></li>
+      <li class="fl"><span class="fl-n">02</span><b class="fl-k">Kaart</b><span class="fl-t">Met de hand geschreven, met twee dingen erop die alleen over jullie kunnen gaan.</span></li>
+      <li class="fl"><span class="fl-n">03</span><b class="fl-k">Deze pagina</b><span class="fl-t">Wat er niet op een kaart past, met de bron eronder.</span></li>
+      <li class="fl"><span class="fl-n">04</span><b class="fl-k">Bellen</b><span class="fl-t">Een paar dagen later, door ons.</span></li>
+    </ol>
+    <div class="merken">
+      <span class="mk-label">Vertrouwd door o.a.</span>
+      <div class="mk-rij">
+        <i class="mkl mkl-taco" role="img" aria-label="Taco Mundo"></i>
+        <i class="mkl mkl-dorp" role="img" aria-label="Van Dorp"></i>
+        <i class="mkl mkl-tsned" role="img" aria-label="TSNed"></i>
+        <i class="mkl mkl-dwd" role="img" aria-label="Drukwerkdeal"></i>
+        <i class="mkl mkl-otto" role="img" aria-label="OTTO Work Force"></i>
+        <i class="mkl mkl-fortune" role="img" aria-label="Fortune Coffee"></i>
+        <i class="mkl mkl-wonder" role="img" aria-label="Wonder Group"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
+
+
+<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 
 <section class="founder" id="founder">
   <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique" loading="lazy" decoding="async">
@@ -359,5 +390,6 @@ De enige klantgetuigenis die ik vond komt van een particulier, terwijl Traas zic
 </div>
 
 <script src="lp-v2.js"></script>
+<script src="lp12.js" defer></script>
 </body>
 </html>

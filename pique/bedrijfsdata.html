@@ -19,6 +19,7 @@
 
 <link rel="stylesheet" href="thema-pique.css">
 <link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="lp12.css">
 
 <!-- paginablok: de kaart uitgelicht. Alleen tokens, geen vaste kleuren. -->
 <style>
@@ -70,7 +71,7 @@
   window.PQ_POSTER       = 'simon-staand-poster.jpg';
   window.PQ_TRACK_URL    = '';
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
-  window.PIQUE_INTRO     = {
+  window.PIQUE_INTRO     = { tempo: 33, pauze: 420,
     voornaam: 'Olivier',
     bedrijf:  'Bedrijfsdata.nl',
     regels: [
@@ -94,7 +95,7 @@
 
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Wat je zei</span></a>
-  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
+  <a href="#dossier"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
   <a href="#s3"><span class="rd"></span><span class="rl">Het gat</span></a>
   <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Maandag</span></a>
@@ -113,7 +114,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Je vroeg om een <span class="u">voorbeeld</span>.</h1>
+      <h1 class="hero-h1">H&eacute; <span class="u">voorbeeld</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Dus stuurde ik er geen van iemand anders. Dit is de pagina zoals je hem zelf had gekregen.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>3 bevindingen</span>
@@ -140,9 +141,15 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Wat je zei</div>
-        <h2 class="ch-kop">Je verwijst pas door als je het zelf hebt gezien.</h2>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">Dat is een goede regel, en het is meteen de reden dat een demo van iemand anders je niks zegt. Dus ben ik gaan zitten voor Bedrijfsdata, op dezelfde manier als voor een prospect.</p>
         <p class="ch-text"><strong>Drie dingen. Twee staan op je eigen site.</strong></p>
+        
+        <div class="watdit">
+          <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we voor Bedrijfsdata.nl hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">We willen je spreken. Dit is acquisitie, we hebben je nooit eerder gesproken, en we doen het op een kaart omdat een mail van ons niet zou zijn opgevallen.</span></div>
+          <div><span class="wd-l">Wat we erom vragen</span><span class="wd-v">Een belletje van twintig minuten. Verder vragen we niets.</span></div>
+        </div>
         <div class="ch-sign">Simon, oprichter Pique</div>
       </div>
       <div class="note">en de derde zei je zelf
@@ -151,51 +158,51 @@
     </div>
   </section>
 
-  <section class="chapter right find" id="s2">
+  <section class="chapter right" id="dossier">
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">Wat ik vond</div></div>
-        <h2 class="f-kop">Je verkoopt mijn kanaal al</h2>
-        <p class="ch-text">Op je pagina over direct mail staat het woord waarmee ik Pique uitleg. Je weet dus wat post doet met iemand. Je zet het alleen in voor je klanten. <strong>Je eigen outreach loopt via de telefoon.</strong></p>
-        <div class="f-bewijs">
-          <p class="f-quote">'Fysieke post fungeert als een patroononderbreking.'</p>
-          <div class="f-meta"><span class="dom">bedrijfsdata.nl/toepassingen/direct-mail</span><span class="sep"></span><span>14 april 2026</span></div>
+        <div class="ch-eyebrow">Het dossier</div>
+        <h2 class="ch-kop">Drie dingen, in de volgorde waarin ik ze tegenkwam.</h2>
+        <div class="dosveld" id="dosveld">
+          <button class="dv-bar" type="button" aria-expanded="false" aria-controls="dvlijst">
+            <span class="dv-t">Dit is wat ik vond</span>
+            <span class="dv-n">3 bevindingen<i class="dv-pijl"></i></span>
+          </button>
+          <div class="dv-lijst" id="dvlijst"><div>
+            <div class="dv-rij">
+              <span class="dv-nr">01</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Je verkoopt mijn kanaal al</span>
+                <q class="dv-cit">'Fysieke post fungeert als een patroononderbreking.'</q>
+                <span class="dv-bron"><i></i><b>bedrijfsdata.nl/toepassingen/direct-mail</b> &middot; 14 april 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">02</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Jij haalt het handwerk eruit, ik stop het er weer in</span>
+                <q class="dv-cit">'Verkopers verspillen uren aan onvolledige lijsten, slechte leads en handmatig googlen.'</q>
+                <span class="dv-bron"><i></i><b>prospectpro.nl</b> &middot; gelezen 25 augustus 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">03</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Ze bellen een lijst van tien jaar geleden</span>
+                <q class="dv-cit">'Die hebben daar te maken met een SOAP API waar data van 10 jaar geleden uit komt rollen.'</q>
+                <span class="dv-bron"><i></i><b>ons gesprek</b> &middot; 25 augustus 2026</span>
+              </div>
+            </div>
+          </div></div>
         </div>
+        <p class="brug"><i></i>Op basis hiervan kwam ik tot &eacute;&eacute;n conclusie.</p>
       </div>
+      <p class="note">Klik het dossier open.<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
     </div>
   </section>
 
-  <section class="chapter left find">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">Wat ik vond</div></div>
-        <h2 class="f-kop">Jij haalt het handwerk eruit, ik stop het er weer in</h2>
-        <p class="ch-text">Je belooft dat een verkoper geen uren meer kwijt is aan handmatig zoeken. Daar begint mijn werk. Ik zoek niet wie er bestaat, dat heb jij al. Ik zoek waarom je vandaag over dit ene bedrijf iets te zeggen hebt. <strong>Dezelfde beweging, twee stappen verder.</strong></p>
-        <div class="f-bewijs">
-          <p class="f-quote">'Verkopers verspillen uren aan onvolledige lijsten, slechte leads en handmatig googlen.'</p>
-          <div class="f-meta"><span class="dom">prospectpro.nl</span><span class="sep"></span><span>gelezen 25 augustus 2026</span></div>
-        </div>
-      </div>
-      <div class="note">en dit maakt de derde pas vervelend</div>
-    </div>
-  </section>
 
-  <section class="chapter right find">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat ik vond</div></div>
-        <h2 class="f-kop">Ze bellen een lijst van tien jaar geleden</h2>
-        <p class="ch-text">Je beschreef hem zelf. Vijfendertig tot vijftig man, tien jaar terug bij een concurrent getekend, en er daarna niet meer naar omgekeken. Wat er uit die koppeling rolt is de wereld van toen. Op je eigen site staat wat dat kost: <strong>jaarlijks wijzigt 20 tot 30 procent van de bedrijfsgegevens in Nederland.</strong> Na tien jaar belt hij dus een bestand waarvan het grootste deel niet meer klopt. En hij merkt het niet, want hij komt nooit op je site kijken wat er sindsdien kan.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">'Die hebben daar te maken met een SOAP API waar data van 10 jaar geleden uit komt rollen.'</p>
-          <div class="f-meta"><span class="dom">ons gesprek</span><span class="sep"></span><span>25 augustus 2026</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="chapter center pivot" id="s3">
     <div class="ch-inner">
@@ -207,26 +214,6 @@
       </div>
     </div>
   </section>
-</main>
-
-<section class="ask" id="ask">
-  <div class="ask-in">
-    <p class="ask-hand">Zal ik dit maandag als eerste pakken?</p>
-    <p class="ask-sub">Hieronder staat wat ik zou doen. We spreken maandag om twaalf uur, dus je hoeft nu niks. Lees het rustig door, dan begint dat gesprek niet bij nul.</p>
-    <div class="ask-btns">
-      <button class="btn-a" id="askread">Laat de rest maar zien</button>
-      <button class="btn-b" data-open="sheet" data-tab="bel">Bel me eerder dan maandag</button>
-    </div>
-    <p class="ask-later">Of <button data-open="sheet" data-tab="plan">zet er een moment bij</button> als maandag te kort blijkt.</p>
-  </div>
-</section>
-
-<main class="journey" id="journey2">
-  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
-    <path class="jp-base" id="jp-base2"></path>
-    <path class="jp-prog" id="jp-prog2"></path>
-  </svg>
-
   <section class="chapter left">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -238,6 +225,14 @@
       </div>
     </div>
   </section>
+</main>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
+
 
   <section class="chapter right">
     <div class="ch-inner">
@@ -260,52 +255,7 @@
       </div>
     </div>
   </section>
-
 </main>
-
-<!-- de kaart uitgelicht, want daar vroeg je naar -->
-<div class="brief-band">
-<section class="brief" id="brief">
-  <div class="bk-kop reveal">
-    <div class="bk-eyebrow">Je vroeg hoe zo'n kaart eruitziet</div>
-    <h2>Zo ziet die kaart eruit.</h2>
-    <p>Links de kaart die je had gekregen, woord voor woord. Rechts dezelfde kaart, maar dan van jou aan iemand die al jaren bij een concurrent zit. Wat schuin staat, vult de research per bedrijf in.</p>
-  </div>
-
-  <div class="bk-rij">
-    <figure class="bk-fig reveal" style="--dl:.05s">
-      <div class="bk-kaart">
-        <p class="bk-lijn"><span class="bk-nr">1</span>Hoi Olivier,</p>
-        <p class="bk-lijn"><span class="bk-nr">2</span>Op je eigen site staat dat fysieke post een <em>patroononderbreking</em> is. Zelf bel je alleen.</p>
-        <p class="bk-lijn"><span class="bk-nr">3</span>Ik zocht uit waar je dat iets kost. Drie dingen, en twee ervan staan bij jou op de site.</p>
-        <p class="bk-lijn"><span class="bk-nr">4</span>Het staat op pique.agency/bedrijfsdata</p>
-        <div class="bk-sig">Simon</div>
-        <svg class='qr' viewBox='0 0 21 21' shape-rendering='crispEdges' aria-hidden='true'><rect width='21' height='21' fill='var(--pap-1)'/><g fill='var(--hand-ink)'><path d='M0 0h7v7H0z M2 2h3v3H2z' fill-rule='evenodd'/><path d='M14 0h7v7h-7z M16 2h3v3h-3z' fill-rule='evenodd'/><path d='M0 14h7v7H0z M2 16h3v3H2z' fill-rule='evenodd'/><rect x='9' y='1' width='1' height='1'/><rect x='9' y='3' width='1' height='2'/><rect x='11' y='0' width='1' height='2'/><rect x='11' y='4' width='1' height='1'/><rect x='9' y='7' width='2' height='1'/><rect x='12' y='7' width='1' height='1'/><rect x='0' y='9' width='2' height='1'/><rect x='3' y='9' width='1' height='1'/><rect x='5' y='9' width='1' height='2'/><rect x='7' y='10' width='1' height='1'/><rect x='9' y='9' width='1' height='1'/><rect x='11' y='9' width='2' height='1'/><rect x='14' y='9' width='1' height='1'/><rect x='16' y='9' width='1' height='2'/><rect x='18' y='9' width='1' height='1'/><rect x='20' y='10' width='1' height='1'/><rect x='9' y='11' width='1' height='2'/><rect x='11' y='12' width='1' height='1'/><rect x='13' y='11' width='1' height='1'/><rect x='15' y='12' width='2' height='1'/><rect x='18' y='12' width='1' height='1'/><rect x='9' y='14' width='1' height='1'/><rect x='11' y='14' width='1' height='2'/><rect x='13' y='15' width='1' height='1'/><rect x='15' y='14' width='1' height='1'/><rect x='17' y='15' width='2' height='1'/><rect x='9' y='17' width='2' height='1'/><rect x='12' y='17' width='1' height='2'/><rect x='14' y='18' width='1' height='1'/><rect x='16' y='17' width='1' height='1'/><rect x='18' y='18' width='2' height='1'/><rect x='9' y='20' width='1' height='1'/><rect x='11' y='20' width='2' height='1'/><rect x='15' y='20' width='1' height='1'/><rect x='17' y='19' width='1' height='2'/><rect x='20' y='20' width='1' height='1'/></g></svg>
-      </div>
-      <figcaption class="bk-cap"><b>Wat jij had gekregen.</b> Met de hand geschreven op een A5, in een envelop met een postzegel erop.</figcaption>
-    </figure>
-
-    <figure class="bk-fig reveal" style="--dl:.22s">
-      <div class="bk-kaart">
-        <p class="bk-lijn">Hoi <i>Marleen</i>,</p>
-        <p class="bk-lijn">In jullie vacature voor een <i>salesmedewerker</i> staat <i>Company.info</i> tussen de tools. Ik vroeg me af hoe lang dat abonnement al meeloopt.</p>
-        <p class="bk-lijn">Ik zocht uit wat je er per jaar voor betaalt en wat er sindsdien veranderd is.</p>
-        <p class="bk-lijn">Het staat op bedrijfsdata.nl/<i>haar-bedrijf</i></p>
-        <div class="bk-sig">Olivier</div>
-        <svg class='qr' viewBox='0 0 21 21' shape-rendering='crispEdges' aria-hidden='true'><rect width='21' height='21' fill='var(--pap-1)'/><g fill='var(--hand-ink)'><path d='M0 0h7v7H0z M2 2h3v3H2z' fill-rule='evenodd'/><path d='M14 0h7v7h-7z M16 2h3v3h-3z' fill-rule='evenodd'/><path d='M0 14h7v7H0z M2 16h3v3H2z' fill-rule='evenodd'/><rect x='9' y='1' width='1' height='1'/><rect x='9' y='3' width='1' height='2'/><rect x='11' y='0' width='1' height='2'/><rect x='11' y='4' width='1' height='1'/><rect x='9' y='7' width='2' height='1'/><rect x='12' y='7' width='1' height='1'/><rect x='0' y='9' width='2' height='1'/><rect x='3' y='9' width='1' height='1'/><rect x='5' y='9' width='1' height='2'/><rect x='7' y='10' width='1' height='1'/><rect x='9' y='9' width='1' height='1'/><rect x='11' y='9' width='2' height='1'/><rect x='14' y='9' width='1' height='1'/><rect x='16' y='9' width='1' height='2'/><rect x='18' y='9' width='1' height='1'/><rect x='20' y='10' width='1' height='1'/><rect x='9' y='11' width='1' height='2'/><rect x='11' y='12' width='1' height='1'/><rect x='13' y='11' width='1' height='1'/><rect x='15' y='12' width='2' height='1'/><rect x='18' y='12' width='1' height='1'/><rect x='9' y='14' width='1' height='1'/><rect x='11' y='14' width='1' height='2'/><rect x='13' y='15' width='1' height='1'/><rect x='15' y='14' width='1' height='1'/><rect x='17' y='15' width='2' height='1'/><rect x='9' y='17' width='2' height='1'/><rect x='12' y='17' width='1' height='2'/><rect x='14' y='18' width='1' height='1'/><rect x='16' y='17' width='1' height='1'/><rect x='18' y='18' width='2' height='1'/><rect x='9' y='20' width='1' height='1'/><rect x='11' y='20' width='2' height='1'/><rect x='15' y='20' width='1' height='1'/><rect x='17' y='19' width='1' height='2'/><rect x='20' y='20' width='1' height='1'/></g></svg>
-      </div>
-      <figcaption class="bk-cap"><b>Wat jouw overstapper krijgt.</b> Zelfde vorm, jouw naam eronder, en een adres op je eigen domein.</figcaption>
-    </figure>
-  </div>
-
-  <ol class="bk-uitleg">
-    <li class="reveal" style="--dl:.35s"><span>01</span><b>De aanhef</b><p>Alleen zijn voornaam, en verder komt zijn naam nergens meer voor. Zodra er 'beste heer' staat, is het een mailing.</p></li>
-    <li class="reveal" style="--dl:.45s"><span>02</span><b>De observatie</b><p>Iets dat hij in tien seconden zelf kan nakijken. Hier valt het kwartje: hoe weet iemand dit.</p></li>
-    <li class="reveal" style="--dl:.55s"><span>03</span><b>Het werk erachter</b><p>Wat je ervoor gedaan hebt, niet wat je ervan vindt. Bewijs van moeite overtuigt beter dan de conclusie ervan.</p></li>
-    <li class="reveal" style="--dl:.65s"><span>04</span><b>Het adres</b><p>Kaal in de zin, zonder 'scan de QR'. De code staat er wel, maar sinds phishing aarzelen mensen erbij. Een adres dat je kunt overtypen doet het altijd.</p></li>
-  </ol>
-</section>
-</div>
 
 <section class="toon" id="toon">
   <div class="toon-rij">
@@ -360,6 +310,87 @@
     <div style="--dl:.81s"><span>&#10003;</span><b>Eén groep als bewijs</b><p>We beginnen bij één afgebakende set. Daarna weet je zelf of dit iets is om door te verwijzen.</p></div>
   </div>
 </section>
+
+<section class="hoeband reveal" id="hoe">
+  <div class="hb-in">
+    <span class="hb-eyebrow">Hoe het werkt</span>
+    <h2 class="hb-h">Zo komt die kaart op je bureau.</h2>
+    <div class="hb-stage">
+      <div class="vslhouder">
+        <button class="vslbox" type="button" aria-label="Speel de video van 1 minuut af">
+          <img src="vsl-poster.jpg" alt="">
+          <span class="vslplay"></span><span class="vslduur">1:01</span>
+        </button>
+      </div>
+    </div>
+    <p class="hb-bij">Een minuut over hoe dit in de praktijk gaat. Dezelfde volgorde, bij een ander bedrijf.</p>
+    <ol class="flow">
+      <li class="fl"><span class="fl-n">01</span><b class="fl-k">Onderzoek</b><span class="fl-t">We lezen jullie eigen berichten, vacatures en jaarstukken tot er iets staat dat ergens over gaat.</span></li>
+      <li class="fl"><span class="fl-n">02</span><b class="fl-k">Kaart</b><span class="fl-t">Met de hand geschreven, met twee dingen erop die alleen over jullie kunnen gaan.</span></li>
+      <li class="fl"><span class="fl-n">03</span><b class="fl-k">Deze pagina</b><span class="fl-t">Wat er niet op een kaart past, met de bron eronder.</span></li>
+      <li class="fl"><span class="fl-n">04</span><b class="fl-k">Bellen</b><span class="fl-t">Een paar dagen later, door ons.</span></li>
+    </ol>
+    <div class="merken">
+      <span class="mk-label">Vertrouwd door o.a.</span>
+      <div class="mk-rij">
+        <i class="mkl mkl-taco" role="img" aria-label="Taco Mundo"></i>
+        <i class="mkl mkl-dorp" role="img" aria-label="Van Dorp"></i>
+        <i class="mkl mkl-tsned" role="img" aria-label="TSNed"></i>
+        <i class="mkl mkl-dwd" role="img" aria-label="Drukwerkdeal"></i>
+        <i class="mkl mkl-otto" role="img" aria-label="OTTO Work Force"></i>
+        <i class="mkl mkl-fortune" role="img" aria-label="Fortune Coffee"></i>
+        <i class="mkl mkl-wonder" role="img" aria-label="Wonder Group"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- de kaart uitgelicht, want daar vroeg je naar -->
+<div class="brief-band">
+<section class="brief" id="brief">
+  <div class="bk-kop reveal">
+    <div class="bk-eyebrow">Je vroeg hoe zo'n kaart eruitziet</div>
+    <h2>Zo ziet die kaart eruit.</h2>
+    <p>Links de kaart die je had gekregen, woord voor woord. Rechts dezelfde kaart, maar dan van jou aan iemand die al jaren bij een concurrent zit. Wat schuin staat, vult de research per bedrijf in.</p>
+  </div>
+
+  <div class="bk-rij">
+    <figure class="bk-fig reveal" style="--dl:.05s">
+      <div class="bk-kaart">
+        <p class="bk-lijn"><span class="bk-nr">1</span>Hoi Olivier,</p>
+        <p class="bk-lijn"><span class="bk-nr">2</span>Op je eigen site staat dat fysieke post een <em>patroononderbreking</em> is. Zelf bel je alleen.</p>
+        <p class="bk-lijn"><span class="bk-nr">3</span>Ik zocht uit waar je dat iets kost. Drie dingen, en twee ervan staan bij jou op de site.</p>
+        <p class="bk-lijn"><span class="bk-nr">4</span>Het staat op pique.agency/bedrijfsdata</p>
+        <div class="bk-sig">Simon</div>
+        <svg class='qr' viewBox='0 0 21 21' shape-rendering='crispEdges' aria-hidden='true'><rect width='21' height='21' fill='var(--pap-1)'/><g fill='var(--hand-ink)'><path d='M0 0h7v7H0z M2 2h3v3H2z' fill-rule='evenodd'/><path d='M14 0h7v7h-7z M16 2h3v3h-3z' fill-rule='evenodd'/><path d='M0 14h7v7H0z M2 16h3v3H2z' fill-rule='evenodd'/><rect x='9' y='1' width='1' height='1'/><rect x='9' y='3' width='1' height='2'/><rect x='11' y='0' width='1' height='2'/><rect x='11' y='4' width='1' height='1'/><rect x='9' y='7' width='2' height='1'/><rect x='12' y='7' width='1' height='1'/><rect x='0' y='9' width='2' height='1'/><rect x='3' y='9' width='1' height='1'/><rect x='5' y='9' width='1' height='2'/><rect x='7' y='10' width='1' height='1'/><rect x='9' y='9' width='1' height='1'/><rect x='11' y='9' width='2' height='1'/><rect x='14' y='9' width='1' height='1'/><rect x='16' y='9' width='1' height='2'/><rect x='18' y='9' width='1' height='1'/><rect x='20' y='10' width='1' height='1'/><rect x='9' y='11' width='1' height='2'/><rect x='11' y='12' width='1' height='1'/><rect x='13' y='11' width='1' height='1'/><rect x='15' y='12' width='2' height='1'/><rect x='18' y='12' width='1' height='1'/><rect x='9' y='14' width='1' height='1'/><rect x='11' y='14' width='1' height='2'/><rect x='13' y='15' width='1' height='1'/><rect x='15' y='14' width='1' height='1'/><rect x='17' y='15' width='2' height='1'/><rect x='9' y='17' width='2' height='1'/><rect x='12' y='17' width='1' height='2'/><rect x='14' y='18' width='1' height='1'/><rect x='16' y='17' width='1' height='1'/><rect x='18' y='18' width='2' height='1'/><rect x='9' y='20' width='1' height='1'/><rect x='11' y='20' width='2' height='1'/><rect x='15' y='20' width='1' height='1'/><rect x='17' y='19' width='1' height='2'/><rect x='20' y='20' width='1' height='1'/></g></svg>
+      </div>
+      <figcaption class="bk-cap"><b>Wat jij had gekregen.</b> Met de hand geschreven op een A5, in een envelop met een postzegel erop.</figcaption>
+    </figure>
+
+    <figure class="bk-fig reveal" style="--dl:.22s">
+      <div class="bk-kaart">
+        <p class="bk-lijn">Hoi <i>Marleen</i>,</p>
+        <p class="bk-lijn">In jullie vacature voor een <i>salesmedewerker</i> staat <i>Company.info</i> tussen de tools. Ik vroeg me af hoe lang dat abonnement al meeloopt.</p>
+        <p class="bk-lijn">Ik zocht uit wat je er per jaar voor betaalt en wat er sindsdien veranderd is.</p>
+        <p class="bk-lijn">Het staat op bedrijfsdata.nl/<i>haar-bedrijf</i></p>
+        <div class="bk-sig">Olivier</div>
+        <svg class='qr' viewBox='0 0 21 21' shape-rendering='crispEdges' aria-hidden='true'><rect width='21' height='21' fill='var(--pap-1)'/><g fill='var(--hand-ink)'><path d='M0 0h7v7H0z M2 2h3v3H2z' fill-rule='evenodd'/><path d='M14 0h7v7h-7z M16 2h3v3h-3z' fill-rule='evenodd'/><path d='M0 14h7v7H0z M2 16h3v3H2z' fill-rule='evenodd'/><rect x='9' y='1' width='1' height='1'/><rect x='9' y='3' width='1' height='2'/><rect x='11' y='0' width='1' height='2'/><rect x='11' y='4' width='1' height='1'/><rect x='9' y='7' width='2' height='1'/><rect x='12' y='7' width='1' height='1'/><rect x='0' y='9' width='2' height='1'/><rect x='3' y='9' width='1' height='1'/><rect x='5' y='9' width='1' height='2'/><rect x='7' y='10' width='1' height='1'/><rect x='9' y='9' width='1' height='1'/><rect x='11' y='9' width='2' height='1'/><rect x='14' y='9' width='1' height='1'/><rect x='16' y='9' width='1' height='2'/><rect x='18' y='9' width='1' height='1'/><rect x='20' y='10' width='1' height='1'/><rect x='9' y='11' width='1' height='2'/><rect x='11' y='12' width='1' height='1'/><rect x='13' y='11' width='1' height='1'/><rect x='15' y='12' width='2' height='1'/><rect x='18' y='12' width='1' height='1'/><rect x='9' y='14' width='1' height='1'/><rect x='11' y='14' width='1' height='2'/><rect x='13' y='15' width='1' height='1'/><rect x='15' y='14' width='1' height='1'/><rect x='17' y='15' width='2' height='1'/><rect x='9' y='17' width='2' height='1'/><rect x='12' y='17' width='1' height='2'/><rect x='14' y='18' width='1' height='1'/><rect x='16' y='17' width='1' height='1'/><rect x='18' y='18' width='2' height='1'/><rect x='9' y='20' width='1' height='1'/><rect x='11' y='20' width='2' height='1'/><rect x='15' y='20' width='1' height='1'/><rect x='17' y='19' width='1' height='2'/><rect x='20' y='20' width='1' height='1'/></g></svg>
+      </div>
+      <figcaption class="bk-cap"><b>Wat jouw overstapper krijgt.</b> Zelfde vorm, jouw naam eronder, en een adres op je eigen domein.</figcaption>
+    </figure>
+  </div>
+
+  <ol class="bk-uitleg">
+    <li class="reveal" style="--dl:.35s"><span>01</span><b>De aanhef</b><p>Alleen zijn voornaam, en verder komt zijn naam nergens meer voor. Zodra er 'beste heer' staat, is het een mailing.</p></li>
+    <li class="reveal" style="--dl:.45s"><span>02</span><b>De observatie</b><p>Iets dat hij in tien seconden zelf kan nakijken. Hier valt het kwartje: hoe weet iemand dit.</p></li>
+    <li class="reveal" style="--dl:.55s"><span>03</span><b>Het werk erachter</b><p>Wat je ervoor gedaan hebt, niet wat je ervan vindt. Bewijs van moeite overtuigt beter dan de conclusie ervan.</p></li>
+    <li class="reveal" style="--dl:.65s"><span>04</span><b>Het adres</b><p>Kaal in de zin, zonder 'scan de QR'. De code staat er wel, maar sinds phishing aarzelen mensen erbij. Een adres dat je kunt overtypen doet het altijd.</p></li>
+  </ol>
+</section>
+</div>
+
 
 <section class="founder" id="founder">
   <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique" loading="lazy" decoding="async">
@@ -442,5 +473,6 @@
 </div>
 
 <script src="lp-v2.js"></script>
+<script src="lp12.js" defer></script>
 </body>
 </html>

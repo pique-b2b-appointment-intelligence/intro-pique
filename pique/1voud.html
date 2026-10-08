@@ -20,6 +20,7 @@
 <link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="thema-pique.css">
 <link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="lp12.css">
 
 <script>
   window.PQ_BEDRIJF      = "1voud Werken & Gezondheid";
@@ -30,7 +31,7 @@
   window.PQ_POSTER       = 'simon-staand-poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';   /* leesdiepte, zie lp-v2.js */
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';   /* zie Dashboard/Terugbelverzoek.gs */
-  window.PIQUE_INTRO     = {"voornaam": "Monique", "bedrijf": "1voud Werken & Gezondheid"};
+  window.PIQUE_INTRO     = { tempo: 33, pauze: 420,"voornaam": "Monique", "bedrijf": "1voud Werken & Gezondheid"};
 </script>
 <script src="lp-intro.js"></script>
 </head>
@@ -45,7 +46,7 @@
 <!-- voortgangsrail: waar ben ik, hoeveel komt er nog -->
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
-  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#dossier"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
   <a href="#s3"><span class="rd"></span><span class="rl">De optelsom</span></a>
   <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
@@ -64,7 +65,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Jullie jagen op de opzegtermijn van andere werkgevers, <span class="u">en de eigen klantenpagina's geven een serverfout</span>.</h1>
+      <h1 class="hero-h1">H&eacute; <span class="u">en de eigen klantenpagina's geven een serverfout</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Ik las de campagne die 1voud voert richting 1 oktober, en ging op zoek naar wie er zelf al klant is.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>4 bevindingen</span>
@@ -90,67 +91,68 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Waar het misging</div>
-        <h2 class="ch-kop">Zutphen, twee weken voor de eigen deadline</h2>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">Ik wilde eerst weten wie er bij 1voud beslist en welke bedrijven klant zijn. /klanten, /klantervaringen en /sectoren gaven alle drie een serverfout.
 Via het nieuwsoverzicht kwam ik bij de fusieberichten terecht, en bij de campagnepagina die andere werkgevers wijst op hun opzegtermijn richting 1 oktober. Dezelfde datum die ook voor jullie eigen fusieklanten zou kunnen gelden.</p>
+        
+        <div class="watdit">
+          <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we voor 1voud Werken &amp; Gezondheid hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">We willen je spreken. Dit is acquisitie, we hebben je nooit eerder gesproken, en we doen het op een kaart omdat een mail van ons niet zou zijn opgevallen.</span></div>
+          <div><span class="wd-l">Wat we erom vragen</span><span class="wd-v">Een belletje van twintig minuten. Verder vragen we niets.</span></div>
+        </div>
         <div class="ch-sign">Simon, oprichter Pique</div>
       </div>
     </div>
   </section>
-  <section class="chapter right find" id="s2">
+  <section class="chapter right" id="dossier">
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="f-head"><div class="f-num">01<span class="of">/ 04</span></div><div class="f-tag">Wat de fusieberichten zeggen</div></div>
-        <h2 class="f-kop">Drie clubs in negen maanden</h2>
-        <p class="ch-text">Op 5 september 2025 bundelden 1voud en Meijers Vitaal de krachten. Op 29 december 2025 sloot ook NLG Arbo Oost aan. Het geheel heet nu Meijers Vitaal, met 1voud als onderdeel.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Wij bundelen onze krachten met onze gewaardeerde vakcollega's Meijers Vitaal uit Amstelveen.&rsquo;</p>
-          <div class="f-meta"><span class="dom">1voud.nl</span><span class="sep"></span><span>september 2025</span></div>
+        <div class="ch-eyebrow">Het dossier</div>
+        <h2 class="ch-kop">Vier dingen, in de volgorde waarin ik ze tegenkwam.</h2>
+        <div class="dosveld" id="dosveld">
+          <button class="dv-bar" type="button" aria-expanded="false" aria-controls="dvlijst">
+            <span class="dv-t">Dit is wat ik vond</span>
+            <span class="dv-n">4 bevindingen<i class="dv-pijl"></i></span>
+          </button>
+          <div class="dv-lijst" id="dvlijst"><div>
+            <div class="dv-rij">
+              <span class="dv-nr">01</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Drie clubs in negen maanden</span>
+                <q class="dv-cit">Wij bundelen onze krachten met onze gewaardeerde vakcollega's Meijers Vitaal uit Amstelveen.</q>
+                <span class="dv-bron"><i></i><b>1voud.nl</b> &middot; september 2025</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">02</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Het directieteam is pas nu compleet</span>
+                <q class="dv-cit">Monique Davy is per 1 juni 2026 benoemd tot Directeur Arbo en vormt samen met Pieter van der Loo (Algemeen Directeur a.i.) en Jossi de Bruijn (Operationeel Directeur) de directie van Meijers Vitaal en van 1Voud.</q>
+                <span class="dv-bron"><i></i><b>1voud.nl</b> &middot; juni 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">03</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Voor de een verandert er niets</span>
+                <q class="dv-cit">Voor de klanten van 1voud Werken &amp; Gezondheid verandert er door deze fusie niets.</q>
+                <span class="dv-bron"><i></i><b>1voud.nl</b> &middot; januari 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">04</span>
+              <div class="dv-kol">
+                <span class="dv-wat">1 oktober als wapen naar buiten</span>
+                <q class="dv-cit">Veel arbocontracten hebben namelijk een opzegtermijn van 3 (!) maanden, vóór de contractvervaldatum. Bij de meeste arbocontracten is de vervaldatum 31 december. Dit betekent dat je dan vóór 1 oktober moet hebben opgezegd.</q>
+                <span class="dv-bron"><i></i><b>1voud.nl</b> &middot; gecontroleerd september 2026</span>
+              </div>
+            </div>
+          </div></div>
         </div>
+        <p class="brug"><i></i>Op basis hiervan kwam ik tot &eacute;&eacute;n conclusie.</p>
       </div>
-    </div>
-  </section>
-  <section class="chapter left find" id="s3">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">02<span class="of">/ 04</span></div><div class="f-tag">Wat er op 1 juni gebeurde</div></div>
-        <h2 class="f-kop">Het directieteam is pas nu compleet</h2>
-        <p class="ch-text">Bijna een jaar na de eerste fusiestap werd het directieteam compleet gemaakt met jouw benoeming als Directeur Arbo, naast Pieter van der Loo en Jossi de Bruijn.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Monique Davy is per 1 juni 2026 benoemd tot Directeur Arbo en vormt samen met Pieter van der Loo (Algemeen Directeur a.i.) en Jossi de Bruijn (Operationeel Directeur) de directie van Meijers Vitaal en van 1Voud.&rsquo;</p>
-          <div class="f-meta"><span class="dom">1voud.nl</span><span class="sep"></span><span>juni 2026</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="chapter right find" id="s4">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">03<span class="of">/ 04</span></div><div class="f-tag">Wat de FAQ zegt, en niet zegt</div></div>
-        <h2 class="f-kop">Voor de een verandert er niets</h2>
-        <p class="ch-text">Voor 1voud-klanten zelf verandert er volgens de fusie-FAQ niets. Voor de overgenomen NLG Arbo Oost-klanten wel: zij gaan over van XpertSuite naar Visma VerzuimSignaal.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Voor de klanten van 1voud Werken &amp; Gezondheid verandert er door deze fusie niets.&rsquo;</p>
-          <div class="f-meta"><span class="dom">1voud.nl</span><span class="sep"></span><span>januari 2026</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="chapter left find" id="s5">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">04<span class="of">/ 04</span></div><div class="f-tag">Wat de campagnepagina doet</div></div>
-        <h2 class="f-kop">1 oktober als wapen naar buiten</h2>
-        <p class="ch-text">Er staat een eigen landingspagina die andere werkgevers erop wijst dat hun arbocontract waarschijnlijk een opzegtermijn van drie maanden heeft voor de gebruikelijke einddatum van 31 december. 1 oktober is dan de praktische deadline om nog over te stappen.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Veel arbocontracten hebben namelijk een opzegtermijn van 3 (!) maanden, vóór de contractvervaldatum. Bij de meeste arbocontracten is de vervaldatum 31 december. Dit betekent dat je dan vóór 1 oktober moet hebben opgezegd.&rsquo;</p>
-          <div class="f-meta"><span class="dom">1voud.nl</span><span class="sep"></span><span>gecontroleerd september 2026</span></div>
-        </div>
-      </div>
+      <p class="note">Klik het dossier open.<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
     </div>
   </section>
   <section class="chapter center pivot" id="s3">
@@ -162,27 +164,6 @@ Via het nieuwsoverzicht kwam ik bij de fusieberichten terecht, en bij de campagn
       </div>
     </div>
   </section>
-
-</main>
-
-<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
-<section class="ask" id="ask">
-  <div class="ask-in">
-    <p class="ask-hand">Voelt het voor je eigen klanten al als één bedrijf?</p>
-    <p class="ask-sub">Ik weet het niet. Het directieteam is wel pas negen maanden later compleet geworden dan de eerste fusiestap.</p>
-    <div class="ask-btns">
-      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
-      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
-    </div>
-    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
-  </div>
-</section>
-
-<main class="journey" id="journey2">
-  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
-    <path class="jp-base" id="jp-base2"></path>
-    <path class="jp-prog" id="jp-prog2"></path>
-  </svg>
   <section class="chapter left">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -193,6 +174,13 @@ Via het nieuwsoverzicht kwam ik bij de fusieberichten terecht, en bij de campagn
       </div>
     </div>
   </section>
+</main>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
   <section class="chapter right">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -233,10 +221,8 @@ Via het nieuwsoverzicht kwam ik bij de fusieberichten terecht, en bij de campagn
       </div>
     </div>
   </section>
-
 </main>
 
-<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 <section class="toon" id="toon">
   <div class="toon-rij">
     <article class="tp" style="--dl:.05s">
@@ -290,6 +276,45 @@ Via het nieuwsoverzicht kwam ik bij de fusieberichten terecht, en bij de campagn
     <div style="--dl:.81s"><span>&#10003;</span><b>Eén ronde als bewijs</b><p>We beginnen met één groep. Levert het niets op, dan weet je dat na één ronde.</p></div>
   </div>
 </section>
+
+<section class="hoeband reveal" id="hoe">
+  <div class="hb-in">
+    <span class="hb-eyebrow">Hoe het werkt</span>
+    <h2 class="hb-h">Zo komt die kaart op je bureau.</h2>
+    <div class="hb-stage">
+      <div class="vslhouder">
+        <button class="vslbox" type="button" aria-label="Speel de video van 1 minuut af">
+          <img src="vsl-poster.jpg" alt="">
+          <span class="vslplay"></span><span class="vslduur">1:01</span>
+        </button>
+      </div>
+    </div>
+    <p class="hb-bij">Een minuut over hoe dit in de praktijk gaat. Dezelfde volgorde, bij een ander bedrijf.</p>
+    <ol class="flow">
+      <li class="fl"><span class="fl-n">01</span><b class="fl-k">Onderzoek</b><span class="fl-t">We lezen jullie eigen berichten, vacatures en jaarstukken tot er iets staat dat ergens over gaat.</span></li>
+      <li class="fl"><span class="fl-n">02</span><b class="fl-k">Kaart</b><span class="fl-t">Met de hand geschreven, met twee dingen erop die alleen over jullie kunnen gaan.</span></li>
+      <li class="fl"><span class="fl-n">03</span><b class="fl-k">Deze pagina</b><span class="fl-t">Wat er niet op een kaart past, met de bron eronder.</span></li>
+      <li class="fl"><span class="fl-n">04</span><b class="fl-k">Bellen</b><span class="fl-t">Een paar dagen later, door ons.</span></li>
+    </ol>
+    <div class="merken">
+      <span class="mk-label">Vertrouwd door o.a.</span>
+      <div class="mk-rij">
+        <i class="mkl mkl-taco" role="img" aria-label="Taco Mundo"></i>
+        <i class="mkl mkl-dorp" role="img" aria-label="Van Dorp"></i>
+        <i class="mkl mkl-tsned" role="img" aria-label="TSNed"></i>
+        <i class="mkl mkl-dwd" role="img" aria-label="Drukwerkdeal"></i>
+        <i class="mkl mkl-otto" role="img" aria-label="OTTO Work Force"></i>
+        <i class="mkl mkl-fortune" role="img" aria-label="Fortune Coffee"></i>
+        <i class="mkl mkl-wonder" role="img" aria-label="Wonder Group"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
+
+
+<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 
 <section class="founder" id="founder">
   <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique" loading="lazy" decoding="async">
@@ -373,5 +398,6 @@ Via het nieuwsoverzicht kwam ik bij de fusieberichten terecht, en bij de campagn
 </div>
 
 <script src="lp-v2.js"></script>
+<script src="lp12.js" defer></script>
 </body>
 </html>

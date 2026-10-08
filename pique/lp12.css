@@ -1,0 +1,182 @@
+/* lp12.css — de v12-standaard bovenop lp-v2. Eigen bestandsnaam, zodat dit
+   lp.css nooit kan overschrijven; daar hangen duizenden live pagina's aan.
+   Regel voor alles hieronder: geen vaste kleuren, alleen thema-tokens, en
+   geen namaakkarton. Een scherm mag een scherm tonen. */
+
+/* 1. WAT DIT IS. Het antwoord op 'ik weet niet wat dit is', in drie regels,
+   voordat er iets gevraagd wordt. */
+.watdit{margin:1.3rem 0 1.4rem;padding-left:1.1rem;display:grid;gap:.95rem;
+  border-left:2px solid rgba(var(--accent-rgb),.35)}
+.watdit>div{display:grid;gap:.22rem}
+.wd-l{font-size:.63rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.wd-v{font-size:.95rem;line-height:1.55;color:var(--ink2)}
+
+/* 2. HET DOSSIERVELD. Dicht is het een uitnodiging, open zijn het drie
+   bevindingen met hun bron. Dat scheelt niet alleen hoogte: wie hem zelf
+   opendoet leest wat erin staat, en wie doorscrollt was toch niet te houden.
+   De rijen komen na elkaar binnen, want alle drie tegelijk leest als een
+   tabel die openklapt en niet als iemand die iets laat zien. */
+.dosveld{margin:1.3rem 0 .4rem;border:1px solid var(--line);border-radius:var(--r-kaart);
+  background:var(--wit);overflow:hidden;
+  box-shadow:0 1px 2px rgba(var(--ink-rgb),.05),0 18px 34px -24px rgba(var(--ink-rgb),.33)}
+.dv-bar{display:flex;width:100%;align-items:center;justify-content:space-between;gap:.6rem;
+  margin:0;padding:.9rem 1rem;font:inherit;text-align:left;cursor:pointer;
+  -webkit-appearance:none;appearance:none;border:0;border-bottom:1px solid transparent;
+  background:var(--chrome);transition:border-color .35s var(--ease),background .25s}
+.dv-bar:hover{background:var(--bg)}
+.dosveld.open .dv-bar{border-bottom-color:var(--line)}
+.dv-t{font-size:.78rem;font-weight:700;letter-spacing:.03em;color:var(--ink)}
+.dv-n{display:flex;align-items:center;gap:.55rem;font-size:.63rem;font-weight:600;
+  letter-spacing:.06em;color:var(--ink3);font-variant-numeric:tabular-nums}
+.dv-pijl{display:block;width:8px;height:8px;border-right:1.5px solid var(--accent);
+  border-bottom:1.5px solid var(--accent);transform:translateY(-2px) rotate(45deg);
+  transition:transform .4s var(--ease)}
+.dosveld.open .dv-pijl{transform:translateY(1px) rotate(-135deg)}
+.dv-lijst{display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .5s cubic-bezier(.16,1,.3,1)}
+.dosveld.open .dv-lijst{grid-template-rows:1fr}
+.dv-lijst>div{overflow:hidden}
+.dv-rij{display:grid;grid-template-columns:2.5rem 1fr;padding:.95rem 1rem;
+  border-bottom:1px solid var(--line);opacity:0;transform:translateY(12px);
+  transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.dv-rij:last-child{border-bottom:none}
+.dosveld.open .dv-rij{opacity:1;transform:none}
+.dosveld.open .dv-rij:nth-child(1){transition-delay:.14s}
+.dosveld.open .dv-rij:nth-child(2){transition-delay:.26s}
+.dosveld.open .dv-rij:nth-child(3){transition-delay:.38s}
+.dv-nr{font-family:var(--hand);font-size:1.3rem;font-weight:700;line-height:1.1;
+  color:rgba(var(--ink-rgb),.3);font-variant-numeric:tabular-nums}
+.dv-kol{display:grid;gap:.4rem;min-width:0}
+.dv-wat{font-size:.98rem;font-weight:600;line-height:1.4;color:var(--ink)}
+.dv-cit{display:block;margin:.1rem 0;padding:.6rem .85rem;font-family:var(--serif);
+  font-size:.92rem;line-height:1.45;color:var(--ink);background:rgba(var(--ink-rgb),.035);
+  border-left:2px solid var(--accent);quotes:'\201C' '\201D'}
+.dv-bron{display:flex;align-items:center;gap:.42rem;font-size:.65rem;font-weight:600;
+  letter-spacing:.04em;color:var(--ink3);font-variant-numeric:tabular-nums}
+.dv-bron i{display:block;flex:0 0 auto;width:14px;height:1px;background:var(--ink3)}
+.dv-bron b{color:var(--ink2);letter-spacing:normal}
+.dv-rij.hier{background:rgba(var(--accent-rgb),.05);box-shadow:inset 3px 0 0 var(--accent)}
+.dv-rij.hier .dv-nr{color:var(--accent)}
+
+/* De brug naar de conclusie. Een streepje omlaag, zodat zichtbaar is dat het
+   volgende blok uit het vorige volgt en er niet los naast staat. */
+.brug{display:flex;align-items:center;gap:.7rem;margin:1.5rem 0 .2rem;
+  font-size:.82rem;font-style:italic;color:var(--ink3)}
+.brug i{display:block;flex:0 0 auto;width:26px;height:1px;background:var(--accent);opacity:.6}
+
+/* 3. DE UITKLAPBARE REDENERING onder het bewijspapiertje. */
+.bronknop{display:inline-block;margin-top:1.1rem;padding:0 0 2px;font:inherit;font-size:.72rem;
+  font-weight:600;letter-spacing:.04em;color:var(--ink3);background:none;border:none;cursor:pointer;
+  border-bottom:1px dashed rgba(var(--accent-rgb),.45)}
+.bronknop::after{content:' +';color:var(--accent);font-weight:700}
+.bronknop[aria-expanded=true]::after{content:' \2212'}
+.bronknop:hover{color:var(--ink2);border-bottom-color:var(--accent)}
+.uitklap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s cubic-bezier(.16,1,.3,1)}
+.uitklap.open{grid-template-rows:1fr}
+.uitklap>div{overflow:hidden}
+.uitklap p{margin-top:.85rem;padding-left:.9rem;font-size:.9rem;line-height:1.6;
+  color:var(--pap-ink2,var(--ink2));border-left:2px solid rgba(var(--accent-rgb),.3)}
+
+/* 4. DE BAND 'HOE HET WERKT'. Hij stond als lichte sectie tussen twee lichte
+   secties, en wat je daar ook neerzet, het blijft een rechthoek op room. Nu is
+   het een donkere band: dat geeft de pagina een adempauze, en video hoort op
+   donker thuis. De speler staat midden op een podium met een zachte gloed
+   eronder, en niet tegen een rand aan geplakt. */
+.hoeband{position:relative;overflow:hidden;background:var(--donker);color:var(--wit);
+  padding:clamp(3.2rem,7vh,5rem) clamp(1.25rem,4vw,2rem) clamp(3rem,6.5vh,4.5rem)}
+.hoeband::before{content:'';position:absolute;left:50%;top:-14%;width:min(900px,120%);height:70%;
+  transform:translateX(-50%);pointer-events:none;
+  background:radial-gradient(60% 55% at 50% 40%,rgba(var(--accent-l-rgb),.16),transparent 70%)}
+.hb-in{position:relative;max-width:900px;margin:0 auto;text-align:center}
+.hb-eyebrow{display:block;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(var(--accent-l-rgb),.9)}
+.hb-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.75rem,3.2vw,2.5rem);line-height:1.15;
+  letter-spacing:-.02em;margin:.95rem 0 0}
+.hb-stage{position:relative;margin:clamp(1.7rem,3.5vw,2.4rem) auto 0;width:min(720px,100%)}
+.hb-stage::after{content:'';position:absolute;left:8%;right:8%;bottom:-18px;height:34px;border-radius:50%;
+  background:rgba(var(--zwart-rgb),.5);filter:blur(22px);z-index:0}
+.hb-bij{margin:1.5rem auto 0;max-width:46ch;font-size:.92rem;line-height:1.55;
+  color:rgba(var(--wit-rgb),.6)}
+
+/* 5. DE SPELER. Hij speelt in zijn eigen kader af en neemt het scherm niet
+   over: wie hem wegklikt is anders de pagina kwijt. */
+.vslhouder{position:relative;z-index:1;width:100%;aspect-ratio:16/9;overflow:hidden;
+  border-radius:clamp(10px,1.4vw,16px);background:var(--video-bg);
+  box-shadow:0 2px 0 rgba(var(--wit-rgb),.07) inset,0 40px 80px -30px rgba(var(--zwart-rgb),.9)}
+.vslbox{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;border:none;
+  cursor:pointer;background:none}
+.vslbox img{width:100%;height:100%;object-fit:cover;opacity:.92;
+  transition:opacity .35s,transform .7s var(--ease)}
+.vslbox:hover img{opacity:1;transform:scale(1.025)}
+.vslhouder video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--video-bg)}
+.vslplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:clamp(54px,6vw,70px);height:clamp(54px,6vw,70px);border-radius:50%;
+  background:rgba(var(--wit-rgb),.95);display:grid;place-items:center;
+  box-shadow:0 14px 40px -8px rgba(var(--zwart-rgb),.7);transition:transform .35s var(--ease)}
+.vslbox:hover .vslplay{transform:translate(-50%,-50%) scale(1.08)}
+.vslplay::after{content:'';width:0;height:0;margin-left:4px;
+  border-left:clamp(15px,1.7vw,19px) solid var(--donker);
+  border-top:clamp(10px,1.1vw,12px) solid transparent;border-bottom:clamp(10px,1.1vw,12px) solid transparent}
+.vslduur{position:absolute;right:11px;bottom:11px;padding:.14rem .42rem;font-size:.68rem;font-weight:600;
+  color:var(--wit);background:rgba(var(--zwart-rgb),.6);border-radius:4px;font-variant-numeric:tabular-nums}
+
+/* 6. DE FLOW. Vier stappen op een lijn, met de nummers op die lijn. De lijn
+   loopt van elke stap naar de volgende en stopt bij de laatste, dus hij
+   betekent iets. Op een telefoon kantelt hij een kwartslag. */
+.flow{list-style:none;margin:clamp(2.2rem,4.5vw,3rem) 0 0;padding:0;display:grid;
+  grid-template-columns:repeat(4,1fr);gap:0 1.5rem;text-align:left}
+.fl{position:relative;padding-top:2.6rem}
+.fl::before{content:'';position:absolute;top:13px;left:13px;right:-1.5rem;height:1px;
+  background:linear-gradient(90deg,rgba(var(--accent-l-rgb),.7),rgba(var(--wit-rgb),.14))}
+.fl:last-child::before{display:none}
+.fl-n{position:absolute;top:0;left:0;z-index:1;width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;font-size:.6rem;font-weight:700;color:var(--accent-l);
+  background:var(--donker);box-shadow:inset 0 0 0 1px rgba(var(--accent-l-rgb),.55);
+  font-variant-numeric:tabular-nums}
+.fl-k{display:block;font-family:var(--serif);font-weight:600;font-size:1.02rem;line-height:1.2;
+  margin-bottom:.32rem;color:var(--wit)}
+.fl-t{display:block;font-size:.8rem;line-height:1.55;color:rgba(var(--wit-rgb),.58)}
+@media(max-width:700px){
+  .flow{grid-template-columns:1fr;gap:1.6rem 0}
+  .fl{padding:0 0 0 2.7rem;min-height:26px}
+  .fl::before{top:26px;bottom:-1.6rem;left:13px;right:auto;width:1px;height:auto;
+    background:linear-gradient(180deg,rgba(var(--accent-l-rgb),.7),rgba(var(--wit-rgb),.14))}
+}
+
+/* 7. DE MERKEN. Eén inkt voor alle zeven, via het alfakanaal als masker. Zo
+   vecht een rood logo niet met een geel logo om de aandacht, en hoeft er geen
+   donkere of lichte variant per merk bijgezocht te worden. Bij een gevuld
+   badge-merk als OTTO blijven de letters gaten, dus hij blijft leesbaar.
+   De hoogtes verschillen per merk en dat is de bedoeling: optisch even zwaar
+   is niet hetzelfde als even hoog. */
+.merken{margin:clamp(2.4rem,5vw,3.2rem) 0 0;padding-top:1.5rem;
+  border-top:1px solid rgba(var(--wit-rgb),.12)}
+.mk-label{display:block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(var(--wit-rgb),.42);margin-bottom:1.2rem}
+.mk-rij{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.35rem 2.1rem}
+.mkl{display:block;flex:0 0 auto;background-color:var(--wit);opacity:.55;
+  transition:opacity .3s var(--ease);
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center;
+  -webkit-mask-size:contain;mask-size:contain}
+.mk-rij:hover .mkl{opacity:.3}
+.mk-rij .mkl:hover{opacity:.95}
+.mkl-taco{width:89px;height:18px;-webkit-mask-image:url(logos/tacomundo.png);mask-image:url(logos/tacomundo.png)}
+.mkl-dorp{width:76px;height:22px;-webkit-mask-image:url(logos/vandorp.png);mask-image:url(logos/vandorp.png)}
+.mkl-tsned{width:86px;height:19px;-webkit-mask-image:url(logos/tsned.png);mask-image:url(logos/tsned.png)}
+.mkl-dwd{width:94px;height:17px;-webkit-mask-image:url(logos/drukwerkdeal.png);mask-image:url(logos/drukwerkdeal.png)}
+.mkl-otto{width:73px;height:26px;-webkit-mask-image:url(logos/otto.png);mask-image:url(logos/otto.png)}
+.mkl-fortune{width:38px;height:30px;-webkit-mask-image:url(logos/fortune.png);mask-image:url(logos/fortune.png)}
+.mkl-wonder{width:33px;height:32px;-webkit-mask-image:url(logos/wondergroup.png);mask-image:url(logos/wondergroup.png)}
+@media(max-width:700px){
+  .hb-in{text-align:left}
+  .mk-rij{justify-content:flex-start}
+  .hb-bij{margin-left:0}
+}
+@media(max-width:430px){.mk-rij{gap:1.2rem 1.5rem}}
+
+/* 7. De kantlijnpijl. lp.css spiegelt hem bij .chapter.right, waardoor hij
+   van het dossier af wijst in plaats van ernaartoe. */
+#dossier .note .arw{transform:none}
+
+@media(prefers-reduced-motion:reduce){.uitklap{transition:none}}

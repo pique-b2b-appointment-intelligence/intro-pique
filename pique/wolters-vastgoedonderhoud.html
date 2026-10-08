@@ -20,6 +20,7 @@
 <link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="thema-pique.css">
 <link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="lp12.css">
 
 <script>
   window.PQ_BEDRIJF      = "Wolters Vastgoedonderhoud";
@@ -30,7 +31,7 @@
   window.PQ_POSTER       = 'simon-staand-poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';   /* leesdiepte, zie lp-v2.js */
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';   /* zie Dashboard/Terugbelverzoek.gs */
-  window.PIQUE_INTRO     = {"bedrijf": "Wolters Vastgoedonderhoud"};
+  window.PIQUE_INTRO     = { tempo: 33, pauze: 420,"bedrijf": "Wolters Vastgoedonderhoud"};
 </script>
 <script src="lp-intro.js"></script>
 </head>
@@ -45,7 +46,7 @@
 <!-- voortgangsrail: waar ben ik, hoeveel komt er nog -->
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
-  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#dossier"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
   <a href="#s3"><span class="rd"></span><span class="rl">De optelsom</span></a>
   <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
@@ -64,7 +65,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Het Binnenhof staat er, de <span class="u">opdrachtgever nergens</span></h1>
+      <h1 class="hero-h1">H&eacute; <span class="u">opdrachtgever nergens</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Over acht projecten die allemaal een complexnaam dragen, en geen enkele opdrachtgever.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>4 bevindingen</span>
@@ -90,64 +91,65 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Waar ik begon</div>
-        <h2 class="ch-kop">Ik zocht het verhaal achter Wolters, en kwam bij Cooperatio uit</h2>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">woltersbv.nl/over-ons en /werken-bij gaven allebei een foutmelding, en de nieuwspagina toonde bij herhaald ophalen alleen het menu, geen artikelen. Via de contactpagina vond ik de echte wervingslinks, en die bleken naar een ander domein te wijzen: werkenbijcooperatio.nl. Wolters blijkt onderdeel van een samenwerkingsverband van renovatiebedrijven.</p>
+        
+        <div class="watdit">
+          <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we voor Wolters Vastgoedonderhoud hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">We willen je spreken. Dit is acquisitie, we hebben je nooit eerder gesproken, en we doen het op een kaart omdat een mail van ons niet zou zijn opgevallen.</span></div>
+          <div><span class="wd-l">Wat we erom vragen</span><span class="wd-v">Een belletje van twintig minuten. Verder vragen we niets.</span></div>
+        </div>
         <div class="ch-sign">Simon, oprichter Pique</div>
       </div>
     </div>
   </section>
-  <section class="chapter right find" id="s2">
+  <section class="chapter right" id="dossier">
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="f-head"><div class="f-num">01<span class="of">/ 04</span></div><div class="f-tag">Het project waar iedereen naar kijkt</div></div>
-        <h2 class="f-kop">Het monumentale schilderwerk van de Tweede Kamer</h2>
-        <p class="ch-text">Een van de openstaande vacatures gaat over het project Binnenhof, de historische renovatie van de Tweede Kamer in Den Haag, waar jullie het monumentale schilderwerk voor uitvoeren.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;Als Projectleider Monumentaal Schilderwerk bij Wolters werk je binnen ons projectteam aan een heel bijzonder project: de renovatie van de Tweede Kamer in het historische Binnenhof in Den Haag.&rsquo;</p>
-          <div class="f-meta"><span class="dom">werkenbijcooperatio.nl</span><span class="sep"></span><span>september 2026</span></div>
+        <div class="ch-eyebrow">Het dossier</div>
+        <h2 class="ch-kop">Vier dingen, in de volgorde waarin ik ze tegenkwam.</h2>
+        <div class="dosveld" id="dosveld">
+          <button class="dv-bar" type="button" aria-expanded="false" aria-controls="dvlijst">
+            <span class="dv-t">Dit is wat ik vond</span>
+            <span class="dv-n">4 bevindingen<i class="dv-pijl"></i></span>
+          </button>
+          <div class="dv-lijst" id="dvlijst"><div>
+            <div class="dv-rij">
+              <span class="dv-nr">01</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Het monumentale schilderwerk van de Tweede Kamer</span>
+                <q class="dv-cit">Als Projectleider Monumentaal Schilderwerk bij Wolters werk je binnen ons projectteam aan een heel bijzonder project: de renovatie van de Tweede Kamer in het historische Binnenhof in Den Haag.</q>
+                <span class="dv-bron"><i></i><b>werkenbijcooperatio.nl</b> &middot; september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">02</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Acht projecten, acht complexnamen, geen opdrachtgever</span>
+                <span class="dv-bron"><i></i><b>woltersbv.nl/projecten</b> &middot; september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">03</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Onderdeel van een samenwerkingsverband van zeven bedrijven</span>
+                <q class="dv-cit">een groep samenwerkende renovatie-en onderhoudsbedrijven, allen met dezelfde cultuur, denkwijze en visie</q>
+                <span class="dv-bron"><i></i><b>werkenbijcooperatio.nl</b> &middot; september 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">04</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Bladgoudvergulden staat gewoon naast de rest</span>
+                <span class="dv-bron"><i></i><b>woltersbv.nl</b> &middot; september 2026</span>
+              </div>
+            </div>
+          </div></div>
         </div>
+        <p class="brug"><i></i>Op basis hiervan kwam ik tot &eacute;&eacute;n conclusie.</p>
       </div>
-    </div>
-  </section>
-  <section class="chapter left find" id="s3">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">02<span class="of">/ 04</span></div><div class="f-tag">Hoe de projectenpagina eruitziet</div></div>
-        <h2 class="f-kop">Acht projecten, acht complexnamen, geen opdrachtgever</h2>
-        <p class="ch-text">De Marken C117, Meeuwenborgh, De Vechthoeve in Muiden, Hoge Kraats in Ede. Allemaal benoemd naar het gebouw, niet naar de woningcorporatie of gemeente die opdracht gaf.</p>
-        <div class="f-bewijs">
-          <div class="f-meta"><span class="dom">woltersbv.nl/projecten</span><span class="sep"></span><span>september 2026</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="chapter right find" id="s4">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">03<span class="of">/ 04</span></div><div class="f-tag">Hoe jullie aan dit soort werk komen</div></div>
-        <h2 class="f-kop">Onderdeel van een samenwerkingsverband van zeven bedrijven</h2>
-        <p class="ch-text">Wolters is een van zeven renovatiebedrijven binnen Cooperatio, een platform van samenwerkende bedrijven met naar eigen zeggen dezelfde cultuur, denkwijze en visie. Of nieuwe opdrachtgevers via dat platform binnenkomen of via jullie eigen naam, staat nergens toegelicht.</p>
-        <div class="f-bewijs">
-          <p class="f-quote">&lsquo;een groep samenwerkende renovatie-en onderhoudsbedrijven, allen met dezelfde cultuur, denkwijze en visie&rsquo;</p>
-          <div class="f-meta"><span class="dom">werkenbijcooperatio.nl</span><span class="sep"></span><span>september 2026</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="chapter left find" id="s5">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">04<span class="of">/ 04</span></div><div class="f-tag">Een ambacht dat niets met de verkoop te maken heeft</div></div>
-        <h2 class="f-kop">Bladgoudvergulden staat gewoon naast de rest</h2>
-        <p class="ch-text">Naast het reguliere onderhoudswerk bieden jullie ambachtelijke technieken als bladgoudvergulden, houtimitatie en marmerimitatie. Dat heeft weinig met de rest van de verkoop te maken.</p>
-        <div class="f-bewijs">
-          <div class="f-meta"><span class="dom">woltersbv.nl</span><span class="sep"></span><span>september 2026</span></div>
-        </div>
-      </div>
+      <p class="note">Klik het dossier open.<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
     </div>
   </section>
   <section class="chapter center pivot" id="s3">
@@ -159,27 +161,6 @@
       </div>
     </div>
   </section>
-
-</main>
-
-<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
-<section class="ask" id="ask">
-  <div class="ask-in">
-    <p class="ask-hand">Bewust, of vergeten?</p>
-    <p class="ask-sub">Ik weet natuurlijk niet welke afspraken er met een woningcorporatie gelden over naamsvermelding. Maar bij het Binnenhof staat de opdrachtgever wel gewoon in de tekst.</p>
-    <div class="ask-btns">
-      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
-      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
-    </div>
-    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
-  </div>
-</section>
-
-<main class="journey" id="journey2">
-  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
-    <path class="jp-base" id="jp-base2"></path>
-    <path class="jp-prog" id="jp-prog2"></path>
-  </svg>
   <section class="chapter left">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -190,6 +171,13 @@
       </div>
     </div>
   </section>
+</main>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
   <section class="chapter right">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -240,10 +228,8 @@
       </div>
     </div>
   </section>
-
 </main>
 
-<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 <section class="toon" id="toon">
   <div class="toon-rij">
     <article class="tp" style="--dl:.05s">
@@ -297,6 +283,45 @@
     <div style="--dl:.81s"><span>&#10003;</span><b>Eén ronde als bewijs</b><p>We beginnen met één groep. Levert het niets op, dan weet je dat na één ronde.</p></div>
   </div>
 </section>
+
+<section class="hoeband reveal" id="hoe">
+  <div class="hb-in">
+    <span class="hb-eyebrow">Hoe het werkt</span>
+    <h2 class="hb-h">Zo komt die kaart op je bureau.</h2>
+    <div class="hb-stage">
+      <div class="vslhouder">
+        <button class="vslbox" type="button" aria-label="Speel de video van 1 minuut af">
+          <img src="vsl-poster.jpg" alt="">
+          <span class="vslplay"></span><span class="vslduur">1:01</span>
+        </button>
+      </div>
+    </div>
+    <p class="hb-bij">Een minuut over hoe dit in de praktijk gaat. Dezelfde volgorde, bij een ander bedrijf.</p>
+    <ol class="flow">
+      <li class="fl"><span class="fl-n">01</span><b class="fl-k">Onderzoek</b><span class="fl-t">We lezen jullie eigen berichten, vacatures en jaarstukken tot er iets staat dat ergens over gaat.</span></li>
+      <li class="fl"><span class="fl-n">02</span><b class="fl-k">Kaart</b><span class="fl-t">Met de hand geschreven, met twee dingen erop die alleen over jullie kunnen gaan.</span></li>
+      <li class="fl"><span class="fl-n">03</span><b class="fl-k">Deze pagina</b><span class="fl-t">Wat er niet op een kaart past, met de bron eronder.</span></li>
+      <li class="fl"><span class="fl-n">04</span><b class="fl-k">Bellen</b><span class="fl-t">Een paar dagen later, door ons.</span></li>
+    </ol>
+    <div class="merken">
+      <span class="mk-label">Vertrouwd door o.a.</span>
+      <div class="mk-rij">
+        <i class="mkl mkl-taco" role="img" aria-label="Taco Mundo"></i>
+        <i class="mkl mkl-dorp" role="img" aria-label="Van Dorp"></i>
+        <i class="mkl mkl-tsned" role="img" aria-label="TSNed"></i>
+        <i class="mkl mkl-dwd" role="img" aria-label="Drukwerkdeal"></i>
+        <i class="mkl mkl-otto" role="img" aria-label="OTTO Work Force"></i>
+        <i class="mkl mkl-fortune" role="img" aria-label="Fortune Coffee"></i>
+        <i class="mkl mkl-wonder" role="img" aria-label="Wonder Group"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- het aanbod om te bellen, precies op het punt waar het kwartje valt -->
+
+
+<!-- wat je krijgt, als tastbaar ding in plaats van drie tekstblokken -->
 
 <section class="founder" id="founder">
   <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique" loading="lazy" decoding="async">
@@ -380,5 +405,6 @@
 </div>
 
 <script src="lp-v2.js"></script>
+<script src="lp12.js" defer></script>
 </body>
 </html>
