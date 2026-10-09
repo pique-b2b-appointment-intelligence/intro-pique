@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!-- JANSEN CONVEYORS LP v2 - vorm uit Componenten/lp-v2 (lp.css/lp-v2.js/lp-intro.js), thema-jansen.css.
+     Voorbeeldpagina, gebouwd als demonstratie voor Jansen Conveyors. Rademaker is niet aangeschreven.
+     Klantpagina, dus: geen Pique-mockups, geen founderblok van Simon, geen tracking. -->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jansen Conveyors voor Rademaker</title>
+<meta name="description" content="Een persoonlijk voorstel van Jansen Conveyors voor Rademaker.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="thema-jansen.css">
+<link rel="stylesheet" href="lp.css">
+<style>
+/* Het aanbodblok en de videoband. Alleen thema-tokens, geen vaste kleur. */
+.jc-werk{padding:clamp(2.5rem,6vw,4rem) clamp(1.25rem,4vw,2rem) clamp(1rem,3vw,2rem);max-width:1100px;margin:0 auto}
+.jc-werk-eye{text-align:center;font-family:var(--hand);font-size:1.5rem;color:var(--inkt);margin-bottom:.2rem}
+.jc-werk-h{text-align:center;font-family:var(--serif);font-weight:600;letter-spacing:-.025em;font-size:clamp(1.5rem,2.6vw,2rem);color:var(--ink);margin-bottom:1.8rem}
+
+.band{background:var(--donker);padding:clamp(3rem,7vw,4.5rem) clamp(1.25rem,4vw,2rem)}
+.band-in{max-width:860px;margin:0 auto;text-align:center}
+.band-eye{font-family:var(--hand);font-size:1.5rem;color:var(--accent-l);margin-bottom:.3rem}
+.band-h{font-family:var(--serif);font-weight:600;letter-spacing:-.025em;font-size:clamp(1.45rem,2.6vw,1.95rem);color:var(--wit);margin-bottom:1.6rem}
+.band-frame{position:relative;border-radius:var(--r-blok);overflow:hidden;border:1px solid rgba(var(--wit-rgb),.14);
+  box-shadow:0 34px 80px rgba(var(--zwart-rgb),.42);background:var(--video-bg)}
+.band-frame img{width:100%;display:block}
+.band-cap{font-size:.82rem;color:rgba(var(--wit-rgb),.56);margin-top:.8rem}
+.band-cap b{color:rgba(var(--wit-rgb),.8);font-weight:600}
+</style>
+<script>
+  window.PQ_BEDRIJF      = 'Rademaker';
+  window.PQ_KLANT        = 'pique';
+  window.PQ_CAMPAGNE     = 'jansen-voorbeeld';
+  window.PQ_CAL          = '';
+  window.PQ_VIDEO        = '';
+  window.PQ_POSTER       = 'bart-poster.jpg';
+  window.PQ_TRACK_URL    = '';
+  window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
+  window.PIQUE_INTRO     = {
+    voornaam: 'Teus', bedrijf: 'Rademaker', merk: false,
+    regels: ['Hoi Teus.',
+             'Deze kaart lag niet toevallig op je bureau.',
+             'Ik las hoe jullie bij *Rademaker* een lijn configureren.',
+             'Wil je weten wat me opviel?'],
+    ctaZonderVideo: 'Laat maar zien',
+    tempo: 33, pauze: 420
+  };
+</script>
+<script src="lp-intro.js"></script>
+</head>
+<body>
+<div class="mbar" id="mbar"></div>
+
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="Jansen Conveyors" style="font-family:var(--serif);font-weight:700;font-size:1.15rem;letter-spacing:-.02em">Jansen Conveyors</a>
+  <button class="nav-cta" data-open="sheet" data-tab="bel">Even bellen</button>
+</nav>
+
+<div class="rail" id="rail">
+  <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
+  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">Mijn vraag</span></a>
+  <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
+  <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Hoi Teus. Ik las hoe jullie bij <em>Rademaker</em> een lijn configureren.</div>
+          <div class="sig">Bart</div>
+        </div>
+        <span class="slot-tag">De kaart op je bureau</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1 class="hero-h1">Daarom kreeg je <span class="u">mijn kaart</span>.</h1>
+      <p class="hero-sub">Twee dingen die ik over jullie lijnen las, en de vraag die ik erover heb.</p>
+      <div class="hero-meta">
+        <span class="chip"><i></i>02 bevindingen</span>
+        <span class="chip">2 minuten lezen</span>
+        <span class="chip">Alleen voor <b>Rademaker</b> geschreven</span>
+      </div>
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="bart-poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Hier komt de video van Bart</span>
+      </button>
+      <div class="scrollcue"><i></i><span>Scroll</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true"><path class="jp-base" id="jp-base"></path><path class="jp-prog" id="jp-prog"></path></svg>
+
+  <section class="chapter left" id="s1">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom jij</div>
+        <h2 class="ch-kop">Waarom ik naar je keek.</h2>
+        <p class="ch-text">Teus, wij bouwen in Winterswijk transportbanden voor machinebouwers, en ik zoek bedrijven waar het transport tussen de machines echt iets uitmaakt. Bij Rademaker begon ik bij de Radini en kwam ik uit bij een artikel over jullie engineering. Dat laatste was interessanter.</p>
+        <p class="ch-text"><strong>Dit vond ik.</strong></p>
+        <div class="ch-sign">Bart, Jansen Conveyors</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find" id="s2">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">01<span class="of">/ 02</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">De machines staan al klaar voor de projectengineer</h2>
+        <p class="ch-text">In Link Magazine las ik dat jullie al jaren vol inzetten op configure-to-order, en dat een apart team ervoor moest zorgen dat veelverkochte machines gestandaardiseerd beschikbaar kwamen voor projectengineers. Jij zegt er zelf dit over.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">&lsquo;Zo&rsquo;n model bouw je &eacute;&eacute;n keer en op basis daarvan ga je vervolgens een project configureren en engineeren.&rsquo;</p>
+          <div class="f-meta"><span class="dom">linkmagazine.nl</span><span class="sep"></span><span>28 augustus 2024</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter left find">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">02<span class="of">/ 02</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Bij de Radini schuiven de units erin en eruit</h2>
+        <p class="ch-text">Bij de introductie van de cuprounder stond erbij dat de unit plug-and-play is, en waarom hij op wielen staat. De opstelling bij de bakker verandert dus, en hij verandert vaker dan bij een lijn die er &eacute;&eacute;n keer in gaat.</p>
+        <div class="f-bewijs">
+          <p class="f-quote">&lsquo;De cuprounder is bovendien mobiel, wat niet alleen het reinigen vergemakkelijkt, maar ook noodzakelijk kan zijn bij het aanpassen van de lijnopstelling voor de productie van een ander type product.&rsquo;</p>
+          <div class="f-meta"><span class="dom">bakkersinbedrijf.nl</span><span class="sep"></span><span>10 december 2025</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center pivot" id="s3">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Mijn vraag</div>
+        <p class="ch-pivot">De machines zijn gestandaardiseerd en de units kunnen eraf. Mijn vraag gaat over het stuk ertussen: wie tekent bij jullie de baan van de ene unit naar de volgende, en komt die uit een vaste bibliotheek of elke keer opnieuw?</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="ask" id="ask">
+  <div class="ask-in">
+    <p class="ask-hand">Zal ik je hier even over bellen?</p>
+    <p class="ask-sub">Hieronder staat wat ik zou doen. Wil je het liever horen, dan pak ik de telefoon. Twintig minuten, en je zit nergens aan vast.</p>
+    <div class="ask-btns">
+      <button class="btn-a" data-open="sheet" data-tab="bel">Ja, bel me even</button>
+      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
+    </div>
+    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
+  </div>
+</section>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true"><path class="jp-base" id="jp-base2"></path><path class="jp-prog" id="jp-prog2"></path></svg>
+
+  <section class="chapter left">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dit betekent</div>
+        <h2 class="ch-kop">Wat een tussenstuk kost als het nieuw getekend wordt.</h2>
+        <p class="ch-text">Een bocht of een overgang die per project opnieuw getekend wordt, kost tekentijd, een eigen stuklijst en een eigen tekening in het archief. Zet de bakker er een jaar later een unit tussen, dan begint dat werk weer. Dat is tijd die niet naar deegtechniek gaat, en deegtechniek is waar jullie het van moeten hebben.</p>
+        <p class="ch-text">Ik weet natuurlijk niet hoe jullie dat intern hebben ingericht. Misschien ligt dat transport er allang als standaard, en dan is dit gesprek snel klaar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Hoe het anders kan</div>
+        <p class="ch-text">Wij bouwen rechte banen en bochten uit een eigen programma, de Multi-Way en de Multi-X-serie, met banden die we samen met Royal Kaak hebben ontwikkeld. Wat daar niet in past maken we als special: wissels, haakse overdrachten, liften en buffersystemen.</p>
+        <p class="ch-text">Van de standaardbanen hebben we 3D-modellen. Je tekenaar zet die in de layout zoals hij nu een machine uit jullie eigen bibliotheek plaatst. Het zijn dummy-bestanden, dus er valt niets uit te halen, en de maatvoering is dezelfde als die van de baan die wij bouwen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center phase" id="s4">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Het voorstel</div>
+        <h2 class="ch-kop ch-head">Wat ik voorstel.</h2>
+        <p class="ch-sub">Ik stuur de 3D-bibliotheek op, dan kan je tekenaar een bocht in een layout zetten en zelf zien of de maten kloppen. Daarna twintig minuten over &eacute;&eacute;n lijn waar het transport nu per project getekend wordt.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="jc-werk" id="toon">
+  <div class="jc-werk-eye reveal">Wat we leveren</div>
+  <h2 class="jc-werk-h reveal">Uit Winterswijk, uit het eigen programma.</h2>
+  <div class="vw">
+    <div style="--dl:.55s"><span>&#10003;</span><b>Banen uit een vast programma</b><p>Rechte banen en bochten uit de Multi-Way en Multi-X-serie, met onze eigen banden, ontwikkeld met Royal Kaak.</p></div>
+    <div style="--dl:.68s"><span>&#10003;</span><b>3D-modellen voor je layout</b><p>Dummy-bestanden met de maatvoering van de echte baan, zodat je tekenaar verder kan zonder op ons te wachten.</p></div>
+    <div style="--dl:.81s"><span>&#10003;</span><b>Specials als het standaard niet past</b><p>Wissels, haakse overdrachten, liften en buffersystemen, gebouwd in onze eigen werkplaats.</p></div>
+  </div>
+</section>
+
+<section class="band" id="uitleg">
+  <div class="band-in">
+    <div class="band-eye reveal">Liever de uitleg horen</div>
+    <h2 class="band-h reveal">Vier minuten over het transport tussen jullie units.</h2>
+    <div class="band-frame reveal"><img src="bart-uitleg-poster.jpg" alt="Plaatshouder voor de video van Bart" loading="lazy" decoding="async"></div>
+    <p class="band-cap reveal"><b>Plaatshouder.</b> Hier komt de opname van Bart, met de layout erbij op het scherm.</p>
+  </div>
+</section>
+
+<section class="founder geenfoto" id="founder">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Ik ben Bart en ik doe de verkoop bij Jansen Conveyors in Winterswijk. Wat begon als familiebedrijf dat transportsystemen maakte voor Nederlandse machinebouwers, bouwt nu banen voor food en packaging in West- en Zuid-Europa.</p>
+      <p>We maken alles in onze eigen werkplaats, een half uur rijden van de Duitse grens. Korte lijnen en meedenken met de tekenaar, daar hebben we het van.</p>
+    </div>
+    <p class="fo-name"><strong>Bart Rengelink</strong>, Jansen Conveyors</p>
+  </div>
+</section>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Even kennismaken?</h2>
+    <p class="cta-sub reveal">Twintig minuten over &eacute;&eacute;n lijn. De 3D-modellen stuur ik vooraf op, dan heb je er ook iets aan als we verder niets doen. Past het niet, dan is dat ook prima.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-a" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+    </div>
+    <p class="cta-alt reveal">Liever eerst even schriftelijk? <a href="mailto:brengelink@jansenmetalproducts.nl?subject=Rademaker%20%C3%97%20Jansen%20Conveyors">Mail me een korte vraag.</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo"><span style="font-family:var(--serif);font-weight:700;font-size:1.25rem;color:var(--ink)">Jansen Conveyors</span></div>
+  <div class="ft-meta">Transportbanden en complete lijnen uit standaardcomponenten &nbsp;&middot;&nbsp; <a href="mailto:info@jansenconveyors.nl">info@jansenconveyors.nl</a><br>Snelliusstraat 15, Winterswijk &nbsp;&middot;&nbsp; &copy; 2026 Jansen Conveyors, onderdeel van Jansen Metal Products<br><br>Voorbeeldpagina, gemaakt als demonstratie voor Jansen Conveyors. Rademaker is niet aangeschreven.</div>
+</footer>
+
+<div class="dock" id="dock">
+  <span class="dock-t"><b>Even bellen over wat ik zag?</b> 20 minuten.</span>
+  <button class="dock-b" data-open="sheet" data-tab="bel">Plannen</button>
+  <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
+</div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Plan een gesprek">
+    <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
+    <div class="sheet-host">
+      <img src="bart-poster.jpg" alt="">
+      <div><div class="n">20 minuten met Bart</div><div class="s">Ik bel je op het moment dat jij aangeeft.</div></div>
+    </div>
+    <div class="sheet-tabs">
+      <button data-tab="plan">Zelf een moment kiezen</button>
+      <button class="on" data-tab="bel">Laat mij terugbellen</button>
+    </div>
+    <div class="panes">
+    <div class="pane" id="pane-plan">
+      <div id="cal-wrap"><div id="cal-embed"></div>
+        <div class="cal-skel" id="calskel"><div class="kop"></div>
+          <div class="grid"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u><u class="o"></u><u></u><u></u><u class="o"></u><u></u><u></u><u></u><u></u><u class="o"></u><u></u><u class="o"></u><u></u><u></u><u></u></div>
+          <div class="glans"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pane on" id="pane-bel">
+      <form id="belform">
+        <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" value="Teus" required></div>
+        <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.35rem">Wanneer schikt het?</label>
+        <div class="slots" id="slots">
+          <button type="button" data-v="Vandaag, later vanmiddag">Later vanmiddag</button>
+          <button type="button" data-v="Morgenochtend">Morgenochtend</button>
+          <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
+          <button type="button" data-v="Deze week, maakt niet uit">Deze week, maakt niet uit</button>
+        </div>
+        <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
+        <p class="sheet-note">Ik bel zelf. Je nummer gaat nergens anders heen en komt op geen enkele lijst.</p>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script src="lp-v2.js"></script>
+<script>
+  /* Plaatshouder: zolang er geen opname is, brengt de videorij je naar de band. */
+  (function () {
+    var rij = document.getElementById('vrow'), doel = document.getElementById('uitleg');
+    if (!rij || !doel || window.PQ_VIDEO) return;
+    rij.addEventListener('click', function (e) {
+      e.stopImmediatePropagation();
+      doel.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }, true);
+  })();
+</script>
+</body>
+</html>

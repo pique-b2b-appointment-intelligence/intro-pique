@@ -1,0 +1,65 @@
+/* ============================================================
+   THEMA - Jansen Conveyors
+   Enige bestand dat per klant verschilt. lp.css kent geen vaste kleur.
+   Kleuren komen uit hun eigen huisstijl: het blauw uit het woordmerk
+   (#005490) en de iconenset (#008BD2), het diepe marine #012A40 en het
+   oranje #FF842F, alle vier gemeten in dist/assets/app-8flH4AYZ.css en
+   in media/Jansen_Conveyors_logo op jansenconveyors.nl, 9 oktober 2026.
+   Elke kleur staat twee keer: als hex en als losse kanalen voor rgba().
+   ============================================================ */
+:root{
+  /* -- accent: Jansen-blauw --------------------------------- */
+  --accent:#0A6391;        --accent-rgb:10,99,145;     /* lijnen, labels, dots  */
+  --accent-l:#2FA4DE;      --accent-l-rgb:47,164,222;  /* knoppen, accent op donker */
+  --accent-h:#63BDE8;                                  /* knop bij hover        */
+  --op-accent:#03212F;                                 /* tekst op een accentknop */
+  --inkt:#0D5680;          --inkt-rgb:13,86,128;       /* handgeschreven accent */
+
+  /* -- vlakken en tekst ------------------------------------- */
+  --bg:#F7F6F1;            --bg-rgb:247,246,241;        /* de pagina             */
+  --ink:#11232E;           --ink-rgb:17,35,46;          /* tekst                 */
+  --donker:#012A40;        --donker-rgb:1,42,64;        /* hero, kantelpunt, CTA */
+  --dieper:#011E2E;        --dieper-rgb:1,30,46;        /* overlays              */
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.68);                      /* bodytekst             */
+  --ink3:rgba(var(--ink-rgb),.46);                      /* bijschrift, bron      */
+  --line:rgba(var(--ink-rgb),.14);                      /* haarlijnen, randen    */
+
+  /* -- papier: koel wit met een grijze onderkant ------------ */
+  --pap-0:#FFFFFE;       --pap-0-rgb:255,255,254;       /* het knipsel           */
+  --pap-1:#FCFCFA;                                      /* bovenkant papiertje   */
+  --pap-2:#E9EAE4;                                      /* onderkant papiertje   */
+  --tape-rgb:214,218,214;                               /* plakband              */
+  --hand-ink:#13303F;      --hand-rgb:19,48,63;         /* handschrift           */
+
+  /* -- overig ----------------------------------------------- */
+  --goed:#1F7A52;          --goed-rgb:31,122,82;        /* vinkje                */
+  --let-op:#C2500C;        --let-op-rgb:194,80,12;      /* oordeel dat niet goed is */
+  --chrome:#EDEEE9;                                     /* browserbalk in de mockup */
+  --video-bg:#03151F;
+
+  /* -- typografie: Barlow, technisch en recht --------------- */
+  --serif:'Barlow',system-ui,sans-serif;
+  --sans:'Barlow',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;                     /* Barlow heeft geen SOFT/WONK-as */
+
+  /* -- vorm ------------------------------------------------- */
+  --r-pap:3px;             /* papiertjes: bijna vierkant */
+  --r-kaart:12px;
+  --r-blok:16px;
+  --r-pil:100px;
+
+  /* -- beweging --------------------------------------------- */
+  --ease:cubic-bezier(.16,1,.3,1);
+
+  /* -- maten ------------------------------------------------ */
+  --fs-h:clamp(1.9rem,3vw,2.7rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;              /* wordt door lp.js gezet, niet aanpassen */
+}
+/* Barlow is een smalle industriele sans, geen Fraunces. Koppen strakker,
+   en de citaten recht, want er is geen serif-italic in dit merk. */
+.hero-h1,.ch-kop,.f-kop,.ch-pivot,.cta-h,.tp h3{font-weight:600;letter-spacing:-.022em}
+.f-quote,.ch-pull{font-style:normal}
