@@ -57,30 +57,28 @@ het voorstelblok wegviel bij mensen die Simon persoonlijk kent, is daarmee verva
 tellscan geeft per pagina één treffer, op die vaste hero-kop. Dat is de bekende en
 toegestane treffer uit CLAUDE.md.
 
-## De tarieven
+## Geen prijs meer op de pagina
 
-Simon, 6 oktober 2026: we hanteren nu lagere prijzen, en acquisitie op deze manier kan al
-vanaf één à twee mille per maand. Dat getal zit in de onderste regel hieronder.
+Simon, 12 oktober 2026: de sectie 'Wat het kost' mag eraf. De staffel is uit `bouw.py`
+gehaald, net als de railverwijzing, de tabelstijl en alle copy die ernaar wees. De prijs
+is weer een gespreksonderwerp. Op beide pagina's staat nu dat het aantal benaderingen het
+bedrag bepaalt en dat Simon het in het gesprek voorrekent.
 
-Bron is `Leads/De-Rooij-Montage/voorstel-de-rooij-montage.html` (getekend), aangevuld met
-`Leads/STILL/voorstel-still.html` en `Componenten/voorstel-pagina/otto.json`.
-`pique.agency/tarieven` bestaat niet meer en zet door naar `/contact`.
+De staffel zelf staat in het geheugen onder `reference-staffel-okt2026`.
 
-Validatietraject van twee maanden, per maand, exclusief btw:
+## Twee video's, elk op zijn plek
 
-- 50 per maand: **1.625 zelf bellen**, 2.875 met nabellen. Per benadering 32,50 / 57,50.
-- 100 per maand: 2.750 zelf, 4.750 met nabellen. Per benadering 27,50 / 47,50.
-- 200 per maand: 4.500 zelf, 7.500 met nabellen. Per benadering 22,50 / 37,50.
+`PQ_VIDEO` en `PQ_POSTER` moeten in de paginaconfig staan. Zonder die twee zet
+`lp-intro.js` `heeftVideo` op false, en dan doet de knop 'Ja, laat maar zien' in de
+introlaag niets: hij sluit de laag en toont geen video. Dat was op 12 oktober de klacht,
+en het kwam doordat ik die regels op 6 oktober had weggehaald toen de videoknop uit de
+hero ging.
 
-Ga je daarna door, dan loopt het per kwartaal en zakt het verder: 100 per maand wordt
-3.750 met nabellen en 2.150 zelf. Zelf bellen betekent altijd geen afspraakgarantie.
-
-Het tarief per benadering loopt omhoog als het aantal daalt, want de voorbereiding krimpt
-niet mee met de order. Zeg dat erbij, anders leest de bovenste regel als een boete.
-
-Kloppen deze getallen niet meer, pas dan `TARIEVEN` in `bouw.py` aan. Hij staat op een
-plek. De volle context staat in het geheugen onder `reference-staffel-okt2026`, inclusief
-het aparte tarief voor een eigen klantbestand (Drukwerkdeal, vanaf 5,00 per benadering).
+- **introlaag**: `simon-staand.mp4` met `simon-staand-poster.jpg`, staand, opent in een
+  overlay. Zo doet odido-v12 het ook.
+- **donkere band**: de VSL van 1:01, liggend. `lp12.js` laadt `vsl-720-zacht.mp4` met een
+  pad zonder prefix, dus die pagina moet naast dat bestand staan. Dat is nog een reden
+  waarom de pagina's rechtstreeks in `pique/` horen.
 
 ## Bouwen
 

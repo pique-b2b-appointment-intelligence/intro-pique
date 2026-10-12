@@ -30,16 +30,6 @@ MODEL_V12 = UIT / "odido-v12.html"   # de drie maquettes komen hier letterlijk u
 # eind september 2026, met telefonische opvolging door Pique. pique.agency/tarieven
 # bestaat niet meer en zet door naar /contact, dus die kan geen bron meer zijn.
 
-# De cases staan live op pique.agency/cases. Cijfers hier letterlijk daarvandaan.
-CASES = {
-    "zon": ("pique.agency/cases/zon-en-laadinfra", "de campagne waar jij in zat"),
-    "wegmetexcel": ("pique.agency/cases/wegmetexcel", "WegMetExcel"),
-    "potentiel": ("pique.agency/cases/potentiel", "Potentiel"),
-    "ogg": ("pique.agency/cases/online-goed-gevonden", "Online Goed Gevonden"),
-    "azora": ("pique.agency/cases/azora-studio", "Azora Studio"),
-    "geduld": ("pique.agency/cases/online-geduld", "Online Geduld"),
-    "backbone": ("pique.agency/cases/backbone", "Backbone"),
-}
 
 
 PROSPECTEN = {
@@ -542,18 +532,14 @@ PROSPECTEN = {
         "tijdlijn": [("1 jul", "ons gesprek"), ("jul", "nog niet aan de orde"),
                      ("jan", "je gaat fulltime"), ("nu", "deze kaart")],
         "tl_hand": "Vandaar deze kaart, en niet die in januari.",
-        "case": "potentiel",
-        "case_kop": "Vijftig kaarten, drie klanten.",
-        "case_text": "Een health club met een aanbod dat je moeilijk in een advertentie uitlegt "
-                     "wilde weten of vijftig kaarten genoeg zijn om iets te bewijzen. Vijftig "
-                     "namen, elk met een eigen aanleiding. <strong>Negen mensen reageerden en "
-                     "drie daarvan werden klant.</strong> "
-                     "</p><p class='ch-text'>Over al onze campagnes samen, ruim tienduizend "
-                     "benaderingen: <strong>98 procent komt op het bureau</strong>, er volgen "
-                     "64,5 scans per honderd kaarten, en 9,5 procent van de scanners plant een "
-                     "gesprek. Honderd kaarten worden zo ongeveer zes gesprekken. Cold email "
-                     "blijft onder de 1 procent. Wat het bij jou wordt hangt af van je aanbod, "
-                     "je lijst en de opvolging.",
+        "cijfer_kop": "Wat er van honderd kaarten overblijft.",
+        "cijfer_text":
+                       "Over al onze campagnes samen, ruim tienduizend benaderingen komt "
+                       "<strong>98 procent op het bureau</strong>, volgen er 64,5 scans per "
+                       "honderd kaarten en plant 9,5 procent van de scanners een gesprek. "
+                       "Honderd kaarten worden zo ongeveer zes gesprekken. Cold email blijft "
+                       "onder de 1 procent. Wat het bij jou wordt hangt af van je aanbod, je "
+                       "lijst en de opvolging.",
         "voorstel_sub": "Honderd DGA's per maand, twee maanden, en we bellen de scans na.",
         "cta_sub": "Twintig minuten, wanneer het jou uitkomt. Dan reken ik ook voor wat het bij "
                    "jouw aantal kost. Blijkt januari nog te vroeg, dan is dat een prima uitkomst.",
@@ -649,18 +635,14 @@ PROSPECTEN = {
         "tijdlijn": [("11 aug", "kennismaking via Aquila"), ("aug", "twee bedragen"),
                      ("aug", "je zat vol"), ("nu", "jij bepaalt het aantal")],
         "tl_hand": "Volgorde omgedraaid.",
-        "case": "azora",
-        "case_kop": "Vier directeuren die nooit terugbelden.",
-        "case_text": "Azora maakt videocontent voor marketingbureaus en SaaS-bedrijven, een "
-                     "markt waarin iedereen al door iedereen benaderd wordt. De vraag ging over "
-                     "vier directeuren die nooit hadden gereageerd op bellen, mailen of "
-                     "LinkedIn. <strong>Alle vier zaten binnen zes weken aan tafel.</strong> "
-                     "</p><p class='ch-text'>Over al onze campagnes samen, ruim tienduizend "
-                     "benaderingen: <strong>98 procent komt op het bureau</strong>, er volgen "
-                     "64,5 scans per honderd kaarten, en 9,5 procent van de scanners plant een "
-                     "gesprek. Honderd kaarten worden zo ongeveer zes gesprekken. Cold email "
-                     "blijft onder de 1 procent. Wat het bij jou wordt hangt af van je aanbod, "
-                     "je lijst en de opvolging.",
+        "cijfer_kop": "Wat er van honderd kaarten overblijft.",
+        "cijfer_text":
+                       "Over al onze campagnes samen, ruim tienduizend benaderingen komt "
+                       "<strong>98 procent op het bureau</strong>, volgen er 64,5 scans per "
+                       "honderd kaarten en plant 9,5 procent van de scanners een gesprek. "
+                       "Honderd kaarten worden zo ongeveer zes gesprekken. Cold email blijft "
+                       "onder de 1 procent. Wat het bij jou wordt hangt af van je aanbod, je "
+                       "lijst en de opvolging.",
         "voorstel_sub": "Honderd ondernemers per maand die net verkocht hebben, twee maanden, en "
                         "we bellen de scans na.",
         "cta_sub": "Twintig minuten. Zit je nog steeds vol, dan is dit het gesprek om te bepalen "
@@ -736,7 +718,6 @@ def bouw(data: dict, voorbeeld: str) -> Path:
                           .replace('<div class="mk-adres">pique.agency</div>',
                                    '<div class="mk-adres">jullie-eigen-pagina</div>')
                           .replace("Odido Zakelijk", bedrijf))
-    case_url, case_naam = CASES[data["case"]]
 
     chips = "".join(
         f'<span class="chip">{c}</span>' if i else f'<span class="chip"><i></i>{c}</span>'
@@ -901,10 +882,9 @@ def bouw(data: dict, voorbeeld: str) -> Path:
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="ch-eyebrow">{case_naam.capitalize() if case_naam.startswith('de ') else case_naam}</div>
-        <h2 class="ch-kop">{data['case_kop']}</h2>
-        <p class="ch-text">{data['case_text']}</p>
-        <p class="ch-text"><a href="https://{case_url}">De hele campagne staat op {case_url}</a></p>
+        <div class="ch-eyebrow">Wat dit doet</div>
+        <h2 class="ch-kop">{data['cijfer_kop']}</h2>
+        <p class="ch-text">{data['cijfer_text']}</p>
       </div>
     </div>
   </section>
