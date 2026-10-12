@@ -9,7 +9,8 @@ uitgeknipt, zodat een wijziging aan het component hier automatisch meekomt.
 Twee dingen wijken bewust af van het voorbeeld:
   1. De videoknop in de hero is eruit. De VSL staat onderaan, vlak voor de CTA.
      Twee video's op een pagina laat de lezer kiezen welke hij overslaat.
-  2. Er staat een tariefstaffel in de journey, want dat is de reden van deze batch.
+  2. De tariefstaffel is er per 12 oktober 2026 uit. De prijs is weer een onderwerp
+     voor het gesprek, niet voor de pagina.
 
 De inhoud staat per prospect in PROSPECTEN. Elke feitelijke bevinding heeft een bron
 met datum, meestal de kaart die de ontvanger zelf nog heeft liggen.
@@ -28,11 +29,6 @@ MODEL_V12 = UIT / "odido-v12.html"   # de drie maquettes komen hier letterlijk u
 # Laatste staffel die in een echt verstuurd voorstel heeft gestaan: Leads/STILL,
 # eind september 2026, met telefonische opvolging door Pique. pique.agency/tarieven
 # bestaat niet meer en zet door naar /contact, dus die kan geen bron meer zijn.
-TARIEVEN = [
-    ("50 per maand", "&euro; 1.625", "&euro; 2.875", "&euro; 32,50 / &euro; 57,50"),
-    ("100 per maand", "&euro; 2.750", "&euro; 4.750", "&euro; 27,50 / &euro; 47,50"),
-    ("200 per maand", "&euro; 4.500", "&euro; 7.500", "&euro; 22,50 / &euro; 37,50"),
-]
 
 # De cases staan live op pique.agency/cases. Cijfers hier letterlijk daarvandaan.
 CASES = {
@@ -534,16 +530,17 @@ PROSPECTEN = {
                       "RA-achtergrond veel prominenter.'",
              "dom": "gespreksnotitie JR Finance &times; Pique", "datum": "1 juli 2026"},
             {"tag": "Waarom deze kaart", "kop": "Je betaalt per benadering",
-             "text": "Hieronder staat wat het kost per bedrijf dat wordt aangeschreven, en "
-                     "vijftig per maand is de onderkant. Dat is iets anders dan een maandbedrag "
-                     "dat doorloopt of je nu klanten binnenhaalt of niet, en het past beter bij "
-                     "iemand die net begint."},
+             "text": "Je kiest zelf hoeveel DGA's er per maand worden aangeschreven, en daar "
+                     "hangt het bedrag aan. Dat is iets anders dan een maandbedrag dat doorloopt "
+                     "of je nu klanten binnenhaalt of niet, en het past beter bij iemand die in "
+                     "januari begint. Wat het bij jouw aantal wordt, reken ik in dat gesprek "
+                     "voor je uit."},
         ],
         "pivot": "Drie klanten van vijf mille is een jaar werk als je op gevoel zoekt, en een "
                  "kwestie van honderd goede namen als je weet welke DGA net verkocht heeft of "
                  "net een holding heeft opgezet.",
         "tijdlijn": [("1 jul", "ons gesprek"), ("jul", "nog niet aan de orde"),
-                     ("jan", "je gaat fulltime"), ("nu", "alvast de prijs")],
+                     ("jan", "je gaat fulltime"), ("nu", "deze kaart")],
         "tl_hand": "Vandaar deze kaart, en niet die in januari.",
         "case": "potentiel",
         "case_kop": "Vijftig kaarten, drie klanten.",
@@ -558,8 +555,8 @@ PROSPECTEN = {
                      "blijft onder de 1 procent. Wat het bij jou wordt hangt af van je aanbod, "
                      "je lijst en de opvolging.",
         "voorstel_sub": "Honderd DGA's per maand, twee maanden, en we bellen de scans na.",
-        "cta_sub": "Twintig minuten, wanneer het jou uitkomt. Blijkt januari ook nog te vroeg, "
-                   "dan is dat een prima uitkomst van dat gesprek.",
+        "cta_sub": "Twintig minuten, wanneer het jou uitkomt. Dan reken ik ook voor wat het bij "
+                   "jouw aantal kost. Blijkt januari nog te vroeg, dan is dat een prima uitkomst.",
         "dock": "Even over januari?",
     },
     "finovion": {
@@ -624,7 +621,7 @@ PROSPECTEN = {
         "sub": "Je zat vol in augustus, en dat is een ander probleem dan te weinig klanten "
                "hebben. Het vraagt om een ander soort lijst, en dat onderscheid maakte "
                "ik toen niet.",
-        "chips": ["Tweede kaart", "2 minuten lezen", "Nu met de staffel erbij"],
+        "chips": ["Tweede kaart", "2 minuten lezen", "Wat de aanpak doet"],
         "aanloop_kop": "Via Aquila kwamen we bij één segment uit.",
         "aanloop": "In augustus spraken we elkaar via Luke en Alvinho. Je zat vol, dus de vraag "
                    "ging over welk soort klant er dan nog bij moest. Daar kwam de ondernemer "
@@ -641,9 +638,10 @@ PROSPECTEN = {
              "dom": "gespreksnotitie Studio Rendement &times; Pique",
              "datum": "11 augustus 2026"},
             {"tag": "Wat er veranderd is", "kop": "Jij zet de kraan open",
-             "text": "Het aantal benaderingen per maand bepaalt de prijs, en dat aantal kun je "
-                     "elke maand bijstellen. Loopt je agenda vol, dan zet je het stil. Dat is "
-                     "het hele verschil met een campagne die doorloopt."},
+             "text": "Het aantal benaderingen per maand bepaalt wat het kost, en dat aantal kun "
+                     "je elke maand bijstellen. Loopt je agenda vol, dan zet je het stil. Dat is "
+                     "het hele verschil met een campagne die doorloopt. Wat het bij jouw aantal "
+                     "wordt, reken ik in dat gesprek voor je uit."},
         ],
         "pivot": "Een ondernemer die net verkocht heeft, beslist binnen een paar maanden waar "
                  "dat geld heen gaat. Die momenten zijn te zien in het handelsregister, en dat "
@@ -665,8 +663,8 @@ PROSPECTEN = {
                      "je lijst en de opvolging.",
         "voorstel_sub": "Honderd ondernemers per maand die net verkocht hebben, twee maanden, en "
                         "we bellen de scans na.",
-        "cta_sub": "Twintig minuten. Zit je nog steeds vol, dan is dit precies het gesprek om te "
-                   "bepalen wie je er dan wél bij wil.",
+        "cta_sub": "Twintig minuten. Zit je nog steeds vol, dan is dit het gesprek om te bepalen "
+                   "wie je er dan wél bij wil, en wat dat kost.",
         "dock": "Even over het aantal?",
     },
 }
@@ -679,55 +677,10 @@ def knip(bron: str, start: str, eind: str) -> str:
     return bron[i:j]
 
 
-def tarieventabel() -> str:
-    rijen = "".join(
-        f'<tr><th scope="row">{aantal}</th><td>{zelf}</td><td>{wij}</td><td class="pb">{pb}</td></tr>'
-        for aantal, zelf, wij, pb in TARIEVEN
-    )
-    return f"""
-  <section class="chapter center" id="tarief">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="ch-eyebrow">Wat het kost</div>
-        <table class="staffel">
-          <caption>Bedragen per maand over een traject van twee maanden, exclusief btw. Er komt geen setupfee overheen.</caption>
-          <thead>
-            <tr><th scope="col">Aantal</th><th scope="col">Je belt zelf</th><th scope="col">Wij bellen na</th><th scope="col">Per benadering</th></tr>
-          </thead>
-          <tbody>{rijen}</tbody>
-        </table>
-        <p class="staffel-note">Research, kaart, pagina, drukwerk, porto en het dashboard zitten
-        erin. Bel je
-        de scans zelf na, dan krijg je het telefoonnummer en de volledige context per prospect,
-        en vervalt de afspraakgarantie, want dan heb ik de gesprekken niet in de hand. Ga je na
-        die twee maanden door, dan loopt dat per kwartaal en zakt het tarief verder: honderd per
-        maand wordt dan &euro;&nbsp;3.750 met nabellen en &euro;&nbsp;2.150 als je zelf belt.</p>
-      </div>
-    </div>
-  </section>"""
 
 
 STIJL = """
 <style>
-  /* Alleen voor deze batch. Layout hoort niet in het thema en lp.css blijft
-     merkvrij, dus staat het hier, op tokens. */
-  .staffel{width:100%;border-collapse:collapse;margin:1.6rem 0 .9rem;font-size:.92rem}
-  .staffel caption{caption-side:bottom;text-align:left;padding-top:.9rem;font-size:.78rem;color:var(--ink2)}
-  .staffel th,.staffel td{text-align:left;padding:.7rem .9rem;border-bottom:1px solid rgba(var(--ink-rgb),.12)}
-  .staffel thead th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);font-weight:600}
-  .staffel tbody th{font-weight:600}
-  .staffel tbody tr:nth-child(2){background:rgba(var(--accent-rgb),.06)}
-  .staffel td{font-variant-numeric:tabular-nums}
-  .staffel td:nth-child(2){font-weight:600;color:var(--accent-h)}
-  .staffel td:nth-child(3){font-weight:600}
-  .staffel td.pb{color:var(--ink3);font-size:.86em;white-space:nowrap}
-  .staffel-note{font-size:.86rem;line-height:1.65;color:var(--ink2);max-width:52ch}
-  @media(max-width:560px){
-    .staffel{font-size:.84rem}
-    .staffel th,.staffel td{padding:.55rem .4rem}
-    .staffel td.pb,.staffel thead th:nth-child(4){display:none}
-  }
   /* lp.css styleert geen links in de lopende tekst, want de research-pagina's
      hebben er geen. Deze batch verwijst wel naar de cases, dus hier wel. */
   .ch-text a{color:var(--accent-h);text-decoration:none;
@@ -830,7 +783,7 @@ def bouw(data: dict, voorbeeld: str) -> Path:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pique voor {bedrijf}</title>
-<meta name="description" content="Een tweede voorstel voor {bedrijf}, met de staffel erbij.">
+<meta name="description" content="Een tweede voorstel voor {bedrijf}.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -847,6 +800,8 @@ def bouw(data: dict, voorbeeld: str) -> Path:
   window.PQ_KLANT        = 'pique';
   window.PQ_CAMPAGNE     = 'opnieuw-okt26';
   window.PQ_CAL          = 'simon-kempers/belafspraak-pique';
+  window.PQ_VIDEO        = 'simon-staand.mp4';
+  window.PQ_POSTER       = 'simon-staand-poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
   window.PIQUE_INTRO     = {{ voornaam: '{voornaam}', bedrijf: '{bedrijf}' }};
@@ -861,7 +816,6 @@ def bouw(data: dict, voorbeeld: str) -> Path:
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Waarom weer</span></a>
   <a href="#s2"><span class="rd"></span><span class="rl">Wat er anders is</span></a>
-  <a href="#tarief"><span class="rd"></span><span class="rl">Wat het kost</span></a>
   <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
 </div>
@@ -909,7 +863,6 @@ def bouw(data: dict, voorbeeld: str) -> Path:
     </div>
   </section>
 {finds}
-{tarieventabel()}
   <section class="chapter center pivot" id="s3">
     <div class="ch-inner">
       <span class="ch-dot"></span>

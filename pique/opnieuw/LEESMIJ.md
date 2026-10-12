@@ -3,23 +3,30 @@
 Batch oktober 2026. De selectie komt uit
 `Leads/Heractivatie-Gesproken/Gesproken-Bedrijven-okt2026.csv`.
 
-**Live staan er drie, op de v12-standaard** (12 oktober 2026):
+**Live staan er twee, op de v12-standaard** (12 oktober 2026):
 
-- https://intro-pique.agency/pique/opnieuw/finovion (Wichard Hendriks)
-- https://intro-pique.agency/pique/opnieuw/jr-finance (Jason Ramkisoen)
-- https://intro-pique.agency/pique/opnieuw/studio-rendement (Tjerk Moraal)
+- https://intro-pique.agency/pique/jr-finance (Jason Ramkisoen)
+- https://intro-pique.agency/pique/studio-rendement (Tjerk Moraal)
 
-De negen andere pagina's uit deze batch stonden nog op v2 en zijn van schijf gehaald.
-Ze zijn met één commando terug: `python3 bouw.py <sleutel>`, daarna de omzetter en
-`na-omzetten.py`. De sleutels staan in `PROSPECTEN`.
+Finovion is er op 12 oktober uitgehaald. De pagina's staan rechtstreeks in `pique/`,
+zonder tussenmap in de URL. Deze map houdt alleen nog de bouwbestanden.
+
+De tien andere prospects staan nog in `PROSPECTEN` en zijn met de keten hieronder terug
+te maken. Let op: hun slug mag niet botsen met een bestaande pagina in `pique/`.
+`finovion.html` bestaat daar al, van de franchisebatch.
 
 ## De bouwketen, drie stappen
 
-    python3 bouw.py finovion jrfinance studiorendement
-    python3 ../../../../Context/tools/lp-v12-omzetter.py . --schrijf
-    python3 na-omzetten.py
+    python3 bouw.py jrfinance studiorendement
+    cd ../..                                      # naar Klanten/BCS
+    python3 ../../Context/tools/lp-v12-omzetter.py pique/jr-finance.html --schrijf
+    python3 ../../Context/tools/lp-v12-omzetter.py pique/studio-rendement.html --schrijf
+    cd pique/opnieuw && python3 na-omzetten.py
 
-Stap twee zet de v2-opbouw om naar v12: dossier, wat-dit-paneel, brug, donkere band.
+**Stap twee moet vanuit `Klanten/BCS` draaien met een pad dat `pique/` bevat.** De
+omzetter leidt zijn prefix af uit dat pad: `pique/x.html` geeft prefix leeg, een relatief
+pad als `../x.html` geeft ten onrechte `../` en dan slaat hij de pagina over.
+
 **Stap drie is niet optioneel.** De omzetter hangt een vast paneel in met de regel
 'we hebben je nooit eerder gesproken', en dat is bij deze batch onwaar. `na-omzetten.py`
 vervangt die zin per pagina door wanneer er wél gesproken is.
@@ -28,18 +35,27 @@ vervangt die zin per pagina door wanneer er wél gesproken is.
 
 1. **De aanloop is een bekentenis.** Wat er verstuurd is, wat zij deden, en wat er daarna
    van onze kant uitbleef.
-2. **De staffel staat op de pagina**, als eigen kapittel in het betoog, vlak voor het
-   kantelpunt. Dat is de reden van deze batch: ze hoeven niet te bellen om de prijs te
-   weten.
-3. **De maquettekaart is naamloos.** odido-v12 zet de naam van de ontvanger zelf op die
-   kaart terwijl de bijschriften eronder over 'zijn bureau' gaan. tellscan vangt dat
-   terecht als derde persoon. Hier staat er 'Hoi Jan' op en ondertekent het bedrijf van
-   de ontvanger zelf.
+2. **De staffel staat op de pagina**, als eigen kapittel vlak voor het kantelpunt. Ze
+   hoeven niet te bellen om de prijs te weten.
+3. **De case draagt de huiscijfers.** 98 procent op het bureau, 64,5 scans per honderd
+   kaarten, 9,5 procent van de scanners plant een gesprek, over ruim tienduizend
+   benaderingen, met cold email onder de 1 procent als ijkpunt. Simon op 12 oktober: ze
+   moeten een idee krijgen van hoe sterk deze vorm van acquisitie is. De voetnoot over
+   aanbod, lijst en opvolging hoort daarbij en staat erin.
+4. **De case is per prospect gekozen.** JR Finance krijgt Potentiel, want die bewijst dat
+   vijftig kaarten genoeg zijn. Studio Rendement krijgt Azora, want die bewijst precisie:
+   vier directeuren die nooit terugbelden, alle vier binnen zes weken aan tafel.
+5. **De maquettekaart is naamloos.** odido-v12 zet de naam van de ontvanger op die kaart
+   terwijl de bijschriften eronder over 'zijn bureau' gaan. tellscan vangt dat terecht als
+   derde persoon. Hier staat 'Hoi Jan' op de kaart, ondertekend door het bedrijf van de
+   ontvanger.
 
-Drie dingen uit de v12-standaard zijn bewust overgenomen zoals ze zijn: de vaste hero-kop,
-de vaste kop van het eerste hoofdstuk en het vaste founderblok. Dat laatste betekent dat
-de uitzondering van 6 oktober, waarbij het voorstelblok wegviel bij mensen die Simon
-persoonlijk kent, is vervallen.
+De vaste hero-kop, de vaste kop van het eerste hoofdstuk en het vaste founderblok zijn
+overgenomen zoals de v12-standaard ze voorschrijft. De uitzondering van 6 oktober, waarbij
+het voorstelblok wegviel bij mensen die Simon persoonlijk kent, is daarmee vervallen.
+
+tellscan geeft per pagina één treffer, op die vaste hero-kop. Dat is de bekende en
+toegestane treffer uit CLAUDE.md.
 
 ## De tarieven
 

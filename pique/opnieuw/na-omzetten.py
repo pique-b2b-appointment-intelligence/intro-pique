@@ -24,10 +24,10 @@ HIER = Path(__file__).parent.parent   # de pagina's staan in pique/
 WAAROM = {
     "jr-finance.html":
         "We spraken elkaar op 1 juli, toen acquisitie bij jou nog niet aan de orde was. "
-        "Dit is de tweede kaart, met de prijs erbij.",
+        "Dit is de tweede kaart, nu met wat de aanpak in de praktijk doet.",
     "studio-rendement.html":
         "We spraken elkaar in augustus via Aquila, en daarna bleef het liggen. "
-        "Dit is de tweede kaart, nu met de prijs erbij.",
+        "Dit is de tweede kaart, nu met wat de aanpak in de praktijk doet.",
 }
 
 KOUD = ("We willen je spreken. Dit is acquisitie, we hebben je nooit eerder gesproken, "
