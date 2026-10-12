@@ -15,6 +15,18 @@ De tien andere prospects staan nog in `PROSPECTEN` en zijn met de keten hieronde
 te maken. Let op: hun slug mag niet botsen met een bestaande pagina in `pique/`.
 `finovion.html` bestaat daar al, van de franchisebatch.
 
+## De verzendlijst
+
+`Kaarten-JRFinance-StudioRendement.csv` is de enige lijst die klopt. Twee regels, met de
+kaarttekst, het geverifieerde adres en de goede QR-link.
+
+De kaarttekst belooft geen prijs meer, want die staat niet meer op de pagina. Een kaart
+die iets belooft wat de pagina niet geeft, is erger dan een kaart zonder belofte.
+
+`Kaarten-VERZENDKLAAR-VEROUDERD.csv` is de oude lijst van twaalf. **Druk daar niets uit.**
+De links daarin wijzen naar `/pique/opnieuw/` en die adressen geven 404, en de
+kaartteksten beloven de staffel.
+
 ## De bouwketen, drie stappen
 
     python3 bouw.py jrfinance studiorendement
@@ -31,21 +43,27 @@ pad als `../x.html` geeft ten onrechte `../` en dan slaat hij de pagina over.
 'we hebben je nooit eerder gesproken', en dat is bij deze batch onwaar. `na-omzetten.py`
 vervangt die zin per pagina door wanneer er wél gesproken is.
 
+## Geen cases
+
+Simon, 12 oktober 2026: er mogen geen cases in. Het kapittel met een klantverhaal en de
+link naar `pique.agency/cases` is eruit, en de `CASES`-tabel in `bouw.py` ook. Wat ervoor
+in de plaats staat is wat de aanpak meetbaar doet, zonder een andere klant te noemen: 98
+procent op het bureau, 64,5 scans per honderd kaarten, 9,5 procent van de scanners plant
+een gesprek, over ruim tienduizend benaderingen, met cold email onder de 1 procent als
+ijkpunt, peildatum 19 september 2026. De voetnoot over aanbod, lijst en opvolging hoort
+daarbij en staat erin. Het geheugen houdt die cijfers bij onder reference-pique-huiscijfers.
+
+**Let op de logorij in de donkere band.** Die komt uit het vaste v12-blok en noemt Taco
+Mundo, Van Dorp, TSNed, Drukwerkdeal, OTTO Work Force, Fortune Coffee en Wonder Group
+onder de kop 'Vertrouwd door o.a.'. Een deel daarvan is prospect en geen klant, en
+Drukwerkdeal en OTTO staan zelfs op deze heractivatielijst. Die rij staat er nog. Wil
+Simon echt niets wat naar andere partijen verwijst, dan moet die er ook uit.
+
 ## Wat deze pagina's anders doen dan een koude v12
 
 1. **De aanloop is een bekentenis.** Wat er verstuurd is, wat zij deden, en wat er daarna
    van onze kant uitbleef.
-2. **De staffel staat op de pagina**, als eigen kapittel vlak voor het kantelpunt. Ze
-   hoeven niet te bellen om de prijs te weten.
-3. **De case draagt de huiscijfers.** 98 procent op het bureau, 64,5 scans per honderd
-   kaarten, 9,5 procent van de scanners plant een gesprek, over ruim tienduizend
-   benaderingen, met cold email onder de 1 procent als ijkpunt. Simon op 12 oktober: ze
-   moeten een idee krijgen van hoe sterk deze vorm van acquisitie is. De voetnoot over
-   aanbod, lijst en opvolging hoort daarbij en staat erin.
-4. **De case is per prospect gekozen.** JR Finance krijgt Potentiel, want die bewijst dat
-   vijftig kaarten genoeg zijn. Studio Rendement krijgt Azora, want die bewijst precisie:
-   vier directeuren die nooit terugbelden, alle vier binnen zes weken aan tafel.
-5. **De maquettekaart is naamloos.** odido-v12 zet de naam van de ontvanger op die kaart
+2. **De maquettekaart is naamloos.** odido-v12 zet de naam van de ontvanger op die kaart
    terwijl de bijschriften eronder over 'zijn bureau' gaan. tellscan vangt dat terecht als
    derde persoon. Hier staat 'Hoi Jan' op de kaart, ondertekend door het bedrijf van de
    ontvanger.
