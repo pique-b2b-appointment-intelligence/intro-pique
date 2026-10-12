@@ -1,54 +1,45 @@
 # Heractivatie: mensen met wie al gesproken is
 
-Batch oktober 2026, twaalf pagina's. De selectie komt uit
-`Leads/Heractivatie-Gesproken/Gesproken-Bedrijven-okt2026.csv` en is door Simon
-teruggebracht tot deze twaalf.
+Batch oktober 2026. De selectie komt uit
+`Leads/Heractivatie-Gesproken/Gesproken-Bedrijven-okt2026.csv`.
 
-Live op `intro-pique.agency/pique/opnieuw/<slug>`.
+**Live staan er drie, op de v12-standaard** (12 oktober 2026):
 
-| sleutel | bedrijf | wie | waarom hij op de lijst staat |
-|---|---|---|---|
-| audion | Audion Packaging Machines | Michel van der Feer | afspraak gehad, daarna stil |
-| twinfloor | Twinfloor | Albert den Boer | terugbeldag 14 sep gemist |
-| sweere | Sweere | Theo Sweere | één gesprek, daarna niets |
-| ash | ASH Carrosserie | Roel Maas | terugbeldag 2 sep gemist |
-| unica | Unica | Susan de Vree | gaf de feedback die de triggerpoort opleverde |
-| bonotech | BonoTech Bedrijfswagens | Arjan Bonouvrie | gesprek 22 sep, niets vastgelegd |
-| vervaet | Vervaet | Jonathan Hoekman | gesprek 4 sep, opname zonder geluid |
-| nederburgh | Nederburgh | Daniel Medina Diaz | offerte op duizend brieven, te duur |
-| acendae | Acendae | Pramuka Godakanda | met een andere partij gestart |
-| jrfinance | JR Finance | Jason Ramkisoen | was nog niet toe aan acquisitie |
-| finovion | Finovion | Wichard Hendriks | andere prioriteiten, wil contact in december |
-| studiorendement | Studio Rendement | Tjerk Moraal | zat vol, prijs was het probleem niet |
+- https://intro-pique.agency/pique/opnieuw/finovion (Wichard Hendriks)
+- https://intro-pique.agency/pique/opnieuw/jr-finance (Jason Ramkisoen)
+- https://intro-pique.agency/pique/opnieuw/studio-rendement (Tjerk Moraal)
 
-## Wat deze paginavorm anders doet
+De negen andere pagina's uit deze batch stonden nog op v2 en zijn van schijf gehaald.
+Ze zijn met één commando terug: `python3 bouw.py <sleutel>`, daarna de omzetter en
+`na-omzetten.py`. De sleutels staan in `PROSPECTEN`.
 
-Deze mensen hebben de eerste pagina al gezien, dus een tweede ronde research werkt
-hier niet. Vier dingen wijken af van een gewone LP:
+## De bouwketen, drie stappen
 
-1. **De aanloop is een bekentenis.** Wat er verstuurd is, wat zij deden, en wat er
-   daarna van onze kant uitbleef. Bij Twinfloor en ASH staat de gemiste terugbeldag
-   er met datum bij. Bij Bonotech en Vervaet staat er dat het gesprek nergens is
-   vastgelegd, want dat is zo.
+    python3 bouw.py finovion jrfinance studiorendement
+    python3 ../../../../Context/tools/lp-v12-omzetter.py . --schrijf
+    python3 na-omzetten.py
 
-   **Alleen bij Nederburgh was prijs het bezwaar.** Simon corrigeerde dat op 6 oktober:
-   Acendae is met een andere partij gestart, JR Finance was nog niet toe aan acquisitie
-   en Finovion had andere prioriteiten en wil in december terug. Die drie pagina's gaan
-   dus niet over geld. De Acendae-pagina erkent de andere partij en biedt de staffel aan
-   voor als dat traject afloopt, zonder iets van die keuze te vinden.
-2. **Bevinding 01 citeert hun eigen kaart**, met de scandatum eronder. Dat is de enige
-   bron die de ontvanger letterlijk op zijn bureau kan naleggen.
-3. **De staffel staat op de pagina.** Dat is de reden van deze batch: ze hoeven niet te
-   bellen om te weten wat het kost.
-4. **De VSL staat onderaan, vlak voor de CTA.** Eén minuut, liggend, en hij staat stil
-   tot iemand hem start (`preload="none"`).
+Stap twee zet de v2-opbouw om naar v12: dossier, wat-dit-paneel, brug, donkere band.
+**Stap drie is niet optioneel.** De omzetter hangt een vast paneel in met de regel
+'we hebben je nooit eerder gesproken', en dat is bij deze batch onwaar. `na-omzetten.py`
+vervangt die zin per pagina door wanneer er wél gesproken is.
 
-Twee bewuste afwijkingen van `_voorbeeld.html`:
+## Wat deze pagina's anders doen dan een koude v12
 
-- **De videoknop in de hero is eruit.** Twee video's op één pagina laat de lezer kiezen
-  welke hij overslaat. De VSL doet nu dat werk, onderaan.
-- **Het blok met de drie stappen (kaart, pagina, agenda) is eruit.** De VSL legt precies
-  diezelfde drie stappen uit. Het blok met de drie voorwaarden eronder staat er wel nog.
+1. **De aanloop is een bekentenis.** Wat er verstuurd is, wat zij deden, en wat er daarna
+   van onze kant uitbleef.
+2. **De staffel staat op de pagina**, als eigen kapittel in het betoog, vlak voor het
+   kantelpunt. Dat is de reden van deze batch: ze hoeven niet te bellen om de prijs te
+   weten.
+3. **De maquettekaart is naamloos.** odido-v12 zet de naam van de ontvanger zelf op die
+   kaart terwijl de bijschriften eronder over 'zijn bureau' gaan. tellscan vangt dat
+   terecht als derde persoon. Hier staat er 'Hoi Jan' op en ondertekent het bedrijf van
+   de ontvanger zelf.
+
+Drie dingen uit de v12-standaard zijn bewust overgenomen zoals ze zijn: de vaste hero-kop,
+de vaste kop van het eerste hoofdstuk en het vaste founderblok. Dat laatste betekent dat
+de uitzondering van 6 oktober, waarbij het voorstelblok wegviel bij mensen die Simon
+persoonlijk kent, is vervallen.
 
 ## De tarieven
 

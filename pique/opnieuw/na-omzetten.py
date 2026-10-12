@@ -8,22 +8,20 @@ uitlegt wat hij is, haalt de rest onderuit.
 
 Draaien na de omzetter:
 
-    python3 bouw.py finovion jrfinance studiorendement
-    python3 ../../../../Context/tools/lp-v12-omzetter.py . --schrijf
+    python3 bouw.py jrfinance studiorendement
+    python3 ../../../../Context/tools/lp-v12-omzetter.py ../jr-finance.html --schrijf
+    python3 ../../../../Context/tools/lp-v12-omzetter.py ../studio-rendement.html --schrijf
     python3 na-omzetten.py
 """
 import re
 import sys
 from pathlib import Path
 
-HIER = Path(__file__).parent
+HIER = Path(__file__).parent.parent   # de pagina's staan in pique/
 
 # Per pagina de zin die in de plaats komt van de koude variant. Hij benoemt
 # wanneer er gesproken is en waarom er nu opnieuw een kaart ligt.
 WAAROM = {
-    "finovion.html":
-        "We spraken elkaar in juli en jij vroeg of we er in december op terug konden komen. "
-        "Dit is de tweede kaart, met de prijs er alvast bij.",
     "jr-finance.html":
         "We spraken elkaar op 1 juli, toen acquisitie bij jou nog niet aan de orde was. "
         "Dit is de tweede kaart, met de prijs erbij.",

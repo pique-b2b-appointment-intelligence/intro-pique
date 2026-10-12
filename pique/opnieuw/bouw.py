@@ -21,8 +21,9 @@ import sys
 from pathlib import Path
 
 HIER = Path(__file__).parent
+UIT = HIER.parent          # pagina's staan in pique/, zodat er geen map in de URL zit
 VOORBEELD = HIER.parent.parent.parent.parent / "Componenten" / "lp-v2" / "_voorbeeld.html"
-MODEL_V12 = HIER.parent / "odido-v12.html"   # de drie maquettes komen hier letterlijk uit
+MODEL_V12 = UIT / "odido-v12.html"   # de drie maquettes komen hier letterlijk uit
 
 # Laatste staffel die in een echt verstuurd voorstel heeft gestaan: Leads/STILL,
 # eind september 2026, met telefonische opvolging door Pique. pique.agency/tarieven
@@ -547,10 +548,15 @@ PROSPECTEN = {
         "case": "potentiel",
         "case_kop": "Vijftig kaarten, drie klanten.",
         "case_text": "Een health club met een aanbod dat je moeilijk in een advertentie uitlegt "
-                     "wilde weten of vijftig kaarten genoeg zijn. Vijftig namen, elk met een "
-                     "eigen aanleiding. <strong>Negen mensen reageerden en drie daarvan werden "
-                     "klant.</strong> Op vijftig kaarten is dat een kleine steekproef en dat "
-                     "zeg ik er ook bij.",
+                     "wilde weten of vijftig kaarten genoeg zijn om iets te bewijzen. Vijftig "
+                     "namen, elk met een eigen aanleiding. <strong>Negen mensen reageerden en "
+                     "drie daarvan werden klant.</strong> "
+                     "</p><p class='ch-text'>Over al onze campagnes samen, ruim tienduizend "
+                     "benaderingen: <strong>98 procent komt op het bureau</strong>, er volgen "
+                     "64,5 scans per honderd kaarten, en 9,5 procent van de scanners plant een "
+                     "gesprek. Honderd kaarten worden zo ongeveer zes gesprekken. Cold email "
+                     "blijft onder de 1 procent. Wat het bij jou wordt hangt af van je aanbod, "
+                     "je lijst en de opvolging.",
         "voorstel_sub": "Honderd DGA's per maand, twee maanden, en we bellen de scans na.",
         "cta_sub": "Twintig minuten, wanneer het jou uitkomt. Blijkt januari ook nog te vroeg, "
                    "dan is dat een prima uitkomst van dat gesprek.",
@@ -645,12 +651,18 @@ PROSPECTEN = {
         "tijdlijn": [("11 aug", "kennismaking via Aquila"), ("aug", "twee bedragen"),
                      ("aug", "je zat vol"), ("nu", "jij bepaalt het aantal")],
         "tl_hand": "Volgorde omgedraaid.",
-        "case": "potentiel",
-        "case_kop": "Vijftig kaarten, negen reacties.",
-        "case_text": "Een health club met een klein bereik en een aanbod dat je moeilijk in een "
-                     "advertentie uitlegt. Vijftig namen, elk met een eigen aanleiding, als hele "
-                     "campagne. <strong>Negen mensen reageerden en drie werden klant.</strong> "
-                     "Dat is het soort omvang waarbij je zelf nog kunt kiezen wie je terugbelt.",
+        "case": "azora",
+        "case_kop": "Vier directeuren die nooit terugbelden.",
+        "case_text": "Azora maakt videocontent voor marketingbureaus en SaaS-bedrijven, een "
+                     "markt waarin iedereen al door iedereen benaderd wordt. De vraag ging over "
+                     "vier directeuren die nooit hadden gereageerd op bellen, mailen of "
+                     "LinkedIn. <strong>Alle vier zaten binnen zes weken aan tafel.</strong> "
+                     "</p><p class='ch-text'>Over al onze campagnes samen, ruim tienduizend "
+                     "benaderingen: <strong>98 procent komt op het bureau</strong>, er volgen "
+                     "64,5 scans per honderd kaarten, en 9,5 procent van de scanners plant een "
+                     "gesprek. Honderd kaarten worden zo ongeveer zes gesprekken. Cold email "
+                     "blijft onder de 1 procent. Wat het bij jou wordt hangt af van je aanbod, "
+                     "je lijst en de opvolging.",
         "voorstel_sub": "Honderd ondernemers per maand die net verkocht hebben, twee maanden, en "
                         "we bellen de scans na.",
         "cta_sub": "Twintig minuten. Zit je nog steeds vol, dan is dit precies het gesprek om te "
@@ -734,13 +746,13 @@ def founderblok(data: dict) -> str:
     """
     return """
 <section class="founder" id="founder">
-  <img class="fo-photo fr" src="../simon.png" alt="Simon Kempers, oprichter Pique" loading="lazy" decoding="async">
+  <img class="fo-photo fr" src="simon.png" alt="Simon Kempers, oprichter Pique" loading="lazy" decoding="async">
   <div class="fr">
     <div class="fo-eyebrow">De persoon achter dit voorstel</div>
     <div class="fo-text"><p>Ik ben Simon. Ik begon Pique omdat de inbox van elke beslisser inmiddels vol zit met dezelfde geautomatiseerde berichten. Daar val je niet meer tussen op.</p>
       <p>Dus doen we het omgekeerd. Een klein aantal bedrijven, per stuk het onderzoek dat je hierboven zag, en een kaart plus pagina die echt alleen over hen gaan. Zoals deze over %s.</p>
       <p>We schrijven er per maand een stuk of twintig aan, en bij elke doen we dit werk opnieuw.</p></div>
-    <img class="fo-sig" src="../handtekening.png" alt="Handtekening van Simon Kempers" width="560" height="208">
+    <img class="fo-sig" src="handtekening.png" alt="Handtekening van Simon Kempers" width="560" height="208">
     <p class="fo-name">Simon Kempers, oprichter Pique</p>
   </div>
 </section>""" % data["bedrijf"]
@@ -754,7 +766,7 @@ def bouw(data: dict, voorbeeld: str) -> Path:
     sheet = sheet[: sheet.rindex("<script")].rstrip()
     sheet = sheet.replace('value="Martijn"', f'value="{data["voornaam"]}"')
     # de sheet wordt letterlijk uit _voorbeeld geknipt en kent het ../-prefix niet
-    sheet = sheet.replace('src="simon.png"', 'src="../simon.png"')
+    sheet = sheet.replace('src="simon.png"', 'src="simon.png"')
 
     bedrijf = data["bedrijf"]
     voornaam = data["voornaam"]
@@ -820,14 +832,14 @@ def bouw(data: dict, voorbeeld: str) -> Path:
 <title>Pique voor {bedrijf}</title>
 <meta name="description" content="Een tweede voorstel voor {bedrijf}, met de staffel erbij.">
 <meta name="robots" content="noindex">
-<link rel="icon" href="../favicon.svg">
+<link rel="icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../thema-pique.css">
-<link rel="stylesheet" href="../lp.css">
+<link rel="stylesheet" href="thema-pique.css">
+<link rel="stylesheet" href="lp.css">
 {STIJL}
 
 <script>
@@ -839,7 +851,7 @@ def bouw(data: dict, voorbeeld: str) -> Path:
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
   window.PIQUE_INTRO     = {{ voornaam: '{voornaam}', bedrijf: '{bedrijf}' }};
 </script>
-<script src="../lp-intro.js"></script>
+<script src="lp-intro.js"></script>
 </head>
 <body>
 <div class="mbar" id="mbar"></div>
@@ -982,11 +994,11 @@ def bouw(data: dict, voorbeeld: str) -> Path:
 
 {sheet}
 
-<script src="../lp-v2.js"></script>
+<script src="lp-v2.js"></script>
 </body>
 </html>
 """
-    uit = HIER / f"{data['slug']}.html"
+    uit = UIT / f"{data['slug']}.html"
     uit.write_text(html, encoding="utf-8")
     return uit
 
