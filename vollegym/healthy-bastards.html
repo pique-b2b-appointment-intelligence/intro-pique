@@ -10,6 +10,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon-vg.png">
 <link rel="stylesheet" href="thema-vollegym.css">
@@ -20,7 +21,7 @@
   window.PQ_CAMPAGNE     = 'vollegym-batch1';
   window.PQ_SCHRIJF      = true;
   window.PQ_DOCK_NA      = 0.75;
-  window.PQ_CAL          = '';
+  window.PQ_CAL          = 'bas-nagel-95bswk/30min';
   window.PQ_VIDEO        = 'bas-staand-540.mp4';
   window.PQ_POSTER       = 'bas-staand-poster.jpg';
   window.PQ_VSL          = '';
@@ -78,6 +79,12 @@
   border-radius:inherit;color:rgba(var(--wit-rgb),.6);font-size:.82rem;text-align:center;
   padding:1.2rem}
 .vslleeg b{color:var(--wit);font-size:.9rem}
+/* ── kop boven de maquettes ───────────────────────────────────────────────
+   De v12-volgorde zet sinds 9 oktober 2026 een kop boven de drie maquettes.
+   Die staat nog niet in lp12.css, dus hier, in dezelfde maat als .hb-h. */
+.toon-h{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.8vw,2.2rem);
+  line-height:1.15;letter-spacing:-.02em;text-align:center;margin:0 auto 2.4rem;
+  max-width:24ch;color:var(--ink)}
 /* ── de stappenrij op het midden ───────────────────────────────────────────
    In lp12.css staat de bolletjes links in elke kolom van de vier. De bolletjes
    lopen daardoor van de linkerrand tot driekwart, terwijl alles erboven op het
@@ -102,7 +109,7 @@
     <img class="op-licht" src="vollegym-logo.png" alt="" width="22" height="22">
     <span style="font:600 1.02rem/1 'Inter',system-ui,sans-serif;letter-spacing:-.02em">Volle Gym</span>
   </a>
-  <button class="nav-cta" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+  <button class="nav-cta" data-open="sheet" data-tab="plan">Plan een gesprek</button>
 </nav>
 
 <div class="rail" id="rail">
@@ -126,7 +133,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Dit is waarom ik je een kaart heb gestuurd.</h1>
+      <h1 class="hero-h1">Hé <span class="u">Hidde</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Drie dingen die me opvielen aan Healthy Bastards, met de bron erbij.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>3 bevindingen</span>
@@ -217,7 +224,6 @@
       <div class="ch-body"><div class="ch-eyebrow">Wat dat betekent</div><h2 class="ch-kop">Reken het eens vanaf de kant waar het geld binnenkomt.</h2>
         <p class="ch-text">Een gratis proefles levert niets op. Het lidmaatschap erna komt per maand binnen en kan per maand weer weg. De huur van een grotere club is in augustus begonnen en loopt ook per maand. <strong>Je groei wordt dus betaald uit de maanden erna, en niet uit de maand waarin iemand ja zegt.</strong> Dat gaat prima zolang er genoeg ja’s zijn. Het gaat knellen op het moment dat je er een trainer bij wilt, en dat moment is nu.</p>
         <p class="ch-pull">Een lege plek in een groep van vijf is iemand die thuis op de bank zit.</p>
-        <div class="meegeef"><b>Eén vraag die je morgen zelf kunt stellen</b><p>Hoeveel gratis proeflessen gaf je vorige maand, en hoeveel daarvan betalen er deze maand? Dat ene getal zegt meer over je groei dan je ledenaantal. Weet je het niet, dan is dat het eerste wat ik zou gaan bijhouden, met of zonder ons.</p></div>
       </div>
     </div>
   </section>
@@ -229,13 +235,14 @@
   </svg>
   <section class="chapter center phase" id="s4">
     <div class="ch-inner">
-      <div class="ch-body"><div class="ch-eyebrow">Het voorstel</div><h2 class="ch-kop ch-head">Wat wij zouden doen.</h2>
+      <div class="ch-body"><div class="ch-eyebrow">Het voorstel</div><h2 class="ch-kop ch-head">Wat we voorstellen.</h2>
         <p class="ch-sub">Een trainer erbij is capaciteit, en die uren moeten gevuld worden. Dat gebeurt nu via een gratis proefles met daarachter alleen een lidmaatschap. Dit is wat wij ertussen zouden zetten.</p></div>
     </div>
   </section>
 </main>
 
 <section class="toon" id="toon">
+  <h2 class="toon-h">Zo ziet dat eruit.</h2>
   <div class="toon-rij">
     <article class="tp" style="--dl:0.05s">
       <div class="tp-vis">
@@ -321,10 +328,11 @@
 <section class="cta" id="gesprek">
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">De volgende stap</div>
-    <h2 class="cta-h reveal">Even bellen, Hidde?</h2>
+    <h2 class="cta-h reveal">Even bijpraten?</h2>
     <p class="cta-sub reveal">Twintig minuten. Je hoort wat zo’n instapprogramma bij jou zou kosten en opbrengen, en ik reken met je mee op je eigen aantallen. Past het niet, dan is dat ook een prima uitkomst en hoor je dat van mij.</p>
     <div class="cta-btns reveal">
-      <button class="btn-a" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+      <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
+      <button class="btn-b" style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
     </div>
     <p class="cta-alt reveal">Liever eerst schriftelijk? <a href="mailto:bas@vollegym.nl?subject=Healthy%20Bastards%20x%20Volle%20Gym">Mail me een korte vraag.</a></p>
   </div>
@@ -337,7 +345,7 @@
 
 <div class="dock" id="dock">
   <span class="dock-t"><b>Even bellen over wat ik zag?</b> 20 minuten.</span>
-  <button class="dock-b" data-open="sheet" data-tab="bel">Terugbellen</button>
+  <button class="dock-b" data-open="sheet" data-tab="plan">Plannen</button>
   <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
 </div>
 
@@ -347,10 +355,17 @@
     <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
     <div class="sheet-host">
       <img src="bas-portret.jpg" alt="" loading="lazy" decoding="async">
-      <div><div class="n">20 minuten met Bas</div><div class="s">Telefoon, op een moment dat jou schikt.</div></div>
+      <div><div class="n">20 minuten met Bas</div><div class="s">Videocall of telefoon, jij kiest.</div></div>
+    </div>
+    <div class="sheet-tabs">
+      <button class="on" data-tab="plan">Zelf een moment kiezen</button>
+      <button data-tab="bel">Laat mij terugbellen</button>
     </div>
     <div class="panes">
-      <div class="pane on" id="pane-bel">
+      <div class="pane on" id="pane-plan">
+        <div id="cal-wrap"><div id="cal-embed"></div></div>
+      </div>
+      <div class="pane" id="pane-bel">
         <form id="belform">
           <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" required></div>
           <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
