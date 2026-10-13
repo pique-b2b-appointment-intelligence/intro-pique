@@ -4,17 +4,32 @@
   "redirects": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "lightr.intro-pique.agency" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "lightr.intro-pique.agency"
+        }
+      ],
       "destination": "/aanpoters"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "evenkennismaken.nl" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "evenkennismaken.nl"
+        }
+      ],
       "destination": "https://lightr.nl"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "www.evenkennismaken.nl" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.evenkennismaken.nl"
+        }
+      ],
       "destination": "https://lightr.nl"
     }
   ],
@@ -25,27 +40,62 @@
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "onlinegoedgevonden.intro-pique.agency" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "onlinegoedgevonden.intro-pique.agency"
+        }
+      ],
       "destination": "/onlinegoedgevonden/:path*"
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "wegmetexcel.intro-pique.agency" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "wegmetexcel.intro-pique.agency"
+        }
+      ],
       "destination": "/wegmetexcel/:path*"
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "lightr.intro-pique.agency" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "lightr.intro-pique.agency"
+        }
+      ],
       "destination": "/lightr/:path*"
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "evenkennismaken.nl" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "vollegym.intro-pique.agency"
+        }
+      ],
+      "destination": "/vollegym/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "evenkennismaken.nl"
+        }
+      ],
       "destination": "/lightr/:path*"
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.evenkennismaken.nl" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.evenkennismaken.nl"
+        }
+      ],
       "destination": "/lightr/:path*"
     }
   ]
