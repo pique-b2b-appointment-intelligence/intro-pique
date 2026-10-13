@@ -486,33 +486,6 @@ export const PROSPECTS = [
   "ctaSub": "We kiezen samen de 25 accounts die er strategisch toe doen. In acht weken open ik ze op naam, met research en een reden die per account klopt."
  },
  {
-  "slug": "bollegraaf-recycling",
-  "voornaam": "Fabrizio",
-  "org": "Bollegraaf Recycling",
-  "object": "Een klein blokje samengeperst plastic",
-  "persoonlijkeNoot": "U stapte in april in als CCO bij Bollegraaf met een duidelijke opdracht, de commerciële kant naar een hoger niveau tillen. De accounts die dat waarmaken, zijn de grote afvalconcerns die niet één installatie maar een programma van installaties gunnen. Bij die partijen begint alles bij de juiste relatie op het juiste moment. Daar wilde ik met u naar kijken.",
-  "aannames": [
-   {
-    "kop": "Grote concerns, hele programma's",
-    "tekst": "De grootste afvalspelers gunnen zelden één lijn maar denken in meerdere installaties over landen heen."
-   },
-   {
-    "kop": "Verse rol, hoge verwachting",
-    "tekst": "Als nieuwe CCO wordt u afgerekend op het openen van juist deze strategische accounts."
-   },
-   {
-    "kop": "Techniek is er, toegang telt",
-    "tekst": "Bollegraaf bewijst zich op de vloer, maar de grote gunningen komen via relaties op directieniveau."
-   }
-  ],
-  "tension": "De afvalconcerns die een heel programma van installaties gunnen, kiezen hun partner op vertrouwen dat ruim voor de aanbesteding is gelegd.",
-  "consequence": "Zonder die vroege ingang blijft de commerciële sprong die van u wordt verwacht buiten bereik.",
-  "structuur": "je droomaccounts",
-  "droomaccounts": "De grote internationale afval- en recyclingconcerns die hun sorteercapaciteit over meerdere landen tegelijk uitbreiden",
-  "founderText": "Ik open voor een handvol bedrijven tegelijk hun belangrijkste droomaccounts. Bollegraaf Recycling paste precies in dat beeld, dus nam ik de tijd om dit voorstel met de hand voor je uit te werken.",
-  "ctaSub": "We kiezen samen de 25 accounts die er strategisch toe doen. In acht weken open ik ze op naam, met research en een reden die per account klopt."
- },
- {
   "slug": "royal-dutch-kusters",
   "voornaam": "Jeroen",
   "org": "Royal Dutch Kusters",
