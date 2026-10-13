@@ -24,7 +24,7 @@
   window.PQ_CAL          = 'bas-nagel-95bswk/30min';
   window.PQ_VIDEO        = 'bas-staand-540.mp4';
   window.PQ_POSTER       = 'bas-staand-poster.jpg';
-  window.PQ_VSL          = '';
+  window.PQ_VSL          = 'vsl-vollegym.mp4';
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
   window.PIQUE_INTRO     = { bedrijf: "Koster Sportclub", voornaam: "Pauline",
     tempo: 33, pauze: 420, merk: false,
@@ -72,13 +72,6 @@
 .meegeef b{display:block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;
   color:var(--accent);margin-bottom:.4rem}
 .meegeef p{margin:0;font-size:.95rem;line-height:1.6;color:var(--ink2)}
-/* De VSL is nog niet aangeleverd. Zolang dat zo is, zegt het kader dat zelf
-   in plaats van een kapotte videoknop te tonen. */
-.vslleeg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:.5rem;border:1px dashed rgba(var(--wit-rgb),.28);
-  border-radius:inherit;color:rgba(var(--wit-rgb),.6);font-size:.82rem;text-align:center;
-  padding:1.2rem}
-.vslleeg b{color:var(--wit);font-size:.9rem}
 /* ── kop boven de maquettes ───────────────────────────────────────────────
    De v12-volgorde zet sinds 9 oktober 2026 een kop boven de drie maquettes.
    Die staat nog niet in lp12.css, dus hier, in dezelfde maat als .hb-h. */
@@ -294,10 +287,13 @@
     <h2 class="hb-h">Zo gaat dat in negentig dagen.</h2>
     <div class="hb-stage">
       <div class="vslhouder">
-        <div class="vslleeg"><b>Hier komt de video van Volle Gym.</b></div>
+        <button class="vslbox" type="button" aria-label="Speel de video van anderhalve minuut af">
+          <img src="vsl-poster.jpg" alt="">
+          <span class="vslplay"></span><span class="vslduur">1:29</span>
+        </button>
       </div>
     </div>
-    <p class="hb-bij">Een paar minuten over hoe dit bij een andere gym is gegaan.</p>
+    <p class="hb-bij">Beeld van een dag die we met gym-eigenaren hielden.</p>
     <ol class="flow">
       <li class="fl"><span class="fl-n">01</span><b class="fl-k">Je cijfers</b><span class="fl-t">Hoeveel aanvragen je nu krijgt, en wat daarvan lid wordt. Zonder die twee getallen weten we niet wat we repareren.</span></li>
       <li class="fl"><span class="fl-n">02</span><b class="fl-k">Het programma</b><span class="fl-t">Zes weken betaald, als opstap naar een lidmaatschap. Wij bouwen het, jij bepaalt wat erin zit.</span></li>

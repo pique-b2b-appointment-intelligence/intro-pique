@@ -123,7 +123,12 @@
 /* 6. DE FLOW. Vier stappen op een lijn, met de nummers op die lijn. De lijn
    loopt van elke stap naar de volgende en stopt bij de laatste, dus hij
    betekent iets. Op een telefoon kantelt hij een kwartslag. */
-.flow{list-style:none;margin:clamp(2.2rem,4.5vw,3rem) 0 0;padding:0;display:grid;
+/* De vier stappen liggen onder de speler, dus ze krijgen diens breedte en niet die
+   van .hb-in. Met margin:0 stonden ze in een blok van 900px onder een video van 720px
+   en staken ze er aan weerszijden 90px buiten. Simon, 13 okt 2026: 'dit staat niet
+   gecentreerd onder de VSL'. */
+.flow{list-style:none;margin:clamp(2.2rem,4.5vw,3rem) auto 0;padding:0;display:grid;
+  width:min(720px,100%);
   grid-template-columns:repeat(4,1fr);gap:0 1.5rem;text-align:left}
 .fl{position:relative;padding-top:2.6rem}
 .fl::before{content:'';position:absolute;top:13px;left:13px;right:-1.5rem;height:1px;
@@ -168,6 +173,7 @@
 .mkl-otto{width:73px;height:26px;-webkit-mask-image:url(logos/otto.png);mask-image:url(logos/otto.png)}
 .mkl-fortune{width:38px;height:30px;-webkit-mask-image:url(logos/fortune.png);mask-image:url(logos/fortune.png)}
 .mkl-wonder{width:33px;height:32px;-webkit-mask-image:url(logos/wondergroup.png);mask-image:url(logos/wondergroup.png)}
+.mkl-odido{width:83px;height:22px;-webkit-mask-image:url(logos/odido.png);mask-image:url(logos/odido.png)}
 @media(max-width:700px){
   .hb-in{text-align:left}
   .mk-rij{justify-content:flex-start}
