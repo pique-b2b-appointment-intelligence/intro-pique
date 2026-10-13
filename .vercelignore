@@ -17,6 +17,7 @@ node_modules
 !onlinegoedgevonden/voorbeeld/*/*.mp4
 !prospectpro/*.mp4
 !lightr/*.mp4
+!cseo/*.mp4
 !aquila/*.mp4
 *.csv
 *.md

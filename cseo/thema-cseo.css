@@ -1,0 +1,70 @@
+/* ============================================================
+   THEMA — ConverSEO Impact
+   Het enige bestand dat per klant verschilt. Alle waarden komen uit
+   hun eigen merkpakket (Brand identity 2026, COLORS-AND-FONT) en uit
+   de homepage-opzet die al in het dossier lag:
+   #FD4F13 accent, #CC4517 donkere trap, #FFFFFF en #F2F2F2 vlakken,
+   zwart als ondergrond.
+   Het merkschrift is ES Klarheit Grotesk, maar dat pakket is een TRIAL
+   en mag niet op het web. Hun eigen pagina laadt Inter, dus Inter is
+   hier de vervanger en geen keuze van mij.
+   Elke kleur staat twee keer: als hex en als losse kanalen voor rgba().
+   ============================================================ */
+:root{
+  /* ── accent: hun #FD4F13, met hun eigen trappen eromheen ── */
+  --accent:#FD4F13;        --accent-rgb:253,79,19;     /* lijnen, labels, dots  */
+  --accent-l:#FF5A1F;      --accent-l-rgb:255,90,31;   /* knoppen, accent op donker */
+  --accent-h:#CC4517;                                  /* knop bij hover, van hen */
+  --op-accent:#FFFFFF;                                 /* wit op het oranje */
+  /* De pen mag niet meeschreeuwen met de knoppen, dus de handschriftkleur
+     ligt een trap onder hun donkerste oranje. Zelfde ingreep als VolleGym. */
+  --inkt:#A3360F;          --inkt-rgb:163,54,15;
+
+  /* ── vlakken en tekst: hun #F7F7F4 en #101010 ──────────── */
+  --bg:#F7F7F4;            --bg-rgb:247,247,244;       /* de pagina             */
+  --ink:#101010;           --ink-rgb:16,16,16;         /* tekst                 */
+  --donker:#121110;        --donker-rgb:18,17,16;      /* hero, kantelpunt, CTA */
+  --dieper:#0A0A0A;        --dieper-rgb:10,10,10;      /* overlays              */
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.66);
+  --ink3:rgba(var(--ink-rgb),.42);
+  --line:rgba(var(--ink-rgb),.12);
+
+  /* ── papier: neutraal, want dit merk voert geen warme tinten ── */
+  --pap-0:#FDFDFC;         --pap-0-rgb:253,253,252;    /* het knipsel in het dossier */
+  --pap-1:#FAFAF8;
+  --pap-2:#EDEDE8;
+  --tape-rgb:232,232,226;
+  --hand-ink:#121110;      --hand-rgb:18,17,16;
+
+  /* ── overig ─────────────────────────────────────────────── */
+  --goed:#2F7D52;          --goed-rgb:47,125,82;
+  /* Pique zet 'let op' op een roodbruin, maar dat ligt hier bovenop het
+     merkaccent. Een dieper, blauwer rood blijft wel te onderscheiden van
+     de #FD4F13 die overal op de pagina staat. */
+  --let-op:#9B2226;        --let-op-rgb:155,34,38;   /* oordeel dat niet goed is */
+  --chrome:#E9E9E3;
+  --video-bg:#121110;
+
+  /* ── typografie: Inter, hun eigen vervanger voor ES Klarheit ── */
+  --serif:'Inter',system-ui,sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;                            /* Inter heeft geen SOFT/WONK-as */
+
+  /* ── vorm: strak en recht, het merk is technisch ─────────── */
+  --r-pap:3px;
+  --r-kaart:12px;
+  --r-blok:16px;
+  --r-pil:100px;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fs-h:clamp(1.9rem,3vw,2.7rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;
+}
+/* Inter draagt zwaarder dan Fraunces, dus koppen een tandje lichter en
+   strakker gespatieerd. Zelfde ingreep als bij VolleGym en BCS. */
+.hero-h1,.ch-kop,.f-kop,.ch-pivot,.cta-h,.tp h3{font-weight:600;letter-spacing:-.025em}
+.f-quote{font-style:normal}
