@@ -16,10 +16,8 @@
 <link rel="stylesheet" href="lp.css">
 <link rel="stylesheet" href="lp12.css">
 <style>
-/* Annes video is staand, de band van v12 rekent op liggend. Alleen de maat
-   verandert, de rest van het podium blijft zoals het is. */
-.hb-stage{width:min(330px,74%)}
-.vslhouder{aspect-ratio:9/16}
+/* De band draagt de bedrijfsfilm en die is liggend, dus het podium blijft
+   zoals v12 hem heeft. Annes staande video zit in de introlaag en in de hero. */
 
 /* De drie maquettes van v12 tonen het product van Pique. Op een klantpagina
    staat hier wat de klant zelf levert, in dezelfde opbouw. */
@@ -51,8 +49,7 @@
   window.PQ_CAL          = '';
   window.PQ_VIDEO        = 'buitengoed-anne.mp4';
   window.PQ_POSTER       = 'buitengoed-anne-poster.jpg';
-  window.PQ_VSL          = 'buitengoed-anne.mp4';
-  window.PQ_VSL_POSTER   = 'buitengoed-anne-poster.jpg';
+  window.PQ_VSL_YT       = 'QuGfLg0t7bI';   /* de bedrijfsfilm, in het kader van de band */
   window.PQ_TERUGBEL_URL = '';
   window.PIQUE_INTRO     = { bedrijf: 'Hoogendijk Hoveniers', voornaam: 'Yuri', merk: false,
     tempo: 33, pauze: 420, ctaSub: 'Video van Anne, anderhalve minuut',
@@ -225,17 +222,17 @@
 
 <section class="hoeband reveal" id="hoe">
   <div class="hb-in">
-    <span class="hb-eyebrow">Wie je spreekt</span>
-    <h2 class="hb-h">Anne vat het samen.</h2>
+    <span class="hb-eyebrow">Wat we maken</span>
+    <h2 class="hb-h">Zo ziet het eruit als het staat.</h2>
     <div class="hb-stage">
       <div class="vslhouder">
-        <button class="vslbox" type="button" aria-label="Speel de video van anderhalve minuut af">
-          <img src="buitengoed-anne-poster.jpg" alt="">
-          <span class="vslplay"></span><span class="vslduur">1:48</span>
+        <button class="vslbox" type="button" aria-label="Speel de bedrijfsfilm af">
+          <img src="https://i.ytimg.com/vi/QuGfLg0t7bI/maxresdefault.jpg" alt="" loading="lazy">
+          <span class="vslplay"></span>
         </button>
       </div>
     </div>
-    <p class="hb-bij">Anderhalve minuut over wat wij uit handen nemen zodra het glas in jouw tuin komt.</p>
+    <p class="hb-bij">Onze eigen film, over het werk dat we leveren en zetten.</p>
     <ol class="flow">
       <li class="fl"><span class="fl-n">01</span><b class="fl-k">Jouw tekening</b><span class="fl-t">Je stuurt het ontwerp, wij rekenen de maat na en leveren de technische tekeningen.</span></li>
       <li class="fl"><span class="fl-n">02</span><b class="fl-k">Samen kijken</b><span class="fl-t">Kom met je klant naar de showroom aan de Marchandweg en leg de systemen naast elkaar.</span></li>

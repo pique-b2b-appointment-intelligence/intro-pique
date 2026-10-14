@@ -20,6 +20,18 @@ var vb=document.querySelector('.vslbox');
 if(vb) vb.addEventListener('click',function(){
   if(window.pqTrack) pqTrack('vsl');
   var houder=vb.parentNode;
+  /* Staat de film op YouTube, dan komt er een speler in hetzelfde kader. Er gaat
+     pas iets naar YouTube op het moment dat de bezoeker klikt, want tot dan is
+     het een stilstaand beeld met een knop. */
+  if(window.PQ_VSL_YT){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+window.PQ_VSL_YT+'?autoplay=1&rel=0&modestbranding=1';
+    f.title='Video van Buiten-Goed';
+    f.allow='accelerometer; autoplay; encrypted-media; picture-in-picture; web-share';
+    f.setAttribute('allowfullscreen','');
+    f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0';
+    vb.remove(); houder.appendChild(f); return;
+  }
   var v=document.createElement('video');
   v.src=window.PQ_VSL||'vsl-720-zacht.mp4'; v.poster=window.PQ_VSL_POSTER||'vsl-poster.jpg';
   v.controls=true; v.playsInline=true; v.setAttribute('playsinline','');
