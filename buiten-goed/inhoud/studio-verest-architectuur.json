@@ -1,0 +1,29 @@
+{
+  "voornaam": "Jeroen",
+  "waarom_jij": "Een projectenlijst waarin per regel staat wat er gebouwd wordt, leest voor mij als een agenda. Bij jou staan er vijf regels op die onze hoek raken, van een tuinkamer in Geldrop tot een terrasoverkapping in Eindhoven. Bij een bureau van één man komt die opgave dus een paar keer per jaar langs, en elke keer onder jouw eigen naam.",
+  "watdit_onderwerp": "de tuinkamers die je intekent",
+  "bevindingen": [
+    {
+      "hier": true,
+      "wat": "Op je projectenoverzicht staan vijf opdrachten met een tuinkamer, een vrijstaand bijgebouw of een terrasoverkapping erin.",
+      "bron": "studioverest.nl",
+      "datum": "projectenoverzicht, laatste update januari 2026"
+    },
+    {
+      "wat": "Je bureau omschrijft zijn werk als het verbouwen en uitbreiden van bestaande woonhuizen.",
+      "citaat": "gespecialiseerd in het renoveren, verbouwen en uitbreiden van bestaande woonhuizen",
+      "bron": "studioverest.nl",
+      "datum": "pagina Bureau, bekeken 14 oktober 2026"
+    },
+    {
+      "wat": "Een opdrachtgever zette begin dit jaar op Trustoo dat je een ontwerp maakte dat op hun smaak en woonwensen aansloot.",
+      "bron": "trustoo.nl",
+      "datum": "1 januari 2026"
+    }
+  ],
+  "pivot": "Bestaande woonhuizen verbouwen en uitbreiden is je vak, en een tuinkamer is daarvan de buitenste schil. Je opdrachtgevers prijzen je om het luisteren, dus zij verwachten dat die kamer net zo klopt als de rest van het huis. Voor dat deel moet je per keer opnieuw een leverancier en een monteur bij elkaar zoeken.",
+  "betekent_kop": "Dat zoekwerk doe je in je eigen uren.",
+  "betekent": "Een tuinkamer vraagt om maten, profielen, een levertijd en iemand die hem komt zetten. In een bureau van één man gaat dat van de tijd die je aan tekenen zou besteden, en doorschuiven naar een collega kan niet. <strong>Komt de leverancier er twee weken later mee dan afgesproken, dan heb jij geen tweede man om dat op te vangen.</strong>",
+  "pull": "Vijf tuinkamers in één lijst, en bij elk daarvan ben jij ook de inkoper.",
+  "voorstel": "Wij nemen het rekenwerk en het inmeten van de tuinkamer of de overkapping over, leveren het op maat en plaatsen het met onze eigen monteurs."
+}

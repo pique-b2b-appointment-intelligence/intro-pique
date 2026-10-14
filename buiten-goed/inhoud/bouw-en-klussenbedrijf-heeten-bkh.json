@@ -1,0 +1,23 @@
+{
+  "voornaam": "Gerrit",
+  "waarom_jij": "Ik ben de registers van BouwGarant langsgegaan op specialiteit, want daar schrijft een aannemer zelf op waar hij goed in is. Bij jou staat veranda en serre, naast allround bedrijf en een extra verdieping op een bestaande woning. Op je eigen site komt dat woord nergens voor, terwijl er in de galerij wel overkappingen en aanbouwen staan. Vijftien man, sinds 1998 bezig, en het werk waarvoor je staat ingeschreven is op je site niet te vinden.",
+  "watdit_onderwerp": "de veranda en serre uit je BouwGarant-profiel",
+  "bevindingen": [
+    {
+      "hier": true,
+      "wat": "Bij BouwGarant staat veranda en serre als jouw specialiteit ingeschreven, naast allround bedrijf en een extra verdieping op een bestaande woning.",
+      "bron": "bouwgarant.nl",
+      "datum": "profiel Bouw- en Klussenbedrijf Heeten, bekeken 14 oktober 2026"
+    },
+    {
+      "wat": "In je projectgalerij staan overkappingen en aanbouwen, en het woord veranda of serre staat op je site nergens.",
+      "bron": "bkh-raalte.nl",
+      "datum": "projectgalerij, bekeken 14 oktober 2026"
+    }
+  ],
+  "pivot": "Je hebt veranda en serre zelf als specialiteit opgegeven, dus die klussen doe je. Op de site waar je klant kijkt staat het werk in beeld zonder dat het woord erbij staat. Die vraag komt dus binnen via mensen die je al kennen, en dan begint het zoeken naar wie het maakt opnieuw.",
+  "betekent_kop": "De bouw hangt aan een bestelling.",
+  "betekent": "Een aanbouw plan je met je eigen ploeg en een overkapping ook. Zodra er glas in moet, een serre of een wand die open kan, begint het bellen over wie het levert en in welke week ze kunnen komen. <strong>Je mannen kunnen de laatste week niet afmaken zolang dat ene onderdeel nog onderweg is.</strong>",
+  "pull": "Je specialiteit staat in een register. Op je eigen site staat het woord niet.",
+  "voorstel": "Wij leveren de veranda of de serre compleet op maat en monteren hem met onze eigen mensen, zodat dat werk ook op je eigen site kan komen te staan."
+}

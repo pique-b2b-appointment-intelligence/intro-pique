@@ -1,0 +1,29 @@
+{
+  "voornaam": "Edwin",
+  "waarom_jij": "Je site is in de ik-vorm geschreven en dat is de reden dat ik hem helemaal heb gelezen. Advies, ontwerp, begroting, renovatie, verbouw en uitbreidingen staan er als jouw werk, en een veranda of overkapping staat daar niet bij. Op je homepage ligt wel een klant uit Schuytgraaf die zijn veranda door jou liet aanleggen, en in september kwam er een beoordeling bij over een uitbouw met een grote glazen pui. Dat verschil tussen je lijst en je beoordelingen is waarom ik je schrijf.",
+  "watdit_onderwerp": "de veranda die niet in je lijst staat",
+  "bevindingen": [
+    {
+      "hier": true,
+      "wat": "Op je homepage staat een klant uit Schuytgraaf die zijn veranda door jou liet aanleggen.",
+      "citaat": "Wij hebben onze veranda in Schuytgraaf door Breed Totaalbouw laten aanleggen en zijn tevreden over onze keuze.",
+      "bron": "breedtotaalbouw.nl",
+      "datum": "homepage, bekeken 14 oktober 2026"
+    },
+    {
+      "wat": "In september zette een klant uit Arnhem een beoordeling online over een verbouwde benedenverdieping met een uitbouw met grote glazen pui.",
+      "bron": "klantenvertellen.nl",
+      "datum": "9 september 2026"
+    },
+    {
+      "wat": "In je eigen lijst werkzaamheden komt een veranda of een overkapping niet voor.",
+      "bron": "breedtotaalbouw.nl",
+      "datum": "werkzaamheden, bekeken 14 oktober 2026"
+    }
+  ],
+  "pivot": "Je lijst houdt op bij verbouw en uitbreidingen, en je klanten schrijven over een veranda en over een glazen pui. Wat je aanbiedt loopt dus achter op wat je oplevert. Jij werkt met onderaannemers en vaste vakmensen, dus voor dat buitenwerk hangt het aan wie je er los bij kunt halen.",
+  "betekent_kop": "Wat niet in je lijst staat, vraagt niemand aan je.",
+  "betekent": "Iemand die net een uitbouw met een glazen pui van jou heeft gekregen, wil een jaar later een overkapping of een serre tegen diezelfde gevel. Op je site kan hij nergens zien dat je dat doet, dus hij gaat eerst elders kijken. <strong>Jij hebt die gevel gebouwd en hoort de vraag pas als hij al bij een ander ligt.</strong>",
+  "pull": "Je klanten noemen de veranda, je eigen lijst noemt hem niet.",
+  "voorstel": "Jij zet de veranda en de serre erbij in je lijst, en het opmeten, het maatwerk en de montage komen bij ons vandaan, zodat je er geen onderaannemer meer voor hoeft te zoeken."
+}

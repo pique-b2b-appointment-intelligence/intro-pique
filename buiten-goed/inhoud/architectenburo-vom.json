@@ -1,0 +1,31 @@
+{
+  "voornaam": "Paul",
+  "waarom_jij": "Ik liep portfolio's door van bureaus die naast scholen en bedrijfspanden ook woonhuizen en woonboerderijen tekenen. Bij Woning Zevenaar stond een terrasoverkapping met een lamellendak in het ontwerp, en daar wilde ik meer van weten. Toen ik verder keek bleek dat jullie zelf midden in de opbouw van een nieuw kantoor zitten, dus je staat op dit moment aan beide kanten van de bouw.",
+  "watdit_onderwerp": "het lamellendak dat je intekende",
+  "bevindingen": [
+    {
+      "wat": "Je meldde in mei dat het binnensloopwerk in het nieuwe kantoor erop zat.",
+      "citaat": "Dat moment dat het (binnen)sloopwerk erop zit en we door kunnen met opbouwen aan ons nieuwe kantoor.",
+      "bron": "vom-architectuur.nl",
+      "datum": "9 mei 2026"
+    },
+    {
+      "hier": true,
+      "wat": "Bij Woning Zevenaar zit een terrasoverkapping met een lamellendak in het ontwerp.",
+      "citaat": "Dit wordt versterkt door de integratie van een terrasoverkapping voorzien van een lamellendak.",
+      "bron": "vom-architectuur.nl",
+      "datum": "projectpagina Woning Zevenaar"
+    },
+    {
+      "wat": "De verhuizing van Duiven naar Zevenaar kondigden jullie vorig jaar in december al aan.",
+      "citaat": "Na 15 jaar kantoor te hebben gehouden in Duiven, waarvan de laatste 10 jaar aan de Visserlaan, verhuist VOM medio 2026 naar de Haspelstraat 23 in Zevenaar.",
+      "bron": "vom-architectuur.nl",
+      "datum": "23 december 2025"
+    }
+  ],
+  "pivot": "Jullie zijn op dit moment zelf opdrachtgever, dus je merkt aan je eigen kantoor wat het doet als een onderdeel later komt dan de rest van de planning. Diezelfde overkapping tekende je in Zevenaar bij een particulier in. Op de tekening is dat een regel met een lamellendak erbij, en in de uitvoering is het een leverancier die iemand anders uitkiest.",
+  "betekent_kop": "Het lamellendak komt uit de keten van de aannemer.",
+  "betekent": "Zodra het werk verdeeld wordt, gaat de overkapping naar de partij die de aannemer kent of snel kan krijgen. Welk profiel en welke lamelbreedte daar uitkomen, ligt buiten jouw tekening om. <strong>De opdrachtgever vergelijkt het resultaat met het beeld dat hij van jullie kreeg, en jij mag het verschil toelichten.</strong>",
+  "pull": "Een lamellendak is een regel op de tekening en twintig keuzes in de uitvoering.",
+  "voorstel": "Wij leveren de overkapping met het dak dat jij hebt bedacht en monteren het met onze eigen montagedienst, zodat wat er staat hetzelfde is als wat je hebt getekend."
+}

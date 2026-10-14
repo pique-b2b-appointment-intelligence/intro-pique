@@ -1,0 +1,30 @@
+{
+  "voornaam": "Peter",
+  "waarom_jij": "Van alle bouwbedrijven die ik deze ronde bekeek, komt jullie aanbod het dichtst bij wat wij in Barneveld maken. Erker, aanbouw, serre en veranda hebben bij jullie een eigen pagina, met zonwering en screens erbij en de keuze tussen hout, kunststof en aluminium. Het hout komt uit je eigen timmerwerkplaats, dus daarover bel ik je niet. Mijn vraag gaat over het aluminium.",
+  "watdit_onderwerp": "het aluminium dat jullie nu inkopen",
+  "bevindingen": [
+    {
+      "hier": true,
+      "wat": "Op je eigen pagina lever je een veranda volledig op maat, in hout, kunststof of aluminium.",
+      "citaat": "Een veranda wordt volledig op maat geleverd in hout, kunststof of aluminium.",
+      "bron": "bouwbedrijfspruit.nl",
+      "datum": "pagina erker, aanbouw, serre en veranda, bekeken 14 oktober 2026"
+    },
+    {
+      "wat": "In Montfoort heb je een woning aan de achterzijde uitgebouwd met een aluminium serre.",
+      "citaat": "In Montfoort is onlangs een woning aan de achterzijde uitgebouwd met een fraaie aluminium serre",
+      "bron": "bouwbedrijfspruit.nl",
+      "datum": "projectpagina Aluminium serre te Montfoort"
+    },
+    {
+      "wat": "In je showroom van 150 vierkante meter staan onder meer serres en schuifpuien.",
+      "bron": "bouwbedrijfspruit.nl",
+      "datum": "over ons, bekeken 14 oktober 2026"
+    }
+  ],
+  "pivot": "Je hebt dit aanbod al staan, tot en met een showroom waarin een klant een serre en een schuifpui kan openschuiven. Het hout maak je zelf en het aluminium komt van een leverancier. Wat ik van buiten niet kan zien is wat die leverancier je kost zodra een maat afwijkt, in geld en in weken.",
+  "betekent_kop": "De meerprijs voor maatwerk zit in jouw begroting.",
+  "betekent": "Een klant staat in je showroom, kiest de serre en vraagt of hij vier centimeter breder kan. Dat antwoord komt van je leverancier en jij staat ertussen met een begroting die je al hebt afgegeven. <strong>Elke afwijkende maat is dan een tweede ronde rekenen en een nieuwe leverdatum.</strong>",
+  "pull": "Je showroom laat zien wat er kan. De prijs van een afwijkende maat bepaalt iemand anders.",
+  "voorstel": "Wij leveren het aluminium op jouw maat voor de prijs van de standaardmaat, rechtstreeks bij jullie aan, zodat je voor serres, veranda's, vouwwanden en zonwering één nummer hebt."
+}

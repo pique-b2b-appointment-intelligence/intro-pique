@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- BUITEN-GOED LP v12 — vorm uit Componenten/lp-v2 (lp.css/lp-v2.js/lp-intro.js) plus
-     lp12.css/lp12.js. Klantpagina, dus geen enkel onderdeel van Pique of Lightr. -->
+<!-- Buiten-Goed, persoonlijke pagina. Vorm in lp.css/lp12.css, gedrag in lp-v2.js/lp12.js. -->
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -16,11 +15,9 @@
 <link rel="stylesheet" href="lp.css">
 <link rel="stylesheet" href="lp12.css">
 <style>
-/* De band draagt de bedrijfsfilm en die is liggend, dus het podium blijft
-   zoals v12 hem heeft. Annes staande video zit in de introlaag en in de hero. */
+/* De band draagt de bedrijfsfilm, liggend. Annes staande video zit in de hero. */
 
-/* De drie maquettes van v12 tonen het product van Pique. Op een klantpagina
-   staat hier wat de klant zelf levert, in dezelfde opbouw. */
+/* Wat Buiten-Goed zelf levert, in drie stappen. */
 .bgwerk{padding:clamp(2.6rem,6vw,4.4rem) clamp(1.25rem,4vw,2rem) clamp(1rem,3vw,2rem);max-width:1100px;margin:0 auto}
 .bgwerk-eye{text-align:center;font-family:var(--hand);font-size:1.5rem;color:var(--inkt);margin-bottom:.2rem}
 .bgwerk-h{text-align:center;font-family:var(--serif);font-weight:700;letter-spacing:-.022em;font-size:clamp(1.5rem,2.6vw,2rem);color:var(--ink);margin-bottom:1.8rem}
@@ -34,8 +31,7 @@
 .bgstap p{font-size:.88rem;color:var(--ink2);line-height:1.55}
 @media(max-width:720px){.bgstap{grid-template-columns:1fr;max-width:420px}}
 
-/* De merkenrij van v12 draait op maskerbestanden. Die zijn er voor deze merken
-   niet, dus hier staan ze als woordmerk in tekst. */
+/* De merken die Buiten-Goed voert, als woordmerk in tekst. */
 .mk-rij span.mkt{font-size:.82rem;font-weight:500;letter-spacing:.06em;color:var(--wit);opacity:.5}
 .mk-rij:hover span.mkt{opacity:.3}
 .mk-rij span.mkt:hover{opacity:.95}

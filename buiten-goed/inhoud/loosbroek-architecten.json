@@ -1,0 +1,30 @@
+{
+  "voornaam": "Pascal",
+  "waarom_jij": "Ik zocht familiebedrijven die particuliere woonhuizen en verbouwingen tekenen, omdat daar één iemand het hele traject vasthoudt. Op jullie nieuwspagina las ik dat het mooiste appartement van Villa Oudeweg op de belle-etage zit, met een veranda die over de tuin uitkijkt. Een paar berichten eerder stond er een tuinkamer in Tiel. Zulke ruimtes zijn bij ons het hele werk, en daarom kwam deze kaart bij jou terecht.",
+  "watdit_onderwerp": "de veranda en de tuinkamer",
+  "bevindingen": [
+    {
+      "hier": true,
+      "wat": "Bij Villa Oudeweg leg je het mooiste appartement op de belle-etage, met een veranda over de tuin.",
+      "citaat": "Maar het mooiste appartement is te vinden op de belle-etage met een veranda met prachtig uitzicht over de tuin, extra hoog plafond en schitterend daglicht door de hoge kozijnen.",
+      "bron": "loosbroekarchitecten.nl",
+      "datum": "29 september 2025"
+    },
+    {
+      "wat": "In oktober meldde je dat de verbouwing van dat pand daadwerkelijk begonnen was.",
+      "citaat": "Na een zorgvuldige voorbereiding is nu gestart met de verbouwing van dit pand met veel geschiedenis tot een woongebouw voor een onbezorgde toekomst.",
+      "bron": "loosbroekarchitecten.nl",
+      "datum": "23 oktober 2025"
+    },
+    {
+      "wat": "Daarvoor stond er op dezelfde pagina een bericht over een tuinkamer in Tiel.",
+      "bron": "loosbroekarchitecten.nl",
+      "datum": "29 februari 2024"
+    }
+  ],
+  "pivot": "Een veranda op een belle-etage en een tuinkamer in Tiel zijn hetzelfde soort werk, en dat komt bij jullie met regelmaat langs. Jullie tekenen het en een aannemer voert het uit. Bij een pand met geschiedenis ligt de maat al vast voordat er iemand begint, en dan is de kozijnmaat het verschil tussen passend en bijna passend.",
+  "betekent_kop": "Bijna passend valt bij zo'n pand direct op.",
+  "betekent": "In een gebouw met hoge kozijnen en extra hoge plafonds staat de maat vast voordat jij je pen oppakt. Een veranda of tuinkamer die daar een paar centimeter naast zit, leest als later aangeplakt, en dat is bij een pand met die geschiedenis het laatste wat je wil. <strong>Je opdrachtgever ziet dat verschil zonder dat hij kan benoemen waar hij naar kijkt.</strong>",
+  "pull": "Bij een pand met geschiedenis ligt de maat er al, en het glas heeft zich te gedragen.",
+  "voorstel": "Wij laten je opdrachtgever in onze showroom in Barneveld zien wat er in zulke kozijnen past, en bouwen het daarna op de maat die het pand voorschrijft."
+}

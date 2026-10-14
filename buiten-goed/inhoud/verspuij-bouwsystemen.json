@@ -1,0 +1,29 @@
+{
+  "voornaam": "Jelle",
+  "waarom_jij": "Bij de meeste bedrijven op mijn lijst moet ik zoeken waar het glas zit. Bij jullie staat het in de eerste zin van de homepage en staan er onder de projecten drie tuinkamers en serres. Daardoor werd mijn vraag een andere dan ik van plan was: met twee timmermansplekken open en een werkvoorbereider erbij, wie zet dat werk dan allemaal?",
+  "watdit_onderwerp": "de serres die jullie leveren en monteren",
+  "bevindingen": [
+    {
+      "hier": true,
+      "wat": "In de eerste zin van je homepage staan kozijnen, dakkapellen en serres als jullie specialisme.",
+      "citaat": "Wij zijn gespecialiseerd in de levering en montage van kozijnen, dakkapellen en serres.",
+      "bron": "verspuijbouw.nl",
+      "datum": "homepage, bekeken 14 oktober 2026"
+    },
+    {
+      "wat": "Onder je projecten staan er drie van dit werk: tuinkamer Giessenburg, serre Gorinchem en tuinkamer Arkel.",
+      "bron": "verspuijbouw.nl",
+      "datum": "projectenpagina, bekeken 14 oktober 2026"
+    },
+    {
+      "wat": "Er staan drie vacatures open, voor een allround timmerman, een leerling timmerman en een werkvoorbereider.",
+      "bron": "verspuijbouw.nl",
+      "datum": "vacatures, bekeken 14 oktober 2026"
+    }
+  ],
+  "pivot": "Serres en tuinkamers zijn bij jullie een eigen dienst, met een inspiratietuin in Bunnik waar mensen naar binnen lopen om het te zien. Wat open staat zijn twee timmerlieden en de man die het werk voorbereidt, dus de montage en de planning zijn waar het knelt.",
+  "betekent_kop": "Aannemen is bij jullie het probleem niet.",
+  "betekent": "Iemand loopt in Bunnik door de inspiratietuin, wil een serre, en dan gaat het gesprek over wanneer jullie kunnen. Zolang die twee timmermansplekken open staan, bepaalt de agenda van je eigen ploeg wat je kunt beloven. <strong>Schuift de levering twee weken op, dan moet je dat uitleggen aan iemand die in Bunnik al een datum van je heeft gekregen.</strong>",
+  "pull": "In Bunnik kun je het laten zien. De vraag is wie het komt zetten.",
+  "voorstel": "Wij leveren het serre- en glaswerk op maat zonder meerprijs en kunnen het met onze eigen montagedienst plaatsen, zodat jullie timmerlieden aan de kozijnen en dakkapellen kunnen blijven."
+}
