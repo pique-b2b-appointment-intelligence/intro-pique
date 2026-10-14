@@ -41,3 +41,4 @@ egenie-tussenstap/
 _*.html
 **/_*.html
 **/test.html
+!buiten-goed/*.mp4

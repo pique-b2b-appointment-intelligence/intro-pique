@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!-- BUITEN-GOED LP v2 — vorm uit Componenten/lp-v2 (lp.css/lp-v2.js/lp-intro.js), thema-buitengoed.css. Per prospect alleen inhoud. -->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Buiten-Goed voor Hoogendijk Hoveniers</title>
+<meta name="description" content="Een persoonlijk voorstel van Buiten-Goed voor Hoogendijk Hoveniers.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="thema-buitengoed.css">
+<link rel="stylesheet" href="lp.css">
+<style>
+/* Het aanbod van Buiten-Goed in drie tastbare stappen, in dezelfde vinkjesstijl
+   als het component. Op een klantpagina staat hier wat de klant levert. */
+.bgwerk{padding:clamp(2.5rem,6vw,4.5rem) clamp(1.25rem,4vw,2rem) clamp(1rem,3vw,2rem);max-width:1100px;margin:0 auto}
+.bgwerk-eye{text-align:center;font-family:var(--hand);font-size:1.5rem;color:var(--inkt);margin-bottom:.2rem}
+.bgwerk-h{text-align:center;font-family:var(--serif);font-weight:700;letter-spacing:-.022em;font-size:clamp(1.5rem,2.6vw,2rem);color:var(--ink);margin-bottom:2rem}
+.bgstap{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;max-width:860px;margin:0 auto 2.2rem}
+.bgfoto{max-width:860px;margin:0 auto 2rem;border-radius:var(--r-kaart);overflow:hidden;border:1px solid var(--line)}
+.bgfoto img{width:100%;height:auto;display:block}
+.bgfoto figcaption{font-family:var(--hand);font-size:1.12rem;color:var(--ink3);padding:.55rem .9rem .7rem;background:var(--pap-0)}
+.bgstap div{background:var(--pap-0);border:1px solid var(--line);border-radius:var(--r-kaart);padding:1.1rem 1.2rem 1.25rem}
+.bgstap .n{font-family:var(--hand);font-size:1.6rem;color:var(--accent);line-height:1}
+.bgstap b{display:block;font-size:.98rem;color:var(--ink);margin:.35rem 0 .3rem}
+.bgstap p{font-size:.88rem;color:var(--ink2);line-height:1.55}
+@media(max-width:720px){.bgstap{grid-template-columns:1fr;max-width:420px}}
+</style>
+<script>
+  window.PQ_BEDRIJF      = 'Hoogendijk Hoveniers';
+  window.PQ_KLANT        = 'buitengoed';
+  window.PQ_CAMPAGNE     = 'buitengoed-hoveniers';
+  window.PQ_CAL          = '';
+  window.PQ_VIDEO        = 'buitengoed-anne.mp4';
+  window.PQ_POSTER       = 'buitengoed-anne-poster.jpg';
+  window.PQ_TRACK_URL    = '/api/t';
+  window.PQ_TERUGBEL_URL = '';
+  window.PIQUE_INTRO     = { voornaam: 'Yuri', bedrijf: 'Hoogendijk Hoveniers', merk: false,
+                             ctaSub: 'Video van Anne, anderhalve minuut' };
+</script>
+<script src="lp-intro.js"></script>
+</head>
+<body>
+<div class="mbar" id="mbar"></div>
+
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="Buiten-Goed"><img src="logo-buiten-goed.svg" alt="Buiten-Goed" style="height:34px;width:auto;display:block"></a>
+  <button class="nav-cta" data-open="sheet" data-tab="bel">Even bellen</button>
+</nav>
+
+<div class="rail" id="rail">
+  <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
+  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">Wat dat betekent</span></a>
+  <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
+  <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Hoi Yuri. Ik las je stuk over tuinen die tegen het weer moeten kunnen.</div>
+          <div class="sig">Anne</div>
+        </div>
+        <span class="slot-tag">De brief op je bureau</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1 class="hero-h1">Daarom kreeg je <span class="u">mijn brief</span>.</h1>
+      <p class="hero-sub">Drie dingen die me opvielen bij Hoogendijk Hoveniers. Ze wijzen alle drie dezelfde kant op.</p>
+      <div class="hero-meta">
+        <span class="chip"><i></i>03 bevindingen</span>
+        <span class="chip">2 minuten lezen</span>
+        <span class="chip">Alleen voor <b>Hoogendijk Hoveniers</b> geschreven</span>
+      </div>
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="buitengoed-anne-poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Anne vat het samen in anderhalve minuut</span>
+      </button>
+      <div class="scrollcue"><i></i><span>Scroll</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true"><path class="jp-base" id="jp-base"></path><path class="jp-prog" id="jp-prog"></path></svg>
+
+  <section class="chapter left" id="s1">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waarom jij</div>
+        <h2 class="ch-kop">Waarom ik naar je keek.</h2>
+        <p class="ch-text">Yuri, wij leveren tuinkassen, serres, overkappingen en vouw- en schuifwanden aan hoveniers die hun tuinen zelf ontwerpen en aanleggen. Bij jullie bleef ik hangen omdat het glaswerk er al een keer in zat. Dat is zeldzamer dan je denkt: de meeste hoveniers die ik bekijk tekenen hout en laten glas aan zich voorbijgaan.</p>
+        <p class="ch-text"><strong>Dit is wat ik vond.</strong></p>
+        <div class="ch-sign">Anne, Buiten-Goed</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find" id="s2">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">01<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Je hebt een overkapping dichtgezet met schuifbaar glas</h2>
+        <p class="ch-text">Op de projectpagina Loungen in weer en wind staat het zo: <span class="f-quote">De wens was nu om de overkapping die al in de tuin stond te voorzien van glaswanden en een keramisch terras. De glaswand kan open geschoven worden.</span></p>
+        <p class="ch-text">Dat is precies ons werk. En het zegt iets belangrijkers: jouw klant vroeg erom, en je hebt het geleverd.</p>
+        <p class="ch-bron">hoogendijkhoveniers.nl, projectpagina Loungen in weer en wind</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter left find">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">02<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Je schrijft zelf waarom die vraag blijft komen</h2>
+        <p class="ch-text">In je stuk over de toekomstbestendige tuin van 14 september schrijf je: <span class="f-quote">De zomers worden warmer, de winters natter, en de extremen heviger.</span> Dat is ook het hele argument voor een overkapping met glas eromheen. Wie zijn tuin wil gebruiken als het hard waait of hard regent, heeft meer nodig dan een dak.</p>
+        <p class="ch-bron">hoogendijkhoveniers.nl, artikel van 14 september 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right find">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="f-head"><div class="f-num">03<span class="of">/ 03</span></div><div class="f-tag">Wat ik zag</div></div>
+        <h2 class="f-kop">Er staan vier vacatures open en er zit geen timmerman bij</h2>
+        <p class="ch-text">Jullie zoeken een meewerkend hovenier, een zelfstandig werkend voorman, een voorman tuinaanleg en een open sollicitatie. Op de teampagina staan hoveniers, een werkvoorbereider en jullie twee. Het glas en het staal komt dus per project van buiten, en dat is elke keer opnieuw regelen.</p>
+        <p class="ch-bron">hoogendijkhoveniers.nl, werken-bij en over-ons, bekeken 14 oktober 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center pivot" id="s3">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dat betekent</div>
+        <p class="ch-pivot">Je verkoopt dit al. De vraag ernaar groeit en je team groeit mee. Wat per project opnieuw geregeld moet worden is wie het glas levert en wie het komt zetten.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="ask" id="ask">
+  <div class="ask-in">
+    <p class="ask-hand">Zal ik je hier gewoon even over bellen?</p>
+    <p class="ask-sub">Hieronder staat wat wij zouden doen. Wil je dat liever horen dan lezen, dan pak ik de telefoon. Twintig minuten, en je verbindt je nergens aan.</p>
+    <div class="ask-btns">
+      <button class="btn-a" data-open="sheet" data-tab="bel">Ja, bel me</button>
+      <button class="btn-b" id="askread">Ik lees eerst het voorstel</button>
+    </div>
+  </div>
+</section>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true"><path class="jp-base" id="jp-base2"></path><path class="jp-prog" id="jp-prog2"></path></svg>
+
+  <section class="chapter left">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dit kost als het misgaat</div>
+        <h2 class="ch-kop">Jij hebt het uit te leggen.</h2>
+        <p class="ch-text">Zodra de klant naar buiten wijst en zegt dat hij daar een overkapping wil, ben je voor dat ene onderdeel afhankelijk van iemand anders. Wanneer kunnen ze meten, wanneer leveren, wanneer hebben ze monteurs. Loopt daar iets uit, dan staat jouw tuin stil en sta jij bij de klant aan tafel.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Hoe het anders kan</div>
+        <p class="ch-text">Buiten-Goed levert tuinkassen, serres, oranjerieën, overkappingen, vouw- en schuifwanden, lichtstraten en zonwering, en wij zetten het met onze eigen mensen neer. Jij tekent het in zoals jij het voor je ziet, wij zorgen dat het past en dat het staat op de dag die in jouw planning schikt.</p>
+        <p class="ch-text">Maatwerk kost bij ons niet ineens extra. Jouw ontwerp bepaalt de maat, en wat wij op voorraad hebben staat daar los van. Je werkt met één aanspreekpunt voor alle merken die wij voeren, dus Solarlux, ACD, Janssen, Warema, Hillhout en Pext lopen via hetzelfde nummer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter center phase" id="s4">
+    <div class="ch-inner"><span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Het voorstel</div>
+        <h2 class="ch-kop ch-head">Wat ik voorstel.</h2>
+        <p class="ch-sub">Kom met een tuin die nu op je tekentafel ligt een keer langs in Barneveld. Dan leggen we de systemen naast elkaar en reken ik je ter plekke voor wat het bij ons wordt. Bevalt het, dan praten we over je inkooppercentage.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="bgwerk" id="toon">
+  <div class="bgwerk-eye reveal">Hoe het loopt</div>
+  <h2 class="bgwerk-h reveal">Van jouw tekening naar een tuin die af is.</h2>
+  <figure class="bgfoto reveal">
+    <img src="project-glasgevel.jpg" alt="Woning met glazen topgevel en vouwwanden rond een binnenzwembad" loading="lazy" decoding="async">
+    <figcaption>Zo'n topgevel en die vouwwanden, dat is het werk dat wij leveren en zetten.</figcaption>
+  </figure>
+  <div class="bgstap reveal">
+    <div><div class="n">01</div><b>Jij tekent het in</b><p>In jouw ontwerp, op jouw maat. Wij leveren de technische tekeningen en documentatie waar je mee naar je klant kunt.</p></div>
+    <div><div class="n">02</div><b>Wij leveren en monteren</b><p>Met onze eigen montagedienst, op de dag die in jouw planning past. Jij hoeft er geen man voor vrij te maken.</p></div>
+    <div><div class="n">03</div><b>Jij rekent af met je klant</b><p>Jij koopt in tegen een percentage dat we samen afspreken en berekent het door. Eén aanspreekpunt voor alles wat wij leveren.</p></div>
+  </div>
+  <div class="vw">
+    <div style="--dl:.55s"><span>&#10003;</span><b>Maatwerk zonder meerprijs</b><p>De maat volgt jouw tekening. Daar rekenen wij niets extra's voor.</p></div>
+    <div style="--dl:.68s"><span>&#10003;</span><b>Showroom van duizend vierkante meter</b><p>Aan de Marchandweg in Barneveld, bij jou om de hoek. Je kunt er met je klant naartoe.</p></div>
+    <div style="--dl:.81s"><span>&#10003;</span><b>Eigen montagedienst</b><p>Wij zetten het zelf neer, dus de oplevering hangt niet aan een onderaannemer.</p></div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Ik ben Anne. Buiten-Goed bestaat sinds 1987 en is een familiebedrijf. Sinds we in 2009 Arkoo overnamen zijn we landelijk een van de grootste in tuinkassen, serres en oranjerieën.</p>
+      <p>Ik ben het aanspreekpunt voor hoveniers, architecten en aannemers die bij ons inkopen. Heb je een tuin waar iets van glas in moet, bel me dan gewoon, dan kijk ik met je mee voordat het naar de klant gaat.</p>
+    </div>
+    <p class="fo-name"><strong>Anne</strong>, Buiten-Goed</p>
+  </div>
+</section>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Even kennismaken?</h2>
+    <p class="cta-sub reveal">Twintig minuten aan de telefoon over hoe jullie het glaswerk nu regelen, en wat het bij ons zou worden. Of kom langs in Barneveld, dan loop ik er met je doorheen.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-a" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
+      <a class="btn-b" href="tel:0342491202" style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.2)">Bel 0342 491 202</a>
+    </div>
+    <p class="cta-alt reveal">Liever eerst even schriftelijk? <a href="mailto:info@buiten-goed.nl?subject=Hoogendijk%20Hoveniers%20%C3%97%20Buiten-Goed">Mail me een korte vraag.</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo"><img src="logo-buiten-goed.svg" alt="Buiten-Goed" style="height:38px;width:auto"></div>
+  <div class="ft-meta">Tuinkassen, serres, overkappingen en zonwering &nbsp;&middot;&nbsp; Marchandweg 4, Barneveld &nbsp;&middot;&nbsp; <a href="mailto:info@buiten-goed.nl">info@buiten-goed.nl</a><br>&copy; 2026 Buiten-Goed</div>
+</footer>
+
+<div class="dock" id="dock">
+  <span class="dock-t"><b>Even bellen over wat ik zag?</b> 20 minuten.</span>
+  <button class="dock-b" data-open="sheet" data-tab="bel">Bel me</button>
+  <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
+</div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Laat je terugbellen">
+    <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
+    <div class="sheet-host">
+      <img src="buitengoed-anne-poster.jpg" alt="">
+      <div><div class="n">20 minuten met Anne</div><div class="s">Telefoon, of langskomen in Barneveld.</div></div>
+    </div>
+    <div class="panes">
+    <div class="pane on" id="pane-bel">
+      <form id="belform">
+        <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" value="Yuri" required></div>
+        <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.35rem">Wanneer schikt het?</label>
+        <div class="slots" id="slots">
+          <button type="button" data-v="Vandaag, later vanmiddag">Later vanmiddag</button>
+          <button type="button" data-v="Morgenochtend">Morgenochtend</button>
+          <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
+          <button type="button" data-v="Deze week, maakt niet uit">Deze week, maakt niet uit</button>
+        </div>
+        <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
+        <p class="sheet-note">Ik bel zelf. Je nummer gaat nergens anders heen en komt op geen enkele lijst.</p>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script src="lp-v2.js"></script>
+</body>
+</html>
