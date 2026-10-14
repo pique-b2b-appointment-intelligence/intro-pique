@@ -56,3 +56,18 @@
 /* Ubuntu loopt breder dan Fraunces, dus de koppen een tandje strakker. */
 .hero-h1,.ch-kop,.f-kop,.ch-pivot,.cta-h,.tp h3{font-weight:700;letter-spacing:-.022em}
 .f-quote{font-style:normal}
+
+/* ── Ubuntu kent geen 600 ─────────────────────────────────────
+   lp.css vraagt op 34 plekken om font-weight 600. Fraunces heeft dat
+   gewicht, Ubuntu niet: die loopt 300, 400, 500, 700. De browser maakt
+   er dan namaakvet van, en namaakvet verdikt de letter zonder de vorm
+   mee te tekenen. Naast een echte 500 of 700 leest dat als een tweede
+   lettertype, en dat is precies wat er op de bevindingskaarten gebeurde.
+   Dit zet het namaakvet uit, zodat elke 600 naar de dichtstbijzijnde
+   echte snede valt, en zet daarna de plekken waar het zwaar moet zijn
+   zelf op 700. */
+:root{font-synthesis-weight:none;-webkit-font-synthesis:none}
+.ch-text strong,.find .ch-text strong,.hero-meta .chip b,.vrow b,
+.sheet-host .n,.vw b,.bgstap b,.fo-name strong,.dock-t b{font-weight:700}
+.ch-eyebrow,.f-tag,.rail .rl,.slot-tag,.cta-eyebrow,.fo-eyebrow,
+.bgwerk-eye,.ask-later,.ft-meta{font-weight:500}
