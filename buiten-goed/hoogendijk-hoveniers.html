@@ -39,6 +39,11 @@
 .mk-rij span.mkt{font-size:.82rem;font-weight:500;letter-spacing:.06em;color:var(--wit);opacity:.5}
 .mk-rij:hover span.mkt{opacity:.3}
 .mk-rij span.mkt:hover{opacity:.95}
+
+/* Anne werkt op dinsdag, woensdag en donderdag. Het formulier biedt daarom geen
+   dag aan waarop niemand belt: een keuze die we niet waarmaken is erger dan een
+   keuze minder. */
+.beldagen{font-size:.72rem;color:var(--ink3);margin:0 0 .5rem}
 </style>
 <script>
   window.PQ_BEDRIJF      = 'Hoogendijk Hoveniers';
@@ -255,7 +260,7 @@
   <div class="fr">
     <div class="fo-eyebrow">De persoon achter dit voorstel</div>
     <div class="fo-text">
-      <p>Ik ben Anne. Buiten-Goed bestaat sinds 1987 en is een familiebedrijf. Sinds we in 2009 Arkoo overnamen zijn we landelijk een van de grootste in tuinkassen, serres en oranjerie&euml;n.</p>
+      <p>Ik ben Anne. Buiten-Goed bestaat sinds 1987 en is een familiebedrijf. We zijn landelijk een van de grootste in tuinkassen, serres en oranjerie&euml;n.</p>
       <p>Ik ben het aanspreekpunt voor hoveniers, architecten en aannemers die bij ons inkopen. Heb je een tuin waar iets van glas in moet, bel me dan gewoon, dan kijk ik met je mee voordat het naar de klant gaat.</p>
     </div>
     <p class="fo-name"><strong>Anne</strong>, Buiten-Goed</p>
@@ -292,19 +297,20 @@
     <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
     <div class="sheet-host">
       <img src="anne.jpg" alt="" loading="lazy" decoding="async">
-      <div><div class="n">20 minuten met Anne</div><div class="s">Telefoon, of langskomen in Barneveld.</div></div>
+      <div><div class="n">20 minuten met Anne</div><div class="s">Dinsdag, woensdag of donderdag. Telefoon, of langskomen in Barneveld.</div></div>
     </div>
     <div class="panes">
     <div class="pane on" id="pane-bel">
       <form id="belform">
         <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" value="Yuri" required></div>
         <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
-        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.35rem">Wanneer schikt het?</label>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.1rem">Wanneer schikt het?</label>
+        <p class="beldagen">Anne belt op dinsdag, woensdag en donderdag.</p>
         <div class="slots" id="slots">
-          <button type="button" data-v="Vandaag, later vanmiddag">Later vanmiddag</button>
-          <button type="button" data-v="Morgenochtend">Morgenochtend</button>
-          <button type="button" data-v="Morgenmiddag">Morgenmiddag</button>
-          <button type="button" data-v="Deze week, maakt niet uit">Deze week, maakt niet uit</button>
+          <button type="button" data-v="Dinsdagochtend">Dinsdagochtend</button>
+          <button type="button" data-v="Dinsdagmiddag">Dinsdagmiddag</button>
+          <button type="button" data-v="Woensdag, ochtend of middag">Woensdag</button>
+          <button type="button" data-v="Donderdag, ochtend of middag">Donderdag</button>
         </div>
         <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
         <p class="sheet-note">Ik bel zelf. Je nummer gaat nergens anders heen en komt op geen enkele lijst.</p>
