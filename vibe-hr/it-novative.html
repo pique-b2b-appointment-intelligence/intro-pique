@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Gegenereerd door Klanten/VolleGym/lp/bouw-v12.py. Vorm: lp-v2 + lp12.
+<!-- Gegenereerd door Klanten/Payper/lp/bouw-v12.py. Vorm: lp-v2 + lp12.
      Pas het component aan, niet deze pagina. -->
 <html lang="nl">
 <head>
@@ -211,7 +211,7 @@
         <p class="ch-text">Zolang iemand het al jaren doet, zit de werkwijze in zijn hoofd en loopt het. Op het moment dat je het overdraagt, draag je over wat er ligt. Dat is meteen de enige keer dat opnieuw inrichten niemand extra werk kost, want die persoon moet het zich toch eigen maken. Daarna zit je er weer jaren aan vast.</p>
         <p class="ch-pull">Wat je overdraagt, is wat er de komende jaren staat.</p>
         <div class="agentk">
-          <div class="agentk-kop"><i></i><span>MELDING VAN DE AGENT</span></div>
+          <div class="agentk-kop"><i></i><b>VibeHR</b><u>nu</u></div>
           <p class="agentk-t">Er komt een <b>office manager</b> bij. Zal ik de overdracht van de loonadministratie klaarzetten?</p>
           <div class="agentk-kn"><span>Ja, zet klaar</span><span>Bekijk details</span></div>
           <p class="agentk-vt">Zo ziet een melding van VibeHR eruit.</p>
@@ -296,7 +296,7 @@
       <div class="vslhouder">
         <button class="vslbox" type="button" aria-label="Speel de uitleg van VibeHR af">
           <img src="vsl-poster.jpg" alt="">
-          <span class="vslplay"></span><span class="vslduur"></span>
+          <span class="vslplay"></span>
         </button>
       </div>
     </div>
@@ -311,7 +311,7 @@
     </div>
     <div class="bewijsrij">
       <div class="bw"><i class="bw-ik bw-medewerkers"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 15.2c2.7-.4 5.5 1 5.5 4.8"/></svg></i><b>Alle modules staan open</b><span>Medewerkers, contracten, verlof en de loonrun, zonder dat er iets is uitgekleed.</span></div>
-      <div class="bw"><i class="bw-ik bw-contracten"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></i><b>Naast je huidige administratie</b><span>Je hoeft nog niets over te zetten. Laat ze een maand naast elkaar lopen.</span></div>
+      <div class="bw"><i class="bw-ik bw-contracten"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></i><b>Naast je huidige administratie</b><span>Je zet nog niets over. Aan het eind van de maand leg je de twee loonruns naast elkaar.</span></div>
       <div class="bw"><i class="bw-ik bw-stoppen"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M9 9l6 6M15 9l-6 6"/></svg></i><b>Stoppen kost een klik</b><span>Doe je niets, dan loopt het na dertig dagen vanzelf af.</span></div>
     </div>
     <p class="bewijsbron">De proefperiode van VibeHR, zoals die op vibehr.nl staat, geraadpleegd op 15 oktober 2026.</p>
@@ -336,7 +336,7 @@
       <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
       <button class="btn-b" style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
     </div>
-    <p class="cta-alt reveal">Liever eerst schriftelijk?<a href="mailto:info@vibehr.nl?subject=iT-novative%20x%20Volle%20Gym">Mail me je vraag</a></p>
+    <p class="cta-alt reveal">Liever eerst schriftelijk? <a href="mailto:info@vibehr.nl?subject=iT-novative%20x%20VibeHR">Mail me je vraag</a></p>
   </div>
 </section>
 
@@ -389,6 +389,103 @@
 <script src="lp-v2.js"></script>
 <link rel="stylesheet" href="lp12.css">
 <style>
+/* ── de drie maquettes op één lijn ──────────────────────────────────────
+   lp.css geeft .tp-vis een vaste hoogte van 200px met verticale centrering.
+   Deze drie kaarten zijn 247, 242 en 310 hoog, dus ze liepen alle drie
+   anders over die doos heen en stonden op drie hoogtes. Boven uitlijnen en
+   de doos meegroeien met de hoogste. */
+/* Het voorstelkapittel is gecentreerd en de drie kolommen eronder ook.
+   De kop ertussen stond links en brak de as. */
+.toon-h{text-align:center}
+.toon-rij{align-items:start}
+/* De stippellijn van lp.css hangt op 96px, het midden van een vak van 200px.
+   Nu de kaarten boven uitlijnen loopt die lijn dwars door de kaarten heen,
+   en dan lijken ze over elkaar te vallen. De nummers eronder dragen de
+   volgorde al. */
+.toon-rij::before{display:none}
+.tp-vis{height:auto;min-height:320px;align-items:flex-start;padding:0;margin-bottom:1.25rem}
+
+/* ── wat een donker thema stukmaakt aan een component die licht is gebouwd ──
+   lp.css gebruikt --ink-rgb voor twee dingen tegelijk: de tekstkleur en de
+   kleur van de slagschaduw onder papier. Op een licht merk vallen die samen,
+   want donkere inkt geeft een donkere schaduw. Hier is --ink-rgb 232,239,236,
+   dus elke papierschaduw werd een witte gloed op een bijna zwarte pagina.
+   Het kantelpunt is het enige papier op deze pagina, dus het blijft hierbij. */
+.chapter.pivot.brief .ch-body{
+  box-shadow:0 1px 2px rgba(0,0,0,.5),0 34px 64px -28px rgba(0,0,0,.85)}
+/* Het plakband erboven. In platte CSS zonder fotografie is nagemaakt plakband
+   een grijze veeg, en op donker wordt die veeg het eerste wat je ziet. De
+   kaart in de hero heeft het ook niet, dus weg ermee. Zie lp-ux-standaard. */
+.chapter.pivot.brief .ch-body::before{display:none}
+.chapter.pivot.brief .ch-dot{top:-2.1rem}
+
+/* ── geen cursief voor nadruk, dat is een vaste regel ────────────────────
+   .tp-num stond in Caveat. Bij de kaart en het kantelpunt betekent handschrift
+   iets; bij een stapnummer is het alleen een scheve 01. */
+.tp-num{font-family:var(--sans);font-size:.74rem;font-weight:600;
+  letter-spacing:.18em;color:var(--accent);font-variant-numeric:tabular-nums}
+.brug{font-style:normal}
+/* .dv-nr staat in lp12.css ook in Caveat. Zelfde reden: een volgnummer in
+   een dossier is geen handschrift, en scheef gezette cijfers naast rechte
+   tekst lezen als cursief. */
+.dv-nr{font-family:var(--sans);font-size:.72rem;font-weight:600;
+  letter-spacing:.16em;font-variant-numeric:tabular-nums;padding-top:.2rem}
+
+/* ── het founderblok ────────────────────────────────────────────────────
+   lp.css centreert het portret verticaal. Naast drie alinea's zweeft het dan
+   halverwege, met de eyebrow alleen boven een leeg stuk. Boven uitlijnen. */
+.founder{align-items:start}
+@media(min-width:601px){.founder .fo-photo{margin-top:1.9rem}}
+
+/* ── de drie tegels op gelijke hoogte ───────────────────────────────────
+   'Naast je huidige administratie' loopt over twee regels en duwde zijn eigen
+   bodytekst omlaag, waardoor de drie regels onder elkaar niet uitlijnden. */
+.bw{display:grid;grid-template-rows:auto auto 1fr;align-content:start}
+/* Naast elkaar loopt alleen de middelste titel over twee regels, en dan
+   begint zijn bodytekst een regel lager dan de twee ernaast. Boven de
+   breedte waarop ze naast elkaar staan krijgt de titel twee regels ruimte.
+   Onder die breedte stapelen ze en zou dat een gat zijn. */
+.bw b{line-height:1.3}
+@media(min-width:700px){.bw b{min-height:2.6em}}
+
+/* De bronregel is een voetnoot en geen uitspraak. */
+.bewijsbron{font-size:.72rem;color:var(--ink3);line-height:1.55;margin-top:1.1rem}
+
+/* ── de agentkaart ademt, en het gat eronder is kleiner ─────────────── */
+.ch-pull + .agentk{margin-top:1.9rem}
+.agentk + *{margin-top:.6rem}
+
+/* ── de naam onder het founderblok was bijna onzichtbaar ────────────── */
+.fo-name{font-size:.86rem;color:var(--ink2);margin-top:.55rem;font-weight:500}
+
+/* ── woordmerk: tekst, zoals op vibehr.nl. Hun favicon is nog het Payper-
+   logo, dus een plaatje is hier juist fout. De onderregel staat klein en
+   ver uit elkaar, anders plakt hij tegen de naam aan. */
+.wm{display:inline-flex;flex-direction:column;line-height:1.05}
+.wm b{font-weight:700;letter-spacing:-.015em;font-size:1.02rem}
+.wm i{font-style:normal;font-size:.44rem;font-weight:500;letter-spacing:.26em;
+  opacity:.5;margin-top:.34rem}
+.wm-ft b{font-size:.95rem}
+.wm-ft i{font-size:.42rem;margin-top:.3rem}
+
+/* ── agentkaart, in de vorm van het meldingenblok op hun eigen voorpagina ── */
+.agentk{width:min(440px,100%);margin:1.5rem 0 0;background:var(--kaart);
+  border:1px solid var(--kaart-rand);border-radius:var(--r-kaart);padding:.95rem 1rem;
+  box-shadow:0 14px 34px -24px rgba(0,0,0,.9)}
+.agentk-kop{display:flex;align-items:center;gap:.45rem;margin-bottom:.6rem}
+.agentk-kop i{width:20px;height:20px;border-radius:6px;flex:none;
+  background:linear-gradient(135deg,var(--accent),var(--accent-h))}
+.agentk-kop b{font-size:.74rem;font-weight:600;color:var(--ink);letter-spacing:-.005em}
+.agentk-kop u{font-size:.66rem;color:var(--ink3);text-decoration:none;margin-left:auto}
+.agentk-t{margin:0 0 .8rem;font-size:.84rem;line-height:1.5;color:var(--ink)}
+.agentk-t b{color:var(--accent);font-weight:600}
+.agentk-kn{display:flex;gap:.45rem;flex-wrap:wrap;align-items:center}
+.agentk-kn span{font-size:.72rem;padding:.36rem .75rem;border-radius:var(--r-pil);
+  display:inline-block;line-height:1.2}
+.agentk-kn span:first-child{background:var(--accent);color:var(--op-accent);font-weight:600}
+.agentk-kn span+span{border:1px solid var(--kaart-rand);color:var(--ink2)}
+.agentk-vt{margin:.7rem 0 0;font-size:.6rem;color:var(--ink3)}
+
 /* ── de drie tegels in de band, in de vorm van de icoonrij op vibehr.nl ── */
 .bewijsrij{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
   width:min(720px,100%);margin-inline:auto}
@@ -396,11 +493,12 @@
   padding:1rem 1.05rem;text-align:left;display:block}
 .bw-ik{display:flex;align-items:center;justify-content:center;width:34px;height:34px;
   border-radius:10px;margin-bottom:.75rem}
-.bw-ik svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:1.7;
+.bw-ik svg{width:18px;height:18px;fill:none;stroke-width:1.7;
   stroke-linecap:round;stroke-linejoin:round}
-.bw-medewerkers{background:linear-gradient(135deg,#1cc4a3,#1a937b)}
-.bw-contracten{background:linear-gradient(135deg,#4494e4,#225dd3)}
-.bw-stoppen{background:linear-gradient(135deg,#f2a92c,#ec6d13)}
+.bw-ik{background:linear-gradient(135deg,var(--accent-l),var(--accent-h))}
+.bw-ik svg{stroke:var(--op-accent)}
+.bw-contracten{opacity:.82}
+.bw-stoppen{opacity:.64}
 .bw b{display:block;font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
 .bw span{display:block;font-size:.78rem;line-height:1.5;color:var(--ink2)}
 .bewijsbron{width:min(720px,100%);margin-inline:auto}
