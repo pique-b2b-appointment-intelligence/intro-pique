@@ -28,7 +28,7 @@
   window.PQ_TERUGBEL_URL = 'https://script.google.com/macros/s/AKfycby37aGED41tyit5g9IemLY07prmG6J8CIERkkrYSxl92H3aBGCCui-G2stGXMDaUNsngQ/exec';
   window.PIQUE_INTRO     = { bedrijf: "iT-novative", voornaam: "Teun",
     tempo: 33, pauze: 420, merk: false,
-    ctaSub: "Video van Edwin &middot; volgt",
+    ctaSub: "Bekijk wat VibeHR doet &middot; volgt",
     regels: ["Hoi Teun.", "Deze kaart lag niet toevallig|op je bureau.", "Ik heb even gekeken|naar iT-novative.", "*Wil je weten wat ik zag?*"] };
 </script>
 <script src="lp-intro.js"></script>
@@ -76,6 +76,37 @@
 .wm b{font-weight:700;letter-spacing:-.01em;font-size:1.02rem}
 .wm i{font-style:normal;font-size:.5rem;letter-spacing:.19em;opacity:.62;margin-top:.17rem}
 .wm-ft b{font-size:.95rem}
+
+/* ── donker merk: het dossier is een paneel in hun eigen kaartstijl ──────
+   lp12.css geeft .dosveld een lichte achtergrond met --wit en --chrome.
+   Op een donker thema staat daar lichte tekst op, en dan is 'Dit is wat ik
+   vond' onleesbaar. Hier wordt het paneel donker, zoals de kaarten op
+   vibehr.nl. */
+.dosveld{background:var(--kaart);border-color:var(--kaart-rand);
+  box-shadow:0 1px 2px rgba(0,0,0,.3),0 20px 40px -26px rgba(0,0,0,.8)}
+.dv-bar{background:var(--kaart-kop)}
+.dv-bar:hover{background:var(--kaart-rand)}
+.dv-t,.dv-n{color:var(--ink)}
+.dv-rij,.dv-rij *{color:var(--ink2)}
+.dv-rij b,.dv-rij strong{color:var(--ink)}
+
+/* ── de stappen stonden op 900px terwijl de video 720 is ───────────────── */
+.hb-stage + .flow{width:min(720px,100%);margin-inline:auto}
+
+/* ── een agentkaart, zoals het blok op hun eigen voorpagina ────────────── */
+.agentk{width:min(560px,100%);margin:1.6rem 0 0;background:var(--kaart);
+  border:1px solid var(--kaart-rand);border-radius:var(--r-kaart);padding:1rem 1.1rem}
+.agentk-kop{display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem}
+.agentk-kop i{width:22px;height:22px;border-radius:7px;flex:none;
+  background:linear-gradient(135deg,var(--accent),var(--accent-h))}
+.agentk-kop span{font-size:.6rem;letter-spacing:.16em;color:var(--ink3)}
+.agentk-t{margin:0 0 .9rem;font-size:.95rem;line-height:1.5;color:var(--ink)}
+.agentk-t b{color:var(--accent);font-weight:600}
+.agentk-kn{display:flex;gap:.5rem;flex-wrap:wrap}
+.agentk-kn span{font-size:.76rem;padding:.4rem .8rem;border-radius:var(--r-pil)}
+.agentk-kn span:first-child{background:var(--accent);color:var(--op-accent);font-weight:600}
+.agentk-kn span+span{border:1px solid var(--kaart-rand);color:var(--ink2)}
+.agentk-vt{margin:.75rem 0 0;font-size:.64rem;color:var(--ink3)}
 </style>
 </head>
 <body>
@@ -117,7 +148,7 @@
       </div>
       <button class="vrow" id="vrow" type="button">
         <span class="vthumb"><span class="vring"></span><img src="edwin-staand-poster.jpg" alt=""><span class="vplay"></span></span>
-        <span><b>Liever horen dan lezen?</b>Edwin neemt hem deze week op</span>
+        <span><b>Liever horen dan lezen?</b> Een korte uitleg van wat VibeHR doet</span>
       </button>
       <div class="scrollcue"><i></i><span>Scroll</span></div>
     </div>
@@ -200,6 +231,12 @@
       <div class="ch-body"><div class="ch-eyebrow">Wat dat betekent</div><h2 class="ch-kop">Een overdracht is het enige moment waarop je de inrichting nog kunt kiezen.</h2>
         <p class="ch-text">Zolang iemand het al jaren doet, zit de werkwijze in zijn hoofd en loopt het. Op het moment dat je het overdraagt, draag je over wat er ligt. Dat is meteen de enige keer dat opnieuw inrichten niemand extra werk kost, want die persoon moet het zich toch eigen maken. Daarna zit je er weer jaren aan vast.</p>
         <p class="ch-pull">Wat je overdraagt, is wat er de komende jaren staat.</p>
+        <div class="agentk">
+          <div class="agentk-kop"><i></i><span>MELDING VAN DE AGENT</span></div>
+          <p class="agentk-t">Er komt een <b>office manager</b> bij. Zal ik de overdracht van de loonadministratie klaarzetten?</p>
+          <div class="agentk-kn"><span>Ja, zet klaar</span><span>Bekijk details</span></div>
+          <p class="agentk-vt">Zo ziet een melding van VibeHR eruit.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -268,7 +305,7 @@
     <h2 class="hb-h">VibeHR bij een team als het jouwe</h2>
     <div class="hb-stage">
       <div class="vslhouder">
-        <button class="vslbox" type="button" aria-label="Speel de video van anderhalve minuut af">
+        <button class="vslbox" type="button" aria-label="Speel de uitleg van VibeHR af">
           <img src="vsl-poster.jpg" alt="">
           <span class="vslplay"></span><span class="vslduur"></span>
         </button>

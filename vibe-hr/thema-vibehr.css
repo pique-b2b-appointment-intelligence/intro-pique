@@ -69,6 +69,10 @@
   /* ── maten ──────────────────────────────────────────────── */
   --fs-h:clamp(1.9rem,3vw,2.7rem);
   --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  /* kaarten liggen iets opgetild boven de grond, zoals op vibehr.nl */
+  --kaart:#141B19;
+  --kaart-kop:#18221F;
+  --kaart-rand:rgba(232,239,236,.13);
   --dock:0px;
 }
 @font-face{font-family:'The Seasons';src:url('theseasons-regular.woff2') format('woff2');
