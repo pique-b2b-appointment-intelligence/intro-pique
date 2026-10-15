@@ -25,7 +25,10 @@
   --ink:#E8EFEC;           --ink-rgb:232,239,236;      /* tekst                 */
   --donker:#141B19;        --donker-rgb:21,24,22;      /* hero, kantelpunt, CTA */
   --dieper:#080B0A;        --dieper-rgb:9,10,9;        /* overlays              */
-  --wit:#FFFFFF;           --wit-rgb:246,242,233;      /* papier en vlakken     */
+  --wit:#FFFFFF;           --wit-rgb:255,255,255;      /* papier en vlakken     */
+  /* --wit en --wit-rgb horen dezelfde kleur te zijn. Hier stond nog de
+     cremewaarde van het lichte basisthema, waardoor elke rgba(var(--wit-rgb))
+     crème schilderde in plaats van wit. Op de groene band werd dat vuil. */
   --zwart-rgb:0,0,0;
   --ink2:rgba(var(--ink-rgb),.76);                     /* bodytekst             */
   --ink3:rgba(var(--ink-rgb),.52);                     /* bijschrift, bron      */

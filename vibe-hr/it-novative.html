@@ -36,7 +36,7 @@
 /* ── maquettes die alleen VibeHR gebruikt ─────────────────────────────────
    Alles in thema-tokens, en nergens --pap-* op een donker thema: dan staat
    lichte tekst op licht papier, en dat is precies wat er misging. */
-.mchat,.mloon,.mproef{background:var(--kaart);border:1px solid var(--kaart-rand);
+.mchat,.mloon,.mproef{text-align:left;background:var(--kaart);border:1px solid var(--kaart-rand);
   border-radius:var(--r-kaart);padding:.9rem .95rem;width:100%;color:var(--ink);
   box-shadow:0 14px 34px -24px rgba(0,0,0,.9)}
 .mchat-kop{display:flex;align-items:center;gap:.45rem;font-size:.72rem;margin-bottom:.75rem}
@@ -71,7 +71,8 @@
   font-style:normal;font-size:.52rem;color:var(--ink2);margin-right:.45rem;vertical-align:-5px}
 .mloon-tab .u{text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
 .mloon-tab .s{text-align:right;width:1.4rem;color:var(--accent)}
-.mloon-tab .nw td{color:var(--ink)} .mloon-tab .nw td i{border-color:var(--accent);color:var(--accent)}
+.mloon-tab .nw td{color:var(--ink)} .mloon-tab .nw td.s{color:var(--accent)}
+.mloon-tab .nw td i{border-color:var(--accent);color:var(--accent)}
 .mloon-vt{display:flex;justify-content:space-between;border-top:1px solid var(--kaart-rand);
   margin-top:.5rem;padding-top:.5rem;font-size:.68rem}
 .mloon-vt span{font-weight:600} .mloon-vt em{font-style:normal;color:var(--accent)}
@@ -239,7 +240,7 @@
     <article class="tp" style="--dl:0.05s">
       <div class="tp-vis">
         <div class="mchat">
-            <div class="mchat-kop"><i></i><b>VibeHR</b><u>nu</u></div>
+            <div class="mchat-kop"><i></i><b>VibeHR</b></div>
             <p class="mchat-jij">Sanne begint 1 november, 32 uur</p>
             <div class="mchat-vh">
               <p>Genoteerd. Ik heb klaargezet:</p>
@@ -450,6 +451,31 @@
 
 /* De bronregel is een voetnoot en geen uitspraak. */
 .bewijsbron{font-size:.72rem;color:var(--ink3);line-height:1.55;margin-top:1.1rem}
+
+
+/* ── de band 'Hoe het werkt' ────────────────────────────────────────────
+   lp12.css zet .hoeband op --donker (#141B19) terwijl de pagina zelf op
+   #0E1311 staat. Dat verschil is zo klein dat de band geen band is en de
+   hele pagina één donkere massa wordt. Hier wordt hij merkbaar lichter en
+   groen, de kleur die VibeHR zelf voert, zodat het blok als eigen hoofdstuk
+   leest. De randen erboven en eronder maken de overgang hard zichtbaar. */
+.hoeband{background:linear-gradient(176deg,#17413A 0%,#113029 100%);
+  border-top:1px solid rgba(var(--accent-rgb),.22);
+  border-bottom:1px solid rgba(var(--accent-rgb),.22)}
+/* De gloed erboven was berekend op een bijna zwarte band. Op een lichtere
+   ondergrond wordt dat een vlek, dus hij gaat terug. */
+.hoeband::before{opacity:.35}
+/* Op die ondergrond heeft de stappenlijn meer contrast nodig dan --line. */
+.hoeband .stap-l,.hoeband .fl-l{background:rgba(255,255,255,.16)}
+.hoeband .bw{background:rgba(0,0,0,.26);border-color:rgba(255,255,255,.12)}
+.hoeband .bewijsbron{color:rgba(255,255,255,.55)}
+/* .fl-t staat op 58 procent wit. Dat was leesbaar op bijna zwart, maar op
+   deze lichtere band zakt het weg. */
+.hoeband .fl-t{color:rgba(255,255,255,.78)}
+.hoeband .fl-n{color:#fff;border-color:rgba(255,255,255,.4)}
+/* Twee van de vier stapkoppen lopen over twee regels en duwden hun eigen
+   tekst een regel omlaag. Zelfde ingreep als bij de tegels. */
+@media(min-width:780px){.hoeband .fl-k{display:block;min-height:2.5em}}
 
 /* ── de agentkaart ademt, en het gat eronder is kleiner ─────────────── */
 .ch-pull + .agentk{margin-top:1.9rem}
