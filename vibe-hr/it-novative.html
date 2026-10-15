@@ -33,65 +33,59 @@
 </script>
 <script src="lp-intro.js"></script>
 <style>
-/* ── maquettes die alleen VibeHR gebruikt ─────────────────────────────── */
-.mchat,.mloon,.mproef{background:var(--wit);border:1px solid var(--line);border-radius:12px;
-  padding:.85rem .9rem;box-shadow:0 10px 30px -22px rgba(var(--zwart-rgb),.5);width:100%}
-.mchat-kop{display:flex;align-items:center;gap:.45rem;font-size:.72rem;margin-bottom:.7rem}
-.mchat-kop i{width:18px;height:18px;border-radius:50%;background:var(--accent);flex:none}
-.mchat-kop b{font-weight:600}
-.mchat p{margin:0 0 .4rem;font-size:.74rem;line-height:1.45;padding:.45rem .6rem;border-radius:10px;max-width:86%}
-.mchat-jij{margin-left:auto;background:var(--accent);color:var(--op-accent);border-bottom-right-radius:3px}
-.mchat-vh{background:var(--pap-2);color:var(--ink);border-bottom-left-radius:3px}
-.mchat-vt{font-size:.6rem;color:var(--ink3);text-align:right;margin-top:.3rem}
-.mloon-kop{display:flex;justify-content:space-between;align-items:baseline;font-size:.78rem;margin-bottom:.7rem}
-.mloon-kop b{font-weight:600} .mloon-kop span{color:var(--ink3);font-size:.68rem}
-.mloon-rij{list-style:none;margin:0 0 .7rem;padding:0;display:grid;gap:.4rem}
-.mloon-rij li{display:flex;align-items:center;gap:.5rem}
-.mloon-rij i{width:16px;height:16px;border-radius:50%;background:var(--pap-2);flex:none}
-.mloon-rij u{height:6px;border-radius:3px;background:rgba(var(--accent-rgb),.22);flex:1;text-decoration:none}
-.mloon-rij em{font-style:normal;color:var(--accent);font-size:.7rem}
-.mloon-vt{display:flex;justify-content:space-between;border-top:1px solid var(--line);
-  padding-top:.55rem;font-size:.7rem}
-.mloon-vt span{font-weight:600} .mloon-vt em{font-style:normal;color:var(--accent)}
-.mproef{display:flex;gap:.9rem;align-items:center}
-.mproef-getal{text-align:center;flex:none}
-.mproef-getal b{display:block;font-size:2rem;line-height:1;color:var(--accent);font-weight:600}
-.mproef-getal span{font-size:.64rem;color:var(--ink3);letter-spacing:.04em}
-.mproef-lijst{list-style:none;margin:0;padding:0;display:grid;gap:.3rem;font-size:.72rem}
-.mproef-lijst li{padding-left:.9rem;position:relative;color:var(--ink2)}
-.mproef-lijst li::before{content:'';position:absolute;left:0;top:.45em;width:5px;height:5px;
-  border-radius:50%;background:var(--accent)}
-
-/* ── het bewijsblok op de donkere band ────────────────────────────────── */
-.bewijsrij{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-  margin:1.5rem auto 0;max-width:820px;text-align:left}
-.bw{border:1px solid rgba(var(--wit-rgb),.14);border-radius:12px;padding:.8rem .9rem}
-.bw b{display:block;font-size:.84rem;color:var(--wit)}
-.bw span{display:block;font-size:.68rem;color:rgba(var(--wit-rgb),.5);margin-bottom:.4rem}
-.bw em{font-style:normal;font-size:.8rem;color:rgba(var(--wit-rgb),.86);line-height:1.45}
-.bewijsbron{font-size:.66rem;color:rgba(var(--wit-rgb),.42);margin-top:.7rem}
-/* ── woordmerk: tekst, zoals op vibehr.nl. Hun favicon is nog het ──────
-   Payper-logo, dus een plaatje is hier juist fout. */
-.wm{display:inline-flex;flex-direction:column;line-height:1}
-.wm b{font-weight:700;letter-spacing:-.01em;font-size:1.02rem}
-.wm i{font-style:normal;font-size:.5rem;letter-spacing:.19em;opacity:.62;margin-top:.17rem}
-.wm-ft b{font-size:.95rem}
-
-
-/* ── een agentkaart, zoals het blok op hun eigen voorpagina ────────────── */
-.agentk{width:min(560px,100%);margin:1.6rem 0 0;background:var(--kaart);
-  border:1px solid var(--kaart-rand);border-radius:var(--r-kaart);padding:1rem 1.1rem}
-.agentk-kop{display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem}
-.agentk-kop i{width:22px;height:22px;border-radius:7px;flex:none;
+/* ── maquettes die alleen VibeHR gebruikt ─────────────────────────────────
+   Alles in thema-tokens, en nergens --pap-* op een donker thema: dan staat
+   lichte tekst op licht papier, en dat is precies wat er misging. */
+.mchat,.mloon,.mproef{background:var(--kaart);border:1px solid var(--kaart-rand);
+  border-radius:var(--r-kaart);padding:.9rem .95rem;width:100%;color:var(--ink);
+  box-shadow:0 14px 34px -24px rgba(0,0,0,.9)}
+.mchat-kop{display:flex;align-items:center;gap:.45rem;font-size:.72rem;margin-bottom:.75rem}
+.mchat-kop i{width:18px;height:18px;border-radius:6px;flex:none;
   background:linear-gradient(135deg,var(--accent),var(--accent-h))}
-.agentk-kop span{font-size:.6rem;letter-spacing:.16em;color:var(--ink3)}
-.agentk-t{margin:0 0 .9rem;font-size:.95rem;line-height:1.5;color:var(--ink)}
-.agentk-t b{color:var(--accent);font-weight:600}
-.agentk-kn{display:flex;gap:.5rem;flex-wrap:wrap}
-.agentk-kn span{font-size:.76rem;padding:.4rem .8rem;border-radius:var(--r-pil)}
-.agentk-kn span:first-child{background:var(--accent);color:var(--op-accent);font-weight:600}
-.agentk-kn span+span{border:1px solid var(--kaart-rand);color:var(--ink2)}
-.agentk-vt{margin:.75rem 0 0;font-size:.64rem;color:var(--ink3)}
+.mchat-kop b{font-weight:600} .mchat-kop u{margin-left:auto;text-decoration:none;
+  font-size:.6rem;color:var(--ink3)}
+.mchat-jij{margin:0 0 .5rem auto;width:fit-content;max-width:88%;background:var(--accent);
+  color:var(--op-accent);font-size:.76rem;font-weight:600;padding:.42rem .7rem;
+  border-radius:11px;border-bottom-right-radius:3px}
+.mchat-vh{background:var(--kaart-kop);border:1px solid var(--kaart-rand);border-radius:11px;
+  border-bottom-left-radius:3px;padding:.55rem .7rem;max-width:94%}
+.mchat-vh p{margin:0 0 .35rem;font-size:.74rem;color:var(--ink)}
+.mchat-vh ol{margin:0;padding:0;list-style:none;display:grid;gap:.22rem}
+.mchat-vh li{font-size:.71rem;line-height:1.35;color:var(--ink2);padding-left:.95rem;position:relative}
+.mchat-vh li::before{content:'';position:absolute;left:0;top:.42em;width:5px;height:5px;
+  border-radius:50%;background:var(--accent)}
+.mchat-ok{display:inline-block;margin-top:.45rem;font-size:.6rem;letter-spacing:.06em;
+  color:var(--accent);border:1px solid rgba(var(--accent-rgb),.4);border-radius:var(--r-pil);
+  padding:.14rem .5rem}
+.mchat-vt{font-size:.6rem;color:var(--ink3);text-align:right;margin-top:.45rem}
+
+.mloon-kop,.mproef-kop{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:.78rem;margin-bottom:.6rem}
+.mloon-kop b,.mproef-kop b{font-weight:600}
+.mloon-kop span,.mproef-kop span{color:var(--ink3);font-size:.68rem}
+.mloon-tab{width:100%;border-collapse:collapse;font-size:.72rem}
+.mloon-tab td{padding:.34rem 0;border-bottom:1px solid var(--kaart-rand);color:var(--ink2)}
+.mloon-tab tr:last-child td{border-bottom:none}
+.mloon-tab td i{display:inline-flex;align-items:center;justify-content:center;width:19px;
+  height:19px;border-radius:50%;background:var(--kaart-kop);border:1px solid var(--kaart-rand);
+  font-style:normal;font-size:.52rem;color:var(--ink2);margin-right:.45rem;vertical-align:-5px}
+.mloon-tab .u{text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+.mloon-tab .s{text-align:right;width:1.4rem;color:var(--accent)}
+.mloon-tab .nw td{color:var(--ink)} .mloon-tab .nw td i{border-color:var(--accent);color:var(--accent)}
+.mloon-vt{display:flex;justify-content:space-between;border-top:1px solid var(--kaart-rand);
+  margin-top:.5rem;padding-top:.5rem;font-size:.68rem}
+.mloon-vt span{font-weight:600} .mloon-vt em{font-style:normal;color:var(--accent)}
+
+.mproef-kal{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-bottom:.65rem}
+.mproef-kal i{display:block;aspect-ratio:1;border-radius:3px;background:var(--kaart-kop);
+  border:1px solid var(--kaart-rand)}
+.mproef-kal i.d1{background:var(--accent);border-color:var(--accent)}
+.mproef-kal i.d30{background:transparent;border:1px dashed var(--accent)}
+.mproef-vt{display:grid;gap:.22rem;font-size:.67rem;color:var(--ink2)}
+.mproef-vt i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:.4rem;
+  vertical-align:0}
+.mproef-vt i.p1{background:var(--accent)}
+.mproef-vt i.p30{border:1px dashed var(--accent)}
 </style>
 </head>
 <body>
@@ -245,10 +239,16 @@
     <article class="tp" style="--dl:0.05s">
       <div class="tp-vis">
         <div class="mchat">
-            <div class="mchat-kop"><i></i><b>VibeHR</b></div>
+            <div class="mchat-kop"><i></i><b>VibeHR</b><u>nu</u></div>
             <p class="mchat-jij">Sanne begint 1 november, 32 uur</p>
-            <p class="mchat-vh">Genoteerd. Contract klaargezet, eerste loonrun 25 november.</p>
-            <div class="mchat-vt">23:14</div>
+            <div class="mchat-vh">
+              <p>Genoteerd. Ik heb klaargezet:</p>
+              <ol><li>Arbeidsovereenkomst, 32 uur, startdatum 1 november</li>
+                  <li>Aanmelding loonheffing</li>
+                  <li>Eerste loonstrook op 25 november</li></ol>
+              <span class="mchat-ok">Klaar om te versturen</span>
+            </div>
+            <div class="mchat-vt">23:14 &middot; buiten kantooruren</div>
           </div>
       </div>
       <div class="tp-num">01</div>
@@ -258,11 +258,14 @@
     <article class="tp" style="--dl:0.22s">
       <div class="tp-vis">
         <div class="mloon">
-            <div class="mloon-kop"><b>Loonrun november</b><span>iT-novative</span></div>
-            <ol class="mloon-rij"><li><i></i><u></u><em>&#10003;</em></li>
-              <li><i></i><u></u><em>&#10003;</em></li>
-              <li><i></i><u></u><em>&#10003;</em></li></ol>
-            <div class="mloon-vt"><span>Verwerkt</span><em>via Payper</em></div>
+            <div class="mloon-kop"><b>Loonrun november</b><span>4 medewerkers</span></div>
+            <table class="mloon-tab"><tbody>
+              <tr><td><i>DJ</i>Daan J.</td><td class="u">40 u</td><td class="s">&#10003;</td></tr>
+              <tr><td><i>LB</i>Lotte B.</td><td class="u">24 u</td><td class="s">&#10003;</td></tr>
+              <tr><td><i>JV</i>Joost V.</td><td class="u">36 u</td><td class="s">&#10003;</td></tr>
+              <tr class="nw"><td><i>SA</i>Sanne &middot; nieuw</td><td class="u">32 u</td><td class="s">&#10003;</td></tr>
+            </tbody></table>
+            <div class="mloon-vt"><span>Verwerkt op 25 november</span><em>via Payper</em></div>
           </div>
       </div>
       <div class="tp-num">02</div>
@@ -272,9 +275,10 @@
     <article class="tp" style="--dl:0.39s">
       <div class="tp-vis">
         <div class="mproef">
-            <div class="mproef-getal"><b>30</b><span>dagen</span></div>
-            <ol class="mproef-lijst"><li>Alle modules open</li><li>Naast je huidige administratie</li>
-              <li>Stopt vanzelf</li></ol>
+            <div class="mproef-kop"><b>Je proefmaand</b><span>30 dagen</span></div>
+            <div class="mproef-kal"><i class="d1"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="d30"></i></div>
+            <div class="mproef-vt"><span><i class="p1"></i>Dag 1 &middot; je zet hem open</span>
+              <span><i class="p30"></i>Dag 30 &middot; hij stopt vanzelf</span></div>
           </div>
       </div>
       <div class="tp-num">03</div>
