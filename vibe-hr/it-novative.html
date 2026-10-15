@@ -498,11 +498,16 @@
    het founderblok, dat naar de paginakleur zakt, en de CTA krijgt zijn lift
    van een gloed in de merkkleur in plaats van van een andere zwarttint. */
 .naband{background:linear-gradient(180deg,#113029 0%,#0D1D19 52%,var(--bg) 100%)}
+/* De gloed hing onder de sectie, dus was de CTA onderaan het lichtst en viel
+   de voet daarna terug naar bijna zwart. Nu zit de gloed achter de kop en de
+   knoppen, waar de aandacht is, en zakt de onderrand van de CTA naar precies
+   de kleur van de voet. Dan is er geen overgang meer om te zien. */
 .cta{background:
-  radial-gradient(118% 92% at 50% 108%,rgba(var(--accent-rgb),.15) 0%,rgba(var(--accent-rgb),0) 62%),
-  linear-gradient(180deg,var(--bg) 0%,#101A17 100%)}
-/* De voet sluit erop aan met een haarlijn in plaats van een kleurverschil. */
-footer{background:#0C100E;border-top:1px solid rgba(255,255,255,.07)}
+  radial-gradient(84% 70% at 50% 44%,rgba(var(--accent-rgb),.13) 0%,rgba(var(--accent-rgb),0) 68%),
+  linear-gradient(180deg,var(--bg) 0%,#0E1512 58%,#0C100E 100%)}
+/* De voet zet dezelfde kleur voort. Geen rand, want die zou de naad juist
+   terugbrengen die hierboven is weggehaald. */
+footer{background:#0C100E;border-top:0}
 
 /* ── de agentkaart ademt, en het gat eronder is kleiner ─────────────── */
 .ch-pull + .agentk{margin-top:1.9rem}
