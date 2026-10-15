@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="vibehr-logo.png">
+<link rel="icon" type="image/svg+xml" href="favicon-vibehr.svg">
 <link rel="stylesheet" href="thema-vibehr.css">
 <link rel="stylesheet" href="lp.css">
 <script>
@@ -69,16 +69,21 @@
 .bw b{display:block;font-size:.84rem;color:var(--wit)}
 .bw span{display:block;font-size:.68rem;color:rgba(var(--wit-rgb),.5);margin-bottom:.4rem}
 .bw em{font-style:normal;font-size:.8rem;color:rgba(var(--wit-rgb),.86);line-height:1.45}
-.bewijsbron{font-size:.66rem;color:rgba(var(--wit-rgb),.42);margin-top:.7rem}</style>
+.bewijsbron{font-size:.66rem;color:rgba(var(--wit-rgb),.42);margin-top:.7rem}
+/* ── woordmerk: tekst, zoals op vibehr.nl. Hun favicon is nog het ──────
+   Payper-logo, dus een plaatje is hier juist fout. */
+.wm{display:inline-flex;flex-direction:column;line-height:1}
+.wm b{font-weight:700;letter-spacing:-.01em;font-size:1.02rem}
+.wm i{font-style:normal;font-size:.5rem;letter-spacing:.19em;opacity:.62;margin-top:.17rem}
+.wm-ft b{font-size:.95rem}
+</style>
 </head>
 <body>
 <div class="mbar" id="mbar"></div>
 
 <nav id="nav">
   <a href="#top" class="logo" aria-label="VibeHR" style="gap:.55rem">
-    <img class="op-donker" src="vibehr-logo-licht.png" alt="" width="22" height="22">
-    <img class="op-licht" src="vibehr-logo.png" alt="" width="22" height="22">
-    <span style="font:600 1.02rem/1 'Inter',system-ui,sans-serif;letter-spacing:-.02em">VibeHR</span>
+    <span class="wm"><b>VibeHR</b><i>AGENTIC HR</i></span>
   </a>
   <button class="nav-cta" data-open="sheet" data-tab="plan">Plan een gesprek</button>
 </nav>
@@ -310,7 +315,7 @@
 </section>
 
 <footer>
-  <div class="ft-logo"><img src="vibehr-logo-licht.png" alt="VibeHR" width="26" height="26"></div>
+  <div class="ft-logo"><span class="wm wm-ft"><b>VibeHR</b><i>AGENTIC HR</i></span></div>
   <div class="ft-meta"><a href="mailto:info@payper.nl">info@payper.nl</a><br>&copy; 2026 VibeHR</div>
 </footer>
 
