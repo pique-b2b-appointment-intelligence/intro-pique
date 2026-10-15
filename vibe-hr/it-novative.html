@@ -311,22 +311,22 @@
       <span class="mk-label">Wat je in die dertig dagen kunt doen</span>
     </div>
     <div class="bewijsrij">
-      <div class="bw"><i class="bw-ik bw-medewerkers"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 15.2c2.7-.4 5.5 1 5.5 4.8"/></svg></i><b>Alle modules staan open</b><span>Medewerkers, contracten, verlof en de loonrun, zonder dat er iets is uitgekleed.</span></div>
-      <div class="bw"><i class="bw-ik bw-contracten"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></i><b>Naast je huidige administratie</b><span>Je zet nog niets over. Aan het eind van de maand leg je de twee loonruns naast elkaar.</span></div>
-      <div class="bw"><i class="bw-ik bw-stoppen"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M9 9l6 6M15 9l-6 6"/></svg></i><b>Stoppen kost een klik</b><span>Doe je niets, dan loopt het na dertig dagen vanzelf af.</span></div>
+      <div class="bw bw-medewerkers"><span class="bv bv-mod"><u>Medewerkers</u><u>Contracten</u><u>Verlof</u><u>Loonrun</u></span><b>Alle modules staan open</b><span>Medewerkers, contracten, verlof en de loonrun, zonder dat er iets is uitgekleed.</span></div>
+      <div class="bw bw-contracten"><span class="bv bv-naast"><span><i>Je huidige administratie</i><b></b></span><span><i>VibeHR</i><b class="aan"></b></span><em>30 dagen</em></span><b>Naast je huidige administratie</b><span>Je zet nog niets over. Aan het eind van de maand leg je de twee loonruns naast elkaar.</span></div>
+      <div class="bw bw-stoppen"><span class="bv bv-schakel"><span><u class="aan"></u><i>Vandaag</i></span><span><u></u><i>Dag 30</i></span></span><b>Stoppen kost een klik</b><span>Doe je niets, dan loopt het na dertig dagen vanzelf af.</span></div>
     </div>
     <p class="bewijsbron">De proefperiode van VibeHR, zoals die op vibehr.nl staat, geraadpleegd op 15 oktober 2026.</p>
   </div>
 </section>
 
-<section class="founder" id="founder">
+<div class="naband"><section class="founder" id="founder">
   <img class="fo-photo fr" src="edwin-portret.jpg" alt="Edwin Schaap" loading="lazy" decoding="async">
   <div class="fr">
     <div class="fo-eyebrow">Wie dit stuurt</div>
     <div class="fo-text"><p>Ik ben Edwin. Onder de naam Payper verzorgen wij de loonstroken van werkgevers, en daar weet ik vrij precies van waar het schuurt.</p><p>VibeHR is wat we daar bovenop hebben gebouwd. Er zit expres geen knop in om iemand toe te voegen, want ik wilde dat je nooit meer hoeft te bellen over je eigen loonadministratie.</p><p>Loonadministratie is een onderwerp waar niemand warm van wordt. Tot er iets misgaat. Dan staat er iemand aan je bureau die zijn huur niet kan betalen, en ineens is het het persoonlijkste wat er in je bedrijf speelt.</p></div>
     <p class="fo-name">Edwin Schaap, VibeHR by Payper</p>
   </div>
-</section>
+</section></div>
 
 <section class="cta" id="gesprek">
   <div class="cta-inner">
@@ -446,8 +446,8 @@
    begint zijn bodytekst een regel lager dan de twee ernaast. Boven de
    breedte waarop ze naast elkaar staan krijgt de titel twee regels ruimte.
    Onder die breedte stapelen ze en zou dat een gat zijn. */
-.bw b{line-height:1.3}
-@media(min-width:700px){.bw b{min-height:2.6em}}
+.bw>b{line-height:1.3}
+@media(min-width:700px){.bw>b{min-height:2.6em}}
 
 /* De bronregel is een voetnoot en geen uitspraak. */
 .bewijsbron{font-size:.72rem;color:var(--ink3);line-height:1.55;margin-top:1.1rem}
@@ -460,8 +460,7 @@
    groen, de kleur die VibeHR zelf voert, zodat het blok als eigen hoofdstuk
    leest. De randen erboven en eronder maken de overgang hard zichtbaar. */
 .hoeband{background:linear-gradient(176deg,#17413A 0%,#113029 100%);
-  border-top:1px solid rgba(var(--accent-rgb),.22);
-  border-bottom:1px solid rgba(var(--accent-rgb),.22)}
+  border-top:1px solid rgba(var(--accent-rgb),.22)}
 /* De gloed erboven was berekend op een bijna zwarte band. Op een lichtere
    ondergrond wordt dat een vlek, dus hij gaat terug. */
 .hoeband::before{opacity:.35}
@@ -475,7 +474,35 @@
 .hoeband .fl-n{color:#fff;border-color:rgba(255,255,255,.4)}
 /* Twee van de vier stapkoppen lopen over twee regels en duwden hun eigen
    tekst een regel omlaag. Zelfde ingreep als bij de tegels. */
-@media(min-width:780px){.hoeband .fl-k{display:block;min-height:2.5em}}
+/* ── de stappenrij gecentreerd ──────────────────────────────────────────
+   lp12.css zet het nummer links in de kolom en de tekst linksuitgelijnd. De
+   rij maquettes hierboven is gecentreerd, dus twee genummerde rijen op één
+   pagina stonden verschillend. Vanaf de breedte waarop de vier naast elkaar
+   staan gaat het nummer boven het midden van zijn eigen kolom.
+   De verbindingslijn liep van de linkerrand naar de volgende linkerrand; die
+   loopt nu van hartje nummer naar hartje volgend nummer. */
+@media(min-width:780px){
+  .hoeband .flow{text-align:center}
+  .hoeband .fl-n{left:50%;transform:translateX(-50%)}
+  .hoeband .fl::before{left:calc(50% + 13px);right:calc(-50% - 1.5rem + 13px)}
+  .hoeband .fl-k{display:block;min-height:2.5em}
+  .hoeband .fl-t{margin-inline:auto;max-width:24ch}
+}
+
+
+/* ── wat er na de groene band komt ──────────────────────────────────────
+   Daaronder stonden drie vlakke vlakken met harde randen ertussen: het
+   founderblok op de paginakleur #0E1311, de CTA op --donker #141B19 en de
+   voet weer op #0E1311. Drie tinten zwart die net genoeg verschillen om op te
+   vallen en niets te betekenen. Het wordt één afdaling: de band loopt uit in
+   het founderblok, dat naar de paginakleur zakt, en de CTA krijgt zijn lift
+   van een gloed in de merkkleur in plaats van van een andere zwarttint. */
+.naband{background:linear-gradient(180deg,#113029 0%,#0D1D19 52%,var(--bg) 100%)}
+.cta{background:
+  radial-gradient(118% 92% at 50% 108%,rgba(var(--accent-rgb),.15) 0%,rgba(var(--accent-rgb),0) 62%),
+  linear-gradient(180deg,var(--bg) 0%,#101A17 100%)}
+/* De voet sluit erop aan met een haarlijn in plaats van een kleurverschil. */
+footer{background:#0C100E;border-top:1px solid rgba(255,255,255,.07)}
 
 /* ── de agentkaart ademt, en het gat eronder is kleiner ─────────────── */
 .ch-pull + .agentk{margin-top:1.9rem}
@@ -517,16 +544,40 @@
   width:min(720px,100%);margin-inline:auto}
 .bw{background:var(--kaart);border:1px solid var(--kaart-rand);border-radius:var(--r-kaart);
   padding:1rem 1.05rem;text-align:left;display:block}
-.bw-ik{display:flex;align-items:center;justify-content:center;width:34px;height:34px;
-  border-radius:10px;margin-bottom:.75rem}
-.bw-ik svg{width:18px;height:18px;fill:none;stroke-width:1.7;
-  stroke-linecap:round;stroke-linejoin:round}
-.bw-ik{background:linear-gradient(135deg,var(--accent-l),var(--accent-h))}
-.bw-ik svg{stroke:var(--op-accent)}
-.bw-contracten{opacity:.82}
-.bw-stoppen{opacity:.64}
-.bw b{display:block;font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
-.bw span{display:block;font-size:.78rem;line-height:1.5;color:var(--ink2)}
+/* ── het miniatuurtje per tegel ─────────────────────────────────────── */
+.bv{display:block;margin-bottom:.95rem;min-height:5.6rem}
+
+/* 1. de vier modules, elk met een vinkje ervoor */
+.bv-mod{display:grid;grid-template-columns:1fr 1fr;gap:.3rem}
+.bv-mod u{display:flex;align-items:center;gap:.3rem;font-size:.63rem;text-decoration:none;
+  color:rgba(255,255,255,.86);background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);border-radius:5px;padding:.26rem .4rem}
+.bv-mod u::before{content:'';flex:none;width:9px;height:5px;margin-bottom:2px;
+  border-left:1.5px solid var(--accent-l);border-bottom:1.5px solid var(--accent-l);
+  transform:rotate(-45deg)}
+
+/* 2. twee administraties die een maand lang naast elkaar lopen */
+.bv-naast{display:grid;gap:.42rem}
+.bv-naast span{display:grid;gap:.22rem}
+.bv-naast i{font-style:normal;font-size:.6rem;color:rgba(255,255,255,.62)}
+.bv-naast b{display:block;height:6px;border-radius:3px;background:rgba(255,255,255,.17)}
+.bv-naast b.aan{background:linear-gradient(90deg,var(--accent-l),var(--accent-h))}
+.bv-naast em{font-style:normal;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);text-align:right}
+
+/* 3. de schakelaar die vanzelf omgaat */
+.bv-schakel{display:grid;align-content:center;gap:.6rem}
+.bv-schakel>span{display:flex;align-items:center;gap:.5rem}
+.bv-schakel u{position:relative;flex:none;width:34px;height:19px;border-radius:10px;
+  background:rgba(255,255,255,.14);text-decoration:none}
+.bv-schakel u::after{content:'';position:absolute;top:2.5px;left:2.5px;width:14px;height:14px;
+  border-radius:50%;background:rgba(255,255,255,.75)}
+.bv-schakel u.aan{background:var(--accent)}
+.bv-schakel u.aan::after{left:17.5px;background:var(--op-accent)}
+.bv-schakel i{font-style:normal;font-size:.6rem;line-height:1.35;color:rgba(255,255,255,.62)}
+
+.bw>b{display:block;font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.bw>span:not(.bv){display:block;font-size:.78rem;line-height:1.5;color:var(--ink2)}
 .bewijsbron{width:min(720px,100%);margin-inline:auto}
 
 /* ── donker merk: het dossier is een paneel in hun eigen kaartstijl ──────
