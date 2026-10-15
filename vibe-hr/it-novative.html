@@ -77,21 +77,6 @@
 .wm i{font-style:normal;font-size:.5rem;letter-spacing:.19em;opacity:.62;margin-top:.17rem}
 .wm-ft b{font-size:.95rem}
 
-/* ── donker merk: het dossier is een paneel in hun eigen kaartstijl ──────
-   lp12.css geeft .dosveld een lichte achtergrond met --wit en --chrome.
-   Op een donker thema staat daar lichte tekst op, en dan is 'Dit is wat ik
-   vond' onleesbaar. Hier wordt het paneel donker, zoals de kaarten op
-   vibehr.nl. */
-.dosveld{background:var(--kaart);border-color:var(--kaart-rand);
-  box-shadow:0 1px 2px rgba(0,0,0,.3),0 20px 40px -26px rgba(0,0,0,.8)}
-.dv-bar{background:var(--kaart-kop)}
-.dv-bar:hover{background:var(--kaart-rand)}
-.dv-t,.dv-n{color:var(--ink)}
-.dv-rij,.dv-rij *{color:var(--ink2)}
-.dv-rij b,.dv-rij strong{color:var(--ink)}
-
-/* ── de stappen stonden op 900px terwijl de video 720 is ───────────────── */
-.hb-stage + .flow{width:min(720px,100%);margin-inline:auto}
 
 /* ── een agentkaart, zoals het blok op hun eigen voorpagina ────────────── */
 .agentk{width:min(560px,100%);margin:1.6rem 0 0;background:var(--kaart);
@@ -165,7 +150,7 @@
       <div class="ch-body">
         <div class="ch-eyebrow">Voor jou</div>
         <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
-        <p class="ch-text">Wij maken VibeHR, een loonadministratie die je via de chat bedient. Ik schrijf bedrijven aan waar iemand bijkomt die de administratie gaat doen, want dat is het moment waarop je nog kunt kiezen hoe het wordt ingericht. Bij jullie zag ik daar aanleiding voor.</p>
+        <p class="ch-text">Ik ben even in jullie bedrijf gedoken. Op je site staan nu twee vacatures open, en een daarvan is een office manager die bij jullie expliciet over organisatie en administratie gaat. Daar bleef ik bij hangen, want ik denk dat we jullie op dat punt kunnen helpen. Wat wij precies maken staat verderop, eerst even wat ik zag.</p>
         <div class="watdit">
           <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we alleen voor iT-novative hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
           <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">We hebben elkaar nooit gesproken, en een mail van een loonpakket leest niemand. Vandaar een kaart.</span></div>
@@ -321,9 +306,9 @@
       <span class="mk-label">Wat je in die dertig dagen kunt doen</span>
     </div>
     <div class="bewijsrij">
-      <div class="bw"><b>Alle modules</b><span>staan open</span><em>geen uitgeklede proefversie</em></div>
-      <div class="bw"><b>Naast je huidige</b><span>administratie</span><em>je hoeft nog niets over te zetten</em></div>
-      <div class="bw"><b>Stoppen</b><span>kost een klik</span><em>doe je niets, dan loopt het af</em></div>
+      <div class="bw"><i class="bw-ik bw-medewerkers"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 15.2c2.7-.4 5.5 1 5.5 4.8"/></svg></i><b>Alle modules staan open</b><span>Medewerkers, contracten, verlof en de loonrun, zonder dat er iets is uitgekleed.</span></div>
+      <div class="bw"><i class="bw-ik bw-contracten"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/></svg></i><b>Naast je huidige administratie</b><span>Je hoeft nog niets over te zetten. Laat ze een maand naast elkaar lopen.</span></div>
+      <div class="bw"><i class="bw-ik bw-stoppen"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M9 9l6 6M15 9l-6 6"/></svg></i><b>Stoppen kost een klik</b><span>Doe je niets, dan loopt het na dertig dagen vanzelf af.</span></div>
     </div>
     <p class="bewijsbron">De proefperiode van VibeHR, zoals die op vibehr.nl staat, geraadpleegd op 15 oktober 2026.</p>
   </div>
@@ -334,7 +319,7 @@
   <div class="fr">
     <div class="fo-eyebrow">Wie dit stuurt</div>
     <div class="fo-text"><p>Ik ben Edwin. Onder de naam Payper verzorgen wij de loonstroken van werkgevers, en daar weet ik vrij precies van waar het schuurt.</p><p>VibeHR is wat we daar bovenop hebben gebouwd. Er zit expres geen knop in om iemand toe te voegen, want ik wilde dat je nooit meer hoeft te bellen over je eigen loonadministratie.</p><p>Loonadministratie is een onderwerp waar niemand warm van wordt. Tot er iets misgaat. Dan staat er iemand aan je bureau die zijn huur niet kan betalen, en ineens is het het persoonlijkste wat er in je bedrijf speelt.</p></div>
-    <p class="fo-name">Edwin Schaap</p>
+    <p class="fo-name">Edwin Schaap, VibeHR by Payper</p>
   </div>
 </section>
 
@@ -347,13 +332,13 @@
       <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
       <button class="btn-b" style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
     </div>
-    <p class="cta-alt reveal">Liever eerst schriftelijk?<a href="mailto:info@payper.nl?subject=iT-novative%20x%20Volle%20Gym">Mail me je vraag</a></p>
+    <p class="cta-alt reveal">Liever eerst schriftelijk?<a href="mailto:info@vibehr.nl?subject=iT-novative%20x%20Volle%20Gym">Mail me je vraag</a></p>
   </div>
 </section>
 
 <footer>
-  <div class="ft-logo"><span class="wm wm-ft"><b>VibeHR</b><i>AGENTIC HR</i></span></div>
-  <div class="ft-meta"><a href="mailto:info@payper.nl">info@payper.nl</a><br>&copy; 2026 VibeHR</div>
+  <div class="ft-logo"><span class="wm wm-ft"><b>VibeHR</b><i>BY PAYPER</i></span></div>
+  <div class="ft-meta"><a href="mailto:info@vibehr.nl">info@vibehr.nl</a><br>&copy; 2026 VibeHR</div>
 </footer>
 
 <div class="dock" id="dock">
@@ -399,6 +384,39 @@
 
 <script src="lp-v2.js"></script>
 <link rel="stylesheet" href="lp12.css">
+<style>
+/* ── de drie tegels in de band, in de vorm van de icoonrij op vibehr.nl ── */
+.bewijsrij{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  width:min(720px,100%);margin-inline:auto}
+.bw{background:var(--kaart);border:1px solid var(--kaart-rand);border-radius:var(--r-kaart);
+  padding:1rem 1.05rem;text-align:left;display:block}
+.bw-ik{display:flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border-radius:10px;margin-bottom:.75rem}
+.bw-ik svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.bw-medewerkers{background:linear-gradient(135deg,#1cc4a3,#1a937b)}
+.bw-contracten{background:linear-gradient(135deg,#4494e4,#225dd3)}
+.bw-stoppen{background:linear-gradient(135deg,#f2a92c,#ec6d13)}
+.bw b{display:block;font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.bw span{display:block;font-size:.78rem;line-height:1.5;color:var(--ink2)}
+.bewijsbron{width:min(720px,100%);margin-inline:auto}
+
+/* ── donker merk: het dossier is een paneel in hun eigen kaartstijl ──────
+   lp12.css geeft .dosveld een lichte achtergrond met --wit en --chrome.
+   Op een donker thema staat daar lichte tekst op, en dan is 'Dit is wat ik
+   vond' onleesbaar. Hier wordt het paneel donker, zoals de kaarten op
+   vibehr.nl. */
+.dosveld{background:var(--kaart);border-color:var(--kaart-rand);
+  box-shadow:0 1px 2px rgba(0,0,0,.3),0 20px 40px -26px rgba(0,0,0,.8)}
+.dv-bar{background:var(--kaart-kop)}
+.dv-bar:hover{background:var(--kaart-rand)}
+.dv-t,.dv-n{color:var(--ink)}
+.dv-rij,.dv-rij *{color:var(--ink2)}
+.dv-rij b,.dv-rij strong{color:var(--ink)}
+
+/* ── de stappen stonden op 900px terwijl de video 720 is ───────────────── */
+.hb-stage + .flow{width:min(720px,100%);margin-inline:auto}
+</style>
 <script src="lp12.js" defer></script>
 </body>
 </html>
