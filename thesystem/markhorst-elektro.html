@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!-- The System, persoonlijke pagina. Vorm in lp.css/lp12.css, gedrag in lp-v2.js/lp12.js.
+     Dit is een klantpagina, dus Pique staat er nergens op en het aanbod is dat van The
+     System. Zie feedback_klant_lp_geen_pique_product en de kop 'Voor een klantpagina'
+     in agents/landingspagina-agent.md. -->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The System voor Markhorst Elektro B.V.</title>
+<meta name="description" content="Een persoonlijk voorstel van The System voor Markhorst Elektro B.V..">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="thema-thesystem.css">
+<link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="lp12.css">
+<style>
+/* Wat The System zelf levert, in drie stappen. Dit staat op de plek waar een
+   Pique-pagina de drie maquettes heeft: die horen hier niet, want de prospect
+   koopt geen briefcampagne. */
+.tswerk{padding:clamp(2.6rem,6vw,4.4rem) clamp(1.25rem,4vw,2rem) clamp(1rem,3vw,2rem);max-width:1100px;margin:0 auto}
+.tswerk-eye{text-align:center;font-family:var(--hand);font-size:1.5rem;color:var(--inkt);margin-bottom:.2rem}
+.tswerk-h{text-align:center;font-family:var(--serif);font-weight:600;letter-spacing:-.025em;font-size:clamp(1.5rem,2.6vw,2rem);color:var(--ink);margin-bottom:1.8rem}
+.tsstap{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;max-width:900px;margin:0 auto}
+.tsstap div{background:var(--pap-0);border:1px solid var(--line);border-radius:var(--r-kaart);padding:1.1rem 1.2rem 1.25rem}
+.tsstap .n{font-family:var(--hand);font-size:1.6rem;color:var(--inkt);line-height:1}
+.tsstap b{display:block;font-size:.98rem;color:var(--ink);margin:.35rem 0 .3rem;font-weight:600}
+.tsstap p{font-size:.88rem;color:var(--ink2);line-height:1.55}
+@media(max-width:720px){.tsstap{grid-template-columns:1fr;max-width:420px}}
+
+/* De donkere band toont het mechanisme: welke stap een agent overneemt. Geen
+   reviewblok, dat verkleint de statuur (lp-ux-standaard). Eén hard getal, van
+   hun eigen site. */
+.tsmech{max-width:720px;margin:0 auto}
+.tsmech li{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;padding:.72rem .2rem;border-bottom:1px solid rgba(var(--wit-rgb),.10)}
+.tsmech li:last-child{border-bottom:0}
+.tsmech .st{font-family:var(--mono,var(--sans));font-size:.74rem;letter-spacing:.08em;color:rgba(var(--wit-rgb),.42)}
+.tsmech .wa{font-size:.97rem;color:rgba(var(--wit-rgb),.92)}
+.tsmech .wi{font-size:.74rem;font-weight:600;letter-spacing:.04em;padding:.22rem .6rem;border-radius:var(--r-pil);white-space:nowrap}
+.tsmech .mens{color:rgba(var(--wit-rgb),.62);border:1px solid rgba(var(--wit-rgb),.22)}
+.tsmech .agent{color:var(--op-accent);background:var(--accent)}
+.tsuur{max-width:720px;margin:1.6rem auto 0;text-align:center}
+.tsuur b{display:block;font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:600;letter-spacing:-.03em;color:var(--wit)}
+.tsuur span{font-size:.85rem;color:rgba(var(--wit-rgb),.58)}
+@media(max-width:560px){.tsmech li{grid-template-columns:auto 1fr;row-gap:.3rem}.tsmech .wi{grid-column:2;justify-self:start}}
+</style>
+<script>
+  window.PQ_BEDRIJF      = 'Markhorst Elektro B.V.';
+  window.PQ_KLANT        = 'thesystem';
+  window.PQ_CAMPAGNE     = 'thesystem-batch1';
+  window.PQ_SCHRIJF      = true;   /* kantelpunt schrijft zichzelf */
+  window.PQ_DOCK_NA      = 0.75;
+  window.PQ_CAL          = 'https://cal.com/maarten-klouwen-qb2ssb/30min';
+  window.PQ_VIDEO        = 'maarten.mp4';
+  window.PQ_POSTER       = 'maarten-poster.jpg';
+  window.PQ_TERUGBEL_URL = '';
+  window.PIQUE_INTRO     = { bedrijf: 'Markhorst Elektro', voornaam: 'Edwin', merk: false,
+    tempo: 33, pauze: 420, ctaSub: 'Video van Maarten, ruim een minuut',
+    regels: ['Hoi Edwin.', 'Die kaart lag niet toevallig|op je bureau.',
+             'Ik keek een tijd naar Markhorst Elektro.', '*Wil je weten wat ik zag?*'] };
+</script>
+<script src="lp-intro.js"></script>
+</head>
+<body>
+<div class="mbar" id="mbar"></div>
+
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="The System">
+    <img class="op-donker" src="logo-thesystem-wit.png" alt="The System" style="height:26px">
+    <img class="op-licht" src="logo-thesystem.png" alt="The System" style="height:26px">
+  </a>
+  <button class="nav-cta" data-open="sheet" data-tab="bel">Even bellen</button>
+</nav>
+
+<div class="rail" id="rail">
+  <a href="#s1"><span class="rd"></span><span class="rl">Voor jou</span></a>
+  <a href="#dossier"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">Waar het op vastloopt</span></a>
+  <a href="#s4"><span class="rd"></span><span class="rl">Wat we voorstellen</span></a>
+  <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="slot" id="slot">
+        <div class="slot-card" id="slotcard">
+          <div class="h">Hoi Edwin.<br>Ik keek een tijd naar <em>Markhorst Elektro</em>.</div>
+          <div class="sig">Maarten</div>
+        </div>
+        <span class="slot-tag">De kaart op je bureau</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h1 class="hero-h1">H&eacute; <span class="u">Edwin</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
+      <p class="hero-sub">Drie dingen die ik op jullie eigen site vond, met de bron en de datum erbij. Je leest het in twee minuten.</p>
+      <div class="hero-meta">
+        <span class="chip"><i></i>3 bevindingen</span>
+        <span class="chip">Alleen voor <b>Markhorst Elektro</b> geschreven</span>
+      </div>
+      <button class="vrow" id="vrow" type="button">
+        <span class="vthumb"><span class="vring"></span><img src="maarten-poster.jpg" alt=""><span class="vplay"></span></span>
+        <span><b>Liever horen dan lezen?</b>Maarten vat het samen in ruim een minuut</span>
+      </button>
+      <div class="scrollcue"><i></i><span>Scroll</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="journey" id="journey">
+  <svg class="jpath" id="jpath" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base"></path><path class="jp-prog" id="jp-prog"></path>
+  </svg>
+
+  <section class="chapter left" id="s1">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Voor jou</div>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
+        <p class="ch-text">Ik zocht installatiebedrijven die hun offertes snel de deur uit willen hebben. Bij jullie staat die belofte er zelf op: wie een aanvraag doet, leest dat jullie Connectors er razendsnel mee aan de slag gaan. Toen ik doorklikte naar de vacatures stond daar de stoel open waar zo&#x27;n offerte uit komt.</p>
+        <div class="watdit">
+          <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die ik voor Markhorst Elektro heb gemaakt. Jij bent de enige die hem heeft.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">Ik wil je spreken over hoe een aanvraag bij jullie van binnenkomst naar verzonden offerte gaat. We hebben elkaar nooit eerder gesproken, en ik schreef je op papier omdat een mail van mij tussen de rest verdwijnt.</span></div>
+          <div><span class="wd-l">Waar we om vragen</span><span class="wd-v">Een half uur aan de telefoon. Verder vraag ik niets.</span></div>
+        </div>
+        <p class="ch-text"><strong>Hieronder staan de drie dingen die me opvielen. Pas bij elkaar gingen ze ergens over.</strong></p>
+        <div class="ch-sign">Maarten, The System</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter right" id="dossier">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Het dossier</div>
+        <h2 class="ch-kop">Drie dingen, in de volgorde waarin ik ze tegenkwam.</h2>
+        <div class="dosveld" id="dosveld">
+          <button class="dv-bar" type="button" aria-expanded="false" aria-controls="dvlijst">
+            <span class="dv-t">Dit is wat ik vond</span>
+            <span class="dv-n">3 bevindingen<i class="dv-pijl"></i></span>
+          </button>
+          <div class="dv-lijst" id="dvlijst"><div>
+            <div class="dv-rij">
+              <span class="dv-nr">01</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Een Junior Calculator en een Werkvoorbereider Service &amp; Onderhoud staan tegelijk open.</span>
+                <span class="dv-bron"><i></i><b>markhorstbv.nl, Sluit aan bij Markhorst</b> &middot; 18 oktober 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">02</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Op diezelfde pagina schrijf je zelf waar het aan ligt.</span>
+                <q class="dv-cit">hier hebben we wel de juiste mensen voor nodig en die zijn steeds lastiger te vinden</q>
+                <span class="dv-bron"><i></i><b>markhorstbv.nl, Sluit aan bij Markhorst</b> &middot; 18 oktober 2026</span>
+              </div>
+            </div>
+            <div class="dv-rij hier">
+              <span class="dv-nr">03</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Van Geffen draait als eigen merk binnen Markhorst, met een eigen mailadres ernaast.</span>
+                <q class="dv-cit">Van Geffen – onderdeel van Markhorst</q>
+                <span class="dv-bron"><i></i><b>markhorstbv.nl</b> &middot; 18 oktober 2026</span>
+              </div>
+            </div>
+          </div></div>
+        </div>
+        <p class="brug"><i></i>Op basis hiervan kwam ik tot &eacute;&eacute;n conclusie.</p>
+      </div>
+      <p class="note">Klik het dossier open.<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
+    </div>
+  </section>
+
+  <section class="chapter center pivot" id="s3">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Waar het op vastloopt</div>
+        <p class="ch-pivot">Je belooft een aanvrager dat er razendsnel aan zijn offerte wordt gewerkt. De stoel waar die offerte uit komt staat open, en je schrijft zelf dat zulke mensen steeds lastiger te vinden zijn.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter left">
+    <div class="ch-inner">
+      <span class="ch-dot"></span>
+      <div class="ch-body">
+        <div class="ch-eyebrow">Wat dit betekent</div>
+        <h2 class="ch-kop">De belofte staat, de stoel is leeg.</h2>
+        <p class="ch-text">Een calculatie begint bij een aanvraag. Iemand zoekt de prijzen erbij, zet de posten in een sjabloon en typt de offerte uit. Dat is het werk waar je nu een calculator voor zoekt, en met Van Geffen ernaast loopt het twee keer langs hetzelfde soort kantoor. <strong>Hoe jullie dat intern hebben ingericht kan ik van buiten niet zien</strong>, en dat zou ik graag van je horen.</p>
+        <p class="ch-pull">'razendsnel aan de slag met het uitwerken van een offerte'</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path><path class="jp-prog" id="jp-prog2"></path>
+  </svg>
+  <section class="chapter center phase" id="s4">
+    <div class="ch-inner">
+      <div class="ch-body">
+        <div class="ch-eyebrow">Het voorstel</div>
+        <h2 class="ch-kop ch-head">Wat ik voorstel.</h2>
+        <p class="ch-sub">Ik laat je zien welke stappen in dat offertetraject een agent kan overnemen, zodat de calculator die je zoekt alleen nog nakijkt en zijn naam eronder zet.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="tswerk" id="toon">
+  <div class="tswerk-eye reveal">Hoe het loopt</div>
+  <h2 class="tswerk-h reveal">Van meelopen naar een agent die het werk doet.</h2>
+  <div class="tsstap reveal">
+    <div><div class="n">01</div><b>Ik loop een dag mee</b><p>Op jullie kantoor, naast de mensen die het werk nu doen. Ik schrijf op waar het blijft hangen en wat het per week kost.</p></div>
+    <div><div class="n">02</div><b>We bouwen het in twee tot drie weken</b><p>Op jullie eigen manier van werken, in de systemen die er al staan. Je hoeft niets te vervangen.</p></div>
+    <div><div class="n">03</div><b>Twee weken meekijken, daarna bijsturen</b><p>We zetten het aan en kijken mee hoe het loopt. Daarna blijf ik je technisch aanspreekpunt.</p></div>
+  </div>
+</section>
+
+<section class="hoeband reveal" id="hoe">
+  <div class="hb-in">
+    <span class="hb-eyebrow">Hoe het werkt</span>
+    <h2 class="hb-h">Welke stap een mens doet, en welke een agent.</h2>
+    <ol class="tsmech">
+      <li><span class="st">01</span><span class="wa">De aanvraag komt binnen en wordt uitgelezen</span><span class="wi agent">De agent</span></li>
+      <li><span class="st">02</span><span class="wa">Prijzen en posten erbij zoeken</span><span class="wi agent">De agent</span></li>
+      <li><span class="st">03</span><span class="wa">De calculatie nakijken en de marge bepalen</span><span class="wi mens">Jullie</span></li>
+      <li><span class="st">04</span><span class="wa">De offerte opmaken en versturen</span><span class="wi agent">De agent</span></li>
+      <li><span class="st">05</span><span class="wa">Opvolgen of hij gelezen is</span><span class="wi agent">De agent</span></li>
+      <li><span class="st">06</span><span class="wa">Het gesprek met de klant</span><span class="wi mens">Jullie</span></li>
+    </ol>
+    <div class="tsuur">
+      <b>5 tot 10 uur</b>
+      <span>per medewerker per maand terug, gemiddeld over de bedrijven waar we het hebben gebouwd</span>
+    </div>
+  </div>
+</section>
+
+<section class="founder" id="founder">
+  <div class="fr">
+    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+    <div class="fo-text">
+      <p>Ik ben Maarten. The System zit in Apeldoorn. Samen met Sven en Oscar bouw ik AI-agents voor MKB-bedrijven, die het kantoorwerk overnemen dat elke week terugkomt.</p>
+      <p>Ik kijk altijd eerst naar het werk zelf, want een agent die een slecht proces nadoet maakt het alleen sneller fout. Daarom begint het bij ons met een dag meelopen en niet met software.</p>
+    </div>
+    <p class="fo-name"><strong>Maarten Klouwen</strong>, The System</p>
+  </div>
+</section>
+
+<section class="cta" id="gesprek">
+  <div class="cta-inner">
+    <div class="cta-eyebrow reveal">De volgende stap</div>
+    <h2 class="cta-h reveal">Even bijpraten?</h2>
+    <p class="cta-sub reveal">Een half uur over hoe een aanvraag bij jullie nu van binnenkomst naar verzonden offerte gaat. Je hoort welke stappen daarin een agent kan overnemen en wat dat per week scheelt. Je verbindt je nergens aan.</p>
+    <div class="cta-btns reveal">
+      <button class="btn-a" data-open="sheet" data-tab="agenda">Kies een moment</button>
+      <button class="btn-b" data-open="sheet" data-tab="bel" style="color:rgba(255,255,255,.78);border-color:rgba(255,255,255,.22)">Laat me terugbellen</button>
+    </div>
+    <p class="cta-alt reveal">Liever eerst even schriftelijk? <a href="mailto:maarten@thesystem.nl?subject=Markhorst%20Elektro%20B.V.%20%C3%97%20The%20System">Mail me een korte vraag.</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-logo"><img src="logo-thesystem.png" alt="The System" style="height:30px;width:auto"></div>
+  <div class="ft-meta">AI-agents voor offertes, facturen en klantopvolging &nbsp;&middot;&nbsp; Apeldoorn &nbsp;&middot;&nbsp; <a href="mailto:maarten@thesystem.nl">maarten@thesystem.nl</a><br>&copy; 2026 The System</div>
+</footer>
+
+<div class="dock" id="dock">
+  <span class="dock-t"><b>Even bellen over wat ik zag?</b> Een half uur.</span>
+  <button class="dock-b" data-open="sheet" data-tab="agenda">Kies een moment</button>
+  <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
+</div>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-bg" data-close></div>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Even bellen met Maarten">
+    <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
+    <div class="sheet-host">
+      <img src="maarten-poster.jpg" alt="" loading="lazy" decoding="async">
+      <div><div class="n">Een half uur met Maarten</div><div class="s">Telefonisch, of online als dat beter past.</div></div>
+    </div>
+    <div class="panes">
+    <div class="pane on" id="pane-bel">
+      <form id="belform">
+        <div class="fld"><label for="bn">Je naam</label><input id="bn" name="naam" value="Edwin" required></div>
+        <div class="fld"><label for="bt">Telefoonnummer</label><input id="bt" name="tel" type="tel" placeholder="06" required></div>
+        <label style="display:block;font-size:.74rem;font-weight:600;color:var(--ink2);margin-bottom:.4rem">Wanneer schikt het?</label>
+        <div class="slots" id="slots">
+          <button type="button" data-v="Ochtend, voor 12 uur">Ochtend</button>
+          <button type="button" data-v="Middag, na 13 uur">Middag</button>
+          <button type="button" data-v="Eind van de dag, na 16 uur">Eind van de dag</button>
+        </div>
+        <button class="btn-a" type="submit" style="width:100%;justify-content:center">Bel me terug</button>
+        <p class="sheet-note">Ik bel zelf. Je nummer gaat nergens anders heen en komt op geen enkele lijst.</p>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script src="lp-v2.js"></script>
+<script src="lp12.js"></script>
+</body>
+</html>

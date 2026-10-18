@@ -42,8 +42,13 @@ _*.html
 **/_*.html
 **/test.html
 !buiten-goed/*.mp4
+!thesystem/*.mp4
 # Werkmateriaal van de Buiten-Goed-batch blijft lokaal. De dossiers bevatten
 # onderzoeksaantekeningen over personen en horen niet op een publiek adres.
 buiten-goed/inhoud/
 buiten-goed/dossiers/
 buiten-goed/bouw-lp.py
+
+# Werkmateriaal van de The System-batch blijft lokaal. De inhoud-JSONs dragen de
+# research per prospect en horen niet op een publiek adres.
+thesystem/inhoud/

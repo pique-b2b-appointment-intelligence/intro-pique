@@ -1,0 +1,82 @@
+/* ============================================================
+   THEMA — The System, Apeldoorn
+   Alleen dit bestand verschilt van thema-pique.css. lp.css,
+   lp-v2.js, lp12.js en lp-intro.js blijven ongewijzigd.
+
+   Kleuren uit hun eigen logo gepeld, 18 oktober 2026: het lime is
+   #C7D303 en de donkere kleur is een diep petrol #0A2834, geen
+   neutraal zwart. De letter is Inter.
+
+   Twee vallen in dit merk. Hun site draait op Framer, dus
+   rgb(0,153,255) komt 68 keer voor in de HTML, en dat is de
+   standaard linkkleur van Framer en geen merkkleur. En het bijna-
+   zwart uit de pagina-CSS (#131313) is Framers tekstkleur; het
+   merk zelf is dat petrol.
+
+   De val in dit merk: lime haalt op wit een contrast van ongeveer
+   1,9 op 1 en kan dus nooit tekst zijn. Het accent is hier daarom
+   gevuld vlak of lijn, en voor accenttekst staat er een diep olijf
+   (--inkt) dat wel boven AA zit. Zie de kop 'Gevuld accent is voor
+   knoppen' in context/lp-ux-standaard.md.
+   ============================================================ */
+:root{
+  /* ── accent: het lime van hun knoppen ──────────────────── */
+  --accent:#C7D303;        --accent-rgb:199,211,3;
+  --accent-l:#D6E22A;      --accent-l-rgb:214,226,42;
+  --accent-h:#E2EE55;
+  --op-accent:#0A2834;                                 /* tekst op een lime knop, 9:1 */
+  --inkt:#4F5A05;          --inkt-rgb:79,90,5;         /* accenttekst en handschrift, 7,7:1 */
+
+  /* ── vlakken en tekst ───────────────────────────────────── */
+  --bg:#F7F9F9;            --bg-rgb:247,249,249;       /* koel papier, past bij het petrol */
+  --ink:#0A2834;           --ink-rgb:10,40,52;         /* het petrol uit hun logo */
+  --donker:#0A2834;        --donker-rgb:10,40,52;
+  --dieper:#061A22;        --dieper-rgb:6,26,34;       /* dieper petrol voor de band */
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.70);
+  --ink3:rgba(var(--ink-rgb),.48);                     /* bronregel, ruim boven AA */
+  --line:rgba(var(--ink-rgb),.12);
+
+  /* ── papier ─────────────────────────────────────────────── */
+  --pap-0:#FFFFFF;         --pap-0-rgb:255,255,255;
+  --pap-1:#FDFDFB;
+  --pap-2:#EDF1F1;
+  --tape-rgb:226,238,120;
+  --hand-ink:#0C2630;      --hand-rgb:12,38,48;
+
+  /* Groen voor de vinkjes, koeler dan het lime zodat de twee niet
+     in elkaar overlopen. */
+  --goed:#2F8F5B;          --goed-rgb:47,143,91;
+  --let-op:#B4451F;        --let-op-rgb:180,69,31;
+  --chrome:#E9EDED;
+  --video-bg:#0A2834;
+
+  /* ── typografie: Inter, zoals op hun site ───────────────── */
+  --serif:'Inter',system-ui,sans-serif;     /* het merk heeft geen serif */
+  --sans:'Inter',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;                            /* Inter heeft geen SOFT/WONK-as */
+
+  /* ── vorm: pillen en ronde kaarten, zoals hun site ──────── */
+  --r-pap:6px;
+  --r-kaart:20px;
+  --r-blok:28px;
+  --r-pil:999px;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fs-h:clamp(1.9rem,3vw,2.7rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;
+}
+/* Inter loopt breder en opener dan Fraunces, dus de koppen strakker
+   spatiëren en op 600 houden. Inter heeft die snede echt, dus hier is
+   geen namaakvet zoals bij Ubuntu in thema-buitengoed.css. */
+.hero-h1,.ch-kop,.f-kop,.ch-pivot,.cta-h,.tp h3{font-weight:600;letter-spacing:-.025em}
+.f-quote{font-style:normal}
+
+/* Het lime is fel. Op de journeylijn en de dots blijft het betekenis
+   dragen, maar een haarlijn in volle sterkte gaat gillen. Daar dus
+   een tint, en de dots houden de volle kleur. */
+.jp-prog{stroke:var(--accent)}
+.ch-dot{box-shadow:0 0 0 4px rgba(var(--accent-rgb),.16)}
