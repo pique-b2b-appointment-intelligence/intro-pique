@@ -39,6 +39,18 @@
       "destination": "/api/t?p=:path*&c=mail"
     },
     {
+      "source": "/pique/synsel/marco",
+      "destination": "/pique/synsel-marco.html"
+    },
+    {
+      "source": "/pique/synsel/peter-jan",
+      "destination": "/pique/synsel-peter-jan.html"
+    },
+    {
+      "source": "/pique/synsel/:bestand",
+      "destination": "/pique/:bestand"
+    },
+    {
       "source": "/:path*",
       "has": [
         {
