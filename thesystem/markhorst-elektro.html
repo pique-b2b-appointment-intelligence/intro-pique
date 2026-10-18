@@ -18,34 +18,91 @@
 <link rel="stylesheet" href="lp.css">
 <link rel="stylesheet" href="lp12.css">
 <style>
-/* Wat The System zelf levert, in drie stappen. Dit staat op de plek waar een
-   Pique-pagina de drie maquettes heeft: die horen hier niet, want de prospect
-   koopt geen briefcampagne. */
-.tswerk{padding:clamp(2.6rem,6vw,4.4rem) clamp(1.25rem,4vw,2rem) clamp(1rem,3vw,2rem);max-width:1100px;margin:0 auto}
-.tswerk-eye{text-align:center;font-family:var(--hand);font-size:1.5rem;color:var(--inkt);margin-bottom:.2rem}
-.tswerk-h{text-align:center;font-family:var(--serif);font-weight:600;letter-spacing:-.025em;font-size:clamp(1.5rem,2.6vw,2rem);color:var(--ink);margin-bottom:1.8rem}
-.tsstap{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;max-width:900px;margin:0 auto}
-.tsstap div{background:var(--pap-0);border:1px solid var(--line);border-radius:var(--r-kaart);padding:1.1rem 1.2rem 1.25rem}
-.tsstap .n{font-family:var(--hand);font-size:1.6rem;color:var(--inkt);line-height:1}
-.tsstap b{display:block;font-size:.98rem;color:var(--ink);margin:.35rem 0 .3rem;font-weight:600}
-.tsstap p{font-size:.88rem;color:var(--ink2);line-height:1.55}
-@media(max-width:720px){.tsstap{grid-template-columns:1fr;max-width:420px}}
+/* ── Wat The System zelf levert, in drie stappen ───────────────────────────
+   Dit staat op de plek waar een Pique-pagina de drie maquettes heeft: die
+   horen hier niet, want de prospect koopt geen briefcampagne.
+   Vorm: een rail met de lijn die de pagina al spreekt, geen kaartjes. Drie
+   omrande vakjes naast elkaar lezen als een prijslijst, en dat is precies de
+   fout die lp-ux-standaard bij het aanbod-blok beschrijft. */
+.tswerk{padding:clamp(2.8rem,6vw,4.6rem) clamp(1.25rem,4vw,2rem) clamp(1.4rem,3vw,2.4rem);max-width:1060px;margin:0 auto}
+.tswerk-eye{text-align:center;font-family:var(--hand);font-size:1.55rem;color:var(--inkt);margin-bottom:.15rem}
+.tswerk-h{text-align:center;font-family:var(--serif);font-weight:600;letter-spacing:-.028em;font-size:clamp(1.55rem,2.8vw,2.1rem);color:var(--ink);margin-bottom:clamp(2rem,4vw,2.8rem)}
+.tsrail{max-width:920px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,3vw,2.6rem);position:relative}
+/* de lijn loopt door de drie knopen heen en dooft aan beide kanten uit */
+.tsrail::before{content:'';position:absolute;left:6%;right:6%;top:19px;height:2px;
+  background:linear-gradient(90deg,rgba(var(--accent-rgb),0),rgba(var(--accent-rgb),.85) 14%,rgba(var(--accent-rgb),.85) 86%,rgba(var(--accent-rgb),0));
+  transform:scaleX(0);transform-origin:left;transition:transform 1.1s var(--ease) .15s}
+.tswerk.in .tsrail::before{transform:scaleX(1)}
+.tsstp{position:relative;opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.tswerk.in .tsstp{opacity:1;transform:none}
+.tswerk.in .tsstp:nth-child(2){transition-delay:.14s}
+.tswerk.in .tsstp:nth-child(3){transition-delay:.28s}
+.tsstp .bol{width:38px;height:38px;border-radius:50%;background:var(--accent);color:var(--op-accent);
+  display:grid;place-items:center;font-size:.82rem;font-weight:700;position:relative;z-index:1;
+  box-shadow:0 0 0 7px var(--bg)}
+.tsstp b{display:block;font-size:1.04rem;font-weight:600;color:var(--ink);margin:1.05rem 0 .4rem;letter-spacing:-.012em}
+.tsstp p{font-size:.93rem;color:var(--ink2);line-height:1.62;max-width:32ch}
+@media(max-width:760px){
+  .tsrail{grid-template-columns:1fr;gap:1.9rem;max-width:460px}
+  /* de lijn krijgt een eigen goot, anders loopt hij dwars door de tekst */
+  .tsstp{padding-left:3.4rem}
+  .tsstp .bol{position:absolute;left:0;top:0}
+  .tsstp b{margin-top:.25rem}
+  .tsrail::before{left:18px;right:auto;top:8%;bottom:8%;width:2px;height:auto;
+    background:linear-gradient(180deg,rgba(var(--accent-rgb),0),rgba(var(--accent-rgb),.85) 14%,rgba(var(--accent-rgb),.85) 86%,rgba(var(--accent-rgb),0));
+    transform:scaleY(0);transform-origin:top;transition:transform 1.1s var(--ease) .15s}
+  .tswerk.in .tsrail::before{transform:scaleY(1)}
+  .tsstp p{max-width:none}
+}
 
-/* De donkere band toont het mechanisme: welke stap een agent overneemt. Geen
-   reviewblok, dat verkleint de statuur (lp-ux-standaard). Eén hard getal, van
-   hun eigen site. */
-.tsmech{max-width:720px;margin:0 auto}
-.tsmech li{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;padding:.72rem .2rem;border-bottom:1px solid rgba(var(--wit-rgb),.10)}
-.tsmech li:last-child{border-bottom:0}
-.tsmech .st{font-family:var(--mono,var(--sans));font-size:.74rem;letter-spacing:.08em;color:rgba(var(--wit-rgb),.42)}
-.tsmech .wa{font-size:.97rem;color:rgba(var(--wit-rgb),.92)}
-.tsmech .wi{font-size:.74rem;font-weight:600;letter-spacing:.04em;padding:.22rem .6rem;border-radius:var(--r-pil);white-space:nowrap}
-.tsmech .mens{color:rgba(var(--wit-rgb),.62);border:1px solid rgba(var(--wit-rgb),.22)}
-.tsmech .agent{color:var(--op-accent);background:var(--accent)}
-.tsuur{max-width:720px;margin:1.6rem auto 0;text-align:center}
-.tsuur b{display:block;font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:600;letter-spacing:-.03em;color:var(--wit)}
-.tsuur span{font-size:.85rem;color:rgba(var(--wit-rgb),.58)}
-@media(max-width:560px){.tsmech li{grid-template-columns:auto 1fr;row-gap:.3rem}.tsmech .wi{grid-column:2;justify-self:start}}
+/* ── De donkere band: welke stap een mens doet en welke een agent ──────────
+   Dit is het blok dat het concreet maakt. De rijen komen gestaffeld binnen,
+   want een proces is een volgorde en die volgorde is de hele boodschap. De
+   lijn links tekent zich mee af. Verder niets, een animatie die niemand
+   opmerkt kost rendering en levert niets. */
+.tsmech{max-width:700px;margin:0 auto;position:relative;padding-left:clamp(1.9rem,4vw,2.6rem);text-align:left}
+.tsmech::before{content:'';position:absolute;left:5px;top:16px;bottom:16px;width:2px;
+  background:rgba(var(--wit-rgb),.16);transform:scaleY(0);transform-origin:top;
+  transition:transform 1.4s var(--ease) .1s}
+.hoeband.in .tsmech::before{transform:scaleY(1)}
+.tsrij{display:grid;grid-template-columns:auto 1fr auto;gap:.85rem;align-items:center;
+  padding:.78rem 0;border-bottom:1px solid rgba(var(--wit-rgb),.08);position:relative;
+  opacity:0;transform:translateX(-8px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.hoeband.in .tsrij{opacity:1;transform:none}
+.tsrij:last-child{border-bottom:0}
+/* de knoop op de lijn, lime als de agent het doet */
+.tsrij::before{content:'';position:absolute;left:calc(-1 * clamp(1.9rem,4vw,2.6rem) + 1px);top:50%;
+  width:12px;height:12px;border-radius:50%;margin-top:-6px;background:var(--dieper);
+  border:2px solid rgba(var(--wit-rgb),.28)}
+.tsrij.agent::before{background:var(--accent);border-color:var(--accent)}
+.tsrij .st{font-family:var(--mono,var(--sans));font-size:.72rem;letter-spacing:.09em;color:rgba(var(--wit-rgb),.38);min-width:1.6rem}
+.tsrij .wa{font-size:.98rem;color:rgba(var(--wit-rgb),.93);line-height:1.45}
+.tsrij .wi{font-size:.72rem;font-weight:600;letter-spacing:.04em;padding:.24rem .64rem;border-radius:var(--r-pil);white-space:nowrap}
+.tsrij.mens .wi{color:rgba(var(--wit-rgb),.6);border:1px solid rgba(var(--wit-rgb),.24)}
+.tsrij.agent .wi{color:var(--op-accent);background:var(--accent)}
+.tsuur{max-width:700px;margin:clamp(1.8rem,4vw,2.6rem) auto 0;text-align:center;
+  padding-top:clamp(1.4rem,3vw,2rem);border-top:1px solid rgba(var(--wit-rgb),.12)}
+.tsuur b{display:block;font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:600;letter-spacing:-.035em;color:var(--wit);line-height:1.05}
+.tsuur span{display:block;font-size:.86rem;color:rgba(var(--wit-rgb),.56);margin-top:.4rem}
+@media(max-width:600px){
+  .tsrij{grid-template-columns:auto 1fr;row-gap:.35rem}
+  .tsrij .wi{grid-column:2;justify-self:start}
+}
+
+/* ── Het founderblok ───────────────────────────────────────────────────────
+   Zonder eigen vlak zweeft dit op het papier, en dan leest het als een losse
+   alinea in plaats van als de persoon achter het voorstel. Dus een paneel,
+   met zijn foto erin. */
+.founder{max-width:860px}
+.fo-paneel{grid-column:1 / -1;display:grid;grid-template-columns:auto 1fr;gap:clamp(1.4rem,3.5vw,2.4rem);
+  align-items:center;background:var(--pap-0);border:1px solid var(--line);border-radius:var(--r-blok);
+  padding:clamp(1.6rem,4vw,2.4rem) clamp(1.5rem,4vw,2.6rem);
+  box-shadow:0 22px 50px -34px rgba(var(--ink-rgb),.34)}
+.fo-paneel .fo-photo{width:clamp(104px,14vw,136px);height:clamp(104px,14vw,136px);border-radius:50%;
+  object-fit:cover;border:3px solid var(--wit);box-shadow:0 0 0 2px rgba(var(--accent-rgb),.55)}
+@media(max-width:640px){
+  .fo-paneel{grid-template-columns:1fr;text-align:left;gap:1.1rem;justify-items:start}
+}
 </style>
 <script>
   window.PQ_BEDRIJF      = 'Markhorst Elektro B.V.';
@@ -125,7 +182,7 @@
         <p class="ch-text">Ik zocht installatiebedrijven die hun offertes snel de deur uit willen hebben. Bij jullie staat die belofte er zelf op: wie een aanvraag doet, leest dat jullie Connectors er razendsnel mee aan de slag gaan. Toen ik doorklikte naar de vacatures stond daar de stoel open waar zo&#x27;n offerte uit komt.</p>
         <div class="watdit">
           <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die ik voor Markhorst Elektro heb gemaakt. Jij bent de enige die hem heeft.</span></div>
-          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">Ik wil je spreken over hoe een aanvraag bij jullie van binnenkomst naar verzonden offerte gaat. We hebben elkaar nooit eerder gesproken, en ik schreef je op papier omdat een mail van mij tussen de rest verdwijnt.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">Ik wil je spreken over hoe een aanvraag bij jullie van binnenkomst naar verzonden offerte gaat. We hebben elkaar nooit eerder gesproken. Daarom stuurde ik je een kaartje. Omdat een mail van mij tussen de rest verdwijnt.</span></div>
           <div><span class="wd-l">Waar we om vragen</span><span class="wd-v">Een half uur aan de telefoon. Verder vraag ik niets.</span></div>
         </div>
         <p class="ch-text"><strong>Hieronder staan de drie dingen die me opvielen. Pas bij elkaar gingen ze ergens over.</strong></p>
@@ -215,13 +272,13 @@
   </section>
 </main>
 
-<section class="tswerk" id="toon">
-  <div class="tswerk-eye reveal">Hoe het loopt</div>
-  <h2 class="tswerk-h reveal">Van meelopen naar een agent die het werk doet.</h2>
-  <div class="tsstap reveal">
-    <div><div class="n">01</div><b>Ik loop een dag mee</b><p>Op jullie kantoor, naast de mensen die het werk nu doen. Ik schrijf op waar het blijft hangen en wat het per week kost.</p></div>
-    <div><div class="n">02</div><b>We bouwen het in twee tot drie weken</b><p>Op jullie eigen manier van werken, in de systemen die er al staan. Je hoeft niets te vervangen.</p></div>
-    <div><div class="n">03</div><b>Twee weken meekijken, daarna bijsturen</b><p>We zetten het aan en kijken mee hoe het loopt. Daarna blijf ik je technisch aanspreekpunt.</p></div>
+<section class="tswerk reveal" id="toon">
+  <div class="tswerk-eye">Hoe het loopt</div>
+  <h2 class="tswerk-h">Van meelopen naar een agent die het werk doet.</h2>
+  <div class="tsrail">
+    <div class="tsstp"><span class="bol">01</span><b>Ik loop een dag mee</b><p>Op jullie kantoor, naast de mensen die het werk nu doen. Ik schrijf op waar het blijft hangen en wat dat per week kost.</p></div>
+    <div class="tsstp"><span class="bol">02</span><b>We bouwen het in twee tot drie weken</b><p>Op jullie eigen manier van werken, in de systemen die er al staan. Je hoeft niets te vervangen.</p></div>
+    <div class="tsstp"><span class="bol">03</span><b>Twee weken meekijken, daarna bijsturen</b><p>We zetten het aan en kijken mee hoe het loopt. Daarna blijf ik je technisch aanspreekpunt.</p></div>
   </div>
 </section>
 
@@ -230,12 +287,12 @@
     <span class="hb-eyebrow">Hoe het werkt</span>
     <h2 class="hb-h">Welke stap een mens doet, en welke een agent.</h2>
     <ol class="tsmech">
-      <li><span class="st">01</span><span class="wa">De aanvraag komt binnen en wordt uitgelezen</span><span class="wi agent">De agent</span></li>
-      <li><span class="st">02</span><span class="wa">Prijzen en posten erbij zoeken</span><span class="wi agent">De agent</span></li>
-      <li><span class="st">03</span><span class="wa">De calculatie nakijken en de marge bepalen</span><span class="wi mens">Jullie</span></li>
-      <li><span class="st">04</span><span class="wa">De offerte opmaken en versturen</span><span class="wi agent">De agent</span></li>
-      <li><span class="st">05</span><span class="wa">Opvolgen of hij gelezen is</span><span class="wi agent">De agent</span></li>
-      <li><span class="st">06</span><span class="wa">Het gesprek met de klant</span><span class="wi mens">Jullie</span></li>
+      <li class="tsrij agent" style="transition-delay:0.06s"><span class="st">01</span><span class="wa">De aanvraag komt binnen en wordt uitgelezen</span><span class="wi">De agent</span></li>
+      <li class="tsrij agent" style="transition-delay:0.12s"><span class="st">02</span><span class="wa">Prijzen en posten erbij zoeken</span><span class="wi">De agent</span></li>
+      <li class="tsrij mens" style="transition-delay:0.18s"><span class="st">03</span><span class="wa">De calculatie nakijken en de marge bepalen</span><span class="wi">Jullie</span></li>
+      <li class="tsrij agent" style="transition-delay:0.24s"><span class="st">04</span><span class="wa">De offerte opmaken en versturen</span><span class="wi">De agent</span></li>
+      <li class="tsrij agent" style="transition-delay:0.30s"><span class="st">05</span><span class="wa">Opvolgen of hij gelezen is</span><span class="wi">De agent</span></li>
+      <li class="tsrij mens" style="transition-delay:0.36s"><span class="st">06</span><span class="wa">Het gesprek met de klant</span><span class="wi">Jullie</span></li>
     </ol>
     <div class="tsuur">
       <b>5 tot 10 uur</b>
@@ -245,13 +302,16 @@
 </section>
 
 <section class="founder" id="founder">
-  <div class="fr">
-    <div class="fo-eyebrow">De persoon achter dit voorstel</div>
-    <div class="fo-text">
-      <p>Ik ben Maarten. The System zit in Apeldoorn. Samen met Sven en Oscar bouw ik AI-agents voor MKB-bedrijven, die het kantoorwerk overnemen dat elke week terugkomt.</p>
-      <p>Ik kijk altijd eerst naar het werk zelf, want een agent die een slecht proces nadoet maakt het alleen sneller fout. Daarom begint het bij ons met een dag meelopen en niet met software.</p>
+  <div class="fo-paneel fr">
+    <img class="fo-photo" src="maarten.jpg" alt="Maarten Klouwen van The System" loading="lazy" decoding="async">
+    <div>
+      <div class="fo-eyebrow">De persoon achter dit voorstel</div>
+      <div class="fo-text">
+        <p>Ik ben Maarten. The System zit in Apeldoorn. Samen met Sven en Oscar bouw ik AI-agents voor MKB-bedrijven, die het kantoorwerk overnemen dat elke week terugkomt.</p>
+        <p>Ik kijk altijd eerst naar het werk zelf, want een agent die een slecht proces nadoet maakt het alleen sneller fout. Daarom begint het bij ons met een dag meelopen en niet met software.</p>
+      </div>
+      <p class="fo-name"><strong>Maarten Klouwen</strong>, The System</p>
     </div>
-    <p class="fo-name"><strong>Maarten Klouwen</strong>, The System</p>
   </div>
 </section>
 
@@ -284,7 +344,7 @@
   <div class="sheet-in" role="dialog" aria-modal="true" aria-label="Even bellen met Maarten">
     <button class="sheet-x" data-close aria-label="Sluiten">&times;</button>
     <div class="sheet-host">
-      <img src="maarten-poster.jpg" alt="" loading="lazy" decoding="async">
+      <img src="maarten.jpg" alt="" loading="lazy" decoding="async">
       <div><div class="n">Een half uur met Maarten</div><div class="s">Telefonisch, of online als dat beter past.</div></div>
     </div>
     <div class="panes">

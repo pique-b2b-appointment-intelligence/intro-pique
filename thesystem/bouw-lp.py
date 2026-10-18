@@ -89,9 +89,10 @@ def mechblok(stappen):
         wie = 'agent' if s['wie'] == 'agent' else 'mens'
         label = 'De agent' if wie == 'agent' else 'Jullie'
         uit.append(
-            f'      <li><span class="st">{i:02d}</span>'
+            f'      <li class="tsrij {wie}" style="transition-delay:{0.06 * i:.2f}s">'
+            f'<span class="st">{i:02d}</span>'
             f'<span class="wa">{html.escape(s["wat"])}</span>'
-            f'<span class="wi {wie}">{label}</span></li>')
+            f'<span class="wi">{label}</span></li>')
     return '\n'.join(uit)
 
 

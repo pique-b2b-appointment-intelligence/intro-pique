@@ -75,6 +75,16 @@
 .hero-h1,.ch-kop,.f-kop,.ch-pivot,.cta-h,.tp h3{font-weight:600;letter-spacing:-.025em}
 .f-quote{font-style:normal}
 
+/* lp.css zet het accent op zeven plekken als tekstkleur. Op het donkere
+   vlak kan dat, op het lichte papier haalt lime 1,9 op 1 en wordt het een
+   grijze veeg. Die gaan hier naar het olijf. Dit is de hele reden dat de
+   eyebrows er eerst uitgewassen uitzagen.
+   Let op de volgorde: het thema wordt VOOR lp.css geladen, dus een override
+   met dezelfde specificiteit verliest. Vandaar body ervoor. */
+body .ch-eyebrow,body .fo-eyebrow,body .wd-l,body .dv-rij.hier .dv-nr,
+body .mz-t,body .faq .a a,body .slots button.on{color:var(--inkt)}
+body .slots button.on{border-color:var(--inkt)}
+
 /* Het lime is fel. Op de journeylijn en de dots blijft het betekenis
    dragen, maar een haarlijn in volle sterkte gaat gillen. Daar dus
    een tint, en de dots houden de volle kleur. */
