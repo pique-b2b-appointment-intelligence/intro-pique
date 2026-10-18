@@ -24,9 +24,20 @@
    Vorm: een rail met de lijn die de pagina al spreekt, geen kaartjes. Drie
    omrande vakjes naast elkaar lezen als een prijslijst, en dat is precies de
    fout die lp-ux-standaard bij het aanbod-blok beschrijft. */
-.tswerk{padding:clamp(2.8rem,6vw,4.6rem) clamp(1.25rem,4vw,2rem) clamp(1.4rem,3vw,2.4rem);max-width:1060px;margin:0 auto}
+/* Gemeten op de live pagina: tussen het voorstel en dit blok stapelde 143px
+   padding op (36 onder het kapittel, 33 onder journey2, 74 hierboven), plus de
+   lege ruimte van het gecentreerde kapittel zelf. Dat leest als een gat. */
+/* Op elke naad stapelen twee of drie paddings op elkaar. Gemeten aan de naad
+   boven het voorstel: 37 onder het kapittel, 33 onder journey, 49 boven
+   journey2 en 35 boven het kapittel, samen 154px nog voor de witruimte van
+   het kapittel zelf. De lucht mag blijven, de stapeling niet. */
+#journey{padding-bottom:.5rem}
+#journey2{padding-top:1rem;padding-bottom:.4rem}
+.hero{padding-bottom:clamp(1.6rem,3.4vw,2.6rem)}
+#journey2 .chapter.phase{padding-top:clamp(1.4rem,3vw,2.2rem);padding-bottom:clamp(.6rem,1.4vw,1rem)}
+.tswerk{padding:clamp(1.5rem,3.2vw,2.4rem) clamp(1.25rem,4vw,2rem) clamp(1.6rem,3vw,2.6rem);max-width:1060px;margin:0 auto}
 .tswerk-eye{text-align:center;font-family:var(--hand);font-size:1.55rem;color:var(--inkt);margin-bottom:.15rem}
-.tswerk-h{text-align:center;font-family:var(--serif);font-weight:600;letter-spacing:-.028em;font-size:clamp(1.55rem,2.8vw,2.1rem);color:var(--ink);margin-bottom:clamp(2rem,4vw,2.8rem)}
+.tswerk-h{text-align:center;font-family:var(--serif);font-weight:600;letter-spacing:-.028em;font-size:clamp(1.55rem,2.8vw,2.1rem);color:var(--ink);margin-bottom:clamp(1.6rem,3.2vw,2.2rem)}
 .tsrail{max-width:920px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,3vw,2.6rem);position:relative}
 /* de lijn loopt door de drie knopen heen en dooft aan beide kanten uit */
 .tsrail::before{content:'';position:absolute;left:6%;right:6%;top:19px;height:2px;
@@ -56,37 +67,60 @@
 }
 
 /* ── De donkere band: welke stap een mens doet en welke een agent ──────────
-   Dit is het blok dat het concreet maakt. De rijen komen gestaffeld binnen,
-   want een proces is een volgorde en die volgorde is de hele boodschap. De
-   lijn links tekent zich mee af. Verder niets, een animatie die niemand
-   opmerkt kost rendering en levert niets. */
+   Dit is het blok dat het concreet maakt, dus hier mag de beweging iets doen.
+   Drie dingen, en alle drie dragen ze betekenis:
+   1. een puls die langs de lijn naar beneden loopt. Dat is de aanvraag die
+      door het proces gaat, en dat is precies waar het blok over gaat.
+   2. bij elke stap die de agent doet veegt een lime vlak van links naar
+      rechts over de rij. Je ziet het werk overgenomen worden.
+   3. de rijen komen op volgorde binnen, want een proces is een volgorde.
+   Alles daarbuiten is versiering en kost alleen rendering. */
 .tsmech{max-width:700px;margin:0 auto;position:relative;padding-left:clamp(1.9rem,4vw,2.6rem);text-align:left}
 .tsmech::before{content:'';position:absolute;left:5px;top:16px;bottom:16px;width:2px;
   background:rgba(var(--wit-rgb),.16);transform:scaleY(0);transform-origin:top;
   transition:transform 1.4s var(--ease) .1s}
 .hoeband.in .tsmech::before{transform:scaleY(1)}
+/* de aanvraag die door de pijplijn zakt */
+.tspuls{position:absolute;left:0;width:12px;height:12px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 16px 5px rgba(var(--accent-rgb),.45);top:14px;opacity:0;pointer-events:none}
+.hoeband.in .tspuls{animation:tszak 3.4s cubic-bezier(.5,.02,.42,1) 1.1s 2 both}
+@keyframes tszak{
+  0%{top:14px;opacity:0;transform:scale(.6)}
+  8%{opacity:1;transform:scale(1)}
+  88%{opacity:1;transform:scale(1)}
+  100%{top:calc(100% - 26px);opacity:0;transform:scale(.6)}}
 .tsrij{display:grid;grid-template-columns:auto 1fr auto;gap:.85rem;align-items:center;
-  padding:.78rem 0;border-bottom:1px solid rgba(var(--wit-rgb),.08);position:relative;
-  opacity:0;transform:translateX(-8px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+  padding:.8rem .7rem;border-bottom:1px solid rgba(var(--wit-rgb),.08);position:relative;
+  border-radius:10px;opacity:0;transform:translateX(-8px);
+  transition:opacity .55s var(--ease),transform .55s var(--ease)}
 .hoeband.in .tsrij{opacity:1;transform:none}
 .tsrij:last-child{border-bottom:0}
-/* de knoop op de lijn, lime als de agent het doet */
+/* het vlak dat over een agent-rij veegt */
+.tsrij .vul{position:absolute;inset:0;border-radius:10px;z-index:0;transform:scaleX(0);transform-origin:left;
+  background:linear-gradient(90deg,rgba(var(--accent-rgb),.16),rgba(var(--accent-rgb),.03) 70%,transparent);
+  transition:transform .8s var(--ease)}
+.hoeband.in .tsrij.agent .vul{transform:scaleX(1)}
+.tsrij>span{position:relative;z-index:1}
 .tsrij::before{content:'';position:absolute;left:calc(-1 * clamp(1.9rem,4vw,2.6rem) + 1px);top:50%;
   width:12px;height:12px;border-radius:50%;margin-top:-6px;background:var(--dieper);
-  border:2px solid rgba(var(--wit-rgb),.28)}
-.tsrij.agent::before{background:var(--accent);border-color:var(--accent)}
+  border:2px solid rgba(var(--wit-rgb),.28);z-index:1;transition:background .5s var(--ease),border-color .5s var(--ease),box-shadow .5s var(--ease)}
+.hoeband.in .tsrij.agent::before{background:var(--accent);border-color:var(--accent);
+  box-shadow:0 0 0 5px rgba(var(--accent-rgb),.14)}
 .tsrij .st{font-family:var(--mono,var(--sans));font-size:.72rem;letter-spacing:.09em;color:rgba(var(--wit-rgb),.38);min-width:1.6rem}
 .tsrij .wa{font-size:.98rem;color:rgba(var(--wit-rgb),.93);line-height:1.45}
 .tsrij .wi{font-size:.72rem;font-weight:600;letter-spacing:.04em;padding:.24rem .64rem;border-radius:var(--r-pil);white-space:nowrap}
 .tsrij.mens .wi{color:rgba(var(--wit-rgb),.6);border:1px solid rgba(var(--wit-rgb),.24)}
 .tsrij.agent .wi{color:var(--op-accent);background:var(--accent)}
-.tsuur{max-width:700px;margin:clamp(1.8rem,4vw,2.6rem) auto 0;text-align:center;
-  padding-top:clamp(1.4rem,3vw,2rem);border-top:1px solid rgba(var(--wit-rgb),.12)}
-.tsuur b{display:block;font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:600;letter-spacing:-.035em;color:var(--wit);line-height:1.05}
-.tsuur span{display:block;font-size:.86rem;color:rgba(var(--wit-rgb),.56);margin-top:.4rem}
+/* de twee cijfers die eruit volgen, naast elkaar */
+.tssom{max-width:700px;margin:clamp(1.5rem,3.4vw,2.2rem) auto 0;padding-top:clamp(1.2rem,2.6vw,1.7rem);
+  border-top:1px solid rgba(var(--wit-rgb),.12);display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,2rem)}
+.tssom div{text-align:center}
+.tssom b{display:block;font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:600;letter-spacing:-.035em;color:var(--wit);line-height:1.05}
+.tssom span{display:block;font-size:.84rem;color:rgba(var(--wit-rgb),.56);margin-top:.35rem;line-height:1.45}
 @media(max-width:600px){
   .tsrij{grid-template-columns:auto 1fr;row-gap:.35rem}
   .tsrij .wi{grid-column:2;justify-self:start}
+  .tssom{grid-template-columns:1fr;gap:1.3rem}
 }
 
 /* ── Het founderblok ───────────────────────────────────────────────────────
@@ -265,14 +299,14 @@
     <span class="hb-eyebrow">Hoe het werkt</span>
     <h2 class="hb-h">{{MECH_KOP}}</h2>
     <ol class="tsmech">
+      <span class="tspuls" aria-hidden="true"></span>
 {{MECH}}
     </ol>
-    <div class="tsuur">
-      <b>5 tot 10 uur</b>
-      <span>per medewerker per maand terug, gemiddeld over de bedrijven waar we het hebben gebouwd</span>
+    <div class="tssom">
+      <div><b>{{AGENT_AANTAL}} van de {{MECH_AANTAL}}</b><span>stappen hoeft niemand meer te doen</span></div>
+      <div><b>5 tot 10 uur</b><span>per medewerker per maand terug, gemiddeld over de bedrijven waar we het bouwden</span></div>
     </div>
-  </div>
-</section>
+  </section>
 
 <section class="founder" id="founder">
   <div class="fo-paneel fr">

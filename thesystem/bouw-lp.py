@@ -90,6 +90,7 @@ def mechblok(stappen):
         label = 'De agent' if wie == 'agent' else 'Jullie'
         uit.append(
             f'      <li class="tsrij {wie}" style="transition-delay:{0.06 * i:.2f}s">'
+            f'<span class="vul" aria-hidden="true" style="transition-delay:{0.06 * i + 0.1:.2f}s"></span>'
             f'<span class="st">{i:02d}</span>'
             f'<span class="wa">{html.escape(s["wat"])}</span>'
             f'<span class="wi">{label}</span></li>')
@@ -137,6 +138,8 @@ def main():
             'VOORSTEL': html.escape(c['voorstel']),
             'MECH_KOP': html.escape(c['mech_kop']),
             'MECH': mechblok(c['mech']),
+            'MECH_AANTAL': str(len(c['mech'])),
+            'AGENT_AANTAL': str(sum(1 for x in c['mech'] if x['wie'] == 'agent')),
             'CTA_SUB': html.escape(c['cta_sub']),
         }
         uit = sjabloon
