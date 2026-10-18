@@ -75,6 +75,13 @@
       rechts over de rij. Je ziet het werk overgenomen worden.
    3. de rijen komen op volgorde binnen, want een proces is een volgorde.
    Alles daarbuiten is versiering en kost alleen rendering. */
+/* Gemeten in de band: de kop stond op 40px en de regels eronder op 15,7px,
+   een sprong van 2,5 keer met niets ertussen. En tussen de kop en de eerste
+   rij zat nul pixel. De kop gaat naar dezelfde maat als die van het blok
+   erboven, de regels een tik omhoog, en er komt lucht tussen. */
+.hoeband .hb-h{font-size:clamp(1.55rem,2.8vw,2.1rem);letter-spacing:-.028em;
+  margin-bottom:clamp(1.5rem,3.2vw,2.3rem)}
+.hoeband .hb-eyebrow{margin-bottom:.6rem}
 .tsmech{max-width:700px;margin:0 auto;position:relative;padding-left:clamp(1.9rem,4vw,2.6rem);text-align:left}
 .tsmech::before{content:'';position:absolute;left:5px;top:16px;bottom:16px;width:2px;
   background:rgba(var(--wit-rgb),.16);transform:scaleY(0);transform-origin:top;
@@ -89,8 +96,8 @@
   8%{opacity:1;transform:scale(1)}
   88%{opacity:1;transform:scale(1)}
   100%{top:calc(100% - 26px);opacity:0;transform:scale(.6)}}
-.tsrij{display:grid;grid-template-columns:auto 1fr auto;gap:.85rem;align-items:center;
-  padding:.8rem .7rem;border-bottom:1px solid rgba(var(--wit-rgb),.08);position:relative;
+.tsrij{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;
+  padding:.95rem .8rem;border-bottom:1px solid rgba(var(--wit-rgb),.08);position:relative;
   border-radius:10px;opacity:0;transform:translateX(-8px);
   transition:opacity .55s var(--ease),transform .55s var(--ease)}
 .hoeband.in .tsrij{opacity:1;transform:none}
@@ -106,16 +113,16 @@
   border:2px solid rgba(var(--wit-rgb),.28);z-index:1;transition:background .5s var(--ease),border-color .5s var(--ease),box-shadow .5s var(--ease)}
 .hoeband.in .tsrij.agent::before{background:var(--accent);border-color:var(--accent);
   box-shadow:0 0 0 5px rgba(var(--accent-rgb),.14)}
-.tsrij .st{font-family:var(--mono,var(--sans));font-size:.72rem;letter-spacing:.09em;color:rgba(var(--wit-rgb),.38);min-width:1.6rem}
-.tsrij .wa{font-size:.98rem;color:rgba(var(--wit-rgb),.93);line-height:1.45}
-.tsrij .wi{font-size:.72rem;font-weight:600;letter-spacing:.04em;padding:.24rem .64rem;border-radius:var(--r-pil);white-space:nowrap}
+.tsrij .st{font-family:var(--mono,var(--sans));font-size:.76rem;letter-spacing:.09em;color:rgba(var(--wit-rgb),.42);min-width:1.7rem}
+.tsrij .wa{font-size:1.04rem;color:rgba(var(--wit-rgb),.94);line-height:1.5}
+.tsrij .wi{font-size:.75rem;font-weight:600;letter-spacing:.04em;padding:.24rem .64rem;border-radius:var(--r-pil);white-space:nowrap}
 .tsrij.mens .wi{color:rgba(var(--wit-rgb),.6);border:1px solid rgba(var(--wit-rgb),.24)}
 .tsrij.agent .wi{color:var(--op-accent);background:var(--accent)}
 /* de twee cijfers die eruit volgen, naast elkaar */
 .tssom{max-width:700px;margin:clamp(1.5rem,3.4vw,2.2rem) auto 0;padding-top:clamp(1.2rem,2.6vw,1.7rem);
   border-top:1px solid rgba(var(--wit-rgb),.12);display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,2rem)}
 .tssom div{text-align:center}
-.tssom b{display:block;font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:600;letter-spacing:-.035em;color:var(--wit);line-height:1.05}
+.tssom b{display:block;font-size:clamp(1.4rem,2.6vw,1.85rem);font-weight:600;letter-spacing:-.035em;color:var(--wit);line-height:1.05}
 .tssom span{display:block;font-size:.84rem;color:rgba(var(--wit-rgb),.56);margin-top:.35rem;line-height:1.45}
 @media(max-width:600px){
   .tsrij{grid-template-columns:auto 1fr;row-gap:.35rem}
