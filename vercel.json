@@ -40,11 +40,11 @@
     },
     {
       "source": "/pique/synsel/marco",
-      "destination": "/pique/synsel-marco.html"
+      "destination": "/pique/synsel-marco"
     },
     {
       "source": "/pique/synsel/peter-jan",
-      "destination": "/pique/synsel-peter-jan.html"
+      "destination": "/pique/synsel-peter-jan"
     },
     {
       "source": "/pique/synsel/:bestand",
