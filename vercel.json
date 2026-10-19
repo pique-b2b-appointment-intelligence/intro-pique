@@ -51,6 +51,18 @@
       "destination": "/pique/:bestand"
     },
     {
+      "source": "/pique/uitmetkorting/arthur",
+      "destination": "/pique/uitmetkorting-arthur"
+    },
+    {
+      "source": "/pique/uitmetkorting/vincent",
+      "destination": "/pique/uitmetkorting-vincent"
+    },
+    {
+      "source": "/pique/uitmetkorting/:bestand",
+      "destination": "/pique/:bestand"
+    },
+    {
       "source": "/:path*",
       "has": [
         {
