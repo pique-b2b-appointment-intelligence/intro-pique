@@ -47,8 +47,8 @@
       "destination": "/pique/synsel-peter-jan"
     },
     {
-      "source": "/pique/synsel/:bestand",
-      "destination": "/pique/:bestand"
+      "source": "/pique/synsel/:pad*",
+      "destination": "/pique/:pad*"
     },
     {
       "source": "/pique/uitmetkorting/arthur",
@@ -59,16 +59,16 @@
       "destination": "/pique/uitmetkorting-vincent"
     },
     {
-      "source": "/pique/uitmetkorting/:bestand",
-      "destination": "/pique/:bestand"
+      "source": "/pique/uitmetkorting/:pad*",
+      "destination": "/pique/:pad*"
     },
     {
       "source": "/pique/odido/herman",
       "destination": "/pique/odido-herman"
     },
     {
-      "source": "/pique/odido/:bestand",
-      "destination": "/pique/:bestand"
+      "source": "/pique/odido/:pad*",
+      "destination": "/pique/:pad*"
     },
     {
       "source": "/:path*",
