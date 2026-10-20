@@ -1,11 +1,8 @@
 {
   "voornaam": "Edwin",
   "hero_sub": "Drie dingen die ik op jullie eigen site vond, met de bron en de datum erbij. Je leest het in twee minuten.",
-
-  "waarom_jij": "Ik zocht installatiebedrijven die hun offertes snel de deur uit willen hebben. Bij jullie staat die belofte er zelf op: wie een aanvraag doet, leest dat jullie Connectors er razendsnel mee aan de slag gaan. Toen ik doorklikte naar de vacatures stond daar de stoel open waar zo'n offerte uit komt.",
-
+  "waarom_jij": "Ik zoek installatiebedrijven waar het offertewerk vastloopt. Op jullie site staat dat wie een aanvraag doet er razendsnel een offerte op terugkrijgt. Twee klikken verder, bij de vacatures, zoeken jullie een Junior Calculator en een Werkvoorbereider Service & Onderhoud. Dat zijn de twee mensen die zo'n offerte maken. Dat was het eerste dat me opviel, en daarna kwamen er nog twee bij.",
   "watdit_onderwerp": "hoe een aanvraag bij jullie van binnenkomst naar verzonden offerte gaat",
-
   "bevindingen": [
     {
       "wat": "Een Junior Calculator en een Werkvoorbereider Service & Onderhoud staan tegelijk open.",
@@ -27,25 +24,38 @@
       "hier": true
     }
   ],
-
-  "pivot": "Je belooft een aanvrager dat er razendsnel aan zijn offerte wordt gewerkt. De stoel waar die offerte uit komt staat open, en je schrijft zelf dat zulke mensen steeds lastiger te vinden zijn.",
-
+  "pivot": "Je belooft een aanvrager dat er razendsnel aan zijn offerte wordt gewerkt. Tegelijk zoek je de calculator en de werkvoorbereider die hem moeten maken, en je schrijft er zelf bij dat zulke mensen steeds lastiger te vinden zijn.",
   "betekent_kop": "De belofte staat, de stoel is leeg.",
-  "betekent": "Een calculatie begint bij een aanvraag. Iemand zoekt de prijzen erbij, zet de posten in een sjabloon en typt de offerte uit. Dat is het werk waar je nu een calculator voor zoekt, en met Van Geffen ernaast loopt het twee keer langs hetzelfde soort kantoor. <strong>Hoe jullie dat intern hebben ingericht kan ik van buiten niet zien</strong>, en dat zou ik graag van je horen.",
-
+  "betekent": "Een calculatie begint bij een aanvraag. Iemand zoekt de prijzen erbij, zet de posten in een sjabloon en typt de offerte uit. Dat is het werk waar je nu een Junior Calculator voor zoekt, en sinds Van Geffen erbij hoort gebeurt het op twee plekken. <strong>Hoe jullie dat intern hebben ingericht kan ik van buiten niet zien</strong>, en dat zou ik graag van je horen.",
   "pull": "razendsnel aan de slag met het uitwerken van een offerte",
-
   "voorstel": "Ik laat je zien welke stappen in dat offertetraject een agent kan overnemen, zodat de calculator die je zoekt alleen nog nakijkt en zijn naam eronder zet.",
-
   "mech_kop": "Welke stap een mens doet, en welke een agent.",
   "mech": [
-    { "wat": "De aanvraag komt binnen en wordt uitgelezen", "wie": "agent" },
-    { "wat": "Prijzen en posten erbij zoeken", "wie": "agent" },
-    { "wat": "De calculatie nakijken en de marge bepalen", "wie": "mens" },
-    { "wat": "De offerte opmaken en versturen", "wie": "agent" },
-    { "wat": "Opvolgen of hij gelezen is", "wie": "agent" },
-    { "wat": "Het gesprek met de klant", "wie": "mens" }
+    {
+      "wat": "De aanvraag komt binnen en wordt uitgelezen",
+      "wie": "agent"
+    },
+    {
+      "wat": "Prijzen en posten erbij zoeken",
+      "wie": "agent"
+    },
+    {
+      "wat": "De calculatie nakijken en de marge bepalen",
+      "wie": "mens"
+    },
+    {
+      "wat": "De offerte opmaken en versturen",
+      "wie": "agent"
+    },
+    {
+      "wat": "Opvolgen of hij gelezen is",
+      "wie": "agent"
+    },
+    {
+      "wat": "Het gesprek met de klant",
+      "wie": "mens"
+    }
   ],
-
-  "cta_sub": "Een half uur over hoe een aanvraag bij jullie nu van binnenkomst naar verzonden offerte gaat. Je hoort welke stappen daarin een agent kan overnemen en wat dat per week scheelt. Je verbindt je nergens aan."
+  "cta_sub": "Een half uur over hoe een aanvraag bij jullie nu van binnenkomst naar verzonden offerte gaat. Je hoort welke stappen daarin een agent kan overnemen en wat dat per week scheelt. Je verbindt je nergens aan.",
+  "kaartzin": "Ik las jullie vacaturepagina."
 }

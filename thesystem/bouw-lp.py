@@ -120,6 +120,10 @@ def main():
             'BEDRIJF': html.escape(bedrijf),
             'BEDRIJF_KORT': html.escape(c.get('bedrijf_kort') or kortenaam(bedrijf)),
             'BEDRIJF_KORT_JS': (c.get('bedrijf_kort') or kortenaam(bedrijf)).replace("'", "\\'"),
+            # Wat Maarten werkelijk las bij dit bedrijf. Staat op de kaart en in de
+            # introlaag, dus hij moet kort zijn en concreet.
+            'KAARTZIN': html.escape(c['kaartzin']),
+            'KAARTZIN_JS': c['kaartzin'].replace("'", "\\'"),
             'BEDRIJF_JS': bedrijf.replace("'", "\\'"),
             'BEDRIJF_URL': quote(bedrijf),
             'VOORNAAM': html.escape(vn),
