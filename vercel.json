@@ -63,6 +63,14 @@
       "destination": "/pique/:bestand"
     },
     {
+      "source": "/pique/odido/herman",
+      "destination": "/pique/odido-herman"
+    },
+    {
+      "source": "/pique/odido/:bestand",
+      "destination": "/pique/:bestand"
+    },
+    {
       "source": "/:path*",
       "has": [
         {
