@@ -1,56 +1,161 @@
 <!DOCTYPE html>
 <!--
-  Heractivatie Byzon Buitenzonwering, oktober 2026. Vorm uit Componenten/lp-v2 plus
-  de v12-opmaak in lp12.css, model Klanten/BCS/pique/studio-rendement.html.
+  Heractivatie Byzon Buitenzonwering, oktober 2026. Tweede ronde.
 
   Deze pagina gaat naar iemand die het aanbod al kent en er drie keer mondeling ja
-  op zei. Er staat daarom geen research over zijn bedrijf in: dat zou hem uitleggen
-  wat hij zelf heeft verteld. De pagina doet een ding, en dat is vertellen wat er
-  sinds september aan het aanbod is veranderd.
+  op zei. Er staat daarom geen research over zijn bedrijf in. De pagina doet een
+  ding: vertellen wat er sinds september aan het aanbod is veranderd, met de
+  garantie bovenaan.
 
-  Het blok 'Wat er anders is' hergebruikt de daveld-opmaak uit lp12.css (sectie 8),
-  die daar voor de droomaccounts staat. Het is een lijstpaneel dat altijd open staat
-  en dat is hier precies wat nodig is. Er is geen regel CSS aan lp.css of lp12.css
-  gewijzigd; wat nieuw is staat in de pagina-lokale style hieronder en gebruikt
-  alleen thema-tokens.
+  Vorm: het component Componenten/lp-v2 draagt de hero, de kaartlanding, de rail,
+  de agenda-sheet, de dock en het meten. De vormtaal komt van pique.agency/start en
+  zit volledig in de thema-tokens hieronder plus een pagina-lokale style. Er is geen
+  regel aan lp.css, lp-v2.js, lp-intro.js, lp12.css of lp12.js gewijzigd.
+
+  Wat hier bewust NIET op staat: de contractduur en het totaalbedrag. Die horen op de
+  orderpagina. En er staat nergens een zin die suggereert dat dit Jaap minder kost dan
+  het oude voorstel, want dat zou onwaar zijn.
 -->
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pique voor Byzon Buitenzonwering</title>
-<meta name="description" content="Wat er sinds september aan het voorstel voor Byzon Buitenzonwering is veranderd.">
+<meta name="description" content="Bij vijf juiste beslissers aan tafel binnen zestig dagen, of je geld terug. Wat er sinds september is veranderd aan het voorstel voor Byzon Buitenzonwering.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://app.cal.com"><link rel="preconnect" href="https://cal.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="thema-pique.css">
 <link rel="stylesheet" href="lp.css">
 <link rel="stylesheet" href="lp12.css">
 
 <style>
-  /* In de droomband staat onder de rijen een knop, hier is de laatste rij het
-     einde van het paneel. Zonder dit staan er twee lijnen op elkaar. */
-  .daveld .da-lijst .da-rij:last-child{border-bottom:0}
+/* ══ 1. De vormtaal van pique.agency/start, via de thema-tokens ══════════════
+   lp.css kent geen enkele vaste kleur, dus dit zet de hele pagina om naar het
+   navy, amber en cr&egrave;me van /start, met Playfair voor de koppen. */
+:root{
+  --accent:#D4943A;      --accent-rgb:212,148,58;
+  --accent-l:#E8B06A;    --accent-l-rgb:232,176,106;
+  --accent-h:#E8B06A;
+  --op-accent:#0F172A;
+  --bg:#F8F6F2;          --bg-rgb:248,246,242;
+  --ink:#1E2433;         --ink-rgb:30,36,51;
+  --donker:#0F172A;      --donker-rgb:15,23,42;
+  --dieper:#0B1222;      --dieper-rgb:11,18,34;
+  --serif:'Playfair Display',Georgia,serif;
+  --wonk:normal;
+}
+/* Playfair draagt op 500 te licht voor een kop, /start staat op 700. */
+.hero-h1,.ch-kop,.cta-h,.sec h2,.bcard h3{font-weight:700;letter-spacing:-.03em}
+.hero-h1{max-width:20ch}
+.amb{color:var(--accent)}
+.num{font-variant-numeric:tabular-nums}
 
-  /* De garantieband is .hoeband uit lp12.css. Daar hoort geen cijferrij en geen
-     voetnoot bij, dus die twee staan hier. Alleen thema-tokens, geen kleuren. */
-  #garantie .gmeet{display:flex;flex-wrap:wrap;justify-content:center;gap:1.3rem 3rem;
-    margin:clamp(1.8rem,4vw,2.5rem) 0 0;padding-top:1.5rem;
-    border-top:1px solid rgba(var(--wit-rgb),.14)}
-  #garantie .gmeet b{display:block;font-family:var(--serif);font-weight:500;
-    font-size:clamp(1.9rem,4vw,2.5rem);line-height:1;color:var(--wit)}
-  #garantie .gmeet span{display:block;margin-top:.42rem;font-size:.67rem;font-weight:600;
-    letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--wit-rgb),.5)}
-  #garantie .hb-voet{margin:1.4rem auto 0;max-width:46ch;font-size:.76rem;line-height:1.55;
-    color:rgba(var(--wit-rgb),.42)}
-  @media(max-width:620px){
-    #garantie .gmeet{justify-content:flex-start}
-    #garantie .hb-voet{margin-left:0}
-  }
+/* het naamplaatje boven de kop in de hero */
+.herotop{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.15rem;
+  padding:.42rem .95rem;border-radius:var(--r-pil);
+  background:rgba(var(--accent-l-rgb),.12);border:1px solid rgba(var(--accent-l-rgb),.3);
+  font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-l)}
+.herotop i{display:block;width:5px;height:5px;border-radius:50%;background:var(--accent-l)}
+
+/* ══ 2. De drie blokken die het v2-component niet heeft ═════════════════════ */
+.sec{padding:clamp(3.4rem,8vh,5.5rem) clamp(1.25rem,4vw,2rem)}
+.sec-in{max-width:960px;margin:0 auto}
+.lbl{display:block;font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.sec h2{font-family:var(--serif);font-size:clamp(1.85rem,3.8vw,2.8rem);line-height:1.1;margin-top:.85rem;color:var(--ink)}
+.sec p{font-size:1.02rem;line-height:1.72;color:var(--ink2)}
+.bronr{display:inline-flex;align-items:center;gap:.45rem;margin-top:1.1rem;
+  font-size:.66rem;font-weight:600;letter-spacing:.05em;color:var(--ink3);text-decoration:none}
+.bronr i{display:block;flex:0 0 auto;width:14px;height:1px;background:currentColor}
+.bronr b{color:var(--ink2);border-bottom:1px solid rgba(var(--accent-rgb),.42)}
+.bronr:hover b{border-bottom-color:var(--accent)}
+
+/* de garantie, het donkere blok */
+.gua{background:var(--donker);color:var(--wit);position:relative;overflow:hidden}
+.gua::before{content:'';position:absolute;left:50%;top:-18%;width:min(900px,120%);height:70%;
+  transform:translateX(-50%);pointer-events:none;
+  background:radial-gradient(60% 55% at 50% 40%,rgba(var(--accent-l-rgb),.16),transparent 70%)}
+.gua .sec-in{position:relative}
+.gua .lbl{color:var(--accent-l)}
+.gua h2{color:var(--wit)}
+.gua p{color:rgba(var(--wit-rgb),.68)}
+.gua .lead{margin-top:1.05rem;max-width:54ch}
+.tak{display:grid;gap:1rem;margin-top:clamp(1.7rem,3.5vw,2.3rem)}
+.tk{padding:1.35rem 1.5rem 1.5rem;border-radius:var(--r-kaart);
+  background:rgba(var(--wit-rgb),.05);border:1px solid rgba(var(--wit-rgb),.12)}
+.tk.ja{border-color:rgba(var(--accent-l-rgb),.34);background:rgba(var(--accent-l-rgb),.08)}
+.tk .bn{display:inline-block;font-family:var(--serif);font-weight:700;font-size:1.55rem;
+  line-height:1;color:var(--accent-l)}
+.tk b{display:block;margin-top:.75rem;font-size:1rem;color:var(--wit)}
+.tk span{display:block;margin-top:.32rem;font-size:.93rem;line-height:1.6;color:rgba(var(--wit-rgb),.62)}
+.meet{display:flex;flex-wrap:wrap;gap:1.2rem 3rem;margin-top:clamp(1.7rem,3.5vw,2.3rem);
+  padding-top:1.5rem;border-top:1px solid rgba(var(--wit-rgb),.14)}
+.meet b{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,4vw,2.5rem);
+  line-height:1;color:var(--wit)}
+.meet span{display:block;margin-top:.4rem;font-size:.67rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(var(--wit-rgb),.5)}
+.cond{margin-top:1.4rem;font-size:.76rem;line-height:1.55;color:rgba(var(--wit-rgb),.42)}
+.gua .bronr{color:rgba(var(--wit-rgb),.42)}
+.gua .bronr b{color:rgba(var(--wit-rgb),.72);border-bottom-color:rgba(var(--accent-l-rgb),.5)}
+
+/* de bonus */
+.bon{background:var(--bg)}
+.bbadge{display:inline-block;padding:.36rem .9rem;border-radius:var(--r-pil);
+  background:var(--accent);color:var(--op-accent);
+  font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.bcard{margin-top:clamp(1.6rem,3.5vw,2.2rem);display:grid;gap:1.7rem;
+  padding:clamp(1.6rem,3.5vw,2.4rem);border-radius:var(--r-blok);background:var(--wit);
+  border:1px solid var(--line);
+  box-shadow:0 2px 8px rgba(var(--ink-rgb),.05),0 30px 60px -28px rgba(var(--ink-rgb),.3)}
+.bcard h3{font-family:var(--serif);font-size:clamp(1.25rem,2.4vw,1.65rem);line-height:1.18;color:var(--ink)}
+.bcard p{margin-top:.7rem}
+.bswap{display:flex;align-items:center;justify-content:center;gap:clamp(.9rem,3vw,2rem);
+  padding:1.3rem 1rem;border-radius:var(--r-kaart);background:var(--bg);border:1px solid var(--line)}
+.bswap div{text-align:center}
+.bswap em{display:block;font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3)}
+.bswap b{display:block;margin-top:.3rem;font-family:var(--serif);font-weight:700;
+  font-size:clamp(2rem,5vw,2.9rem);line-height:1;color:var(--ink3)}
+.bswap .hi b{color:var(--accent)}
+.bswap .pijl{font-family:var(--sans);font-size:1.3rem;color:var(--ink3);line-height:1}
+.deadline{margin-top:1.2rem;display:inline-flex;align-items:center;gap:.6rem;
+  padding:.55rem 1rem;border-radius:var(--r-pil);background:rgba(var(--accent-rgb),.1);
+  font-size:.85rem;font-weight:600;color:var(--ink)}
+.deadline i{display:block;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+/* hoe het begint: de orderpagina groot, het tarief klein */
+.pgrid{display:grid;gap:1.2rem;margin-top:clamp(1.6rem,3.5vw,2.2rem)}
+.pk{padding:clamp(1.5rem,3.2vw,2.1rem);border-radius:var(--r-blok);background:var(--wit);
+  border:1px solid var(--line);
+  box-shadow:0 2px 8px rgba(var(--ink-rgb),.05),0 30px 60px -28px rgba(var(--ink-rgb),.3)}
+.pk p+p{margin-top:.75rem}
+.pk strong{color:var(--ink);font-weight:600}
+.pk .klein{margin-top:1.1rem;font-size:.85rem;color:var(--ink3)}
+.orderknop{display:inline-flex;align-items:center;gap:.7rem;margin-top:1.4rem;
+  padding:1rem 1rem 1rem 1.6rem;border-radius:var(--r-pil);background:var(--accent);
+  color:var(--op-accent);font-weight:600;font-size:.95rem;text-decoration:none;white-space:nowrap;
+  box-shadow:0 14px 34px -12px rgba(var(--accent-rgb),.75);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.orderknop:hover{transform:translateY(-2px);box-shadow:0 20px 40px -12px rgba(var(--accent-rgb),.85)}
+.orderknop .ar{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  background:var(--op-accent);color:var(--accent)}
+.orderknop .ar svg{width:14px;height:14px}
+.pk.tarief{background:var(--bg);box-shadow:none}
+.pk.tarief .bedrag{margin-top:.8rem;font-family:var(--serif);font-weight:700;
+  font-size:clamp(1.8rem,4vw,2.4rem);line-height:1;color:var(--ink)}
+.pk.tarief .was{margin-top:.5rem;font-size:.92rem;color:var(--ink3)}
+@media(min-width:820px){
+  .tak{grid-template-columns:1fr 1fr}
+  .bcard{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center}
+  .pgrid{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:start}
+}
+@media(max-width:560px){
+  .bswap{gap:.8rem;padding:1.1rem .6rem}
+}
 </style>
 
 <script>
@@ -76,9 +181,9 @@
 
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Waarom weer</span></a>
-  <a href="#s2"><span class="rd"></span><span class="rl">Wat er anders is</span></a>
-  <a href="#garantie"><span class="rd"></span><span class="rl">De garantie</span></a>
-  <a href="#start"><span class="rd"></span><span class="rl">Hoe het begint</span></a>
+  <a href="#s3"><span class="rd"></span><span class="rl">De garantie</span></a>
+  <a href="#bonus"><span class="rd"></span><span class="rl">De bonus</span></a>
+  <a href="#papier"><span class="rd"></span><span class="rl">Hoe het begint</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
 </div>
 
@@ -88,16 +193,17 @@
     <div class="hero-left">
       <div class="slot" id="slot">
         <div class="slot-card" id="slotcard">
-          <div class="h">Hoi Jaap.<br>Sinds september<br>is het voorstel op<br>vijf punten anders.</div>
+          <div class="h">Hoi Jaap.<br>Er is sinds<br>september het een<br>en ander veranderd.</div>
           <div class="sig">Simon</div>
         </div>
         <span class="slot-tag">De kaart op je bureau</span>
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">H&eacute; <span class="u">Jaap</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
-      <p class="hero-sub">Het aanbod dat ik je toen voorlegde bestaat in die vorm niet meer.</p>
-      <div class="hero-meta"><span class="chip"><i></i>Vijf wijzigingen</span><span class="chip">2 minuten lezen</span><span class="chip">Bonus tot 31 oktober</span></div>
+      <span class="herotop"><i></i>Voor Jaap Schouten</span>
+      <h1 class="hero-h1">Vijf juiste beslissers aan tafel binnen zestig dagen. <span class="u">Of je geld terug.</span></h1>
+      <p class="hero-sub">Dat stond er in september nog niet zo op. Hieronder staat wat er verder anders is.</p>
+      <div class="hero-meta"><span class="chip"><i></i>Een vervolg op ons gesprek</span><span class="chip">2 minuten lezen</span></div>
       <div class="scrollcue"><i></i><span>Scroll</span></div>
     </div>
   </div>
@@ -113,7 +219,7 @@
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="ch-eyebrow">Waarom je dit opnieuw krijgt</div>
+        <div class="ch-eyebrow">Waarom je dit nu krijgt</div>
         <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">In augustus plande je zelf een gesprek in nadat je mijn kaart had gescand. Daarna hebben we het er een paar keer over gehad en was je er elke keer voor. Wat ik je in september stuurde was een overeenkomst met algemene voorwaarden erbij, en daar is het blijven liggen.</p>
         <p class="ch-text">Je schreef me op 29 september dat je er op je eigen tijd op terugkomt. Dat leek me redelijk, dus ik heb je sindsdien niet gebeld.</p>
@@ -121,7 +227,7 @@
 
         <div class="watdit">
           <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die we alleen voor Byzon Buitenzonwering hebben gemaakt. Jij bent de enige die hem heeft.</span></div>
-          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">Hier staat wat er sinds september anders is, met de bedragen erbij en de bron eronder.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">Hier staat wat er sinds september anders is, met de bron eronder.</span></div>
           <div><span class="wd-l">Waar we om vragen</span><span class="wd-v">Twintig minuten aan de telefoon. Of een nee, dan laat ik het hierbij.</span></div>
         </div>
         <div class="ch-sign">Simon, oprichter Pique</div>
@@ -131,91 +237,74 @@
       </div>
     </div>
   </section>
-
-  <section class="chapter right" id="s2">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="ch-eyebrow">Wat er anders is</div>
-        <h2 class="ch-kop">Vijf dingen zijn veranderd sinds september.</h2>
-        <div class="daveld">
-          <div class="da-bar"><span class="da-t">Wat er veranderd is</span><span class="da-n">5 wijzigingen</span></div>
-          <ol class="da-lijst">
-            <li class="da-rij">
-              <span class="da-nr">01</span>
-              <div class="da-kol">
-                <span class="da-naam">De prijs<span class="da-plaats">per maand</span></span>
-                <span class="da-sig">Honderd benaderingen per maand kosten 3.750 euro in plaats van 4.500 euro, exclusief btw.</span>
-                <span class="da-waarom"><b>Ten opzichte van september</b>750 euro per maand lager dan wat er toen op papier stond.</span>
-                <a class="da-bron" href="https://pique.agency/start" target="_blank" rel="noopener"><i></i><b>pique.agency/start</b> &middot; 16 oktober 2026</a>
-              </div>
-            </li>
-            <li class="da-rij">
-              <span class="da-nr">02</span>
-              <div class="da-kol">
-                <span class="da-naam">De looptijd<span class="da-plaats">drie maanden</span></span>
-                <span class="da-sig">Een traject loopt drie maanden in plaats van twee, en komt daarmee uit op 11.250 euro exclusief btw.</span>
-                <span class="da-waarom"><b>Het totaal</b>Het maandtarief gaat omlaag en de looptijd gaat omhoog, dus het totaal ligt 2.250 euro boven de 9.000 euro van september. Je koopt een maand extra.</span>
-                <a class="da-bron" href="https://pique.agency/start" target="_blank" rel="noopener"><i></i><b>pique.agency/start</b> &middot; 16 oktober 2026</a>
-              </div>
-            </li>
-            <li class="da-rij">
-              <span class="da-nr">03</span>
-              <div class="da-kol">
-                <span class="da-naam">De garantie<span class="da-plaats">dag 60</span></span>
-                <span class="da-sig">Vijf juiste beslissers aan tafel binnen zestig dagen, of je geld terug.</span>
-                <span class="da-waarom"><b>Zoals het was</b>Tien afspraken, en kosteloos doorwerken tot ze er stonden.</span>
-                <a class="da-bron" href="https://pique.agency/start" target="_blank" rel="noopener"><i></i><b>pique.agency/start</b> &middot; 16 oktober 2026</a>
-              </div>
-            </li>
-            <li class="da-rij">
-              <span class="da-nr">04</span>
-              <div class="da-kol">
-                <span class="da-naam">De bonus<span class="da-plaats">tijdelijk</span></span>
-                <span class="da-sig">Twintig procent extra benaderingen per maand voor hetzelfde bedrag, dus honderdtwintig in plaats van honderd.</span>
-                <span class="da-waarom"><b>De voorwaarde</b>De bonus geldt bij een start voor 31 oktober 2026, 23:59.</span>
-                <a class="da-bron" href="https://pique.agency/start#bonus" target="_blank" rel="noopener"><i></i><b>pique.agency/start</b> &middot; 20 oktober 2026</a>
-              </div>
-            </li>
-            <li class="da-rij">
-              <span class="da-nr">05</span>
-              <div class="da-kol">
-                <span class="da-naam">Het papierwerk<span class="da-plaats">vervallen</span></span>
-                <span class="da-sig">Er hoeft niets meer ondertekend te worden. E&eacute;n pagina, &eacute;&eacute;n vinkje, en een betaallink of een factuur met een week betaaltermijn.</span>
-                <span class="da-waarom"><b>Wat eruit gaat</b>De opdrachtovereenkomst en de algemene voorwaarden die je in september moest tekenen, zijn uit het proces gehaald.</span>
-                <span class="dv-bron"><i></i><b>onze eigen orderpagina</b> &middot; in gebruik sinds 9 oktober 2026</span>
-              </div>
-            </li>
-          </ol>
-        </div>
-        <p class="brug"><i></i>E&eacute;n daarvan had ik eerder moeten bedenken.</p>
-      </div>
-      <p class="note">de bedragen staan er allemaal bij<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
-    </div>
-  </section>
-
-  <section class="chapter center pivot" id="s3">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="ch-eyebrow">Wat ik verkeerd deed</div>
-        <p class="ch-pivot">Ik vroeg je in september om een handtekening, op het moment dat je gewoon wilde beginnen. Die vraag is er nu uit.</p>
-      </div>
-    </div>
-  </section>
 </main>
 
-<section class="hoeband reveal" id="garantie">
-  <div class="hb-in">
-    <span class="hb-eyebrow">De garantie</span>
-    <h2 class="hb-h">Vijf juiste beslissers aan tafel binnen zestig dagen, of je geld terug.</h2>
-    <p class="hb-bij">Op dag zestig tellen we samen. Zijn we er niet, dan staat het geld binnen veertien dagen terug op je rekening.</p>
-    <p class="hb-bij">Je hebt me een paar keer hard bevraagd op de onderbouwing van die garantie. Dit is het eerlijkste antwoord dat ik je kan geven: halen we het aantal niet, dan kost het ons geld in plaats van extra maanden.</p>
-    <div class="gmeet">
-      <div><b>5</b><span>juiste beslissers aan tafel</span></div>
-      <div><b>60</b><span>dagen, dan tellen we samen</span></div>
+<section class="sec gua" id="s3">
+  <div class="sec-in">
+    <span class="lbl">De garantie</span>
+    <h2>Het risico ligt <span class="amb">bij ons.</span></h2>
+    <p class="lead">Op dag zestig tellen we samen hoeveel juiste beslissers er aan tafel hebben gezeten. In september stond er nog dat we kosteloos doorwerken tot de tien afspraken er stonden. Dat doorwerken is eruit.</p>
+    <div class="tak">
+      <div class="tk ja">
+        <span class="bn num">5+</span>
+        <b>Vijf of meer afspraken</b>
+        <span>Dan loopt de samenwerking gewoon door.</span>
+      </div>
+      <div class="tk">
+        <span class="bn num">&lt;5</span>
+        <b>Minder dan vijf afspraken</b>
+        <span>Dan staat je geld binnen veertien dagen terug op je rekening.<sup>*</sup></span>
+      </div>
     </div>
-    <p class="hb-voet">Op de kosten van producten en porto na.</p>
+    <div class="meet">
+      <div><b class="num">5</b><span>juiste beslissers aan tafel</span></div>
+      <div><b class="num">60</b><span>dagen, dan tellen we samen</span></div>
+    </div>
+    <p class="lead">Je hebt me een paar keer hard bevraagd op de onderbouwing van die garantie. Dit is het eerlijkste antwoord dat ik je kan geven: halen we het aantal niet, dan kost het ons geld in plaats van extra maanden.</p>
+    <p class="cond">* Op de kosten van producten en porto na.</p>
+    <a class="bronr" href="https://pique.agency/start" target="_blank" rel="noopener"><i></i><b>pique.agency/start</b> &middot; 16 oktober 2026</a>
+  </div>
+</section>
+
+<section class="sec bon" id="bonus">
+  <div class="sec-in">
+    <span class="bbadge">Bonus</span>
+    <h2>Start voor <span class="amb">31 oktober</span> en krijg dit erbij.</h2>
+    <div class="bcard">
+      <div>
+        <h3>Twintig procent extra benaderingen, op onze kosten.</h3>
+        <p>Honderd benaderingen per maand worden er honderdtwintig, voor hetzelfde bedrag. Twintig beslissers meer per maand die iets van ons op hun bureau krijgen.</p>
+        <span class="deadline"><i></i>Geldt bij een start voor 31 oktober 2026, 23:59</span>
+      </div>
+      <div class="bswap">
+        <div><em>Nu</em><b class="num">100</b></div>
+        <div class="pijl" aria-hidden="true">&rarr;</div>
+        <div class="hi"><em>Met de bonus</em><b class="num">120</b></div>
+      </div>
+    </div>
+    <a class="bronr" href="https://pique.agency/start#bonus" target="_blank" rel="noopener"><i></i><b>pique.agency/start</b> &middot; 20 oktober 2026</a>
+  </div>
+</section>
+
+<section class="sec papier" id="papier">
+  <div class="sec-in">
+    <span class="lbl">Hoe het nu begint</span>
+    <h2>E&eacute;n pagina, <span class="amb">&eacute;&eacute;n vinkje.</span></h2>
+    <div class="pgrid">
+      <article class="pk">
+        <p>Je krijgt een link naar een orderpagina met jullie gegevens erop, het aantal benaderingen en het bedrag. Daar zet je een vinkje bij de voorwaarden en kies je hoe je betaalt: meteen via iDEAL, of op factuur met een week betaaltermijn.</p>
+        <p><strong>De samenwerkingsovereenkomst die ik je in september stuurde, mag je als niet verzonden beschouwen.</strong> De voorwaarden krijg je nog wel, als bijlage bij de bevestigingsmail. Er hoeft alleen niets meer getekend.</p>
+        <a class="orderknop" href="https://portal.pique.agency/order?t=122bc530d1ba2971ab3cae08e6db4714" target="_blank" rel="noopener">Bekijk je orderpagina <span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <p class="klein">De kick-off staat op de eerste werkdag na de betaaldatum.</p>
+      </article>
+      <aside class="pk tarief">
+        <span class="lbl">Het maandtarief</span>
+        <div class="bedrag num">&euro; 3.750</div>
+        <p class="was">per maand bij honderd benaderingen, exclusief btw</p>
+        <p>In september stond hier 4.500 euro per maand, dus per maand ligt het nu lager dan in het voorstel dat je toen kreeg.</p>
+        <a class="bronr" href="https://pique.agency/start" target="_blank" rel="noopener"><i></i><b>pique.agency/start</b> &middot; 16 oktober 2026</a>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -231,7 +320,7 @@
       <div class="ch-body">
         <div class="ch-eyebrow">Het voorstel</div>
         <h2 class="ch-kop ch-head">Wat we voorstellen.</h2>
-        <p class="ch-sub">Honderdtwintig benaderingen per maand bij aannemers en VvE-beheerders, drie maanden lang, en wij bellen elke scan na tot er ja of nee ligt. Die honderdtwintig gelden bij een start voor 31 oktober 2026, daarna zijn het er weer honderd.</p>
+        <p class="ch-sub">Honderdtwintig benaderingen per maand bij aannemers en VvE-beheerders, en wij bellen elke scan na tot er ja of nee ligt.</p>
       </div>
     </div>
   </section>
@@ -252,22 +341,6 @@
       </div>
     </div>
   </section>
-
-  <section class="chapter right" id="start">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="ch-eyebrow">Hoe het nu begint</div>
-        <h2 class="ch-kop">E&eacute;n pagina, &eacute;&eacute;n vinkje.</h2>
-        <p class="ch-text">Je krijgt een link naar een orderpagina met jullie gegevens erop, het aantal benaderingen en het bedrag. Daar zet je een vinkje bij de voorwaarden en kies je hoe je betaalt: meteen via iDEAL, of op factuur met een week betaaltermijn.</p>
-        <p class="ch-text"><strong>De overeenkomst en de algemene voorwaarden die je in september moest ondertekenen, zijn uit het proces gehaald.</strong> De voorwaarden krijg je nog wel, als bijlage bij de bevestigingsmail. Er hoeft alleen niets meer getekend.</p>
-          <p class="ch-text">De samenwerkingsovereenkomst die ik je in september stuurde, mag je als niet verzonden beschouwen. Die is van tafel.</p>
-        <p class="ch-text">De kick-off staat op de eerste werkdag na de betaaldatum. Daarna is het aan ons: de lijst, het onderzoek per bedrijf, de kaarten en het nabellen tot elke prospect ja of nee heeft gezegd.</p>
-          <p class="ch-text"><a class="btn-a" href="https://portal.pique.agency/order?t=122bc530d1ba2971ab3cae08e6db4714">Bekijk je orderpagina</a></p>
-      </div>
-      <p class="note">en geen DocuSign meer<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
-    </div>
-  </section>
 </main>
 
 <section class="founder" id="founder">
@@ -286,13 +359,12 @@
   <div class="cta-inner">
     <div class="cta-eyebrow reveal">De volgende stap</div>
     <h2 class="cta-h reveal">Even bijpraten?</h2>
-    <p class="cta-sub reveal">Twintig minuten aan de telefoon. Ik loop de vijf punten met je door en reken het bedrag voor bij het aantal dat jij wil. Je verbindt je nergens aan door dat gesprek in te plannen.</p>
+    <p class="cta-sub reveal">Twintig minuten aan de telefoon. Ik loop de garantie met je door en reken het bedrag voor bij het aantal dat jij wil. Je verbindt je nergens aan door dat gesprek in te plannen.</p>
     <div class="cta-btns reveal">
       <button class="btn-a" data-open="sheet" data-tab="plan">Kies een moment</button>
       <button class="btn-b" style="color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.2)" data-open="sheet" data-tab="bel">Laat me terugbellen</button>
     </div>
-    <p class="cta-alt reveal">Weet je het al? <a href="https://portal.pique.agency/order?t=122bc530d1ba2971ab3cae08e6db4714">Je orderpagina staat klaar</a>, met de aantallen en het bedrag erop.</p>
-      <p class="cta-alt reveal">Past het nog steeds niet, zeg dat dan gewoon, dan laat ik het hierbij. <a href="mailto:info@pique.agency?subject=Byzon%20Buitenzonwering%20%C3%97%20Pique">Of mail me een korte vraag.</a></p>
+    <p class="cta-alt reveal">Liever meteen door? <a href="https://portal.pique.agency/order?t=122bc530d1ba2971ab3cae08e6db4714" target="_blank" rel="noopener">Je orderpagina staat klaar.</a> Past het nog steeds niet, zeg dat dan gewoon, dan laat ik het hierbij.</p>
   </div>
 </section>
 
@@ -302,7 +374,7 @@
 </footer>
 
 <div class="dock" id="dock">
-  <span class="dock-t"><b>Even over de vijf punten?</b> 20 minuten.</span>
+  <span class="dock-t"><b>Even over de garantie?</b> 20 minuten.</span>
   <button class="dock-b" data-open="sheet" data-tab="plan">Plannen</button>
   <button class="dock-x" id="dockx" aria-label="Sluiten">&times;</button>
 </div>
