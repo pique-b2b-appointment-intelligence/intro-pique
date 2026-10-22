@@ -63,6 +63,22 @@
       "destination": "/pique/:pad*"
     },
     {
+      "source": "/pique/iclicks/lesley",
+      "destination": "/pique/iclicks-lesley"
+    },
+    {
+      "source": "/pique/iclicks/danny",
+      "destination": "/pique/iclicks-danny"
+    },
+    {
+      "source": "/pique/iclicks/thomas",
+      "destination": "/pique/iclicks-thomas"
+    },
+    {
+      "source": "/pique/iclicks/:pad*",
+      "destination": "/pique/:pad*"
+    },
+    {
       "source": "/pique/odido/herman",
       "destination": "/pique/odido-herman"
     },
