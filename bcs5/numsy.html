@@ -20,6 +20,7 @@
 
 <link rel="stylesheet" href="thema-bcs.css">
 <link rel="stylesheet" href="lp.css">
+<link rel="stylesheet" href="lp12.css">
 
 <script>
   window.PQ_BEDRIJF      = 'Numsy';
@@ -30,7 +31,7 @@
   window.PQ_POSTER       = 'jeffrey-staand-poster.jpg';
   window.PQ_TRACK_URL    = '/api/t';
   window.PQ_TERUGBEL_URL = '';
-  window.PIQUE_INTRO     = { voornaam: 'Mike', bedrijf: 'Numsy',  merk: false };
+  window.PIQUE_INTRO     = { tempo: 33, pauze: 420, regels: ['Hoi Mike.', 'Jullie antwoorden zelf|op jullie reviews.', '338 blogartikelen,|72 producten.', '*Ik ben dieper gaan kijken.*'], ctaSub: 'Video van Jeffrey &middot; 1 minuut', voornaam: 'Mike', bedrijf: 'Numsy',  merk: false };
 </script>
 <script src="lp-intro.js"></script>
 </head>
@@ -48,7 +49,7 @@
 
 <div class="rail" id="rail">
   <a href="#s1"><span class="rd"></span><span class="rl">Waarom jij</span></a>
-  <a href="#s2"><span class="rd"></span><span class="rl">Wat ik zag</span></a>
+  <a href="#dossier"><span class="rd"></span><span class="rl">Wat ik vond</span></a>
   <a href="#s3"><span class="rd"></span><span class="rl">Wat dat betekent</span></a>
   <a href="#s4"><span class="rd"></span><span class="rl">Wat ik voorstel</span></a>
   <a href="#gesprek"><span class="rd"></span><span class="rl">Even bellen</span></a>
@@ -67,7 +68,7 @@
       </div>
     </div>
     <div class="hero-right">
-      <h1 class="hero-h1">Drie getallen over Numsy.</h1>
+      <h1 class="hero-h1">H&eacute; <span class="u">Mike</span>, dit is waarom ik je een kaart heb gestuurd.</h1>
       <p class="hero-sub">Dit is geen analyse van jullie klantenservice. Het zijn drie getallen die ik zou willen weten, en waarom juist die drie.</p>
       <div class="hero-meta">
         <span class="chip"><i></i>4 waarnemingen</span>
@@ -94,9 +95,15 @@
       <span class="ch-dot"></span>
       <div class="ch-body">
         <div class="ch-eyebrow">Waarom jij</div>
-        <h2 class="ch-kop">Waarom ik juist jullie schrijf.</h2>
+        <h2 class="ch-kop">Waarom ik je een kaart stuurde.</h2>
         <p class="ch-text">Ik heb niets doorgerekend en ik ga ook niets aanwijzen. Ik heb alleen gekeken naar wat er aan volume zichtbaar is.</p>
         <p class="ch-text"><strong>Dit is wat ik vond.</strong></p>
+        
+        <div class="watdit">
+          <div><span class="wd-l">Wat dit is</span><span class="wd-v">Een pagina die ik voor Numsy heb gemaakt. Jij bent de enige die hem heeft.</span></div>
+          <div><span class="wd-l">Waarom je hem krijgt</span><span class="wd-v">Ik wil je spreken. We hebben elkaar nooit gesproken, en ik stuur een kaart omdat een mail van mij niet zou zijn opgevallen.</span></div>
+          <div><span class="wd-l">Waar ik om vraag</span><span class="wd-v">Een kwartier aan de telefoon. Verder vraag ik niets.</span></div>
+        </div>
         <div class="ch-sign">Jeffrey, Backbone Customer Service</div>
       </div>
       <div class="note">4 dingen, in deze volgorde
@@ -105,49 +112,52 @@
     </div>
   </section>
 
-  <section class="chapter right find" id="s2">
+  <section class="chapter right" id="dossier">
     <div class="ch-inner">
       <span class="ch-dot"></span>
       <div class="ch-body">
-        <div class="f-head"><div class="f-num">01<span class="of">/ 04</span></div><div class="f-tag">Wat ik zag</div></div>
-        <h2 class="f-kop">Jullie beantwoorden de reviews zelf</h2>
-        <p class="ch-text">Onder de antwoorden op Trustpilot staan jullie eigen voornamen. Bij 474 beoordelingen betekent dat de oprichters zelf in de berichten zitten. Dat werkt zolang het aantal te overzien is, en het is het eerste wat sneuvelt zodra het dat niet meer is.</p>
+        <div class="ch-eyebrow">Het dossier</div>
+        <h2 class="ch-kop">Vier dingen, in de volgorde waarin ik ze tegenkwam.</h2>
+        <div class="dosveld" id="dosveld">
+          <button class="dv-bar" type="button" aria-expanded="false" aria-controls="dvlijst">
+            <span class="dv-t">Dit is wat ik vond</span>
+            <span class="dv-n">4 bevindingen<i class="dv-pijl"></i></span>
+          </button>
+          <div class="dv-lijst" id="dvlijst"><div>
+            <div class="dv-rij">
+              <span class="dv-nr">01</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Jullie beantwoorden de reviews zelf</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">02</span>
+              <div class="dv-kol">
+                <span class="dv-wat">338 blogartikelen bij 72 producten</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">03</span>
+              <div class="dv-kol">
+                <span class="dv-wat">474 mensen lieten een beoordeling achter</span>
+              </div>
+            </div>
+            <div class="dv-rij">
+              <span class="dv-nr">04</span>
+              <div class="dv-kol">
+                <span class="dv-wat">Jullie site staat klaar in 2 taalmarkten</span>
+              </div>
+            </div>
+          </div></div>
+        </div>
+        <p class="brug"><i></i>Op basis hiervan kwam ik tot &eacute;&eacute;n conclusie.</p>
       </div>
+      <p class="note">Klik het dossier open.<svg class="arw" viewBox="0 0 52 26" aria-hidden="true"><path d="M2 5c13 0 24 5 32 14M34 19l-6-1.4M34 19l1.2-6"/></svg></p>
     </div>
   </section>
 
-  <section class="chapter left find">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">02<span class="of">/ 04</span></div><div class="f-tag">Wat ik zag</div></div>
-        <h2 class="f-kop">338 blogartikelen bij 72 producten</h2>
-        <p class="ch-text">Het assortiment telt 72 artikelen, de blog 338. Daar komt een app bij, een Facebook-community en cursussen. Elk van die kanalen trekt mensen met een vraag, en bijna geen van die vragen gaat over een bestelling.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="chapter right find">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">03<span class="of">/ 04</span></div><div class="f-tag">Wat ik zag</div></div>
-        <h2 class="f-kop">474 mensen lieten een beoordeling achter</h2>
-        <p class="ch-text">Dat aantal staat op jullie eigen site op Trustpilot. Het zegt niets over de kwaliteit en daar gaat het me ook niet om. Het zegt iets anders: bij dit aantal beoordelingen liggen er duizenden vragen achter die iemand heeft moeten beantwoorden.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="chapter left find">
-    <div class="ch-inner">
-      <span class="ch-dot"></span>
-      <div class="ch-body">
-        <div class="f-head"><div class="f-num">04<span class="of">/ 04</span></div><div class="f-tag">Wat ik zag</div></div>
-        <h2 class="f-kop">Jullie site staat klaar in 2 taalmarkten</h2>
-        <p class="ch-text">Dat is in de broncode te zien aan de hreflang-regels. Elke markt erbij betekent een vertaalde winkel en daarnaast een mailbox waarin iemand in die taal moet kunnen antwoorden.</p>
-      </div>
-    </div>
-  </section>
 
   <section class="chapter center" id="drie">
     <div class="ch-inner">
@@ -173,26 +183,6 @@
       </div>
     </div>
   </section>
-</main>
-
-<section class="ask" id="ask">
-  <div class="ask-in">
-    <p class="ask-hand">Zal ik je hier gewoon even over bellen?</p>
-    <p class="ask-sub">Een kwartier is genoeg. Ik heb alleen jullie kant van het verhaal nodig.</p>
-    <div class="ask-btns">
-      <button class="btn-a" data-open="sheet" data-tab="plan">Ja, plan een gesprek</button>
-      <button class="btn-b" id="askread">Ik lees eerst verder</button>
-    </div>
-    <p class="ask-later">Of <button data-open="sheet" data-tab="bel">laat je nummer achter</button> en ik bel je terug.</p>
-  </div>
-</section>
-
-<main class="journey" id="journey2">
-  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
-    <path class="jp-base" id="jp-base2"></path>
-    <path class="jp-prog" id="jp-prog2"></path>
-  </svg>
-
   <section class="chapter left">
     <div class="ch-inner">
       <span class="ch-dot"></span>
@@ -204,6 +194,14 @@
       </div>
     </div>
   </section>
+</main>
+
+<main class="journey" id="journey2">
+  <svg class="jpath" id="jpath2" preserveAspectRatio="none" aria-hidden="true">
+    <path class="jp-base" id="jp-base2"></path>
+    <path class="jp-prog" id="jp-prog2"></path>
+  </svg>
+
 
   <section class="chapter right">
     <div class="ch-inner">
@@ -282,6 +280,23 @@
     <div style="--dl:.81s"><span>&#10003;</span><b>Elke maand de cijfers</b><p>Hoeveel vragen, waarover, en hoe snel opgelost. Op basis daarvan sturen we bij.</p></div>
   </div>
 </section>
+
+<section class="hoeband reveal" id="hoe">
+  <div class="hb-in">
+    <span class="hb-eyebrow">Hoe het werkt</span>
+    <h2 class="hb-h">Zo ziet het eruit als ik het overneem.</h2>
+    <p class="hb-bij">Vier dingen die veranderen, en verder blijft alles zoals het is.</p>
+    <ol class="flow">
+      <li class="fl"><span class="fl-n">01</span><b class="fl-k">Bereikbaarheid zonder openingstijden</b><span class="fl-t">Je klanten winkelen 's avonds en in het weekend. Vanaf dat moment krijgen ze daar ook antwoord.</span></li>
+      <li class="fl"><span class="fl-n">02</span><b class="fl-k">Vooraf weten wat het kost</b><span class="fl-t">Een tarief per afgehandelde vraag, het hele jaar door. Een drukke maand is dan een som.</span></li>
+      <li class="fl"><span class="fl-n">03</span><b class="fl-k">Waar het misgaat staat een mens</b><span class="fl-t">Een klant met een echt probleem komt bij een collega uit, en niet in een lus van standaardantwoorden.</span></li>
+      <li class="fl"><span class="fl-n">04</span><b class="fl-k">Drie getallen op een scherm</b><span class="fl-t">Hoe lang het duurt, wat klanten ervan vinden, en hoeveel er in een bericht klaar is.</span></li>
+    </ol>
+  </div>
+</section>
+
+
+
 
 <section class="founder" id="founder">
   <img class="fo-photo fr" src="jeffrey-dylan.jpg" alt="Jeffrey en Dylan van Backbone Customer Service">
@@ -362,5 +377,6 @@
 </div>
 
 <script src="lp-v2.js"></script>
+<script src="lp12.js" defer></script>
 </body>
 </html>
