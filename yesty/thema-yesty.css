@@ -1,0 +1,66 @@
+/* ============================================================
+   THEMA — Yesty
+   Het enige bestand dat per klant verschilt. De kleuren en letters
+   komen uit hun eigen site en product: oranje #F36E21 (merkteken en
+   keuzekaart), paars #440076 (de knoppen in hun portaal), crème
+   #FAFAF8, Poppins voor koppen en Nunito voor tekst. Dezelfde waarden
+   droeg de eerste Swapfiets-pagina van augustus 2026.
+   Elke kleur staat twee keer: als hex en als losse kanalen voor rgba().
+   ============================================================ */
+:root{
+  /* ── accent: hun oranje. Op crème is het pure oranje te licht voor
+     kleine labels, dus lijnen en labels krijgen een donkere trap. ── */
+  --accent:#C9530F;        --accent-rgb:201,83,15;     /* lijnen, labels, dots  */
+  --accent-l:#F36E21;      --accent-l-rgb:243,110,33;  /* knoppen, accent op donker */
+  --accent-h:#FF8440;                                  /* knop bij hover        */
+  --op-accent:#FFFFFF;                                 /* wit op het oranje     */
+  /* De pen schrijft in hun paars, niet in het knopkleur. */
+  --inkt:#440076;          --inkt-rgb:68,0,118;
+
+  /* ── vlakken en tekst ───────────────────────────────────── */
+  --bg:#FAFAF8;            --bg-rgb:250,250,248;
+  --ink:#1A1A1A;           --ink-rgb:26,26,26;
+  /* Hero, band en slot op hun paars, één trap dieper zodat wit en
+     oranje er allebei rustig op staan. */
+  --donker:#2C0050;        --donker-rgb:44,0,80;
+  --dieper:#1E0038;        --dieper-rgb:30,0,56;
+  --wit:#fff;              --wit-rgb:255,255,255;
+  --zwart-rgb:0,0,0;
+  --ink2:rgba(var(--ink-rgb),.68);
+  --ink3:rgba(var(--ink-rgb),.5);
+  --line:rgba(var(--ink-rgb),.11);
+
+  /* ── papier ─────────────────────────────────────────────── */
+  --pap-0:#FFFFFE;       --pap-0-rgb:255,255,254;
+  --pap-1:#FFFDFB;
+  --pap-2:#F4F4F0;
+  --tape-rgb:254,230,212;
+  --hand-ink:#2C0050;      --hand-rgb:44,0,80;
+
+  /* ── overig ─────────────────────────────────────────────── */
+  --goed:#2E9A78;          --goed-rgb:46,154,120;     /* hun mint, donkerder   */
+  --let-op:#B4451F;        --let-op-rgb:180,69,31;
+  --chrome:#F4F4F0;
+  --video-bg:#1E0038;
+
+  /* ── typografie ─────────────────────────────────────────── */
+  --serif:'Poppins',system-ui,sans-serif;
+  --sans:'Nunito',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --wonk:normal;                     /* Poppins heeft geen SOFT/WONK-as */
+
+  /* ── vorm: hun portaal is rond en zacht ─────────────────── */
+  --r-pap:4px;
+  --r-kaart:16px;
+  --r-blok:22px;
+  --r-pil:100px;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --fs-h:clamp(1.9rem,3vw,2.7rem);
+  --fs-body:clamp(1.02rem,1.25vw,1.16rem);
+  --dock:0px;
+}
+/* Poppins draagt zwaarder dan Fraunces, dus koppen een tandje lichter
+   en strakker. Zelfde ingreep als bij Volle Gym met Inter. */
+.hero-h1,.ch-kop,.f-kop,.ch-pivot,.cta-h,.tp h3{font-weight:600;letter-spacing:-.025em}
+.f-quote{font-style:normal}
