@@ -414,7 +414,12 @@ def main():
             tw[d] = r
 
     os.makedirs(UIT, exist_ok=True)
-    for f in ("lp.css", "lp-v2.js", "lp-intro.js"):
+    # De twee woff2's horen hierbij. Zonder Caveat naast de pagina valt het handschrift
+    # in de kaartanimatie terug op het generieke cursive van de browser, en dat is op een
+    # Mac een kalligrafische krul en op Windows iets heel anders. Dat is op 22 oktober 2026
+    # op alle 154 pagina's van deze batch gebeurd; bcs5 was de enige LP-map zonder font.
+    for f in ("lp.css", "lp-v2.js", "lp-intro.js",
+              "caveat-latin.woff2", "caveat-latin-ext.woff2"):
         shutil.copy(os.path.join(COMP, f), UIT)
     for f in ("thema-bcs.css", "jeffrey-staand.mp4", "jeffrey-staand-poster.jpg",
               "jeffrey-dylan.jpg", "jeffrey-avatar.jpg",
